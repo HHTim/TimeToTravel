@@ -1,0 +1,47 @@
+// 這個檔案用來設定一些用SCSS寫的function做使用
+@mixin slider-body {
+  max-width: 100%;
+  width: 100%;
+  margin: auto;
+  overflow: hidden; // 這邊很重要 一定要加，若想看到底怎麼跑的，可以先槓掉，就可以看出ul向左移動的軌跡
+  position: relative;
+  background-color: $white;
+  // height: 20%;
+  ul.list {
+    display: inline-flex;
+    position: relative;
+    width: 100%;
+    left: 0;
+    font-size: 0;
+    li {
+      display: inline-block;
+      text-align: center;
+      padding: 10px;
+      a {
+        display: block;
+        img {
+          max-width: 100%;
+        }
+      }
+    }
+  }
+
+  .status {
+    text-align: center;
+    padding: 10px;
+    .dot {
+      cursor: pointer;
+      height: 5px;
+      width: 40px;
+      margin: 0 5px;
+      background-color: #888;
+      border-radius: 5px;
+      display: inline-block; //這樣寬高才會出來
+      transition: background-color 0.6s ease;
+      &.active,
+      &:hover {
+        background-color: $primary-blue;
+      }
+    }
+  }
+}

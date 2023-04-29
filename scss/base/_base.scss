@@ -1,0 +1,11 @@
+// import all bootstrap
+// @import '~/bootstrap/scss/bootstrap';
+
+// abstracts資料夾放我們自訂的設定檔案，顏色、函式...等
+@import '.././abstracts/variables';
+@import '.././abstracts/mixin';
+
+// 以下設定通用樣式，Header、Footer...等
+@import './common';
+@import './header';
+@import './footer';
