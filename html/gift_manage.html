@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- import -->
+    <script src="../../node_modules/@popperjs/core/dist/umd/popper.min.js" defer></script>
+    <script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js" defer></script>
+    <script src="../../node_modules/jquery/dist/jquery.min.js" defer></script>
+    <script src="https://kit.fontawesome.com/e3af248fb2.js" crossorigin="anonymous" defer></script>
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <!-- 我們自己的 js 檔案，路徑記得改 -->
+    <link rel="stylesheet" href="../css/gift_manage.css" />
+    <!-- 我們自己的 css 檔案，路徑記得改 -->
+    <script src="../js/gift_manage.js" defer></script>
+    <!-- title 記得改 -->
+    <title>TimeToTravel | Gift Manage</title>
+  </head>
+  <body>
+    <!-- Header -->
+    <div class="decorator"></div>
+    <header>
+      <!-- container 是 bootstrap 定義屬性，最好不要改他 -->
+      <div class="container header__container">
+        <h1 class="logo">
+          <a href="#" class="logo__link">
+            <img src="../../images/LOGO.png" alt="logo" class="logo__img" />
+          </a>
+        </h1>
+        <nav>
+          <ul class="nav">
+            <li class="nav__link"><a href="#">我的訂單</a></li>
+            <li class="nav__link"><a href="#">購物車</a></li>
+            <li class="nav__link"><a href="#">部落格</a></li>
+            <li class="nav__info">
+              <div class="dropdown-center">
+                <button class="dropdown-toggle nav__info-btn" type="button" data-bs-toggle="dropdown"></button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">訊息一</a></li>
+                  <li><a class="dropdown-item" href="#">訊息二</a></li>
+                  <li><a class="dropdown-item" href="#">訊息三</a></li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li><a class="dropdown-item" href="#">See More</a></li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav__avatar">
+              <div class="dropdown-center">
+                <button class="dropdown-toggle nav__avatar-btn" type="button" data-bs-toggle="dropdown"></button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">註冊</a></li>
+                  <li><a class="dropdown-item" href="#">登入</a></li>
+                  <li><a class="dropdown-item" href="#">其他</a></li>
+                  <li><a class="dropdown-item" href="#">其他</a></li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li><a class="dropdown-item" href="#">登出</a></li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <!-- Main -->
+    <main>
+      <div class="main">
+        <div class="row-1">
+          <div class="col-11"><a href="#">全部</a></div>
+          <div class="col-12"><a href="#">架上商品</a></div>
+          <div class="col-13"><a href="#">未上架</a></div>
+        </div>
+
+        <div class="col-21">
+          <div>名稱</div>
+          <input type="text" class="name-search" />
+        </div>
+        <div class="col-22">
+          <div>類別</div>
+          <!-- Example single danger button -->
+          <div class="btn-group">
+            <button
+              type="button"
+              class="btn btn-danger dropdown-toggle"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Action
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+              <li><hr class="dropdown-divider" /></li>
+              <li><a class="dropdown-item" href="#">Separated link</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="row-3">
+          <button>搜尋</button>
+          <button>重設</button>
+        </div>
+        <div class="row-4">
+          <div class="type">
+            <div class="type-1"><a href="#">房型</a></div>
+            <div class="type-2 -ontype"><a href="#">土產</a></div>
+            <div class="type-3"><a href="#">景點</a></div>
+          </div>
+          <div class="list">
+            <div class="list-header">
+              <input type="checkbox" /><span>名稱</span><span class="img-col"></span><span>商品編號</span
+              ><span>商品分類</span><span>價格</span><span>剩餘數量</span><span>已售出</span><span>操作</span>
+            </div>
+            <ul class="gift">
+              <li>
+                <input type="checkbox" /><span>青蛙</span><img src="#" alt="這是圖片" /><span>y0001</span
+                ><span>彌月美食</span><span>$3800</span><span>20</span><span>3</span
+                ><!-- Example single danger button -->
+                <div class="btn-group">
+                  <button
+                    type="button"
+                    class="btn btn-danger dropdown-toggle"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    上架
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">上架</a></li>
+                    <li><hr class="dropdown-divider" /></li>
+                    <li><a class="dropdown-item" href="#">下架</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <input type="checkbox" /><span>蛇肉</span><img src="#" alt="這是圖片" /><span>y0002</span
+                ><span>彌月美食</span><span>$5300</span><span>12</span><span>7</span
+                ><!-- Example single danger button -->
+                <div class="btn-group">
+                  <button
+                    type="button"
+                    class="btn btn-danger dropdown-toggle"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    下架
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">上架</a></li>
+                    <li><hr class="dropdown-divider" /></li>
+                    <li><a class="dropdown-item" href="#">下架</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <input type="checkbox" /><span>兔肉</span><img src="#" alt="這是圖片" /><span>y0003</span
+                ><span>團購美食</span><span>$7600</span><span>5</span><span>18</span
+                ><!-- Example single danger button -->
+                <div class="btn-group">
+                  <button
+                    type="button"
+                    class="btn btn-danger dropdown-toggle"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    上架
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">上架</a></li>
+                    <li><hr class="dropdown-divider" /></li>
+                    <li><a class="dropdown-item" href="#">下架</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <input type="checkbox" /><span>兔肉</span><img src="#" alt="這是圖片" /><span>y0003</span
+                ><span>團購美食</span><span>$7600</span><span>5</span><span>18</span
+                ><!-- Example single danger button -->
+                <div class="btn-group">
+                  <button
+                    type="button"
+                    class="btn btn-danger dropdown-toggle"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    上架
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">上架</a></li>
+                    <li><hr class="dropdown-divider" /></li>
+                    <li><a class="dropdown-item" href="#">下架</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <input type="checkbox" /><span>兔肉</span><img src="#" alt="這是圖片" /><span>y0003</span
+                ><span>團購美食</span><span>$7600</span><span>5</span><span>18</span
+                ><!-- Example single danger button -->
+                <div class="btn-group">
+                  <button
+                    type="button"
+                    class="btn btn-danger dropdown-toggle"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    上架
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">上架</a></li>
+                    <li><hr class="dropdown-divider" /></li>
+                    <li><a class="dropdown-item" href="#">下架</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <input type="checkbox" /><span>兔肉</span><img src="#" alt="這是圖片" /><span>y0003</span
+                ><span>團購美食</span><span>$7600</span><span>5</span><span>18</span
+                ><!-- Example single danger button -->
+                <div class="btn-group">
+                  <button
+                    type="button"
+                    class="btn btn-danger dropdown-toggle"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    上架
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">上架</a></li>
+                    <li><hr class="dropdown-divider" /></li>
+                    <li><a class="dropdown-item" href="#">下架</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <input type="checkbox" /><span>兔肉</span><img src="#" alt="這是圖片" /><span>y0003</span
+                ><span>團購美食</span><span>$7600</span><span>5</span><span>18</span
+                ><!-- Example single danger button -->
+                <div class="btn-group">
+                  <button
+                    type="button"
+                    class="btn btn-danger dropdown-toggle"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    上架
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">上架</a></li>
+                    <li><hr class="dropdown-divider" /></li>
+                    <li><a class="dropdown-item" href="#">下架</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <input type="checkbox" /><span>兔肉</span><img src="#" alt="這是圖片" /><span>y0003</span
+                ><span>團購美食</span><span>$7600</span><span>5</span><span>18</span
+                ><!-- Example single danger button -->
+                <div class="btn-group">
+                  <button
+                    type="button"
+                    class="btn btn-danger dropdown-toggle"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    上架
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">上架</a></li>
+                    <li><hr class="dropdown-divider" /></li>
+                    <li><a class="dropdown-item" href="#">下架</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- Aside -->
+    <aside>
+      <div class="aside">
+        <ul>
+          <li><a href="#">基本資料</a></li>
+          <li><a href="#">訂單管理</a></li>
+          <li><a href="#">商品管理</a></li>
+          <li><a href="#">上架頁面</a></li>
+          <li><a href="#">訊息管理</a></li>
+          <li><a href="#">統計圖表</a></li>
+        </ul>
+      </div>
+    </aside>
+    <!-- Footer -->
+    <footer>
+      <div class="footer"></div>
+    </footer>
+  </body>
+</html>
