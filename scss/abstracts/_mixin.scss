@@ -12,7 +12,7 @@
     position: relative;
     width: 100%;
     left: 0;
-    font-size: 0;
+    // font-size: 0;
     li {
       display: inline-block;
       text-align: center;
@@ -21,6 +21,15 @@
         display: block;
         img {
           max-width: 100%;
+        }
+        &.data-text {
+          // height: 40px;
+          text-align: center;
+          padding-top: 10px;
+          &.underline {
+            text-decoration: underline;
+          }
+          font-size: 1.8dvw;
         }
       }
     }

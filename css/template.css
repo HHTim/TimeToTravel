@@ -44,6 +44,11 @@ a:active {
   text-decoration: none;
 }
 
+p {
+  margin: 0;
+  padding: 0;
+}
+
 .decorator {
   width: 100%;
   height: 20px;
@@ -55,7 +60,6 @@ a:active {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  height: -moz-fit-content;
   height: fit-content;
 }
 
@@ -191,4 +195,4 @@ body {
   border: 1px solid #333;
   box-shadow: 0 0 3px #9b9999;
   border-radius: 10px;
-}
+}/*# sourceMappingURL=template.css.map */

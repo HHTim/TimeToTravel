@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- import -->
+    <script src="../node_modules/@popperjs/core/dist/umd/popper.min.js" defer></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js" defer></script>
+    <script src="../node_modules/jquery/dist/jquery.min.js" defer></script>
+    <script src="https://kit.fontawesome.com/e3af248fb2.js" crossorigin="anonymous" defer></script>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <!-- 我們自己的 js 檔案，路徑記得改 -->
+    <link rel="stylesheet" href="../css/admin.css" />
+    <!-- 我們自己的 css 檔案，路徑記得改 -->
+    <script src="../js/admin.js" defer></script>
+    <!-- 輪播需要添加 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- title 記得改 -->
+    <title>Admin</title>
+
+    <style>
+      thead,
+      tr,
+      td {
+        /* border-collapse: collapse; */
+        border: 2px solid red;
+        margin: 0 20px;
+        padding: 0 20px;
+        text-align: center;
+      }
+
+      table {
+        border-collapse: collapse;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <p>GET ALL</p>
+      <thead>
+        <tr>
+          <td>ADMIN_ID</td>
+          <td>ADMIN_ACCOUNT</td>
+          <td>ADMIN_PASSWORD</td>
+          <td>ADMIN_NAME</td>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <script>
+      const tbody = document.querySelector('tbody');
+      fetch('http://localhost:8081/TIME_TO_TRAVEL/AdminController')
+        .then((r) => r.json())
+        .then((d) => {
+          tbody.innerHTML = d.map((e) => {
+            return `<tr>
+                    <td>${e.adminId}</td>
+                    <td>${e.adminAccount}</td>
+                    <td>${e.adminPassword}</td>
+                    <td>${e.adminName}</td>
+                </tr>`;
+          });
+        });
+    </script>
+  </body>
+</html>

@@ -153,7 +153,7 @@
     left: 15%;
     padding-bottom: 5%;
     z-index: 2;
-    margin-bottom: 16%;
+    margin-bottom: 17%;
     align-self: flex-end;
     .form-input {
       font-size: 2dvw;
@@ -170,7 +170,7 @@
     padding-bottom: 5%;
     z-index: 1;
     align-self: flex-end;
-    margin-bottom: 16%;
+    margin-bottom: 17%;
     .form-input {
       font-size: 2dvw;
       height: 30%;
@@ -186,10 +186,10 @@
     padding-bottom: 5%;
     width: 10%;
     align-self: flex-end;
-    margin-bottom: 16%;
+    margin-bottom: 17%;
     .custom-select {
       width: 100%;
-      padding: 5% 10% 5% 10%;
+      padding: 5px 10% 6px 10%;
       border-top-left-radius: $border-radius;
       border-top-right-radius: $border-radius;
       border-bottom-left-radius: $border-radius;
@@ -243,7 +243,7 @@
 .dIcon {
   position: absolute;
   top: 40%;
-  transform: translate(0%, -40%);
+  transform: translate(0%, -80%);
   display: block;
   width: 21px;
   height: 35px;
@@ -276,6 +276,7 @@
       font-weight: bolder;
       color: $white;
       text-align: center;
+      // white-space: nowrap;
     }
   }
 }
