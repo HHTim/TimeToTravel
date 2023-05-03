@@ -164,7 +164,7 @@ body {
 }
 
 .subtitle {
-  width: 95%;
+  width: 90%;
   position: relative;
   font-size: 20px;
   font-weight: bold;
@@ -181,7 +181,7 @@ body {
 }
 
 .order {
-  width: 95%;
+  width: 90%;
   margin: auto;
   display: flex;
   align-items: center;
@@ -191,23 +191,27 @@ body {
   box-shadow: 0 0 3px #9b9999;
 }
 .order__img {
-  width: 100%;
+  width: 20%;
   height: 200px;
-  flex: 1;
   margin-right: 1rem;
   border-radius: 10px;
   box-shadow: 0 0 3px #9b9999;
   overflow: hidden;
 }
+@media screen and (max-width: 1024px) {
+  .order__img {
+    width: 40%;
+  }
+}
 .order__img img {
-  width: 350px;
+  height: 100%;
+  min-width: 100%;
   left: 0;
   top: 0;
 }
 .order__content {
   width: 100%;
   height: 200px;
-  flex: 4;
   background-color: #fff;
   border-radius: 10px;
   display: flex;
@@ -237,13 +241,14 @@ body {
   font-weight: bold;
 }
 .order__detail input {
+  max-width: 100%;
   border: none;
   box-shadow: 0 0 3px #9b9999;
   padding: 0 0.5rem;
 }
 
 .journey {
-  width: 95%;
+  width: 90%;
   position: relative;
   margin: auto;
   display: flex;
@@ -266,20 +271,32 @@ body {
 }
 .journey__img {
   position: relative;
-  width: 200px;
-  aspect-ratio: 1/1;
+  width: 40%;
   overflow: hidden;
   border-radius: 10px;
   margin-right: 0.5rem;
   box-shadow: 0 0 3px #9b9999;
 }
+@media screen and (max-width: 1024px) {
+  .journey__img {
+    width: 100%;
+    min-width: 150px;
+  }
+}
+@media screen and (max-width: 1500px) {
+  .journey__img {
+    width: 40%;
+  }
+}
 .journey__img img {
-  width: 200px;
+  height: 100%;
+  min-width: 100%;
   position: absolute;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  left: -50%;
+  left: 0;
+  top: 0;
 }
 .journey__title {
   font-size: 24px;
@@ -293,7 +310,7 @@ body {
 }
 
 .booking {
-  width: 95%;
+  width: 90%;
   margin: auto;
   background-color: #dfdcdc;
   border-radius: 10px;
@@ -363,7 +380,7 @@ body {
 }
 
 .bill {
-  width: 95%;
+  width: 90%;
   margin: auto;
   margin-bottom: 1rem;
   background-color: #dfdcdc;
