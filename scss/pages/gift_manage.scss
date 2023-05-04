@@ -1,0 +1,311 @@
+// 記得引入基本設定
+@import '../base/base';
+
+.btn-test-1 {
+  background-color: $primary-blue;
+  color: $font-normal-white;
+  border: $normal-border;
+
+  &:hover {
+    background-color: $primary-blue-hover;
+    color: $font-normal-white;
+  }
+}
+
+.btn-test-2 {
+  background-color: $primary-gray;
+  color: $font-normal-black;
+  border: $normal-border;
+
+  &:hover {
+    background-color: $secondary-gray;
+    color: $font-normal-black;
+  }
+}
+
+.btn-test-3 {
+  background-color: $danger-red;
+  color: $font-normal-white;
+  border: $normal-border;
+
+  &:hover {
+    background-color: $danger-red-hover;
+    color: $font-normal-white;
+  }
+}
+
+.btn-test-jquery {
+  padding: 0.5rem;
+  background-color: $rank-yellow;
+  color: $font-normal-black;
+  border: $normal-border;
+  box-shadow: $shadow;
+  border-radius: $border-radius;
+}
+
+html,
+body {
+  margin: 0;
+}
+
+/* ================= aside 區域 ================= */
+div.custom-container aside.aside {
+  // border: 1px solid red;
+  background-color: $admin-aside-blue;
+  left: 0;
+  min-height: 100%;
+  padding: 20px 0;
+}
+
+@media (min-width: 240px) {
+  div.custom-container aside.aside {
+    width: 240px;
+  }
+}
+
+div.custom-container aside.aside nav.nav-custom ul.nav_list {
+  padding-left: 0;
+}
+
+div.custom-container aside.aside nav.nav-custom ul.nav_list > li a {
+  display: block;
+  text-decoration: none;
+  text-align: center;
+  padding: 25px 0;
+  color: $white;
+  font-weight: 600;
+  font-size: 1.1rem;
+  &:hover {
+    background-color: $admin-aside-hover;
+  }
+
+  &:active {
+    opacity: 0.8;
+  }
+}
+
+/* ================= main 區域 ================= */
+main.main {
+  width: 80dvw;
+  min-height: 100dvh;
+  padding: 20px 20px;
+  border: 3px solid $admin-aside-blue;
+  font-size: 1.1rem;
+  box-shadow: -5px 0 5px 3px rgba(172, 164, 164, 0.5), 5px 0 5px 3px rgba(172, 164, 164, 0.5),
+    0 5px 5px 3px rgba(172, 164, 164, 0.5), 0 -5px 5px 3px rgba(172, 164, 164, 0.5);
+  margin: 0 20px;
+}
+
+div.custom-container {
+  display: flex;
+  white-space: nowrap;
+  height: 100%;
+}
+
+div.r1 {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+div.r1 div {
+  text-align: center;
+}
+
+div.r1 button {
+  height: 80%;
+  font-size: 1rem;
+  vertical-align: middle;
+  min-width: 80px;
+}
+
+.decorator {
+  width: 100%;
+  height: 5px;
+  background-color: $primary-blue;
+  margin: 15px 0;
+}
+
+/*
+div.main {
+  display: grid;
+  margin-left: 20%;
+  grid-template-columns: repeat(10, 10%);
+  grid-template-rows: 60px 100px 40px 80%;
+  padding-bottom: 10%;
+}
+
+div.row-1 {
+  grid-column: 1 / 5;
+  grid-row: 1 / 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+div.col-11,
+div.col-12,
+div.col-13 {
+  text-align: center;
+  flex-basis: 30%;
+  min-width: 70px;
+}
+
+div.row-1 a {
+  display: block;
+}
+
+div.col-21 {
+  grid-column: 1 / 5;
+  grid-row: 2 / 3;
+  display: flex;
+  align-items: center;
+}
+
+div.col-21 div {
+  margin: 0 20px;
+  min-width: 33px;
+}
+
+div.col-22 {
+  grid-column: 8 / 10;
+  grid-row: 2 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+div.col-22 div {
+  min-width: 33px;
+}
+
+div.col-22 div.btn-group {
+  margin: 0 20px;
+}
+
+div.row-3 {
+  grid-column: 1 / 5;
+  grid-row: 3 / 4;
+  display: flex;
+  align-items: center;
+}
+
+div.row-3 button {
+  display: block;
+  margin: 0 auto;
+  width: 80px;
+  background-color: $white;
+  border: $normal-border;
+  border-radius: $border-radius;
+}
+
+div.row-3 button:first-child {
+  background-color: $primary-blue;
+  color: $white;
+  border: 1px solid $primary-blue;
+}
+
+div.row-4 {
+  grid-column: 1 / 11;
+  grid-row: 4 / 5;
+}
+
+div.type {
+  display: flex;
+}
+
+div.type div {
+  margin-top: 50px;
+  border: 1px solid $secondary-gray;
+  background-color: $secondary-gray;
+  border-radius: $border-radius $border-radius 0 0;
+  width: 70px;
+  text-align: center;
+}
+
+div.list {
+  border-top: 1px solid $primary-blue;
+  margin-right: 60px;
+  background-color: $secondary-gray;
+  min-width: 650px;
+}
+
+div.list-header {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 0;
+  border-bottom: 1px solid $tertiary-gray;
+  align-items: center;
+}
+
+div.list-header * {
+  min-width: 65px;
+  text-align: center;
+}
+
+div.list-header span.img-col {
+  width: 60px;
+}
+
+div.list > ul {
+  padding-left: 0;
+}
+
+ul.gift > li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+}
+
+ul.gift > li > * {
+  min-width: 65px;
+  text-align: center;
+}
+
+ul.gift > li img {
+  max-width: 60px;
+}
+
+ul.gift div.btn-group {
+  scale: 0.7;
+}
+
+ul.dropdown-menu {
+  inset: 0px 80px auto -170px !important;
+}
+
+.-ontype {
+  color: $white;
+  background-color: $primary-blue !important;
+}
+
+aside {
+  position: absolute;
+  top: 15%;
+  left: 0;
+  height: 85%;
+  background-color: #3d8ebd;
+}
+
+div.aside {
+  min-width: 100px;
+  margin-left: 30px;
+  height: 100%;
+  text-align: center;
+}
+
+div.aside ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 0;
+}
+
+div.aside li {
+  margin: 10px 0;
+  color: $white;
+}
+*/
