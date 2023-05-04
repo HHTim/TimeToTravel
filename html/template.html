@@ -23,7 +23,6 @@
     <!-- Header -->
     <div class="decorator"></div>
     <header>
-      <!-- container 是 bootstrap 定義屬性，最好不要改他 -->
       <div class="container-fluid header__container">
         <h1 class="logo">
           <a href="#" class="logo__link">
@@ -49,7 +48,12 @@
             </li>
             <li class="nav__avatar">
               <div class="dropdown-center">
-                <button class="dropdown-toggle nav__avatar-btn" type="button" data-bs-toggle="dropdown"></button>
+                <!-- <button class="dropdown-toggle nav__avatar-btn" type="button" data-bs-toggle="dropdown"></button> -->
+                <a href="#" class="dropdown-toggle nav__avatar-btn" type="button" data-bs-toggle="dropdown">
+                  <div class="nav__avatar-img">
+                    <img src="../images/avatar.svg" alt="avatar" />
+                  </div>
+                </a>
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="#">註冊</a></li>
                   <li><a class="dropdown-item" href="#">登入</a></li>
@@ -64,26 +68,48 @@
         </nav>
       </div>
     </header>
-    <!-- Main -->
-    <main>
-      <div class="container">
-        <!-- test bootstrap style -->
-        <button class="btn btn-primary btn-test-1">Test1</button>
-        <button class="btn btn-danger btn-test-2">Test2</button>
-        <button class="btn btn-success btn-test-3">Test3</button>
-        <!-- test jquery -->
-        <button class="btn-test-jquery">Click Me</button>
-        <!-- test font awesome -->
-        <i class="fa-brands fa-facebook"></i>
-        <i class="fa-brands fa-google"></i>
-        <i class="fa-brands fa-twitter"></i>
-        <i class="fa-brands fa-youtube"></i>
+    <!-- Header End -->
+    <div class="container-fluid custom-container">
+      <div class="row">
+        <div class="col-2 company-aside">
+          <!--Company Aside -->
+          <aside>
+            <nav class="nav-custom">
+              <ul class="nav_list">
+                <li><a href="#">商品訂單管理</a></li>
+                <li><a href="#">公告管理</a></li>
+                <li><a href="#">訊息管理</a></li>
+                <li><a href="#">商家管理</a></li>
+                <li><a href="#">消費者管理</a></li>
+              </ul>
+            </nav>
+          </aside>
+          <!--Company Aside End -->
+        </div>
+        <div class="col-10">
+          <!-- Main -->
+          <!-- Main區塊以下為測試用，可刪 -->
+          <main>
+            <!-- test bootstrap style -->
+            <button class="btn btn-primary btn-test-1">Test1</button>
+            <button class="btn btn-danger btn-test-2">Test2</button>
+            <button class="btn btn-success btn-test-3">Test3</button>
+            <!-- test jquery -->
+            <button class="btn-test-jquery">Click Me</button>
+            <!-- test font awesome -->
+            <i class="fa-brands fa-facebook"></i>
+            <i class="fa-brands fa-google"></i>
+            <i class="fa-brands fa-twitter"></i>
+            <i class="fa-brands fa-youtube"></i>
+          </main>
+          <!-- Main End -->
+        </div>
       </div>
-    </main>
-    <!-- Aside -->
+    </div>
     <!-- Footer -->
     <footer>
       <div class="footer"></div>
     </footer>
+    <!-- Footer End -->
   </body>
 </html>
