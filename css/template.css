@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* theme-color */
 /* border */
 /* effect */
@@ -57,6 +58,7 @@ p {
 
 .header__container {
   width: 90%;
+  max-height: 80px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -157,6 +159,32 @@ p {
   background-position: center;
 }
 
+div.custom-container div.company-aside {
+  background-color: #3d8ebd;
+  padding: 0;
+  min-height: calc(100vh - 20px - 50px - 80px);
+}
+
+div.custom-container div.company-aside nav.nav-custom ul.nav_list {
+  padding: 0;
+  margin: 0;
+}
+
+div.custom-container div.company-aside nav.nav-custom ul.nav_list > li a {
+  display: block;
+  text-align: center;
+  padding: 1rem 0;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+div.custom-container div.company-aside nav.nav-custom ul.nav_list > li a:hover {
+  background-color: #2e3a5b;
+}
+div.custom-container div.company-aside nav.nav-custom ul.nav_list > li a:active {
+  opacity: 0.8;
+}
+
 .html,
 body {
   height: 100%;
@@ -174,10 +202,15 @@ body {
   color: white;
 }
 
+/*以下為測試用，可刪*/
 .btn-test-1 {
   background-color: #006caa;
   color: red;
   border: 1px solid #333;
+}
+.btn-test-1:hover {
+  background-color: #004c77;
+  color: #fff;
 }
 
 .btn-test-2 {
