@@ -1,15 +1,34 @@
 // 記得引入基本設定
 @import '../base/base';
 
+/*以下為測試用，可刪*/
+.subtitle {
+  width: 100%;
+  position: relative;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+
+  &::after {
+    content: '';
+    height: 5px;
+    width: 100%;
+    background-color: $primary-blue;
+    position: absolute;
+    left: 0;
+    bottom: -50%;
+  }
+}
+
 .btn-test-1 {
   background-color: $primary-blue;
   color: $test-red;
   border: $normal-border;
 
-  // &:hover {
-  //   background-color: $primary-blue-hover;
-  //   color: $font-normal-white;
-  // }
+  &:hover {
+    background-color: $primary-blue-hover;
+    color: $font-normal-white;
+  }
 }
 
 .btn-test-2 {

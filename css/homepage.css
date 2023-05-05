@@ -60,6 +60,7 @@ p {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+  height: -moz-fit-content;
   height: fit-content;
 }
 
@@ -501,4 +502,4 @@ body {
   font-weight: bolder;
   color: #fff;
   text-align: center;
-}/*# sourceMappingURL=homepage.css.map */
+}

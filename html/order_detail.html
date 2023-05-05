@@ -23,8 +23,7 @@
     <!-- Header -->
     <div class="decorator"></div>
     <header>
-      <!-- container 是 bootstrap 定義屬性，最好不要改他 -->
-      <div class="container header__container">
+      <div class="container-fluid header__container">
         <h1 class="logo">
           <a href="#" class="logo__link">
             <img src="../images/LOGO.png" alt="logo" class="logo__img" />
@@ -49,7 +48,12 @@
             </li>
             <li class="nav__avatar">
               <div class="dropdown-center">
-                <button class="dropdown-toggle nav__avatar-btn" type="button" data-bs-toggle="dropdown"></button>
+                <!-- <button class="dropdown-toggle nav__avatar-btn" type="button" data-bs-toggle="dropdown"></button> -->
+                <a href="#" class="dropdown-toggle nav__avatar-btn" type="button" data-bs-toggle="dropdown">
+                  <div class="nav__avatar-img">
+                    <img src="../images/avatar.svg" alt="avatar" />
+                  </div>
+                </a>
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="#">註冊</a></li>
                   <li><a class="dropdown-item" href="#">登入</a></li>
@@ -64,9 +68,10 @@
         </nav>
       </div>
     </header>
+    <!-- Header End -->
     <!-- Main -->
     <main>
-      <div class="container-fluid container-center">
+      <div class="container container-center">
         <!-- order -->
         <h2 class="subtitle">訂房資訊</h2>
         <section class="order">
@@ -245,7 +250,7 @@
         </section>
       </div>
       <section class="submit">
-        <button class="submit__forward">確認無誤，前往付款</button>
+        <button class="submit__forward">確認，前往付款</button>
         <button class="submit__return">取消，回到上一頁</button>
       </section>
     </main>
@@ -253,5 +258,6 @@
     <footer>
       <div class="footer"></div>
     </footer>
+    <!-- Footer End -->
   </body>
 </html>
