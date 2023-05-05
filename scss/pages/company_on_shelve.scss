@@ -1,0 +1,131 @@
+// 記得引入基本設定
+@import '../base/base';
+
+@mixin button-body {
+	border: none;
+	background-color: $primary-blue;
+	border-radius: 5px;
+	color: $white;
+	font-size: 1rem;
+	padding: 10px 10px 10px 10px;
+	min-width: 10dvw;
+	text-align: center;
+	&:hover {
+		opacity: 0.8;
+	}
+
+	&:active {
+		opacity: 0.5;
+	}
+}
+
+.ann-button {
+	@include button-body;
+}
+
+.search-button {
+	@include button-body;
+}
+
+.btn-test-1 {
+	background-color: $primary-blue;
+	color: $test-red;
+	border: $normal-border;
+
+	// &:hover {
+	//   background-color: $primary-blue-hover;
+	//   color: $font-normal-white;
+	// }
+}
+
+.btn-test-2 {
+	background-color: $primary-gray;
+	color: $font-normal-black;
+	border: $normal-border;
+
+	&:hover {
+		background-color: $secondary-gray;
+		color: $font-normal-black;
+	}
+}
+
+.btn-test-3 {
+	background-color: $danger-red;
+	color: $font-normal-white;
+	border: $normal-border;
+
+	&:hover {
+		background-color: $danger-red-hover;
+		color: $font-normal-white;
+	}
+}
+
+.btn-test-jquery {
+	padding: 0.5rem;
+	background-color: $rank-yellow;
+	color: $font-normal-black;
+	border: $normal-border;
+	box-shadow: $shadow;
+	border-radius: $border-radius;
+}
+
+/*==============aside 區域 ================*/
+div.com-container aside.aside {
+	// border: 1px solid red;
+	background-color: $admin-aside-blue;
+	left: 0;
+	min-height: 100dvh;
+	padding: 20px 0;
+}
+
+@media (min-width: 240px) {
+	div.com-container aside.aside {
+		width: 240px;
+	}
+}
+
+div.com-container {
+	display: flex;
+	white-space: nowrap;
+	height: 100%;
+}
+
+div.com-container aside.aside nav.nav-com ul.nav_list {
+	padding-left: 0;
+}
+
+div.com-container aside.aside nav.nav-com ul.nav_list > li a {
+	display: block;
+	text-decoration: none;
+	text-align: center;
+	padding: 25px 0;
+	color: $white;
+	font-weight: 600;
+	font-size: 1.1rem;
+	&:hover {
+		background-color: $admin-aside-hover;
+	}
+
+	&:active {
+		opacity: 0.8;
+	}
+}
+
+div.com-container main.main {
+	width: 80dvw;
+	min-height: 100dvh;
+	padding: 20px 20px;
+	margin-left: 20px;
+	// display: flex;
+	border: 3px solid $admin-aside-blue;
+	font-size: 1.1rem;
+	box-shadow: -5px 0 5px 3px rgba(172, 164, 164, 0.5), 5px 0 5px 3px rgba(172, 164, 164, 0.5),
+		0 5px 5px 3px rgba(172, 164, 164, 0.5), 0 -5px 5px 3px rgba(172, 164, 164, 0.5);
+}
+div.row div {
+	margin-left: 5%;
+	width: 90%;
+	height: 10%;
+	font-size: 1.5rem;
+	line-height: 10dvh;
+}

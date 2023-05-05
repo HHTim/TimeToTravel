@@ -2,6 +2,24 @@
 @import '../base/base';
 
 /*以下為測試用，可刪*/
+.subtitle {
+  width: 100%;
+  position: relative;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+
+  &::after {
+    content: '';
+    height: 5px;
+    width: 100%;
+    background-color: $primary-blue;
+    position: absolute;
+    left: 0;
+    bottom: -50%;
+  }
+}
+
 .btn-test-1 {
   background-color: $primary-blue;
   color: $test-red;

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- import -->
+		<script src="../node_modules/@popperjs/core/dist/umd/popper.min.js" defer></script>
+		<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js" defer></script>
+		<!-- <script src="../node_modules/jquery/dist/jquery.min.js" defer></script> -->
+		<script src="https://kit.fontawesome.com/e3af248fb2.js" crossorigin="anonymous" defer></script>
+		<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+		<!-- 我們自己的 js 檔案，路徑記得改 -->
+		<link rel="stylesheet" href="../css/company_on_shelve.css" />
+		<!-- 我們自己的 css 檔案，路徑記得改 -->
+		<script src="../js/admin_ann.js" defer></script>
+		<!-- 輪播需要添加 -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/eonasdan-bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+		<!-- title 記得改 -->
+		<title>company_on_shelve</title>
+	</head>
+	<body>
+		<!-- Header -->
+
+		<div class="decorator"></div>
+		<header>
+			<!-- container 是 bootstrap 定義屬性，最好不要改他 -->
+			<div class="container-fulid header__container">
+				<h1 class="logo">
+					<a href="#" class="logo__link">
+						<img src="../images/LOGO.png" alt="logo" class="logo__img" />
+					</a>
+				</h1>
+				<nav>
+					<ul class="nav">
+						<li class="nav__link"><a href="#">首頁</a></li>
+						<!-- <li class="nav__link"><a href="#">購物車</a></li> -->
+						<!-- <li class="nav__link"><a href="#">部落格</a></li> -->
+						<li class="nav__info">
+							<div class="dropdown-center">
+								<button class="dropdown-toggle nav__info-btn" type="button" data-bs-toggle="dropdown"></button>
+								<ul class="dropdown-menu">
+									<li><a class="dropdown-item" href="#">訊息一</a></li>
+									<li><a class="dropdown-item" href="#">訊息二</a></li>
+									<li><a class="dropdown-item" href="#">訊息三</a></li>
+									<li><hr class="dropdown-divider" /></li>
+									<li><a class="dropdown-item" href="#">See More</a></li>
+								</ul>
+							</div>
+						</li>
+						<li class="nav__avatar">
+							<div class="dropdown-center">
+								<button class="dropdown-toggle nav__avatar-btn" type="button" data-bs-toggle="dropdown"></button>
+								<ul class="dropdown-menu">
+									<li><a class="dropdown-item" href="#">註冊</a></li>
+									<li><a class="dropdown-item" href="#">登入</a></li>
+									<li><a class="dropdown-item" href="#">其他</a></li>
+									<li><a class="dropdown-item" href="#">其他</a></li>
+									<li><hr class="dropdown-divider" /></li>
+									<li><a class="dropdown-item" href="#">登出</a></li>
+								</ul>
+							</div>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+		<!-- Aside -->
+		<div class="com-container">
+			<aside class="aside">
+				<nav class="nav-com">
+					<ul class="nav_list">
+						<li><a href="#">基本資料</a></li>
+						<li><a href="#">訂單管理</a></li>
+						<li><a href="#">商品管理</a></li>
+						<li><a href="#">上架頁面</a></li>
+						<li><a href="#">訊息管理</a></li>
+					</ul>
+				</nav>
+			</aside>
+			<!-- Main -->
+			<main class="main">
+				<div class="container-fluid"></div>
+				<div class="row">
+					<div class="col title text">全部</div>
+					<div class="col title text">
+						架上商品
+						<span class="">10</span>
+					</div>
+					<div class="col title text">
+						已售出
+						<span>300</span>
+					</div>
+					<div class="col title text">未上架
+                        <span>5</span>
+                    </div>
+				</div>
+				<div class="decorator"></div>
+			</main>
+		</div>
+	</body>
+</html>
