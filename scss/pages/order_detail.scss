@@ -8,7 +8,7 @@ $width: 100%;
   position: relative;
   font-size: 20px;
   font-weight: bold;
-  margin-bottom: 1.5rem;
+  margin: 1.5rem auto;
 
   &::after {
     content: '';
@@ -20,9 +20,9 @@ $width: 100%;
     bottom: -50%;
   }
 
-  &:not(:first-child) {
-    margin: 1.5rem auto;
-  }
+  // &:not(:first-child) {
+  //   margin: 1.5rem auto;
+  // }
 }
 
 .order {
