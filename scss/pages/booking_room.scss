@@ -1,0 +1,400 @@
+@import '../base/base';
+
+.subtitle {
+  width: 100%;
+  position: relative;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 1.5rem auto;
+
+  &::after {
+    content: '';
+    height: 5px;
+    width: 100%;
+    background-color: $primary-blue;
+    position: absolute;
+    left: 0;
+    bottom: -50%;
+  }
+}
+
+.hotel {
+  width: 100%;
+  height: 200px;
+  position: relative;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  background-color: $secondary-gray;
+  border-radius: $border-radius;
+  padding: 0.5rem;
+  margin: 1rem 0;
+  box-shadow: $shadow;
+
+  @media screen and (max-width: 1200px) {
+    height: 250px;
+  }
+
+  @media screen and (max-width: 992px) {
+    height: 300px;
+    .slide {
+      width: 50%;
+    }
+  }
+
+  .slide {
+    // width: 25%;
+    height: 100%;
+    aspect-ratio: 1.5 / 1;
+    margin-right: 0.5rem;
+
+    .carousel-inner {
+      width: 100%;
+      height: 100%;
+    }
+
+    .carousel-item {
+      width: 100%;
+      height: 100%;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: $border-radius;
+      box-shadow: $shadow;
+    }
+  }
+
+  &__content {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    border-radius: $border-radius;
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem;
+    box-shadow: $shadow;
+    // justify-content: space-between;
+  }
+
+  &__title {
+    height: fit-content;
+    font-weight: bold;
+    font-size: 24px;
+  }
+
+  &__rank {
+    padding: 0;
+    margin: 0;
+    margin-left: 1rem;
+
+    li {
+      display: inline-block;
+    }
+
+    .fa-star {
+      color: $rank-yellow;
+    }
+  }
+
+  &__address {
+    color: $secondary-blue;
+    width: 100%;
+    height: fit-content;
+    margin-bottom: 1rem;
+  }
+
+  &__desc {
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+  }
+
+  &__detail {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-self: flex-end;
+    margin-top: 1rem;
+  }
+
+  &__price {
+    width: 100%;
+    text-align: right;
+
+    p {
+      display: inline-block;
+      font-size: 24px;
+      font-weight: bold;
+      margin-right: 1rem;
+    }
+
+    a {
+      display: inline-block;
+      border: none;
+      font-size: 20px;
+      background-color: $primary-blue;
+      border-radius: $border-radius;
+      color: $white;
+      padding: 0.5rem;
+
+      &:hover {
+        background-color: $primary-blue-hover;
+      }
+    }
+  }
+
+  &__favor {
+    border: none;
+    position: relative;
+    background-color: transparent;
+    color: $primary-blue;
+    font-size: 20px;
+    font-weight: bold;
+    float: left;
+    vertical-align: middle;
+    margin-top: 0.5rem;
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background-color: $primary-blue;
+      left: 0;
+      bottom: 0;
+      transition: all 0.1s ease-in-out;
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
+  }
+}
+
+.p-scene {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  background-color: $secondary-gray;
+  padding: 0.5rem;
+  border-radius: $border-radius;
+  gap: 0.5rem;
+
+  &__card {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    background-color: $white;
+    border-radius: $border-radius;
+    box-shadow: $shadow;
+  }
+
+  &__img {
+    width: 25%;
+    height: 100%;
+    margin: -0.5rem;
+    margin-right: 1rem;
+
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: 10px 0 0 10px;
+    }
+  }
+
+  @media screen and (min-width: 1400px) {
+    &__img {
+      width: 20%;
+      height: 100%;
+    }
+  }
+
+  @media screen and (max-width: 1200px) {
+    &__img {
+      width: 40%;
+      height: 100%;
+    }
+  }
+
+  @media screen and (max-width: 992px) {
+    &__img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__content {
+    width: 100%;
+  }
+
+  &__title {
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  &__address {
+    display: block;
+    color: $secondary-blue;
+    margin-bottom: 1rem;
+  }
+
+  @media screen and (max-width: 992px) {
+    &__address {
+      margin: 0;
+    }
+  }
+
+  &__desc {
+    width: 100%;
+  }
+}
+
+.room {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  &__card {
+    width: 100%;
+    display: flex;
+    align-items: stretch;
+    flex-wrap: wrap;
+    // flex-direction: column;
+    background-color: $secondary-gray;
+    padding: 0.5rem;
+    border-radius: $border-radius;
+  }
+
+  &__title {
+    width: 100%;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+
+  &__img {
+    width: calc(20% - 0.5rem);
+    height: 100%;
+    margin-right: 0.5rem;
+
+    img {
+      width: 100%;
+      border-radius: $border-radius;
+      box-shadow: $shadow;
+    }
+  }
+
+  &__device > a {
+    border: none;
+    background-color: $primary-blue;
+    color: $white;
+    padding: 0.5rem;
+    border-radius: $border-radius;
+
+    &:hover {
+      color: $white;
+      background-color: $primary-blue-hover;
+    }
+  }
+
+  &__table {
+    width: 80%;
+    margin: 0;
+    background-color: $white;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: $border-radius;
+    box-shadow: $shadow;
+
+    thead * {
+      color: $white;
+      background-color: $primary-blue;
+    }
+  }
+
+  &__booking > a {
+    border: none;
+    background-color: $primary-blue;
+    color: $white;
+    padding: 0.5rem;
+    border-radius: $border-radius;
+
+    &:hover {
+      color: $white;
+      background-color: $primary-blue-hover;
+    }
+  }
+}
+
+.comment {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+
+  &__card {
+    width: 100%;
+    background-color: $secondary-gray;
+    border-radius: $border-radius;
+    padding: 0.5rem;
+    box-shadow: $shadow;
+  }
+
+  &__content {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    gap: 1rem;
+    position: relative;
+  }
+
+  &__avatar {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    box-shadow: $shadow;
+    border-radius: $circle-radius;
+    overflow: hidden;
+    margin: 0;
+
+    img {
+      width: 150%;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  &__user {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  &__rank {
+    margin: 0;
+    padding: 0;
+    display: flex;
+
+    .fa-star {
+      color: $rank-yellow;
+    }
+  }
+
+  &__time {
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: $primary-blue;
+  }
+}
