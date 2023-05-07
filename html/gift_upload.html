@@ -87,20 +87,101 @@
           </aside>
           <!--Company Aside End -->
         </div>
-
         <div class="col-10">
           <!-- Main -->
           <!-- Main區塊以下為測試用，可刪 -->
           <main class="main">
             <div class="container-fulid">
-              <div class="row">
-                <div class="col title1">全部</div>
-                <div class="col title2">架上商品</div>
-                <div class="col title3">已售完</div>
-                <div class="col title4">未上架</div>
+              <div class="col-6">
+                <div class="row">
+                  <div class="col title1" type="button" onclick="location.href='#'">全部</div>
+                  <div class="col title2" type="button" onclick="location.href='#'">架上商品<span> 30</span></div>
+                  <div class="col title3" type="button" onclick="location.href='#'">已售完 <span> 15</span></div>
+                  <div class="col title4" type="button" onclick="location.href='#'">未上架 <span> 10</span></div>
+                </div>
               </div>
-              <div class="decorator"></div>
+              <div class="col-10">
+                <div class="decorator"></div>
+              </div>
             </div>
+            <div class="row nav-btndiv">
+              <div class="col-10">
+                <div>
+                  <input class="up-button" type="button" value="+新增房型" onclick="location.href='#'" />
+                  <input class="up-button" type="button" value="+新增土產" onclick="location.href='#'" />
+                  <input class="up-button" type="button" value="+新增景點" onclick="location.href='#'" />
+                </div>
+              </div>
+            </div>
+            <div class="row-name">
+              <div class="col-2">
+                <div class="gift-name">商品名稱</div>
+              </div>
+              <div class="col-3">
+                <div>
+                  <input class="gift-input" type="text" value="請輸入 " />
+                </div>
+              </div>
+            </div>
+            <div class="gift-all">
+              <div class="decorator-1"></div>
+              <div class="row-count">
+                <div class="col-2">
+                  <div class="gift-title">商品庫存數量</div>
+                </div>
+                <div class="col-3">
+                  <div><input class="count-input" type="text" value="請輸入數字" /></div>
+                </div>
+              </div>
+              <div class="decorator-1"></div>
+              <div class="row-count">
+                <div class="col-2">
+                  <div class="gift-title">土產類別</div>
+                </div>
+                <div class="col-3">
+                  <div>
+                    <input class="gift-type-choose" type="button" value="請選擇" onclick="location.href='#'" />
+                  </div>
+                </div>
+              </div>
+              <div class="decorator-1"></div>
+              <div class="row-count">
+                <div class="col-2">
+                  <div class="gift-title">商品價格</div>
+                </div>
+                <div class="col-3">
+                  <div><input class="price-input" type="text" value="請輸入金額" /></div>
+                </div>
+              </div>
+              <div class="decorator-1"></div>
+              <div class="row-count">
+                <div class="col-2">
+                  <div class="gift-title">商品照片</div>
+                </div>
+                <div class="col-3">
+                  <div><input class="picture-input" type="text" value=" +加入照片" /></div>
+                </div>
+              </div>
+              <div class="decorator-1"></div>
+              <div class="row-count2">
+                <div class="col-2">
+                  <div class="gift-title">商品介紹</div>
+                </div>
+                <div class="col-10">
+                  <div>
+                    <input class="gift-describe" type="text" />
+                  </div>
+                </div>
+              </div>
+              <div class="row-count3">
+                <div class="spacer"></div>
+                <div class="col-2">
+                  <input class="save-button" type="button" value="儲存" onclick="location.href='#'" />
+                </div>
+                
+              </div>
+            </div>
+          </div>
           </main>
           <!-- Main End -->
         </div>
