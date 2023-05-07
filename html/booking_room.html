@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- import -->
+    <script src="../node_modules/@popperjs/core/dist/umd/popper.min.js" defer></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js" defer></script>
+    <script src="../node_modules/jquery/dist/jquery.min.js" defer></script>
+    <script src="https://kit.fontawesome.com/e3af248fb2.js" crossorigin="anonymous" defer></script>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <!-- 我們自己的 js 檔案，路徑記得改 -->
+    <link rel="stylesheet" href="../css/booking_room.css" />
+    <!-- 我們自己的 css 檔案，路徑記得改 -->
+    <script src="../js/booking_room.js" defer></script>
+    <!-- 輪播需要添加 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- title 記得改 -->
+    <title>TimeToTravel | Booking Room</title>
+  </head>
+  <body>
+    <!-- Header -->
+    <div class="decorator"></div>
+    <header>
+      <div class="container-fluid header__container">
+        <h1 class="logo">
+          <a href="#" class="logo__link">
+            <img src="../images/LOGO.png" alt="logo" class="logo__img" />
+          </a>
+        </h1>
+        <nav>
+          <ul class="nav">
+            <li class="nav__link"><a href="#">我的訂單</a></li>
+            <li class="nav__link"><a href="#">購物車</a></li>
+            <li class="nav__link"><a href="#">部落格</a></li>
+            <li class="nav__info">
+              <div class="dropdown-center">
+                <button class="dropdown-toggle nav__info-btn" type="button" data-bs-toggle="dropdown"></button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">訊息一</a></li>
+                  <li><a class="dropdown-item" href="#">訊息二</a></li>
+                  <li><a class="dropdown-item" href="#">訊息三</a></li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li><a class="dropdown-item" href="#">See More</a></li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav__avatar">
+              <div class="dropdown-center">
+                <a href="#" class="dropdown-toggle nav__avatar-btn" type="button" data-bs-toggle="dropdown">
+                  <div class="nav__avatar-img">
+                    <img src="../images/avatar.svg" alt="avatar" />
+                  </div>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">註冊</a></li>
+                  <li><a class="dropdown-item" href="#">登入</a></li>
+                  <li><a class="dropdown-item" href="#">其他</a></li>
+                  <li><a class="dropdown-item" href="#">其他</a></li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li><a class="dropdown-item" href="#">登出</a></li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <!-- Header End -->
+    <div class="container custom-container">
+      <div class="row">
+        <main class="col-12">
+          <!-- Hotel -->
+          <h2 class="subtitle">商家資訊</h2>
+          <section class="hotel">
+            <div id="carouselExample" class="carousel slide">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img src="/images/hotel.jpg" class="d-block slide-img" />
+                </div>
+                <div class="carousel-item">
+                  <img src="/images/hotel.jpg" class="d-block slide-img" />
+                </div>
+                <div class="carousel-item">
+                  <img src="/images/hotel.jpg" class="d-block slide-img" />
+                </div>
+              </div>
+              <button
+                class="carousel-control-prev"
+                type="button"
+                data-bs-target="#carouselExample"
+                data-bs-slide="prev"
+              >
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button
+                class="carousel-control-next"
+                type="button"
+                data-bs-target="#carouselExample"
+                data-bs-slide="next"
+              >
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+
+            <div class="hotel__content">
+              <div class="d-flex">
+                <h3 class="hotel__title">台北凡登‧東棧商務旅店</h3>
+                <ul class="hotel__rank">
+                  <li><i class="fa-solid fa-star fa-lg"></i></li>
+                  <li><i class="fa-solid fa-star fa-lg"></i></li>
+                  <li><i class="fa-solid fa-star fa-lg"></i></li>
+                  <li><i class="fa-solid fa-star fa-lg"></i></li>
+                  <li><i class="fa-solid fa-star fa-lg"></i></li>
+                </ul>
+              </div>
+
+              <small class="hotel__address">台北市大安區忠孝東路四段209號</small>
+              <p id="hotel__desc" class="hotel__desc">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam autem vel animi recusandae sit! At,
+                dolor aspernatur odit quasi facilis totam odio reiciendis quo saepe, alias, sit tempora in tempore.
+              </p>
+              <div class="hotel__price">
+                <button class="hotel__favor">加入商家收藏</button>
+                <p>NT $9000/天</p>
+                <a href="#room" role="button">選擇房型</a>
+              </div>
+            </div>
+          </section>
+          <!-- Hotel End -->
+
+          <!-- Private Scene -->
+
+          <h2 class="subtitle">附近熱門景點</h2>
+          <section class="p-scene">
+            <div class="p-scene__card">
+              <div class="p-scene__img">
+                <img src="/images/scene1.jpg" alt="scene__img" />
+              </div>
+              <div class="p-scene__content">
+                <h3 class="p-scene__title">OO天空步道</h3>
+                <small class="p-scene__address">台北市大安區忠孝東路四段209號</small>
+                <p class="p-scene__desc">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate laboriosam veniam quibusdam ipsam
+                  nam iure recusandae, magnam vero laborum dicta quaerat magni enim, ratione soluta molestias, culpa
+                  debitis. Saepe, iure.
+                </p>
+              </div>
+            </div>
+            <div class="p-scene__card">
+              <div class="p-scene__img">
+                <img src="/images/scene1.jpg" alt="scene__img" />
+              </div>
+              <div class="p-scene__content">
+                <h3 class="p-scene__title">OO天空步道</h3>
+                <small class="p-scene__address">台北市大安區忠孝東路四段209號</small>
+                <p class="p-scene__desc">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate laboriosam veniam quibusdam ipsam
+                  nam iure recusandae, magnam vero laborum dicta quaerat magni enim, ratione soluta molestias, culpa
+                  debitis. Saepe, iure.
+                </p>
+              </div>
+            </div>
+            <div class="p-scene__card">
+              <div class="p-scene__img">
+                <img src="/images/scene1.jpg" alt="scene__img" />
+              </div>
+              <div class="p-scene__content">
+                <h3 class="p-scene__title">OO天空步道</h3>
+                <small class="p-scene__address">台北市大安區忠孝東路四段209號</small>
+                <p class="p-scene__desc">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate laboriosam veniam quibusdam ipsam
+                  nam iure recusandae, magnam vero laborum dicta quaerat magni enim, ratione soluta molestias, culpa
+                  debitis. Saepe, iure.
+                </p>
+              </div>
+            </div>
+          </section>
+          <!-- Private Scene End -->
+
+          <!-- Room -->
+          <h2 id="room" class="subtitle">選擇房型</h2>
+          <section class="room">
+            <div class="room__card">
+              <h3 class="room__title">精緻客房</h3>
+              <div class="room__img">
+                <img src="/images/room1.jpg" alt="room1" />
+              </div>
+              <table class="table room__table">
+                <thead>
+                  <tr>
+                    <th scope="col">摘要</th>
+                    <th scope="col">住房人數</th>
+                    <th scope="col">今日價格</th>
+                    <th scope="col">設備</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="room__desc">
+                      <p>無餐點</p>
+                      <p>不可退款</p>
+                      <p>禁菸房型</p>
+                    </td>
+                    <td class="room__number">2人</td>
+                    <td class="room__price">NT $9000</td>
+                    <td class="room__device">
+                      <a href="#" role="button">查看設備</a>
+                    </td>
+                    <td class="room__booking">
+                      <a href="#" role="button">訂房去</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="room__card">
+              <h3 class="room__title">精緻客房</h3>
+              <div class="room__img">
+                <img src="/images/room1.jpg" alt="room1" />
+              </div>
+              <table class="table room__table">
+                <thead>
+                  <tr>
+                    <th scope="col">摘要</th>
+                    <th scope="col">住房人數</th>
+                    <th scope="col">今日價格</th>
+                    <th scope="col">查看設備</th>
+                    <th scope="col">前往訂房</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="room__desc">
+                      <p>無餐點</p>
+                      <p>不可退款</p>
+                      <p>禁菸房型</p>
+                    </td>
+                    <td class="room__number">2人</td>
+                    <td class="room__price">NT $9000</td>
+                    <td class="room__device">
+                      <a href="#" role="button">查看設備</a>
+                    </td>
+                    <td class="room__booking">
+                      <a href="#" role="button">訂房去</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="room__card">
+              <h3 class="room__title">精緻客房</h3>
+              <div class="room__img">
+                <img src="/images/room1.jpg" alt="room1" />
+              </div>
+              <table class="table room__table">
+                <thead>
+                  <tr>
+                    <th scope="col">摘要</th>
+                    <th scope="col">住房人數</th>
+                    <th scope="col">今日價格</th>
+                    <th scope="col">設備</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="room__desc">
+                      <p>無餐點</p>
+                      <p>不可退款</p>
+                      <p>禁菸房型</p>
+                    </td>
+                    <td class="room__number">2人</td>
+                    <td class="room__price">NT $9000</td>
+                    <td class="room__device">
+                      <a href="#" role="button">查看設備</a>
+                    </td>
+                    <td class="room__booking">
+                      <a href="#" role="button">訂房去</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <!-- Room End -->
+
+          <!-- Comment -->
+          <h2 class="subtitle">消費者評論</h2>
+          <section class="comment">
+            <div class="comment__card">
+              <div class="comment__content">
+                <div class="comment__avatar">
+                  <img src="/images/avatar2.jpg" alt="comment-avatar" />
+                </div>
+                <p class="comment__user">小明</p>
+                <ul class="comment__rank">
+                  <li><i class="fa-solid fa-star fa-lg"></i></li>
+                  <li><i class="fa-solid fa-star fa-lg"></i></li>
+                  <li><i class="fa-solid fa-star fa-lg"></i></li>
+                  <li><i class="fa-solid fa-star fa-lg"></i></li>
+                  <li><i class="fa-solid fa-star fa-lg"></i></li>
+                </ul>
+                <p class="comment__time">發布於2023-04-09</p>
+              </div>
+              <p class="comment__desc">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta ut quaerat rerum porro aliquid libero ex
+                magnam quisquam quidem neque cupiditate nemo dolor laborum amet, odit nulla vel odio? Qui animi eligendi
+                ea sed modi placeat officiis aut inventore, repudiandae voluptatem facere nulla ducimus quibusdam id
+                illum doloribus debitis eum!
+              </p>
+            </div>
+            <div class="comment__card">
+              <div class="comment__content">
+                <div class="comment__avatar">
+                  <img src="/images/avatar2.jpg" alt="comment-avatar" />
+                </div>
+                <p class="comment__user">小明</p>
+                <ul class="comment__rank">
+                  <li><i class="fa-solid fa-star fa-lg"></i></li>
+                  <li><i class="fa-solid fa-star fa-lg"></i></li>
+                  <li><i class="fa-solid fa-star fa-lg"></i></li>
+                  <li><i class="fa-solid fa-star fa-lg"></i></li>
+                  <li><i class="fa-solid fa-star fa-lg"></i></li>
+                </ul>
+                <p class="comment__time">發布於2023-04-09</p>
+              </div>
+              <p class="comment__desc">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta ut quaerat rerum porro aliquid libero ex
+                magnam quisquam quidem neque cupiditate nemo dolor laborum amet, odit nulla vel odio? Qui animi eligendi
+                ea sed modi placeat officiis aut inventore, repudiandae voluptatem facere nulla ducimus quibusdam id
+                illum doloribus debitis eum!
+              </p>
+            </div>
+            <div class="comment__card">
+              <div class="comment__content">
+                <div class="comment__avatar">
+                  <img src="/images/avatar2.jpg" alt="comment-avatar" />
+                </div>
+                <p class="comment__user">小明</p>
+                <ul class="comment__rank">
+                  <li><i class="fa-solid fa-star fa-lg"></i></li>
+                  <li><i class="fa-solid fa-star fa-lg"></i></li>
+                  <li><i class="fa-solid fa-star fa-lg"></i></li>
+                  <li><i class="fa-solid fa-star fa-lg"></i></li>
+                  <li><i class="fa-solid fa-star fa-lg"></i></li>
+                </ul>
+                <p class="comment__time">發布於2023-04-09</p>
+              </div>
+              <p class="comment__desc">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta ut quaerat rerum porro aliquid libero ex
+                magnam quisquam quidem neque cupiditate nemo dolor laborum amet, odit nulla vel odio? Qui animi eligendi
+                ea sed modi placeat officiis aut inventore, repudiandae voluptatem facere nulla ducimus quibusdam id
+                illum doloribus debitis eum!
+              </p>
+            </div>
+          </section>
+          <!-- Comment end -->
+        </main>
+      </div>
+    </div>
+    <!-- Footer -->
+    <footer>
+      <div class="footer"></div>
+    </footer>
+    <!-- Footer End -->
+  </body>
+</html>
