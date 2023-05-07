@@ -111,14 +111,13 @@ p {
   border-radius: 50%;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 0 3px black;
 }
 .nav__avatar-img img {
   width: 100%;
   position: absolute;
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 .nav__avatar-btn {
   width: 100%;
@@ -203,7 +202,6 @@ body {
   bottom: 0;
   background-color: #006caa;
   color: white;
-  margin-top: 1rem;
 }
 
 /*以下為測試用，可刪*/
