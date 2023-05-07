@@ -202,7 +202,6 @@ body {
   bottom: 0;
   background-color: #006caa;
   color: white;
-  margin-top: 1rem;
 }
 
 .subtitle {
@@ -505,6 +504,7 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
+  margin-bottom: 1rem;
 }
 .comment__card {
   width: 100%;

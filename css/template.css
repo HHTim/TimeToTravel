@@ -203,7 +203,6 @@ body {
   bottom: 0;
   background-color: #006caa;
   color: white;
-  margin-top: 1rem;
 }
 
 /*以下為測試用，可刪*/
@@ -222,6 +221,16 @@ body {
   position: absolute;
   left: 0;
   bottom: -50%;
+}
+
+main.main {
+  width: 80dvw;
+  min-height: 100dvh;
+  padding: 20px 20px;
+  margin-left: 20px;
+  border: 3px solid #3d8ebd;
+  font-size: 1.1rem;
+  box-shadow: -5px 0 5px 3px rgba(172, 164, 164, 0.5), 5px 0 5px 3px rgba(172, 164, 164, 0.5), 0 5px 5px 3px rgba(172, 164, 164, 0.5), 0 -5px 5px 3px rgba(172, 164, 164, 0.5);
 }
 
 .btn-test-1 {

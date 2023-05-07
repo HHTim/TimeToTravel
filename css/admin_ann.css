@@ -45,6 +45,11 @@ a:active {
   text-decoration: none;
 }
 
+p {
+  margin: 0;
+  padding: 0;
+}
+
 .decorator {
   width: 100%;
   height: 20px;
@@ -52,6 +57,10 @@ a:active {
 }
 
 .header__container {
+  width: 95%;
+  max-height: 80px;
+  padding: 0;
+  margin-left: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -90,21 +99,31 @@ a:active {
 }
 .nav__avatar {
   width: 40px;
-  height: 36px;
+  height: 40px;
 }
-.nav__avatar .dropdown-center {
+.nav .dropdown-center {
   width: 100%;
   height: 100%;
+}
+.nav__avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 3px black;
+}
+.nav__avatar-img img {
+  width: 100%;
+  position: absolute;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 .nav__avatar-btn {
   width: 100%;
   height: 100%;
   border: none;
-  background-image: url("../images/avatar.svg");
-  background-color: transparent;
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
 }
 .nav__avatar-btn::after {
   border: none;
@@ -142,6 +161,33 @@ a:active {
   background-position: center;
 }
 
+div.custom-container div.company-aside {
+  background-color: #3d8ebd;
+  padding: 0;
+  min-height: calc(100vh - 20px - 20px - 80px);
+  max-width: 150px;
+}
+
+div.custom-container div.company-aside nav.nav-custom ul.nav_list {
+  padding: 0;
+  margin: 0;
+}
+
+div.custom-container div.company-aside nav.nav-custom ul.nav_list > li a {
+  display: block;
+  text-align: center;
+  padding: 1rem 0;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+div.custom-container div.company-aside nav.nav-custom ul.nav_list > li a:hover {
+  background-color: #2e3a5b;
+}
+div.custom-container div.company-aside nav.nav-custom ul.nav_list > li a:active {
+  opacity: 0.8;
+}
+
 .html,
 body {
   height: 100%;
@@ -153,7 +199,7 @@ body {
 
 .footer {
   width: 100%;
-  height: 50px;
+  height: 20px;
   bottom: 0;
   background-color: #006caa;
   color: white;
@@ -187,7 +233,7 @@ body {
 
 .btn-test-jquery {
   padding: 0.5rem;
-  background-color: #f2d952;
+  background-color: #eeab0f;
   color: #333;
   border: 1px solid #333;
   box-shadow: 0 0 3px #9b9999;
