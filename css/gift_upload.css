@@ -206,39 +206,9 @@ body {
 }
 
 /*以下為測試用，可刪*/
-.btn-test-1 {
-  background-color: #006caa;
-  color: red;
-  border: 1px solid #333;
-}
-.btn-test-1:hover {
-  background-color: #004c77;
-  color: #fff;
-}
-
-.btn-test-2 {
-  background-color: #9b9999;
-  color: #333;
-  border: 1px solid #333;
-}
-.btn-test-2:hover {
-  background-color: #dfdcdc;
-  color: #333;
-}
-
-.btn-test-3 {
-  background-color: #be4b4b;
-  color: #fff;
-  border: 1px solid #333;
-}
-.btn-test-3:hover {
-  background-color: #9d3939;
-  color: #fff;
-}
-
 .btn-test-jquery {
   padding: 0.5rem;
-  background-color: #f2d952;
+  background-color: #eeab0f;
   color: #333;
   border: 1px solid #333;
   box-shadow: 0 0 3px #9b9999;
@@ -275,7 +245,7 @@ div.custom-container main.main {
   flex-wrap: wrap;
   margin-top: calc(-1 * var(--bs-gutter-y));
   margin-right: calc(-0.5 * var(--bs-gutter-x));
-  margin-left: 4dvw;
+  margin-left: calc(-0.5 * var(--bs-gutter-x));
 }
 
 .row.nav-btndiv {
@@ -285,7 +255,7 @@ div.custom-container main.main {
 .up-button {
   border: 1px solid #006caa;
   background-color: white;
-  border-radius: 12px;
+  border-radius: 8px;
   color: grey;
   font-size: 1.2rem;
   padding: 10px 10px 10px 10px;
@@ -321,7 +291,7 @@ div.custom-container main.main {
 .gift-input {
   border: 1px solid #006caa;
   background-color: white;
-  border-radius: 12px;
+  border-radius: 8px;
   color: grey;
   padding: 5px 10px 5px 10px;
   min-width: 10dvw;
@@ -332,7 +302,7 @@ div.custom-container main.main {
 }
 
 .gift-all {
-  background-color: lightgrey;
+  background-color: rgb(231, 228, 228);
   width: 80%;
   margin-left: 5dvw;
 }
@@ -340,7 +310,7 @@ div.custom-container main.main {
 .decorator-1 {
   width: 100%;
   height: 2px;
-  background-color: rgb(161, 160, 160);
+  background-color: rgb(198, 198, 198);
 }
 
 .row-count {
@@ -373,7 +343,7 @@ div.custom-container main.main {
 .gift-type-choose {
   border: 1px solid #006caa;
   background-color: white;
-  border-radius: 12px;
+  border-radius: 8px;
   color: grey;
   padding: 5px 10px 5px 10px;
   min-width: 10dvw;
@@ -385,7 +355,7 @@ div.custom-container main.main {
 .price-input {
   border: 1px solid #006caa;
   background-color: white;
-  border-radius: 12px;
+  border-radius: 8px;
   color: grey;
   padding: 5px 10px 5px 10px;
   min-width: 10dvw;
@@ -398,7 +368,7 @@ div.custom-container main.main {
 .picture-input {
   border: 1px solid #006caa;
   background-color: white;
-  border-radius: 12px;
+  border-radius: 8px;
   color: grey;
   padding: 5px 10px 5px 10px;
   min-width: 10dvw;
@@ -419,7 +389,7 @@ div.custom-container main.main {
 .gift-describe {
   border: 1px solid #006caa;
   background-color: white;
-  border-radius: 12px;
+  border-radius: 8px;
   padding: 5px 10px 5px 10px;
   margin-top: 20px;
   margin-left: 20px;
