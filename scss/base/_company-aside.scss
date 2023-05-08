@@ -3,7 +3,7 @@ div.custom-container div.company-aside {
   background-color: $admin-aside-blue;
   padding: 0;
   min-height: calc(100vh - 20px - 20px - 80px);
-  max-width: 150px;
+  // max-width: 150px;
 }
 
 div.custom-container div.company-aside nav.nav-custom ul.nav_list {
@@ -17,7 +17,7 @@ div.custom-container div.company-aside nav.nav-custom ul.nav_list > li a {
   padding: 1rem 0;
   color: $white;
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   &:hover {
     background-color: $admin-aside-hover;
   }
