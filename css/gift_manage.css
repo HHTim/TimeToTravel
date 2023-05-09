@@ -204,36 +204,9 @@ body {
   color: white;
 }
 
-/*以下為測試用，可刪*/
-.subtitle {
-  width: 100%;
-  position: relative;
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 1.5rem;
-}
-.subtitle::after {
-  content: "";
-  height: 5px;
-  width: 100%;
-  background-color: #006caa;
-  position: absolute;
-  left: 0;
-  bottom: -50%;
-}
-
-main.main {
-  width: 80dvw;
-  min-height: 100dvh;
-  padding: 20px 20px;
-  border: 3px solid #3d8ebd;
-  font-size: 1.1rem;
-  box-shadow: -5px 0 5px 3px rgba(172, 164, 164, 0.5), 5px 0 5px 3px rgba(172, 164, 164, 0.5), 0 5px 5px 3px rgba(172, 164, 164, 0.5), 0 -5px 5px 3px rgba(172, 164, 164, 0.5);
-}
-
 .btn-test-1 {
   background-color: #006caa;
-  color: red;
+  color: #fff;
   border: 1px solid #333;
 }
 .btn-test-1:hover {
@@ -268,4 +241,92 @@ main.main {
   border: 1px solid #333;
   box-shadow: 0 0 3px #9b9999;
   border-radius: 10px;
+}
+
+html,
+body {
+  margin: 0;
+}
+
+/* ================= main 區域 ================= */
+main.main {
+  width: 80dvw;
+  min-height: 100dvh;
+  padding: 20px 20px;
+  border: 3px solid #3d8ebd;
+  font-size: 1.1rem;
+  box-shadow: -5px 0 5px 3px rgba(172, 164, 164, 0.5), 5px 0 5px 3px rgba(172, 164, 164, 0.5), 0 5px 5px 3px rgba(172, 164, 164, 0.5), 0 -5px 5px 3px rgba(172, 164, 164, 0.5);
+  margin: 0 20px;
+}
+
+div.r1 {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+div.r1 div {
+  text-align: center;
+}
+
+div.r1 button {
+  font-size: 1rem;
+  min-width: 90px;
+  border: 1px solid #333;
+  border-radius: 10px;
+}
+
+main.main div.decorator {
+  width: 100%;
+  height: 5px;
+  background-color: #006caa;
+  margin: 20px 0 25px 0;
+}
+
+div.nav-btn {
+  text-align: center;
+  align-items: center;
+  margin: 0 0 20px 0;
+}
+
+div.nav-btn div.search-name {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+div.nav-btn div.search-name label {
+  min-width: 50px;
+  margin: 0 auto;
+}
+
+div.nav-btn div.search-name input {
+  width: 100%;
+}
+
+div.type-choose {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+div.type-choose label {
+  min-width: 50px;
+  margin: 0 auto;
+}
+
+button.btn-info {
+  background-color: #3d8ebd;
+  color: #fff;
+}
+
+div.impl-btn div.search-btn {
+  text-align: center;
+}
+
+div.impl-btn div.search-btn button {
+  min-width: 70%;
+  border: 1px solid #bbb8b8;
+  border-radius: 10px;
+  background-color: #006caa;
+  color: #fff;
 }
