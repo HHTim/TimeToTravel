@@ -1,12 +1,53 @@
 $(function () {
+  /* date */
   var start = moment().subtract(29, 'days');
   var end = moment();
   var choose_start_date;
   var choose_end_date;
   var start_dateflag = false;
 
+  /*pages*/
+  var pageItem = $('.pagination li').not('.prev,.next');
+  var prev = $('.pagination li.prev');
+  var next = $('.pagination li.next');
+  var limit = '5';
+  var firstPage = 1;
+  var currentPage = firstPage;
+  var Pages = $('.page-item').not('.prev,.next').length;
+
+  pageItem.click('.page-link', function () {
+    console.log(Pages);
+    console.log('item click');
+    pageItem.removeClass('active');
+    if ($(this).not('.prev,.next')) {
+      currentPage = parseInt($(this).children().text());
+    }
+    $(this).not('.prev,.next').addClass('active');
+    console.log(currentPage);
+    getData();
+  });
+
+  prev.click(function () {
+    console.log('prev click');
+    if (currentPage > firstPage) {
+      currentPage--;
+      $('li.active').removeClass('active').prev().addClass('active');
+      getData();
+    }
+  });
+
+  next.click(function () {
+    if (currentPage < Pages) {
+      currentPage++;
+      console.log('next click');
+      $('li.active').removeClass('active').next().addClass('active');
+      getData();
+    }
+  });
+
   row_edit = function (e) {
     console.log('edit');
+    // console.log($('.pagination').find('li > a.page-link.pre'));
     e.stopPropagation();
   };
 
@@ -31,28 +72,52 @@ $(function () {
   }
 
   function getData() {
+    var li_html = '';
     const tbody = document.querySelector('tbody');
-    fetch('http://localhost:8081/TIME_TO_TRAVEL/AnnController')
+    console.log('sss:' + currentPage);
+    fetch(
+      'http://localhost:8081/TIME_TO_TRAVEL/AnnController' + '?currPage=' + currentPage.toString() + '&limit=' + limit
+    )
       .then((r) => r.json())
       .then((d) => {
         if (d == 'no data') {
           tbody.innerHTML = '';
+          Pages = 1;
         } else {
-          tbody.innerHTML = d
+          console.log(d.totalCount);
+          Pages = d.totalCount;
+          for (let i = 1; i <= Pages; i++) {
+            if (i == 1) {
+              li_html += `<li class="page-item active"><a class="page-link" href="javascript:;">${i}</a></li>`;
+            } else {
+              li_html += `<li class="page-item"><a class="page-link" href="javascript:;">${i}</a></li>`;
+            }
+          }
+          tbody.innerHTML = d.rows
             .map((e) => {
               return (
                 `<tr class="row tr"` +
                 ` data-id=${e.annID}>` +
                 `
-          <td class="col-4 td-height">${e.annTitle}</td>
-          <td class="col-4 td-height">${e.annSendingTime}</td>
-          <td class="col-2" onclick="row_edit(event)"><button class="table-edit-button">編輯</button></td>
-          <td class="col-2"><button class="table-delete-button">刪除</button></td>
-          <td style='display:none;'>${e.annContent}</td>
-          </tr>`
+                <td class="col-4 td-height">${e.annTitle}</td>
+                <td class="col-4 td-height">${e.annSendingTime}</td>
+                <td class="col-2" onclick="row_edit(event)"><button class="table-edit-button">編輯</button></td>
+                <td class="col-2"><button class="table-delete-button">刪除</button></td>
+                <td style='display:none;'>${e.annContent}</td>
+                </tr>
+                `
               );
             })
             .join('');
+          $('ul.pagination > li').each(function (index) {
+            console.log('Pages:::' + Pages);
+            if (index <= Pages) {
+              $(this).removeAttr('hidden');
+            } else {
+              $(this).add('hidden');
+            }
+          });
+          // console.log(li_html);
         }
       });
     // const table_row = $('.tbody .tr').on('click', getRowDetail);
@@ -133,13 +198,13 @@ $(function () {
   }
 
   function cb(start, end) {
-    console.log('apply');
+    // console.log('apply');
     start_dateflag = true;
     $('input.form-input').val('');
 
     // choose_end_date = end.format('YYYY-MM-DD');
 
-    console.log(choose_end_date);
+    // console.log(choose_end_date);
     $('#reportrange span').html(start.format('YYYY-MM-DD') + ' - ' + end.format('YYYY-MM-DD'));
     choose_start_date = start.format('YYYY-MM-DD');
     choose_end_date = end.startOf('days').add(1, 'days').format('YYYY-MM-DD');
@@ -185,9 +250,7 @@ $(function () {
   });
 
   $('.tbody').on('click', 'tr', function (e) {
-    console.log('row trig');
-    // console.log($(this).children().eq(0).text());
-    // console.log($(this).children().eq(4).text());
+    // console.log('row trig');
     $('.ann-title').text($(this).children().eq(0).text());
     $('.ann-time-show').text($(this).children().eq(1).text());
     $('.ann-content').text($(this).children().eq(4).text());

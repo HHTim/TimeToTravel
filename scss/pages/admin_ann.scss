@@ -1,15 +1,46 @@
 // 記得引入基本設定
 @import '../base/base';
 
+/*以下為測試用，可刪*/
+.subtitle {
+  width: 100%;
+  position: relative;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+
+  &::after {
+    content: '';
+    height: 5px;
+    width: 100%;
+    background-color: $primary-blue;
+    position: absolute;
+    left: 0;
+    bottom: -50%;
+  }
+}
+
+main.main {
+  width: 80dvw;
+  min-height: 100dvh;
+  padding: 20px 20px;
+  margin-left: 20px;
+  // display: flex;
+  border: 3px solid $admin-aside-blue;
+  font-size: 1.1rem;
+  box-shadow: -5px 0 5px 3px rgba(172, 164, 164, 0.5), 5px 0 5px 3px rgba(172, 164, 164, 0.5),
+    0 5px 5px 3px rgba(172, 164, 164, 0.5), 0 -5px 5px 3px rgba(172, 164, 164, 0.5);
+}
+
 .btn-test-1 {
   background-color: $primary-blue;
   color: $test-red;
   border: $normal-border;
 
-  // &:hover {
-  //   background-color: $primary-blue-hover;
-  //   color: $font-normal-white;
-  // }
+  &:hover {
+    background-color: $primary-blue-hover;
+    color: $font-normal-white;
+  }
 }
 
 .btn-test-2 {
@@ -43,67 +74,7 @@
   border-radius: $border-radius;
 }
 
-/*==============aside 區域 ================*/
-div.custom-container aside.aside {
-  // border: 1px solid red;
-  background-color: $admin-aside-blue;
-  left: 0;
-  min-height: 100dvh;
-  padding: 20px 0;
-}
-
-@media (min-width: 240px) {
-  div.custom-container aside.aside {
-    width: 240px;
-  }
-}
-
-div.custom-container aside.aside nav.nav-custom ul.nav_list {
-  padding-left: 0;
-}
-
-div.custom-container aside.aside nav.nav-custom ul.nav_list > li a {
-  display: block;
-  text-decoration: none;
-  text-align: center;
-  padding: 25px 0;
-  color: $white;
-  font-weight: 600;
-  font-size: 1.1rem;
-  &:hover {
-    background-color: $admin-aside-hover;
-  }
-
-  &:active {
-    opacity: 0.8;
-  }
-}
-
-div.custom-container main.main {
-  width: 90dvw;
-  min-height: 100dvh;
-  padding: 20px 20px;
-}
-
-div.custom-container {
-  display: flex;
-  white-space: nowrap;
-  height: 100%;
-}
-
-.col.title.text {
-  padding: 0 0 10px 10px;
-  font-weight: bolder;
-  font-size: 1.8rem;
-}
-
-.decorator {
-  width: 100%;
-  height: 5px;
-  background-color: $primary-blue;
-}
-
-.row.nav-btn {
+.nav-btn {
   padding: 10px 0 0 0;
   flex-wrap: nowrap;
   height: fit-content;
@@ -142,9 +113,9 @@ div.custom-container {
   border-radius: 5px;
   color: $white;
   font-size: 1rem;
-  padding: 10px 10px 10px 10px;
   min-width: 5dvw;
-  margin-bottom: 10px;
+  height: 5dvh;
+  margin: 2.5dvh;
   text-align: center;
   &:hover {
     opacity: 0.8;
@@ -161,9 +132,9 @@ div.custom-container {
   border-radius: 5px;
   color: $white;
   font-size: 1rem;
-  padding: 10px 10px 10px 10px;
   min-width: 5dvw;
-  margin-bottom: 10px;
+  height: 5dvh;
+  margin: 2.5dvh;
   text-align: center;
   &:hover {
     opacity: 0.8;
@@ -180,18 +151,15 @@ div.custom-container {
   min-width: 13dvw;
   width: 13dvw;
   text-align: center;
-  margin-left: 1dvw;
+  // margin-left: 1dvw;
   border-radius: $border-radius;
-  padding: 10px 10px 10px 10px;
+  padding: 9px 9px 9px 9px;
 }
 
 .ann-filter {
   display: flex;
   border: 3px solid $admin-aside-blue;
   font-size: 1.1rem;
-  box-shadow: -5px 0 5px 3px rgba(172, 164, 164, 0.5), 5px 0 5px 3px rgba(172, 164, 164, 0.5),
-    0 5px 5px 3px rgba(172, 164, 164, 0.5), 0 -5px 5px 3px rgba(172, 164, 164, 0.5);
-
   .ann-filter-one {
     text-align: center;
     line-height: 12dvh;
@@ -199,14 +167,6 @@ div.custom-container {
   .ann-filter-one.head {
     font-weight: bolder;
   }
-  .ann-filter-two {
-    text-align: center;
-    line-height: 12dvh;
-  }
-  .ann-filter-two.head {
-    font-weight: bolder;
-  }
-
   .ann-filter-date {
     text-align: center;
   }
@@ -219,20 +179,18 @@ div.custom-container {
   border-right: 3px solid $admin-aside-blue;
   border-bottom: 1px solid $custom-gray;
   margin-top: 2dvh;
-  // background-color: saddlebrown;
   height: 10dvh;
   font-size: 1.1rem;
-}
-
-.ann-list .ann-head {
-  text-align: center;
-  line-height: 10dvh;
-  height: 10dvh;
-  font-weight: bolder;
+  .ann-head {
+    text-align: center;
+    line-height: 10dvh;
+    height: 10dvh;
+    font-weight: bolder;
+  }
 }
 
 .table-list {
-  height: 40dvh;
+  height: 50dvh;
   font-size: 1.1rem;
   border-left: 3px solid $admin-aside-blue;
   border-right: 3px solid $admin-aside-blue;
@@ -243,7 +201,7 @@ div.custom-container {
     white-space: nowrap;
     overflow: hidden;
     .tr {
-      height: 8dvh;
+      height: 10dvh;
       border-bottom: 1px solid $custom-gray;
       --bs-gutter-x: 0;
       &:hover {
@@ -256,10 +214,12 @@ div.custom-container {
       border-bottom: 0;
     }
     .td-height {
-      line-height: 8dvh;
+      line-height: 10dvh;
+      vertical-align: middle;
     }
   }
 }
+
 .page {
   justify-content: center;
   align-items: center;
@@ -282,10 +242,11 @@ div.custom-container {
 .row-detail-float-box {
   display: none;
   position: absolute;
-  top: 5dvh;
-  left: 5dvw;
-  width: 90dvw;
-  height: 120dvh;
+  top: 15%;
+  max-height: 100%;
+  margin: 0px 0px 0px 23%;
+  width: 70%;
+  height: 70%;
   z-index: 5000;
   background-color: #ccc;
   border-radius: $border-radius;
@@ -316,8 +277,8 @@ div.custom-container {
     line-height: 10dvh;
     padding: 0 2dvw;
     border-radius: $border-radius;
-    box-shadow: -5px 0 5px 3px rgba(172, 164, 164, 0.5), 5px 0 5px 3px rgba(172, 164, 164, 0.5),
-      0 5px 5px 3px rgba(172, 164, 164, 0.5), 0 -5px 5px 3px rgba(172, 164, 164, 0.5);
+    // box-shadow: -5px 0 5px 3px rgba(172, 164, 164, 0.5), 5px 0 5px 3px rgba(172, 164, 164, 0.5),
+    //   0 5px 5px 3px rgba(172, 164, 164, 0.5), 0 -5px 5px 3px rgba(172, 164, 164, 0.5);
   }
 
   .detail-close {

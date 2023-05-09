@@ -205,10 +205,42 @@ body {
   color: white;
 }
 
+/*以下為測試用，可刪*/
+.subtitle {
+  width: 100%;
+  position: relative;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+.subtitle::after {
+  content: "";
+  height: 5px;
+  width: 100%;
+  background-color: #006caa;
+  position: absolute;
+  left: 0;
+  bottom: -50%;
+}
+
+main.main {
+  width: 80dvw;
+  min-height: 100dvh;
+  padding: 20px 20px;
+  margin-left: 20px;
+  border: 3px solid #3d8ebd;
+  font-size: 1.1rem;
+  box-shadow: -5px 0 5px 3px rgba(172, 164, 164, 0.5), 5px 0 5px 3px rgba(172, 164, 164, 0.5), 0 5px 5px 3px rgba(172, 164, 164, 0.5), 0 -5px 5px 3px rgba(172, 164, 164, 0.5);
+}
+
 .btn-test-1 {
   background-color: #006caa;
   color: red;
   border: 1px solid #333;
+}
+.btn-test-1:hover {
+  background-color: #004c77;
+  color: #fff;
 }
 
 .btn-test-2 {
@@ -240,64 +272,7 @@ body {
   border-radius: 10px;
 }
 
-/*==============aside 區域 ================*/
-div.custom-container aside.aside {
-  background-color: #3d8ebd;
-  left: 0;
-  min-height: 100dvh;
-  padding: 20px 0;
-}
-
-@media (min-width: 240px) {
-  div.custom-container aside.aside {
-    width: 240px;
-  }
-}
-div.custom-container aside.aside nav.nav-custom ul.nav_list {
-  padding-left: 0;
-}
-
-div.custom-container aside.aside nav.nav-custom ul.nav_list > li a {
-  display: block;
-  text-decoration: none;
-  text-align: center;
-  padding: 25px 0;
-  color: #fff;
-  font-weight: 600;
-  font-size: 1.1rem;
-}
-div.custom-container aside.aside nav.nav-custom ul.nav_list > li a:hover {
-  background-color: #2e3a5b;
-}
-div.custom-container aside.aside nav.nav-custom ul.nav_list > li a:active {
-  opacity: 0.8;
-}
-
-div.custom-container main.main {
-  width: 90dvw;
-  min-height: 100dvh;
-  padding: 20px 20px;
-}
-
-div.custom-container {
-  display: flex;
-  white-space: nowrap;
-  height: 100%;
-}
-
-.col.title.text {
-  padding: 0 0 10px 10px;
-  font-weight: bolder;
-  font-size: 1.8rem;
-}
-
-.decorator {
-  width: 100%;
-  height: 5px;
-  background-color: #006caa;
-}
-
-.row.nav-btn {
+.nav-btn {
   padding: 10px 0 0 0;
   flex-wrap: nowrap;
   height: -moz-fit-content;
@@ -345,9 +320,9 @@ div.custom-container {
   border-radius: 5px;
   color: #fff;
   font-size: 1rem;
-  padding: 10px 10px 10px 10px;
   min-width: 5dvw;
-  margin-bottom: 10px;
+  height: 5dvh;
+  margin: 2.5dvh;
   text-align: center;
 }
 .table-edit-button:hover {
@@ -363,9 +338,9 @@ div.custom-container {
   border-radius: 5px;
   color: #fff;
   font-size: 1rem;
-  padding: 10px 10px 10px 10px;
   min-width: 5dvw;
-  margin-bottom: 10px;
+  height: 5dvh;
+  margin: 2.5dvh;
   text-align: center;
 }
 .table-delete-button:hover {
@@ -381,29 +356,20 @@ div.custom-container {
   min-width: 13dvw;
   width: 13dvw;
   text-align: center;
-  margin-left: 1dvw;
   border-radius: 10px;
-  padding: 10px 10px 10px 10px;
+  padding: 9px 9px 9px 9px;
 }
 
 .ann-filter {
   display: flex;
   border: 3px solid #3d8ebd;
   font-size: 1.1rem;
-  box-shadow: -5px 0 5px 3px rgba(172, 164, 164, 0.5), 5px 0 5px 3px rgba(172, 164, 164, 0.5), 0 5px 5px 3px rgba(172, 164, 164, 0.5), 0 -5px 5px 3px rgba(172, 164, 164, 0.5);
 }
 .ann-filter .ann-filter-one {
   text-align: center;
   line-height: 12dvh;
 }
 .ann-filter .ann-filter-one.head {
-  font-weight: bolder;
-}
-.ann-filter .ann-filter-two {
-  text-align: center;
-  line-height: 12dvh;
-}
-.ann-filter .ann-filter-two.head {
   font-weight: bolder;
 }
 .ann-filter .ann-filter-date {
@@ -420,7 +386,6 @@ div.custom-container {
   height: 10dvh;
   font-size: 1.1rem;
 }
-
 .ann-list .ann-head {
   text-align: center;
   line-height: 10dvh;
@@ -429,7 +394,7 @@ div.custom-container {
 }
 
 .table-list {
-  height: 40dvh;
+  height: 50dvh;
   font-size: 1.1rem;
   border-left: 3px solid #3d8ebd;
   border-right: 3px solid #3d8ebd;
@@ -442,7 +407,7 @@ div.custom-container {
   overflow: hidden;
 }
 .table-list .tbody .tr {
-  height: 8dvh;
+  height: 10dvh;
   border-bottom: 1px solid #bbb8b8;
   --bs-gutter-x: 0;
 }
@@ -455,7 +420,8 @@ div.custom-container {
   border-bottom: 0;
 }
 .table-list .tbody .td-height {
-  line-height: 8dvh;
+  line-height: 10dvh;
+  vertical-align: middle;
 }
 
 .page {
@@ -480,10 +446,11 @@ div.custom-container {
 .row-detail-float-box {
   display: none;
   position: absolute;
-  top: 5dvh;
-  left: 5dvw;
-  width: 90dvw;
-  height: 120dvh;
+  top: 15%;
+  max-height: 100%;
+  margin: 0px 0px 0px 23%;
+  width: 70%;
+  height: 70%;
   z-index: 5000;
   background-color: #ccc;
   border-radius: 10px;
@@ -512,7 +479,6 @@ div.custom-container {
   line-height: 10dvh;
   padding: 0 2dvw;
   border-radius: 10px;
-  box-shadow: -5px 0 5px 3px rgba(172, 164, 164, 0.5), 5px 0 5px 3px rgba(172, 164, 164, 0.5), 0 5px 5px 3px rgba(172, 164, 164, 0.5), 0 -5px 5px 3px rgba(172, 164, 164, 0.5);
 }
 .row-detail-float-box .detail-close {
   margin-left: 85%;
