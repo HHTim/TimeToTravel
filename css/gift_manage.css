@@ -256,7 +256,6 @@ main.main {
   border: 3px solid #3d8ebd;
   font-size: 1.1rem;
   box-shadow: -5px 0 5px 3px rgba(172, 164, 164, 0.5), 5px 0 5px 3px rgba(172, 164, 164, 0.5), 0 5px 5px 3px rgba(172, 164, 164, 0.5), 0 -5px 5px 3px rgba(172, 164, 164, 0.5);
-  margin: 0 20px;
 }
 
 div.r1 {
@@ -311,7 +310,7 @@ div.type-choose {
 
 div.type-choose label {
   min-width: 50px;
-  margin: 0 auto;
+  margin-right: 10px;
 }
 
 button.btn-info {
@@ -329,4 +328,14 @@ div.impl-btn div.search-btn button {
   border-radius: 10px;
   background-color: #006caa;
   color: #fff;
+}
+
+div.manage-type {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+div.manage-type div {
+  margin: 0 20px;
 }
