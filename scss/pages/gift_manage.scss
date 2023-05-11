@@ -137,13 +137,39 @@ div.impl-btn div.search-btn button {
 
 div.manage-type {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   margin-top: 40px;
 }
 
 div.manage-type div {
-  margin: 0 20px;
+  min-width: 70px;
+  text-align: center;
+  background-color: $secondary-gray;
+  border-radius: $border-radius $border-radius 0 0;
 }
+
+.gift-table {
+  border-top: 3px solid $primary-blue;
+}
+
+th, td {
+  text-align: center;
+}
+
+tr td:nth-child(2), th:nth-child(2){
+  min-width: 125px;
+}
+
+tbody tr {
+  height: 50px;
+}
+
+.-ontype {
+  background-color: $primary-blue !important;
+  color: $white;
+}
+
+
 
 
 
