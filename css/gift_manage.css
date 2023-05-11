@@ -432,11 +432,13 @@ div.manage-type div {
   border-top: 3px solid #006caa;
 }
 
-th, td {
+th,
+td {
   text-align: center;
 }
 
-tr td:nth-child(2), th:nth-child(2) {
+tr td:nth-child(2),
+th:nth-child(2) {
   min-width: 125px;
 }
 
@@ -446,5 +448,8 @@ tbody tr {
 
 .-ontype {
   background-color: #006caa !important;
+  color: #fff;
+}
+.-ontype a:hover {
   color: #fff;
 }

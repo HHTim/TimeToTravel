@@ -48,7 +48,6 @@ body {
   margin: 0;
 }
 
-
 /* ================= main 區域 ================= */
 main.main {
   width: 80dvw;
@@ -74,7 +73,7 @@ div.r1 button {
   min-width: 90px;
 
   border: $normal-border;
-  border-radius: $border-radius;  
+  border-radius: $border-radius;
 }
 
 main.main div.decorator {
@@ -129,7 +128,7 @@ div.impl-btn div.search-btn button {
   min-width: 70%;
 
   border: $custom-border;
-  border-radius: $border-radius;  
+  border-radius: $border-radius;
 
   background-color: $primary-blue;
   color: $white;
@@ -152,11 +151,13 @@ div.manage-type div {
   border-top: 3px solid $primary-blue;
 }
 
-th, td {
+th,
+td {
   text-align: center;
 }
 
-tr td:nth-child(2), th:nth-child(2){
+tr td:nth-child(2),
+th:nth-child(2) {
   min-width: 125px;
 }
 
@@ -167,9 +168,8 @@ tbody tr {
 .-ontype {
   background-color: $primary-blue !important;
   color: $white;
+
+  a:hover {
+    color: $white;
+  }
 }
-
-
-
-
-
