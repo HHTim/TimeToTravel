@@ -1,220 +1,146 @@
-// 記得引入基本設定
+// // 記得引入基本設定
 @import '../base/base';
-//-- 上方搜尋欄 --//
-.scene_search {
-  margin-left: 100px;
-  margin-right: 100px;
-  height: auto;
+
+//卡片裡文字
+.card_word {
+  float: right;
+  max-width: 550px;
+  margin: 0 10px 0 10px;
+}
+//卡片裡的標題
+.card-title {
+  font-weight: bold;
+}
+
+//卡片裡照片
+.left_pic_style {
+  // width: auto;
+  // height: auto;
+  border-radius: 10px; //圓角
+  max-width: 50%;
+  float: left;
+  margin-right: 10px;
+  width: 200px;
+}
+
+//顯示文字行
+.multiline-ellipsis {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+
+//展開/縮排 按鈕
+.btn-primary {
+  float: right;
+}
+
+//網址文字格式
+.url_style {
+  text-decoration: underline; //底線
+  font-size: 12px;
+}
+
+//分頁
+.page1 {
+  display: flex;
+  justify-content: center;
+}
+
+//卡片
+.card {
   margin-bottom: 10px;
-  // border-style: solid;
-}
-
-input[type='radio'] {
-  appearance: none;
-  -webkit-appearance: none; /* 兼容 Safari 和 Chrome */
-  width: 16px;
-  height: 16px;
-  border: 2px solid #006caa;
-  border-radius: 3px;
-}
-
-/* 设置选中状态下的样式 */
-input[type='radio']:checked {
-  background-color: #006caa;
+  -moz-box-shadow: 2px 2px 2px 2px #dadada;
+  -webkit-box-shadow: 2px 2px 2px 2px #dadada;
+  box-shadow: 2px 2px 2px 2px #dadada;
 }
 
 .tabs {
   display: flex;
-  // justify-content: space-between;
+  justify-content: space-between;
   // margin-bottom: 10px;
 }
 
 .tab {
-  background-color: #f2f2f2;
+  background-color: #b3b2b2;
   border: none;
   border-radius: 5px 5px 0 0;
-  color: #000000;
+  color: #ffffff;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 14px;
   padding: 8px 16px;
-  font-weight: bold;
   transition: background-color 0.3s ease;
+  font-weight: bold;
 }
 
 .tab.active {
-  background: #419dd1;
-  // opacity: 0.55;
-  font-weight: bold;
-  font-size: 16px;
-  color: #ffffff;
+  background-color: #007bff;
   border-bottom: 2px solid #007bff;
 }
 
 .tab-content {
   display: none;
-  background: hsl(202, 61%, 54%);
-  // opacity: 0.55;
-  height: 60px; /* 更改高度 */
-  border-radius: 0px 10px 10px 10px;
-  padding: 20px;
-  padding-left: 30px;
+  padding: 10px;
+  background-color: #007bff;
+  border-radius: 0 10px 10px 10px; //圓角
+  margin-bottom: 10px;
+  // height: 60px;
 }
 
 .tab-content.active {
   display: block;
-  background: #419dd1;
-  // opacity: 0.55;
-  height: 60px; /* 更改高度 */
-  border-radius: 0px 10px 10px 10px;
-  // padding: 20px;
-  padding-left: 30px;
+  margin-bottom: 10px;
+  // -moz-box-shadow: 2px 2px 2px 2px #accefb;
+  // -webkit-box-shadow: 2px 2px 2px 2px #accefb;
+  // box-shadow: 2px 2px 2px 2px #accefb;
+  // padding-left: 10px;
+}
+
+.tabs {
   display: flex;
+  justify-content: left;
 }
 
 input[type='text'] {
-  // width: %; /* 更改宽度 */
-  height: 30px; /* 更改高度 */
-  font-size: 16px; /* 更改字体大小 */
-  padding: 10px; /* 更改内边距 */
-  border: 1px solid #ccc; /* 更改边框样式 */
-  border-radius: 5px; /* 更改边框圆角 */
-  // box-sizing: border-box; /* 更改盒子模型 */
-  outline: none;
-}
-
-button[type='submit'] {
-  background-color: #104884;
+  font-size: 14px; /* 提示文本字体大小 */
+  width: 90%;
+  // border-radius: 5px;
+  // padding-left: 20px;
   color: #fff;
   border: none;
-  border-radius: 3px;
-  padding: 5px 10px;
-  font-size: 16px;
-  // height: 40px;
   border-radius: 5px;
-}
 
-button[type='submit']:hover {
-  background-color: #68a0db;
-}
-
-button[type='submit']:active {
-  background-color: #061e38;
-}
-
-//--下方--//
-.scene_down {
-  margin-left: 200px;
-  margin-right: 200px;
-  display: flex;
-}
-//-- 下方左邊欄 --//
-.scene_search_down_left {
-  // margin-left: 200px;
-  margin-right: 10px;
-  height: auto;
-  width: 20%;
-  border-radius: 10px;
-  border-style: solid;
-  border-color: lightgray;
-}
-//-- 下方右邊欄 --//
-.scene_search_down_right {
-  // margin-right: 200px;
-  width: 100%;
-  height: auto;
-  border-style: solid;
-  border-color: lightgray;
-  border-radius: 10px;
-}
-//-- 下方左邊欄第一個題目 --//
-.scene_search_down_left_title {
-  margin-left: 10px;
-  margin-top: 10px;
-  margin-right: 10px;
-  margin-bottom: 20px;
-
-  // border-style: solid;
-}
-//--下方左邊欄第一個題目選項--//
-input[type='checkbox'] {
-  margin-left: 10px;
-}
-
-//---景點照片框---//
-.scene_search_down_right_pc1 {
-  // border-color: red;
-  // border-style: solid;
-  width: 40%;
-  display: flex;
-}
-
-//--- 景點照片---//
-
-div img {
-  width: 100%;
-  height: 100%;
-  border-radius: 10px;
-}
-
-//--- a標籤 --//
-a {
-  display: flex;
-}
-
-.scene_search_down_right {
-  // display: block;
   cursor: pointer;
+}
+
+.div_style {
+  border-style: solid;
+  border-color: #ebebeb;
+  border-radius: 10px;
+  // margin: 0 auto;
+}
+
+h4 {
+  background-color: #007bff;
+  max-width: 100%;
+  text-align: center;
+  color: white;
+  border-radius: 5px 5px 0 0;
+}
+
+t1 {
   display: flex;
-  background-color: rgb(237, 237, 237);
+  justify-content: center;
+  float: left;
 }
 
-//---景點逼調說明框----//
-.scene_search_down_right_pp1 {
-  margin: 10px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
+ul {
+  margin: 0 8px 0 8px;
+  padding: 0;
 }
 
-//---標題---//
-.scene_search_down_right_tt1 {
-  // border-style: solid;
-  margin: 5px;
-  font-size: 25px;
-  font-weight: bold;
-  display: block;
-}
-
-//---地址---//
-.scene_search_down_right_dd1 {
-  // border-style: solid;
-  color: #007bff;
-  margin-left: 15px;
-  font-size: 14pt;
-}
-
-//---說明---//
-.scene_search_down_right_xx1 {
-  // border-style: solid;
-  // margin-top: 5px;
-  margin-bottom: 10px;
-  margin-left: 10px;
-  margin-right: 10px;
-  font-size: 14pt;
-}
-
-//--陰影---//
-div.scene_search_down_right {
-  // border: 2px solid #000;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-  margin-bottom: 10px;
-}
-
-.scene_search_down_right_all {
-  // display: flex;
-  // flex-direction: column;
-  width: 80%;
-  // border-style: solid;
-  height: auto;
-  // margin-bottom: 10px;
-}
+// a {
+//   float: right;
+//   margin: 0 5px 0;
+// }
