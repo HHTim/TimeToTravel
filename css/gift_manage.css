@@ -165,7 +165,6 @@ div.custom-container div.company-aside {
   background-color: #3d8ebd;
   padding: 0;
   min-height: calc(100vh - 20px - 20px - 80px);
-  max-width: 150px;
 }
 
 div.custom-container div.company-aside nav.nav-custom ul.nav_list {
@@ -179,7 +178,7 @@ div.custom-container div.company-aside nav.nav-custom ul.nav_list > li a {
   padding: 1rem 0;
   color: #fff;
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
 }
 div.custom-container div.company-aside nav.nav-custom ul.nav_list > li a:hover {
   background-color: #2e3a5b;
@@ -205,44 +204,14 @@ body {
   color: white;
 }
 
-.ann-button {
-  border: none;
-  background-color: #006caa;
-  border-radius: 5px;
-  color: #fff;
-  font-size: 1rem;
-  padding: 10px 10px 10px 10px;
-  min-width: 10dvw;
-  text-align: center;
-}
-.ann-button:hover {
-  opacity: 0.8;
-}
-.ann-button:active {
-  opacity: 0.5;
-}
-
-.search-button {
-  border: none;
-  background-color: #006caa;
-  border-radius: 5px;
-  color: #fff;
-  font-size: 1rem;
-  padding: 10px 10px 10px 10px;
-  min-width: 10dvw;
-  text-align: center;
-}
-.search-button:hover {
-  opacity: 0.8;
-}
-.search-button:active {
-  opacity: 0.5;
-}
-
 .btn-test-1 {
   background-color: #006caa;
-  color: red;
+  color: #fff;
   border: 1px solid #333;
+}
+.btn-test-1:hover {
+  background-color: #004c77;
+  color: #fff;
 }
 
 .btn-test-2 {
@@ -274,59 +243,90 @@ body {
   border-radius: 10px;
 }
 
-/*==============aside 區域 ================*/
-div.com-container aside.aside {
-  background-color: #3d8ebd;
-  left: 0;
-  min-height: 100dvh;
-  padding: 20px 0;
+html,
+body {
+  margin: 0;
 }
 
-@media (min-width: 240px) {
-  div.com-container aside.aside {
-    width: 240px;
-  }
-}
-div.com-container {
-  display: flex;
-  white-space: nowrap;
-  height: 100%;
-}
-
-div.com-container aside.aside nav.nav-com ul.nav_list {
-  padding-left: 0;
-}
-
-div.com-container aside.aside nav.nav-com ul.nav_list > li a {
-  display: block;
-  text-decoration: none;
-  text-align: center;
-  padding: 25px 0;
-  color: #fff;
-  font-weight: 600;
-  font-size: 1.1rem;
-}
-div.com-container aside.aside nav.nav-com ul.nav_list > li a:hover {
-  background-color: #2e3a5b;
-}
-div.com-container aside.aside nav.nav-com ul.nav_list > li a:active {
-  opacity: 0.8;
-}
-
-div.com-container main.main {
+/* ================= main 區域 ================= */
+main.main {
   width: 80dvw;
   min-height: 100dvh;
   padding: 20px 20px;
-  margin-left: 20px;
   border: 3px solid #3d8ebd;
   font-size: 1.1rem;
   box-shadow: -5px 0 5px 3px rgba(172, 164, 164, 0.5), 5px 0 5px 3px rgba(172, 164, 164, 0.5), 0 5px 5px 3px rgba(172, 164, 164, 0.5), 0 -5px 5px 3px rgba(172, 164, 164, 0.5);
+  margin: 0 20px;
 }
 
-div.row div {
-  margin-left: 5%;
-  width: 90%;
-  height: 10%;
-  font-size: 1.5rem;
-  line-height: 10dvh;
+div.r1 {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+div.r1 div {
+  text-align: center;
+}
+
+div.r1 button {
+  font-size: 1rem;
+  min-width: 90px;
+  border: 1px solid #333;
+  border-radius: 10px;
+}
+
+main.main div.decorator {
+  width: 100%;
+  height: 5px;
+  background-color: #006caa;
+  margin: 20px 0 25px 0;
+}
+
+div.nav-btn {
+  text-align: center;
+  align-items: center;
+  margin: 0 0 20px 0;
+}
+
+div.nav-btn div.search-name {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+div.nav-btn div.search-name label {
+  min-width: 50px;
+  margin: 0 auto;
+}
+
+div.nav-btn div.search-name input {
+  width: 100%;
+}
+
+div.type-choose {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+div.type-choose label {
+  min-width: 50px;
+  margin: 0 auto;
+}
+
+button.btn-info {
+  background-color: #3d8ebd;
+  color: #fff;
+}
+
+div.impl-btn div.search-btn {
+  text-align: center;
+}
+
+div.impl-btn div.search-btn button {
+  min-width: 70%;
+  border: 1px solid #bbb8b8;
+  border-radius: 10px;
+  background-color: #006caa;
+  color: #fff;
 }

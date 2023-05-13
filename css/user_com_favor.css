@@ -288,304 +288,121 @@ body {
   color: white;
 }
 
-.subtitle {
+.com-favor {
   width: 100%;
-  position: relative;
-  font-size: 20px;
-  font-weight: bold;
-  margin: 1.5rem auto;
-}
-.subtitle::after {
-  content: "";
-  height: 5px;
-  width: 100%;
-  background-color: #006caa;
-  position: absolute;
-  left: 0;
-  bottom: -50%;
-}
-
-.order {
-  width: 100%;
-  margin: auto;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  padding: 0.5rem;
   background-color: #dfdcdc;
   border-radius: 10px;
-  padding: 0.5rem;
+  gap: 0.5rem;
   box-shadow: 0 0 3px #9b9999;
 }
-.order__img {
-  width: 250px;
-  height: 200px;
-  margin-right: 1rem;
-  border-radius: 10px;
-  box-shadow: 0 0 3px #9b9999;
-  overflow: hidden;
-}
-.order__img img {
-  height: 100%;
-  min-width: 100%;
-  left: 0;
-  top: 0;
-}
-.order__content {
-  width: 100%;
-  height: 200px;
+.com-favor__card {
+  display: flex;
   background-color: #fff;
   border-radius: 10px;
-  display: flex;
-  flex-wrap: wrap;
-  padding: 0.5rem;
-}
-.order__title {
-  width: 100%;
-  height: -moz-fit-content;
-  height: fit-content;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-  font-size: 28px;
-}
-.order__desc {
-  width: 100%;
-  vertical-align: middle;
-}
-.order__detail {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-self: flex-end;
-  margin-top: 1rem;
-}
-.order__detail label {
-  font-weight: bold;
-}
-.order__detail input {
-  max-width: 100%;
-  border: none;
-  box-shadow: 0 0 3px #9b9999;
-  padding: 0 0.5rem;
-  border-radius: 5px;
-}
-
-.journey {
-  width: 100%;
-  position: relative;
-  margin: auto;
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin-bottom: 1rem;
-}
-.journey a {
-  width: 49%;
-}
-.journey__card {
-  width: 100%;
-  background-color: #dfdcdc;
-  border-radius: 10px;
-  display: flex;
   padding: 0.5rem;
   margin: 0;
-  box-shadow: 0 0 3px #9b9999;
+  gap: 0.5rem;
 }
-.journey__img {
-  position: relative;
-  width: 200px;
+.com-favor__img {
+  width: 120px;
+  height: 120px;
   overflow: hidden;
   border-radius: 10px;
-  margin-right: 0.5rem;
-  box-shadow: 0 0 3px #9b9999;
+  position: relative;
 }
-@media screen and (min-width: 992px) {
-  .journey__img {
-    width: 100%;
-  }
-}
-@media screen and (min-width: 1200px) {
-  .journey__img {
-    width: 50%;
-  }
-}
-.journey__img img {
-  height: 100%;
-  min-width: 100%;
+.com-favor__img img {
+  width: 200%;
   position: absolute;
-  background-size: contain;
+  right: -50%;
+  top: -15%;
+  border-radius: 10px;
+  box-shadow: 0 0 3px #9b9999;
   background-repeat: no-repeat;
-  background-position: center;
-  left: 0;
-  top: 0;
 }
-.journey__title {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
+.com-favor__content {
+  width: 100%;
+  flex: 2;
+  display: flex;
+  flex-direction: column;
 }
-.journey__price {
+.com-favor__title {
   font-size: 20px;
-  text-align: right;
   font-weight: bold;
 }
-
-.booking {
+.com-favor__address {
+  color: #2029f4;
+}
+.com-favor__desc {
   width: 100%;
-  margin: auto;
-  background-color: #dfdcdc;
-  border-radius: 10px;
-  padding: 1rem;
-  display: flex;
-  flex-wrap: wrap;
-  margin-bottom: 1rem;
-}
-.booking__firstname {
-  width: 50%;
-  padding: 0.5rem 0;
-}
-.booking__lastname {
-  width: 50%;
-  padding: 0.5rem 0;
-}
-.booking__email {
-  width: 50%;
-  padding: 0.5rem 0;
-}
-.booking__phone {
-  width: 50%;
-  padding: 0.5rem 0;
-}
-.booking__number {
-  width: 50%;
-  padding: 0.5rem 0;
-}
-.booking__method {
-  width: 50%;
-  padding: 0.5rem 0;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  position: relative;
-}
-.booking__method p {
-  width: 100%;
-}
-.booking__img {
-  position: absolute;
-  width: 150px;
+  font-size: 14px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
   overflow: hidden;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -30%);
 }
-.booking__img img {
+.com-favor__other {
   width: 100%;
-}
-.booking h3 {
-  width: 100%;
-  font-size: 24px;
-  font-weight: bold;
-}
-.booking small {
-  width: 100%;
-  font-size: 16px;
-  color: #9b9999;
-}
-.booking input {
-  border: none;
-  box-shadow: 0 0 3px #9b9999;
-  border-radius: 5px;
-}
-.booking__title {
-  font-weight: bold;
-}
-
-.bill {
-  width: 100%;
-  margin: auto;
-  margin-bottom: 1rem;
-  background-color: #dfdcdc;
+  flex: 1;
+  text-align: right;
   display: flex;
+  justify-content: flex-end;
   flex-wrap: wrap;
-  border-radius: 10px;
-  box-shadow: 0 0 3px #9b9999;
-  padding: 1rem;
 }
-.bill__card {
-  width: 50%;
-  display: flex;
-  flex-wrap: wrap;
-  margin-bottom: 1rem;
-  line-height: 2;
-}
-.bill__title {
+.com-favor__rank {
   width: 100%;
-  color: #006caa;
-  font-weight: bold;
-  font-size: 20px;
-}
-.bill__item {
-  width: 50%;
-  display: inline-block;
-  font-weight: bold;
-}
-.bill__value {
-  width: 50%;
-}
-
-.amount {
-  position: relative;
-  width: 100%;
-  padding-top: 1rem;
   display: flex;
-  align-items: center;
+  justify-content: end;
+  margin: 0;
+  padding: 0;
+  color: #eeab0f;
 }
-.amount::before {
-  content: "";
-  height: 5px;
-  width: 100%;
-  background-color: #006caa;
-  position: absolute;
-  left: 0;
-  top: 0;
-}
-.amount__item {
-  width: 50%;
-  font-size: 24px;
-  font-weight: bold;
-}
-.amount__value {
-  width: 50%;
-  font-size: 24px;
-  font-weight: bold;
-}
-
-.submit {
-  width: 40%;
-  margin: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.submit__forward {
+.com-favor__forward {
+  width: 45%;
+  max-width: 100px;
+  white-space: nowrap;
+  justify-content: flex-end;
+  align-self: flex-end;
+  height: -moz-fit-content;
+  height: fit-content;
   border: none;
-  padding: 0.5rem;
   background-color: #006caa;
   color: #fff;
-  margin: 1rem 2rem;
+  padding: 0.25rem 1rem;
   border-radius: 10px;
+  margin-right: 0.5rem;
 }
-.submit__forward:hover {
+.com-favor__forward:hover {
   background-color: #004c77;
 }
-.submit__return {
+.com-favor__delete {
+  width: 45%;
+  max-width: 100px;
+  white-space: nowrap;
+  align-self: flex-end;
+  height: -moz-fit-content;
+  height: fit-content;
   border: none;
   background-color: #be4b4b;
   color: #fff;
-  padding: 0.5rem;
-  margin: 1rem 2rem;
+  padding: 0.25rem 1rem;
   border-radius: 10px;
 }
-.submit__return:hover {
+.com-favor__delete:hover {
   background-color: #9d3939;
+}
+
+.page {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  margin-top: 1rem;
+}
+.page .pagination {
+  padding: 0;
+  margin: 0;
+  align-items: center;
+  justify-content: center;
 }
