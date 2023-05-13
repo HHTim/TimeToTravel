@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- import -->
+    <script src="../../node_modules/@popperjs/core/dist/umd/popper.min.js" defer></script>
+    <script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js" defer></script>
+    <script src="../../node_modules/jquery/dist/jquery.min.js" defer></script>
+    <script src="https://kit.fontawesome.com/e3af248fb2.js" crossorigin="anonymous" defer></script>
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <!-- 我們自己的 js 檔案，路徑記得改 -->
+    <link rel="stylesheet" href="../../css/template.css" />
+    <link rel="stylesheet" href="../../css/03_leo/style-global.css" />
+    <!-- <link rel="stylesheet" href="../../css/03_leo/test.css" /> -->
+    <!-- 我們自己的 css 檔案，路徑記得改 -->
+    <script src="../../js/template.js" defer></script>
+    <title>Document</title>
+    <style>
+      /*  */
+    </style>
+  </head>
+  <body>
+    <!-- header -->
+    <div class="decorator"></div>
+    <header>
+      <div class="container-fluid header__container">
+        <h1 class="logo">
+          <a href="#" class="logo__link">
+            <img src="../../images/LOGO.png" alt="logo" class="logo__img" />
+          </a>
+        </h1>
+        <nav>
+          <ul class="nav">
+            <li class="nav__link"><a href="#">我的訂單</a></li>
+            <li class="nav__link"><a href="#">購物車</a></li>
+            <li class="nav__link"><a href="#">部落格</a></li>
+            <li class="nav__info">
+              <div class="dropdown-center">
+                <button class="dropdown-toggle nav__info-btn" type="button" data-bs-toggle="dropdown"></button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">訊息一</a></li>
+                  <li><a class="dropdown-item" href="#">訊息二</a></li>
+                  <li><a class="dropdown-item" href="#">訊息三</a></li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li><a class="dropdown-item" href="#">See More</a></li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav__avatar">
+              <div class="dropdown-center">
+                <!-- <button class="dropdown-toggle nav__avatar-btn" type="button" data-bs-toggle="dropdown"></button> -->
+                <a href="#" class="dropdown-toggle nav__avatar-btn" type="button" data-bs-toggle="dropdown">
+                  <div class="nav__avatar-img">
+                    <img src="../../images/avatar.svg" alt="avatar" />
+                  </div>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">註冊</a></li>
+                  <li><a class="dropdown-item" href="#">登入</a></li>
+                  <li><a class="dropdown-item" href="#">其他</a></li>
+                  <li><a class="dropdown-item" href="#">其他</a></li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li><a class="dropdown-item" href="#">登出</a></li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <!--  -->
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-8">
+              <form id="search-form" action="/search" method="GET">
+                <div class="form-group">
+                  <label for="topic">主题：</label>
+                  <input type="text" class="form-control" id="topic" name="topic" placeholder="输入主题">
+                </div>
+    
+                <div class="form-group">
+                  <label for="tags">标签：</label>
+                  <div id="tag-container">
+                    <input type="text" class="form-control" name="tags" placeholder="输入标签">
+                  </div>
+                  <button type="button" class="btn btn-secondary mt-2" onclick="addTag()">添加标签</button>
+                </div>
+              </form>
+            </div>
+            <div class="col-md-4 text-right">
+              <button type="submit" class="btn btn-primary" onclick="search()">搜索</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      function addTag() {
+        var tagContainer = $("#tag-container");
+    
+        var tagInput = $("<input>").attr({
+          type: "text",
+          class: "form-control",
+          name: "tags[]",
+          placeholder: "输入标签"
+        });
+    
+        tagContainer.append(tagInput);
+      }
+    
+      function search() {
+        var topic = $("#topic").val();
+        var tags = $("input[name='tags[]']")
+          .map(function() {
+            return $(this).val();
+          })
+          .get();
+    
+        console.log("主题：" + topic);
+        console.log("标签：" + tags);
+      }
+    </script>
+    
+
+<!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
+    <div class="container-fluid ">
+      <div class="row text-center justify-content-center ">
+        <!-- search title tag -->
+        <div class="col-8 row border">
+          <div class="col-10">
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" placeholder="文章標題" aria-label="Recipient's username" aria-describedby="button-addon2">
+              <button class="btn btn-outline-secondary" type="button" id="button-addon2">搜尋</button>
+            </div>
+          
+            <div class="test ">ggggg</div>
+              <input type="text" style="width: 20%;" class="form-control " placeholder="文章標籤" aria-label="Recipient's username" aria-describedby="button-addon2">
+              <button class="btn btn-outline-secondary" type="button" id="button-addon2">新增</button>
+          </div>
+          <div class="col-1 align-self-center">
+            <button > </button>
+            發文</div>
+
+        </div>
+      
+      </div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+      <div class="row  text-center ">
+        <div class="col-2 border align-self-center">先留白</div>
+        <!-- --------------------------------- -->
+        <div class="col-8 this-is-blog-block container-fluid center">
+          <!-- // blog= blogType + blog_list -->
+          <div class="row border">
+            
+            <div class="container-fluid text-center ">
+              <div class="row justify-content-center margin ">
+                <div class="col-1 border align-self-center">讚數/類型</div>
+                <div class="col-9  border align-self-center">排序 讚數 發表時間的按鈕</div>
+                <div class="col-1 border align-self-center">發表時間/回應</div>
+                <div class="row justify-content-center ">
+                  <div class="col-2 border">文章類型:</div>
+                    <form class="col-8 border" action="/action_page.php">
+                        <div class="form-check  form-check-inline">
+                          <input type="radio" class="form-check-input" id="blog-type1" name="optradio" value="問題">
+                          <label class="form-check-label" for="blog-type1">問題</label>
+                        </div>
+                        <div class="form-check  form-check-inline">
+                          <input type="radio" class="form-check-input" id="blog-type2" name="optradio" value="情報">
+                          <label class="form-check-label" for="blog-type2">情報</label>
+                        </div>
+                        <div class="form-check  form-check-inline">
+                          <input type="radio" class="form-check-input" id="blog-type3" name="optradio" value="情報">
+                          <label class="form-check-label" for="blog-type3">情報</label>
+                        </div>
+                        <div class="form-check  form-check-inline">
+                          <input type="radio" class="form-check-input" id="blog-type4" name="optradio" value="心得">
+                          <label class="form-check-label" for="blog-type4">心得</label>
+                        </div>
+                        <div class="form-check  form-check-inline">
+                          <input type="radio" class="form-check-input" id="blog-type5" name="optradio" value="攻略">
+                          <label class="form-check-label" for="blog-type5">攻略</label>
+                        </div>
+                        <div class="form-check  form-check-inline">
+                          <input type="radio" class="form-check-input" id="blog-type6" name="optradio" value="其他">
+                          <label class="form-check-label" for="blog-type6">其他</label>
+                        </div>
+                     <!-- <button type="submit" class="btn btn-primary mt-3">Submit</button> -->
+                    </form>
+                </div>
+              </div>
+              <!--  -->
+              <div class="blog-list border container-fluid">
+                <div class="row">
+                  <div class="col-1  align-self-center">24讚數/心得</div>
+                  <div class="row col-10 ">
+                    <div class="col-3 border  ">
+                      <!-- how to design image size -->
+                      <img class="w-100 " src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Hurricane_Isabel_from_ISS.jpg/450px-Hurricane_Isabel_from_ISS.jpg" alt="">
+                    </div>
+                    <div class="col-9 align-self-center">
+                      <div class="text-start">文章標題熱帶氣旋</div>
+                      <!-- 還未加入標籤 -->
+                      <div class="text-start">（英語：tropical cyclone）是發生在熱帶與副熱帶地區海面上的氣旋性環流（風暴），由水蒸氣冷卻凝結時放出潛熱發展而出的暖心結構。</div>
+                    </div>
+                  </div>
+                  <div class="col-1  align-self-center ">1天前/三則留言</div>
+                </div>
+              </div>
+              <div class="blog-list border">二篇文章的區塊</div>
+            </div>
+            2222222222這邊是灰色地區都沒有
+          </div>
+        </div>
+        <div class="col-2 border">先留白</div>
+      </div>
+    </div>
+
+    <!-- 置中以後再說 -->
+    <div class="row ">
+      <nav aria-label="... ">
+        <ul class="pagination page">
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li class="page-item active" aria-current="page">
+            <a class="page-link" href="#">1</a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </ul>
+          </li>
+      </nav>
+    </div>
+     <!-- Footer -->
+     <footer>
+      <div class="footer"></div>
+    </footer>
+    <script>
+      //
+    </script>
+  </body>
+</html>
