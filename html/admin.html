@@ -7,7 +7,7 @@
     <!-- import -->
     <script src="../node_modules/@popperjs/core/dist/umd/popper.min.js" defer></script>
     <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js" defer></script>
-    <script src="../node_modules/jquery/dist/jquery.min.js" defer></script>
+    <!-- <script src="../node_modules/jquery/dist/jquery.min.js" defer></script> -->
     <script src="https://kit.fontawesome.com/e3af248fb2.js" crossorigin="anonymous" defer></script>
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
     <!-- 我們自己的 js 檔案，路徑記得改 -->
@@ -16,52 +16,176 @@
     <script src="../js/admin.js" defer></script>
     <!-- 輪播需要添加 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/eonasdan-bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <!-- title 記得改 -->
-    <title>Admin</title>
-
-    <style>
-      thead,
-      tr,
-      td {
-        /* border-collapse: collapse; */
-        border: 2px solid red;
-        margin: 0 20px;
-        padding: 0 20px;
-        text-align: center;
-      }
-
-      table {
-        border-collapse: collapse;
-      }
-    </style>
+    <title>Admin Order Manager</title>
   </head>
   <body>
-    <table>
-      <p>GET ALL</p>
-      <thead>
-        <tr>
-          <td>ADMIN_ID</td>
-          <td>ADMIN_ACCOUNT</td>
-          <td>ADMIN_PASSWORD</td>
-          <td>ADMIN_NAME</td>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
-    <script>
-      const tbody = document.querySelector('tbody');
-      fetch('http://localhost:8081/TIME_TO_TRAVEL/AdminController')
-        .then((r) => r.json())
-        .then((d) => {
-          tbody.innerHTML = d.map((e) => {
-            return `<tr>
-                    <td>${e.adminId}</td>
-                    <td>${e.adminAccount}</td>
-                    <td>${e.adminPassword}</td>
-                    <td>${e.adminName}</td>
-                </tr>`;
-          });
-        });
-    </script>
+    <!-- Header -->
+    <div class="decorator"></div>
+    <header>
+      <div class="container-fluid header__container">
+        <h1 class="logo">
+          <a href="#" class="logo__link">
+            <img src="../images/LOGO.png" alt="logo" class="logo__img" />
+          </a>
+        </h1>
+        <nav>
+          <ul class="nav">
+            <li class="nav__link"><a href="#">我的訂單</a></li>
+            <li class="nav__link"><a href="#">購物車</a></li>
+            <li class="nav__link"><a href="#">部落格</a></li>
+            <li class="nav__info">
+              <div class="dropdown-center">
+                <button class="dropdown-toggle nav__info-btn" type="button" data-bs-toggle="dropdown"></button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">訊息一</a></li>
+                  <li><a class="dropdown-item" href="#">訊息二</a></li>
+                  <li><a class="dropdown-item" href="#">訊息三</a></li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li><a class="dropdown-item" href="#">See More</a></li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav__avatar">
+              <div class="dropdown-center">
+                <!-- <button class="dropdown-toggle nav__avatar-btn" type="button" data-bs-toggle="dropdown"></button> -->
+                <a href="#" class="dropdown-toggle nav__avatar-btn" type="button" data-bs-toggle="dropdown">
+                  <div class="nav__avatar-img">
+                    <img src="../images/avatar.svg" alt="avatar" />
+                  </div>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">註冊</a></li>
+                  <li><a class="dropdown-item" href="#">登入</a></li>
+                  <li><a class="dropdown-item" href="#">其他</a></li>
+                  <li><a class="dropdown-item" href="#">其他</a></li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li><a class="dropdown-item" href="#">登出</a></li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Header End -->
+    <div class="container-fluid custom-container">
+      <div class="row">
+        <div class="col-2 company-aside">
+          <!--Company Aside -->
+          <aside>
+            <nav class="nav-custom">
+              <ul class="nav_list">
+                <li><a href="/html/admin.html">商品訂單管理</a></li>
+                <li><a href="/html/admin_ann.html">公告管理</a></li>
+                <li><a href="#">訊息管理</a></li>
+                <li><a href="/html/admin_comp_manager.html">商家管理</a></li>
+                <li><a href="/html/admin_user_manager.html">消費者管理</a></li>
+                <li><a href="#">景點管理</a></li>
+              </ul>
+            </nav>
+          </aside>
+          <!--Company Aside End -->
+        </div>
+        <div class="col-10">
+          <!-- Main -->
+          <!-- Main區塊以下為測試用，可刪 -->
+          <main class="main">
+            <h2 class="subtitle">商品訂單管理</h2>
+            <div class="row admin-search-area justify-content-center align-items-center">
+              <div class="col-3"></div>
+              <div class="col-2 input-title">訂單編號</div>
+              <div class="col-4">
+                <input type="text" class="form-control form-input" placeholder="訂單編號" />
+              </div>
+              <div class="col-2"></div>
+
+              <div class="col-3"></div>
+              <div class="col-2 input-title">消費者姓名</div>
+              <div class="col-4">
+                <input type="text" class="form-control form-input" placeholder="姓名" />
+              </div>
+              <div class="col-2"></div>
+
+              <div class="col-3"></div>
+              <div class="col-2 input-title">商家名稱</div>
+              <div class="col-4">
+                <input type="text" class="form-control form-input" placeholder="統一編號" />
+              </div>
+              <div class="col-2"></div>
+            </div>
+            <div class="div-search">
+              <button class="admin-btn">搜尋</button>
+            </div>
+            <div class="result-text">搜尋結果</div>
+            <div class="table-content">
+              <table>
+                <thead>
+                  <tr>
+                    <td>訂單編號</td>
+                    <td>消費者帳號</td>
+                    <td>商家名稱</td>
+                    <td>訂房日期</td>
+                    <td>查看</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="data-text">12345</td>
+                    <td class="data-text">abc1234567</td>
+                    <td class="data-text">凱薩飯店</td>
+                    <td class="data-text">訂房日期</td>
+                    <td><button class="btn-query" type="button">查詢</button></td>
+                  </tr>
+                  <tr>
+                    <td class="data-text">12345</td>
+                    <td class="data-text">abc1234567</td>
+                    <td class="data-text">凱薩飯店</td>
+                    <td class="data-text">訂房日期</td>
+                    <td><button class="btn-query" type="button">查詢</button></td>
+                  </tr>
+                  <tr>
+                    <td class="data-text">12345</td>
+                    <td class="data-text">abc1234567</td>
+                    <td class="data-text">凱薩飯店</td>
+                    <td class="data-text">訂房日期</td>
+                    <td><button class="btn-query" type="button">查詢</button></td>
+                  </tr>
+                  <tr>
+                    <td class="data-text">12345</td>
+                    <td class="data-text">abc1234567</td>
+                    <td class="data-text">凱薩飯店</td>
+                    <td class="data-text">訂房日期</td>
+                    <td><button class="btn-query" type="button">查詢</button></td>
+                  </tr>
+                  <tr>
+                    <td class="data-text">12345</td>
+                    <td class="data-text">abc1234567</td>
+                    <td class="data-text">凱薩飯店</td>
+                    <td class="data-text">訂房日期</td>
+                    <td><button class="btn-query" type="button">查詢</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </main>
+          <!-- Main End -->
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer"></div>
+    </footer>
   </body>
 </html>

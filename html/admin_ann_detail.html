@@ -11,9 +11,9 @@
     <script src="https://kit.fontawesome.com/e3af248fb2.js" crossorigin="anonymous" defer></script>
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
     <!-- 我們自己的 js 檔案，路徑記得改 -->
-    <link rel="stylesheet" href="../css/admin_ann.css" />
+    <link rel="stylesheet" href="../css/admin_ann_detail.css" />
     <!-- 我們自己的 css 檔案，路徑記得改 -->
-    <script src="../js/admin_ann.js" defer></script>
+    <script src="../js/admin_ann_detail.js" defer></script>
     <!-- 輪播需要添加 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
@@ -26,7 +26,7 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <!-- title 記得改 -->
-    <title>Admin Ann</title>
+    <title>Admin Ann Detail</title>
   </head>
   <body>
     <!-- Header -->
@@ -77,6 +77,7 @@
         </nav>
       </div>
     </header>
+
     <!-- Header End -->
     <div class="container-fluid custom-container">
       <div class="row">
@@ -100,87 +101,21 @@
           <!-- Main -->
           <!-- Main區塊以下為測試用，可刪 -->
           <main class="main">
-            <h2 class="subtitle">公告管理</h2>
-            <div class="row nav-btn text-nowrap">
-              <div class="col-4">
-                <div>
-                  <input class="ann-publish-btn" type="button" value="+發佈新訊息" onclick="location.href='#'" />
-                </div>
-              </div>
-              <div class="col-4"></div>
-              <div class="col-4">
-                <input type="text" class="form-control form-input" placeholder="關鍵字" />
-                <button class="search-button">搜尋</button>
-              </div>
-            </div>
-
-            <div class="row ann-filter text-nowrap">
-              <div class="col-2 ann-filter-one head">發佈日期</div>
-              <div class="col-2"></div>
-              <div class="col-4 ann-filter-date">
-                <div id="reportrange">
-                  <i class="fa fa-calendar"></i>&nbsp; <span class="span"></span> <i class="fa fa-caret-down"></i>
-                </div>
-              </div>
-            </div>
-            <div class="row ann-list">
-              <!-- <div class="col-3 ann-head">收件者</div> -->
-              <div class="col-4 ann-head">訊息標題</div>
-              <div class="col-4 ann-head">訊息日期</div>
-              <div class="col-2 ann-head">編輯</div>
-              <div class="col-2 ann-head">刪除</div>
-            </div>
-            <div class="row table-list">
-              <table>
-                <tbody class="tbody"></tbody>
-              </table>
-            </div>
-            <div class="row">
-              <ul class="pagination pt-5 justify-content-center">
-                <li class="prev page-item">
-                  <a class="page-link" href="javascript:;" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                  </a>
-                </li>
-                <li class="page-item active"><a class="page-link" href="javascript:;">1</a></li>
-                <li class="page-item" hidden><a class="page-link" href="javascript:;">2</a></li>
-                <li class="page-item" hidden><a class="page-link" href="javascript:;">3</a></li>
-                <li class="page-item" hidden><a class="page-link" href="javascript:;">4</a></li>
-                <li class="page-item" hidden><a class="page-link" href="javascript:;">5</a></li>
-                <li class="page-item" hidden><a class="page-link" href="javascript:;">6</a></li>
-                <li class="page-item" hidden><a class="page-link" href="javascript:;">7</a></li>
-                <li class="page-item" hidden><a class="page-link" href="javascript:;">8</a></li>
-                <li class="page-item" hidden><a class="page-link" href="javascript:;">9</a></li>
-                <li class="page-item" hidden><a class="page-link" href="javascript:;">10</a></li>
-                <li class="page-item" hidden><a class="page-link" href="javascript:;">11</a></li>
-                <li class="page-item" hidden><a class="page-link" href="javascript:;">12</a></li>
-                <li class="page-item" hidden><a class="page-link" href="javascript:;">13</a></li>
-                <li class="page-item" hidden><a class="page-link" href="javascript:;">14</a></li>
-                <li class="page-item" hidden><a class="page-link" href="javascript:;">15</a></li>
-                <li class="page-item" hidden><a class="page-link" href="javascript:;">16</a></li>
-                <li class="next page-item">
-                  <a class="page-link" href="javascript:;" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                  </a>
-                </li>
-              </ul>
+            <h2 class="subtitle">公告查看</h2>
+            <h4></h4>
+            <h3></h3>
+            <div class="content-bg"></div>
+            <div class="div-back-btn">
+              <button class="back-btn" type="button">返回</button>
             </div>
           </main>
           <!-- Main End -->
         </div>
-
-        <div class="row-detail-float-box">
-          <div class="ann-time-show"></div>
-          <div class="ann-title"></div>
-          <div class="ann-content"></div>
-          <button class="detail-close">關閉</button>
-        </div>
       </div>
     </div>
-    <!-- Footer -->
+
     <footer>
       <div class="footer"></div>
     </footer>
-    <!-- Footer End -->
   </body>
 </html>

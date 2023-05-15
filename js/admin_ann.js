@@ -45,15 +45,9 @@ $(function () {
     }
   });
 
-  row_edit = function (e) {
-    console.log('edit');
-    // console.log($('.pagination').find('li > a.page-link.pre'));
-    e.stopPropagation();
-  };
-
   function deleteDataById(id) {
     let form_data = new FormData();
-    form_data.append('method', 'delete');
+    form_data.append('action', 'delete');
     form_data.append('data_id', id);
     fetch('http://localhost:8081/TIME_TO_TRAVEL/AnnController', {
       method: 'POST',
@@ -73,11 +67,16 @@ $(function () {
 
   function getData() {
     var li_html = '';
+    let form_data = new FormData();
     const tbody = document.querySelector('tbody');
-    console.log('sss:' + currentPage);
-    fetch(
-      'http://localhost:8081/TIME_TO_TRAVEL/AnnController' + '?currPage=' + currentPage.toString() + '&limit=' + limit
-    )
+    form_data.append('action', 'getAll');
+    form_data.append('currPage', currentPage.toString());
+    form_data.append('limit', limit);
+    // console.log('sss:' + currentPage);
+    fetch('http://localhost:8081/TIME_TO_TRAVEL/AnnController', {
+      method: 'POST',
+      body: new URLSearchParams(form_data),
+    })
       .then((r) => r.json())
       .then((d) => {
         if (d == 'no data') {
@@ -101,16 +100,17 @@ $(function () {
                 `
                 <td class="col-4 td-height">${e.annTitle}</td>
                 <td class="col-4 td-height">${e.annSendingTime}</td>
-                <td class="col-2" onclick="row_edit(event)"><button class="table-edit-button">編輯</button></td>
+                <td class="col-2"><button class="table-edit-button">編輯</button></td>
                 <td class="col-2"><button class="table-delete-button">刪除</button></td>
-                <td style='display:none;'>${e.annContent}</td>
+                <td class="content" style='display:none;'>${e.annContent}</td>
+                <td class="adminID" style='display:none;'>${e.adminID}</td>
+                <td class="comId" style='display:none;'>${e.comId}</td>
                 </tr>
                 `
               );
             })
             .join('');
           $('ul.pagination > li').each(function (index) {
-            console.log('Pages:::' + Pages);
             if (index <= Pages) {
               $(this).removeAttr('hidden');
             } else {
@@ -128,7 +128,7 @@ $(function () {
     const tbody = document.querySelector('tbody');
     if ($('input.form-input').val() == '') {
       if (start_dateflag == true) {
-        form_data.append('method', 'search-date');
+        form_data.append('action', 'search-date');
         form_data.append('date-start', choose_start_date);
         form_data.append('date-end', choose_end_date);
         fetch('http://localhost:8081/TIME_TO_TRAVEL/AnnController', {
@@ -150,9 +150,11 @@ $(function () {
                     `
           <td class="col-4 td-height">${e.annTitle}</td>
           <td class="col-4 td-height">${e.annSendingTime}</td>
-          <td class="col-2" onclick="row_edit(event)"><button class="table-edit-button">編輯</button></td>
+          <td class="col-2"><button class="table-edit-button">編輯</button></td>
           <td class="col-2"><button class="table-delete-button">刪除</button></td>
-          <td style='display:none;'>${e.annContent}</td>
+          <td class="content" style='display:none;'>${e.annContent}</td>
+          <td class="adminID" style='display:none;'>${e.adminID}</td>
+          <td class="comId" style='display:none;'>${e.comId}</td>
           </tr>`
                   );
                 })
@@ -164,7 +166,7 @@ $(function () {
         getData();
       }
     } else {
-      form_data.append('method', 'serach');
+      form_data.append('action', 'search');
       form_data.append('filter', $('input.form-input').val());
 
       fetch('http://localhost:8081/TIME_TO_TRAVEL/AnnController', {
@@ -185,9 +187,11 @@ $(function () {
                   `
           <td class="col-4 td-height">${e.annTitle}</td>
           <td class="col-4 td-height">${e.annSendingTime}</td>
-          <td class="col-2" onclick="row_edit(event)"><button class="table-edit-button">編輯</button></td>
+          <td class="col-2"><button class="table-edit-button">編輯</button></td>
           <td class="col-2"><button class="table-delete-button">刪除</button></td>
-          <td style='display:none;'>${e.annContent}</td>
+          <td class="content" style='display:none;'>${e.annContent}</td>
+          <td class="adminID" style='display:none;'>${e.adminID}</td>
+          <td class="comId" style='display:none;'>${e.comId}</td>
           </tr>`
                 );
               })
@@ -227,18 +231,43 @@ $(function () {
   );
 
   $('.search-button').on('click', filterSearch);
+
   $('.tbody').on('click', 'button.table-delete-button', function (e) {
     e.stopPropagation();
     deleteDataById($(this).parent().parent().attr('data-id'));
   });
 
-  $('.detail-close').on('click', function () {
-    $('.row-detail-float-box').css('display', 'none');
+  $('.tbody').on('click', 'button.table-edit-button', function (e) {
+    e.stopPropagation();
+    // console.log($(this).closest('tr').find('td').eq(4).text());
+    sessionStorage.setItem(
+      'ann-edit',
+      JSON.stringify({
+        ann_id: $(this).closest('tr').attr('data-id'),
+        ann_title: $(this).closest('tr').find('.td-height').eq(0).text(),
+        ann_time: $(this).closest('tr').find('.td-height').eq(1).text(),
+        ann_content: $(this).closest('tr').find('td').eq(4).text(),
+        admin_id: $(this).closest('tr').find('td').eq(5).text(),
+        com_id: $(this).closest('tr').find('td').eq(6).text(),
+      })
+    );
+    location.href = '/html/admin_ann_edit.html';
+  });
+
+  $('.detail-close').on('click', function (e) {
+    // $('.row-detail-float-box').css('display', 'none');
+    // console.log('uufwfef');
+    // e.preventDefault();
+    // location.href('/html/admin_ann_detail.html');
   });
 
   $('input.form-input').on('change', function (e) {
     start_dateflag = false;
     console.log('change');
+  });
+
+  $('input.form-input').on('input', function () {
+    filterSearch();
   });
 
   $('input.form-input').on('keyup', function (e) {
@@ -250,11 +279,23 @@ $(function () {
   });
 
   $('.tbody').on('click', 'tr', function (e) {
-    // console.log('row trig');
-    $('.ann-title').text($(this).children().eq(0).text());
-    $('.ann-time-show').text($(this).children().eq(1).text());
-    $('.ann-content').text($(this).children().eq(4).text());
-    $('.row-detail-float-box').css('display', 'block');
+    e.preventDefault();
+    // console.log($(this).children().eq(0).text());
+    // console.log($(this).children().eq(1).text());
+    // console.log($(this).children().eq(4).text());
+    sessionStorage.setItem(
+      'ann',
+      JSON.stringify({
+        ann_title: $(this).children().eq(0).text(),
+        ann_time: $(this).children().eq(1).text(),
+        ann_content: $(this).children().eq(4).text(),
+      })
+    );
+    location.href = '/html/admin_ann_detail.html';
+  });
+
+  $('.ann-publish-btn').on('click', function (e) {
+    location.href = '/html/admin_ann_publish.html';
   });
 
   cb(start, end);

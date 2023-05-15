@@ -165,7 +165,6 @@ div.custom-container div.company-aside {
   background-color: #3d8ebd;
   padding: 0;
   min-height: calc(100vh - 20px - 20px - 80px);
-  max-width: 150px;
 }
 
 div.custom-container div.company-aside nav.nav-custom ul.nav_list {
@@ -179,7 +178,7 @@ div.custom-container div.company-aside nav.nav-custom ul.nav_list > li a {
   padding: 1rem 0;
   color: #fff;
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
 }
 div.custom-container div.company-aside nav.nav-custom ul.nav_list > li a:hover {
   background-color: #2e3a5b;
@@ -227,7 +226,6 @@ main.main {
   width: 80dvw;
   min-height: 100dvh;
   padding: 20px 20px;
-  margin-left: 20px;
   border: 3px solid #3d8ebd;
   font-size: 1.1rem;
   box-shadow: -5px 0 5px 3px rgba(172, 164, 164, 0.5), 5px 0 5px 3px rgba(172, 164, 164, 0.5), 0 5px 5px 3px rgba(172, 164, 164, 0.5), 0 -5px 5px 3px rgba(172, 164, 164, 0.5);
@@ -280,7 +278,7 @@ main.main {
   margin-bottom: 20px;
 }
 
-.ann-button {
+.ann-publish-btn {
   border: none;
   background-color: #006caa;
   border-radius: 5px;
@@ -290,10 +288,10 @@ main.main {
   min-width: 10dvw;
   text-align: center;
 }
-.ann-button:hover {
+.ann-publish-btn:hover {
   opacity: 0.8;
 }
-.ann-button:active {
+.ann-publish-btn:active {
   opacity: 0.5;
 }
 
@@ -315,7 +313,6 @@ main.main {
 }
 
 .table-edit-button {
-  border: none;
   background-color: #006caa;
   border-radius: 5px;
   color: #fff;
@@ -435,7 +432,6 @@ main.main {
   background-color: #fff;
   cursor: pointer;
   padding: 5px 10px;
-  border: 1px solid #3d8ebd;
   border: none;
   margin-top: 2.4dvh;
 }

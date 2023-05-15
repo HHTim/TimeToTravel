@@ -270,106 +270,44 @@ main.main {
   border-radius: 10px;
 }
 
-div.admin-search-area {
-  white-space: nowrap;
-}
-
-.input-title {
-  margin-top: 10px;
-  text-align: right;
-  font-weight: bolder;
-}
-
-.form-input {
-  display: inline-block;
-  font-size: 1rem;
-  min-width: 15dvw;
-  width: 15dvw;
-  text-align: center;
-  border-radius: 10px;
-  margin-top: 10px;
-}
-
-.div-search {
-  margin-top: 20px;
-  text-align: center;
-}
-
-.admin-btn {
-  border: none;
-  background-color: #006caa;
-  border-radius: 5px;
-  color: #fff;
-  font-size: 1rem;
-  padding: 0.3dvh;
-  min-width: 10dvw;
-  text-align: center;
-}
-.admin-btn:hover {
-  opacity: 0.8;
-}
-.admin-btn:active {
-  opacity: 0.5;
-}
-
-.result-text {
-  margin-left: 5%;
+h3 {
   margin-top: 2%;
   font-weight: bolder;
-  color: #006caa;
 }
 
-.table-content {
-  display: flex;
+h4 {
+  font-weight: bolder;
+}
+
+.content-bg {
   width: 100%;
   height: 60dvh;
-  margin-top: 1%;
+  margin-top: 2%;
+  padding: 2%;
+  font-size: 1.2rem;
+  font-weight: bolder;
   background-color: #dfdcdc;
   border-radius: 10px;
 }
 
-table {
-  width: 90%;
-  height: 10%;
-  text-align: center;
-  font-weight: 400;
-  color: #fff;
-  margin: 5%;
-  border: 1px solid black;
-}
-table td {
-  color: #333;
-}
-table tr {
-  border: 1px solid #333;
-}
-table thead > tr {
-  background-color: #006caa;
-}
-table thead td {
-  color: #fff;
+.div-back-btn {
+  margin-top: 20px;
+  text-align: right;
 }
 
-tbody {
-  height: 50%;
-}
-
-.btn-query {
+.back-btn {
   border: none;
   background-color: #006caa;
   border-radius: 5px;
   color: #fff;
   font-size: 1rem;
-  min-width: 5dvw;
+  padding: 1% 0;
+  min-width: 10dvw;
   text-align: center;
 }
-.btn-query:hover {
+.back-btn:hover {
   opacity: 0.8;
 }
-.btn-query:active {
+.back-btn:active {
   opacity: 0.5;
-}
-
-.data-text {
-  line-height: 8dvh;
 }

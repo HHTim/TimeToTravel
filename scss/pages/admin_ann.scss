@@ -24,7 +24,6 @@ main.main {
   width: 80dvw;
   min-height: 100dvh;
   padding: 20px 20px;
-  margin-left: 20px;
   // display: flex;
   border: 3px solid $admin-aside-blue;
   font-size: 1.1rem;
@@ -99,7 +98,7 @@ main.main {
   }
 }
 
-.ann-button {
+.ann-publish-btn {
   @include button-body;
 }
 
@@ -108,7 +107,6 @@ main.main {
 }
 
 .table-edit-button {
-  border: none;
   background-color: $primary-blue;
   border-radius: 5px;
   color: $white;
@@ -231,7 +229,6 @@ main.main {
   background-color: $white;
   cursor: pointer;
   padding: 5px 10px;
-  border: 1px solid $admin-aside-blue;
   border: none;
   margin-top: 2.4dvh;
   .span {
