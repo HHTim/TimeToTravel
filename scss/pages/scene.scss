@@ -17,10 +17,10 @@
   // width: auto;
   // height: auto;
   border-radius: 10px; //圓角
-  max-width: 50%;
   float: left;
   margin-right: 10px;
-  width: 200px;
+  width: 100%;
+  height: 100%;
 }
 
 //顯示文字行
@@ -54,6 +54,16 @@
   -moz-box-shadow: 2px 2px 2px 2px #dadada;
   -webkit-box-shadow: 2px 2px 2px 2px #dadada;
   box-shadow: 2px 2px 2px 2px #dadada;
+  max-width: 268px;
+  display: flex;
+  flex-direction: row;
+  width: 33.33%;
+  margin-left: 8px;
+}
+@media (max-width: 768px) {
+  .card {
+    width: 50%; /* 每个CARD占据父元素的1/2宽度 */
+  }
 }
 
 .tabs {
@@ -122,25 +132,73 @@ input[type='text'] {
 }
 
 h4 {
-  background-color: #007bff;
-  max-width: 100%;
+  // background-color: #007bff;
+  // max-width: 100%;
   text-align: center;
-  color: white;
-  border-radius: 5px 5px 0 0;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  // color: white;
+  // border-radius: 5px 5px 0 0;
 }
 
-t1 {
+.t1 {
   display: flex;
   justify-content: center;
-  float: left;
+  // float: left;
+  margin-right: 5px;
+  padding: 2px 2px 2px 2px;
+}
+
+li {
+  display: inline;
+  padding: 2px 2px 2px 2px;
 }
 
 ul {
-  margin: 0 8px 0 8px;
-  padding: 0;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0;
 }
 
-// a {
-//   float: right;
-//   margin: 0 5px 0;
-// }
+a {
+  padding: 1px;
+}
+
+.card2 {
+  margin-bottom: 20px;
+  margin-top: 20px;
+  margin: 20px 20px 20px 20px;
+  border-style: solid;
+  padding: 10px;
+  border-radius: 10px;
+  border-color: #e1e1e1;
+}
+.check_all {
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.checkbox-item {
+  margin-bottom: 10px;
+}
+
+.form_checkbox {
+  font-size: 20px;
+}
+
+.card-title2 {
+  font-size: 15px;
+  font-weight: bold;
+}
+.card-text2 {
+  font-size: 10px;
+}
+
+.card_all {
+  // display: flex;
+  // justify-content: space-between;
+  display: flex;
+  flex-wrap: wrap;
+}
