@@ -11,13 +11,13 @@
 		<script src="https://kit.fontawesome.com/e3af248fb2.js" crossorigin="anonymous" defer></script>
 		<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
 		<!-- 我們自己的 css 檔案，路徑記得改 -->
-		<link rel="stylesheet" href="../css/company_on_shelve.css" />
+		<link rel="stylesheet" href="..//css/gift_on_shelve.css" />
 		<!-- 我們自己的 js 檔案，路徑記得改 -->
 		<script src="../js/template.js" defer></script>
 		<!-- 輪播需要添加 -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 		<!-- title 記得改 -->
-		<title>TimeToTravel | Company_on_shelve</title>
+		<title>TimeToTravel | Gift_on_shelve</title>
 	</head>
 	<body>
 		<!-- Header -->
@@ -114,73 +114,35 @@
 							<button class="btn btn-primary btn__update__gift">新增土產+</button>
 							<button class="btn btn-primary btn__update__private__scene">新增景點+</button>
 						</div>
-						<div class="room__type">
-							<span class="room__name">
-								<h3 class="room__name__title">房型名稱</h3>
-								<input type="text" placeholder="請輸入房名..." />
+						<div class="gift">
+							<span class="gift__name">
+								<h3 class="gift__name__title">商品名稱</h3>
+								<input type="text" placeholder="請輸入商品..." />
 							</span>
 							<div>
-								<span class="room__equip">
-									<h3 class="room__equip__title">房型設備</h3>
-									<section class="room__equip__options col-10">
-										<select name="room__equip__options__bed" class="room__equip__options__bed">
-											<option disabled selected hidden>床位</option>
-											<optgroup label="單人房">
-												<option value="">單人房: 一張雙人床</option>
-												<option value="">單人房: 一張單人床</option>
-											</optgroup>
-											<optgroup label="雙人房">
-												<option value="">雙人房: 一張雙人床</option>
-												<option value="">雙人房: 二張單人床</option>
-											</optgroup>
-											<optgroup label="四人房">
-												<option value="">四人房: 二張雙人床</option>
-												<option value="">四人房: 四張單人床</option>
-											</optgroup>
-										</select>
-										<select name="room__equip__options__service24hr" class="room__equip__options__service24hr">
-											<option disabled selected hidden>24小時櫃台服務</option>
-											<option value="">櫃台有24小時服務</option>
-											<option value="">櫃台有24小時服務</option>
-										</select>
-										<select name="room__equip__options__smoking" class="room__equip__options__smoking">
-											<option disabled selected hidden>是否可吸菸</option>
-											<option value="">屋內可以吸菸</option>
-											<option value="">屋內不可吸菸</option>
-										</select>
-										<select name="room__equip__options__pets" class="room__equip__options__pets">
-											<option disabled selected hidden>寵物有善</option>
-											<option value="">可以攜帶寵物</option>
-											<option value="">不可攜帶寵物</option>
-										</select>
-										<select name="room__equip__options__wifi" class="room__equip__options__wifi">
-											<option disabled selected hidden>WIFI</option>
-											<option value="">有 WIFI</option>
-											<option value="">無 WIFI</option>
-										</select>
-										<select name="room__equip__options__breakfast" class="room__equip__options__breakfast">
-											<option disabled selected hidden>早餐</option>
-											<option value="">有附早餐</option>
-											<option value="">不附早餐</option>
-										</select>
-										<select name="room__equip__options__parking" class="room__equip__options__parking">
-											<option disabled selected hidden>停車場</option>
-											<option value="">有附車位</option>
-											<option value="">不附車位</option>
-										</select>
-									</section>
+								<span class="gift__stock">
+									<h3 class="gift__stock__title">商品庫存數量</h3>
+									<input type="text" placeholder="請輸入數量..." />
 								</span>
-								<span class="room__price">
-									<h3 class="room__price__title">房型價格</h3>
-									<input type="text" placeholder="請輸入售價..." />
+								<span class="gift__type">
+									<h3 class="gift__type__title">土產類別</h3>
+									<select name="gift__type__option" class="gift__type__option">
+										<option disabled selected hidden>請選擇</option>
+										<option value="">好吃的</option>
+										<option value="">不好吃的</option>
+									</select>
 								</span>
-								<span class="room__photo">
-									<h3 class="room__photo__title">房型照片</h3>
+								<span class="gift__price">
+									<h3 class="gift__price__title">商品價格</h3>
+									<input type="text" placeholder="請輸入價格...">
+								</span>
+								<span class="gift__photo">
+									<h3 class="gift__photo__title">商品照片</h3>
 									<input type="file" />
 								</span>
-								<span class="room__description">
-									<h3 class="room__description__title">房型介紹</h3>
-									<textarea id="room__description__content" name="room__description__content" rows="20" cols="50"> </textarea>
+								<span class="gift__description">
+									<h3 class="gift__description__title">商品介紹</h3>
+									<textarea id="gift__description__content" name="gift__description__content" rows="20" cols="50"> </textarea>
 								</span>
 								<span class="save__btn">
 									<button class="btn btn-primary save__btn__commit">儲存</button>
