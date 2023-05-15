@@ -46,3 +46,32 @@ p {
   margin: 0;
   padding: 0;
 }
+
+main.main {
+  width: 80dvw;
+  min-height: calc(100vh - 20px - 20px - 16px - 80px);
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+  border: 3px solid $admin-aside-blue;
+  font-size: 1.1rem;
+  box-shadow: -5px 0 5px 3px rgba(172, 164, 164, 0.5), 5px 0 5px 3px rgba(172, 164, 164, 0.5),
+    0 5px 5px 3px rgba(172, 164, 164, 0.5), 0 -5px 5px 3px rgba(172, 164, 164, 0.5);
+}
+
+.subtitle {
+  width: 100%;
+  position: relative;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+
+  &::after {
+    content: '';
+    height: 5px;
+    width: 100%;
+    background-color: $primary-blue;
+    position: absolute;
+    left: 0;
+    bottom: -50%;
+  }
+}
