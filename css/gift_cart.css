@@ -343,6 +343,11 @@ main.main {
 
 ol.breadcrumb {
   border-bottom: 3px solid #006caa;
+  padding-bottom: 5px;
+}
+
+main.main li.active {
+  color: #2029f4;
 }
 
 table.cart-table {
@@ -370,6 +375,7 @@ table.cart-table th:nth-child(3) {
 
 table.cart-table tbody tr {
   text-align: center;
+  border-bottom: 1px solid #bbb8b8;
 }
 
 table.cart-table td {
@@ -389,4 +395,27 @@ table.cart-table td:nth-child(3) {
 
 table.cart-table img {
   margin-right: 10px;
+}
+
+div.total {
+  margin-top: 10px;
+  font-size: 1.3rem;
+}
+
+div.total div:nth-child(2) {
+  text-align: right;
+  padding: 0;
+}
+
+div.total div:nth-child(3) {
+  text-align: left;
+  padding: 0;
+}
+
+div.gotocheck {
+  margin-top: 10px;
+}
+
+div.gotocheck div:nth-child(2) {
+  text-align: right;
 }

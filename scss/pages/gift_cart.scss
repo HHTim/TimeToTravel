@@ -59,6 +59,11 @@ main.main {
 
 ol.breadcrumb {
   border-bottom: 3px solid $primary-blue;
+  padding-bottom: 5px;
+}
+
+main.main li.active {
+  color: $secondary-blue;
 }
 
 table.cart-table {
@@ -86,6 +91,7 @@ table.cart-table th:nth-child(3) {
 
 table.cart-table tbody tr {
   text-align: center;
+  border-bottom: $custom-border;
 }
 
 table.cart-table td {
@@ -107,10 +113,27 @@ table.cart-table img {
   margin-right: 10px;
 }
 
+div.total {
+  margin-top: 10px;
+  font-size: 1.3rem;
+}
 
+div.total div:nth-child(2) {
+  text-align: right;
+  padding: 0;
+}
 
+div.total div:nth-child(3) {
+  text-align: left;
+  padding: 0;
+}
 
+div.gotocheck {
+  margin-top: 10px;
+}
 
-
+div.gotocheck div:nth-child(2) {
+  text-align: right;
+}
 
 
