@@ -48,7 +48,6 @@ body {
   margin: 0;
 }
 
-
 /* ================= main 區域 ================= */
 main.main {
   width: 80dvw;
@@ -58,7 +57,6 @@ main.main {
   font-size: 1.1rem;
   box-shadow: -5px 0 5px 3px rgba(172, 164, 164, 0.5), 5px 0 5px 3px rgba(172, 164, 164, 0.5),
     0 5px 5px 3px rgba(172, 164, 164, 0.5), 0 -5px 5px 3px rgba(172, 164, 164, 0.5);
-  margin: 0 20px;
 }
 
 div.r1 {
@@ -75,7 +73,7 @@ div.r1 button {
   min-width: 90px;
 
   border: $normal-border;
-  border-radius: $border-radius;  
+  border-radius: $border-radius;
 }
 
 main.main div.decorator {
@@ -114,7 +112,7 @@ div.type-choose {
 
 div.type-choose label {
   min-width: 50px;
-  margin: 0 auto;
+  margin-right: 10px;
 }
 
 button.btn-info {
@@ -130,14 +128,48 @@ div.impl-btn div.search-btn button {
   min-width: 70%;
 
   border: $custom-border;
-  border-radius: $border-radius;  
+  border-radius: $border-radius;
 
   background-color: $primary-blue;
   color: $white;
 }
 
+div.manage-type {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 40px;
+}
 
+div.manage-type div {
+  min-width: 70px;
+  text-align: center;
+  background-color: $secondary-gray;
+  border-radius: $border-radius $border-radius 0 0;
+}
 
+.gift-table {
+  border-top: 3px solid $primary-blue;
+}
 
+th,
+td {
+  text-align: center;
+}
 
+tr td:nth-child(2),
+th:nth-child(2) {
+  min-width: 125px;
+}
 
+tbody tr {
+  height: 50px;
+}
+
+.-ontype {
+  background-color: $primary-blue !important;
+  color: $white;
+
+  a:hover {
+    color: $white;
+  }
+}
