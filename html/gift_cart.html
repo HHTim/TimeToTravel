@@ -10,14 +10,14 @@
     <script src="../node_modules/jquery/dist/jquery.min.js" defer></script>
     <script src="https://kit.fontawesome.com/e3af248fb2.js" crossorigin="anonymous" defer></script>
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
-    <!-- 我們自己的 js 檔案，路徑記得改 -->
-    <link rel="stylesheet" href="../css/template.css" />
     <!-- 我們自己的 css 檔案，路徑記得改 -->
-    <script src="../js/template.js" defer></script>
+    <link rel="stylesheet" href="../css/gift_cart.css" />
+    <!-- 我們自己的 js 檔案，路徑記得改 -->
+    <script src="../js/gift_cart.js" defer></script>
     <!-- 輪播需要添加 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- title 記得改 -->
-    <title>TimeToTravel | Template</title>
+    <title>TimeToTravel | Gift Cart</title>
   </head>
   <body>
     <!-- Header -->
@@ -71,37 +71,57 @@
     <!-- Header End -->
     <div class="container-fluid custom-container">
       <div class="row">
-        <div class="col-2 company-aside">
-          <!--Company Aside -->
-          <aside>
-            <nav class="nav-custom">
-              <ul class="nav_list">
-                <li><a href="#">商品訂單管理</a></li>
-                <li><a href="#">公告管理</a></li>
-                <li><a href="#">訊息管理</a></li>
-                <li><a href="#">商家管理</a></li>
-                <li><a href="#">消費者管理</a></li>
-              </ul>
-            </nav>
-          </aside>
-          <!--Company Aside End -->
-        </div>
-        <div class="col-10">
+        <div class="col-12 gift_cart">
           <!-- Main -->
           <!-- Main區塊以下為測試用，可刪 -->
           <main class="main">
-            <h2 class="subtitle">Title</h2>
-            <!-- test bootstrap style -->
-            <button class="btn btn-primary btn-test-1">Test1</button>
-            <button class="btn btn-danger btn-test-2">Test2</button>
-            <button class="btn btn-success btn-test-3">Test3</button>
-            <!-- test jquery -->
-            <button class="btn-test-jquery">Click Me</button>
-            <!-- test font awesome -->
-            <i class="fa-brands fa-facebook"></i>
-            <i class="fa-brands fa-google"></i>
-            <i class="fa-brands fa-twitter"></i>
-            <i class="fa-brands fa-youtube"></i>
+            <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">土產列表</a></li>
+                <li class="breadcrumb-item active" aria-current="page">購物車</li>
+              </ol>
+            </nav>
+            <table class="cart-table">
+              <thead>
+                <tr>
+                  <th>土產明細</th>
+                  <th>單價</th>
+                  <th>數量</th>
+                  <th>小計</th>
+                  <th>取消</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><img src="#" alt="這是圖片">蛇肉串燒</td>
+                  <td>$3800</td>
+                  <td>3</td>
+                  <td>$11400</td>
+                  <td><button type="button" class="btn btn-danger">刪除</button></td>
+                </tr>
+                <tr>
+                  <td><img src="#" alt="這是圖片">蛇肉串燒</td>
+                  <td>$3800</td>
+                  <td>3</td>
+                  <td>$11400</td>
+                  <td><button type="button" class="btn btn-danger">刪除</button></td>
+                </tr>
+                <tr>
+                  <td><img src="#" alt="這是圖片">蛇肉串燒</td>
+                  <td>$3800</td>
+                  <td>3</td>
+                  <td>$11400</td>
+                  <td><button type="button" class="btn btn-danger">刪除</button></td>
+                </tr>
+                <tr>
+                  <td><img src="#" alt="這是圖片">蛇肉串燒</td>
+                  <td>$3800</td>
+                  <td>3</td>
+                  <td>$11400</td>
+                  <td><button type="button" class="btn btn-danger">刪除</button></td>
+                </tr>
+              </tbody>
+            </table>
           </main>
           <!-- Main End -->
         </div>
