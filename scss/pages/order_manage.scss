@@ -1,0 +1,154 @@
+@import '../base/base';
+
+main * {
+  font-size: 16px;
+}
+
+.select {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+
+  &__title {
+    width: 100%;
+    font-weight: bold;
+  }
+
+  &__input {
+    display: inline-block;
+    border: none;
+    box-shadow: $shadow;
+    padding: 0.25rem;
+    border-radius: 5px 0 0 5px;
+  }
+
+  &__submit {
+    display: inline-block;
+    border: none;
+    background-color: $primary-blue;
+    color: $white;
+    padding: 0.3rem;
+    border-radius: 0 5px 5px 0;
+
+    &:hover {
+      background-color: $primary-blue-hover;
+    }
+  }
+}
+
+.list {
+  margin-top: 1rem;
+
+  thead {
+    background-color: $primary-blue;
+    color: $white;
+  }
+
+  &__table {
+    border-radius: $border-radius;
+    text-align: center;
+  }
+
+  &__btn button {
+    border: none;
+    background-color: $primary-blue;
+    color: $white;
+    padding: 0 0.25rem;
+    border-radius: $input-radius;
+
+    &:hover {
+      background-color: $primary-blue-hover;
+    }
+  }
+
+  .active {
+    .bill {
+      max-height: 450px;
+    }
+  }
+}
+
+.bill {
+  width: 100%;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+
+  &__content {
+    width: 100%;
+    margin: auto;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0.5rem;
+    text-align: left;
+    background-color: inherit;
+  }
+
+  &__card {
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+    line-height: 2;
+  }
+
+  &__title {
+    width: 100%;
+    color: $primary-blue;
+    font-weight: bold;
+  }
+
+  &__item {
+    width: 50%;
+    display: inline-block;
+    font-weight: bold;
+  }
+
+  &__value {
+    width: 50%;
+  }
+}
+
+.amount {
+  position: relative;
+  width: 100%;
+  padding-top: 0.5rem;
+  display: flex;
+  align-items: center;
+
+  &::before {
+    content: '';
+    height: 5px;
+    width: 100%;
+    background-color: $primary-blue;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  &__item {
+    width: 50%;
+    font-weight: bold;
+  }
+
+  &__value {
+    width: 50%;
+    font-weight: bold;
+  }
+}
+
+.page {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  margin-top: 1rem;
+
+  .pagination {
+    padding: 0;
+    margin: 0;
+    align-items: center;
+    justify-content: center;
+  }
+}
