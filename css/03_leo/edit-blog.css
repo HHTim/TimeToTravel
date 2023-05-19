@@ -1,0 +1,43 @@
+.button-1{
+    background-color: #4ba7eedd;
+    border: 1px solid #4ba7eedd;
+    padding: 3px;
+    border-radius: 3px;
+    margin-bottom: 5px;
+  }
+.button-1:hover{
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+  }
+.post-article-out{
+    width: 750px;
+    /* min-height: 800px; this is  for test */
+    border: 1px slategrey solid;
+    border-radius: 15px;
+    background: whitesmoke;
+    padding: 15px;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+.post-article-main{
+    border: 1px whitesmoke solid;
+    border-radius: 15px;
+    background: #4ba7eedd;
+    padding: 15px;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.form-label{
+    font-size: 18px;
+    color: rgb(8, 56, 145) ;
+    font-weight: bolder ; 
+}
+.create-tag-btn{
+    border: 2px solid rgb(77, 77, 197);
+    background-color: rgb(46, 167, 214);
+    border-radius: 3px;
+}
+.create-tag-btn:hover{
+    border: 2px solid rgb(77, 77, 197);
+    background-color: rgb(19, 146, 196);
+    border-radius: 3px;
+}

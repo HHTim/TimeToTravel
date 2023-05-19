@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- https://blog.pulipuli.info/2017/08/htmltinymce-online-html-editor.html -->
+  <!-- <html manifest="offline.manifest"> 指定緩存 路徑檔(只是要用到那些)-->
+  <title>TimeToTravel | publish an article</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- import -->
+  <script src="../../node_modules/@popperjs/core/dist/umd/popper.min.js" defer></script>
+  <script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js" defer></script>
+  <script src="../../node_modules/jquery/dist/jquery.min.js" defer></script>
+  <script src="https://kit.fontawesome.com/e3af248fb2.js" crossorigin="anonymous" defer></script>
+  <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+  <!-- 我們自己的 js 檔案，路徑記得改 -->
+  <link rel="stylesheet" href="../../css/template.css" />
+  <link rel="stylesheet" href="../../css/03_leo/style-global.css" />
+  <link rel="stylesheet" href="../../css/03_leo/edit-blog.css" />
+  <!-- 我們自己的 css 檔案，路徑記得改 -->
+  <script src="../../js/template.js" defer></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <!-- this is for old version original <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script> -->
+  <script src="./edit_blog/vender/clipboard.min.js"></script>
+
+</head>
+
+<body>
+  <div class="decorator"></div>
+  <header>
+    <div class="container-fluid header__container">
+      <h1 class="logo">
+        <a href="#" class="logo__link">
+          <img src="../../images/LOGO.png" alt="logo" class="logo__img" />
+        </a>
+      </h1>
+      <nav>
+        <ul class="nav">
+          <li class="nav__link"><a href="#">我的訂單</a></li>
+          <li class="nav__link"><a href="#">購物車</a></li>
+          <li class="nav__link"><a href="#">部落格</a></li>
+          <li class="nav__info">
+            <div class="dropdown-center">
+              <button class="dropdown-toggle nav__info-btn" type="button" data-bs-toggle="dropdown"></button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">訊息一</a></li>
+                <li><a class="dropdown-item" href="#">訊息二</a></li>
+                <li><a class="dropdown-item" href="#">訊息三</a></li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
+                <li><a class="dropdown-item" href="#">See More</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav__avatar">
+            <div class="dropdown-center">
+              <!-- <button class="dropdown-toggle nav__avatar-btn" type="button" data-bs-toggle="dropdown"></button> -->
+              <a href="#" class="dropdown-toggle nav__avatar-btn" type="button" data-bs-toggle="dropdown">
+                <div class="nav__avatar-img">
+                  <img src="../../images/avatar.svg" alt="avatar" />
+                </div>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">註冊</a></li>
+                <li><a class="dropdown-item" href="#">登入</a></li>
+                <li><a class="dropdown-item" href="#">其他</a></li>
+                <li><a class="dropdown-item" href="#">其他</a></li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
+                <li><a class="dropdown-item" href="#">登出</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <!--  -->
+  <div class="row margin-center ">
+    <div class="col test2 text-align-center">留白廣告</div>
+    <div class="col">
+      <div class="post-article-out test2 row">
+        <div>
+          <button class="button-1">回上頁</button>
+        </div>
+        <div class="post-article-main col-12">
+
+          <form>
+            <label for="article-title" class="form-label">文章標題</label>
+            <input type="text" class="form-control" placeholder="輸入主題" id="article-title" name="article-title"
+              required />
+
+            <label for="article-type" class="form-label">文章類型</label>
+            <select class="form-select" id="article-type" name="article-type" required>
+              <!-- <option disabled selected>請選擇文章類型</option> -->
+              <option  selected value="問題">問題</option>
+              <option value="情報">情報</option>
+              <option value="心得">心得</option>
+              <option value="討論">討論</option>
+              <option value="攻略">攻略</option>
+              <option value="其他">其他</option>
+            </select>
+
+            <div class="text-align-left  search-tag pt-3">
+              <label for="article-tags" class="form-label">文章標籤</label>
+              <input type="text" id="article-tags-input" placeholder="輸入標籤" class="" size="10">
+              <button id="create-tag-btn" class="create-tag-btn">+建立標籤</button>
+              <div id="tags-container" class="inline-block"> </div>
+              <span class="" id="hint-msg"></span>
+            </div>
+
+            <label for="article-image" class="form-label">上傳圖片</label>
+            <input type="file" class="form-control" id="article-image" name="article-image" accept="image/*" />
+
+            <label for="article-content" class="form-label">文章內容</label>
+            <textarea class="form-control" id="article-content" name="article-content" rows="6" required></textarea>
+
+            <button type="submit" class="btn btn-success m-3">發佈文章</button>
+          </form>
+
+          <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+          <script>
+            $(document).ready(function () {
+              var tagsArray = [];
+              var colorClasses = ["bg-primary", "bg-secondary", "bg-success", "bg-danger"];
+              var colorIndex = 0;
+
+              // Function to create a new tag
+              function createTag() {
+                var tagText = $('#article-tags-input').val().trim();
+                if (tagText !== '') {
+                  if (tagsArray.includes(tagText)) {
+                    $('#hint-msg').text('標籤已新增');
+                    return;
+                  }
+                  var tagElement = $('<span class="badge tag-badge m-1"></span>').text(tagText);
+                  var colorClass = colorClasses[colorIndex % colorClasses.length];
+                  tagElement.addClass(colorClass);
+                  colorIndex++;
+                  $('#tags-container').prepend(tagElement);
+                  tagsArray.push(tagText);
+                  $('#article-tags-input').val('');
+                  $('#hint-msg').text('');
+                } else {
+                  $('#hint-msg').text('請輸入標籤');
+                }
+              }
+
+              // Event handler for create tag button
+              $('#create-tag-btn').click(function () {
+                createTag();
+              });
+
+              // Event handler for input field enter key
+              $('#article-tags-input').keypress(function (e) {
+                if (e.which === 13) {
+                  createTag();
+                  return false;
+                }
+              });
+
+              // Event handler for removing a tag
+              $(document).on('click', '.tag-badge', function () {
+                var tagText = $(this).text();
+                var tagIndex = tagsArray.indexOf(tagText);
+                if (tagIndex > -1) {
+                  tagsArray.splice(tagIndex, 1);
+                }
+                $(this).remove();
+              });
+
+              // Event handler for form submission
+              $('form').submit(function (e) {
+                e.preventDefault();
+                var articleTitle = $('#article-title').val();
+                var articleType = $('#article-type').val();
+                var articleTags = tagsArray.join(', ');
+                var articleContent = $('#article-content').val();
+                var articleData = {
+                  title: articleTitle,
+                  type: articleType,
+                  tags: articleTags,
+                  content: articleContent
+                };
+                var confirmation = confirm('確定要發佈文章吗？');
+                if (confirmation) {
+                  // console.log('文章標題:', articleTitle);
+                  // console.log('文章類型:', articleType);
+                  // console.log('文章標籤:', articleTags);
+                  // console.log('文章內容:', articleContent);
+                  console.log(articleData);
+                }
+
+              });
+            });
+          </script>
+
+
+          <!--original code  <input type="text" name="file_name" id="file_name" placeholder="文章標題" value="file name {timestamp}" /> -->
+          <!--original code <textarea id="file_content">Content</textarea> -->
+          <!-- <button id="publish-button" class="get-html-in-console">666</button>
+          <script>
+            // test for get html
+            document.getElementById('publish-button').addEventListener('click', function () {
+              var htmlContent = document.getElementById('article-content').value;
+              console.log(htmlContent);
+            });
+          </script> -->
+
+        </div>
+
+      </div>
+    </div>
+    <div class="col test2 text-align-center ">留白廣告</div>
+  </div>
+
+
+  <!--  -->
+  <footer>
+    <div class="footer"></div>
+  </footer>
+
+  <script src="./edit_blog/vender/tinymce-4/tinymce.min.js"></script>
+  <script src="./edit_blog/script.js"></script>
+</body>
+
+</html>
