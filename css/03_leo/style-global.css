@@ -12,6 +12,12 @@ html {
   position: relative;
   /* pr */
 }
+
+img.test2 {
+ /* aspect-ratio: ;  */
+ /* 長寬比 */
+}
+
 .position-fixed {
   position: fixed;
 }
@@ -44,6 +50,9 @@ html {
 .float-left {
   float: left;
   /* fl */
+}
+.display-flex{
+  display: flex;
 }
 
 .inline-block {
@@ -86,7 +95,8 @@ ul {
   border: solid 1px rgba(24, 24, 24, 0);
 }
 .test2 {
-  border: solid 1px rgba(128, 0, 128, 0);
+  /* border: solid 1px rgba(128, 0, 128, 0); */
+  border: solid 1px red;
 }
 /* color usage def global------------美工部分-------- */
 img {
