@@ -32,10 +32,34 @@ main.main {
 		0 5px 5px 3px rgba(172, 164, 164, 0.5), 0 -5px 5px 3px rgba(172, 164, 164, 0.5);
 }
 
-h2.subtitle {
+h3.subtitle {
 	display: flex;
 	justify-content: space-around;
 	font-size: x-large;
+}
+
+div.r1 {
+	font-size: 1.2rem;
+	font-weight: bold;
+}
+
+div.r1 div {
+	text-align: center;
+}
+
+div.r1 button {
+	font-size: 1rem;
+	min-width: 90px;
+
+	border: $normal-border;
+	border-radius: $border-radius;
+}
+
+main.main div.decorator {
+	width: 100%;
+	height: 5px;
+	background-color: $primary-blue;
+	margin: 20px 0 25px 0;
 }
 
 .update__btn__area button {
@@ -49,6 +73,23 @@ h2.subtitle {
 	&:hover {
 		background-color: $primary-blue-hover;
 		color: $font-normal-white;
+	}
+}
+
+.reset__area {
+	display: flex;
+	justify-content: end;
+	padding-right: 2rem;
+
+	&__btn {
+		padding: 10px;
+		font-weight: bold;
+		font-size: larger;
+
+		&:hover {
+			background-color: $primary-blue-hover;
+			color: $font-normal-white;
+		}
 	}
 }
 
@@ -66,7 +107,7 @@ h2.subtitle {
 		bottom: -50%;
 	}
 
-	&__title{
+	&__title {
 		margin: auto 1rem auto 0;
 		font-weight: bold;
 		white-space: nowrap;
@@ -75,7 +116,8 @@ h2.subtitle {
 		border-radius: $input-radius;
 		border-color: $admin-aside-blue;
 		padding: 0 10px;
-		outline-style: none;
+		border-style: none;
+		border: 2px solid $admin-aside-blue;
 		font-weight: bold;
 		height: 3rem;
 		margin-left: 4.5rem;
@@ -85,7 +127,7 @@ h2.subtitle {
 .primary__scene__address {
 	display: flex;
 	margin: auto auto 2rem 1rem;
-	
+
 	&__title {
 		font-weight: bold;
 		white-space: nowrap;
@@ -97,7 +139,8 @@ h2.subtitle {
 		margin-left: 5.5rem;
 		border-color: $admin-aside-blue;
 		padding: 0 10px;
-		outline-style: none;
+		border-style: none;
+		border: 2px solid $admin-aside-blue;
 		font-weight: bold;
 		height: 3rem;
 	}
@@ -106,7 +149,7 @@ h2.subtitle {
 .primary__scene__distance {
 	display: flex;
 	margin-left: 1rem;
-	
+
 	&__title {
 		font-weight: bold;
 		white-space: nowrap;
@@ -119,7 +162,8 @@ h2.subtitle {
 		margin-left: 3.8rem;
 		border-color: $admin-aside-blue;
 		padding: 0 10px;
-		outline-style: none;
+		border-style: none;
+		border: 2px solid $admin-aside-blue;
 		font-weight: bold;
 		height: 3rem;
 	}
@@ -129,7 +173,6 @@ h2.subtitle {
 	display: flex;
 	margin: 1rem auto 1.5rem 1rem;
 	height: 5rem;
-	
 
 	&__title {
 		font-weight: bold;
@@ -147,26 +190,25 @@ h2.subtitle {
 	}
 }
 
-.primary__scene__description{
+.primary__scene__description {
 	display: flex;
 	margin-left: 1rem;
-	&__title{
+	&__title {
 		font-weight: bold;
 		white-space: nowrap;
 		display: flex;
 		align-items: start;
-		
 	}
 	& textarea {
 		border-radius: $input-radius;
 		margin-left: 3rem;
 		border-color: $admin-aside-blue;
 		padding: 0 10px;
-		outline-style: none;
+		border-style: none;
+		border: 2px solid $admin-aside-blue;
 		font-weight: bold;
 		height: 20rem;
-		width: 100%
-		
+		width: 100%;
 	}
 }
 
@@ -181,8 +223,7 @@ h2.subtitle {
 		padding: 10px;
 		font-weight: bold;
 		font-size: larger;
-	
-	
+
 		&:hover {
 			background-color: $primary-blue-hover;
 			color: $font-normal-white;

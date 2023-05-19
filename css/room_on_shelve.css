@@ -345,6 +345,12 @@ main.main div.decorator {
   margin: 20px 0 25px 0;
 }
 
+div.nav-btn {
+  text-align: center;
+  align-items: center;
+  margin: 0 0 20px 0;
+}
+
 .update__btn__area button {
   background-color: #006caa;
   border: 1px solid #333;
@@ -373,12 +379,12 @@ main.main div.decorator {
   color: #fff;
 }
 
-.gift__name {
+.room__name {
   display: flex;
   margin: 2rem auto 3rem 1rem;
   position: relative;
 }
-.gift__name::after {
+.room__name::after {
   content: "";
   height: 5px;
   width: 100%;
@@ -387,127 +393,153 @@ main.main div.decorator {
   left: 0;
   bottom: -50%;
 }
-.gift__name__title {
+.room__name__title, .room__name__classify {
   margin: auto 1rem auto 0;
   font-weight: bold;
   white-space: nowrap;
 }
-.gift__name input {
+.room__name input {
   border-radius: 5px;
   border-color: #3d8ebd;
   padding: 0 10px;
-  border-style: none;
-  border: 2px solid #3d8ebd;
   font-weight: bold;
   height: 3rem;
-  margin-left: 4.5rem;
+  margin-left: 2.2rem;
+  border-style: none;
+  border: 2px solid #3d8ebd;
 }
 
-.gift__stock {
+.room__equip {
   display: flex;
   margin: 2rem auto;
 }
-.gift__stock__title {
+.room__equip__title {
   font-weight: bold;
   margin-left: 1rem;
   white-space: nowrap;
   display: flex;
   align-items: center;
 }
-.gift__stock input {
+.room__equip__options {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin-left: 2.5rem;
+}
+.room__equip__options__bed {
+  font-weight: bold;
   border-radius: 5px;
   border-color: #3d8ebd;
-  padding: 0 10px;
+  height: 3rem;
   border-style: none;
   border: 2px solid #3d8ebd;
+}
+.room__equip__options__wifi {
   font-weight: bold;
-  height: 3rem;
-  margin-left: 5.5rem;
+  border-radius: 5px;
+  border-color: #3d8ebd;
+  border-style: none;
+  border: 2px solid #3d8ebd;
+}
+.room__equip__options__pets {
+  font-weight: bold;
+  border-radius: 5px;
+  border-color: #3d8ebd;
+  border-style: none;
+  border: 2px solid #3d8ebd;
+}
+.room__equip__options__breakfast {
+  font-weight: bold;
+  border-radius: 5px;
+  border-color: #3d8ebd;
+  border-style: none;
+  border: 2px solid #3d8ebd;
+}
+.room__equip__options__parking {
+  font-weight: bold;
+  border-radius: 5px;
+  border-color: #3d8ebd;
+  border-style: none;
+  border: 2px solid #3d8ebd;
+}
+.room__equip__options__smoking {
+  font-weight: bold;
+  border-radius: 5px;
+  border-color: #3d8ebd;
+  border-style: none;
+  border: 2px solid #3d8ebd;
+}
+.room__equip__options__service24hr {
+  font-weight: bold;
+  border-radius: 5px;
+  border-color: #3d8ebd;
+  border-style: none;
+  border: 2px solid #3d8ebd;
 }
 
-.gift__type {
+.room__price {
   display: flex;
-  margin: 2rem auto 2rem auto;
+  margin: 1rem;
 }
-.gift__type__title {
+.room__price__title {
   font-weight: bold;
-  margin-left: 1rem;
   white-space: nowrap;
   display: flex;
   align-items: center;
 }
-.gift__type__option {
+.room__price input {
   border-radius: 5px;
+  margin-left: 3rem;
   border-color: #3d8ebd;
   padding: 0 10px;
-  border-style: none;
-  border: 2px solid #3d8ebd;
+  outline-style: none;
   font-weight: bold;
   height: 3rem;
-  margin-left: 5.5rem;
-}
-
-.gift__price {
-  display: flex;
-  margin-left: 1rem;
-}
-.gift__price__title {
-  font-weight: bold;
-  white-space: nowrap;
-  display: flex;
-  align-items: center;
-}
-.gift__price input {
-  border-radius: 5px;
-  margin-left: 5.5rem;
-  border-color: #3d8ebd;
-  padding: 0 10px;
   border-style: none;
   border: 2px solid #3d8ebd;
-  font-weight: bold;
-  height: 3rem;
 }
 
-.gift__photo {
+.room__photo {
   display: flex;
-  margin: 1rem auto 1.5rem 1rem;
+  margin: 1rem;
   height: 5rem;
 }
-.gift__photo__title {
+.room__photo__title {
   font-weight: bold;
   white-space: nowrap;
   display: flex;
   align-items: center;
   height: 5rem;
 }
-.gift__photo input {
+.room__photo input {
   border-radius: 5px;
-  margin: 1.5rem auto auto 5.5rem;
+  margin: 1.5rem auto auto 3rem;
   border-color: #3d8ebd;
   font-weight: bold;
   height: 3rem;
 }
 
-.gift__description {
+.room__description {
   display: flex;
   margin-left: 1rem;
 }
-.gift__description__title {
+.room__description__title {
   font-weight: bold;
   white-space: nowrap;
   display: flex;
   align-items: start;
 }
-.gift__description textarea {
+.room__description textarea {
   border-radius: 5px;
   margin-left: 3rem;
   border-color: #3d8ebd;
   padding: 0 10px;
-  border-style: none;
-  border: 2px solid #3d8ebd;
+  outline-style: none;
   font-weight: bold;
   height: 20rem;
   width: 100%;
+  border-style: none;
+  border: 2px solid #3d8ebd;
 }
 
 .save__btn {

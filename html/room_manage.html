@@ -11,13 +11,13 @@
 		<script src="https://kit.fontawesome.com/e3af248fb2.js" crossorigin="anonymous" defer></script>
 		<link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css" />
 		<!-- 我們自己的 css 檔案，路徑記得改 -->
-		<link rel="stylesheet" href="../css/gift_manage.css" />
+		<link rel="stylesheet" href="../css/room_manage.css" />
 		<!-- 我們自己的 js 檔案，路徑記得改 -->
-		<script src="../js/gift_manage.js" defer></script>
+		<script src="../js/room_manage.js" defer></script>
 		<!-- 輪播需要添加 -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 		<!-- title 記得改 -->
-		<title>TimeToTravel | Gift Manage</title>
+		<title>TimeToTravel | Room Manage</title>
 	</head>
 	<body>
 		<!-- Header -->
@@ -117,37 +117,36 @@
 										<input type="text" id="ns" class="name-input" placeholder="你想找什麼...?" />
 									</div>
 								</div>
-								<div class="col-2 gift__type">
-									<select name="gift__type__options" class="gift__type__options">
-										<option disabled selected hidden>商品分類</option>
-										<option value="1">彌月禮盒</option>
-										<option value="2">送禮好用</option>
-										<option value="4">超難吃的</option>
+								<div class="col-2 room__type">
+									<select name="room__type__options" class="room__type__options">
+										<option disabled selected hidden>房型分類</option>
+										<option value="1">單人房</option>
+										<option value="2">雙人房</option>
+										<option value="4">四人房</option>
 									</select>
 								</div>
 								<div class="col-6 search__area">
 									<button class="search__area__btn">搜尋</button>
 								</div>
 							</div>
-
 							<!-- 第四列 -->
 							<div class="row">
 								<div class="col-4 manage-type">
-									<div class="type-1"><a href="#">房型</a></div>
-									<div class="type-2 -ontype"><a href="#">土產</a></div>
+									<div class="type-1 -ontype"><a href="#">房型</a></div>
+									<div class="type-2"><a href="#">土產</a></div>
 									<div class="type-3"><a href="#">景點</a></div>
 								</div>
 								<div class="col-8"></div>
 							</div>
 
 							<!-- 第五列 -->
-							<div class="row gift-table">
+							<div class="row room-table">
 								<table>
 									<thead>
 										<tr>
-											<th>商品名稱</th>
-											<th>商品編號</th>
-											<th>商品分類</th>
+											<th>房型名稱</th>
+											<th>房型編號</th>
+											<th>房型分類</th>
 											<th>價格</th>
 											<th>剩餘數量</th>
 											<th>已售出</th>
@@ -156,14 +155,14 @@
 									</thead>
 									<tbody>
 										<tr>
-											<td>蛇肉</td>
-											<td>snake01</td>
-											<td>彌月美食</td>
+											<td>邊緣單人房</td>
+											<td>Single1</td>
+											<td>單人房</td>
 											<td>$3800</td>
 											<td>20</td>
 											<td>3</td>
 											<td>
-												<select name="gift__status" class="gift__status">
+												<select name="room__status" class="room__status">
 													<option disabled selected hidden>狀態</option>
 													<option value="">上架</option>
 													<option value="">下架</option>
