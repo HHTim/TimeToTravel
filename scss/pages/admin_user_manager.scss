@@ -90,20 +90,19 @@ main.main {
 }
 
 .top-container {
-  height: 10dvh;
+  min-height: 10dvh;
   width: 100%;
   display: flex;
-  white-space: nowrap;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
   .left-container {
     width: 50%;
-    height: 10dvh;
-    line-height: 10dvh;
     text-align: left;
   }
   .right-container {
     width: 50%;
-    height: 10dvh;
-    line-height: 10dvh;
     text-align: right;
   }
 }
@@ -132,11 +131,7 @@ main.main {
   background-color: $primary-blue;
   border-radius: 5px;
   color: $white;
-  font-size: 1rem;
-
   width: 10dvw;
-  height: 6dvh;
-  line-height: 6dvh;
   text-align: center;
   &:hover {
     opacity: 0.8;
@@ -153,12 +148,53 @@ main.main {
 
 .btn-query {
   border: none;
-  background-color: #006caa;
+  background-color: $primary-blue;
   border-radius: 5px;
-  color: #fff;
+  color: $white;
   font-size: 1rem;
   min-width: 5dvw;
   text-align: center;
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:active {
+    opacity: 0.5;
+  }
+}
+
+.btn-forbidden {
+  border: none;
+  background-color: $danger-red;
+  border-radius: 5px;
+  color: $white;
+  font-size: 1rem;
+  min-width: 5dvw;
+  text-align: center;
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:active {
+    opacity: 0.5;
+  }
+}
+
+.btn-warning {
+  border: none;
+  background-color: $primary-gold;
+  border-radius: 5px;
+  color: $black;
+  font-size: 1rem;
+  min-width: 5dvw;
+  text-align: center;
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:active {
+    opacity: 0.5;
+  }
 }
 
 .result-text {
@@ -192,7 +228,13 @@ table {
   tr {
     border: 1px solid $black;
   }
-  thead > tr {
+  tr:nth-child(2n + 1) {
+    background-color: $primary-gray;
+  }
+  tr:nth-child(2n) {
+    background-color: $secondary-gray;
+  }
+  thead tr:first-child {
     background-color: $primary-blue;
   }
   thead td {

@@ -76,7 +76,7 @@ main.main {
 .form-input {
   display: inline-block;
   font-size: 1rem;
-  min-width: 13dvw;
+  min-width: 100px;
   width: 13dvw;
   margin-left: 20px;
   text-align: center;
@@ -90,15 +90,36 @@ main.main {
 }
 
 .top-container {
+  margin-top: 10px;
   width: 100%;
   display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  white-space: nowrap;
   .left-container {
     width: 50%;
+    min-width: 300px;
     text-align: left;
   }
   .right-container {
     width: 50%;
     text-align: right;
+    white-space: nowrap;
+  }
+}
+
+#reportrange {
+  background-color: $white;
+  cursor: pointer;
+  border: 1px solid $primary-blue;
+  padding: 5px;
+  border-radius: $border-radius;
+
+  right: 0;
+  .span {
+    font-size: 1.2dvw;
   }
 }
 
@@ -134,7 +155,8 @@ main.main {
   border-radius: 5px;
   color: $white;
   font-size: 1rem;
-  min-width: 5dvw;
+  min-width: 6dvw;
+  padding: 1% 0px;
   text-align: center;
   &:hover {
     opacity: 0.8;
@@ -145,13 +167,14 @@ main.main {
   }
 }
 
-.btn-forbidden {
+.btn-send {
   border: none;
-  background-color: $danger-red;
+  background-color: $primary-blue;
   border-radius: 5px;
   color: $white;
   font-size: 1rem;
-  min-width: 5dvw;
+  min-width: 10dvw;
+  padding: 1% 0px;
   text-align: center;
   &:hover {
     opacity: 0.8;
@@ -162,21 +185,36 @@ main.main {
   }
 }
 
-.btn-warning {
-  border: none;
-  background-color: $primary-gold;
-  border-radius: 5px;
-  color: $black;
-  font-size: 1rem;
-  min-width: 5dvw;
-  text-align: center;
-  &:hover {
-    opacity: 0.8;
-  }
+.content-container {
+  display: flex;
+}
 
-  &:active {
-    opacity: 0.5;
-  }
+.tab-user {
+  border: none;
+  height: 10%;
+  background-color: $primary-blue;
+  border-top-left-radius: $border-radius;
+  border-top-right-radius: $border-radius;
+  color: $white;
+  font-size: 1rem;
+  width: 10dvw;
+  min-width: 100px;
+  padding: 1% 0px;
+  text-align: center;
+}
+
+.tab-company {
+  border: none;
+  height: 10%;
+  background-color: $primary-gray;
+  border-top-left-radius: $border-radius;
+  border-top-right-radius: $border-radius;
+  color: $white;
+  font-size: 1rem;
+  width: 10dvw;
+  min-width: 100px;
+  padding: 1% 0px;
+  text-align: center;
 }
 
 .result-text {
@@ -184,6 +222,26 @@ main.main {
   margin-top: 2%;
   font-weight: bolder;
   color: $primary-blue;
+}
+
+.table-head {
+  display: flex;
+  width: 100%;
+  white-space: nowrap;
+  background-color: $primary-blue;
+  color: $white;
+  .head-time {
+    width: 20%;
+    min-width: 100px;
+  }
+  .head-sender {
+    width: 20%;
+    min-width: 100px;
+  }
+  .head-title {
+    width: 40%;
+    min-width: 100px;
+  }
 }
 
 .table-container {
@@ -196,27 +254,43 @@ main.main {
 }
 
 table {
-  width: 90%;
+  width: 100%;
   height: 10%;
-  text-align: center;
+  text-align: start;
   font-weight: 400;
-  color: $white;
-  margin: 5%;
-  border: 1px solid black;
-
+  color: $black;
+  border: 1px solid $primary-gray;
+  table-layout: fixed;
+  // border: 1px solid black;
+  .tb-time {
+    width: 20%;
+    min-width: 100px;
+    line-height: 8dvh;
+  }
+  .tb-sender {
+    width: 20%;
+    min-width: 100px;
+    line-height: 8dvh;
+  }
+  .tb-title {
+    width: 40%;
+    min-width: 100px;
+    line-height: 8dvh;
+  }
+  .tb-query {
+    text-align: center;
+    width: 20%;
+    min-width: 100px;
+  }
   td {
-    color: $black;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
   }
   tr {
-    border: 1px solid $black;
+    border: 1px solid $primary-gray;
   }
-  tr:nth-child(2n + 1) {
-    background-color: $primary-gray;
-  }
-  tr:nth-child(2n) {
-    background-color: $secondary-gray;
-  }
-  thead tr:first-child {
+  thead > tr {
     background-color: $primary-blue;
   }
   thead td {

@@ -5,6 +5,7 @@ $(function () {
   var choose_start_date;
   var choose_end_date;
   var start_dateflag = false;
+  var init = true;
 
   /*pages*/
   var pageItem = $('.pagination li').not('.prev,.next');
@@ -46,17 +47,15 @@ $(function () {
   });
 
   function deleteDataById(id) {
-    let form_data = new FormData();
-    form_data.append('action', 'delete');
-    form_data.append('data_id', id);
-    fetch('http://localhost:8081/TIME_TO_TRAVEL/AnnController', {
-      method: 'POST',
-      body: new URLSearchParams(form_data),
+    let body = {
+    };
+    fetch('http://localhost:8080/AdminAnnController/anns/'+id, {
+      method: 'DELETE',
+      body: JSON.stringify(body)
     })
-      .then((r) => r.json())
-      .then(function (data) {
-        console.log('getdata');
-        console.log(data);
+      .then((r) => r.text())
+      .then((d) => {
+        console.log(d);
         getData();
       })
       .catch(function (error) {
@@ -66,44 +65,42 @@ $(function () {
   }
 
   function getData() {
-    var li_html = '';
-    let form_data = new FormData();
+    let url = '';
     const tbody = document.querySelector('tbody');
-    form_data.append('action', 'getAll');
-    form_data.append('currPage', currentPage.toString());
-    form_data.append('limit', limit);
-    // console.log('sss:' + currentPage);
-    fetch('http://localhost:8081/TIME_TO_TRAVEL/AnnController', {
-      method: 'POST',
-      body: new URLSearchParams(form_data),
-    })
+
+    if (start_dateflag === true) {
+      console.log("searchDate");
+      url = 'http://localhost:8080/AdminAnnController/anns/page/'+currentPage.toString()+'/'+limit+'/'+choose_start_date+'/'+choose_end_date;
+    } else if ($('input.form-input').val() !== '') {
+      console.log("keywordSearch");
+      url = 'http://localhost:8080/AdminAnnController/anns/page/'+currentPage.toString()+'/'+limit+'/keywords/'+$('input.form-input').val();
+    }
+    else {
+      console.log("Normal Search");
+      url = 'http://localhost:8080/AdminAnnController/anns/page/'+currentPage.toString()+'/'+limit;
+    }
+    console.log("url="+url);
+    fetch(url)
       .then((r) => r.json())
       .then((d) => {
-        if (d == 'no data') {
+        if (d === 'no data') {
           tbody.innerHTML = '';
           Pages = 1;
         } else {
-          console.log(d.totalCount);
-          Pages = d.totalCount;
-          for (let i = 1; i <= Pages; i++) {
-            if (i == 1) {
-              li_html += `<li class="page-item active"><a class="page-link" href="javascript:;">${i}</a></li>`;
-            } else {
-              li_html += `<li class="page-item"><a class="page-link" href="javascript:;">${i}</a></li>`;
-            }
-          }
+          console.log("d.total: "+ d.pageSize);
+          Pages = d.pageSize;
           tbody.innerHTML = d.rows
             .map((e) => {
               return (
                 `<tr class="row tr"` +
-                ` data-id=${e.annID}>` +
+                ` data-id=${e.annId}>` +
                 `
                 <td class="col-4 td-height">${e.annTitle}</td>
                 <td class="col-4 td-height">${e.annSendingTime}</td>
                 <td class="col-2"><button class="table-edit-button">編輯</button></td>
                 <td class="col-2"><button class="table-delete-button">刪除</button></td>
                 <td class="content" style='display:none;'>${e.annContent}</td>
-                <td class="adminID" style='display:none;'>${e.adminID}</td>
+                <td class="adminID" style='display:none;'>${e.adminId}</td>
                 <td class="comId" style='display:none;'>${e.comId}</td>
                 </tr>
                 `
@@ -112,29 +109,27 @@ $(function () {
             .join('');
           $('ul.pagination > li').each(function (index) {
             if (index <= Pages) {
-              $(this).removeAttr('hidden');
+              $(this).css('display','block');
             } else {
-              $(this).add('hidden');
+              // $(this).hide();
+              $(this).css('display','none');
+            }
+            if(index === ($('ul.pagination > li').length - 1)){
+              // $(this).show();
+              $(this).css('display','block');
             }
           });
-          // console.log(li_html);
         }
-      });
-    // const table_row = $('.tbody .tr').on('click', getRowDetail);
+      }).catch(function (error) {
+      console.log(error);
+    });
   }
 
   function filterSearch() {
-    let form_data = new FormData();
     const tbody = document.querySelector('tbody');
-    if ($('input.form-input').val() == '') {
-      if (start_dateflag == true) {
-        form_data.append('action', 'search-date');
-        form_data.append('date-start', choose_start_date);
-        form_data.append('date-end', choose_end_date);
-        fetch('http://localhost:8081/TIME_TO_TRAVEL/AnnController', {
-          method: 'POST',
-          body: new URLSearchParams(form_data),
-        })
+    if ($('input.form-input').val() === '') {
+      if (start_dateflag === true) {
+        fetch('http://localhost:8080/AdminAnnController/anns/page/'+currentPage.toString()+'/'+limit+'/'+choose_start_date+'/'+choose_end_date)
           .then((r) => r.json())
           .then((d) => {
             console.log(d);
@@ -142,23 +137,35 @@ $(function () {
               console.log('search fail');
               tbody.innerHTML = '';
             } else {
-              tbody.innerHTML = d
-                .map((e) => {
+              console.log("d.total: "+ d.pageSize);
+              Pages = d.pageSize;
+              tbody.innerHTML = d.rows.map((e) => {
                   return (
                     `<tr class="row tr"` +
-                    ` data-id=${e.annID}>` +
+                    ` data-id=${e.annId}>` +
                     `
           <td class="col-4 td-height">${e.annTitle}</td>
           <td class="col-4 td-height">${e.annSendingTime}</td>
           <td class="col-2"><button class="table-edit-button">編輯</button></td>
           <td class="col-2"><button class="table-delete-button">刪除</button></td>
           <td class="content" style='display:none;'>${e.annContent}</td>
-          <td class="adminID" style='display:none;'>${e.adminID}</td>
+          <td class="adminID" style='display:none;'>${e.adminId}</td>
           <td class="comId" style='display:none;'>${e.comId}</td>
           </tr>`
                   );
                 })
                 .join('');
+
+              $('ul.pagination > li').each(function (index) {
+                if (index <= Pages) {
+                  $(this).show();
+                } else {
+                  $(this).hide();
+                }
+                if(index === ($('ul.pagination > li').length - 1)){
+                  $(this).show();
+                }
+              });
             }
           });
       } else {
@@ -166,36 +173,42 @@ $(function () {
         getData();
       }
     } else {
-      form_data.append('action', 'search');
-      form_data.append('filter', $('input.form-input').val());
-
-      fetch('http://localhost:8081/TIME_TO_TRAVEL/AnnController', {
-        method: 'POST',
-        body: new URLSearchParams(form_data),
-      })
+      fetch('http://localhost:8080/AdminAnnController/anns/page/'+currentPage.toString()+'/'+limit+'/keywords/'+$('input.form-input').val())
         .then((r) => r.json())
         .then((d) => {
           console.log(d);
           if (d == 'search fail') {
             tbody.innerHTML = '';
           } else {
-            tbody.innerHTML = d
+            console.log("d.total: "+ d.pageSize);
+            Pages = d.pageSize;
+            tbody.innerHTML = d.rows
               .map((e) => {
                 return (
                   `<tr class="row tr"` +
-                  ` data-id=${e.annID}>` +
+                  ` data-id=${e.annId}>` +
                   `
           <td class="col-4 td-height">${e.annTitle}</td>
           <td class="col-4 td-height">${e.annSendingTime}</td>
           <td class="col-2"><button class="table-edit-button">編輯</button></td>
           <td class="col-2"><button class="table-delete-button">刪除</button></td>
           <td class="content" style='display:none;'>${e.annContent}</td>
-          <td class="adminID" style='display:none;'>${e.adminID}</td>
+          <td class="adminID" style='display:none;'>${e.adminId}</td>
           <td class="comId" style='display:none;'>${e.comId}</td>
           </tr>`
                 );
               })
               .join('');
+            $('ul.pagination > li').each(function (index) {
+                if (index <= Pages) {
+                  $(this).show();
+                } else {
+                  $(this).hide();
+                }
+                if(index === ($('ul.pagination > li').length - 1)){
+                  $(this).show();
+                }
+            });
           }
         });
     }
@@ -203,12 +216,13 @@ $(function () {
 
   function cb(start, end) {
     // console.log('apply');
-    start_dateflag = true;
+    if(init == false) {
+      start_dateflag = true;
+    } else {
+      init = false;
+    }
     $('input.form-input').val('');
 
-    // choose_end_date = end.format('YYYY-MM-DD');
-
-    // console.log(choose_end_date);
     $('#reportrange span').html(start.format('YYYY-MM-DD') + ' - ' + end.format('YYYY-MM-DD'));
     choose_start_date = start.format('YYYY-MM-DD');
     choose_end_date = end.startOf('days').add(1, 'days').format('YYYY-MM-DD');
@@ -280,9 +294,6 @@ $(function () {
 
   $('.tbody').on('click', 'tr', function (e) {
     e.preventDefault();
-    // console.log($(this).children().eq(0).text());
-    // console.log($(this).children().eq(1).text());
-    // console.log($(this).children().eq(4).text());
     sessionStorage.setItem(
       'ann',
       JSON.stringify({
@@ -301,3 +312,4 @@ $(function () {
   cb(start, end);
   getData();
 });
+
