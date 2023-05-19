@@ -1,7 +1,3 @@
-$('.btn-test-jquery').on('click', function () {
-  alert('this is a test');
-});
-
 // 綁定點擊事件
 
 //燈箱

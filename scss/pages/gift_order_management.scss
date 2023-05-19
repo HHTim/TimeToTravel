@@ -32,48 +32,6 @@ main.main {
     0 5px 5px 3px rgba(172, 164, 164, 0.5), 0 -5px 5px 3px rgba(172, 164, 164, 0.5);
 }
 
-// .btn-test-1 {
-//   background-color: $primary-blue;
-//   color: $test-red;
-//   border: $normal-border;
-
-//   &:hover {
-//     background-color: $primary-blue-hover;
-//     color: $font-normal-white;
-//   }
-// }
-
-// .btn-test-2 {
-//   background-color: $primary-gray;
-//   color: $font-normal-black;
-//   border: $normal-border;
-
-//   &:hover {
-//     background-color: $secondary-gray;
-//     color: $font-normal-black;
-//   }
-// }
-
-// .btn-test-3 {
-//   background-color: $danger-red;
-//   color: $font-normal-white;
-//   border: $normal-border;
-
-//   &:hover {
-//     background-color: $danger-red-hover;
-//     color: $font-normal-white;
-//   }
-// }
-
-// .btn-test-jquery {
-//   padding: 0.5rem;
-//   background-color: $rank-yellow;
-//   color: $font-normal-black;
-//   border: $normal-border;
-//   box-shadow: $shadow;
-//   border-radius: $border-radius;
-// }
-
 // =============================================================================//
 // start
 .select-row {
@@ -256,30 +214,78 @@ tbody {
   }
 }
 
+.fa-search {
+  cursor: pointer;
+}
+
 /* Lightbox */
 
 .lightbox-content {
   display: none;
   position: fixed;
+  flex-wrap: wrap;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 80%;
-  max-width: 600px;
+  max-width: 500px;
   background-color: #fff;
   padding: 20px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
   z-index: 999;
+  box-shadow: 0 0 0 99999px rgba($color: #000000, $alpha: 0.6);
+  text-align: left;
+  justify-content: center;
+  border-radius: $border-radius;
+
+  h2 {
+    width: 100%;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    text-align: center;
+    color: $primary-blue;
+    font-size: 2rem;
+  }
+
+  p {
+    padding-left: 2rem;
+  }
+
+  .content-title {
+    text-align: right;
+    font-weight: bold;
+    width: 50%;
+  }
+
+  .content-value {
+    width: 50%;
+  }
 }
 
 .lightbox-content.open {
-  display: block;
+  display: flex;
 }
 
 .close-button {
   position: absolute;
+  display: block;
+  width: 20px;
+  height: 20px;
   top: 10px; /* 距離燈箱內容頂部的距離 */
   right: 10px; /* 距離燈箱內容右側的距離 */
+  border: none;
+  background-color: $danger-red;
+  color: $white;
+  padding: 1rem;
+  border-radius: $input-radius;
+  box-shadow: $shadow;
+
+  &::after {
+    content: 'X';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
 }
 
 //========================== main-bottom
