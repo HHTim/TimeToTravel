@@ -73,11 +73,10 @@
       <div class="row">
         <div class="col-12 gift_cart">
           <!-- Main -->
-          <!-- Main區塊以下為測試用，可刪 -->
           <main class="main">
-            <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+            <nav style="--bs-breadcrumb-divider: '>'" aria-label="breadcrumb">
               <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">土產列表</a></li>
+                <li class="breadcrumb-item"><a href="#">土產專區</a></li>
                 <li class="breadcrumb-item active" aria-current="page">購物車</li>
               </ol>
             </nav>
@@ -93,35 +92,87 @@
               </thead>
               <tbody>
                 <tr>
-                  <td><img src="#" alt="這是圖片">蛇肉串燒</td>
+                  <td><img src="#" alt="這是圖片" />蛇肉串燒</td>
                   <td>$3800</td>
-                  <td>3</td>
+                  <td>
+                    <div class="quantity">
+                      <button class="minus-btn">-</button>
+                      <div class="qty"><input type="number" class="qty-input" value="1" /></div>
+                      <button class="plus-btn">+</button>
+                    </div>
+                  </td>
                   <td>$11400</td>
                   <td><button type="button" class="btn btn-danger">刪除</button></td>
                 </tr>
                 <tr>
-                  <td><img src="#" alt="這是圖片">蛇肉串燒</td>
+                  <td><img src="#" alt="這是圖片" />蛇肉串燒</td>
                   <td>$3800</td>
-                  <td>3</td>
+                  <td>
+                    <div class="quantity">
+                      <button class="minus-btn">-</button>
+                      <div class="qty"><input type="number" class="qty-input" value="2" /></div>
+                      <button class="plus-btn">+</button>
+                    </div>
+                  </td>
                   <td>$11400</td>
                   <td><button type="button" class="btn btn-danger">刪除</button></td>
                 </tr>
                 <tr>
-                  <td><img src="#" alt="這是圖片">蛇肉串燒</td>
+                  <td><img src="#" alt="這是圖片" />蛇肉串燒</td>
                   <td>$3800</td>
-                  <td>3</td>
+                  <td>
+                    <div class="quantity">
+                      <button class="minus-btn">-</button>
+                      <div class="qty"><input type="number" class="qty-input" value="3" /></div>
+                      <button class="plus-btn">+</button>
+                    </div>
+                  </td>
                   <td>$11400</td>
                   <td><button type="button" class="btn btn-danger">刪除</button></td>
                 </tr>
                 <tr>
-                  <td><img src="#" alt="這是圖片">蛇肉串燒</td>
+                  <td><img src="#" alt="這是圖片" />蛇肉串燒</td>
                   <td>$3800</td>
-                  <td>3</td>
+                  <td>
+                    <div class="quantity">
+                      <button class="minus-btn">-</button>
+                      <div class="qty"><input type="number" class="qty-input" value="4" /></div>
+                      <button class="plus-btn">+</button>
+                    </div>
+                  </td>
+                  <td>$11400</td>
+                  <td><button type="button" class="btn btn-danger">刪除</button></td>
+                </tr>
+                <tr>
+                  <td><img src="#" alt="這是圖片" />蛇肉串燒</td>
+                  <td>$3800</td>
+                  <td>
+                    <div class="quantity">
+                      <button class="minus-btn">-</button>
+                      <div class="qty"><input type="number" class="qty-input" value="5" /></div>
+                      <button class="plus-btn">+</button>
+                    </div>
+                  </td>
                   <td>$11400</td>
                   <td><button type="button" class="btn btn-danger">刪除</button></td>
                 </tr>
               </tbody>
             </table>
+            <div class="row total">
+              <div class="col-8"></div>
+              <div class="col-2">總金額：$</div>
+              <div class="col-1">81000</div>
+              <div class="1"></div>
+            </div>
+            <div class="row gotocheck">
+              <div class="col-8"></div>
+              <div class="col-3">
+                <button onclick="location.href='./gift_check.html'" type="button" class="btn btn-success">
+                  前往結帳
+                </button>
+              </div>
+              <div class="col-1"></div>
+            </div>
           </main>
           <!-- Main End -->
         </div>
