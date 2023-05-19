@@ -414,3 +414,9 @@ tbody tr {
 .-ontype a:hover {
   color: #fff;
 }
+
+h3 {
+  display: flex;
+  justify-content: space-around;
+  font-size: x-large;
+}

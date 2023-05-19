@@ -1,51 +1,8 @@
 @import '../base/base';
 
-/*以下為測試用，可刪*/
-
-.btn-test-1 {
-  background-color: $primary-blue;
-  color: $test-red;
-  border: $normal-border;
-
-  &:hover {
-    background-color: $primary-blue-hover;
-    color: $font-normal-white;
-  }
-}
-
-.btn-test-2 {
-  background-color: $primary-gray;
-  color: $font-normal-black;
-  border: $normal-border;
-
-  &:hover {
-    background-color: $secondary-gray;
-    color: $font-normal-black;
-  }
-}
-
-.btn-test-3 {
-  background-color: $danger-red;
-  color: $font-normal-white;
-  border: $normal-border;
-
-  &:hover {
-    background-color: $danger-red-hover;
-    color: $font-normal-white;
-  }
-}
-
-.btn-test-jquery {
-  padding: 0.5rem;
-  background-color: $rank-yellow;
-  color: $font-normal-black;
-  border: $normal-border;
-  box-shadow: $shadow;
-  border-radius: $border-radius;
-}
 
 main.main {
-  width: 95%;
+  width: 90%;
   min-height: calc(100vh - 20px - 20px - 16px - 80px);
   padding: 1.25rem;
   margin-bottom: 1rem;
@@ -133,7 +90,46 @@ div.gotocheck {
 }
 
 div.gotocheck div:nth-child(2) {
-  text-align: right;
+  text-align: center;
+}
+
+div.quantity {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+div.qty {
+  width: 40%;
+}
+
+input.qty-input {
+  width: 100%;
+  text-align: center;
+  border: none;
+  border-bottom: 1px solid $custom-gray;
+}
+
+button.minus-btn,
+button.plus-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: $circle-radius;
+  border: none;
+  background-color: $secondary-gray;
+  color: $black;
+  cursor: pointer;
+}
+
+button.minus-btn:hover,
+button.plus-btn:hover {
+  background-color: $custom-gray;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 

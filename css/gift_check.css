@@ -357,8 +357,12 @@ table.cart-table img {
 }
 
 div.total {
-  margin-top: 10px;
+  margin: 20px 0;
   font-size: 1.3rem;
+}
+
+div.total div {
+  color: #2029f4;
 }
 
 div.total div:nth-child(2) {
@@ -371,12 +375,12 @@ div.total div:nth-child(3) {
   padding: 0;
 }
 
-div.gotocheck {
-  margin-top: 10px;
+div.gotocheck div:nth-child(2) {
+  text-align: right;
 }
 
-div.gotocheck div:nth-child(2) {
-  text-align: center;
+div.gotocheck button.btn {
+  width: 100% !important;
 }
 
 div.quantity {
@@ -394,26 +398,106 @@ input.qty-input {
   text-align: center;
   border: none;
   border-bottom: 1px solid #bbb8b8;
-}
-
-button.minus-btn,
-button.plus-btn {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  border: none;
-  background-color: #dfdcdc;
-  color: #333;
-  cursor: pointer;
-}
-
-button.minus-btn:hover,
-button.plus-btn:hover {
-  background-color: #bbb8b8;
+  outline: none;
 }
 
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+div.order-detail {
+  border-left: 1px solid #333;
+}
+
+div.customer-info {
+  width: 90%;
+  margin: 0 auto;
+}
+
+div.get-type {
+  display: flex;
+  width: 50%;
+  margin: 0 auto;
+}
+
+button.get-by {
+  background-color: #dfdcdc;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  width: 50%;
+}
+
+button.get-by.active {
+  background-color: #eeab0f;
+}
+
+button.get-by:first-child {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+button.get-by:last-child {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+button.auto-btn {
+  display: flex;
+  align-items: center;
+  height: auto;
+  padding: 8px 24px 8px 50px;
+  border: 1px solid #bbb8b8;
+  border-radius: 10px;
+  position: relative;
+}
+
+button.auto-btn::before {
+  content: "";
+  background-color: #fff;
+  border-radius: 50%;
+  border: 1px solid #bbb8b8;
+  height: 25px;
+  width: 25px;
+  position: absolute;
+  top: 50%;
+  left: 25px;
+  transform: translateY(-50%);
+}
+
+div.use-info {
+  margin-left: 10px;
+}
+
+button.auto-btn.active {
+  border: 2px solid #006caa;
+  margin: -1.3px;
+}
+
+button.auto-btn.active::before {
+  background-color: #006caa;
+}
+
+div.auto-input {
+  margin: 20px 0;
+  margin-left: 5%;
+}
+
+div.line {
+  border-bottom: 1px solid #333;
+  margin: 10px 0;
+}
+
+div.main-input div {
+  margin: 15px 0;
+}
+
+div.main-input input {
+  width: 100%;
+}
+
+div.main-input div:nth-child(even) {
+  margin-bottom: 30px;
 }
