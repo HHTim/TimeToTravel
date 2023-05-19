@@ -91,7 +91,7 @@ div.nav-btn div.search-name input {
 	height: 3rem;
 }
 
-.gift__type {
+.room__type {
 	display: flex;
 	justify-content: end;
 
@@ -145,7 +145,7 @@ div.manage-type div {
 	border-radius: $border-radius $border-radius 0 0;
 }
 
-.gift-table {
+.room-table {
 	border-top: 3px solid $primary-blue-hover;
 }
 
@@ -158,7 +158,7 @@ td {
 tbody tr {
 	height: 50px;
 }
-.gift__status {
+.room__status {
 	border-radius: $input-radius;
 	border-color: $admin-aside-blue;
 	padding: 0 10px;

@@ -379,13 +379,13 @@ h2.subtitle {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
+  margin-left: 2.5rem;
 }
 .room__equip__options__bed {
   font-weight: bold;
   border-radius: 5px;
   border-color: #3d8ebd;
   height: 3rem;
-  margin-left: 2.5rem;
 }
 .room__equip__options__wifi {
   font-weight: bold;
