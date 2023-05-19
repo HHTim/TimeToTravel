@@ -11,9 +11,9 @@
     <script src="https://kit.fontawesome.com/e3af248fb2.js" crossorigin="anonymous" defer></script>
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
     <!-- 我們自己的 js 檔案，路徑記得改 -->
-    <link rel="stylesheet" href="../css/admin.css" />
+    <link rel="stylesheet" href="../css/admin_ann_publish.css" />
     <!-- 我們自己的 css 檔案，路徑記得改 -->
-    <script src="../js/admin.js" defer></script>
+    <script src="../js/admin_ann_publish.js" defer></script>
     <!-- 輪播需要添加 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
@@ -26,7 +26,7 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <!-- title 記得改 -->
-    <title>Admin Order Manager</title>
+    <title>Admin Ann Publish</title>
   </head>
   <body>
     <!-- Header -->
@@ -101,82 +101,20 @@
           <!-- Main -->
           <!-- Main區塊以下為測試用，可刪 -->
           <main class="main">
-            <h2 class="subtitle">商品訂單管理</h2>
-            <div class="row admin-search-area justify-content-center align-items-center">
-              <div class="col-3"></div>
-              <div class="col-2 input-title">訂單編號</div>
-              <div class="col-4">
-                <input type="text" class="form-control form-input" placeholder="訂單編號" />
-              </div>
-              <div class="col-2"></div>
+            <h2 class="subtitle">公告發佈</h2>
 
-              <div class="col-3"></div>
-              <div class="col-2 input-title">消費者姓名</div>
-              <div class="col-4">
-                <input type="text" class="form-control form-input" placeholder="姓名" />
-              </div>
-              <div class="col-2"></div>
-
-              <div class="col-3"></div>
-              <div class="col-2 input-title">商家名稱</div>
-              <div class="col-4">
-                <input type="text" class="form-control form-input" placeholder="統一編號" />
-              </div>
-              <div class="col-2"></div>
-            </div>
-            <div class="div-search">
-              <button class="admin-btn">搜尋</button>
-            </div>
-            <div class="result-text">搜尋結果</div>
-            <div class="table-content">
-              <table>
-                <thead>
-                  <tr>
-                    <td>訂單編號</td>
-                    <td>消費者帳號</td>
-                    <td>商家名稱</td>
-                    <td>訂房日期</td>
-                    <td>查看</td>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="data-text">12345</td>
-                    <td class="data-text">abc1234567</td>
-                    <td class="data-text">凱薩飯店</td>
-                    <td class="data-text">訂房日期</td>
-                    <td><button class="btn-query" type="button">查詢</button></td>
-                  </tr>
-                  <tr>
-                    <td class="data-text">12345</td>
-                    <td class="data-text">abc1234567</td>
-                    <td class="data-text">凱薩飯店</td>
-                    <td class="data-text">訂房日期</td>
-                    <td><button class="btn-query" type="button">查詢</button></td>
-                  </tr>
-                  <tr>
-                    <td class="data-text">12345</td>
-                    <td class="data-text">abc1234567</td>
-                    <td class="data-text">凱薩飯店</td>
-                    <td class="data-text">訂房日期</td>
-                    <td><button class="btn-query" type="button">查詢</button></td>
-                  </tr>
-                  <tr>
-                    <td class="data-text">12345</td>
-                    <td class="data-text">abc1234567</td>
-                    <td class="data-text">凱薩飯店</td>
-                    <td class="data-text">訂房日期</td>
-                    <td><button class="btn-query" type="button">查詢</button></td>
-                  </tr>
-                  <tr>
-                    <td class="data-text">12345</td>
-                    <td class="data-text">abc1234567</td>
-                    <td class="data-text">凱薩飯店</td>
-                    <td class="data-text">訂房日期</td>
-                    <td><button class="btn-query" type="button">查詢</button></td>
-                  </tr>
-                </tbody>
-              </table>
+            <span class="ann-title">公告標題</span>
+            <span class="show-placeholder-title">請輸入公告標題</span>
+            <br />
+            <input type="text" class="form-control form-input" placeholder="" />
+            <br />
+            <span class="ann-content-title">公告內容</span>
+            <span class="show-placeholder-content">請輸入公告內容</span>
+            <br />
+            <textarea class="textarea"></textarea>
+            <div class="div-btn">
+              <button id="publish_btn" class="btn-style" type="button">發佈</button>
+              <button id="back_btn" class="btn-style" type="button">返回</button>
             </div>
           </main>
           <!-- Main End -->

@@ -11,9 +11,9 @@
     <script src="https://kit.fontawesome.com/e3af248fb2.js" crossorigin="anonymous" defer></script>
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
     <!-- 我們自己的 js 檔案，路徑記得改 -->
-    <link rel="stylesheet" href="../css/admin.css" />
+    <link rel="stylesheet" href="../css/admin_message_recv.css" />
     <!-- 我們自己的 css 檔案，路徑記得改 -->
-    <script src="../js/admin.js" defer></script>
+    <script src="../js/admin_message_recv.js" defer></script>
     <!-- 輪播需要添加 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
@@ -26,7 +26,7 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <!-- title 記得改 -->
-    <title>Admin Order Manager</title>
+    <title>Admin User Manager</title>
   </head>
   <body>
     <!-- Header -->
@@ -77,7 +77,6 @@
         </nav>
       </div>
     </header>
-
     <!-- Header End -->
     <div class="container-fluid custom-container">
       <div class="row">
@@ -101,91 +100,115 @@
           <!-- Main -->
           <!-- Main區塊以下為測試用，可刪 -->
           <main class="main">
-            <h2 class="subtitle">商品訂單管理</h2>
-            <div class="row admin-search-area justify-content-center align-items-center">
-              <div class="col-3"></div>
-              <div class="col-2 input-title">訂單編號</div>
-              <div class="col-4">
-                <input type="text" class="form-control form-input" placeholder="訂單編號" />
+            <h2 class="subtitle">收件匣</h2>
+            <div class="top-container">
+              <div class="left-container">
+                <span>發信人</span>
+                <input type="text" class="form-control form-input" placeholder="or帳號" />
               </div>
-              <div class="col-2"></div>
-
-              <div class="col-3"></div>
-              <div class="col-2 input-title">消費者姓名</div>
-              <div class="col-4">
-                <input type="text" class="form-control form-input" placeholder="姓名" />
+              <div class="right-container">
+                <span>信件期間</span>
+                <span id="reportrange">
+                  <i class="fa fa-calendar"></i>&nbsp; <span class="span"></span> <i class="fa fa-caret-down"></i>
+                </span>
               </div>
-              <div class="col-2"></div>
-
-              <div class="col-3"></div>
-              <div class="col-2 input-title">商家名稱</div>
-              <div class="col-4">
-                <input type="text" class="form-control form-input" placeholder="統一編號" />
-              </div>
-              <div class="col-2"></div>
             </div>
-            <div class="div-search">
-              <button class="admin-btn">搜尋</button>
+            <div class="top-container">
+              <div class="left-container"></div>
+              <div class="right-container">
+                <button class="btn-send">+發佈新信息</button>
+                <button class="btn-query">搜尋</button>
+              </div>
             </div>
-            <div class="result-text">搜尋結果</div>
-            <div class="table-content">
-              <table>
-                <thead>
-                  <tr>
-                    <td>訂單編號</td>
-                    <td>消費者帳號</td>
-                    <td>商家名稱</td>
-                    <td>訂房日期</td>
-                    <td>查看</td>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="data-text">12345</td>
-                    <td class="data-text">abc1234567</td>
-                    <td class="data-text">凱薩飯店</td>
-                    <td class="data-text">訂房日期</td>
-                    <td><button class="btn-query" type="button">查詢</button></td>
-                  </tr>
-                  <tr>
-                    <td class="data-text">12345</td>
-                    <td class="data-text">abc1234567</td>
-                    <td class="data-text">凱薩飯店</td>
-                    <td class="data-text">訂房日期</td>
-                    <td><button class="btn-query" type="button">查詢</button></td>
-                  </tr>
-                  <tr>
-                    <td class="data-text">12345</td>
-                    <td class="data-text">abc1234567</td>
-                    <td class="data-text">凱薩飯店</td>
-                    <td class="data-text">訂房日期</td>
-                    <td><button class="btn-query" type="button">查詢</button></td>
-                  </tr>
-                  <tr>
-                    <td class="data-text">12345</td>
-                    <td class="data-text">abc1234567</td>
-                    <td class="data-text">凱薩飯店</td>
-                    <td class="data-text">訂房日期</td>
-                    <td><button class="btn-query" type="button">查詢</button></td>
-                  </tr>
-                  <tr>
-                    <td class="data-text">12345</td>
-                    <td class="data-text">abc1234567</td>
-                    <td class="data-text">凱薩飯店</td>
-                    <td class="data-text">訂房日期</td>
-                    <td><button class="btn-query" type="button">查詢</button></td>
-                  </tr>
-                </tbody>
-              </table>
+            <div class="content-container">
+              <button class="tab-user">使用者</button>
+              <button class="tab-company">商家</button>
+            </div>
+            <div class="table-head">
+              <div class="head-time">發信時間</div>
+              <div class="head-sender">發信人</div>
+              <div class="head-title">訊息標題</div>
+            </div>
+            <table>
+              <tbody>
+                <tr>
+                  <td class="tb-time">2023/05/18</td>
+                  <td class="tb-sender">JDIDIS</td>
+                  <td class="tb-title">
+                    jwbfkjwbfkjwbfkjwbfkjwbekjwbfejkbwkjfbwkjfbwkjfebwkjfebwfkjebwfkjfbwjfkbwkfwfe
+                  </td>
+                  <td class="tb-query"><button class="btn-query">查看</button></td>
+                </tr>
+
+                <tr>
+                  <td class="tb-time">2023/05/19</td>
+                  <td class="tb-sender">JDIDIS</td>
+                  <td class="tb-title">abc</td>
+                  <td class="tb-query"><button class="btn-query">查看</button></td>
+                </tr>
+
+                <tr>
+                  <td class="tb-time">2023/05/19</td>
+                  <td class="tb-sender">JDIDIS</td>
+                  <td class="tb-title">abc</td>
+                  <td class="tb-query"><button class="btn-query">查看</button></td>
+                </tr>
+
+                <tr>
+                  <td class="tb-time">2023/05/19</td>
+                  <td class="tb-sender">JDIDIS</td>
+                  <td class="tb-title">abc</td>
+                  <td class="tb-query"><button class="btn-query">查看</button></td>
+                </tr>
+
+                <tr>
+                  <td class="tb-time">2023/05/19</td>
+                  <td class="tb-sender">JDIDIS</td>
+                  <td class="tb-title">abc</td>
+                  <td class="tb-query"><button class="btn-query">查看</button></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="row">
+              <ul class="pagination pt-5 justify-content-center">
+                <li class="prev page-item">
+                  <a class="page-link" href="javascript:;" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                  </a>
+                </li>
+                <li class="page-item active"><a class="page-link" href="javascript:;">1</a></li>
+                <li class="page-item" hidden><a class="page-link" href="javascript:;">2</a></li>
+                <li class="page-item" hidden><a class="page-link" href="javascript:;">3</a></li>
+                <li class="page-item" hidden><a class="page-link" href="javascript:;">4</a></li>
+                <li class="page-item" hidden><a class="page-link" href="javascript:;">5</a></li>
+                <li class="page-item" hidden><a class="page-link" href="javascript:;">6</a></li>
+                <li class="page-item" hidden><a class="page-link" href="javascript:;">7</a></li>
+                <li class="page-item" hidden><a class="page-link" href="javascript:;">8</a></li>
+                <li class="page-item" hidden><a class="page-link" href="javascript:;">9</a></li>
+                <li class="page-item" hidden><a class="page-link" href="javascript:;">10</a></li>
+                <li class="page-item" hidden><a class="page-link" href="javascript:;">11</a></li>
+                <li class="page-item" hidden><a class="page-link" href="javascript:;">12</a></li>
+                <li class="page-item" hidden><a class="page-link" href="javascript:;">13</a></li>
+                <li class="page-item" hidden><a class="page-link" href="javascript:;">14</a></li>
+                <li class="page-item" hidden><a class="page-link" href="javascript:;">15</a></li>
+                <li class="page-item" hidden><a class="page-link" href="javascript:;">16</a></li>
+                <li class="next page-item">
+                  <a class="page-link" href="javascript:;" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                  </a>
+                </li>
+              </ul>
             </div>
           </main>
           <!-- Main End -->
         </div>
       </div>
     </div>
-
+    <!-- Footer -->
     <footer>
       <div class="footer"></div>
     </footer>
+    <!-- Footer End -->
   </body>
 </html>

@@ -1,4 +1,42 @@
 $(window).on('load', function () {
+  const tab1 = $('#tab-1');
+  const tab2 = $('#tab-2');
+  const tab3 = $('#tab-3');
+  const tab_body = $('.tab-body');
+  const tab1_body = $('.tab-1.left-container');
+  const tab2_body = $('.tab-2.left-container');
+  const tab3_body = $('.tab-3.left-container');
+
+  tab1.on('click', function () {
+    $(this).css('background-color', 'rgba(118,194,238,0.7)');
+    tab2.css('background-color', '#9b9999');
+    tab3.css('background-color', '#9b9999');
+    tab1_body.css('display', 'block');
+    tab2_body.css('display', 'none');
+    tab3_body.css('display', 'none');
+    tab_body.css('align-items', 'start');
+  });
+
+  tab2.on('click', function () {
+    $(this).css('background-color', 'rgba(118,194,238,0.7)');
+    tab1.css('background-color', '#9b9999');
+    tab3.css('background-color', '#9b9999');
+    tab2_body.css('display', 'block');
+    tab1_body.css('display', 'none');
+    tab3_body.css('display', 'none');
+    tab_body.css('align-items', 'baseline');
+  });
+
+  tab3.on('click', function () {
+    $(this).css('background-color', 'rgba(118,194,238,0.7)');
+    tab1.css('background-color', '#9b9999');
+    tab2.css('background-color', '#9b9999');
+    tab3_body.css('display', 'block');
+    tab1_body.css('display', 'none');
+    tab2_body.css('display', 'none');
+    tab_body.css('align-items', 'baseline');
+  });
+
   slider('slider');
   slider('slider2');
   slider('slider3');

@@ -11,9 +11,9 @@
     <script src="https://kit.fontawesome.com/e3af248fb2.js" crossorigin="anonymous" defer></script>
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
     <!-- 我們自己的 js 檔案，路徑記得改 -->
-    <link rel="stylesheet" href="../css/admin.css" />
+    <link rel="stylesheet" href="../css/admin_comp_manager.css" />
     <!-- 我們自己的 css 檔案，路徑記得改 -->
-    <script src="../js/admin.js" defer></script>
+    <script src="../js/admin_comp_manager.js" defer></script>
     <!-- 輪播需要添加 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
@@ -26,7 +26,7 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <!-- title 記得改 -->
-    <title>Admin Order Manager</title>
+    <title>Admin Company Manager</title>
   </head>
   <body>
     <!-- Header -->
@@ -77,7 +77,6 @@
         </nav>
       </div>
     </header>
-
     <!-- Header End -->
     <div class="container-fluid custom-container">
       <div class="row">
@@ -101,79 +100,81 @@
           <!-- Main -->
           <!-- Main區塊以下為測試用，可刪 -->
           <main class="main">
-            <h2 class="subtitle">商品訂單管理</h2>
-            <div class="row admin-search-area justify-content-center align-items-center">
-              <div class="col-3"></div>
-              <div class="col-2 input-title">訂單編號</div>
-              <div class="col-4">
-                <input type="text" class="form-control form-input" placeholder="訂單編號" />
+            <h2 class="subtitle">商家管理</h2>
+            <div class="top-container">
+              <div class="left-container">
+                <span>商家編號</span>
+                <input type="text" class="form-control form-input" placeholder="" />
               </div>
-              <div class="col-2"></div>
-
-              <div class="col-3"></div>
-              <div class="col-2 input-title">消費者姓名</div>
-              <div class="col-4">
-                <input type="text" class="form-control form-input" placeholder="姓名" />
+              <div class="right-container">
+                <span>商家名稱</span>
+                <input type="text" class="form-control form-input" placeholder="or統一編號" />
               </div>
-              <div class="col-2"></div>
-
-              <div class="col-3"></div>
-              <div class="col-2 input-title">商家名稱</div>
-              <div class="col-4">
-                <input type="text" class="form-control form-input" placeholder="統一編號" />
-              </div>
-              <div class="col-2"></div>
             </div>
-            <div class="div-search">
-              <button class="admin-btn">搜尋</button>
+
+            <div class="top-container">
+              <div class="left-container">
+                <span>負責人</span>
+                <input type="text" class="form-control form-input" placeholder="" />
+              </div>
+              <div class="right-container">
+                <span>狀態</span>
+                <select class="form-select custom-select" aria-label="Default select example">
+                  <option disabled selected hidden>正常 or 待審核</option>
+                  <option value="1">正常</option>
+                  <option value="2">待審核</option>
+                </select>
+              </div>
             </div>
+            <div class="row justify-content-center align-items-center">
+              <input class="btn-search" type="button" value="搜尋" />
+            </div>
+            <!-- <h2 class="subtitle">消費者列表</h2> -->
             <div class="result-text">搜尋結果</div>
-            <div class="table-content">
+            <div class="table-container">
               <table>
                 <thead>
                   <tr>
-                    <td>訂單編號</td>
-                    <td>消費者帳號</td>
-                    <td>商家名稱</td>
-                    <td>訂房日期</td>
-                    <td>查看</td>
+                    <td>帳號</td>
+                    <td>姓名</td>
+                    <td>電話</td>
+                    <td>註冊日期</td>
+                    <td>狀態</td>
+                    <td>基本資料表</td>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td class="data-text">12345</td>
-                    <td class="data-text">abc1234567</td>
-                    <td class="data-text">凱薩飯店</td>
-                    <td class="data-text">訂房日期</td>
-                    <td><button class="btn-query" type="button">查詢</button></td>
+                    <td class="data-text">sdcscd</td>
+                    <td class="data-text">sdcscd</td>
+                    <td class="data-text">sdcscd</td>
+                    <td class="data-text">sdcscd</td>
+                    <td><button class="btn-forbidden">停權</button></td>
+                    <td><button class="btn-query">查詢</button></td>
                   </tr>
                   <tr>
-                    <td class="data-text">12345</td>
-                    <td class="data-text">abc1234567</td>
-                    <td class="data-text">凱薩飯店</td>
-                    <td class="data-text">訂房日期</td>
-                    <td><button class="btn-query" type="button">查詢</button></td>
+                    <td class="data-text">sdcscd</td>
+                    <td class="data-text">sdcscd</td>
+                    <td class="data-text">sdcscd</td>
+                    <td class="data-text">sdcscd</td>
+                    <td><button class="btn-warning">待審核</button></td>
+                    <td><button class="btn-query">查詢</button></td>
                   </tr>
                   <tr>
-                    <td class="data-text">12345</td>
-                    <td class="data-text">abc1234567</td>
-                    <td class="data-text">凱薩飯店</td>
-                    <td class="data-text">訂房日期</td>
-                    <td><button class="btn-query" type="button">查詢</button></td>
+                    <td class="data-text">sdcscd</td>
+                    <td class="data-text">sdcscd</td>
+                    <td class="data-text">sdcscd</td>
+                    <td class="data-text">sdcscd</td>
+                    <td><button class="btn-forbidden">停權</button></td>
+                    <td><button class="btn-query">查詢</button></td>
                   </tr>
                   <tr>
-                    <td class="data-text">12345</td>
-                    <td class="data-text">abc1234567</td>
-                    <td class="data-text">凱薩飯店</td>
-                    <td class="data-text">訂房日期</td>
-                    <td><button class="btn-query" type="button">查詢</button></td>
-                  </tr>
-                  <tr>
-                    <td class="data-text">12345</td>
-                    <td class="data-text">abc1234567</td>
-                    <td class="data-text">凱薩飯店</td>
-                    <td class="data-text">訂房日期</td>
-                    <td><button class="btn-query" type="button">查詢</button></td>
+                    <td class="data-text">sdcscd</td>
+                    <td class="data-text">sdcscd</td>
+                    <td class="data-text">sdcscd</td>
+                    <td class="data-text">sdcscd</td>
+                    <td><button class="btn-warning">待審核</button></td>
+                    <td><button class="btn-query">查詢</button></td>
                   </tr>
                 </tbody>
               </table>
@@ -183,9 +184,10 @@
         </div>
       </div>
     </div>
-
+    <!-- Footer -->
     <footer>
       <div class="footer"></div>
     </footer>
+    <!-- Footer End -->
   </body>
 </html>
