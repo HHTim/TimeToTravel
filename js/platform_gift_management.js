@@ -97,7 +97,7 @@ function renderPagination() {
   paginationContainer.appendChild(pagination);
 }
 
-renderPagination();
+// renderPagination();/    這行會一直報錯
 
 // 可以透過修改 currentPage 的值重新渲染分頁
 const previousButton = document.querySelector('.pagination .page-item:first-child');
@@ -116,3 +116,28 @@ nextButton.addEventListener('click', () => {
     renderPagination();
   }
 });
+
+// side-bar 側邊攔 下拉是選單
+
+var dropdownTriggers = document.getElementsByClassName('dropdown-trigger');
+
+Array.from(dropdownTriggers).forEach(function (trigger) {
+  trigger.addEventListener('click', function (event) {
+    event.preventDefault(); // 防止連結的預設行為
+    var dropdownMenu = this.nextElementSibling;
+    dropdownMenu.classList.toggle('show');
+  });
+});
+
+const dropdownTrigger = document.querySelector('.dropdown-trigger');
+const dropdownMenu = document.querySelector('.dropdown-menu');
+
+dropdownTrigger.addEventListener('click', function () {
+  dropdownMenu.classList.toggle('active');
+
+  const pushDownItems = document.querySelectorAll('.push-down');
+  pushDownItems.forEach((item) => {
+    item.style.transform = dropdownMenu.classList.contains('active') ? 'translateY(30px)' : 'translateY(0)';
+  });
+});
+////
