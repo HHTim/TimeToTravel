@@ -292,6 +292,10 @@ main {
   position: relative;
 }
 
+main * {
+  font-size: 16px;
+}
+
 section:not(:first-child) {
   margin-top: 1rem;
 }
@@ -307,6 +311,7 @@ section:not(:first-child) {
   border: none;
   border-radius: 5px;
   box-shadow: 0 0 3px #9b9999;
+  padding: 0 0.5rem;
 }
 .search * + * {
   margin-top: 0.5rem;
@@ -374,8 +379,8 @@ section:not(:first-child) {
 
 .comment {
   position: absolute;
-  width: 55%;
-  min-width: 150px;
+  width: 65%;
+  min-width: 300px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -418,6 +423,7 @@ section:not(:first-child) {
   width: 95%;
   height: 200px;
   padding: 0.5rem;
+  resize: none;
 }
 .comment__content::-moz-placeholder {
   position: absolute;
