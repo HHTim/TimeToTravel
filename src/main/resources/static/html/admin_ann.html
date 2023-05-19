@@ -5,24 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- import -->
-    <script
-      src="../node_modules/@popperjs/core/dist/umd/popper.min.js"
-      defer
-    ></script>
-    <script
-      src="../node_modules/bootstrap/dist/js/bootstrap.min.js"
-      defer
-    ></script>
+    <script src="../node_modules/@popperjs/core/dist/umd/popper.min.js" defer></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js" defer></script>
     <!-- <script src="../node_modules/jquery/dist/jquery.min.js" defer></script> -->
-    <script
-      src="https://kit.fontawesome.com/e3af248fb2.js"
-      crossorigin="anonymous"
-      defer
-    ></script>
-    <link
-      rel="stylesheet"
-      href="../node_modules/bootstrap/dist/css/bootstrap.min.css"
-    />
+    <script src="https://kit.fontawesome.com/e3af248fb2.js" crossorigin="anonymous" defer></script>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
     <!-- 我們自己的 js 檔案，路徑記得改 -->
     <link rel="stylesheet" href="../css/admin_ann.css" />
     <!-- 我們自己的 css 檔案，路徑記得改 -->
@@ -34,23 +21,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/eonasdan-bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
 
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"
-    ></script>
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"
-    ></script>
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"
-    ></script>
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"
-    />
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <!-- title 記得改 -->
     <title>Admin Ann</title>
   </head>
@@ -71,11 +45,7 @@
             <li class="nav__link"><a href="#">部落格</a></li>
             <li class="nav__info">
               <div class="dropdown-center">
-                <button
-                  class="dropdown-toggle nav__info-btn"
-                  type="button"
-                  data-bs-toggle="dropdown"
-                ></button>
+                <button class="dropdown-toggle nav__info-btn" type="button" data-bs-toggle="dropdown"></button>
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="#">訊息一</a></li>
                   <li><a class="dropdown-item" href="#">訊息二</a></li>
@@ -88,12 +58,7 @@
             <li class="nav__avatar">
               <div class="dropdown-center">
                 <!-- <button class="dropdown-toggle nav__avatar-btn" type="button" data-bs-toggle="dropdown"></button> -->
-                <a
-                  href="#"
-                  class="dropdown-toggle nav__avatar-btn"
-                  type="button"
-                  data-bs-toggle="dropdown"
-                >
+                <a href="#" class="dropdown-toggle nav__avatar-btn" type="button" data-bs-toggle="dropdown">
                   <div class="nav__avatar-img">
                     <img src="../images/avatar.svg" alt="avatar" />
                   </div>
@@ -141,21 +106,12 @@
             <div class="row nav-btn text-nowrap">
               <div class="col-4">
                 <div>
-                  <input
-                    class="ann-publish-btn"
-                    type="button"
-                    value="+發佈新訊息"
-                    onclick="location.href='#'"
-                  />
+                  <input class="ann-publish-btn" type="button" value="+發佈新訊息" />
                 </div>
               </div>
               <div class="col-4"></div>
               <div class="col-4">
-                <input
-                  type="text"
-                  class="form-control form-input"
-                  placeholder="關鍵字"
-                />
+                <input type="text" class="form-control form-input" placeholder="關鍵字" />
                 <button class="search-button">搜尋</button>
               </div>
             </div>
@@ -165,8 +121,7 @@
               <div class="col-2"></div>
               <div class="col-4 ann-filter-date">
                 <div id="reportrange">
-                  <i class="fa fa-calendar"></i>&nbsp;
-                  <span class="span"></span> <i class="fa fa-caret-down"></i>
+                  <i class="fa fa-calendar"></i>&nbsp; <span class="span"></span> <i class="fa fa-caret-down"></i>
                 </div>
               </div>
             </div>
@@ -185,11 +140,7 @@
             <div class="row">
               <ul class="pagination pt-5 justify-content-center">
                 <li class="prev page-item">
-                  <a
-                    class="page-link"
-                    href="javascript:;"
-                    aria-label="Previous"
-                  >
+                  <a class="page-link" href="javascript:;" aria-label="Previous">
                     <span aria-hidden="true">&laquo;</span>
                   </a>
                 </li>

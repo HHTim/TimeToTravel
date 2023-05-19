@@ -47,11 +47,10 @@ $(function () {
   });
 
   function deleteDataById(id) {
-    let body = {
-    };
-    fetch('http://localhost:8080/AdminAnnController/anns/'+id, {
+    let body = {};
+    fetch('http://localhost:8080/AdminAnnController/anns/' + id, {
       method: 'DELETE',
-      body: JSON.stringify(body)
+      body: JSON.stringify(body),
     })
       .then((r) => r.text())
       .then((d) => {
@@ -69,17 +68,30 @@ $(function () {
     const tbody = document.querySelector('tbody');
 
     if (start_dateflag === true) {
-      console.log("searchDate");
-      url = 'http://localhost:8080/AdminAnnController/anns/page/'+currentPage.toString()+'/'+limit+'/'+choose_start_date+'/'+choose_end_date;
+      console.log('searchDate');
+      url =
+        'http://localhost:8080/AdminAnnController/anns/page/' +
+        currentPage.toString() +
+        '/' +
+        limit +
+        '/' +
+        choose_start_date +
+        '/' +
+        choose_end_date;
     } else if ($('input.form-input').val() !== '') {
-      console.log("keywordSearch");
-      url = 'http://localhost:8080/AdminAnnController/anns/page/'+currentPage.toString()+'/'+limit+'/keywords/'+$('input.form-input').val();
+      console.log('keywordSearch');
+      url =
+        'http://localhost:8080/AdminAnnController/anns/page/' +
+        currentPage.toString() +
+        '/' +
+        limit +
+        '/keywords/' +
+        $('input.form-input').val();
+    } else {
+      console.log('Normal Search');
+      url = 'http://localhost:8080/AdminAnnController/anns/page/' + currentPage.toString() + '/' + limit;
     }
-    else {
-      console.log("Normal Search");
-      url = 'http://localhost:8080/AdminAnnController/anns/page/'+currentPage.toString()+'/'+limit;
-    }
-    console.log("url="+url);
+    console.log('url=' + url);
     fetch(url)
       .then((r) => r.json())
       .then((d) => {
@@ -87,7 +99,7 @@ $(function () {
           tbody.innerHTML = '';
           Pages = 1;
         } else {
-          console.log("d.total: "+ d.pageSize);
+          console.log('d.total: ' + d.pageSize);
           Pages = d.pageSize;
           tbody.innerHTML = d.rows
             .map((e) => {
@@ -109,27 +121,37 @@ $(function () {
             .join('');
           $('ul.pagination > li').each(function (index) {
             if (index <= Pages) {
-              $(this).css('display','block');
+              $(this).css('display', 'block');
             } else {
               // $(this).hide();
-              $(this).css('display','none');
+              $(this).css('display', 'none');
             }
-            if(index === ($('ul.pagination > li').length - 1)){
+            if (index === $('ul.pagination > li').length - 1) {
               // $(this).show();
-              $(this).css('display','block');
+              $(this).css('display', 'block');
             }
           });
         }
-      }).catch(function (error) {
-      console.log(error);
-    });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   function filterSearch() {
     const tbody = document.querySelector('tbody');
     if ($('input.form-input').val() === '') {
       if (start_dateflag === true) {
-        fetch('http://localhost:8080/AdminAnnController/anns/page/'+currentPage.toString()+'/'+limit+'/'+choose_start_date+'/'+choose_end_date)
+        fetch(
+          'http://localhost:8080/AdminAnnController/anns/page/' +
+            currentPage.toString() +
+            '/' +
+            limit +
+            '/' +
+            choose_start_date +
+            '/' +
+            choose_end_date
+        )
           .then((r) => r.json())
           .then((d) => {
             console.log(d);
@@ -137,9 +159,10 @@ $(function () {
               console.log('search fail');
               tbody.innerHTML = '';
             } else {
-              console.log("d.total: "+ d.pageSize);
+              console.log('d.total: ' + d.pageSize);
               Pages = d.pageSize;
-              tbody.innerHTML = d.rows.map((e) => {
+              tbody.innerHTML = d.rows
+                .map((e) => {
                   return (
                     `<tr class="row tr"` +
                     ` data-id=${e.annId}>` +
@@ -162,7 +185,7 @@ $(function () {
                 } else {
                   $(this).hide();
                 }
-                if(index === ($('ul.pagination > li').length - 1)){
+                if (index === $('ul.pagination > li').length - 1) {
                   $(this).show();
                 }
               });
@@ -173,14 +196,21 @@ $(function () {
         getData();
       }
     } else {
-      fetch('http://localhost:8080/AdminAnnController/anns/page/'+currentPage.toString()+'/'+limit+'/keywords/'+$('input.form-input').val())
+      fetch(
+        'http://localhost:8080/AdminAnnController/anns/page/' +
+          currentPage.toString() +
+          '/' +
+          limit +
+          '/keywords/' +
+          $('input.form-input').val()
+      )
         .then((r) => r.json())
         .then((d) => {
           console.log(d);
           if (d == 'search fail') {
             tbody.innerHTML = '';
           } else {
-            console.log("d.total: "+ d.pageSize);
+            console.log('d.total: ' + d.pageSize);
             Pages = d.pageSize;
             tbody.innerHTML = d.rows
               .map((e) => {
@@ -200,14 +230,14 @@ $(function () {
               })
               .join('');
             $('ul.pagination > li').each(function (index) {
-                if (index <= Pages) {
-                  $(this).show();
-                } else {
-                  $(this).hide();
-                }
-                if(index === ($('ul.pagination > li').length - 1)){
-                  $(this).show();
-                }
+              if (index <= Pages) {
+                $(this).show();
+              } else {
+                $(this).hide();
+              }
+              if (index === $('ul.pagination > li').length - 1) {
+                $(this).show();
+              }
             });
           }
         });
@@ -216,7 +246,7 @@ $(function () {
 
   function cb(start, end) {
     // console.log('apply');
-    if(init == false) {
+    if (init == false) {
       start_dateflag = true;
     } else {
       init = false;
@@ -265,7 +295,7 @@ $(function () {
         com_id: $(this).closest('tr').find('td').eq(6).text(),
       })
     );
-    location.href = '/html/admin_ann_edit.html';
+    location.href = '../html/admin_ann_edit.html';
   });
 
   $('.detail-close').on('click', function (e) {
@@ -302,14 +332,13 @@ $(function () {
         ann_content: $(this).children().eq(4).text(),
       })
     );
-    location.href = '/html/admin_ann_detail.html';
+    location.href = '../html/admin_ann_detail.html';
   });
 
   $('.ann-publish-btn').on('click', function (e) {
-    location.href = '/html/admin_ann_publish.html';
+    location.href = '../html/admin_ann_publish.html';
   });
 
   cb(start, end);
   getData();
 });
-

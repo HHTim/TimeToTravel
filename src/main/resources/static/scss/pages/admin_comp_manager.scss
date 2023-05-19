@@ -89,9 +89,23 @@ main.main {
   white-space: nowrap;
 }
 
-.top-container {
+.top-container-up {
   width: 100%;
   display: flex;
+  .left-container {
+    width: 50%;
+    text-align: left;
+  }
+  .right-container {
+    width: 50%;
+    text-align: right;
+  }
+}
+
+.top-container-down {
+  width: 100%;
+  display: flex;
+  margin-top: 20px;
   .left-container {
     width: 50%;
     text-align: left;
