@@ -289,32 +289,40 @@ body {
   color: white;
 }
 
-/*以下為測試用，可刪*/
-.subtitle {
-  width: 100%;
-  position: relative;
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 1.5rem;
-}
-.subtitle::after {
-  content: "";
-  height: 5px;
-  width: 100%;
-  background-color: #006caa;
-  position: absolute;
-  left: 0;
-  bottom: -50%;
+.company-aside {
+  position: relative; /* 添加相對定位 */
 }
 
-main.main {
-  width: 80dvw;
-  min-height: 100dvh;
-  padding: 20px 20px;
-  margin-left: 20px;
-  border: 3px solid #3d8ebd;
-  font-size: 1.1rem;
-  box-shadow: -5px 0 5px 3px rgba(172, 164, 164, 0.5), 5px 0 5px 3px rgba(172, 164, 164, 0.5), 0 5px 5px 3px rgba(172, 164, 164, 0.5), 0 -5px 5px 3px rgba(172, 164, 164, 0.5);
+.dropdown-menu {
+  display: none;
+  position: absolute; /* 改為絕對定位 */
+  top: 100%;
+  right: 0; /* 將框框相對於父元素向右對齊 */
+  background-color: #3d8ebd;
+  padding: 10px;
+  z-index: 1;
+  width: 90%;
+}
+
+.dropdown-trigger:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-trigger {
+  position: relative; /* 添加相對定位 */
+}
+
+.dropdown.show .dropdown-menu {
+  display: block;
+}
+
+.push-down {
+  transform: translateY(0);
+  transition: transform 0.3s;
+}
+
+.push-down.active {
+  transform: translateY(30px); /* 設定下推的距離 */
 }
 
 .select-row {

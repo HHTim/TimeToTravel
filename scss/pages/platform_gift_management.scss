@@ -1,81 +1,51 @@
 // 記得引入基本設定
 @import '../base/base';
 
-/*以下為測試用，可刪*/
-.subtitle {
-  width: 100%;
-  position: relative;
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 1.5rem;
-
-  &::after {
-    content: '';
-    height: 5px;
-    width: 100%;
-    background-color: $primary-blue;
-    position: absolute;
-    left: 0;
-    bottom: -50%;
-  }
-}
-
-main.main {
-  width: 80dvw;
-  min-height: 100dvh;
-  padding: 20px 20px;
-  margin-left: 20px;
-  // display: flex;
-  border: 3px solid $admin-aside-blue;
-  font-size: 1.1rem;
-  box-shadow: -5px 0 5px 3px rgba(172, 164, 164, 0.5), 5px 0 5px 3px rgba(172, 164, 164, 0.5),
-    0 5px 5px 3px rgba(172, 164, 164, 0.5), 0 -5px 5px 3px rgba(172, 164, 164, 0.5);
-}
-
-// .btn-test-1 {
-//   background-color: $primary-blue;
-//   color: $test-red;
-//   border: $normal-border;
-
-//   &:hover {
-//     background-color: $primary-blue-hover;
-//     color: $font-normal-white;
-//   }
-// }
-
-// .btn-test-2 {
-//   background-color: $primary-gray;
-//   color: $font-normal-black;
-//   border: $normal-border;
-
-//   &:hover {
-//     background-color: $secondary-gray;
-//     color: $font-normal-black;
-//   }
-// }
-
-// .btn-test-3 {
-//   background-color: $danger-red;
-//   color: $font-normal-white;
-//   border: $normal-border;
-
-//   &:hover {
-//     background-color: $danger-red-hover;
-//     color: $font-normal-white;
-//   }
-// }
-
-// .btn-test-jquery {
-//   padding: 0.5rem;
-//   background-color: $rank-yellow;
-//   color: $font-normal-black;
-//   border: $normal-border;
-//   box-shadow: $shadow;
-//   border-radius: $border-radius;
-// }
-
 // =============================================================================//
-// start
+//sidebar 下拉式選單
+
+.company-aside {
+  position: relative; /* 添加相對定位 */
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute; /* 改為絕對定位 */
+  top: 100%;
+  right: 0; /* 將框框相對於父元素向右對齊 */
+  // left: calc(100% + 10px);
+  // left: 100%;
+  background-color: $admin-aside-blue;
+  padding: 10px;
+  z-index: 1;
+  width: 90%;
+}
+
+.dropdown-trigger:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-trigger {
+  position: relative; /* 添加相對定位 */
+}
+.dropdown.show .dropdown-menu {
+  display: block;
+}
+
+////////////////////////////
+
+.push-down {
+  transform: translateY(0);
+  transition: transform 0.3s;
+}
+
+.push-down.active {
+  transform: translateY(30px); /* 設定下推的距離 */
+}
+
+///////////////////////////
+
+//============================== start
 .select-row {
   display: flex;
   align-items: center;
@@ -343,3 +313,5 @@ ul {
 .page-active {
   color: #495057;
 }
+
+//

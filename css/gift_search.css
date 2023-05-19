@@ -289,257 +289,92 @@ body {
   color: white;
 }
 
-/*以下為測試用，可刪*/
-.subtitle {
-  width: 100%;
-  position: relative;
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 1.5rem;
-}
-.subtitle::after {
-  content: "";
-  height: 5px;
-  width: 100%;
-  background-color: #006caa;
-  position: absolute;
-  left: 0;
-  bottom: -50%;
+.gift_searchresult {
+  margin-left: 20%;
+  margin-right: 20%;
+  width: 60%;
 }
 
-main.main {
-  width: 80dvw;
-  min-height: 100dvh;
-  padding: 20px 20px;
-  margin-left: 20px;
-  border: 3px solid #3d8ebd;
-  font-size: 1.1rem;
-  box-shadow: -5px 0 5px 3px rgba(172, 164, 164, 0.5), 5px 0 5px 3px rgba(172, 164, 164, 0.5), 0 5px 5px 3px rgba(172, 164, 164, 0.5), 0 -5px 5px 3px rgba(172, 164, 164, 0.5);
+.collapse_collection {
+  border: 1px solid #ddd; /* 設定邊框樣式 */
+  padding: 10px; /* 設定邊框間距 */
 }
 
-.select-row {
+.collapse_collection li {
+  border-bottom: 1px dotted #ccc; /* 設定列表項目間的線條樣式 */
+  padding: 5px 0; /* 設定列表項目的內邊距 */
+}
+
+.row {
   display: flex;
-  align-items: center;
-  margin-bottom: 20px;
+  flex-wrap: wrap;
 }
 
-.input-container {
+.collection_title h1 {
+  font-size: 1.5rem; /* 設定適當的字體大小值 */
+}
+
+.collection_title.row {
+  margin-bottom: 30px;
+}
+
+.col-3.total_product {
+  text-align: right;
+}
+
+.item_list {
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
-.label-container {
+.col-3.select_item {
   display: flex;
-  align-items: center;
-  margin-right: 10px;
+  justify-content: flex-end;
 }
 
-.form-control {
-  display: block;
-  width: 100%;
-  padding: 0.375rem 0.75rem;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5;
-  color: #495057;
-  background-color: #fff;
-  background-clip: padding-box;
-  border: 1px solid #ced4da;
-  border-radius: 0.25rem;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+.col-3.select_item select {
+  margin-left: auto;
 }
 
-.form-control:focus {
-  border-color: #80bdff;
-  outline: 0;
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-}
-
-.btn-search {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #007bff;
-  border-color: #007bff;
-  color: #fff;
-  cursor: pointer;
-  padding: 0.375rem 0.75rem;
-  border-radius: 0.25rem;
-  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
-
-.btn-search:hover {
-  background-color: #0069d9;
-  border-color: #0062cc;
-}
-
-.btn-search:focus {
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
-}
-
-.table {
-  width: 100%;
-  margin-bottom: 1rem;
-  color: #212529;
-}
-
-table {
-  display: table;
-  border-collapse: collapse;
+* {
   box-sizing: border-box;
-  text-indent: initial;
-  border-spacing: 2px;
-  border-color: gray;
 }
 
-thead {
-  display: table-header-group;
-  vertical-align: middle;
-  border-color: inherit;
+.item_list li {
+  flex-basis: calc(33.33% - 30px); /* 每行显示三张照片，计算每个项的宽度 */
+  margin-bottom: 10px; /* 设置项之间的间距 */
 }
 
-th {
-  display: table-cell;
-  vertical-align: inherit;
-  font-weight: bold;
-  text-align: -internal-center;
+.item_list li img {
+  max-width: 100%; /* 自动缩放照片以适应容器大小 */
+  height: auto; /* 保持照片宽高比 */
 }
 
-tr {
-  display: table-row;
-  vertical-align: inherit;
-  border-color: inherit;
+li {
+  display: list-item;
+  text-align: -webkit-match-parent;
 }
 
-.table .thead-dark th {
-  color: #fff;
-  background-color: #4d4f52;
-  border-color: #454d55;
-}
-
-.text-center {
-  text-align: center !important;
-}
-
-.first {
-  border-top-left-radius: 6px;
-}
-
-.border-top-0 {
-  border-top: 0 !important;
-}
-
-.border-bottom-0 {
-  border-bottom: 0 !important;
-}
-
-.border-left-0 {
-  border-left: 0 !important;
-}
-
-.last {
-  border-top-right-radius: 6px;
-}
-
-.text-center {
-  text-align: center !important;
-}
-
-.text-center {
-  text-align: center !important;
-}
-
-tbody td {
-  text-align: center;
-  border-left: 1px solid #ddd;
-  border-right: 1px solid #ddd;
-}
-
-/* added */
-tbody {
-  border-bottom: 1px solid #ddd;
-}
-
-/* Responsive table */
-@media only screen and (max-width: 767px) {
-  table {
-    width: 100%;
-    max-width: 100%;
-  }
-  thead {
-    display: none;
-  }
-  tbody {
-    display: block;
-    width: 100%;
-    overflow-x: auto;
-  }
-  tbody tr {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-bottom: 10px;
-    width: 100%;
-  }
-  tbody td {
-    display: block;
-    text-align: center;
-    width: 50%;
-    float: left;
-    border-left: 1px solid #ddd;
-    border-right: 1px solid #ddd;
-  }
-}
-/* Hide table on small screens */
-@media only screen and (max-width: 480px) {
-  table {
-    display: none;
-  }
-}
-/* Lightbox */
-.lightbox-content {
-  display: none;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80%;
-  max-width: 600px;
-  background-color: #fff;
-  padding: 20px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-  z-index: 999;
-}
-
-.lightbox-content.open {
+.collect_list .item_text {
   display: block;
+  text-align: center;
 }
 
-.close-button {
-  position: absolute;
-  top: 10px; /* 距離燈箱內容頂部的距離 */
-  right: 10px; /* 距離燈箱內容右側的距離 */
+.product_price {
+  display: block;
+  text-align: center;
 }
 
-.mt-40 {
-  margin-top: 40px;
+.product_price .price {
+  color: #ff674f;
+  font-size: 18px;
+  padding-right: 5px;
 }
 
-.ml-auto {
-  margin-left: auto !important;
-}
-
-.mr-auto {
-  margin-right: auto !important;
-}
-
-.font-weight-bold {
-  font-weight: 700 !important;
-}
-
-.mb-0,
-.my-0 {
-  margin-bottom: 0 !important;
+.product_price .comparable_price .money_tag {
+  color: #a3a3a3;
+  font-size: 0.9rem;
 }
 
 .pagination {
