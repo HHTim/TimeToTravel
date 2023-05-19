@@ -4,6 +4,10 @@ main {
   position: relative;
 }
 
+main * {
+  font-size: 16px;
+}
+
 section:not(:first-child) {
   margin-top: 1rem;
 }
@@ -19,6 +23,7 @@ section:not(:first-child) {
     border: none;
     border-radius: $input-radius;
     box-shadow: $shadow;
+    padding: 0 0.5rem;
   }
 
   * + * {
@@ -97,8 +102,8 @@ section:not(:first-child) {
 
 .comment {
   position: absolute;
-  width: 55%;
-  min-width: 150px;
+  width: 65%;
+  min-width: 300px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -144,6 +149,7 @@ section:not(:first-child) {
     width: 95%;
     height: 200px;
     padding: 0.5rem;
+    resize: none;
 
     &::placeholder {
       position: absolute;
