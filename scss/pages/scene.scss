@@ -1,0 +1,177 @@
+// // 記得引入基本設定
+@import '../base/base';
+
+//------搜尋筆數------//
+.search-results-count {
+  max-width: 15%;
+  padding: 5px 10px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  margin-left: auto;
+}
+.top {
+  // border-style: solid;
+  // border-color: #000000;
+  display: flex;
+  margin-bottom: 10px;
+}
+.checkbox_all {
+  display: flex;
+  padding: 5px 0 5px 0;
+}
+
+.check_all {
+  margin: 0 10px 0 10px;
+}
+//--------卡片------//
+.card {
+  margin-bottom: 10px;
+  -moz-box-shadow: 2px 2px 2px 2px #dadada;
+  -webkit-box-shadow: 2px 2px 2px 2px #dadada;
+  box-shadow: 2px 2px 2px 2px #dadada;
+  max-width: 100%;
+  height: 10%;
+  margin-left: 8px;
+}
+//卡片裡文字
+.card_word {
+  float: right;
+  width: 730px;
+  margin: 0 45px 0 0px;
+}
+
+@media (max-width: 1400px) {
+  .card_word {
+    width: 580px;
+  }
+}
+@media (max-width: 1200px) {
+  .card_word {
+    width: 430px;
+  }
+}
+@media (max-width: 1000px) {
+  .card_word {
+    width: 230px;
+  }
+}
+@media (max-width: 768px) {
+  .card_word {
+    width: 100px;
+  }
+}
+//卡片裡的標題
+.card-title {
+  font-weight: bold;
+}
+
+//卡片裡照片
+.pic_style {
+  max-width: 200px;
+  // max-height: 100%;
+  border-radius: 10px; //圓角
+  float: left;
+  margin-right: 10px;
+  // width: 100%;
+  // height: 100%;
+}
+
+//顯示文字行
+.multiline-ellipsis {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+
+//展開/縮排 按鈕
+.btn-primary {
+  float: right;
+  cursor: pointer;
+}
+
+//網址文字格式
+.url_style {
+  text-decoration: underline; //底線
+  font-size: 12px;
+}
+
+//--------天氣------//
+
+.weather {
+  position: absolute;
+  top: 10px;
+  right: 0px;
+  width: 120px;
+  height: 30px;
+  // border-style: solid;
+  border-radius: 20px 0 0 20px;
+  background-color: #b5d2f1;
+  // background-image: url('https://img.ltn.com.tw/Upload/news/600/2019/03/30/phpUCF6ub.jpg');
+  background-size: cover;
+}
+
+.card-body {
+  position: relative;
+  padding: 20px;
+}
+//--------搜尋欄------//
+
+.tab {
+  background-color: #b3b2b2;
+  border: none;
+  border-radius: 5px 5px 0 0;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 8px 16px;
+  transition: background-color 0.3s ease;
+  font-weight: bold;
+}
+
+.tab.active {
+  background-color: #007bff;
+  border-bottom: 2px solid #007bff;
+}
+
+.tab-content {
+  display: none;
+  padding: 10px;
+  background-color: #007bff;
+  border-radius: 0 10px 10px 10px; //圓角
+  margin-bottom: 10px;
+  height: 50px;
+  -moz-box-shadow: 2px 2px 2px 2px #accefb;
+  -webkit-box-shadow: 2px 2px 2px 2px #accefb;
+  box-shadow: 2px 2px 2px 2px #accefb;
+}
+
+.tab-content.active {
+  display: block;
+  margin-bottom: 10px;
+  padding-left: 10px;
+}
+
+.tabs {
+  display: flex;
+  justify-content: left;
+}
+
+input[type='text'] {
+  font-size: 14px; /* 提示文本字体大小 */
+  width: 90%;
+  height: 30px;
+  // border-radius: 5px;
+  // padding-left: 20px;
+  color: #000000;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  padding-left: 5px;
+}
+
+//分頁
+.page1 {
+  display: flex;
+  justify-content: center;
+}
