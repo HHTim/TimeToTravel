@@ -1,0 +1,33 @@
+// 這裡放所有的共用變數設定，顏色、邊框樣式...等
+
+/* theme-color */
+$primary-blue: #006caa;
+$test-red: red;
+$primary-blue-hover: darken($primary-blue, 10%);
+$secondary-blue: #2029f4;
+$secondary-blue-hover: darken($secondary-blue, 10%);
+$danger-red: #be4b4b;
+$danger-red-hover: darken($danger-red, 10%);
+$rank-yellow: #eeab0f;
+$primary-gray: #9b9999;
+$secondary-gray: #dfdcdc;
+$tertiary-gray: #7e7e7e;
+$custom-gray: #bbb8b8;
+$primary-green: #6ccccc;
+$admin-aside-blue: #3d8ebd;
+$admin-aside-hover: #2e3a5b;
+$black: #333;
+$white: #fff;
+$fa-search-gray: #9ca3af;
+$font-normal-black: $black;
+$font-normal-white: $white;
+
+/* border */
+$normal-border: 1px solid $black;
+$custom-border: 1px solid $custom-gray;
+$circle-radius: 50%;
+$border-radius: 10px;
+$input-radius: 5px;
+
+/* effect */
+$shadow: 0 0 3px $primary-gray;
