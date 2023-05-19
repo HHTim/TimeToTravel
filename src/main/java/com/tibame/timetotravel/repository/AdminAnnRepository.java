@@ -1,14 +1,13 @@
 package com.tibame.timetotravel.repository;
 
-import com.tibame.timetotravel.Entity.Ann;
-import com.tibame.timetotravel.common.PageBean;
+import com.tibame.timetotravel.entity.Ann;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
+@Repository("adminAnnRepository")
 public interface AdminAnnRepository extends JpaRepository<Ann,Integer> {
 
     /*方法一 : 優先使用findByXXX的命名規則*/
@@ -26,9 +25,16 @@ public interface AdminAnnRepository extends JpaRepository<Ann,Integer> {
     @Query(value = "SELECT * FROM ANN where ANN_SENDING_TIME between ?1 and ?2 ORDER BY ANN_SENDING_TIME DESC LIMIT ?3,?4",nativeQuery = true)
     List<Ann> findByDateRange(String startDate, String endDate,Integer currPage, Integer limit);
 
+    @Query(value = "SELECT COUNT(*) FROM ANN where ANN_SENDING_TIME between ?1 and ?2 ORDER BY ANN_SENDING_TIME DESC",nativeQuery = true)
+    Integer findAllDateRange(String startDate, String endDate);
+
     @Query(value = "SELECT * FROM ANN where ANN_TITLE like %?1% ORDER BY ANN_SENDING_TIME DESC LIMIT ?2,?3",nativeQuery = true)
     List<Ann> findByKeyWords(String keyword, Integer currPage, Integer limit);
 
-    @Query(value = "SELECT * FROM ANN where ANN_TITLE like %?1% ORDER BY ANN_SENDING_TIME DESC",nativeQuery = true)
-    List<Ann> findByAllKeyWords(String keyword);
+    @Query(value = "SELECT COUNT(*) FROM ANN where ANN_TITLE like %?1% ORDER BY ANN_SENDING_TIME DESC",nativeQuery = true)
+    Integer findByAllKeyWords(String keyword);
+
+    @Query(value = "select * from ANN join ADMIN on ANN.ADMIN_ID_REF = ADMIN.ADMIN_ID",nativeQuery = true)
+    List<Ann> findAlltest();
+
 }

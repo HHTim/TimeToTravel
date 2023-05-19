@@ -1,20 +1,29 @@
 package com.tibame.timetotravel.controller;
 
-import com.tibame.timetotravel.Service.AdminAnnService;
-import com.tibame.timetotravel.Entity.Ann;
+import com.tibame.timetotravel.view.AnnView;
+import com.tibame.timetotravel.service.AdminAnnService;
+import com.tibame.timetotravel.entity.Ann;
+import com.tibame.timetotravel.service.AdminAnnViewService;
 import com.tibame.timetotravel.common.PageBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
-import java.util.Map;
+import java.util.List;
+
 
 @RestController
 @RequestMapping("/AdminAnnController")
 public class AdminAnnController {
 
     @Autowired
+    @Qualifier("adminAnnService")
     private AdminAnnService adminAnnService;
+
+    @Autowired
+    @Qualifier("adminAnnViewService")
+    private AdminAnnViewService adminAnnViewService;
       //此為重導寫法，可以指定導到哪個頁面
     @RequestMapping("/redirect")
     public RedirectView redirect(){
@@ -58,6 +67,8 @@ public class AdminAnnController {
     @GetMapping("/anns/page/{currPage}/{rows}/{startDate}/{endDate}")
     public PageBean<Ann> readByDateRange(@PathVariable Integer currPage, @PathVariable Integer rows, @PathVariable String startDate, @PathVariable String endDate){
         System.out.println("日期範圍搜尋");
+        System.out.println(startDate);
+        System.out.println(endDate);
         return adminAnnService.findAnnPageByDateRange(startDate,endDate,currPage,rows);
     }
 
@@ -65,5 +76,17 @@ public class AdminAnnController {
     public PageBean<Ann> readByKeWords(@PathVariable Integer currPage, @PathVariable Integer rows, @PathVariable String keyword){
         System.out.println("關鍵字搜尋");
         return adminAnnService.findAnnPageByKeyWords(keyword,currPage,rows);
+    }
+
+    @GetMapping("/anns/test")
+    public List<Ann> readByTestAll(){
+        System.out.println("關聯式全查詢");
+        return adminAnnService.findTestAll();
+    }
+
+    @GetMapping("/anns/test2")
+    public List<AnnView> findAlltest(){
+        System.out.println("VIEW全查詢");
+        return adminAnnViewService.findAllDemo();
     }
 }

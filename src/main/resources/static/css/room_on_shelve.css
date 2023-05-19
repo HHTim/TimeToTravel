@@ -1,0 +1,560 @@
+@charset "UTF-8";
+/* theme-color */
+/* border */
+/* effect */
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  min-height: 100vh;
+  min-width: 640px;
+  position: relative;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+a:link {
+  text-decoration: none;
+}
+a:visited {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+}
+a:active {
+  text-decoration: none;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
+main.main {
+  width: 80dvw;
+  min-height: calc(100vh - 20px - 20px - 16px - 80px);
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+  border: 3px solid #3d8ebd;
+  font-size: 1.1rem;
+  box-shadow: -5px 0 5px 3px rgba(172, 164, 164, 0.5), 5px 0 5px 3px rgba(172, 164, 164, 0.5), 0 5px 5px 3px rgba(172, 164, 164, 0.5), 0 -5px 5px 3px rgba(172, 164, 164, 0.5);
+}
+
+.subtitle {
+  width: 100%;
+  position: relative;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+.subtitle::after {
+  content: "";
+  height: 5px;
+  width: 100%;
+  background-color: #006caa;
+  position: absolute;
+  left: 0;
+  bottom: -50%;
+}
+
+.decorator {
+  width: 100%;
+  height: 20px;
+  background-color: #006caa;
+}
+
+.header__container {
+  width: 95%;
+  max-height: 80px;
+  padding: 0;
+  margin-left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+}
+.nav__link {
+  color: #333;
+  font-weight: bold;
+  position: relative;
+}
+.nav__link::after {
+  content: "";
+  width: 0;
+  height: 2px;
+  background-color: #006caa;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%);
+  transition: all ease-in-out 0.1s;
+}
+.nav__link:hover a {
+  color: #006caa;
+}
+.nav__link:hover::after {
+  width: 100%;
+}
+.nav__avatar {
+  width: 40px;
+  height: 40px;
+}
+.nav .dropdown-center {
+  width: 100%;
+  height: 100%;
+}
+.nav__avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+}
+.nav__avatar-img img {
+  width: 100%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.nav__avatar-btn {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+.nav__avatar-btn::after {
+  border: none;
+}
+.nav__info {
+  width: 40px;
+  height: 36px;
+}
+.nav__info .dropdown-center {
+  width: 100%;
+  height: 100%;
+}
+.nav__info-btn {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background-image: url("../images/info.svg");
+  background-color: transparent;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.nav__info-btn::after {
+  border: none;
+}
+
+.logo {
+  width: 150px;
+  padding: 1rem;
+}
+.logo__img {
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+div.custom-container div.company-aside {
+  background-color: #3d8ebd;
+  padding: 0;
+  min-height: calc(100vh - 20px - 20px - 80px);
+}
+
+div.custom-container div.company-aside nav.nav-custom ul.nav_list {
+  padding: 0;
+  margin: 0;
+}
+
+div.custom-container div.company-aside nav.nav-custom ul.nav_list > li a {
+  display: block;
+  text-align: center;
+  padding: 1rem 0;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+div.custom-container div.company-aside nav.nav-custom ul.nav_list > li a:hover {
+  background-color: #2e3a5b;
+}
+div.custom-container div.company-aside nav.nav-custom ul.nav_list > li a:active {
+  opacity: 0.8;
+}
+
+.user-aside {
+  max-width: 200px;
+  height: 98%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #dfdcdc;
+  border-radius: 10px;
+  box-shadow: 0 0 3px #9b9999;
+  margin-bottom: 1rem;
+  min-height: calc(100vh - 20px - 20px - 16px - 80px);
+  white-space: nowrap;
+}
+.user-aside__list {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+.user-aside__item {
+  font-size: 20px;
+  width: 90%;
+  margin: 0.5rem auto;
+  padding: 0.25rem 0.5rem;
+  font-weight: 600;
+  background-color: transparent;
+  text-align: center;
+  border-radius: 10px;
+}
+.user-aside__item:hover {
+  color: #fff;
+  background-color: #006caa;
+}
+.user-aside__item a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: inherit;
+}
+.user-aside__item--small {
+  width: -moz-fit-content;
+  width: fit-content;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 1rem 0;
+  margin-left: 0.5rem;
+  position: relative;
+}
+.user-aside__item--small:hover {
+  color: #006caa;
+}
+.user-aside__item--small a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: inherit;
+}
+
+.html,
+body {
+  height: 100%;
+}
+
+.wrapper {
+  min-height: 100%;
+}
+
+.footer {
+  width: 100%;
+  height: 20px;
+  bottom: 0;
+  background-color: #006caa;
+  color: white;
+}
+
+/*以下為測試用，可刪*/
+.subtitle {
+  width: 100%;
+  position: relative;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+.subtitle::after {
+  content: "";
+  height: 5px;
+  width: 100%;
+  background-color: #006caa;
+  position: absolute;
+  left: 0;
+  bottom: -50%;
+}
+
+main.main {
+  width: 80dvw;
+  min-height: 100dvh;
+  padding: 20px 20px;
+  border: 3px solid #3d8ebd;
+  font-size: 1.1rem;
+  box-shadow: -5px 0 5px 3px rgba(172, 164, 164, 0.5), 5px 0 5px 3px rgba(172, 164, 164, 0.5), 0 5px 5px 3px rgba(172, 164, 164, 0.5), 0 -5px 5px 3px rgba(172, 164, 164, 0.5);
+}
+
+h3.subtitle {
+  display: flex;
+  justify-content: space-around;
+  font-size: x-large;
+}
+
+div.r1 {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+div.r1 div {
+  text-align: center;
+}
+
+div.r1 button {
+  font-size: 1rem;
+  min-width: 90px;
+  border: 1px solid #333;
+  border-radius: 10px;
+}
+
+main.main div.decorator {
+  width: 100%;
+  height: 5px;
+  background-color: #006caa;
+  margin: 20px 0 25px 0;
+}
+
+div.nav-btn {
+  text-align: center;
+  align-items: center;
+  margin: 0 0 20px 0;
+}
+
+.update__btn__area button {
+  background-color: #006caa;
+  border: 1px solid #333;
+  margin: 1rem 0.5rem;
+  padding: 10px;
+  font-weight: bold;
+  font-size: larger;
+}
+.update__btn__area button:hover {
+  background-color: #004c77;
+  color: #fff;
+}
+
+.reset__area {
+  display: flex;
+  justify-content: end;
+  padding-right: 2rem;
+}
+.reset__area__btn {
+  padding: 10px;
+  font-weight: bold;
+  font-size: larger;
+}
+.reset__area__btn:hover {
+  background-color: #004c77;
+  color: #fff;
+}
+
+.room__name {
+  display: flex;
+  margin: 2rem auto 3rem 1rem;
+  position: relative;
+}
+.room__name::after {
+  content: "";
+  height: 5px;
+  width: 100%;
+  background-color: #7e7e7e;
+  position: absolute;
+  left: 0;
+  bottom: -50%;
+}
+.room__name__title, .room__name__classify {
+  margin: auto 1rem auto 0;
+  font-weight: bold;
+  white-space: nowrap;
+}
+.room__name input {
+  border-radius: 5px;
+  border-color: #3d8ebd;
+  padding: 0 10px;
+  font-weight: bold;
+  height: 3rem;
+  margin-left: 2.2rem;
+  border-style: none;
+  border: 2px solid #3d8ebd;
+}
+
+.room__equip {
+  display: flex;
+  margin: 2rem auto;
+}
+.room__equip__title {
+  font-weight: bold;
+  margin-left: 1rem;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+}
+.room__equip__options {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin-left: 2.5rem;
+}
+.room__equip__options__bed {
+  font-weight: bold;
+  border-radius: 5px;
+  border-color: #3d8ebd;
+  height: 3rem;
+  border-style: none;
+  border: 2px solid #3d8ebd;
+}
+.room__equip__options__wifi {
+  font-weight: bold;
+  border-radius: 5px;
+  border-color: #3d8ebd;
+  border-style: none;
+  border: 2px solid #3d8ebd;
+}
+.room__equip__options__pets {
+  font-weight: bold;
+  border-radius: 5px;
+  border-color: #3d8ebd;
+  border-style: none;
+  border: 2px solid #3d8ebd;
+}
+.room__equip__options__breakfast {
+  font-weight: bold;
+  border-radius: 5px;
+  border-color: #3d8ebd;
+  border-style: none;
+  border: 2px solid #3d8ebd;
+}
+.room__equip__options__parking {
+  font-weight: bold;
+  border-radius: 5px;
+  border-color: #3d8ebd;
+  border-style: none;
+  border: 2px solid #3d8ebd;
+}
+.room__equip__options__smoking {
+  font-weight: bold;
+  border-radius: 5px;
+  border-color: #3d8ebd;
+  border-style: none;
+  border: 2px solid #3d8ebd;
+}
+.room__equip__options__service24hr {
+  font-weight: bold;
+  border-radius: 5px;
+  border-color: #3d8ebd;
+  border-style: none;
+  border: 2px solid #3d8ebd;
+}
+
+.room__price {
+  display: flex;
+  margin: 1rem;
+}
+.room__price__title {
+  font-weight: bold;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+}
+.room__price input {
+  border-radius: 5px;
+  margin-left: 3rem;
+  border-color: #3d8ebd;
+  padding: 0 10px;
+  outline-style: none;
+  font-weight: bold;
+  height: 3rem;
+  border-style: none;
+  border: 2px solid #3d8ebd;
+}
+
+.room__photo {
+  display: flex;
+  margin: 1rem;
+  height: 5rem;
+}
+.room__photo__title {
+  font-weight: bold;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  height: 5rem;
+}
+.room__photo input {
+  border-radius: 5px;
+  margin: 1.5rem auto auto 3rem;
+  border-color: #3d8ebd;
+  font-weight: bold;
+  height: 3rem;
+}
+
+.room__description {
+  display: flex;
+  margin-left: 1rem;
+}
+.room__description__title {
+  font-weight: bold;
+  white-space: nowrap;
+  display: flex;
+  align-items: start;
+}
+.room__description textarea {
+  border-radius: 5px;
+  margin-left: 3rem;
+  border-color: #3d8ebd;
+  padding: 0 10px;
+  outline-style: none;
+  font-weight: bold;
+  height: 20rem;
+  width: 100%;
+  border-style: none;
+  border: 2px solid #3d8ebd;
+}
+
+.save__btn {
+  display: flex;
+  justify-content: flex-end;
+}
+.save__btn__commit {
+  background-color: #006caa;
+  border: 1px solid #333;
+  margin: 1rem 0.5rem;
+  padding: 10px;
+  font-weight: bold;
+  font-size: larger;
+}
+.save__btn__commit:hover {
+  background-color: #004c77;
+  color: #fff;
+}

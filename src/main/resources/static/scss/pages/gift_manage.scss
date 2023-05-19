@@ -1,53 +1,10 @@
 // 記得引入基本設定
 @import '../base/base';
 
-.btn-test-1 {
-  background-color: $primary-blue;
-  color: $font-normal-white;
-  border: $normal-border;
-
-  &:hover {
-    background-color: $primary-blue-hover;
-    color: $font-normal-white;
-  }
-}
-
-.btn-test-2 {
-  background-color: $primary-gray;
-  color: $font-normal-black;
-  border: $normal-border;
-
-  &:hover {
-    background-color: $secondary-gray;
-    color: $font-normal-black;
-  }
-}
-
-.btn-test-3 {
-  background-color: $danger-red;
-  color: $font-normal-white;
-  border: $normal-border;
-
-  &:hover {
-    background-color: $danger-red-hover;
-    color: $font-normal-white;
-  }
-}
-
-.btn-test-jquery {
-  padding: 0.5rem;
-  background-color: $rank-yellow;
-  color: $font-normal-black;
-  border: $normal-border;
-  box-shadow: $shadow;
-  border-radius: $border-radius;
-}
-
 html,
 body {
   margin: 0;
 }
-
 
 /* ================= main 區域 ================= */
 main.main {
@@ -58,7 +15,29 @@ main.main {
   font-size: 1.1rem;
   box-shadow: -5px 0 5px 3px rgba(172, 164, 164, 0.5), 5px 0 5px 3px rgba(172, 164, 164, 0.5),
     0 5px 5px 3px rgba(172, 164, 164, 0.5), 0 -5px 5px 3px rgba(172, 164, 164, 0.5);
-  margin: 0 20px;
+}
+
+h3.subtitle {
+  display: flex;
+  justify-content: space-around;
+  font-size: x-large;
+}
+
+.reset__area {
+  display: flex;
+  justify-content: end;
+  padding-right: 2rem;
+
+  &__btn {
+    padding: 10px;
+    font-weight: bold;
+    font-size: larger;
+
+    &:hover {
+      background-color: $primary-blue-hover;
+      color: $font-normal-white;
+    }
+  }
 }
 
 div.r1 {
@@ -75,7 +54,7 @@ div.r1 button {
   min-width: 90px;
 
   border: $normal-border;
-  border-radius: $border-radius;  
+  border-radius: $border-radius;
 }
 
 main.main div.decorator {
@@ -104,40 +83,101 @@ div.nav-btn div.search-name label {
 
 div.nav-btn div.search-name input {
   width: 100%;
+  margin-left: 2rem;
+  border-radius: $input-radius;
+  padding: 0 10px;
+  border-style: none;
+  border: 2px solid $admin-aside-blue;
+  height: 3rem;
 }
 
-div.type-choose {
+.gift__type {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: end;
+
+  &__options {
+    border-radius: $input-radius;
+    border-color: $admin-aside-blue;
+    padding: 0 10px;
+    outline-style: none;
+    font-weight: bold;
+    height: 3rem;
+    border-style: none;
+    border: 2px solid $admin-aside-blue;
+    margin-right: 1.5rem;
+  }
 }
 
-div.type-choose label {
-  min-width: 50px;
-  margin: 0 auto;
+.search__area {
+  display: flex;
+  justify-content: end;
+  padding-right: 1rem;
+  &__btn {
+    padding: 10px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    width: 92px;
+
+    border: $custom-border;
+    border-radius: $border-radius;
+
+    background-color: $primary-blue;
+    color: $white;
+
+    &:hover {
+      background-color: $primary-blue-hover;
+      color: $font-normal-white;
+    }
+  }
 }
 
-button.btn-info {
-  background-color: $admin-aside-blue;
-  color: $white;
+div.manage-type {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 40px;
 }
 
-div.impl-btn div.search-btn {
+div.manage-type div {
+  min-width: 70px;
   text-align: center;
+  background-color: $secondary-gray;
+  border-radius: $border-radius $border-radius 0 0;
 }
 
-div.impl-btn div.search-btn button {
-  min-width: 70%;
+.gift-table {
+  border-top: 3px solid $primary-blue-hover;
+}
 
-  border: $custom-border;
-  border-radius: $border-radius;  
+th,
+td {
+  text-align: center;
+  font-weight: bold;
+}
 
-  background-color: $primary-blue;
+tbody tr {
+  height: 50px;
+}
+.gift__status {
+  border-radius: $input-radius;
+  border-color: $admin-aside-blue;
+  padding: 0 10px;
+  outline-style: none;
+  font-weight: bold;
+  height: 2rem;
+  border-style: none;
+  border: 2px solid $admin-aside-blue;
+}
+.-ontype {
+  background-color: $primary-blue !important;
   color: $white;
+
+  a:hover {
+    color: $white;
+  }
 }
 
-
-
-
-
-
+h3 {
+  display: flex;
+  justify-content: space-around;
+}

@@ -1,6 +1,6 @@
-package com.tibame.timetotravel.Service;
+package com.tibame.timetotravel.service;
 
-import com.tibame.timetotravel.Entity.Ann;
+import com.tibame.timetotravel.entity.Ann;
 import com.tibame.timetotravel.common.PageBean;
 
 import java.util.List;
@@ -16,9 +16,11 @@ public interface AdminAnnService {
 
     List<Ann> findByKeyWords(String keyword, Integer currPage, Integer limit);
 
-    List<Ann> findByAllKeyWords(String keyword);
+    Integer findByAllKeyWords(String keyword);
 
     PageBean<Ann> findAnnPageByRowData(Integer currPage, Integer rows);
     PageBean<Ann> findAnnPageByDateRange(String startDate, String endDate, Integer currPage, Integer rows);
     PageBean<Ann> findAnnPageByKeyWords(String keyword,Integer currPage, Integer rows);
+
+    List<Ann> findTestAll();
 }

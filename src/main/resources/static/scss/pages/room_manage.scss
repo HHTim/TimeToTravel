@@ -1,0 +1,178 @@
+// 記得引入基本設定
+@import '../base/base';
+
+html,
+body {
+	margin: 0;
+}
+
+/* ================= main 區域 ================= */
+main.main {
+	width: 80dvw;
+	min-height: 100dvh;
+	padding: 20px 20px;
+	border: 3px solid $admin-aside-blue;
+	font-size: 1.1rem;
+	box-shadow: -5px 0 5px 3px rgba(172, 164, 164, 0.5), 5px 0 5px 3px rgba(172, 164, 164, 0.5),
+		0 5px 5px 3px rgba(172, 164, 164, 0.5), 0 -5px 5px 3px rgba(172, 164, 164, 0.5);
+}
+
+h3.subtitle {
+	display: flex;
+	justify-content: space-around;
+	font-size: x-large;
+}
+
+.reset__area {
+	display: flex;
+	justify-content: end;
+	padding-right: 2rem;
+
+	&__btn {
+		padding: 10px;
+		font-weight: bold;
+		font-size: larger;
+
+		&:hover {
+			background-color: $primary-blue-hover;
+			color: $font-normal-white;
+		}
+	}
+}
+
+div.r1 {
+	font-size: 1.2rem;
+	font-weight: bold;
+}
+
+div.r1 div {
+	text-align: center;
+}
+
+div.r1 button {
+	font-size: 1rem;
+	min-width: 90px;
+
+	border: $normal-border;
+	border-radius: $border-radius;
+}
+
+main.main div.decorator {
+	width: 100%;
+	height: 5px;
+	background-color: $primary-blue;
+	margin: 20px 0 25px 0;
+}
+
+div.nav-btn {
+	text-align: center;
+	align-items: center;
+	margin: 0 0 20px 0;
+}
+
+div.nav-btn div.search-name {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+div.nav-btn div.search-name label {
+	min-width: 50px;
+	margin: 0 auto;
+}
+
+div.nav-btn div.search-name input {
+	width: 100%;
+	margin-left: 2rem;
+	border-radius: $input-radius;
+	padding: 0 10px;
+	border-style: none;
+	border: 2px solid $admin-aside-blue;
+	height: 3rem;
+}
+
+.room__type {
+	display: flex;
+	justify-content: end;
+
+	&__options {
+		border-radius: $input-radius;
+		border-color: $admin-aside-blue;
+		padding: 0 10px;
+		outline-style: none;
+		font-weight: bold;
+		height: 3rem;
+		border-style: none;
+		border: 2px solid $admin-aside-blue;
+		margin-right: 1.5rem;
+	}
+}
+
+.search__area {
+	display: flex;
+	justify-content: end;
+	padding-right: 1rem;
+	&__btn {
+		padding: 10px;
+		font-weight: bold;
+		display: flex;
+		justify-content: center;
+		width: 92px;
+
+		border: $custom-border;
+		border-radius: $border-radius;
+
+		background-color: $primary-blue;
+		color: $white;
+
+		&:hover {
+			background-color: $primary-blue-hover;
+			color: $font-normal-white;
+		}
+	}
+}
+
+div.manage-type {
+	display: flex;
+	justify-content: flex-start;
+	margin-top: 40px;
+}
+
+div.manage-type div {
+	min-width: 70px;
+	text-align: center;
+	background-color: $secondary-gray;
+	border-radius: $border-radius $border-radius 0 0;
+}
+
+.room-table {
+	border-top: 3px solid $primary-blue-hover;
+}
+
+th,
+td {
+	text-align: center;
+	font-weight: bold;
+}
+
+tbody tr {
+	height: 50px;
+}
+.room__status {
+	border-radius: $input-radius;
+	border-color: $admin-aside-blue;
+	padding: 0 10px;
+	outline-style: none;
+	font-weight: bold;
+	height: 2rem;
+	border-style: none;
+	border: 2px solid $admin-aside-blue;
+}
+.-ontype {
+	background-color: $primary-blue !important;
+	color: $white;
+
+	a:hover {
+		color: $white;
+	}
+}

@@ -36,29 +36,22 @@ $(function () {
   });
 
   function publish(annVO) {
-    let headers = {
-      "Content-Type": "application/json",
-      "Accept": "application/json"
-    }
-    let body = {
-      'annId': annVO.annId,
-      'adminId': annVO.adminId,
-      'annSendingTime': null,
-      'annTitle': annVO.title,
-      'annContent': annVO.content,
-      'comId': annVO.comId
-    }
-    const url = 'http://localhost:8080/AdminAnnController/anns/'+annVO.annId;
+    const url = 'http://localhost:8081/TIME_TO_TRAVEL/AnnController';
+    const formData = new FormData();
+    formData.append('action', 'update_ann');
+    formData.append('annId', annVO.annId);
+    formData.append('annTime', annVO.ann_time);
+    formData.append('title', annVO.title);
+    formData.append('content', annVO.content);
+    formData.append('admin_id', annVO.adminId);
+    formData.append('com_id', annVO.comId);
     fetch(url, {
-      method: 'PUT',
-      headers: headers,
-      body: JSON.stringify(body),
+      method: 'POST',
+      body: new URLSearchParams(formData),
     })
-      .then((r) => r.text())
+      .then((r) => r.json())
       .then((d) => {
         console.log(d);
-        // history.back();
-        location.href = '/html/admin_ann.html';
       });
   }
 
@@ -88,13 +81,11 @@ $(function () {
   });
   publish_button.on('click', function () {
     if (verificationData()) {
-      console.log("Valid");
       annVO.title = title_input.val().trim();
       annVO.content = title_content.val().trim();
       publish(annVO);
-    } else {
-      console.log("Invalid");
     }
+    history.back();
   });
 
   getSessionData();

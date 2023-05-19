@@ -1,6 +1,5 @@
-package com.tibame.timetotravel.Entity;
+package com.tibame.timetotravel.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,11 +18,10 @@ public class Ann {
     @Column(name = "ANN_ID")
     private Integer annId;
 
-    @Column(name = "ADMIN_ID")
+    @Column(name = "ADMIN_ID_REF")
     private Integer adminId;
 
     @Column(name = "ANN_SENDING_TIME")
-    @JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss",timezone = "GMT+8")
     private Timestamp annSendingTime;
 
     @Column(name = "ANN_TITLE")
@@ -34,4 +32,5 @@ public class Ann {
 
     @Column(name = "COM_ID")
     private Integer comId;
+
 }

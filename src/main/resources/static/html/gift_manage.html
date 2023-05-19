@@ -32,7 +32,7 @@
         <nav>
           <ul class="nav">
             <li class="nav__link"><a href="#">我的訂單</a></li>
-            <li class="nav__link"><a href="#">購物車</a></li>
+            <li class="nav__link"><a href="#">伴手禮商城</a></li>
             <li class="nav__link"><a href="#">部落格</a></li>
             <li class="nav__info">
               <div class="dropdown-center">
@@ -82,7 +82,6 @@
                 <li><a href="#">商品管理</a></li>
                 <li><a href="#">上架頁面</a></li>
                 <li><a href="#">訊息管理</a></li>
-                <li><a href="#">統計圖表</a></li>
               </ul>
             </nav>
           </aside>
@@ -95,83 +94,83 @@
             <div class="container-fulid">
               <!-- 第一列 -->
               <div class="row r1">
-                <div class="col-2"><a href="#">全部</a></div>
-                <div class="col-2"><a href="#">架上商品</a></div>
-                <div class="col-2"><a href="#">未上架</a></div>
-                <div class="col-4"></div>
                 <div class="col-2">
-                  <button>重設</button>
+                  <a href="#"><h3>全部</h3></a>
+                </div>
+                <div class="col-2">
+                  <a href="#"><h3>架上商品</h3></a>
+                </div>
+                <div class="col-2">
+                  <a href="#"><h3>未上架</h3></a>
+                </div>
+                <div class="col-4"></div>
+                <div class="col-2 reset__area">
+                  <button class="reset__area__btn">重設</button>
                 </div>
               </div>
               <div class="decorator"></div>
-
               <!-- 第二列 -->
               <div class="row nav-btn">
                 <div class="col-4">
                   <div class="search-name">
-                    <label for="ns">名稱</label>
-                    <input type="text" id="ns" class="name-input" placeholder="請輸入" />
+                    <label for="ns"><h4>名稱</h4></label>
+                    <input type="text" id="ns" class="name-input" placeholder="你想找什麼...?" />
                   </div>
                 </div>
-                <div class="col-4"></div>
-                <div class="col-4">
-                  <div class="type-choose">
-                    <label>類別</label>
-                    <div class="btn-group">
-                      <button
-                        type="button"
-                        class="btn btn-info dropdown-toggle"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false"
-                      >
-                        請選擇分類
-                      </button>
-                      <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" href="#">彌月美食</a></li>
-                        <li><a class="dropdown-item" href="#">店取限定</a></li>
-                        <li><a class="dropdown-item" href="#">團購美食</a></li>
-                      </ul>
-                    </div>
-                  </div>
+                <div class="col-2 gift__type">
+                  <select name="gift__type__options" class="gift__type__options">
+                    <option disabled selected hidden>商品分類</option>
+                    <option value="1">彌月禮盒</option>
+                    <option value="2">送禮好用</option>
+                    <option value="4">超難吃的</option>
+                  </select>
                 </div>
-              </div>
-
-              <!-- 第三列 -->
-              <div class="row impl-btn">
-                <div class="col-4"></div>
-                <div class="col-4 search-btn">
-                  <button>搜尋</button>
+                <div class="col-6 search__area">
+                  <button class="search__area__btn">搜尋</button>
                 </div>
-                <div class="col-4"></div>
               </div>
 
               <!-- 第四列 -->
-              <div class="row manage-type">
-                <div class="col-4">
-                  <div class="type-1"><a href="#">房型</a></div>
-                  <div class="type-2 -ontype"><a href="#">土產</a></div>
-                  <div class="type-3"><a href="#">景點</a></div>
+              <div class="row">
+                <div class="col-4 manage-type">
+                  <div class="type-1"><a href="../html/room_manage.html">房型</a></div>
+                  <div class="type-2 -ontype"><a href="../html/gift_manage.html">土產</a></div>
+                  <div class="type-3"><a href="../html/primary_scene_manage.html">景點</a></div>
                 </div>
                 <div class="col-8"></div>
               </div>
 
               <!-- 第五列 -->
-              <div class="row list-header">
-                <div class="col-1"><input type="checkbox" /></div>
-                <div class="col-1">名稱</div>
-                <div class="col-2 gift-img"></div>
-                <div class="col-2">商品編號</div>
-                <div class="col-2">商品分類</div>
-                <div class="col-1">價格</div>
-                <div class="col-1">剩餘數量</div>
-                <div class="col-1">已售出</div>
-                <div class="col-1">操作</div>
-              </div>
-
-              <!-- 第六列 -->
-              <div class="row gift-list">
+              <div class="row gift-table">
                 <table>
-                  <tbody class="gift-tbody"></tbody>
+                  <thead>
+                    <tr>
+                      <th>商品名稱</th>
+                      <th>商品編號</th>
+                      <th>商品分類</th>
+                      <th>價格</th>
+                      <th>剩餘數量</th>
+                      <th>已售出</th>
+                      <th>操作</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>蛇肉</td>
+                      <td>snake01</td>
+                      <td>彌月美食</td>
+                      <td>$3800</td>
+                      <td>20</td>
+                      <td>3</td>
+                      <td>
+                        <select name="gift__status" class="gift__status">
+                          <option disabled selected hidden>狀態</option>
+                          <option value="">上架</option>
+                          <option value="">下架</option>
+                        </select>
+                      </td>
+                    </tr>
+                  </tbody>
                 </table>
               </div>
             </div>
@@ -190,53 +189,3 @@
     </footer>
   </body>
 </html>
-
-<!--
-<ul class="gift">
-  <li>
-    <input type="checkbox" /><span>青蛙</span><img src="#" alt="這是圖片" /><span>y0001</span><span>彌月美食</span
-    ><span>$3800</span><span>20</span><span>3</span
-    >
-    <div class="btn-group">
-      <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-        上架
-      </button>
-      <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#">上架</a></li>
-        <li><hr class="dropdown-divider" /></li>
-        <li><a class="dropdown-item" href="#">下架</a></li>
-      </ul>
-    </div>
-  </li>
-  <li>
-    <input type="checkbox" /><span>蛇肉</span><img src="#" alt="這是圖片" /><span>y0002</span><span>彌月美食</span
-    ><span>$5300</span><span>12</span><span>7</span
-    >
-    <div class="btn-group">
-      <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-        下架
-      </button>
-      <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#">上架</a></li>
-        <li><hr class="dropdown-divider" /></li>
-        <li><a class="dropdown-item" href="#">下架</a></li>
-      </ul>
-    </div>
-  </li>
-  <li>
-    <input type="checkbox" /><span>兔肉</span><img src="#" alt="這是圖片" /><span>y0003</span><span>團購美食</span
-    ><span>$7600</span><span>5</span><span>18</span
-    >
-    <div class="btn-group">
-      <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-        上架
-      </button>
-      <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#">上架</a></li>
-        <li><hr class="dropdown-divider" /></li>
-        <li><a class="dropdown-item" href="#">下架</a></li>
-      </ul>
-    </div>
-  </li>
-</ul>
--->

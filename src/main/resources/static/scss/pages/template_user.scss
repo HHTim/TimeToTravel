@@ -1,0 +1,45 @@
+@import '../base/base';
+
+/*以下為測試用，可刪*/
+
+.btn-test-1 {
+  background-color: $primary-blue;
+  color: $test-red;
+  border: $normal-border;
+
+  &:hover {
+    background-color: $primary-blue-hover;
+    color: $font-normal-white;
+  }
+}
+
+.btn-test-2 {
+  background-color: $primary-gray;
+  color: $font-normal-black;
+  border: $normal-border;
+
+  &:hover {
+    background-color: $secondary-gray;
+    color: $font-normal-black;
+  }
+}
+
+.btn-test-3 {
+  background-color: $danger-red;
+  color: $font-normal-white;
+  border: $normal-border;
+
+  &:hover {
+    background-color: $danger-red-hover;
+    color: $font-normal-white;
+  }
+}
+
+.btn-test-jquery {
+  padding: 0.5rem;
+  background-color: $rank-yellow;
+  color: $font-normal-black;
+  border: $normal-border;
+  box-shadow: $shadow;
+  border-radius: $border-radius;
+}

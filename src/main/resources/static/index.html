@@ -25,7 +25,7 @@
       <div class="decorator"></div>
       <header>
         <!-- container 是 bootstrap 定義屬性，最好不要改他 -->
-        <div class="container header__container">
+        <div class="container-fulid header__container">
           <h1 class="logo">
             <a href="#" class="logo__link">
               <img src="images/LOGO.png" alt="logo" class="logo__img" />
@@ -34,7 +34,7 @@
           <nav>
             <ul class="nav">
               <li class="nav__link"><a href="#">我的訂單</a></li>
-              <li class="nav__link"><a href="#">購物車</a></li>
+              <li class="nav__link"><a href="#">伴手禮商城</a></li>
               <li class="nav__link"><a href="#">部落格</a></li>
               <li class="nav__info">
                 <div class="dropdown-center">
@@ -50,7 +50,12 @@
               </li>
               <li class="nav__avatar">
                 <div class="dropdown-center">
-                  <button class="dropdown-toggle nav__avatar-btn" type="button" data-bs-toggle="dropdown"></button>
+                  <!-- <button class="dropdown-toggle nav__avatar-btn" type="button" data-bs-toggle="dropdown"></button> -->
+                  <a href="#" class="dropdown-toggle nav__avatar-btn" type="button" data-bs-toggle="dropdown">
+                    <div class="nav__avatar-img">
+                      <img src="images/avatar.svg" alt="avatar" />
+                    </div>
+                  </a>
                   <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="#">註冊</a></li>
                     <li><a class="dropdown-item" href="#">登入</a></li>
@@ -68,76 +73,58 @@
       <!-- Main -->
       <main>
         <div class="container-fulid">
-          <!-- test bootstrap style -->
-          <!-- <button class="btn btn-primary btn-test-1">Test1</button>
-        <button class="btn btn-danger btn-test-2">Test2</button>
-        <button class="btn btn-success btn-test-3">Test3</button> -->
-          <!-- test jquery -->
-          <!-- <button class="btn-test-jquery">Click Me</button> -->
-          <!-- test font awesome -->
-          <!-- <i class="fa-brands fa-facebook"></i>
-        <i class="fa-brands fa-google"></i>
-        <i class="fa-brands fa-twitter"></i>
-        <i class="fa-brands fa-youtube"></i> -->
           <div class="row bu-gutter-x">
             <div class="col-md-auto">
               <div class="theme">
-                <div class="img-theme-div">
-                  <img class="img-theme" src="images/theme.png" alt="theme" />
-                </div>
                 <div class="title-theme-div">
                   <img class="title-theme" src="images/theme_title.png" alt="theme-title" />
                 </div>
-                <div class="union-theme-div">
-                  <img class="union-column1" src="images/Union-column-tabon1.png" alt="Union_column1" />
-                </div>
-                <div class="union-tab1-div">
-                  <a class="tab-1" href="#">找飯店</a>
-                </div>
-                <div class="union-tab2-div">
-                  <a class="tab-2" href="#">找景點</a>
-                </div>
-                <div class="union-tab3-div">
-                  <a class="tab-3" href="#">飯店土產</a>
-                </div>
-                <div class="search-city-div">
-                  <div class="form">
-                    <i class="fa fa-search"></i>
-                    <input type="text" class="form-control form-input" placeholder="新北市..." />
-                    <!-- <span class="left-pan"><i class="fa fa-microphone"></i></span> -->
-                  </div>
-                </div>
+                <div class="img-theme-div">
+                  <img class="img-theme" src="images/theme.png" alt="theme" />
+                  <div class="search-body">
+                    <div>
+                      <button id="tab-1" class="tab-1" type="button">找飯店</button>
+                      <button id="tab-2" class="tab-2" type="button">找景點</button>
+                      <!-- <button id="tab-3" class="tab-3" type="button">飯店土產</button> -->
+                    </div>
+                    <div class="tab-body">
+                      <div class="tab-1 left-container">
+                        <div class="top-area">
+                          <div class="fa-div">
+                            <input type="text" class="form-control form-input" placeholder="新北市..." />
+                            <i class="fa fa-search"></i>
+                          </div>
+                        </div>
 
-                <div class="search-2-div">
-                  <div class="form">
-                    <!-- <i class="fa fa-search"></i> -->
-                    <input type="text" class="form-control form-input" placeholder="..." />
-                    <!-- <span class="left-pan"><i class="fa fa-microphone"></i></span> -->
+                        <div class="bottom-area">
+                          <div class="fa-div-2">
+                            <input type="text" class="form-control form-input" placeholder="新北市..." />
+                            <i class="fa fa-search"></i>
+                            <input type="text" class="form-control form-input" placeholder="新北市..." />
+                            <i class="fa fa-search"></i>
+                            <select class="custom-select">
+                              <option disabled selected hidden>人數</option>
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                              <option value="4">4</option>
+                              <option value="5">5</option>
+                              <option value="6">6</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="tab-2 left-container">
+                        <input type="text" class="form-control form-input" placeholder="景點關鍵字" />
+                      </div>
+                      <!-- <div class="tab-3 left-container">
+                        <input type="text" class="form-control form-input" placeholder="土產關鍵字" />
+                      </div> -->
+                      <div class="right-container">
+                        <button class="btn-query">搜尋</button>
+                      </div>
+                    </div>
                   </div>
-                </div>
-
-                <div class="search-3-div">
-                  <div class="form">
-                    <!-- <i class="fa fa-search"></i> -->
-                    <input type="text" class="form-control form-input" placeholder="..." />
-                    <!-- <span class="left-pan"><i class="fa fa-microphone"></i></span> -->
-                  </div>
-                </div>
-
-                <div class="drop-down-div">
-                  <select class="custom-select color-people">
-                    <option disabled selected hidden>人數</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                  </select>
-                </div>
-                <div class="search-button">
-                  <!-- <img src="/images/search_button.png" class="search-img" alt="serach-button" /> -->
-                  <input type="button" class="search-img-btn" />
                 </div>
               </div>
             </div>

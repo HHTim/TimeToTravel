@@ -5,7 +5,7 @@ window.addEventListener('load', function () {
 			.then((resp) => resp.json())
 			.then((body) => {
 				for (let i of body) {
-					tbody.innerHTML += `
+					tbody.innerHTML = `
                     <tr>
 						<td>${i.privateSceneName}</td>
 						<td class="table-wrap">

@@ -1,0 +1,150 @@
+// 記得引入基本設定
+@import '../base/base';
+
+//===========================================
+//aside====
+
+.gift_searchresult {
+  margin-left: 20%;
+  margin-right: 20%;
+  width: 60%;
+}
+
+.collapse_collection {
+  border: 1px solid #ddd; /* 設定邊框樣式 */
+  padding: 10px; /* 設定邊框間距 */
+}
+
+.collapse_collection li {
+  border-bottom: 1px dotted #ccc; /* 設定列表項目間的線條樣式 */
+  padding: 5px 0; /* 設定列表項目的內邊距 */
+}
+
+//========
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.collection_title h1 {
+  font-size: 1.5rem; /* 設定適當的字體大小值 */
+}
+
+.collection_title.row {
+  margin-bottom: 30px;
+}
+.col-3.total_product {
+  text-align: right;
+}
+
+//============= 預設下拉選單
+
+.item_list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.col-3.select_item {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.col-3.select_item select {
+  margin-left: auto;
+}
+
+//照片排列
+* {
+  box-sizing: border-box;
+}
+
+.item_list li {
+  flex-basis: calc(33.33% - 30px); /* 每行显示三张照片，计算每个项的宽度 */
+  margin-bottom: 10px; /* 设置项之间的间距 */
+}
+
+.item_list li img {
+  max-width: 100%; /* 自动缩放照片以适应容器大小 */
+  height: auto; /* 保持照片宽高比 */
+}
+
+li {
+  display: list-item;
+  text-align: -webkit-match-parent;
+}
+
+.collect_list .item_text {
+  display: block;
+  text-align: center;
+}
+
+.collect_list .item_list li a .item_text {
+  // display: block;
+  // border: 1px solid green;
+  // white-space: nowrap;
+  // overflow: hidden;
+  // text-overflow: ellipsis;
+}
+
+//product price
+.product_price {
+  display: block;
+  text-align: center;
+}
+
+.product_price .price {
+  color: #ff674f;
+  font-size: 18px;
+  padding-right: 5px;
+}
+
+.product_price .comparable_price .money_tag {
+  color: #a3a3a3;
+  font-size: 0.9rem;
+}
+
+//分頁
+
+.pagination {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-left: 0;
+  list-style: none;
+  border-radius: 6px;
+}
+
+dl,
+ol,
+ul {
+  margin-top: 0;
+}
+
+ul {
+  display: block;
+  list-style-type: disc;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+}
+
+//分頁 page
+
+.page_area {
+  display: flex;
+  justify-content: center;
+}
+.page-link {
+  color: #495057;
+}
+.page-link:hover {
+  color: #495057; /* 懸停時文字顏色變色 */
+}
+
+.page-active {
+  color: #495057;
+}

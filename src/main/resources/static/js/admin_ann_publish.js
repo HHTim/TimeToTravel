@@ -7,33 +7,18 @@ $(function () {
   var title_input_content_phd = $('.show-placeholder-content');
 
   function publish(title, content) {
-    const url = 'http://localhost:8080/AdminAnnController/anns';
-    let headers = {
-      "Content-Type": "application/json",
-      "Accept": "application/json"
-    }
-    let body = {
-      "annId": null,
-      "adminId": 1,
-      "annSendingTime": null,
-      "annTitle": title,
-      "annContent": content,
-      "comId": 10
-    }
-    // const formData = new FormData();
-    // formData.append('action', 'publish_ann');
-    // formData.append('title', title);
-    // formData.append('content', content);
+    const url = 'http://localhost:8081/TIME_TO_TRAVEL/AnnController';
+    const formData = new FormData();
+    formData.append('action', 'publish_ann');
+    formData.append('title', title);
+    formData.append('content', content);
     fetch(url, {
       method: 'POST',
-      // body: new URLSearchParams(formData),
-      headers: headers,
-      body: JSON.stringify(body)
+      body: new URLSearchParams(formData),
     })
-      .then((r) => r.text())
+      .then((r) => r.json())
       .then((d) => {
         console.log(d);
-        location.href = '/html/admin_ann.html';
       });
   }
 
@@ -63,7 +48,10 @@ $(function () {
   });
   publish_button.on('click', function () {
     if (verificationData()) {
+      // console.log(title_input.val().trim());
+      // console.log(title_content.val().trim());
       publish(title_input.val().trim(), title_content.val().trim());
     }
+    history.back();
   });
 });

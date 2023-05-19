@@ -1,0 +1,136 @@
+/* CSS Selector Reference */
+/* https://www.w3schools.com/cssref/css_selectors.asp */
+/* 大量參考凱恩之角 與其 開發人員工具 http://d.163.com/ */
+/* div 的設計從外層開始定義 外而內 預先多個div 框架弄好外內定義*/
+/* global use ----------------------- */
+html {
+  /* Smooth Scroll */
+  /* https://www.w3schools.com/howto/howto_css_smooth_scroll.asp#section1 */
+  scroll-behavior: smooth;
+}
+.position-relative {
+  position: relative;
+  /* pr */
+}
+
+img.test2 {
+ /* aspect-ratio: ;  */
+ /* 長寬比 */
+}
+
+.position-fixed {
+  position: fixed;
+}
+.margin-center {
+  /* this is center to the div good */
+  margin: 0 auto;
+  /* top right botton left */
+}
+.text-align-left {
+  text-align: left;
+  /* tal */
+}
+.text-align-right {
+  text-align: right;
+  /* tar */
+}
+.text-align-center {
+  /* this is center to the text good */
+  text-align: center;
+  /* tac */
+}
+.text-align-justify {
+  text-align: justify;
+  /* taj */
+}
+.float-right {
+  float: right;
+  /* fr */
+}
+.float-left {
+  float: left;
+  /* fl */
+}
+.display-flex{
+  display: flex;
+}
+
+.inline-block {
+  display: inline-block;
+}
+.list-image-no {
+  list-style-image: none;
+}
+.list-image {
+  list-style-image: url("https://tw.diablo3.com/static/images/icons/bullet.gif");
+}
+.list-image-plus {
+  list-style-image: url("../images/diablo3_d3_ico_bullet.jpg");
+}
+/* indentation of ul NO內縮 */
+ul {
+  padding: 0;
+  list-style-type: none;
+  /* how to no padding or margin */
+  /* https://stackoverflow.com/questions/9620594/removing-ul-indentation-with-css */
+}
+
+.sticky {
+  /* Position: Sticky; not working for an image */
+  /* https://stackoverflow.com/questions/51085501/position-sticky-not-working-for-an-image */
+  /* position: -webkit-sticky; Safari */
+  position: sticky;
+  top: 0;
+}
+.copyright {
+  /* position: absolute; */
+  /* height: 1; */
+}
+.copyright hr {
+  min-width: 1000px;
+  color: white;
+}
+/* test 2 is required and necessary */
+.test {
+  border: solid 1px rgba(24, 24, 24, 0);
+}
+.test2 {
+  /* border: solid 1px rgba(128, 0, 128, 0); */
+  border: solid 1px red;
+}
+/* color usage def global------------美工部分-------- */
+img {
+  /* border: 2px solid #a4601e; 這有影響到*/ 
+}
+body {
+/*  */
+/*  */
+/*  */
+/*  */
+}
+.opacity-50 {
+  opacity: 0.5;
+}
+.content-backcolor {
+  background-color: rgba(24, 24, 24, 1);
+}
+a {
+  /* text-decoration: none;
+  color: #b99d6e;
+  transition: all 300ms;
+  transition-property: all;
+  transition-duration: 300ms;
+  transition-timing-function: ease;
+  transition-delay: 0s; */
+}
+a:hover {
+  /* color: #ff9300; */
+}
+a:active {
+  /* margin-left: 2.5px; */
+}
+/* ------------ */
+
+/* <!-- https://css-tricks.com/examples/ButtonMaker/# --> */
+/* plz use button_Maker inthis project doesn't use */
+/* global use ----------------------- */

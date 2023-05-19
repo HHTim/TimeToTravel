@@ -41,7 +41,7 @@
         <nav>
           <ul class="nav">
             <li class="nav__link"><a href="#">我的訂單</a></li>
-            <li class="nav__link"><a href="#">購物車</a></li>
+            <li class="nav__link"><a href="#">伴手禮商城</a></li>
             <li class="nav__link"><a href="#">部落格</a></li>
             <li class="nav__info">
               <div class="dropdown-center">
@@ -87,7 +87,7 @@
               <ul class="nav_list">
                 <li><a href="/html/admin.html">商品訂單管理</a></li>
                 <li><a href="/html/admin_ann.html">公告管理</a></li>
-                <li><a href="#">訊息管理</a></li>
+                <li><a href="/html/admin_message_recv.html">訊息管理</a></li>
                 <li><a href="/html/admin_comp_manager.html">商家管理</a></li>
                 <li><a href="/html/admin_user_manager.html">消費者管理</a></li>
                 <li><a href="#">景點管理</a></li>
@@ -100,7 +100,106 @@
           <!-- Main -->
           <!-- Main區塊以下為測試用，可刪 -->
           <main class="main">
-            <h2 class="subtitle">消費者管理</h2>
+            <h2 class="subtitle">收件匣</h2>
+            <div class="top-container">
+              <div class="left-container">
+                <span>發信人</span>
+                <input type="text" class="form-control form-input" placeholder="or帳號" />
+              </div>
+              <div class="right-container">
+                <span>信件期間</span>
+                <span id="reportrange">
+                  <i class="fa fa-calendar"></i>&nbsp; <span class="span"></span> <i class="fa fa-caret-down"></i>
+                </span>
+              </div>
+            </div>
+            <div class="top-container">
+              <div class="left-container"></div>
+              <div class="right-container">
+                <button class="btn-send">+發佈新信息</button>
+                <button class="btn-query">搜尋</button>
+              </div>
+            </div>
+            <div class="content-container">
+              <button class="tab-user">使用者</button>
+              <button class="tab-company">商家</button>
+            </div>
+            <div class="table-head">
+              <div class="head-time">發信時間</div>
+              <div class="head-sender">發信人</div>
+              <div class="head-title">訊息標題</div>
+            </div>
+            <table>
+              <tbody>
+                <tr>
+                  <td class="tb-time">2023/05/18</td>
+                  <td class="tb-sender">JDIDIS</td>
+                  <td class="tb-title">
+                    jwbfkjwbfkjwbfkjwbfkjwbekjwbfejkbwkjfbwkjfbwkjfebwkjfebwfkjebwfkjfbwjfkbwkfwfe
+                  </td>
+                  <td class="tb-query"><button class="btn-query">查看</button></td>
+                </tr>
+
+                <tr>
+                  <td class="tb-time">2023/05/19</td>
+                  <td class="tb-sender">JDIDIS</td>
+                  <td class="tb-title">abc</td>
+                  <td class="tb-query"><button class="btn-query">查看</button></td>
+                </tr>
+
+                <tr>
+                  <td class="tb-time">2023/05/19</td>
+                  <td class="tb-sender">JDIDIS</td>
+                  <td class="tb-title">abc</td>
+                  <td class="tb-query"><button class="btn-query">查看</button></td>
+                </tr>
+
+                <tr>
+                  <td class="tb-time">2023/05/19</td>
+                  <td class="tb-sender">JDIDIS</td>
+                  <td class="tb-title">abc</td>
+                  <td class="tb-query"><button class="btn-query">查看</button></td>
+                </tr>
+
+                <tr>
+                  <td class="tb-time">2023/05/19</td>
+                  <td class="tb-sender">JDIDIS</td>
+                  <td class="tb-title">abc</td>
+                  <td class="tb-query"><button class="btn-query">查看</button></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="row">
+              <ul class="pagination pt-5 justify-content-center">
+                <li class="prev page-item">
+                  <a class="page-link" href="javascript:;" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                  </a>
+                </li>
+                <li class="page-item active"><a class="page-link" href="javascript:;">1</a></li>
+                <li class="page-item" hidden><a class="page-link" href="javascript:;">2</a></li>
+                <li class="page-item" hidden><a class="page-link" href="javascript:;">3</a></li>
+                <li class="page-item" hidden><a class="page-link" href="javascript:;">4</a></li>
+                <li class="page-item" hidden><a class="page-link" href="javascript:;">5</a></li>
+                <li class="page-item" hidden><a class="page-link" href="javascript:;">6</a></li>
+                <li class="page-item" hidden><a class="page-link" href="javascript:;">7</a></li>
+                <li class="page-item" hidden><a class="page-link" href="javascript:;">8</a></li>
+                <li class="page-item" hidden><a class="page-link" href="javascript:;">9</a></li>
+                <li class="page-item" hidden><a class="page-link" href="javascript:;">10</a></li>
+                <li class="page-item" hidden><a class="page-link" href="javascript:;">11</a></li>
+                <li class="page-item" hidden><a class="page-link" href="javascript:;">12</a></li>
+                <li class="page-item" hidden><a class="page-link" href="javascript:;">13</a></li>
+                <li class="page-item" hidden><a class="page-link" href="javascript:;">14</a></li>
+                <li class="page-item" hidden><a class="page-link" href="javascript:;">15</a></li>
+                <li class="page-item" hidden><a class="page-link" href="javascript:;">16</a></li>
+                <li class="next page-item">
+                  <a class="page-link" href="javascript:;" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
           </main>
           <!-- Main End -->
         </div>

@@ -71,7 +71,11 @@ $(function () {
     if (start_dateflag === true) {
       console.log("searchDate");
       url = 'http://localhost:8080/AdminAnnController/anns/page/'+currentPage.toString()+'/'+limit+'/'+choose_start_date+'/'+choose_end_date;
-    } else {
+    } else if ($('input.form-input').val() !== '') {
+      console.log("keywordSearch");
+      url = 'http://localhost:8080/AdminAnnController/anns/page/'+currentPage.toString()+'/'+limit+'/keywords/'+$('input.form-input').val();
+    }
+    else {
       console.log("Normal Search");
       url = 'http://localhost:8080/AdminAnnController/anns/page/'+currentPage.toString()+'/'+limit;
     }
@@ -123,8 +127,8 @@ $(function () {
 
   function filterSearch() {
     const tbody = document.querySelector('tbody');
-    if ($('input.form-input').val() == '') {
-      if (start_dateflag == true) {
+    if ($('input.form-input').val() === '') {
+      if (start_dateflag === true) {
         fetch('http://localhost:8080/AdminAnnController/anns/page/'+currentPage.toString()+'/'+limit+'/'+choose_start_date+'/'+choose_end_date)
           .then((r) => r.json())
           .then((d) => {
@@ -219,9 +223,6 @@ $(function () {
     }
     $('input.form-input').val('');
 
-    // choose_end_date = end.format('YYYY-MM-DD');
-
-    // console.log(choose_end_date);
     $('#reportrange span').html(start.format('YYYY-MM-DD') + ' - ' + end.format('YYYY-MM-DD'));
     choose_start_date = start.format('YYYY-MM-DD');
     choose_end_date = end.startOf('days').add(1, 'days').format('YYYY-MM-DD');

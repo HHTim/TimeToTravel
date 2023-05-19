@@ -53,167 +53,22 @@
   justify-content: center;
   align-items: center;
   .img-theme-div {
-    position: relative;
+    display: flex;
     justify-content: center;
     align-items: center;
 
     .img-theme {
       width: 100%;
+      aspect-ratio: 3840 / 1080;
     }
   }
 
   .title-theme-div {
     position: absolute;
-    padding-bottom: 40%;
+    padding-bottom: 20%;
     .title-theme {
-      width: 100%;
-    }
-  }
-
-  .union-theme-div {
-    position: absolute;
-    text-align: center;
-    width: 75%;
-    .union-column1 {
-      width: 100%;
-    }
-  }
-
-  .union-tab1-div {
-    position: absolute;
-    left: calc(13%);
-    width: 12%;
-    padding-bottom: calc(13% - 2px);
-    text-align: center;
-    .tab-1 {
-      display: inline-block;
-      width: 100%;
-      font-size: 2dvw;
-      color: $white;
-      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    }
-  }
-
-  .union-tab2-div {
-    position: absolute;
-    left: calc(26%);
-    width: 12%;
-    padding-bottom: calc(13% - 2px);
-    text-align: center;
-    .tab-2 {
-      display: inline-block;
-      width: 100%;
-      font-size: 2dvw;
-      color: $tertiary-gray;
-      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    }
-  }
-  .union-tab3-div {
-    position: absolute;
-    left: calc(38% + 2px);
-    width: 12%;
-    padding-bottom: calc(13% - 2px);
-    text-align: center;
-
-    .tab-3 {
-      display: inline-block;
-      width: 100%;
-      font-size: 2dvw;
-      color: $tertiary-gray;
-      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    }
-  }
-  .search-city-div {
-    position: absolute;
-    width: 62%;
-    left: 15%;
-    padding-bottom: 2%;
-    z-index: 3;
-    .form {
-      position: relative;
-      .fa-search {
-        position: absolute;
-        top: 30%;
-        left: 20px;
-        color: $fa-search-gray;
-      }
-    }
-
-    .form-input {
-      font-size: 2dvw;
-      height: 30%;
-      text-indent: 33px;
-      border-radius: $border-radius;
-    }
-  }
-
-  .search-2-div {
-    position: absolute;
-    width: 25%;
-    left: 15%;
-    padding-bottom: 5%;
-    z-index: 2;
-    margin-bottom: 17%;
-    align-self: flex-end;
-    .form-input {
-      font-size: 2dvw;
-      height: 30%;
-      text-indent: 33px;
-      border-radius: $border-radius;
-    }
-  }
-
-  .search-3-div {
-    position: absolute;
-    width: 25%;
-    left: 41%;
-    padding-bottom: 5%;
-    z-index: 1;
-    align-self: flex-end;
-    margin-bottom: 17%;
-    .form-input {
-      font-size: 2dvw;
-      height: 30%;
-      text-indent: 33px;
-      border-radius: $border-radius;
-    }
-  }
-
-  .drop-down-div {
-    position: absolute;
-    z-index: 0;
-    left: 67%;
-    padding-bottom: 5%;
-    width: 10%;
-    align-self: flex-end;
-    margin-bottom: 17%;
-    .custom-select {
-      width: 100%;
-      padding: 5px 10% 6px 10%;
-      border-top-left-radius: $border-radius;
-      border-top-right-radius: $border-radius;
-      border-bottom-left-radius: $border-radius;
-      border-bottom-right-radius: $border-radius;
-      border: $custom-border;
-      font-size: 2dvw;
-      outline: none;
-    }
-    .color-people {
-      color: $custom-gray;
-    }
-  }
-
-  .search-button {
-    position: absolute;
-    width: 8%;
-    left: 78%;
-
-    padding-top: 4%;
-    .search-img-btn {
-      width: 100%;
-      aspect-ratio: 206/182;
-      background-image: url('../images/search_button.png');
-      border: none;
+      width: 60%;
+      transform: translate(35%, 0);
     }
   }
 }
@@ -224,11 +79,6 @@
   text-align: center;
   padding: 1%;
   font-weight: bold;
-}
-
-.decorator-adv {
-  width: 100%;
-  background-color: $white;
 }
 
 /*=======================slider======================*/
@@ -278,5 +128,174 @@
       text-align: center;
       // white-space: nowrap;
     }
+  }
+}
+
+.search-body {
+  position: absolute;
+  width: 70%;
+  transform: translate(0, 30%);
+}
+
+@mixin tab-body {
+  border: none;
+
+  border-top-left-radius: $border-radius;
+  border-top-right-radius: $border-radius;
+  color: $white;
+  font-size: 2dvw;
+  width: 10dvw;
+  min-width: 100px;
+  text-align: center;
+  padding: revert;
+}
+
+button.tab-1 {
+  background-color: rgba($color: $home-search-blue, $alpha: 0.7);
+  @include tab-body;
+}
+
+button.tab-2 {
+  background-color: $primary-gray;
+  @include tab-body;
+}
+
+button.tab-3 {
+  background-color: $primary-gray;
+  @include tab-body;
+}
+
+.tab-body {
+  display: flex;
+  height: 20dvh;
+  border-top-right-radius: $border-radius;
+  border-bottom-left-radius: $border-radius;
+  border-bottom-right-radius: $border-radius;
+  background-color: rgba($color: $home-search-blue, $alpha: 0.7);
+
+  div.tab-1.left-container {
+    display: block;
+    width: 90%;
+    height: 100%;
+    .top-area {
+      height: 50%;
+    }
+    .bottom-area {
+      height: 50%;
+    }
+  }
+
+  div.tab-2.left-container {
+    display: none;
+    width: 90%;
+    height: 100%;
+    .top-area {
+      height: 50%;
+    }
+    .bottom-area {
+      height: 50%;
+    }
+  }
+
+  div.tab-3.left-container {
+    display: none;
+    width: 90%;
+    height: 100%;
+    .top-area {
+      height: 50%;
+    }
+    .bottom-area {
+      height: 50%;
+    }
+  }
+
+  .right-container {
+    width: 10%;
+    min-width: 120px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.fa-div {
+  display: flex;
+  position: relative;
+  align-items: center;
+  height: -webkit-fill-available;
+}
+
+div.fa-div i.fa.fa-search {
+  position: absolute;
+  margin-left: 20px;
+  color: $fa-search-gray;
+}
+
+.fa-div .form-control {
+  width: 95%;
+  margin-left: 10px;
+}
+.fa-div .form-input {
+  font-size: 1.5dvw;
+  text-indent: 33px;
+  border-radius: 10px;
+}
+
+.fa-div-2 {
+  display: flex;
+  position: relative;
+  align-items: center;
+  height: -webkit-fill-available;
+}
+
+div.fa-div-2 i.fa.fa-search {
+  position: absolute;
+  margin-left: 20px;
+  color: $fa-search-gray;
+}
+
+.form-control {
+  margin-left: 10px;
+}
+.fa-div-2 .form-control {
+  width: 35%;
+}
+.fa-div-2 .form-input {
+  font-size: 1.5dvw;
+  text-indent: 33px;
+  border-radius: 10px;
+}
+
+.custom-select {
+  width: 20%;
+  margin-left: 20px;
+  padding: 0.375rem 0.75rem;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border: 1px solid $custom-gray;
+  font-size: 1.5dvw;
+  outline: none;
+  color: $custom-gray;
+}
+
+.btn-query {
+  border: none;
+  background-color: $primary-blue;
+  border-radius: 5px;
+  color: $white;
+  font-size: 1rem;
+  min-width: 6dvw;
+  height: 50%;
+  aspect-ratio: 1/1;
+  text-align: center;
+  &:hover {
+    background-color: $primary-blue-hover;
+  }
+
+  &:active {
+    background-color: $primary-blue;
   }
 }

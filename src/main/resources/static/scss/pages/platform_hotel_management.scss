@@ -1,0 +1,317 @@
+// 記得引入基本設定
+@import '../base/base';
+
+// =============================================================================//
+//sidebar 下拉式選單
+
+.company-aside {
+  position: relative; /* 添加相對定位 */
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute; /* 改為絕對定位 */
+  top: 100%;
+  right: 0; /* 將框框相對於父元素向右對齊 */
+  // left: calc(100% + 10px);
+  // left: 100%;
+  background-color: $admin-aside-blue;
+  padding: 10px;
+  z-index: 1;
+  width: 90%;
+}
+
+.dropdown-trigger:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-trigger {
+  position: relative; /* 添加相對定位 */
+}
+.dropdown.show .dropdown-menu {
+  display: block;
+}
+
+////////////////////////////
+
+.push-down {
+  transform: translateY(0);
+  transition: transform 0.3s;
+}
+
+.push-down.active {
+  transform: translateY(30px); /* 設定下推的距離 */
+}
+
+///////////////////////////
+
+//============================== start
+.select-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+}
+
+.label-container {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-control:focus {
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.btn-search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #007bff;
+  border-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.25rem;
+  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.btn-search:hover {
+  background-color: #0069d9;
+  border-color: #0062cc;
+}
+
+.btn-search:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+}
+
+// =========================================
+.table {
+  width: 100%;
+  margin-bottom: 1rem;
+  color: #212529;
+}
+
+table {
+  display: table;
+  border-collapse: collapse;
+  box-sizing: border-box;
+  text-indent: initial;
+  border-spacing: 2px;
+  border-color: gray;
+}
+
+thead {
+  display: table-header-group;
+  vertical-align: middle;
+  border-color: inherit;
+}
+
+th {
+  display: table-cell;
+  vertical-align: inherit;
+  font-weight: bold;
+  text-align: -internal-center;
+}
+
+tr {
+  display: table-row;
+  vertical-align: inherit;
+  border-color: inherit;
+}
+
+.table .thead-dark th {
+  color: #fff;
+  background-color: #4d4f52;
+  border-color: #454d55;
+}
+
+.text-center {
+  text-align: center !important;
+}
+.first {
+  border-top-left-radius: 6px;
+}
+
+.border-top-0 {
+  border-top: 0 !important;
+}
+
+.border-bottom-0 {
+  border-bottom: 0 !important;
+}
+.border-left-0 {
+  border-left: 0 !important;
+}
+
+.last {
+  border-top-right-radius: 6px;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+tbody td {
+  text-align: center;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+}
+
+/* added */
+tbody {
+  border-bottom: 1px solid #ddd;
+}
+
+/* Responsive table */
+@media only screen and (max-width: 767px) {
+  table {
+    width: 100%;
+    max-width: 100%;
+  }
+  thead {
+    display: none;
+  }
+  tbody {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+  }
+  tbody tr {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    width: 100%;
+  }
+  tbody td {
+    display: block;
+    text-align: center;
+    width: 50%;
+    float: left;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+  }
+}
+
+/* Hide table on small screens */
+@media only screen and (max-width: 480px) {
+  table {
+    display: none;
+  }
+}
+
+/* Lightbox */
+
+.lightbox-content {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 600px;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  z-index: 999;
+}
+
+.lightbox-content.open {
+  display: block;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px; /* 距離燈箱內容頂部的距離 */
+  right: 10px; /* 距離燈箱內容右側的距離 */
+}
+
+//========================== main-bottom
+.mt-40 {
+  margin-top: 40px;
+}
+
+.ml-auto {
+  margin-left: auto !important;
+}
+
+.mr-auto {
+  margin-right: auto !important;
+}
+
+.font-weight-bold {
+  font-weight: 700 !important;
+}
+
+.mb-0,
+.my-0 {
+  margin-bottom: 0 !important;
+}
+
+.pagination {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-left: 0;
+  list-style: none;
+  border-radius: 6px;
+}
+
+dl,
+ol,
+ul {
+  margin-top: 0;
+}
+
+ul {
+  display: block;
+  list-style-type: disc;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+}
+
+.page_area {
+  display: flex;
+  justify-content: center;
+}
+.page-link {
+  color: #495057;
+}
+.page-link:hover {
+  color: #495057; /* 懸停時文字顏色變色 */
+}
+
+.page-active {
+  color: #495057;
+}
+
+//

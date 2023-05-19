@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- import -->
+  <script src="../../node_modules/@popperjs/core/dist/umd/popper.min.js" defer></script>
+  <script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js" defer></script>
+  <script src="../../node_modules/jquery/dist/jquery.min.js" defer></script>
+  <script src="https://kit.fontawesome.com/e3af248fb2.js" crossorigin="anonymous" defer></script>
+  <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+  <!-- 我們自己的 js 檔案，路徑記得改 -->
+  <link rel="stylesheet" href="../../css/template.css" />
+  <link rel="stylesheet" href="../../css/03_leo/style-global.css" />
+  <link rel="stylesheet" href="../../css/03_leo/blog_serach.css" />
+  <link rel="stylesheet" href="../../css/03_leo/blog-search.css" />
+  <link rel="stylesheet" href="../../css/03_leo/blogs.css" />
+  <!-- <link rel="stylesheet" href="../../css/03_leo/test.css" /> -->
+  <!-- 我們自己的 css 檔案，路徑記得改 -->
+  <script src="../../js/template.js" defer></script>
+  <title>TimeToTravel | explore blogs </title>
+  <style>
+    /*  */
+  </style>
+</head>
+
+<body>
+  <!-- header -->
+  <div class="decorator"></div>
+  <header>
+    <div class="container-fluid header__container">
+      <h1 class="logo">
+        <a href="#" class="logo__link">
+          <img src="../../images/LOGO.png" alt="logo" class="logo__img" />
+        </a>
+      </h1>
+      <nav>
+        <ul class="nav">
+          <li class="nav__link"><a href="#">我的訂單</a></li>
+          <li class="nav__link"><a href="#">伴手禮商城</a></li>
+          <li class="nav__link"><a href="#">部落格</a></li>
+          <li class="nav__info">
+            <div class="dropdown-center">
+              <button class="dropdown-toggle nav__info-btn" type="button" data-bs-toggle="dropdown"></button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">訊息一</a></li>
+                <li><a class="dropdown-item" href="#">訊息二</a></li>
+                <li><a class="dropdown-item" href="#">訊息三</a></li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
+                <li><a class="dropdown-item" href="#">See More</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav__avatar">
+            <div class="dropdown-center">
+              <!-- <button class="dropdown-toggle nav__avatar-btn" type="button" data-bs-toggle="dropdown"></button> -->
+              <a href="#" class="dropdown-toggle nav__avatar-btn" type="button" data-bs-toggle="dropdown">
+                <div class="nav__avatar-img">
+                  <img src="../../images/avatar.svg" alt="avatar" />
+                </div>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">註冊</a></li>
+                <li><a class="dropdown-item" href="#">登入</a></li>
+                <li><a class="dropdown-item" href="#">其他</a></li>
+                <li><a class="dropdown-item" href="#">其他</a></li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
+                <li><a class="dropdown-item" href="#">登出</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <!--  -->
+
+  <div class="row  text-center ">
+    <div class="col-2 border test2">先留白</div>
+    <!-- --------------------------------- -->
+    <div class="col-8 this-is-blog-block container-fluid  "> <!-- 改用背景圖片?-->
+
+      <!-- search part -->
+      <div class="row  mb-4">
+        <div class="col-10 search-condition">
+          <div class="text-align-left mb-2  search-bar ">
+            <label for="topic" class="search-text search-topic">搜尋主題：</label>
+            <input type="text" class="" id="topic" name="topic" placeholder="輸入主題">
+          </div>
+
+          <div class="text-align-left  search-tag">
+            <label for="tags" class="m-2 search-text">搜尋標籤：</label>
+            <!-- <input type="text" id="tag-input"  placeholder="輸入標籤"> -->
+            <input type="text" id="tag-input" placeholder="輸入標籤" class="" size="10">
+            <button type="button" class="button-1" id="add-tag-btn">+新增標籤</button>
+            <div id="tags-container" class="inline-block"> </div>
+            <span class="" id="hint-msg"></span>
+          </div>
+        </div>
+
+        <div class="col align-self-center"><button type="button" class="button-1" id="search-btn">搜尋</button></div>
+        <div class="col align-self-center   ">
+          <button type="button" class="button-2" id="post-btn">發文</button>
+        </div>
+      </div>
+
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script>
+        $(document).ready(function () {
+          var tags = [];
+          var colorClasses = ["bg-primary", "bg-secondary", "bg-success", "bg-danger"];
+          var colorIndex = 0;
+
+          function addTag() {
+            var tagInput = $("#tag-input").val();
+            if (tagInput !== "") {
+              if (tags.includes(tagInput)) {
+                $("#hint-msg").text("標籤已存在");
+                // console.log("標籤已存在：" + tagInput);
+                return;
+              }
+              var tagButton = $("<span>").addClass("badge mr-3 tag-btn").text(tagInput);
+              var colorClass = colorClasses[colorIndex % colorClasses.length];
+              tagButton.addClass(colorClass);
+              colorIndex++;
+              tagButton.click(function () {
+                $(this).remove();
+                tags = tags.filter(function (tag) {
+                  return tag !== tagInput;
+                });
+              });
+              $("#tags-container").append(tagButton);
+              tags.push(tagInput);
+              $("#tag-input").val("");
+              $("#hint-msg").text("");
+            }
+          }
+
+          $("#add-tag-btn").click(addTag);
+
+          $("#tag-input").keydown(function (event) {
+            if (event.keyCode === 13) {
+              addTag();
+            }
+          });
+
+          $("#search-btn").click(function () {
+            var topic = $("#topic").val();
+            console.log("搜尋主題：" + topic);
+            console.log("搜尋標籤：" + tags);
+          });
+        });
+      </script>
+
+
+      <!-- 文章串 = blog欄位名稱 + blogs -->
+      <div class="blog-list row col-12 margin-center ">
+
+        <div class="blog-topbar row text-center col-12 margin-center blog-name p-2 ">
+          <div class="col-8 margin-center article-type-padding">
+            <span class="" style="padding-right: 15px;">
+              文章類型
+            </span>
+            <label class="radio-option">
+              <input type="radio" name="article-type" value="question" id="question-option">
+              問題
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="article-type" value="information" id="information-option">
+              資訊
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="article-type" value="experience" id="experience-option">
+              心得
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="article-type" value="discussion" id="discussion-option">
+              討論
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="article-type" value="strategy" id="strategy-option">
+              攻略
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="article-type" value="other" id="other-option">
+              其他
+            </label>
+          </div>
+
+          <div class="col-4 margin-center sort-option-padding "
+            style="padding-right: 15px ;border-left: 1px solid #000;">
+            <span class="" style="padding-right: 15px;">
+
+              排序
+            </span>
+            <label class="radio-option">
+              <input type="radio" name="sort-option" value="likes" id="likes-option">
+              讚數
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="sort-option" value="publish-time" id="publish-time-option">
+              發布時間
+            </label>
+          </div>
+        </div>
+
+        <script>
+          $(document).ready(function () {
+            $("input[name='article-type']").change(function () {
+              var selectedType = $(this).val();
+              console.log("選擇文章類型：" + selectedType);
+            });
+
+            $("input[name='sort-option']").change(function () {
+              var selectedSortOption = $(this).val();
+              console.log("選擇排序方式：" + selectedSortOption);
+            });
+          });
+        </script>
+
+
+        <!--  blog欄位名稱 -->
+        <div class="blog-topbar row text-center col-12 margin-center blog-name p-2 mt-3 ">
+          <div class="col-1  margin-center col-name-border ">類型</div>
+          <div class="col-2  margin-center ">圖片</div>
+          <div class="col-6  margin-center ">主體</div>
+          <div class="col    margin-center ">讚數/留言</div>
+          <div class="col   margin-center ">最新留言</div>
+        </div>
+        <!-- blogs -->
+        <div class="blog row text-center col-12 margin-center p-2 mt-3 ">
+          <div class="col-1 align-self-center margin-center blog-type ">心得</div>
+          <div class="col-2  margin-center imgdiv ">
+            <img class="blog-img " width="120" height="68" data-image="6" src="../../images/hotel.jpg" alt="test66"></ㄛ>
+          </div>
+          <div class="col-6 align-self-center  margin-center ">
+            <div class="blog-content ">
+              <div class="blog-topic text-align-left">
+                文章標題熱帶氣旋
+              </div>
+              <div class="blog-detail text-align-left">
+                內文so4jp6內文so4jp6內文so4jp6 內文so4jp
+              </div>
+            </div>
+            <div class="blog-tags float-right ">
+              <span class="badge small-tag bg-primary ">颱風1</span>
+              <span class="badge small-tag bg-secondary ">熱帶氣旋2</span>
+              <span class="badge small-tag bg-success ">豪大雨3</span>
+              <span class="badge small-tag bg-danger ">強颱4</span>
+            </div>
+          </div>
+          <div class="col align-self-center  margin-center latest-reply content-like-border ">3/8<br /><span
+              class="latest-replyer">邱翰森</span></div>
+          <div class="col align-self-center  margin-center latest-reply ">23分鐘<br /><span
+              class="latest-replyer">阿森</span></div>
+        </div>
+
+
+      </div>
+
+    </div>
+    <div class="col-2 border ">
+      <!-- <img src="../../images/leo-test1.png" alt=""> -->
+    </div>
+  </div>
+
+
+
+
+  <div class="row m-3">
+    <nav aria-label="... ">
+      <ul class="pagination page justify-content-center">
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        <li class="page-item active" aria-current="page">
+          <a class="page-link" href="#">1</a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+      </ul>
+      </li>
+    </nav>
+  </div>
+  <!-- Footer -->
+  <footer>
+    <div class="footer"></div>
+  </footer>
+
+</body>
+
+</html>

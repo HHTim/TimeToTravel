@@ -1,19 +1,21 @@
-package com.tibame.timetotravel.Service.ServiceImpl;
+package com.tibame.timetotravel.service.ServiceImpl;
 
-import com.tibame.timetotravel.Entity.Ann;
-import com.tibame.timetotravel.Service.AdminAnnService;
+import com.tibame.timetotravel.entity.Ann;
+import com.tibame.timetotravel.service.AdminAnnService;
 import com.tibame.timetotravel.common.PageBean;
 import com.tibame.timetotravel.repository.AdminAnnRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Timestamp;
 import java.util.List;
 
-@Service
+@Service("adminAnnService")
 public class AdminAnnServiceImpl implements AdminAnnService {
     @Autowired
+    @Qualifier("adminAnnRepository")
     private AdminAnnRepository adminAnnRepository;
 
     @Autowired
@@ -50,13 +52,17 @@ public class AdminAnnServiceImpl implements AdminAnnService {
         return adminAnnRepository.findByDateRange(startDate,endDate,currPage,limit);
     }
 
+    public Integer findAllDateRange(String startDate, String endDate) {
+        return adminAnnRepository.findAllDateRange(startDate,endDate);
+    }
+
     @Override
     public List<Ann> findByKeyWords(String keyword, Integer currPage, Integer limit) {
         return adminAnnRepository.findByKeyWords(keyword,currPage,limit);
     }
 
     @Override
-    public List<Ann> findByAllKeyWords(String keyword) {
+    public Integer findByAllKeyWords(String keyword) {
         return adminAnnRepository.findByAllKeyWords(keyword);
     }
 
@@ -72,9 +78,8 @@ public class AdminAnnServiceImpl implements AdminAnnService {
     public PageBean<Ann> findAnnPageByDateRange(String startDate, String endDate, Integer currPage, Integer rows) {
         int start = (currPage - 1) * rows;
         int pageSize;
-        List<Ann> listDate = findByDateRange(startDate, endDate, start, rows);
-        pageBean.setRows(listDate);
-        pageSize = (int)(Math.ceil(listDate.size()/(double)rows));
+        pageBean.setRows(findByDateRange(startDate, endDate, start, rows));
+        pageSize = (int)(Math.ceil(findAllDateRange(startDate,endDate)/(double)rows));
         pageBean.setPageSize(Math.max(pageSize, 1));
         return pageBean;
     }
@@ -84,8 +89,13 @@ public class AdminAnnServiceImpl implements AdminAnnService {
         int start = (currPage - 1) * rows;
         int pageSize;
         pageBean.setRows(findByKeyWords(keyword,start, rows));
-        pageSize = (int)(Math.ceil(findByAllKeyWords(keyword).size()/(double)rows));
+        pageSize = (int)(Math.ceil(findByAllKeyWords(keyword)/(double)rows));
         pageBean.setPageSize(Math.max(pageSize, 1));
         return pageBean;
+    }
+
+    @Override
+    public List<Ann> findTestAll() {
+        return adminAnnRepository.findAlltest();
     }
 }

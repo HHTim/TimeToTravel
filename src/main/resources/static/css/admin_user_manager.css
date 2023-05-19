@@ -285,21 +285,20 @@ main.main {
 }
 
 .top-container {
-  height: 10dvh;
+  min-height: 10dvh;
   width: 100%;
   display: flex;
-  white-space: nowrap;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
 }
 .top-container .left-container {
   width: 50%;
-  height: 10dvh;
-  line-height: 10dvh;
   text-align: left;
 }
 .top-container .right-container {
   width: 50%;
-  height: 10dvh;
-  line-height: 10dvh;
   text-align: right;
 }
 
@@ -326,10 +325,7 @@ main.main {
   background-color: #006caa;
   border-radius: 5px;
   color: #fff;
-  font-size: 1rem;
   width: 10dvw;
-  height: 6dvh;
-  line-height: 6dvh;
   text-align: center;
 }
 .btn-search:hover {
@@ -347,6 +343,44 @@ main.main {
   font-size: 1rem;
   min-width: 5dvw;
   text-align: center;
+}
+.btn-query:hover {
+  opacity: 0.8;
+}
+.btn-query:active {
+  opacity: 0.5;
+}
+
+.btn-forbidden {
+  border: none;
+  background-color: #be4b4b;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 1rem;
+  min-width: 5dvw;
+  text-align: center;
+}
+.btn-forbidden:hover {
+  opacity: 0.8;
+}
+.btn-forbidden:active {
+  opacity: 0.5;
+}
+
+.btn-warning {
+  border: none;
+  background-color: #f2d952;
+  border-radius: 5px;
+  color: #333;
+  font-size: 1rem;
+  min-width: 5dvw;
+  text-align: center;
+}
+.btn-warning:hover {
+  opacity: 0.8;
+}
+.btn-warning:active {
+  opacity: 0.5;
 }
 
 .result-text {
@@ -380,7 +414,13 @@ table td {
 table tr {
   border: 1px solid #333;
 }
-table thead > tr {
+table tr:nth-child(2n+1) {
+  background-color: #9b9999;
+}
+table tr:nth-child(2n) {
+  background-color: #dfdcdc;
+}
+table thead tr:first-child {
   background-color: #006caa;
 }
 table thead td {
