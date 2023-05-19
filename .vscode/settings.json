@@ -1,3 +1,25 @@
 {
-    "java.compile.nullAnalysis.mode": "automatic"
+  // LiveServer
+  "liveServer.settings.port": 8079, // 開啟的埠號
+  "liveServer.settings.donotShowInfoMsg": true, // 不用跳出 LiveServer 通知
+
+  // LiveSassCompiler
+  "liveSassCompile.settings.generateMap": false, // 不產生 .css.map
+  "liveSassCompile.settings.formats": [
+    {
+      "format": "expanded", // 是否壓縮 compressed 壓縮 / expanded 不壓縮
+      "extensionName": ".css", // 檔名後綴 .min.css 壓縮 / .css 不壓縮
+      "savePath": "~/../../css" // 編譯後檔案位置 null 與 scss 檔案同位置，中間不存在的資料夾會自動建立
+    }
+  ],
+
+  // Prettier
+  "prettier.singleQuote": true, // 單引號
+  "prettier.semi": true, // 分號
+  "prettier.printWidth": 120, // 每段字元限制
+  "prettier.trailingComma": "es5", // 尾綴逗號
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[html, javascript, css, scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode" // 特定語言設定
+  }
 }
