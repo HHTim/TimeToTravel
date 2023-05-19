@@ -289,156 +289,51 @@ body {
   color: white;
 }
 
-.search-results-count {
-  max-width: 15%;
-  padding: 5px 10px;
-  background-color: #f0f0f0;
-  border: 1px solid #ccc;
-  margin-left: auto;
+.row {
+  font-size: 15px;
 }
 
-.top {
-  display: flex;
-  margin-bottom: 10px;
+.decorator2 {
+  width: 100%;
+  height: 5px;
+  background-color: #006caa;
+  margin: 20px 0 0 0;
 }
 
-.checkbox_all {
-  display: flex;
-  padding: 5px 0 5px 0;
-}
-
-.check_all {
-  margin: 0 10px 0 10px;
-}
-
-.card {
-  margin-bottom: 10px;
-  box-shadow: 2px 2px 2px 2px #dadada;
-  max-width: 100%;
-  height: 10%;
-  margin-left: 8px;
-}
-
-.card_word {
-  float: right;
-  width: 730px;
-  margin: 0 45px 0 0px;
-}
-
-@media (max-width: 1400px) {
-  .card_word {
-    width: 580px;
-  }
-}
-@media (max-width: 1200px) {
-  .card_word {
-    width: 430px;
-  }
-}
-@media (max-width: 1000px) {
-  .card_word {
-    width: 230px;
-  }
-}
-@media (max-width: 768px) {
-  .card_word {
-    width: 100px;
-  }
-}
-.card-title {
-  font-weight: bold;
-}
-
-.pic_style {
-  max-width: 200px;
-  border-radius: 10px;
-  float: left;
-  margin-right: 10px;
-}
-
-.multiline-ellipsis {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
-  overflow: hidden;
-}
-
-.btn-primary {
-  float: right;
-  cursor: pointer;
-}
-
-.url_style {
-  text-decoration: underline;
-  font-size: 12px;
-}
-
-.weather {
-  position: absolute;
-  top: 10px;
-  right: 0px;
-  width: 120px;
-  height: 30px;
-  border-radius: 20px 0 0 20px;
-  background-color: #b5d2f1;
-  background-size: cover;
-}
-
-.card-body {
-  position: relative;
-  padding: 20px;
-}
-
-.tab {
-  background-color: #b3b2b2;
-  border: none;
-  border-radius: 5px 5px 0 0;
-  color: #ffffff;
-  cursor: pointer;
-  font-size: 14px;
-  padding: 8px 16px;
-  transition: background-color 0.3s ease;
-  font-weight: bold;
-}
-
-.tab.active {
-  background-color: #007bff;
-  border-bottom: 2px solid #007bff;
-}
-
-.tab-content {
-  display: none;
-  padding: 10px;
-  background-color: #007bff;
-  border-radius: 0 10px 10px 10px;
-  margin-bottom: 10px;
-  height: 50px;
-  box-shadow: 2px 2px 2px 2px #accefb;
-}
-
-.tab-content.active {
-  display: block;
-  margin-bottom: 10px;
-  padding-left: 10px;
-}
-
-.tabs {
-  display: flex;
-  justify-content: left;
-}
-
-input[type=text] {
-  font-size: 14px; /* 提示文本字体大小 */
-  width: 90%;
-  height: 30px;
-  color: #000000;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  padding-left: 5px;
-}
-
-.page1 {
+.t2 {
   display: flex;
   justify-content: center;
 }
+
+/* 设置按钮的样式 */
+.custom-button {
+  color: rgb(0, 0, 0); /* 设置文字颜色 */
+  border: none; /* 移除边框 */
+  cursor: pointer; /* 设置鼠标样式为手型 */
+}
+
+.r1 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.container2 {
+  position: relative; /* 设置容器为相对定位 */
+  width: 50%; /* 设置容器的高度为视窗的高度 */
+  padding-top: 10px;
+  display: flex; /* 使用弹性盒模型布局 */
+  justify-content: flex-end; /* 将内容靠右对齐 */
+  align-items: flex-end; /* 将内容靠下对齐 */
+}
+
+.btn-primary {
+  background-color: #006caa;
+}
+
+img {
+  width: 100%;
+}
+
+/* 设置按钮在鼠标悬停时的样式 */
+/* 设置按钮在鼠标点击时的样式 */
