@@ -101,8 +101,8 @@ section:not(:first-child) {
 }
 
 .comment {
-  position: absolute;
-  width: 65%;
+  position: fixed;
+  width: 40%;
   min-width: 300px;
   top: 50%;
   left: 50%;
@@ -125,7 +125,7 @@ section:not(:first-child) {
   &__title {
     width: 100%;
     text-align: center;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: bold;
   }
 
@@ -135,8 +135,12 @@ section:not(:first-child) {
     color: $rank-yellow;
     padding: 0;
     margin: 0;
-    font-size: 2.5rem;
     justify-content: center;
+
+    i {
+      font-size: 2.5rem;
+      margin-top: 2rem;
+    }
   }
 
   &__content {
