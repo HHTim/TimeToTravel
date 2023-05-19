@@ -288,37 +288,135 @@ body {
   color: white;
 }
 
-.btn-test-1 {
-  background-color: #006caa;
-  color: red;
-  border: 1px solid #333;
+main * {
+  font-size: 16px;
 }
 
-.btn-test-2 {
-  background-color: #9b9999;
-  color: #333;
-  border: 1px solid #333;
+.select {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
 }
-.btn-test-2:hover {
-  background-color: #dfdcdc;
-  color: #333;
+.select__title {
+  width: 100%;
+  font-weight: bold;
 }
-
-.btn-test-3 {
-  background-color: #be4b4b;
-  color: #fff;
-  border: 1px solid #333;
-}
-.btn-test-3:hover {
-  background-color: #9d3939;
-  color: #fff;
-}
-
-.btn-test-jquery {
-  padding: 0.5rem;
-  background-color: #eeab0f;
-  color: #333;
-  border: 1px solid #333;
+.select__input {
+  display: inline-block;
+  border: none;
   box-shadow: 0 0 3px #9b9999;
+  padding: 0.25rem;
+  border-radius: 5px 0 0 5px;
+}
+.select__submit {
+  display: inline-block;
+  border: none;
+  background-color: #006caa;
+  color: #fff;
+  padding: 0.3rem;
+  border-radius: 0 5px 5px 0;
+}
+.select__submit:hover {
+  background-color: #004c77;
+}
+
+.list {
+  margin-top: 1rem;
+}
+.list thead {
+  background-color: #006caa;
+  color: #fff;
+}
+.list__table {
   border-radius: 10px;
+  text-align: center;
+}
+.list__btn button {
+  border: none;
+  background-color: #006caa;
+  color: #fff;
+  padding: 0 0.25rem;
+  border-radius: 5px;
+}
+.list__btn button:hover {
+  background-color: #004c77;
+}
+.list .active .bill {
+  max-height: 450px;
+}
+
+.bill {
+  width: 100%;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+.bill__content {
+  width: 100%;
+  margin: auto;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0.5rem;
+  text-align: left;
+  background-color: inherit;
+}
+.bill__card {
+  width: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+  line-height: 2;
+}
+.bill__title {
+  width: 100%;
+  color: #006caa;
+  font-weight: bold;
+}
+.bill__item {
+  width: 50%;
+  display: inline-block;
+  font-weight: bold;
+}
+.bill__value {
+  width: 50%;
+}
+
+.amount {
+  position: relative;
+  width: 100%;
+  padding-top: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+.amount::before {
+  content: "";
+  height: 5px;
+  width: 100%;
+  background-color: #006caa;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.amount__item {
+  width: 50%;
+  font-weight: bold;
+}
+.amount__value {
+  width: 50%;
+  font-weight: bold;
+}
+
+.page {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  margin-top: 1rem;
+}
+.page .pagination {
+  padding: 0;
+  margin: 0;
+  align-items: center;
+  justify-content: center;
 }

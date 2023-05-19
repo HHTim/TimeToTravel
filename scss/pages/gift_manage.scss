@@ -1,0 +1,175 @@
+// 記得引入基本設定
+@import '../base/base';
+
+.btn-test-1 {
+  background-color: $primary-blue;
+  color: $font-normal-white;
+  border: $normal-border;
+
+  &:hover {
+    background-color: $primary-blue-hover;
+    color: $font-normal-white;
+  }
+}
+
+.btn-test-2 {
+  background-color: $primary-gray;
+  color: $font-normal-black;
+  border: $normal-border;
+
+  &:hover {
+    background-color: $secondary-gray;
+    color: $font-normal-black;
+  }
+}
+
+.btn-test-3 {
+  background-color: $danger-red;
+  color: $font-normal-white;
+  border: $normal-border;
+
+  &:hover {
+    background-color: $danger-red-hover;
+    color: $font-normal-white;
+  }
+}
+
+.btn-test-jquery {
+  padding: 0.5rem;
+  background-color: $rank-yellow;
+  color: $font-normal-black;
+  border: $normal-border;
+  box-shadow: $shadow;
+  border-radius: $border-radius;
+}
+
+html,
+body {
+  margin: 0;
+}
+
+/* ================= main 區域 ================= */
+main.main {
+  width: 80dvw;
+  min-height: 100dvh;
+  padding: 20px 20px;
+  border: 3px solid $admin-aside-blue;
+  font-size: 1.1rem;
+  box-shadow: -5px 0 5px 3px rgba(172, 164, 164, 0.5), 5px 0 5px 3px rgba(172, 164, 164, 0.5),
+    0 5px 5px 3px rgba(172, 164, 164, 0.5), 0 -5px 5px 3px rgba(172, 164, 164, 0.5);
+}
+
+div.r1 {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+div.r1 div {
+  text-align: center;
+}
+
+div.r1 button {
+  font-size: 1rem;
+  min-width: 90px;
+
+  border: $normal-border;
+  border-radius: $border-radius;
+}
+
+main.main div.decorator {
+  width: 100%;
+  height: 5px;
+  background-color: $primary-blue;
+  margin: 20px 0 25px 0;
+}
+
+div.nav-btn {
+  text-align: center;
+  align-items: center;
+  margin: 0 0 20px 0;
+}
+
+div.nav-btn div.search-name {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+div.nav-btn div.search-name label {
+  min-width: 50px;
+  margin: 0 auto;
+}
+
+div.nav-btn div.search-name input {
+  width: 100%;
+}
+
+div.type-choose {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+div.type-choose label {
+  min-width: 50px;
+  margin-right: 10px;
+}
+
+button.btn-info {
+  background-color: $admin-aside-blue;
+  color: $white;
+}
+
+div.impl-btn div.search-btn {
+  text-align: center;
+}
+
+div.impl-btn div.search-btn button {
+  min-width: 70%;
+
+  border: $custom-border;
+  border-radius: $border-radius;
+
+  background-color: $primary-blue;
+  color: $white;
+}
+
+div.manage-type {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 40px;
+}
+
+div.manage-type div {
+  min-width: 70px;
+  text-align: center;
+  background-color: $secondary-gray;
+  border-radius: $border-radius $border-radius 0 0;
+}
+
+.gift-table {
+  border-top: 3px solid $primary-blue;
+}
+
+th,
+td {
+  text-align: center;
+}
+
+tr td:nth-child(2),
+th:nth-child(2) {
+  min-width: 125px;
+}
+
+tbody tr {
+  height: 50px;
+}
+
+.-ontype {
+  background-color: $primary-blue !important;
+  color: $white;
+
+  a:hover {
+    color: $white;
+  }
+}

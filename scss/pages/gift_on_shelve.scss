@@ -52,7 +52,7 @@ h2.subtitle {
 	}
 }
 
-.room__name {
+.gift__name {
 	display: flex;
 	margin: 2rem auto 3rem 1rem;
 	position: relative;
@@ -66,8 +66,7 @@ h2.subtitle {
 		bottom: -50%;
 	}
 
-	&__title,
-	&__classify {
+	&__title{
 		margin: auto 1rem auto 0;
 		font-weight: bold;
 		white-space: nowrap;
@@ -79,11 +78,11 @@ h2.subtitle {
 		outline-style: none;
 		font-weight: bold;
 		height: 3rem;
-		margin-left: 2.2rem;
+		margin-left: 4.5rem;
 	}
 }
 
-.room__equip {
+.gift__stock {
 	display: flex;
 	margin: 2rem auto;
 
@@ -94,61 +93,45 @@ h2.subtitle {
 		display: flex;
 		align-items: center;
 	}
-	&__options {
-		display: flex;
-		justify-content: space-evenly;
-		flex-wrap: wrap;
-
-		&__bed {
-			font-weight: bold;
-			border-radius: $input-radius;
-			border-color: $admin-aside-blue;
-			height: 3rem;
-			margin-left: 2.5rem;
-		}
-
-		&__wifi {
-			font-weight: bold;
-			border-radius: $input-radius;
-			border-color: $admin-aside-blue;
-		}
-
-		&__pets {
-			font-weight: bold;
-			border-radius: $input-radius;
-			border-color: $admin-aside-blue;
-		}
-
-		&__breakfast {
-			font-weight: bold;
-			border-radius: $input-radius;
-			border-color: $admin-aside-blue;
-		}
-
-		&__parking {
-			font-weight: bold;
-			border-radius: $input-radius;
-			border-color: $admin-aside-blue;
-		}
-
-		&__smoking {
-			font-weight: bold;
-			border-radius: $input-radius;
-			border-color: $admin-aside-blue;
-		}
-
-		&__service24hr {
-			font-weight: bold;
-			border-radius: $input-radius;
-			border-color: $admin-aside-blue;
-		}
+	
+	& input {
+		border-radius: $input-radius;
+		border-color: $admin-aside-blue;
+		padding: 0 10px;
+		outline-style: none;
+		font-weight: bold;
+		height: 3rem;
+		margin-left: 2rem;
 	}
 }
 
-.room__price {
+.gift__type{
 	display: flex;
-	margin: 1rem;
+	margin: 2rem auto 2rem auto;
 
+	&__title {
+		font-weight: bold;
+		margin-left: 1rem;
+		white-space: nowrap;
+		display: flex;
+		align-items: center;
+	}
+
+	&__option {
+		border-radius: $input-radius;
+		border-color: $admin-aside-blue;
+		padding: 0 10px;
+		outline-style: none;
+		font-weight: bold;
+		height: 3rem;
+		margin-left: 5.5rem;
+	}
+}
+
+.gift__price {
+	display: flex;
+	margin-left: 1rem;
+	
 	&__title {
 		font-weight: bold;
 		white-space: nowrap;
@@ -158,19 +141,21 @@ h2.subtitle {
 
 	& input {
 		border-radius: $input-radius;
-		margin-left: 3rem;
+		margin-left: 5.5rem;
 		border-color: $admin-aside-blue;
 		padding: 0 10px;
 		outline-style: none;
 		font-weight: bold;
 		height: 3rem;
+		
 	}
 }
 
-.room__photo {
+.gift__photo {
 	display: flex;
-	margin: 1rem;
+	margin: 1rem auto 1.5rem 1rem;
 	height: 5rem;
+	
 
 	&__title {
 		font-weight: bold;
@@ -181,21 +166,22 @@ h2.subtitle {
 	}
 	& input {
 		border-radius: $input-radius;
-		margin: 1.5rem auto auto 3rem;
+		margin: 1.5rem auto auto 5.5rem;
 		border-color: $admin-aside-blue;
 		font-weight: bold;
 		height: 3rem;
 	}
 }
 
-.room__description {
+.gift__description{
 	display: flex;
 	margin-left: 1rem;
-	&__title {
+	&__title{
 		font-weight: bold;
 		white-space: nowrap;
 		display: flex;
 		align-items: start;
+		
 	}
 	& textarea {
 		border-radius: $input-radius;
@@ -205,7 +191,8 @@ h2.subtitle {
 		outline-style: none;
 		font-weight: bold;
 		height: 20rem;
-		width: 100%;
+		width: 100%
+		
 	}
 }
 
@@ -220,7 +207,8 @@ h2.subtitle {
 		padding: 10px;
 		font-weight: bold;
 		font-size: larger;
-
+	
+	
 		&:hover {
 			background-color: $primary-blue-hover;
 			color: $font-normal-white;

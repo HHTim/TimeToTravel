@@ -288,37 +288,121 @@ body {
   color: white;
 }
 
-.btn-test-1 {
-  background-color: #006caa;
-  color: red;
-  border: 1px solid #333;
-}
-
-.btn-test-2 {
-  background-color: #9b9999;
-  color: #333;
-  border: 1px solid #333;
-}
-.btn-test-2:hover {
+.com-favor {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
   background-color: #dfdcdc;
-  color: #333;
+  border-radius: 10px;
+  gap: 0.5rem;
+  box-shadow: 0 0 3px #9b9999;
 }
-
-.btn-test-3 {
+.com-favor__card {
+  display: flex;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 0.5rem;
+  margin: 0;
+  gap: 0.5rem;
+}
+.com-favor__img {
+  width: 120px;
+  height: 120px;
+  overflow: hidden;
+  border-radius: 10px;
+  position: relative;
+}
+.com-favor__img img {
+  width: 200%;
+  position: absolute;
+  right: -50%;
+  top: -15%;
+  border-radius: 10px;
+  box-shadow: 0 0 3px #9b9999;
+  background-repeat: no-repeat;
+}
+.com-favor__content {
+  width: 100%;
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+}
+.com-favor__title {
+  font-size: 20px;
+  font-weight: bold;
+}
+.com-favor__address {
+  color: #2029f4;
+}
+.com-favor__desc {
+  width: 100%;
+  font-size: 14px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+.com-favor__other {
+  width: 100%;
+  flex: 1;
+  text-align: right;
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+.com-favor__rank {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  margin: 0;
+  padding: 0;
+  color: #eeab0f;
+}
+.com-favor__forward {
+  width: 45%;
+  max-width: 100px;
+  white-space: nowrap;
+  justify-content: flex-end;
+  align-self: flex-end;
+  height: -moz-fit-content;
+  height: fit-content;
+  border: none;
+  background-color: #006caa;
+  color: #fff;
+  padding: 0.25rem 1rem;
+  border-radius: 10px;
+  margin-right: 0.5rem;
+}
+.com-favor__forward:hover {
+  background-color: #004c77;
+}
+.com-favor__delete {
+  width: 45%;
+  max-width: 100px;
+  white-space: nowrap;
+  align-self: flex-end;
+  height: -moz-fit-content;
+  height: fit-content;
+  border: none;
   background-color: #be4b4b;
   color: #fff;
-  border: 1px solid #333;
+  padding: 0.25rem 1rem;
+  border-radius: 10px;
 }
-.btn-test-3:hover {
+.com-favor__delete:hover {
   background-color: #9d3939;
-  color: #fff;
 }
 
-.btn-test-jquery {
-  padding: 0.5rem;
-  background-color: #eeab0f;
-  color: #333;
-  border: 1px solid #333;
-  box-shadow: 0 0 3px #9b9999;
-  border-radius: 10px;
+.page {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  margin-top: 1rem;
+}
+.page .pagination {
+  padding: 0;
+  margin: 0;
+  align-items: center;
+  justify-content: center;
 }
