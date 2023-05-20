@@ -45,6 +45,10 @@ main.main {
   align-items: center;
 }
 
+.input-container:not(:first-child) {
+  padding-right: 1rem;
+}
+
 .label-container {
   display: flex;
   align-items: center;
@@ -121,6 +125,7 @@ th {
   vertical-align: inherit;
   font-weight: bold;
   text-align: -internal-center;
+  border: none;
 }
 
 tr {
@@ -136,7 +141,8 @@ tr {
 }
 
 .text-center {
-  text-align: center !important;
+  padding: 0;
+  text-align: center;
 }
 .first {
   border-top-left-radius: 6px;
@@ -234,8 +240,9 @@ tbody {
   z-index: 999;
   box-shadow: 0 0 0 99999px rgba($color: #000000, $alpha: 0.6);
   text-align: left;
-  justify-content: center;
+  align-items: center;
   border-radius: $border-radius;
+  flex-direction: column;
 
   h2 {
     width: 100%;
@@ -246,18 +253,10 @@ tbody {
     font-size: 2rem;
   }
 
-  p {
-    padding-left: 2rem;
-  }
-
-  .content-title {
-    text-align: right;
-    font-weight: bold;
-    width: 50%;
-  }
-
-  .content-value {
-    width: 50%;
+  div {
+    width: 65%;
+    display: flex;
+    justify-content: space-between;
   }
 }
 
