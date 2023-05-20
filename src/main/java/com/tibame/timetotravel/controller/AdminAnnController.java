@@ -33,6 +33,7 @@ public class AdminAnnController {
     @PostMapping("/anns")
     public String insert(@RequestBody Ann ann){
         adminAnnService.insert(ann);
+        System.out.println("執行資料庫的 Insert 操作");
         return "執行資料庫的 Insert 操作";
     }
 
