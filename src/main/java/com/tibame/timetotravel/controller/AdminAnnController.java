@@ -33,7 +33,6 @@ public class AdminAnnController {
     @PostMapping("/anns")
     public String insert(@RequestBody Ann ann){
         adminAnnService.insert(ann);
-        System.out.println("執行資料庫的 Insert 操作");
         return "執行資料庫的 Insert 操作";
     }
 
@@ -79,13 +78,7 @@ public class AdminAnnController {
         return adminAnnService.findAnnPageByKeyWords(keyword,currPage,rows);
     }
 
-    @GetMapping("/anns/test")
-    public List<Ann> readByTestAll(){
-        System.out.println("關聯式全查詢");
-        return adminAnnService.findTestAll();
-    }
-
-    @GetMapping("/anns/test2")
+    @GetMapping("/anns/annView")
     public List<AnnView> findAlltest(){
         System.out.println("VIEW全查詢");
         return adminAnnViewService.findAllDemo();
