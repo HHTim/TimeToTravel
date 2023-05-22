@@ -7,6 +7,39 @@ $(window).on('load', function () {
   const tab2_body = $('.tab-2.left-container');
   const tab3_body = $('.tab-3.left-container');
 
+  const advList = $('.slider .list');
+
+  function getAnnPic() {
+    fetch('http://localhost:8080/AdminAnnController/anns/annView')
+      .then((r) => r.json())
+      .then((d) => {
+        console.log('讀取廣告資訊');
+        console.log(d);
+        console.log(advList);
+        advList.append(
+          d.map((e) => {
+            return (
+              `<li>
+              <a href="javascript:;"><img src="data:image/*;base64,` +
+              e.annPic +
+              `" alt="..." /></a>
+              <a href="javascript:;" class="data-text underline">` +
+              e.annTitle +
+              `</a>
+            </li>`
+            );
+          })
+        );
+
+        slider('slider');
+
+        // advList.append(`<li>
+        // <a href="javascript:;"><img src="images/adv-1.png" alt="" /></a>
+        // <a href="javascript:;" class="data-text underline">歡樂寶貝月◆著色比賽</a>
+        // </li>`);
+      });
+  }
+
   tab1.on('click', function () {
     $(this).css('background-color', 'rgba(118,194,238,0.7)');
     tab2.css('background-color', '#9b9999');
@@ -36,8 +69,7 @@ $(window).on('load', function () {
     tab2_body.css('display', 'none');
     tab_body.css('align-items', 'baseline');
   });
-
-  slider('slider');
+  getAnnPic();
   slider('slider2');
   slider('slider3');
   slider('slider4');
@@ -74,18 +106,23 @@ function slider(slider_name) {
   // }
 
   if (slider_name == 'slider') {
+    if (liLength < 3) liLength = 3;
     liWidth = divWidth / 3; //要只秀3張
     ulNum = liLength / 3;
   } else if (slider_name == 'slider2') {
+    if (liLength < 3) liLength = 3;
     liWidth = divWidth / 4; //要只秀4張
     ulNum = liLength / 4;
   } else if (slider_name == 'slider3') {
-    liWidth = divWidth / 2; //要只秀2張
-    ulNum = liLength / 2;
+    if (liLength < 3) liLength = 3;
+    liWidth = divWidth / 3; //要只秀2張
+    ulNum = liLength / 3;
   } else if (slider_name == 'slider4') {
+    if (liLength < 3) liLength = 3;
     liWidth = divWidth / 5; //要只秀5張
     ulNum = liLength / 5;
   } else {
+    if (liLength < 3) liLength = 3;
     liWidth = divWidth / 3; //要只秀3張
     ulNum = liLength / 3;
   }

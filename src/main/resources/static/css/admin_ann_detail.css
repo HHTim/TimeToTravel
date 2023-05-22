@@ -366,7 +366,7 @@ h4 {
 
 .content-bg {
   width: 100%;
-  height: 60dvh;
+  min-height: 60dvh;
   margin-top: 2%;
   padding: 2%;
   font-size: 1.2rem;
