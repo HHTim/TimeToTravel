@@ -107,7 +107,7 @@
             </div>
 
             <div class="hotel__content">
-              <div class="d-flex">
+              <div class="hotel__header">
                 <h3 class="hotel__title">台北凡登‧東棧商務旅店</h3>
                 <ul class="hotel__rank">
                   <li><i class="fa-solid fa-star fa-lg"></i></li>
@@ -125,7 +125,6 @@
               </p>
               <div class="hotel__price">
                 <button class="hotel__favor">加入商家收藏</button>
-                <p>NT $9000/天</p>
                 <a href="#room" role="button">選擇房型</a>
               </div>
             </div>
@@ -136,7 +135,7 @@
 
           <h2 class="subtitle">附近熱門景點</h2>
           <section class="p-scene">
-            <div class="p-scene__card">
+            <a src="#" class="p-scene__card">
               <div class="p-scene__img">
                 <img src="../images/scene1.jpg" alt="scene__img" />
               </div>
@@ -149,8 +148,8 @@
                   debitis. Saepe, iure.
                 </p>
               </div>
-            </div>
-            <div class="p-scene__card">
+            </a>
+            <a class="p-scene__card">
               <div class="p-scene__img">
                 <img src="../images/scene1.jpg" alt="scene__img" />
               </div>
@@ -163,8 +162,8 @@
                   debitis. Saepe, iure.
                 </p>
               </div>
-            </div>
-            <div class="p-scene__card">
+            </a>
+            <a class="p-scene__card">
               <div class="p-scene__img">
                 <img src="../images/scene1.jpg" alt="scene__img" />
               </div>
@@ -172,12 +171,12 @@
                 <h3 class="p-scene__title">OO天空步道</h3>
                 <small class="p-scene__address">台北市大安區忠孝東路四段209號</small>
                 <p class="p-scene__desc">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate laboriosam veniam quibusdam ipsam
-                  nam iure recusandae, magnam vero laborum dicta quaerat magni enim, ratione soluta molestias, culpa
-                  debitis. Saepe, iure.
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis hic maiores voluptatem recusandae
+                  non molestiae iusto corporis ipsa excepturi repudiandae, obcaecati blanditiis ipsam reprehenderit
+                  voluptas dolore perferendis consectetur quo eaque.
                 </p>
               </div>
-            </div>
+            </a>
           </section>
           <!-- Private Scene End -->
 
@@ -192,7 +191,7 @@
               <table class="table room__table">
                 <thead>
                   <tr>
-                    <th scope="col">摘要</th>
+                    <th scope="col">剩餘房間</th>
                     <th scope="col">住房人數</th>
                     <th scope="col">今日價格</th>
                     <th scope="col">查看設備</th>
@@ -201,22 +200,50 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td class="room__desc">
-                      <p>無餐點</p>
-                      <p>不可退款</p>
-                      <p>禁菸房型</p>
-                    </td>
+                    <td class="room__stock">1間</td>
                     <td class="room__number">2人</td>
                     <td class="room__price">NT $9000</td>
                     <td class="room__device">
-                      <a href="#" role="button">查看設備</a>
+                      <button>點我查看</button>
                     </td>
                     <td class="room__booking">
-                      <a href="#" role="button">訂房去</a>
+                      <button>訂房去</button>
                     </td>
                   </tr>
                 </tbody>
               </table>
+              <div class="lightbox">
+                <button class="lightbox__close"></button>
+                <h2 class="lightbox__title">精緻客房</h2>
+                <div>
+                  <p>床位：</p>
+                  <p id="bed">1張雙人床</p>
+                </div>
+                <div>
+                  <p>人數：</p>
+                  <p id="people">2人</p>
+                </div>
+                <div>
+                  <p>是否禁菸：</p>
+                  <p id="isSmoke">是</p>
+                </div>
+                <div>
+                  <p>是否有停車場：</p>
+                  <p id="isPark">是</p>
+                </div>
+                <div>
+                  <p>是否可帶寵物：</p>
+                  <p id="isPet">否</p>
+                </div>
+                <div>
+                  <p>是否24小時服務：</p>
+                  <p id="is24Hours">是</p>
+                </div>
+                <div>
+                  <p>是否供餐：</p>
+                  <p id="isBreakfast">否</p>
+                </div>
+              </div>
             </div>
             <div class="room__card">
               <h3 class="room__title">精緻客房</h3>
@@ -226,7 +253,7 @@
               <table class="table room__table">
                 <thead>
                   <tr>
-                    <th scope="col">摘要</th>
+                    <th scope="col">剩餘房間</th>
                     <th scope="col">住房人數</th>
                     <th scope="col">今日價格</th>
                     <th scope="col">查看設備</th>
@@ -235,22 +262,50 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td class="room__desc">
-                      <p>無餐點</p>
-                      <p>不可退款</p>
-                      <p>禁菸房型</p>
-                    </td>
+                    <td class="room__stock">1間</td>
                     <td class="room__number">2人</td>
                     <td class="room__price">NT $9000</td>
                     <td class="room__device">
-                      <a href="#" role="button">查看設備</a>
+                      <button>點我查看</button>
                     </td>
                     <td class="room__booking">
-                      <a href="#" role="button">訂房去</a>
+                      <button>訂房去</button>
                     </td>
                   </tr>
                 </tbody>
               </table>
+              <div class="lightbox">
+                <button class="lightbox__close"></button>
+                <h2 class="lightbox__title">精緻客房</h2>
+                <div>
+                  <p>床位：</p>
+                  <p id="bed">1張雙人床</p>
+                </div>
+                <div>
+                  <p>人數：</p>
+                  <p id="people">2人</p>
+                </div>
+                <div>
+                  <p>是否禁菸：</p>
+                  <p id="isSmoke">是</p>
+                </div>
+                <div>
+                  <p>是否有停車場：</p>
+                  <p id="isPark">是</p>
+                </div>
+                <div>
+                  <p>是否可帶寵物：</p>
+                  <p id="isPet">否</p>
+                </div>
+                <div>
+                  <p>是否24小時服務：</p>
+                  <p id="is24Hours">是</p>
+                </div>
+                <div>
+                  <p>是否供餐：</p>
+                  <p id="isBreakfast">否</p>
+                </div>
+              </div>
             </div>
             <div class="room__card">
               <h3 class="room__title">精緻客房</h3>
@@ -260,7 +315,7 @@
               <table class="table room__table">
                 <thead>
                   <tr>
-                    <th scope="col">摘要</th>
+                    <th scope="col">剩餘房間</th>
                     <th scope="col">住房人數</th>
                     <th scope="col">今日價格</th>
                     <th scope="col">查看設備</th>
@@ -269,22 +324,50 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td class="room__desc">
-                      <p>無餐點</p>
-                      <p>不可退款</p>
-                      <p>禁菸房型</p>
-                    </td>
+                    <td class="room__stock">1間</td>
                     <td class="room__number">2人</td>
                     <td class="room__price">NT $9000</td>
                     <td class="room__device">
-                      <a href="#" role="button">查看設備</a>
+                      <button>點我查看</button>
                     </td>
                     <td class="room__booking">
-                      <a href="#" role="button">訂房去</a>
+                      <button>訂房去</button>
                     </td>
                   </tr>
                 </tbody>
               </table>
+              <div class="lightbox">
+                <button class="lightbox__close"></button>
+                <h2 class="lightbox__title">精緻客房</h2>
+                <div>
+                  <p>床位：</p>
+                  <p id="bed">1張雙人床</p>
+                </div>
+                <div>
+                  <p>人數：</p>
+                  <p id="people">2人</p>
+                </div>
+                <div>
+                  <p>是否禁菸：</p>
+                  <p id="isSmoke">是</p>
+                </div>
+                <div>
+                  <p>是否有停車場：</p>
+                  <p id="isPark">是</p>
+                </div>
+                <div>
+                  <p>是否可帶寵物：</p>
+                  <p id="isPet">否</p>
+                </div>
+                <div>
+                  <p>是否24小時服務：</p>
+                  <p id="is24Hours">是</p>
+                </div>
+                <div>
+                  <p>是否供餐：</p>
+                  <p id="isBreakfast">否</p>
+                </div>
+              </div>
             </div>
           </section>
           <!-- Room End -->

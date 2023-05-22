@@ -506,6 +506,7 @@ main.main {
 .table-head .head-time {
   width: 20%;
   min-width: 100px;
+  text-align: center;
 }
 .table-head .head-sender {
   width: 20%;
@@ -538,6 +539,7 @@ table .tb-time {
   width: 20%;
   min-width: 100px;
   line-height: 8dvh;
+  text-align: center;
 }
 table .tb-sender {
   width: 20%;
