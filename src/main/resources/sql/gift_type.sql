@@ -5,3 +5,9 @@ CREATE TABLE `gift_type` (
   PRIMARY KEY (`GIFT_TYPE_ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='土產分類';
 
+INSERT INTO `gift_type` (`GIFT_TYPE_NAME`)
+VALUES ('冷凍食品'),
+('彌月食品'),
+('熱賣食品'),
+('店取限定'),
+('團購美食');
