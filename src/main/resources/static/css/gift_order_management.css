@@ -328,6 +328,10 @@ main.main {
   align-items: center;
 }
 
+.input-container:not(:first-child) {
+  padding-right: 1rem;
+}
+
 .label-container {
   display: flex;
   align-items: center;
@@ -403,6 +407,7 @@ th {
   vertical-align: inherit;
   font-weight: bold;
   text-align: -internal-center;
+  border: none;
 }
 
 tr {
@@ -418,7 +423,8 @@ tr {
 }
 
 .text-center {
-  text-align: center !important;
+  padding: 0;
+  text-align: center;
 }
 
 .first {
@@ -515,8 +521,9 @@ tbody {
   z-index: 999;
   box-shadow: 0 0 0 99999px rgba(0, 0, 0, 0.6);
   text-align: left;
-  justify-content: center;
+  align-items: center;
   border-radius: 10px;
+  flex-direction: column;
 }
 .lightbox-content h2 {
   width: 100%;
@@ -526,16 +533,10 @@ tbody {
   color: #006caa;
   font-size: 2rem;
 }
-.lightbox-content p {
-  padding-left: 2rem;
-}
-.lightbox-content .content-title {
-  text-align: right;
-  font-weight: bold;
-  width: 50%;
-}
-.lightbox-content .content-value {
-  width: 50%;
+.lightbox-content div {
+  width: 65%;
+  display: flex;
+  justify-content: space-between;
 }
 
 .lightbox-content.open {
