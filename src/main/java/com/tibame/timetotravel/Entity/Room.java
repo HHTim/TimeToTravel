@@ -49,9 +49,6 @@ public class Room {
     @Column(name = "ROOM_SMOKING", nullable = false)
     private Boolean roomSmoking;
 
-    @Column(name = "ROOM_AC", nullable = false)
-    private Boolean roomAc;
-
     @Column(name = "ROOM_24HOURS", nullable = false)
     private Boolean room24Hours;
 
@@ -62,7 +59,7 @@ public class Room {
     private String roomBed;
 
     @Column(name = "ROOM_PEOPLE", nullable = false)
-    private String roomPeople;
+    private Integer roomPeople;
 
     @Column(name = "ROOM_STATUS", nullable = false)
     private Boolean roomStatus;
