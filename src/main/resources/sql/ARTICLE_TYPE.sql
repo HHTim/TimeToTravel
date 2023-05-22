@@ -3,3 +3,8 @@ CREATE TABLE `ARTICLE_TYPE` (
   `POST_TYPE` varchar(30) NOT NULL COMMENT '文章類型',
   PRIMARY KEY (`POST_TYPE_ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='文章類型';
+
+INSERT INTO `ARTICLE_TYPE`
+(`POST_TYPE`)
+VALUES
+('問題'),('情報'),('心得'),('討論'),('攻略'),('其他');

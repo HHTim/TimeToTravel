@@ -15,3 +15,17 @@ CREATE TABLE `BLOG` (
   CONSTRAINT `BLOG_FK_POST_TYPE_ID` FOREIGN KEY (`POST_TYPE_ID`) REFERENCES `ARTICLE_TYPE` (`POST_TYPE_ID`),
   CONSTRAINT `BLOG_FK_USER_ID` FOREIGN KEY (`USER_ID`) REFERENCES `MEMBER` (`USER_ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='部落格';
+
+INSERT INTO `leo_test`.`BLOG`
+(`USER_ID`,`POST_TITLE`,`POST_CONTENT`,`POST_PHOTO`,
+`POST_TYPE_ID`,`POST_UPDATE_TIME`)
+VALUES
+('1','阿森測試','內容是這樣子的，雷電為右衛門',null,'6',null),
+('1','阿森測試2','內容是這樣子的，千代富士',null,'6',null),
+('2','假設別人測試3','內容是這樣子的，橫綱',null,'5',null),
+('1','阿森測試4','內容是這樣子的4',null,'6',null),
+('1','阿森測試5','內容是這樣子的5',null,'1',null),
+('1','阿森測試6','內容是這樣子的，6士',null,'6',null),
+('1','阿森測試7','內容是這樣子的，7士',null,'6',null),
+('1','阿森測試8','內容是這樣子的，8士',null,'6',null),
+('1','阿森測試9','內容是這樣子的，9',null,'6',null);
