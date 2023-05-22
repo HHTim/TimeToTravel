@@ -22,5 +22,6 @@
   "[html, javascript, css, scss]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode" // 特定語言設定
   },
-  "java.compile.nullAnalysis.mode": "automatic"
+  "java.compile.nullAnalysis.mode": "automatic",
+  "java.configuration.updateBuildConfiguration": "disabled"
 }
