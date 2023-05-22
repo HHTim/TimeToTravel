@@ -558,26 +558,11 @@ button.tab-3 {
   width: 90%;
   height: 100%;
 }
-.tab-body div.tab-2.left-container .top-area {
-  height: 50%;
-}
-.tab-body div.tab-2.left-container .bottom-area {
-  height: 50%;
-}
-.tab-body div.tab-3.left-container {
-  display: none;
-  width: 90%;
-  height: 100%;
-}
-.tab-body div.tab-3.left-container .top-area {
-  height: 50%;
-}
-.tab-body div.tab-3.left-container .bottom-area {
-  height: 50%;
+.tab-body div.tab-2.left-container .pos {
+  width: 95%;
 }
 .tab-body .right-container {
   width: 10%;
-  min-width: 120px;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -598,7 +583,7 @@ div.fa-div i.fa.fa-search {
 }
 
 .fa-div .form-control {
-  width: 95%;
+  width: 100%;
   margin-left: 10px;
 }
 
@@ -646,7 +631,7 @@ div.fa-div-2 i.fa.fa-search {
   border: 1px solid #bbb8b8;
   font-size: 1.5dvw;
   outline: none;
-  color: #bbb8b8;
+  color: #333;
 }
 
 .btn-query {
@@ -665,4 +650,16 @@ div.fa-div-2 i.fa.fa-search {
 }
 .btn-query:active {
   background-color: #006caa;
+}
+
+.start-date-text {
+  display: inline-block;
+  margin-left: 10px;
+  font-weight: bolder;
+}
+
+.end-date-text {
+  display: inline-block;
+  margin-left: 10px;
+  font-weight: bolder;
 }
