@@ -1,0 +1,34 @@
+.go-favor-blog{
+    /* width: 45%; */
+    /* max-width: 100px; */
+    /* white-space: nowrap; */
+    justify-content: flex-end;
+    align-self: flex-end;
+    /* height: -moz-fit-content; */
+    /* height: fit-content; */
+    border: none;
+    background-color: #006caa;
+    color: #fff;
+    padding: 0.25rem 1rem;
+    border-radius: 10px;
+    margin-right: 0.5rem;
+}
+.go-favor-blog:hover{
+    background-color: #01517e;
+}
+.remove-favor-blog{
+    /* width: 45%; */
+    /* max-width: 100px; */
+    /* white-space: nowrap; */
+    align-self: flex-end;
+    /* height: -moz-fit-content; */
+    /* height: fit-content; */
+    border: none;
+    background-color: #be4b4b;
+    color: #fff;
+    padding: 0.25rem 1rem;
+    border-radius: 10px;
+}
+.remove-favor-blog:hover{
+    background-color: #973636;
+}

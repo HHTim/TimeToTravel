@@ -26,6 +26,11 @@ img.test2 {
   margin: 0 auto;
   /* top right botton left */
 }
+.margin-right {
+  /* this is center to the div good */
+  margin-right: 0 ;
+  /* top right botton left */
+}
 .text-align-left {
   text-align: left;
   /* tal */
@@ -53,6 +58,10 @@ img.test2 {
 }
 .display-flex{
   display: flex;
+}
+
+.-none{
+  display: none;
 }
 
 .inline-block {
