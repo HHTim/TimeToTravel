@@ -8,3 +8,11 @@ CREATE TABLE `gift_follow` (
   # constraint FK_GIFT_FOLLOW_USER_ID foreign key (USER_ID) references MEMBER (USER_ID)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='土產追蹤清單';
 
+
+
+INSERT INTO `gift_follow` (`GIFT_ID`, `USER_ID`)
+VALUES (1001, 1),
+(1002, 2),
+(1003, 1),
+(1004, 3),
+(1005, 2);

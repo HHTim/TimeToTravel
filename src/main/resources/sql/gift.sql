@@ -13,3 +13,15 @@ CREATE TABLE `gift` (
   # constraint FK_GIFT_GIFT_TYPE_ID foreign key (GIFT_TYPE_ID) references GIFT_TYPE (GIFT_TYPE_ID)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='土產';
 
+INSERT INTO `gift` (`COM_ID`, `GIFT_NAME`, `GIFT_PRICE`, `GIFT_STOCK`, `GIFT_STATUS`, `GIFT_TYPE_ID`, `GIFT_INTRO`)
+VALUES
+(1, '土產A', 50, 100, 1, 1, '這是土產A的介紹'),
+(2, '土產B', 80, 50, 1, 2, '這是土產B的介紹'),
+(1, '土產C', 60, 200, 1, 1, '這是土產C的介紹'),
+(3, '土產D', 70, 80, 1, 3, '這是土產D的介紹'),
+(2, '土產E', 90, 120, 1, 2, '這是土產E的介紹'),
+(3, '土產F', 65, 150, 1, 2, '這是土產F的介紹'),
+(1, '土產G', 55, 80, 1, 1, '這是土產G的介紹'),
+(2, '土產H', 75, 100, 1, 3, '這是土產H的介紹'),
+(3, '土產I', 95, 60, 1, 2, '這是土產I的介紹'),
+(1, '土產J', 70, 90, 1, 1, '這是土產J的介紹');
