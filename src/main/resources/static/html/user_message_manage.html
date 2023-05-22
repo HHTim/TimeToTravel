@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- import -->
+    <script src="../node_modules/@popperjs/core/dist/umd/popper.min.js" defer></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js" defer></script>
+    <script src="../node_modules/jquery/dist/jquery.min.js" defer></script>
+    <script src="https://kit.fontawesome.com/e3af248fb2.js" crossorigin="anonymous" defer></script>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <!-- 我們自己的 js 檔案，路徑記得改 -->
+    <link rel="stylesheet" href="../css/user_message_manage.css" />
+    <!-- 我們自己的 css 檔案，路徑記得改 -->
+    <script src="../js/user_message_manage.js" defer></script>
+    <!-- 輪播需要添加 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- title 記得改 -->
+    <title>TimeToTravel | Order List</title>
+  </head>
+  <body>
+    <div class="bg">
+      <!-- Header -->
+      <div class="decorator"></div>
+      <header>
+        <div class="container-fluid header__container">
+          <h1 class="logo">
+            <a href="#" class="logo__link">
+              <img src="../images/LOGO.png" alt="logo" class="logo__img" />
+            </a>
+          </h1>
+          <nav>
+            <ul class="nav">
+              <li class="nav__link"><a href="#">我的訂單</a></li>
+              <li class="nav__link"><a href="#">伴手禮商城</a></li>
+              <li class="nav__link"><a href="#">部落格</a></li>
+              <li class="nav__info">
+                <div class="dropdown-center">
+                  <button class="dropdown-toggle nav__info-btn" type="button" data-bs-toggle="dropdown"></button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">訊息一</a></li>
+                    <li><a class="dropdown-item" href="#">訊息二</a></li>
+                    <li><a class="dropdown-item" href="#">訊息三</a></li>
+                    <li><hr class="dropdown-divider" /></li>
+                    <li><a class="dropdown-item" href="#">See More</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="nav__avatar">
+                <div class="dropdown-center">
+                  <!-- <button class="dropdown-toggle nav__avatar-btn" type="button" data-bs-toggle="dropdown"></button> -->
+                  <a href="#" class="dropdown-toggle nav__avatar-btn" type="button" data-bs-toggle="dropdown">
+                    <div class="nav__avatar-img">
+                      <img src="../images/avatar.svg" alt="avatar" />
+                    </div>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">註冊</a></li>
+                    <li><a class="dropdown-item" href="#">登入</a></li>
+                    <li><a class="dropdown-item" href="#">其他</a></li>
+                    <li><a class="dropdown-item" href="#">其他</a></li>
+                    <li><hr class="dropdown-divider" /></li>
+                    <li><a class="dropdown-item" href="#">登出</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+      <!-- Header End -->
+      <div class="container-fluid custom-container">
+        <div class="row">
+          <div class="col-2">
+            <!--Company Aside -->
+            <aside class="user-aside">
+              <ul class="user-aside__list">
+                <li class="user-aside__item--small"><a href="#">&lt; 返回</a></li>
+                <li class="user-aside__item"><a href="#">帳戶設定</a></li>
+                <li class="user-aside__item"><a href="#">商家收藏</a></li>
+                <li class="user-aside__item"><a href="#">關注土產</a></li>
+                <li class="user-aside__item"><a href="#">消費紀錄</a></li>
+                <li class="user-aside__item"><a href="#">訊息管理</a></li>
+                <li><hr style="width: 80%; margin: auto" /></li>
+                <li class="user-aside__item"><a href="#">登出</a></li>
+              </ul>
+            </aside>
+            <!--Company Aside End -->
+          </div>
+          <div class="col-10">
+            <!-- Main -->
+            <main class="main">
+              <h2 class="subtitle">訊息管理</h2>
+              <section class="search">
+                <div class="search__item">
+                  <p>起日</p>
+                  <input type="date" class="search__date" name="search__date__starting" />
+                </div>
+                <div class="search__item">
+                  <p>迄日</p>
+                  <input type="date" class="search__date" name="search__date__to" />
+                </div>
+                <div calss="search__btn">
+                  <button class="search__submit">搜尋</button>
+                </div>
+              </section>
+              <section class="list">
+                <table class="table list__table">
+                  <thead>
+                    <tr>
+                      <th scope="col" id="col__1">發信時間</th>
+                      <th scope="col" id="col__2">公告</th>
+                      <th scope="col" id="col__3">信息標題</th>
+                      <th scope="col" id="col__4">查看明細</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="list__message">
+                      <td class="list__date">2023-04-09</td>
+                      <td class="list__com">系統</td>
+                      <td class="list__title">A使用者帳號註冊審核通過</td>
+                      <td class="list__detail">
+                        <button class="button__detl" onclick="openLightbox('lightbox1')">查看</button>
+                        <div id="lightbox1" class="lightbox">
+                          <div class="lightbox__content">
+                            <span class="close">&times;</span>
+                            <h2>A使用者帳號註冊審核通過</h2>
+                            <p class="text__time">2023-04-09</p>
+                            <div class="lightbox__text">
+                              <p>
+                                XXX先生您好：<br />
+                                <br />
+                                您的帳號審核已通過，感謝使用本平台，如有疑問請再發送相關訊息通知，謝謝。<br />
+                                <br />
+                                敬祝<br />
+                                身體健康 萬事如意
+                                <br />
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr class="list__message">
+                      <td class="list__date">2023-04-09</td>
+                      <td class="list__com">系統</td>
+                      <td class="list__title">系統維護公告</td>
+                      <td class="list__detail">
+                        <button class="button__detl" onclick="openLightbox('lightbox2')">查看</button>
+                        <div id="lightbox2" class="lightbox">
+                          <div class="lightbox__content">
+                            <span class="close">&times;</span>
+                            <h2>系統維護公告</h2>
+                            <p class="text__time">2023-04-09</p>
+                            <div class="lightbox__text">
+                              <p>
+                                親愛的顧客您好：<br />
+                                <br />
+                                為配合財金公司系統演練，本行ATM、WebATM、個人網路銀行、行動銀行及全球智匯網將於2023/6/10(六)
+                                1:00~6:30期間，不定時短暫停止部分交易，包括跨行提款、跨行轉帳、跨行預約交易(含預約週期性轉帳)、國際卡跨國提款、銀聯卡提款、信用卡預借現金、全國性繳費稅、金融EDI、金融XML及轉帳卡(含國際簽帳卡及金融卡之國內外消費購物)等，造成不便，敬請見諒。<br />
+                                <br />
+                                敬祝<br />
+                                身體健康 萬事如意
+                                <br />
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr class="list__message">
+                      <td class="list__date">2023-04-09</td>
+                      <td class="list__com">系統</td>
+                      <td class="list__title">系統維護公告</td>
+                      <td class="list__detail">
+                        <button class="button__detl" onclick="openLightbox('lightbox3')">查看</button>
+                        <div id="lightbox3" class="lightbox">
+                          <div class="lightbox__content">
+                            <span class="close">&times;</span>
+                            <h2>系統維護公告</h2>
+                            <p class="text__time">2023-04-09</p>
+                            <div class="lightbox__text">
+                              <p>
+                                親愛的顧客您好：<br />
+                                <br />
+                                為配合財金公司系統演練，本行ATM、WebATM、個人網路銀行、行動銀行及全球智匯網將於2023/6/10(六)
+                                1:00~6:30期間，不定時短暫停止部分交易，包括跨行提款、跨行轉帳、跨行預約交易(含預約週期性轉帳)、國際卡跨國提款、銀聯卡提款、信用卡預借現金、全國性繳費稅、金融EDI、金融XML及轉帳卡(含國際簽帳卡及金融卡之國內外消費購物)等，造成不便，敬請見諒。<br />
+                                <br />
+                                敬祝<br />
+                                身體健康 萬事如意
+                                <br />
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <section class="comment">
+                <h3 class="comment__title">留下你的評分與留言</h3>
+                <ul class="comment__rank">
+                  <li>
+                    <a href=""><i class="fa-solid fa-star fa-lg"></i></a>
+                  </li>
+                  <li>
+                    <a href=""><i class="fa-solid fa-star fa-lg"></i></a>
+                  </li>
+                  <li>
+                    <a href=""><i class="fa-solid fa-star fa-lg"></i></a>
+                  </li>
+                  <li>
+                    <a href=""><i class="fa-solid fa-star fa-lg"></i></a>
+                  </li>
+                  <li>
+                    <a href=""><i class="fa-solid fa-star fa-lg"></i></a>
+                  </li>
+                </ul>
+              </section>
+              <nav class="page">
+                <ul class="pagination">
+                  <li class="page-item"><a class="page-link" href="#">&lt;</a></li>
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item"><a class="page-link" href="#">&gt;</a></li>
+                </ul>
+              </nav>
+            </main>
+            <!-- Main End -->
+          </div>
+        </div>
+      </div>
+      <!-- Footer -->
+      <footer>
+        <div class="footer"></div>
+      </footer>
+      <!-- Footer End -->
+    </div>
+  </body>
+</html>
