@@ -34,7 +34,4 @@ public class U2AMessage {
     @Column(name = "MSG_CONTENT")
     private String msgContent;
 
-    @ManyToOne
-    @JoinColumn(name = "RECEIVER_ID",insertable = false,updatable = false)
-    private Admin admin;
 }

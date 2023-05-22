@@ -78,13 +78,7 @@ public class AdminAnnController {
         return adminAnnService.findAnnPageByKeyWords(keyword,currPage,rows);
     }
 
-    @GetMapping("/anns/test")
-    public List<Ann> readByTestAll(){
-        System.out.println("關聯式全查詢");
-        return adminAnnService.findTestAll();
-    }
-
-    @GetMapping("/anns/test2")
+    @GetMapping("/anns/annView")
     public List<AnnView> findAlltest(){
         System.out.println("VIEW全查詢");
         return adminAnnViewService.findAllDemo();
