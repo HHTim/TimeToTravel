@@ -19,10 +19,10 @@ $('.get-by').on("click", function() {
 
 
 /* 同會員資訊按鈕的切換 */
-const auto_btn = document.querySelector('.auto-btn');
-auto_btn.addEventListener('click', (btn) => {
+const auto_input = document.querySelector('.auto-input');
+auto_input.addEventListener('click', (btn) => {
   // console.log(btn);
-  auto_btn.classList.toggle('active');
+  auto_input.classList.toggle('active');
 });
 
 

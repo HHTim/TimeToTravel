@@ -185,13 +185,35 @@ div.use-info {
   margin-left: 10px;
 }
 
-button.auto-btn.active {
+div.auto-input.active {
+  button.auto-btn{
+    border: 2px solid $primary-blue;
+    margin: -1.3px;
+  }
+  button.auto-btn::before {
+    background-color: $primary-blue;
+  }
+}
+
+button.auto-btn:hover {
   border: 2px solid $primary-blue;
   margin: -1.3px;
 }
 
-button.auto-btn.active::before {
-  background-color: $primary-blue;
+div.auto-input.active button::after {
+  content: "";
+}
+
+button.auto-btn::after {
+  border: solid $white;
+  border-width: 0 2px 2px 0;
+  height: 12px;
+  transform: translate(-260%, -10%) rotateZ(45deg);
+  width: 6px;
+}
+
+button.auto-btn::after {
+  position: absolute;
 }
 
 div.auto-input {
