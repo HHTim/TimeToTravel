@@ -33,19 +33,9 @@ public class AnnView {
     @Column(name = "ANN_PIC")
     private byte[] annPic;
 
-    @Column(name = "COM_ID")
+    @Column(name = "COM_ID_REF")
     private Integer comId;
 
-    @Column(name = "ADMIN_ID")
-    private Integer adminIdRef;
-
-    @Column(name = "ADMIN_ACCOUNT")
-    private String adminAccount;
-
-    @Column(name = "ADMIN_PASSWORD")
-    private String adminPassword;
-
-    @Column(name = "ADMIN_NAME")
-    private String adminName;
-
+    @Column(name = "COM_NAME")
+    private String comName;
 }

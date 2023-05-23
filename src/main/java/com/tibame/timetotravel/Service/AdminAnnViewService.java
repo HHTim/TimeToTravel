@@ -6,5 +6,5 @@ import com.tibame.timetotravel.view.AnnView;
 import java.util.List;
 
 public interface AdminAnnViewService {
-    List<AnnView> findAllDemo();
+    List<AnnView> findAll();
 }
