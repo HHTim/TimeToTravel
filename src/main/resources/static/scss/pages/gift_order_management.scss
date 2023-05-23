@@ -260,6 +260,12 @@ tbody {
     width: 65%;
     display: flex;
     justify-content: space-between;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #ccc;
+
+    p:nth-child(odd) {
+      font-weight: bold;
+    }
   }
 }
 
