@@ -17,9 +17,51 @@ $(function () {
 
   var tab_user = $('button.tab-user');
   var tab_company = $('button.tab-company');
-
   var publish_btn = $('button.btn-send');
-  var query_btn = $('button.btn-query');
+  var search_btn = $('button.btn-search');
+
+  function getData() {
+    const tbody = document.querySelector('tbody');
+
+    let url = 'http://localhost:8080/User2AdminController/message/page/' + currentPage.toString() + '/' + limit;
+    fetch(url)
+      .then((r) => r.json())
+      .then((d) => {
+        console.log('d.total: ' + d.pageSize);
+        Pages = d.pageSize;
+        tbody.innerHTML = d.rows
+          .map((e) => {
+            return (
+              `<tr data-id=${e.u2aMsgId}>` +
+              `
+            <td hidden> ${e.u2aReceiverId}</td>
+            <td class="tb-time">${e.u2aMsgSendingTime}</td>
+            <td class="tb-sender">${e.u2aSenderId}</td>
+            <td class="tb-title">${e.u2aMsgTitle}</td>
+            <td class="tb-title" hidden>${e.u2aMsgContent}</td>
+            <td class="tb-query">
+                <button class="btn-query">查看</button>
+            </td>
+            </tr>
+            `
+            );
+          })
+          .join('');
+
+        $('ul.pagination > li').each(function (index) {
+          if (index <= Pages) {
+            $(this).css('display', 'block');
+          } else {
+            // $(this).hide();
+            $(this).css('display', 'none');
+          }
+          if (index === $('ul.pagination > li').length - 1) {
+            // $(this).show();
+            $(this).css('display', 'block');
+          }
+        });
+      });
+  }
 
   pageItem.click('.page-link', function () {
     console.log(Pages);
@@ -87,10 +129,16 @@ $(function () {
   });
 
   publish_btn.on('click', function () {
-    location.href = '../html/admin_message_publish.html';
+    location.href = '../admin_message_publish';
   });
 
-  query_btn.on('click', function (e) {
+  $('tbody').on('click', 'button.btn-query', function (e) {
+    // e.stopPropagation();
+    console.log(e);
+    location.href = '../admin_message_detail';
+  });
+
+  search_btn.on('click', function (e) {
     e.preventDefault();
     // sessionStorage.setItem(
     //   'message',
@@ -100,8 +148,10 @@ $(function () {
     //     content: $(this).children().eq(4).text(),
     //   })
     // );
-    location.href = '../html/admin_message_detail.html';
+    // location.href = '../admin_message_detail';
   });
 
   cb(start, end);
+
+  getData();
 });
