@@ -33,7 +33,7 @@ public class Ann {
     @Column(name = "ANN_PIC")
     private byte[] annPic;
 
-    @Column(name = "COM_ID")
+    @Column(name = "COM_ID_REF")
     private Integer comId;
 
 }

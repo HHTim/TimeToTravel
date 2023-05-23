@@ -22,5 +22,4 @@ public interface AdminAnnService {
     PageBean<Ann> findAnnPageByDateRange(String startDate, String endDate, Integer currPage, Integer rows);
     PageBean<Ann> findAnnPageByKeyWords(String keyword,Integer currPage, Integer rows);
 
-    List<Ann> findTestAll();
 }

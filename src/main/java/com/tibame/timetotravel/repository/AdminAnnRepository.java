@@ -34,7 +34,5 @@ public interface AdminAnnRepository extends JpaRepository<Ann,Integer> {
     @Query(value = "SELECT COUNT(*) FROM ANN where ANN_TITLE like %?1% ORDER BY ANN_SENDING_TIME DESC",nativeQuery = true)
     Integer findByAllKeyWords(String keyword);
 
-    @Query(value = "select * from ANN join ADMIN on ANN.ADMIN_ID_REF = ADMIN.ADMIN_ID",nativeQuery = true)
-    List<Ann> findAlltest();
 
 }

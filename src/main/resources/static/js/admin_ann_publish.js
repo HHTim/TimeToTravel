@@ -38,6 +38,17 @@ $(function () {
       });
   }
 
+  function getComName() {
+    console.log('get comName');
+
+    const url = 'http://localhost:8080/AdminAnnController/anns/annView';
+    fetch(url)
+      .then((r) => r.json())
+      .then((d) => {
+        console.log(d);
+      });
+  }
+
   function verificationData() {
     if (title_input.val().length > 0 && title_content.val().length > 0 && img_base64 != null) return true;
     else return false;
@@ -81,4 +92,6 @@ $(function () {
     }
     // history.back();
   });
+
+  getComName();
 });
