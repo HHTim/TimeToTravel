@@ -78,11 +78,10 @@ public class AdminAnnController {
         return adminAnnService.findAnnPageByKeyWords(keyword,currPage,rows);
     }
 
-
-
     @GetMapping("/anns/annView")
     public List<AnnView> findAllofAnnView(){
         System.out.println("VIEW全查詢");
-        return adminAnnViewService.findAllDemo();
+        return adminAnnViewService.findAll();
     }
+
 }

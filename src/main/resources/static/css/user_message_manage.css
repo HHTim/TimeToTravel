@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* theme-color */
 /* border */
 /* effect */
@@ -347,8 +348,8 @@ section:not(:first-child) {
   text-align: center;
 }
 .list thead {
-  background-color: #006caa;
-  color: #fff;
+  background-color: rgb(56, 56, 56);
+  color: white;
 }
 .list th#col__1 {
   width: 15%;
@@ -404,15 +405,15 @@ section:not(:first-child) {
   cursor: pointer;
 }
 .list .button__detl {
-  background-color: #006caa;
-  color: #fff;
+  background-color: rgb(56, 56, 56);
+  color: white;
   border-radius: 10px;
   padding: 0.25rem 1rem;
   white-space: nowrap;
   border-style: none;
 }
 .list .button__detl:hover {
-  background-color: #004c77;
+  background-color: rgb(91, 91, 91);
 }
 .list h2 {
   font-size: 28px;
@@ -442,6 +443,18 @@ section:not(:first-child) {
   margin: 0;
   align-items: center;
   justify-content: center;
+}
+
+.page-link {
+  color: #495057;
+}
+
+.page-link:hover {
+  color: #495057; /* 懸停時文字顏色變色 */
+}
+
+.page-active {
+  color: #495057;
 }
 
 .comment {
