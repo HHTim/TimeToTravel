@@ -72,7 +72,7 @@ $(function () {
     }
     $(this).not('.prev,.next').addClass('active');
     console.log(currentPage);
-    // getData();
+    getData();
   });
 
   prev.click(function () {
@@ -80,7 +80,7 @@ $(function () {
     if (currentPage > firstPage) {
       currentPage--;
       $('li.active').removeClass('active').prev().addClass('active');
-      // getData();
+      getData();
     }
   });
 
@@ -90,7 +90,7 @@ $(function () {
       currentPage++;
       console.log('next click');
       $('li.active').removeClass('active').next().addClass('active');
-      // getData();
+      getData();
     }
   });
 
