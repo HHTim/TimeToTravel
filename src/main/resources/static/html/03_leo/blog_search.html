@@ -14,12 +14,14 @@
   <!-- 我們自己的 js 檔案，路徑記得改 -->
   <link rel="stylesheet" href="../../css/template.css" />
   <link rel="stylesheet" href="../../css/03_leo/style-global.css" />
-  <link rel="stylesheet" href="../../css/03_leo/blog_serach.css" />
+  
   <link rel="stylesheet" href="../../css/03_leo/blog-search.css" />
   <link rel="stylesheet" href="../../css/03_leo/blogs.css" />
   <!-- <link rel="stylesheet" href="../../css/03_leo/test.css" /> -->
   <!-- 我們自己的 css 檔案，路徑記得改 -->
   <script src="../../js/template.js" defer></script>
+  <script src="../../js/blog_search.js" defer></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <title>TimeToTravel | explore blogs </title>
   <style>
     /*  */
@@ -212,23 +214,6 @@
             </label>
           </div>
         </div>
-
-        <script>
-          // $(document).ready(function () {
-          //   $("input[name='article-type']").change(function () {
-          //     var selectedType = $(this).val();
-          //     console.log("選擇文章類型：" + selectedType);
-          //   });
-
-          //   $("input[name='sort-option']").change(function () {
-          //     var selectedSortOption = $(this).val();
-          //     console.log("選擇排序方式：" + selectedSortOption);
-          //   });
-          // });
-        </script>
-
-
-        <!--  blog欄位名稱 -->
         <div class="blog-topbar row text-center col-12 margin-center blog-name p-2 mt-3 ">
           <div class="col-1  margin-center col-name-border ">類型</div>
           <div class="col-2  margin-center ">圖片</div>
@@ -236,496 +221,39 @@
           <div class="col    margin-center ">讚數/留言</div>
           <div class="col   margin-center ">最新留言</div>
         </div>
+        <!--  blog欄位名稱 -->
+
+        <!--  -->
         <!-- blogs -->
-        <div class="blog row text-center col-12 margin-center p-2 mt-3 ">
-          <div class="col-1 align-self-center margin-center blog-type article-type">問題</div>
-          <div class="col-2  margin-center imgdiv ">
-            <img class="blog-img " width="120" height="68" data-image="6" id="article-image" src="../../images/hotel.jpg" alt="test66"></img>
-          </div>
-          <div class="col-6 align-self-center  margin-center ">
-            <div class="blog-content ">
-              <div class="blog-topic text-align-left" id="article-topic">
-                文章標題熱帶氣旋
+        <div class="getblogs">
+          <div class="blog row text-center col-12 margin-center p-2 mt-3 ">
+            <div class="col-1 align-self-center margin-center blog-type ">問題</div>
+            <div class="col-2  margin-center imgdiv ">
+              <img class="blog-img " width="120" height="68" data-image="6" id="article-image" src="../../images/hotel.jpg" alt="test66"></img>
+            </div>
+            <div class="col-6 align-self-center  margin-center ">
+              <div class="blog-content ">
+                <div class="blog-topic text-align-left" id="article-topic">
+                  文章標題熱帶氣旋
+                </div>
+                <div class="blog-detail text-align-left" id="article-content" >
+                  內文so4jp6內文so4jp6內文so4jp6 內文so4jp
+                </div>
               </div>
-              <div class="blog-detail text-align-left" id="article-content" >
-                內文so4jp6內文so4jp6內文so4jp6 內文so4jp
+              <div class="blog-tags float-right "> <span id="article-tags"></span>
+                <span class="badge small-tag bg-primary ">颱風1</span>
+                <span class="badge small-tag bg-secondary ">熱帶氣旋2</span>
+                <span class="badge small-tag bg-success ">豪大雨3</span>
+                <span class="badge small-tag bg-danger ">強颱4</span>
               </div>
             </div>
-            <div class="blog-tags float-right "> <span id="article-tags"></span>
-              <span class="badge small-tag bg-primary ">颱風1</span>
-              <span class="badge small-tag bg-secondary ">熱帶氣旋2</span>
-              <span class="badge small-tag bg-success ">豪大雨3</span>
-              <span class="badge small-tag bg-danger ">強颱4</span>
-            </div>
+            <div class="col align-self-center  margin-center latest-reply content-like-border "><span  class="article-like">6</span>/<span class="article-comments">8</span><br /><span
+                class="latest-replyer">邱翰森</span></div>
+            <div class="col align-self-center  margin-center latest-reply ">23分鐘<br /><span
+                class="latest-replyer">阿森</span></div>
           </div>
-          <div class="col align-self-center  margin-center latest-reply content-like-border "><span  class="article-like">6</span>/8<br /><span
-              class="latest-replyer">邱翰森</span></div>
-          <div class="col align-self-center  margin-center latest-reply ">23分鐘<br /><span
-              class="latest-replyer">阿森</span></div>
+          
         </div>
-
-        <div class="blog row text-center col-12 margin-center p-2 mt-3 ">
-          <div class="col-1 align-self-center margin-center blog-type article-type">情報</div>
-          <div class="col-2  margin-center imgdiv ">
-            <img class="blog-img " width="120" height="68" data-image="6" id="article-image" src="../../images/hotel.jpg" alt="test66"></img>
-          </div>
-          <div class="col-6 align-self-center  margin-center ">
-            <div class="blog-content ">
-              <div class="blog-topic text-align-left" id="article-topic">
-                文章標題熱帶氣旋
-              </div>
-              <div class="blog-detail text-align-left" id="article-content" >
-                內文so4jp6內文so4jp6內文so4jp6 內文so4jp
-              </div>
-            </div>
-            <div class="blog-tags float-right "> <span id="article-tags"></span>
-              <span class="badge small-tag bg-primary ">颱風1</span>
-              <span class="badge small-tag bg-secondary ">熱帶氣旋2</span>
-              <span class="badge small-tag bg-success ">豪大雨3</span>
-              <span class="badge small-tag bg-danger ">強颱4</span>
-            </div>
-          </div>
-          <div class="col align-self-center  margin-center latest-reply content-like-border "><span  class="article-like">6</span>/8<br /><span
-              class="latest-replyer">邱翰森</span></div>
-          <div class="col align-self-center  margin-center latest-reply ">23分鐘<br /><span
-              class="latest-replyer">阿森</span></div>
-        </div>
-
-        <div class="blog row text-center col-12 margin-center p-2 mt-3 ">
-          <div class="col-1 align-self-center margin-center blog-type article-type">心得</div>
-          <div class="col-2  margin-center imgdiv ">
-            <img class="blog-img " width="120" height="68" data-image="6" id="article-image" src="../../images/hotel.jpg" alt="test66"></img>
-          </div>
-          <div class="col-6 align-self-center  margin-center ">
-            <div class="blog-content ">
-              <div class="blog-topic text-align-left" id="article-topic">
-                文章標題熱帶氣旋
-              </div>
-              <div class="blog-detail text-align-left" id="article-content" >
-                內文so4jp6內文so4jp6內文so4jp6 內文so4jp
-              </div>
-            </div>
-            <div class="blog-tags float-right "> <span id="article-tags"></span>
-              <span class="badge small-tag bg-primary ">颱風1</span>
-              <span class="badge small-tag bg-secondary ">熱帶氣旋2</span>
-              <span class="badge small-tag bg-success ">豪大雨3</span>
-              <span class="badge small-tag bg-danger ">強颱4</span>
-            </div>
-          </div>
-          <div class="col align-self-center  margin-center latest-reply content-like-border "><span  class="article-like">4</span>/8<br /><span
-              class="latest-replyer">邱翰森</span></div>
-          <div class="col align-self-center  margin-center latest-reply ">23分鐘<br /><span
-              class="latest-replyer">阿森</span></div>
-        </div>
-
-        <div class="blog row text-center col-12 margin-center p-2 mt-3 ">
-          <div class="col-1 align-self-center margin-center blog-type article-type">討論</div>
-          <div class="col-2  margin-center imgdiv ">
-            <img class="blog-img " width="120" height="68" data-image="6" id="article-image" src="../../images/hotel.jpg" alt="test66"></img>
-          </div>
-          <div class="col-6 align-self-center  margin-center ">
-            <div class="blog-content ">
-              <div class="blog-topic text-align-left" id="article-topic">
-                文章標題熱帶氣旋
-              </div>
-              <div class="blog-detail text-align-left" id="article-content" >
-                內文so4jp6內文so4jp6內文so4jp6 內文so4jp
-              </div>
-            </div>
-            <div class="blog-tags float-right "> <span id="article-tags"></span>
-              <span class="badge small-tag bg-primary ">颱風1</span>
-              <span class="badge small-tag bg-secondary ">熱帶氣旋2</span>
-              <span class="badge small-tag bg-success ">豪大雨3</span>
-              <span class="badge small-tag bg-danger ">強颱4</span>
-            </div>
-          </div>
-          <div class="col align-self-center  margin-center latest-reply content-like-border "><span  class="article-like">4</span>/8<br /><span
-              class="latest-replyer">邱翰森</span></div>
-          <div class="col align-self-center  margin-center latest-reply ">23分鐘<br /><span
-              class="latest-replyer">阿森</span></div>
-        </div>
-
-        <div class="blog row text-center col-12 margin-center p-2 mt-3 ">
-          <div class="col-1 align-self-center margin-center blog-type article-type">攻略</div>
-          <div class="col-2  margin-center imgdiv ">
-            <img class="blog-img " width="120" height="68" data-image="6" id="article-image" src="../../images/hotel.jpg" alt="test66"></img>
-          </div>
-          <div class="col-6 align-self-center  margin-center ">
-            <div class="blog-content ">
-              <div class="blog-topic text-align-left" id="article-topic">
-                文章標題熱帶氣旋
-              </div>
-              <div class="blog-detail text-align-left" id="article-content" >
-                內文so4jp6內文so4jp6內文so4jp6 內文so4jp
-              </div>
-            </div>
-            <div class="blog-tags float-right "> <span id="article-tags"></span>
-              <span class="badge small-tag bg-primary ">颱風1</span>
-              <span class="badge small-tag bg-secondary ">熱帶氣旋2</span>
-              <span class="badge small-tag bg-success ">豪大雨3</span>
-              <span class="badge small-tag bg-danger ">強颱4</span>
-            </div>
-          </div>
-          <div class="col align-self-center  margin-center latest-reply content-like-border "><span  class="article-like">8</span>/8<br /><span
-              class="latest-replyer">邱翰森</span></div>
-          <div class="col align-self-center  margin-center latest-reply ">23分鐘<br /><span
-              class="latest-replyer">阿森</span></div>
-        </div>
-
-        <div class="blog row text-center col-12 margin-center p-2 mt-3 ">
-          <div class="col-1 align-self-center margin-center blog-type article-type">其他</div>
-          <div class="col-2  margin-center imgdiv ">
-            <img class="blog-img " width="120" height="68" data-image="6" id="article-image" src="../../images/hotel.jpg" alt="test66"></img>
-          </div>
-          <div class="col-6 align-self-center  margin-center ">
-            <div class="blog-content ">
-              <div class="blog-topic text-align-left" id="article-topic">
-                文章標題熱帶氣旋
-              </div>
-              <div class="blog-detail text-align-left" id="article-content" >
-                內文so4jp6內文so4jp6內文so4jp6 內文so4jp
-              </div>
-            </div>
-            <div class="blog-tags float-right "> <span id="article-tags"></span>
-              <span class="badge small-tag bg-primary ">颱風1</span>
-              <span class="badge small-tag bg-secondary ">熱帶氣旋2</span>
-              <span class="badge small-tag bg-success ">豪大雨3</span>
-              <span class="badge small-tag bg-danger ">強颱4</span>
-            </div>
-          </div>
-          <div class="col align-self-center  margin-center latest-reply content-like-border "><span  class="article-like">8</span>/8<br /><span
-              class="latest-replyer">邱翰森</span></div>
-          <div class="col align-self-center  margin-center latest-reply ">23分鐘<br /><span
-              class="latest-replyer">阿森</span></div>
-        </div>
-
-
-        <div class="blog row text-center col-12 margin-center p-2 mt-3 ">
-          <div class="col-1 align-self-center margin-center blog-type article-type">問題</div>
-          <div class="col-2  margin-center imgdiv ">
-            <img class="blog-img " width="120" height="68" data-image="6" id="article-image" src="../../images/hotel.jpg" alt="test66"></img>
-          </div>
-          <div class="col-6 align-self-center  margin-center ">
-            <div class="blog-content ">
-              <div class="blog-topic text-align-left" id="article-topic">
-                文章標題熱帶氣旋
-              </div>
-              <div class="blog-detail text-align-left" id="article-content" >
-                內文so4jp6內文so4jp6內文so4jp6 內文so4jp
-              </div>
-            </div>
-            <div class="blog-tags float-right "> <span id="article-tags"></span>
-              <span class="badge small-tag bg-primary ">颱風1</span>
-              <span class="badge small-tag bg-secondary ">熱帶氣旋2</span>
-              <span class="badge small-tag bg-success ">豪大雨3</span>
-              <span class="badge small-tag bg-danger ">強颱4</span>
-            </div>
-          </div>
-          <div class="col align-self-center  margin-center latest-reply content-like-border "><span  class="article-like">6</span>/8<br /><span
-              class="latest-replyer">邱翰森</span></div>
-          <div class="col align-self-center  margin-center latest-reply ">23分鐘<br /><span
-              class="latest-replyer">阿森</span></div>
-        </div>
-
-        <div class="blog row text-center col-12 margin-center p-2 mt-3 ">
-          <div class="col-1 align-self-center margin-center blog-type article-type">情報</div>
-          <div class="col-2  margin-center imgdiv ">
-            <img class="blog-img " width="120" height="68" data-image="6" id="article-image" src="../../images/hotel.jpg" alt="test66"></img>
-          </div>
-          <div class="col-6 align-self-center  margin-center ">
-            <div class="blog-content ">
-              <div class="blog-topic text-align-left" id="article-topic">
-                文章標題熱帶氣旋
-              </div>
-              <div class="blog-detail text-align-left" id="article-content" >
-                內文so4jp6內文so4jp6內文so4jp6 內文so4jp
-              </div>
-            </div>
-            <div class="blog-tags float-right "> <span id="article-tags"></span>
-              <span class="badge small-tag bg-primary ">颱風1</span>
-              <span class="badge small-tag bg-secondary ">熱帶氣旋2</span>
-              <span class="badge small-tag bg-success ">豪大雨3</span>
-              <span class="badge small-tag bg-danger ">強颱4</span>
-            </div>
-          </div>
-          <div class="col align-self-center  margin-center latest-reply content-like-border "><span  class="article-like">6</span>/8<br /><span
-              class="latest-replyer">邱翰森</span></div>
-          <div class="col align-self-center  margin-center latest-reply ">23分鐘<br /><span
-              class="latest-replyer">阿森</span></div>
-        </div>
-
-        <div class="blog row text-center col-12 margin-center p-2 mt-3 ">
-          <div class="col-1 align-self-center margin-center blog-type article-type">心得</div>
-          <div class="col-2  margin-center imgdiv ">
-            <img class="blog-img " width="120" height="68" data-image="6" id="article-image" src="../../images/hotel.jpg" alt="test66"></img>
-          </div>
-          <div class="col-6 align-self-center  margin-center ">
-            <div class="blog-content ">
-              <div class="blog-topic text-align-left" id="article-topic">
-                文章標題熱帶氣旋
-              </div>
-              <div class="blog-detail text-align-left" id="article-content" >
-                內文so4jp6內文so4jp6內文so4jp6 內文so4jp
-              </div>
-            </div>
-            <div class="blog-tags float-right "> <span id="article-tags"></span>
-              <span class="badge small-tag bg-primary ">颱風1</span>
-              <span class="badge small-tag bg-secondary ">熱帶氣旋2</span>
-              <span class="badge small-tag bg-success ">豪大雨3</span>
-              <span class="badge small-tag bg-danger ">強颱4</span>
-            </div>
-          </div>
-          <div class="col align-self-center  margin-center latest-reply content-like-border "><span  class="article-like">4</span>/8<br /><span
-              class="latest-replyer">邱翰森</span></div>
-          <div class="col align-self-center  margin-center latest-reply ">23分鐘<br /><span
-              class="latest-replyer">阿森</span></div>
-        </div>
-
-        <div class="blog row text-center col-12 margin-center p-2 mt-3 ">
-          <div class="col-1 align-self-center margin-center blog-type article-type">討論</div>
-          <div class="col-2  margin-center imgdiv ">
-            <img class="blog-img " width="120" height="68" data-image="6" id="article-image" src="../../images/hotel.jpg" alt="test66"></img>
-          </div>
-          <div class="col-6 align-self-center  margin-center ">
-            <div class="blog-content ">
-              <div class="blog-topic text-align-left" id="article-topic">
-                文章標題熱帶氣旋
-              </div>
-              <div class="blog-detail text-align-left" id="article-content" >
-                內文so4jp6內文so4jp6內文so4jp6 內文so4jp
-              </div>
-            </div>
-            <div class="blog-tags float-right "> <span id="article-tags"></span>
-              <span class="badge small-tag bg-primary ">颱風1</span>
-              <span class="badge small-tag bg-secondary ">熱帶氣旋2</span>
-              <span class="badge small-tag bg-success ">豪大雨3</span>
-              <span class="badge small-tag bg-danger ">強颱4</span>
-            </div>
-          </div>
-          <div class="col align-self-center  margin-center latest-reply content-like-border "><span  class="article-like">4</span>/8<br /><span
-              class="latest-replyer">邱翰森</span></div>
-          <div class="col align-self-center  margin-center latest-reply ">23分鐘<br /><span
-              class="latest-replyer">阿森</span></div>
-        </div>
-
-        <div class="blog row text-center col-12 margin-center p-2 mt-3 ">
-          <div class="col-1 align-self-center margin-center blog-type article-type">攻略</div>
-          <div class="col-2  margin-center imgdiv ">
-            <img class="blog-img " width="120" height="68" data-image="6" id="article-image" src="../../images/hotel.jpg" alt="test66"></img>
-          </div>
-          <div class="col-6 align-self-center  margin-center ">
-            <div class="blog-content ">
-              <div class="blog-topic text-align-left" id="article-topic">
-                文章標題熱帶氣旋
-              </div>
-              <div class="blog-detail text-align-left" id="article-content" >
-                內文so4jp6內文so4jp6內文so4jp6 內文so4jp
-              </div>
-            </div>
-            <div class="blog-tags float-right "> <span id="article-tags"></span>
-              <span class="badge small-tag bg-primary ">颱風1</span>
-              <span class="badge small-tag bg-secondary ">熱帶氣旋2</span>
-              <span class="badge small-tag bg-success ">豪大雨3</span>
-              <span class="badge small-tag bg-danger ">強颱4</span>
-            </div>
-          </div>
-          <div class="col align-self-center  margin-center latest-reply content-like-border "><span  class="article-like">8</span>/8<br /><span
-              class="latest-replyer">邱翰森</span></div>
-          <div class="col align-self-center  margin-center latest-reply ">23分鐘<br /><span
-              class="latest-replyer">阿森</span></div>
-        </div>
-
-        <div class="blog row text-center col-12 margin-center p-2 mt-3 ">
-          <div class="col-1 align-self-center margin-center blog-type article-type">其他</div>
-          <div class="col-2  margin-center imgdiv ">
-            <img class="blog-img " width="120" height="68" data-image="6" id="article-image" src="../../images/hotel.jpg" alt="test66"></img>
-          </div>
-          <div class="col-6 align-self-center  margin-center ">
-            <div class="blog-content ">
-              <div class="blog-topic text-align-left" id="article-topic">
-                文章標題熱帶氣旋
-              </div>
-              <div class="blog-detail text-align-left" id="article-content" >
-                內文so4jp6內文so4jp6內文so4jp6 內文so4jp
-              </div>
-            </div>
-            <div class="blog-tags float-right "> <span id="article-tags"></span>
-              <span class="badge small-tag bg-primary ">颱風1</span>
-              <span class="badge small-tag bg-secondary ">熱帶氣旋2</span>
-              <span class="badge small-tag bg-success ">豪大雨3</span>
-              <span class="badge small-tag bg-danger ">強颱4</span>
-            </div>
-          </div>
-          <div class="col align-self-center  margin-center latest-reply content-like-border "><span  class="article-like">8</span>/8<br /><span
-              class="latest-replyer">邱翰森</span></div>
-          <div class="col align-self-center  margin-center latest-reply ">23分鐘<br /><span
-              class="latest-replyer">阿森</span></div>
-        </div>
-
-
-        <div class="blog row text-center col-12 margin-center p-2 mt-3 ">
-          <div class="col-1 align-self-center margin-center blog-type article-type">問題</div>
-          <div class="col-2  margin-center imgdiv ">
-            <img class="blog-img " width="120" height="68" data-image="6" id="article-image" src="../../images/hotel.jpg" alt="test66"></img>
-          </div>
-          <div class="col-6 align-self-center  margin-center ">
-            <div class="blog-content ">
-              <div class="blog-topic text-align-left" id="article-topic">
-                文章標題熱帶氣旋
-              </div>
-              <div class="blog-detail text-align-left" id="article-content" >
-                內文so4jp6內文so4jp6內文so4jp6 內文so4jp
-              </div>
-            </div>
-            <div class="blog-tags float-right "> <span id="article-tags"></span>
-              <span class="badge small-tag bg-primary ">颱風1</span>
-              <span class="badge small-tag bg-secondary ">熱帶氣旋2</span>
-              <span class="badge small-tag bg-success ">豪大雨3</span>
-              <span class="badge small-tag bg-danger ">強颱4</span>
-            </div>
-          </div>
-          <div class="col align-self-center  margin-center latest-reply content-like-border "><span  class="article-like">6</span>/8<br /><span
-              class="latest-replyer">邱翰森</span></div>
-          <div class="col align-self-center  margin-center latest-reply ">23分鐘<br /><span
-              class="latest-replyer">阿森</span></div>
-        </div>
-
-        <div class="blog row text-center col-12 margin-center p-2 mt-3 ">
-          <div class="col-1 align-self-center margin-center blog-type article-type">情報</div>
-          <div class="col-2  margin-center imgdiv ">
-            <img class="blog-img " width="120" height="68" data-image="6" id="article-image" src="../../images/hotel.jpg" alt="test66"></img>
-          </div>
-          <div class="col-6 align-self-center  margin-center ">
-            <div class="blog-content ">
-              <div class="blog-topic text-align-left" id="article-topic">
-                文章標題熱帶氣旋
-              </div>
-              <div class="blog-detail text-align-left" id="article-content" >
-                內文so4jp6內文so4jp6內文so4jp6 內文so4jp
-              </div>
-            </div>
-            <div class="blog-tags float-right "> <span id="article-tags"></span>
-              <span class="badge small-tag bg-primary ">颱風1</span>
-              <span class="badge small-tag bg-secondary ">熱帶氣旋2</span>
-              <span class="badge small-tag bg-success ">豪大雨3</span>
-              <span class="badge small-tag bg-danger ">強颱4</span>
-            </div>
-          </div>
-          <div class="col align-self-center  margin-center latest-reply content-like-border "><span  class="article-like">6</span>/8<br /><span
-              class="latest-replyer">邱翰森</span></div>
-          <div class="col align-self-center  margin-center latest-reply ">23分鐘<br /><span
-              class="latest-replyer">阿森</span></div>
-        </div>
-
-        <div class="blog row text-center col-12 margin-center p-2 mt-3 ">
-          <div class="col-1 align-self-center margin-center blog-type article-type">其他</div>
-          <div class="col-2  margin-center imgdiv ">
-            <img class="blog-img " width="120" height="68" data-image="6" id="article-image" src="../../images/hotel.jpg" alt="test66"></img>
-          </div>
-          <div class="col-6 align-self-center  margin-center ">
-            <div class="blog-content ">
-              <div class="blog-topic text-align-left" id="article-topic">
-                文章標題熱帶氣旋
-              </div>
-              <div class="blog-detail text-align-left" id="article-content" >
-                內文so4jp6內文so4jp6內文so4jp6 內文so4jp
-              </div>
-            </div>
-            <div class="blog-tags float-right "> <span id="article-tags"></span>
-              <span class="badge small-tag bg-primary ">颱風1</span>
-              <span class="badge small-tag bg-secondary ">熱帶氣旋2</span>
-              <span class="badge small-tag bg-success ">豪大雨3</span>
-              <span class="badge small-tag bg-danger ">強颱4</span>
-            </div>
-          </div>
-          <div class="col align-self-center  margin-center latest-reply content-like-border "><span  class="article-like">4</span>/8<br /><span
-              class="latest-replyer">邱翰森</span></div>
-          <div class="col align-self-center  margin-center latest-reply ">23分鐘<br /><span
-              class="latest-replyer">阿森</span></div>
-        </div>
-
-        <div class="blog row text-center col-12 margin-center p-2 mt-3 ">
-          <div class="col-1 align-self-center margin-center blog-type article-type">其他</div>
-          <div class="col-2  margin-center imgdiv ">
-            <img class="blog-img " width="120" height="68" data-image="6" id="article-image" src="../../images/hotel.jpg" alt="test66"></img>
-          </div>
-          <div class="col-6 align-self-center  margin-center ">
-            <div class="blog-content ">
-              <div class="blog-topic text-align-left" id="article-topic">
-                文章標題熱帶氣旋
-              </div>
-              <div class="blog-detail text-align-left" id="article-content" >
-                內文so4jp6內文so4jp6內文so4jp6 內文so4jp
-              </div>
-            </div>
-            <div class="blog-tags float-right "> <span id="article-tags"></span>
-              <span class="badge small-tag bg-primary ">颱風1</span>
-              <span class="badge small-tag bg-secondary ">熱帶氣旋2</span>
-              <span class="badge small-tag bg-success ">豪大雨3</span>
-              <span class="badge small-tag bg-danger ">強颱4</span>
-            </div>
-          </div>
-          <div class="col align-self-center  margin-center latest-reply content-like-border "><span  class="article-like">4</span>/8<br /><span
-              class="latest-replyer">邱翰森</span></div>
-          <div class="col align-self-center  margin-center latest-reply ">23分鐘<br /><span
-              class="latest-replyer">阿森</span></div>
-        </div>
-
-        <div class="blog row text-center col-12 margin-center p-2 mt-3 ">
-          <div class="col-1 align-self-center margin-center blog-type article-type">其他</div>
-          <div class="col-2  margin-center imgdiv ">
-            <img class="blog-img " width="120" height="68" data-image="6" id="article-image" src="../../images/hotel.jpg" alt="test66"></img>
-          </div>
-          <div class="col-6 align-self-center  margin-center ">
-            <div class="blog-content ">
-              <div class="blog-topic text-align-left" id="article-topic">
-                文章標題熱帶氣旋
-              </div>
-              <div class="blog-detail text-align-left" id="article-content" >
-                內文so4jp6內文so4jp6內文so4jp6 內文so4jp
-              </div>
-            </div>
-            <div class="blog-tags float-right "> <span id="article-tags"></span>
-              <span class="badge small-tag bg-primary ">颱風1</span>
-              <span class="badge small-tag bg-secondary ">熱帶氣旋2</span>
-              <span class="badge small-tag bg-success ">豪大雨3</span>
-              <span class="badge small-tag bg-danger ">強颱4</span>
-            </div>
-          </div>
-          <div class="col align-self-center  margin-center latest-reply content-like-border "><span  class="article-like">8</span>/8<br /><span
-              class="latest-replyer">邱翰森</span></div>
-          <div class="col align-self-center  margin-center latest-reply ">23分鐘<br /><span
-              class="latest-replyer">阿森</span></div>
-        </div>
-
-        <div class="blog row text-center col-12 margin-center p-2 mt-3 ">
-          <div class="col-1 align-self-center margin-center blog-type article-type">其他</div>
-          <div class="col-2  margin-center imgdiv ">
-            <img class="blog-img " width="120" height="68" data-image="6" id="article-image" src="../../images/hotel.jpg" alt="test66"></img>
-          </div>
-          <div class="col-6 align-self-center  margin-center ">
-            <div class="blog-content ">
-              <div class="blog-topic text-align-left" id="article-topic">
-                文章標題熱帶氣旋
-              </div>
-              <div class="blog-detail text-align-left" id="article-content" >
-                內文so4jp6內文so4jp6內文so4jp6 內文so4jp
-              </div>
-            </div>
-            <div class="blog-tags float-right "> <span id="article-tags"></span>
-              <span class="badge small-tag bg-primary ">颱風1</span>
-              <span class="badge small-tag bg-secondary ">熱帶氣旋2</span>
-              <span class="badge small-tag bg-success ">豪大雨3</span>
-              <span class="badge small-tag bg-danger ">強颱4</span>
-            </div>
-          </div>
-          <div class="col align-self-center  margin-center latest-reply content-like-border "><span  class="article-like">8</span>/8<br /><span
-              class="latest-replyer">邱翰森</span></div>
-          <div class="col align-self-center  margin-center latest-reply ">23分鐘<br /><span
-              class="latest-replyer">阿森</span></div>
-        </div>
-
-
 
 
       </div>
@@ -884,7 +412,8 @@ $(document).ready(function() {
   <footer>
     <div class="footer"></div>
   </footer>
-
+  
+  
 </body>
 
 </html>

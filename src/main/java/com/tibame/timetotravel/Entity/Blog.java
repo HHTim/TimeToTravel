@@ -50,8 +50,8 @@ public class Blog {
 	private byte[] postPhoto;
 //	  `POST_PHOTO` longblob COMMENT '文章圖片',
 
-	@Column(name = "POST_TYPE")
-	private Byte postType;
+	@Column(name = "POST_TYPE_ID")
+	private Byte postTypeId;
 //	整數類Byte ByteType TINYINT // hibernate 7-2
 //	  `POST_TYPE_ID` tinyint NOT NULL COMMENT '文章類型編號',
 

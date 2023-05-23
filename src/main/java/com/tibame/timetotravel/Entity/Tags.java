@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name= "PRESS_LIKE")
+@Table(name= "TAGS")
 
 public class Tags {
 
