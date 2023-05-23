@@ -18,6 +18,9 @@ $(function () {
   var tab_user = $('button.tab-user');
   var tab_company = $('button.tab-company');
 
+  var publish_btn = $('button.btn-send');
+  var query_btn = $('button.btn-query');
+
   pageItem.click('.page-link', function () {
     console.log(Pages);
     console.log('item click');
@@ -81,6 +84,23 @@ $(function () {
   tab_company.on('click', function () {
     $(this).css('background-color', '#006caa');
     tab_user.css('background-color', '#9b9999');
+  });
+
+  publish_btn.on('click', function () {
+    location.href = '../html/admin_message_publish.html';
+  });
+
+  query_btn.on('click', function (e) {
+    e.preventDefault();
+    // sessionStorage.setItem(
+    //   'message',
+    //   JSON.stringify({
+    //     title: $(this).children().eq(0).text(),
+    //     time: $(this).children().eq(1).text(),
+    //     content: $(this).children().eq(4).text(),
+    //   })
+    // );
+    location.href = '../html/admin_message_detail.html';
   });
 
   cb(start, end);

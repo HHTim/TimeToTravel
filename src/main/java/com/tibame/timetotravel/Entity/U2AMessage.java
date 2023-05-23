@@ -16,25 +16,22 @@ import java.sql.Timestamp;
 public class U2AMessage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "MSG_ID")
+    @Column(name = "U2A_MSG_ID")
     private Integer msgId;
 
-    @Column(name = "SENDER_ID")
+    @Column(name = "U2A_SENDER_ID")
     private Integer senderId;
 
-    @Column(name = "RECEIVER_ID")
+    @Column(name = "U2A_RECEIVER_ID")
     private Integer receiverId;
 
-    @Column(name = "SENDING_TIME")
+    @Column(name = "U2A_SENDING_TIME")
     private Timestamp msgSendingTime;
 
-    @Column(name = "MSG_TITLE")
+    @Column(name = "U2A_MSG_TITLE")
     private String msgTitle;
 
-    @Column(name = "MSG_CONTENT")
+    @Column(name = "U2A_MSG_CONTENT")
     private String msgContent;
 
-    @ManyToOne
-    @JoinColumn(name = "RECEIVER_ID",insertable = false,updatable = false)
-    private Admin admin;
 }

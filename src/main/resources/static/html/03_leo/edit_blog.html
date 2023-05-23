@@ -83,7 +83,7 @@
       <div class="col">
         <div class="post-article-out test2 row">
           <div>
-            <button class="button-1">回上頁</button>
+            <button class="button-1"><a href="./blog_search.html">回上頁</a></button>
           </div>
           <div class="post-article-main col-12">
             <form>
@@ -122,7 +122,7 @@
               <label for="article-content" class="form-label">文章內容</label>
               <textarea class="form-control" id="article-content" name="article-content" rows="6" required></textarea>
 
-              <button type="submit" class="btn btn-success m-3">發佈文章</button>
+              <button type="submit" class="post-article btn btn-success m-3">發佈文章</button>
             </form>
 
             <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -140,6 +140,8 @@
                       $('#hint-msg').text('標籤已新增');
                       return;
                     }
+                    //  到時進行 後端連線!!
+
                     var tagElement = $('<span class="badge tag-badge m-1"></span>').text(tagText);
                     var colorClass = colorClasses[colorIndex % colorClasses.length];
                     tagElement.addClass(colorClass);
@@ -177,7 +179,7 @@
                 });
 
                 // Event handler for form submission
-                $('form').submit(function (e) {
+                $('form').submit('.post-article', function (e) {
                   e.preventDefault();
                   var articleTitle = $('#article-title').val();
                   var articleType = $('#article-type').val();
@@ -221,6 +223,26 @@
     <footer>
       <div class="footer"></div>
     </footer>
+    <div class="this-is-test-to-add-html"></div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   
+    <script>
+      $("form").on("submit", function(e) {
+        e.preventDefault(); // 阻止表单默認提交行為
+
+        var articleContent = $("#article-content").val(); // 獲取 <textarea> 中的内容
+        console.log("666666666"+articleContent);
+        // 创建新的 HTML 内容
+        var newHtml = '<div class="new-article">' + articleContent + '</div>';
+        
+        // 将新的 HTML 内容添加到指定的区块中
+        $(".this-is-test-to-add-html").append(newHtml);
+      });
+
+
+
+    </script>
+
 
     <script src="./edit_blog/vender/tinymce-4/tinymce.min.js"></script>
     <script src="./edit_blog/script.js"></script>

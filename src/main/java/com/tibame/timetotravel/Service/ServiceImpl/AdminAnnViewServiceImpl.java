@@ -15,7 +15,8 @@ public class AdminAnnViewServiceImpl implements AdminAnnViewService {
     @Qualifier("adminAnnViewRepository")
     private AdminAnnViewRepository adminAnnViewRepository;
 
-    public List<AnnView> findAllDemo() {
+    public List<AnnView> findAll() {
         return adminAnnViewRepository.findAll();
     }
+
 }
