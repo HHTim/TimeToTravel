@@ -27,7 +27,7 @@ public class AdminAnnController {
       //此為重導寫法，可以指定導到哪個頁面
     @RequestMapping("/redirect")
     public RedirectView redirect(){
-        return new RedirectView("/html/admin_ann.html");
+        return new RedirectView("/admin_ann");
     }
 
     @PostMapping("/anns")

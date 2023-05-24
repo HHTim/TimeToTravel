@@ -336,7 +336,6 @@ $(function () {
   });
 
   $('.ann-publish-btn').on('click', function (e) {
-    console.log('wfoiwnhfowi');
     location.href = '../admin_ann_publish';
   });
 

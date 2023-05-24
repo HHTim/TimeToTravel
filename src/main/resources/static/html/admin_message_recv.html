@@ -106,7 +106,7 @@
             <div class="top-container">
               <div class="left-container">
                 <span>發信人</span>
-                <input type="text" class="form-control form-input" placeholder="or帳號" />
+                <input type="text" class="form-control form-input" placeholder="帳號" />
               </div>
               <div class="right-container">
                 <span>信件期間</span>
@@ -118,8 +118,29 @@
             <div class="top-container">
               <div class="left-container"></div>
               <div class="right-container">
+                <div class="form-check custom-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="flexRadioDefault"
+                    id="flexRadioUser"
+                    value="1"
+                    checked
+                  />
+                  <label class="form-check-label" for="flexRadioDefault1"> 使用者 </label>
+                </div>
+                <div class="form-check custom-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="flexRadioDefault"
+                    id="flexRadioCompany"
+                    value="2"
+                  />
+                  <label class="form-check-label" for="flexRadioDefault2"> 商家 </label>
+                </div>
                 <button class="btn-send">+發佈新訊息</button>
-                <button class="btn-search">搜尋</button>
+                <button class="btn-search">搜尋全部</button>
               </div>
             </div>
             <div class="content-area">

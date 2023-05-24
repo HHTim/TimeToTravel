@@ -3,25 +3,51 @@ $(function () {
   var title_content = $('.textarea');
   var back_button = $('#back_btn');
   var select_obj = $('#select');
+  var selected_id = $('#select :selected');
   var publish_button = $('#publish_btn');
   var select_obj_phd = $('.show-placeholder-obj');
   var title_input_phd = $('.show-placeholder-title');
   var title_input_content_phd = $('.show-placeholder-content');
+  var radioValue;
 
-  function publish(title, content) {
-    //   const url = 'http://localhost:8081/TIME_TO_TRAVEL/AnnController';
-    //   const formData = new FormData();
-    //   formData.append('action', 'publish_ann');
-    //   formData.append('title', title);
-    //   formData.append('content', content);
-    //   fetch(url, {
-    //     method: 'POST',
-    //     body: new URLSearchParams(formData),
-    //   })
-    //     .then((r) => r.json())
-    //     .then((d) => {
-    //       console.log(d);
-    //     });
+  function getSessionData() {
+    radioValue = sessionStorage.getItem('radioData');
+    console.log('radioData: ' + radioValue);
+  }
+
+  function publish(recviver, title, content) {
+    // console.log($('#select :selected').val());
+    console.log('publish');
+    let url = 'http://localhost:8080/Admin2UserController/message';
+    let headers = {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    };
+
+    // console.log('body.a2uMsgContent:' + body['a2uMsgContent']);
+    let body = {
+      a2uMsgId: null,
+      a2uSenderId: 1,
+      a2uReceiverId: 1,
+      a2uSendingTime: null,
+      a2uMsgTitle: title,
+      a2uMsgContent: content,
+    };
+    console.log('dddddd:' + JSON.stringify(body));
+    // if (radioValue == 1) {
+    // } else {
+    // }
+
+    fetch(url, {
+      method: 'POST',
+      headers: headers,
+      body: JSON.stringify(body),
+    })
+      .then((r) => r.text())
+      .then((d) => {
+        console.log(d);
+        // location.href = '../admin_message_recv';
+      });
   }
 
   function verificationData() {
@@ -54,8 +80,9 @@ $(function () {
   });
   publish_button.on('click', function () {
     if (verificationData()) {
-      publish(title_input.val().trim(), title_content.val().trim());
+      publish(selected_id, title_input.val().trim(), title_content.val());
     }
-    history.back();
   });
+
+  getSessionData();
 });
