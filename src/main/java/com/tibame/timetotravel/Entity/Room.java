@@ -9,10 +9,12 @@ import lombok.NoArgsConstructor;
 import java.sql.Timestamp;
 
 @Data
-@Table(name = "ROOM")
-@Entity
+
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
+@Table(name = "ROOM")
+
 public class Room {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
