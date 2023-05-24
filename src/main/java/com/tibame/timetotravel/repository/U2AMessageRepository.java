@@ -1,6 +1,5 @@
 package com.tibame.timetotravel.repository;
 
-import com.tibame.timetotravel.entity.Ann;
 import com.tibame.timetotravel.entity.U2AMessage;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

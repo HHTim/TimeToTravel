@@ -1,7 +1,6 @@
 package com.tibame.timetotravel.controller;
 
 import com.tibame.timetotravel.common.PageBean;
-import com.tibame.timetotravel.entity.Ann;
 import com.tibame.timetotravel.entity.U2AMessage;
 import com.tibame.timetotravel.service.U2AMessageService;
 import org.springframework.beans.factory.annotation.Autowired;

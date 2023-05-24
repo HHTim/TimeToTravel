@@ -560,7 +560,7 @@ table .tb-time {
   text-align: center;
 }
 table .tb-sender {
-  width: 20%;
+  width: 23%;
   min-width: 100px;
   line-height: 8dvh;
   text-align: center;
@@ -596,4 +596,12 @@ tbody {
 
 .data-text {
   line-height: 8dvh;
+}
+
+.content-area {
+  min-height: 53dvh;
+}
+
+.custom-check {
+  display: inline-block;
 }
