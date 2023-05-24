@@ -34,11 +34,11 @@ $(function () {
             return (
               `<tr data-id=${e.u2aMsgId}>` +
               `
-            <td hidden> ${e.u2aReceiverId}</td>
+            <td class="tb-recv-id" hidden> ${e.u2aReceiverId}</td>
             <td class="tb-time">${e.u2aMsgSendingTime}</td>
             <td class="tb-sender">${e.u2aSenderId}</td>
             <td class="tb-title">${e.u2aMsgTitle}</td>
-            <td class="tb-title" hidden>${e.u2aMsgContent}</td>
+            <td class="tb-content" hidden>${e.u2aMsgContent}</td>
             <td class="tb-query">
                 <button class="btn-query">查看</button>
             </td>
@@ -72,7 +72,7 @@ $(function () {
     }
     $(this).not('.prev,.next').addClass('active');
     console.log(currentPage);
-    // getData();
+    getData();
   });
 
   prev.click(function () {
@@ -80,7 +80,7 @@ $(function () {
     if (currentPage > firstPage) {
       currentPage--;
       $('li.active').removeClass('active').prev().addClass('active');
-      // getData();
+      getData();
     }
   });
 
@@ -90,7 +90,7 @@ $(function () {
       currentPage++;
       console.log('next click');
       $('li.active').removeClass('active').next().addClass('active');
-      // getData();
+      getData();
     }
   });
 
@@ -129,29 +129,33 @@ $(function () {
   });
 
   publish_btn.on('click', function () {
+    console.log($("input[type='radio']:checked").val());
+    sessionStorage.setItem('radioData', $("input[type='radio']:checked").val());
     location.href = '../admin_message_publish';
   });
 
   $('tbody').on('click', 'button.btn-query', function (e) {
-    // e.stopPropagation();
-    console.log(e);
+    sessionStorage.setItem(
+      'msg-detail',
+      JSON.stringify({
+        message_id: $(this).closest('tr').attr('data-id'),
+        message_recv_id: $(this).closest('tr').find('.tb-recv-id').text(),
+        message_sender_id: $(this).closest('tr').find('.tb-sender').text(),
+        message_title: $(this).closest('tr').find('.tb-title').text(),
+        message_content: $(this).closest('tr').find('.tb-content').text(),
+        message_time: $(this).closest('tr').find('.tb-time').text(),
+      })
+    );
     location.href = '../admin_message_detail';
   });
 
   search_btn.on('click', function (e) {
     e.preventDefault();
-    // sessionStorage.setItem(
-    //   'message',
-    //   JSON.stringify({
-    //     title: $(this).children().eq(0).text(),
-    //     time: $(this).children().eq(1).text(),
-    //     content: $(this).children().eq(4).text(),
-    //   })
-    // );
-    // location.href = '../admin_message_detail';
+    e.preventDefault();
+    currentPage = 1;
+    $('li.active').removeClass('active').prev().addClass('active');
   });
 
   cb(start, end);
-
   getData();
 });
