@@ -16,6 +16,7 @@ CREATE TABLE `ROOM`
     `ROOM_BED`       VARCHAR(30)  NOT NULL COMMENT '房型床位',
     `ROOM_PEOPLE`    INT          NOT NULL COMMENT '房型人數',
     `ROOM_STATUS`    TINYINT(1)   NOT NULL COMMENT '房型狀態',
+    `ROOM_PHOTO`	 LONGBLOB			   COMMENT '房型照片',
     PRIMARY KEY (`ROOM_ID`)
 ) COMMENT ='房型資料表';
 

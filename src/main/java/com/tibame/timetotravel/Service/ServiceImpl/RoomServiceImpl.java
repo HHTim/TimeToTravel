@@ -41,7 +41,6 @@ public class RoomServiceImpl implements RoomService {
         System.out.println(newRoom.getRoomStatus());
         newRoom.setRoomStatus(room.getRoomStatus());
         entityManager.merge(newRoom);
-
     }
 
     public Room findById(Integer roomId) {
