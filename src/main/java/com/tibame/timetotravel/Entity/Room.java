@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 import java.sql.Timestamp;
 
 @Data
@@ -18,7 +17,7 @@ import java.sql.Timestamp;
 public class Room {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ROOM_ID")
+    @Column(name = "ROOM_ID", insertable = false, updatable = false)
     private Integer roomId;
 
     @Column(name = "COM_ID", nullable = false)
@@ -65,5 +64,8 @@ public class Room {
 
     @Column(name = "ROOM_STATUS", nullable = false)
     private Boolean roomStatus;
+
+    @Column(name = "ROOM_PHOTO")
+    private byte[] roomPhoto;
 
 }

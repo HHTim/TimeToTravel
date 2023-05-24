@@ -2,18 +2,6 @@ const searchResultsCountElement = document.getElementById('search-results-count'
 let searchResults = [];
 const totalResults = searchResults.length;
 
-$(function () {
-  $('.card1').on('click', function () {
-    var text = $(this).find('.card-text');
-    text.toggleClass('multiline-ellipsis');
-    if (text.hasClass('multiline-ellipsis')) {
-      $(this).find('.toggle-text').text('查看更多▼');
-    } else {
-      $(this).find('.toggle-text').text('收起 ▲');
-    }
-  });
-});
-
 function openTab(tabName) {
   var i, tabContent, tabLinks;
   tabContent = document.getElementsByClassName('tab-content');
@@ -29,3 +17,5 @@ function openTab(tabName) {
 }
 
 searchResultsCountElement.innerText = '搜尋結果共 ' + totalResults + ' 筆';
+
+/* =========================================================================== */
