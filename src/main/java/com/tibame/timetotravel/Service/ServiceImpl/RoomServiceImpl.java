@@ -36,7 +36,12 @@ public class RoomServiceImpl implements RoomService {
     @Override
     @Transactional
     public void update(Integer roomId, Room room) {
-        entityManager.merge(room);
+        // 把舊的roomId拖出來
+        Room newRoom = entityManager.find(Room.class, roomId);
+        System.out.println(newRoom.getRoomStatus());
+        newRoom.setRoomStatus(room.getRoomStatus());
+        entityManager.merge(newRoom);
+
     }
 
     public Room findById(Integer roomId) {

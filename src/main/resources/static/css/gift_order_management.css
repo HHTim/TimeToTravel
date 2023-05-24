@@ -338,6 +338,10 @@ main.main {
   margin-right: 10px;
 }
 
+label {
+  padding: 5px !important;
+}
+
 .form-control {
   display: block;
   width: 100%;
