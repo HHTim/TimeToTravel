@@ -16,6 +16,32 @@ function openTab(tabName) {
   event.currentTarget.classList.add('active');
 }
 
-searchResultsCountElement.innerText = '搜尋結果共 ' + totalResults + ' 筆';
-
 /* =========================================================================== */
+
+let searchBody = {
+  keyWord: '新北市',
+  people: 4,
+  start: '2023-05-01',
+  end: '2023-05-02',
+};
+const searchHotel = document.querySelector('#search-hotel');
+
+async function fetchData(url) {
+  try {
+    const resp = await fetch(url);
+    if (!resp.ok) throw new Error('Available Company Search Error' + resp.statusText);
+
+    return await resp.json();
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+searchHotel.addEventListener('click', async (e) => {
+  const { keyWord, people, start, end } = searchBody;
+  const result = await fetchData(`http://localhost:8080/roomController/search/${keyWord}/${people}/${start}/${end}`);
+  searchResultsCountElement.innerText = '搜尋結果共 ' + result.length + ' 筆';
+  console.log(result);
+});
+
+searchResultsCountElement.innerText = '搜尋結果共 ' + 0 + ' 筆';

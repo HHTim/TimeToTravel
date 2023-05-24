@@ -16,7 +16,7 @@ class Room2ServiceImplTest {
 
     @Test
     public void findAvailableCompanyTest() {
-        List<ViewCompanyRoom> companies = room2Service.findAvailableCompany("新北市", 4, "2023-05-25", "2023-05-28");
+        List<ViewCompanyRoom> companies = room2Service.findAvailableCompany("新北市", 2, "2023-05-22", "2023-05-28");
         System.out.println("共有: " + companies.size() + " 間符合條件");
 
         for (ViewCompanyRoom company : companies) {
