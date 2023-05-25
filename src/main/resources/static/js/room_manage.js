@@ -34,7 +34,7 @@ window.addEventListener('load', function () {
 								  <td>
 									<select name="room__status" class="room__status" data-room-id="${i.roomId}">
 									  <option disabled selected hidden>${roomStatus}</option>
-									  <option value="1">上架</option>
+									  <option value="0">下架</option>
 									</select>
 								  </td>
 								</tr>
@@ -66,7 +66,7 @@ window.addEventListener('load', function () {
 								  <td>
 									<select name="room__status" class="room__status" data-room-id="${i.roomId}">
 									  <option disabled selected hidden>${roomStatus}</option>
-									  <option value="0">下架</option>
+									  <option value="1">上架</option>
 									</select>
 								  </td>
 								</tr>
