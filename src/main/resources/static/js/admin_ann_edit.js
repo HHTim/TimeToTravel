@@ -5,6 +5,9 @@ $(function () {
   var publish_button = $('#publish_btn');
   var title_input_phd = $('.show-placeholder-title');
   var title_input_content_phd = $('.show-placeholder-content');
+  // var select_compoent = $('.custom-select');
+  var upload_file = $('#upload');
+  var img_base64;
   var annVO = {};
 
   function placeholderCheck(src, dst) {
@@ -23,6 +26,7 @@ $(function () {
     annVO.title = ann.ann_title;
     annVO.content = ann.ann_content;
     annVO.comId = ann.com_id;
+    annVO.pic = ann.ann_pic;
 
     console.log(annVO);
     $('input.form-input').val(annVO.title);
@@ -31,25 +35,44 @@ $(function () {
     placeholderCheck($('textarea.textarea'), $('.show-placeholder-content'));
   }
 
+  function updateSelectCompoent() {
+    const url = 'http://localhost:8081/TIME_TO_TRAVEL/AnnController';
+    fetch(url)
+      .then((r) => r.json())
+      .then((d) => {
+        console.log(d);
+      });
+  }
+
   $('.back-btn').on('click', function (e) {
     history.back();
   });
 
   function publish(annVO) {
-    const url = 'http://localhost:8081/TIME_TO_TRAVEL/AnnController';
-    const formData = new FormData();
-    formData.append('action', 'update_ann');
-    formData.append('annId', annVO.annId);
-    formData.append('annTime', annVO.ann_time);
-    formData.append('title', annVO.title);
-    formData.append('content', annVO.content);
-    formData.append('admin_id', annVO.adminId);
-    formData.append('com_id', annVO.comId);
+    let headers = {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    };
+    const url = 'http://localhost:8080/AdminAnnController/anns/' + annVO.annId;
+    console.log(url);
+
+    const imageData = annVO.pic.replace(/^data:image\/(png|jpg|jpeg);base64,/, '');
+    let body = {
+      annId: annVO.annId,
+      adminId: annVO.adminId,
+      annSendingTime: null,
+      annTitle: annVO.title,
+      annContent: annVO.content,
+      annPic: imageData,
+      comId: annVO.comId,
+    };
+
     fetch(url, {
-      method: 'POST',
-      body: new URLSearchParams(formData),
+      method: 'PUT',
+      headers: headers,
+      body: JSON.stringify(body),
     })
-      .then((r) => r.json())
+      .then((r) => r.text())
       .then((d) => {
         console.log(d);
       });
@@ -82,11 +105,26 @@ $(function () {
   publish_button.on('click', function () {
     if (verificationData()) {
       annVO.title = title_input.val().trim();
-      annVO.content = title_content.val().trim();
+      annVO.content = title_content.val();
       publish(annVO);
     }
-    history.back();
+    location.href = '../admin_ann';
+  });
+
+  upload_file.on('change', function () {
+    console.log('file change');
+    for (let i = 0; i < this.files.length; i++) {
+      let reader = new FileReader(); // 用來讀取檔案
+      reader.readAsDataURL(this.files[i]); // 讀取檔案
+      reader.addEventListener('load', function () {
+        img_base64 = reader.result;
+        annVO.pic = img_base64;
+        console.log(annVO.pic);
+      });
+    }
   });
 
   getSessionData();
+
+  // updateSelectCompoent();
 });

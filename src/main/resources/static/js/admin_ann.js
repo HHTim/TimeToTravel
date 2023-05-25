@@ -114,6 +114,7 @@ $(function () {
                 <td class="content" style='display:none;'>${e.annContent}</td>
                 <td class="adminID" style='display:none;'>${e.adminId}</td>
                 <td class="comId" style='display:none;'>${e.comId}</td>
+                <td class="pic" style='display:none;'>${e.annPic}</td>
                 </tr>
                 `
               );
@@ -172,6 +173,7 @@ $(function () {
           <td class="content" style='display:none;'>${e.annContent}</td>
           <td class="adminID" style='display:none;'>${e.adminId}</td>
           <td class="comId" style='display:none;'>${e.comId}</td>
+          <td class="pic" style='display:none;'>${e.annPic}</td>
           </tr>`
                   );
                 })
@@ -223,6 +225,7 @@ $(function () {
           <td class="content" style='display:none;'>${e.annContent}</td>
           <td class="adminID" style='display:none;'>${e.adminId}</td>
           <td class="comId" style='display:none;'>${e.comId}</td>
+          <td class="pic" style='display:none;'>${e.annPic}</td>
           </tr>`
                 );
               })
@@ -243,7 +246,6 @@ $(function () {
   }
 
   function cb(start, end) {
-    // console.log('apply');
     if (init == false) {
       start_dateflag = true;
     } else {
@@ -281,7 +283,6 @@ $(function () {
 
   $('.tbody').on('click', 'button.table-edit-button', function (e) {
     e.stopPropagation();
-    // console.log($(this).closest('tr').find('td').eq(4).text());
     sessionStorage.setItem(
       'ann-edit',
       JSON.stringify({
@@ -291,6 +292,7 @@ $(function () {
         ann_content: $(this).closest('tr').find('td').eq(4).text(),
         admin_id: $(this).closest('tr').find('td').eq(5).text(),
         com_id: $(this).closest('tr').find('td').eq(6).text(),
+        ann_pic: $(this).closest('tr').find('td').eq(7).text(),
       })
     );
     location.href = '../admin_ann_edit';

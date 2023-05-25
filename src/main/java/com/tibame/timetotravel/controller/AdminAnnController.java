@@ -12,7 +12,6 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
 
-
 @RestController
 @RequestMapping("/AdminAnnController")
 public class AdminAnnController {
@@ -39,6 +38,7 @@ public class AdminAnnController {
     @PutMapping("/anns/{annId}")
     public String update(@PathVariable Integer annId,
                          @RequestBody Ann ann){
+        System.out.println("執行資料庫的 Update 操作");
         return adminAnnService.update(annId,ann);
     }
 
