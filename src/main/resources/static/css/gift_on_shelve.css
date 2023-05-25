@@ -334,7 +334,7 @@ div.r1 div {
 div.r1 button {
   font-size: 1rem;
   min-width: 90px;
-  border: 1px solid #333;
+  border: 1px solid #ccc;
   border-radius: 10px;
 }
 
@@ -347,7 +347,7 @@ main.main div.decorator {
 
 .update__btn__area button {
   background-color: #006caa;
-  border: 1px solid #333;
+  border: 1px solid #ccc;
   margin: 1rem 0.5rem;
   padding: 10px;
   font-weight: bold;
@@ -516,7 +516,7 @@ main.main div.decorator {
 }
 .save__btn__commit {
   background-color: #006caa;
-  border: 1px solid #333;
+  border: 1px solid #ccc;
   margin: 1rem 0.5rem;
   padding: 10px;
   font-weight: bold;

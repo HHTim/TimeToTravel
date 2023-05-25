@@ -9,12 +9,6 @@ import org.springframework.web.servlet.HandlerInterceptor;
 public class CorsHandler implements HandlerInterceptor {
     /**
      * 允許跨域請求
-     *
-     * @param request
-     * @param response
-     * @param handler
-     * @return
-     * @throws Exception
      */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {

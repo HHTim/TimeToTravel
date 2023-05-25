@@ -10,9 +10,6 @@ import java.util.List;
 @Repository("room2Repository")
 public interface Room2Repository extends CrudRepository<ViewCompanyRoom, Integer> {
 
-
-    String findCompany = "SELECT R.* FROM COMPANY C JOIN ROOM R ON C.COM_ID = R.COM_ID WHERE C.COM_ADDRESS LIKE ?1%";
-
     String findRoomStock = " SELECT COUNT(1) FROM ORDER_DETAIL " +
             "WHERE " +
             "ROOM_ID = ?1 AND ((ORDER_CHECK_IN BETWEEN ?2 AND ?3) OR " +
@@ -22,23 +19,17 @@ public interface Room2Repository extends CrudRepository<ViewCompanyRoom, Integer
 
     /**
      * 根據輸入的關鍵字查符合的商家回傳結果集合
-     *
-     * @param keyWord
-     * @return
      */
     @Query(value = "SELECT * FROM VIEW_COMPANY_ROOM WHERE (COM_ADDRESS LIKE ?1%) AND (ROOM_PEOPLE = ?2)", nativeQuery = true)
     public List<ViewCompanyRoom> findCompany(String keyWord, Integer people);
 
-
     /**
-     * 將查出來的商家集合跑迴圈，取出他們的房型編號後繼茶輸入的時間區間他有幾張訂單
+     * 將查出來的商家集合跑迴圈，取出他們的房型編號後查輸入的時間區間他有幾張訂單
      * 如果訂單的數量大於等於商家的某間房型的庫存數則將之從結果集合刪除
-     *
-     * @param roomId
-     * @param start
-     * @param end
-     * @return
      */
     @Query(value = findRoomStock, nativeQuery = true)
     public Integer findRoomStock(Integer roomId, String start, String end);
+
+    @Query(value = "SELECT ORDER_RANK FROM ORDER_DETAIL WHERE ROOM_ID = ?1", nativeQuery = true)
+    public List<Integer> findRoomRank(Integer roomId);
 }

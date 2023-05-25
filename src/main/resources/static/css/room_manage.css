@@ -335,7 +335,7 @@ div.r1 div {
 div.r1 button {
   font-size: 1rem;
   min-width: 90px;
-  border: 1px solid #333;
+  border: 1px solid #ccc;
   border-radius: 10px;
 }
 
