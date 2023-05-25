@@ -1,7 +1,7 @@
 package com.tibame.timetotravel.controller;
 
+import com.tibame.timetotravel.common.SearchRoom;
 import com.tibame.timetotravel.service.Room2Service;
-import com.tibame.timetotravel.view.ViewCompanyRoom;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,14 +18,13 @@ public class Room2Controller {
     Room2Service room2Service;
 
     @GetMapping("/search/{keyWord}/{people}/{start}/{end}")
-    public List<ViewCompanyRoom> findAvailableCompany(
+    public List<SearchRoom> findAvailableCompany(
             @PathVariable String keyWord,
             @PathVariable Integer people,
             @PathVariable String start,
             @PathVariable String end
     ) {
         System.out.println("收到請求");
-        List<ViewCompanyRoom> availableCompanies = room2Service.findAvailableCompany(keyWord, people, start, end);
-        return availableCompanies;
+        return room2Service.findAvailableCompany(keyWord, people, start, end);
     }
 }

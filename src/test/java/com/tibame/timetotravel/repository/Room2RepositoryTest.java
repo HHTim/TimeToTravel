@@ -31,4 +31,10 @@ class Room2RepositoryTest {
         System.out.println(roomStock);
     }
 
+    @Test
+    public void findRoomRankTest() {
+        List<Integer> roomRanks = room2Repository.findRoomRank(7);
+        System.out.println(roomRanks);
+    }
+
 }

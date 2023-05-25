@@ -291,7 +291,7 @@ body {
 .btn-test-1 {
   background-color: #006caa;
   color: #fff;
-  border: 1px solid #333;
+  border: 1px solid #ccc;
 }
 .btn-test-1:hover {
   background-color: #004c77;
@@ -301,7 +301,7 @@ body {
 .btn-test-2 {
   background-color: #9b9999;
   color: #333;
-  border: 1px solid #333;
+  border: 1px solid #ccc;
 }
 .btn-test-2:hover {
   background-color: #dfdcdc;
@@ -311,7 +311,7 @@ body {
 .btn-test-3 {
   background-color: #be4b4b;
   color: #fff;
-  border: 1px solid #333;
+  border: 1px solid #ccc;
 }
 .btn-test-3:hover {
   background-color: #9d3939;
@@ -322,7 +322,7 @@ body {
   padding: 0.5rem;
   background-color: #eeab0f;
   color: #333;
-  border: 1px solid #333;
+  border: 1px solid #ccc;
   box-shadow: 0 0 3px #9b9999;
   border-radius: 10px;
 }
