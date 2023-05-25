@@ -34,13 +34,12 @@ $(function () {
       .then((r) => r.text())
       .then((d) => {
         console.log(d);
-        location.href = '../html/admin_ann.html';
+        location.href = '../admin_ann';
       });
   }
 
   function getComName() {
     console.log('get comName');
-
     const url = 'http://localhost:8080/AdminAnnController/anns/annView';
     fetch(url)
       .then((r) => r.json())

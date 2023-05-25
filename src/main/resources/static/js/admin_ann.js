@@ -295,14 +295,14 @@ $(function () {
         com_id: $(this).closest('tr').find('td').eq(6).text(),
       })
     );
-    location.href = '../html/admin_ann_edit.html';
+    location.href = '../admin_ann_edit';
   });
 
   $('.detail-close').on('click', function (e) {
     // $('.row-detail-float-box').css('display', 'none');
     // console.log('uufwfef');
     // e.preventDefault();
-    // location.href('/html/admin_ann_detail.html');
+    // location.href('/admin_ann_detail.html');
   });
 
   $('input.form-input').on('change', function (e) {
@@ -332,11 +332,11 @@ $(function () {
         ann_content: $(this).children().eq(4).text(),
       })
     );
-    location.href = '../html/admin_ann_detail.html';
+    location.href = '../admin_ann_detail';
   });
 
   $('.ann-publish-btn').on('click', function (e) {
-    location.href = '../html/admin_ann_publish.html';
+    location.href = '../admin_ann_publish';
   });
 
   cb(start, end);

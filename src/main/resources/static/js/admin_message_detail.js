@@ -1,9 +1,9 @@
 $(function () {
   function getSessionData() {
-    var message = JSON.parse(sessionStorage.getItem('message'));
-    $('h4').text(message.time);
-    $('h3').text(message.title);
-    $('.content-bg').text(message.content);
+    var msg = JSON.parse(sessionStorage.getItem('msg-detail'));
+    $('h4').text(msg.message_time);
+    $('h3').text(msg.message_title);
+    $('.content-bg').text(msg.message_content);
   }
 
   $('.back-btn').on('click', function (e) {

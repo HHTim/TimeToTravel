@@ -5,32 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- import -->
-    <script
-      src="../node_modules/@popperjs/core/dist/umd/popper.min.js"
-      defer
-    ></script>
-    <script
-      src="../node_modules/bootstrap/dist/js/bootstrap.min.js"
-      defer
-    ></script>
+    <script src="../node_modules/@popperjs/core/dist/umd/popper.min.js" defer></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js" defer></script>
     <script src="../node_modules/jquery/dist/jquery.min.js" defer></script>
-    <script
-      src="https://kit.fontawesome.com/e3af248fb2.js"
-      crossorigin="anonymous"
-      defer
-    ></script>
-    <link
-      rel="stylesheet"
-      href="../node_modules/bootstrap/dist/css/bootstrap.min.css"
-    />
+    <script src="https://kit.fontawesome.com/e3af248fb2.js" crossorigin="anonymous" defer></script>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
     <!-- 我們自己的 js 檔案，路徑記得改 -->
-    <link rel="stylesheet" href="../css/scene.css" />
+    <link rel="stylesheet" href="../css/search.css" />
     <!-- 我們自己的 css 檔案，路徑記得改 -->
-    <script src="../js/scene.js" defer></script>
+    <script src="../js/search.js" defer></script>
     <!-- 輪播需要添加 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- title 記得改 -->
-    <title>Scene3</title>
+    <title>TimeToTravel | Search</title>
   </head>
   <body>
     <!-- Header -->
@@ -49,11 +36,7 @@
             <li class="nav__link"><a href="#">部落格</a></li>
             <li class="nav__info">
               <div class="dropdown-center">
-                <button
-                  class="dropdown-toggle nav__info-btn"
-                  type="button"
-                  data-bs-toggle="dropdown"
-                ></button>
+                <button class="dropdown-toggle nav__info-btn" type="button" data-bs-toggle="dropdown"></button>
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="#">訊息一</a></li>
                   <li><a class="dropdown-item" href="#">訊息二</a></li>
@@ -65,13 +48,7 @@
             </li>
             <li class="nav__avatar">
               <div class="dropdown-center">
-                <!-- <button class="dropdown-toggle nav__avatar-btn" type="button" data-bs-toggle="dropdown"></button> -->
-                <a
-                  href="#"
-                  class="dropdown-toggle nav__avatar-btn"
-                  type="button"
-                  data-bs-toggle="dropdown"
-                >
+                <a href="#" class="dropdown-toggle nav__avatar-btn" type="button" data-bs-toggle="dropdown">
                   <div class="nav__avatar-img">
                     <img src="../images/avatar.svg" alt="avatar" />
                   </div>
@@ -91,25 +68,15 @@
       </div>
     </header>
     <!-- Header End -->
+
     <div class="container custom-container" style="margin-bottom: 10px">
       <div class="row">
-        <div class="col-1">
-          <!--Company Aside -->
-          <!-- 側邊欄 -->
-
-          <!--Company Aside End -->
-        </div>
-        <div class="col-10">
+        <main class="col-12">
           <!-- Main -->
-
-          <!-- 搜尋欄 -->
           <div class="search-container">
             <div class="tabs">
-              <button class="tab" onclick="openTab('tab1')">飯店查詢</button>
-              <button class="tab active" onclick="openTab('tab2')">
-                景點查詢
-              </button>
-              <button class="tab" onclick="openTab('tab3')">無</button>
+              <button class="tab active" onclick="openTab('tab1')">飯店查詢</button>
+              <button class="tab" onclick="openTab('tab2')">景點查詢</button>
             </div>
             <div class="tab-content active" id="tab1">
               <input type="text" placeholder="搜索..." />
@@ -124,7 +91,7 @@
               <button type="button" class="btn btn-success btn-sm">搜尋</button>
             </div>
           </div>
-          <!--筆數查詢-->
+          <!-- search -->
           <div class="top">
             <div class="checkbox_all">
               <div class="check_all">
@@ -142,7 +109,9 @@
             </div>
             <div id="search-results-count" class="search-results-count"></div>
           </div>
-          <!-- 景點 -->
+          <!-- search end -->
+
+          <!-- list -->
           <div class="card_all">
             <!--  景點一 -->
             <div class="card card1">
@@ -153,9 +122,7 @@
                 <div class="card_word">
                   <h5 class="card-title">幾米公園</h5>
                   <p class="url_style">
-                    <a
-                      href="https://goo.gl/maps/B9WRVcGhnn4Q12rp6"
-                      target="_blank"
+                    <a href="https://goo.gl/maps/B9WRVcGhnn4Q12rp6" target="_blank"
                       >地址:宜蘭縣宜蘭市宜興路一段240號🗺️</a
                     >
                   </p>
@@ -177,9 +144,7 @@
                 <div class="card_word">
                   <h5 class="card-title">幾米公園</h5>
                   <p class="url_style">
-                    <a
-                      href="https://goo.gl/maps/B9WRVcGhnn4Q12rp6"
-                      arget="_blank"
+                    <a href="https://goo.gl/maps/B9WRVcGhnn4Q12rp6" target="_blank"
                       >地址:宜蘭縣宜蘭市宜興路一段240號🗺️</a
                     >
                   </p>
@@ -192,14 +157,10 @@
                 </div>
               </div>
             </div>
-
-            <!-- 分頁 -->
-
-            <!-- Main區塊以下為測試用，可刪 -->
-            <main></main>
-            <!-- Main End -->
           </div>
-          <div class="col-1"></div>
+          <!-- list end -->
+
+          <!-- 分頁 -->
           <nav aria-label="Page navigation example" class="page1">
             <ul class="pagination">
               <li class="page-item">
@@ -217,9 +178,12 @@
               </li>
             </ul>
           </nav>
-        </div>
+          <!-- 分頁 -->
+        </main>
+        <!-- Main End -->
       </div>
     </div>
+
     <!-- Footer -->
     <footer>
       <div class="footer"></div>

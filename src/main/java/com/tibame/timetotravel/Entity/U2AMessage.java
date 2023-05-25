@@ -17,21 +17,21 @@ public class U2AMessage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "U2A_MSG_ID")
-    private Integer msgId;
+    private Integer u2aMsgId;
 
     @Column(name = "U2A_SENDER_ID")
-    private Integer senderId;
+    private Integer u2aSenderId;
 
     @Column(name = "U2A_RECEIVER_ID")
-    private Integer receiverId;
+    private Integer u2aReceiverId;
 
     @Column(name = "U2A_SENDING_TIME")
-    private Timestamp msgSendingTime;
+    private Timestamp u2aMsgSendingTime;
 
     @Column(name = "U2A_MSG_TITLE")
-    private String msgTitle;
+    private String u2aMsgTitle;
 
     @Column(name = "U2A_MSG_CONTENT")
-    private String msgContent;
+    private String u2aMsgContent;
 
 }
