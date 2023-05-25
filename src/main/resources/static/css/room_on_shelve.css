@@ -423,7 +423,7 @@ div.nav-btn {
 .room__equip__options {
   display: flex;
   justify-content: space-evenly;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   margin-left: 2.5rem;
 }
 .room__equip__options__bed {

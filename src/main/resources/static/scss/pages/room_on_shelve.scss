@@ -145,7 +145,7 @@ div.nav-btn {
 	&__options {
 		display: flex;
 		justify-content: space-evenly;
-		flex-wrap: wrap;
+		flex-wrap: nowrap;
 		margin-left: 2.5rem;
 
 		&__bed {
