@@ -22,7 +22,8 @@ public class Room2Controller {
             @PathVariable String keyWord,
             @PathVariable Integer people,
             @PathVariable String start,
-            @PathVariable String end) {
+            @PathVariable String end
+    ) {
         System.out.println("收到請求");
         List<ViewCompanyRoom> availableCompanies = room2Service.findAvailableCompany(keyWord, people, start, end);
         return availableCompanies;
