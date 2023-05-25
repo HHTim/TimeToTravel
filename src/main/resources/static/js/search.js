@@ -1,4 +1,6 @@
-// ========= Card 收合 ==========//
+const searchResultsCountElement = document.getElementById('search-results-count');
+let searchResults = [];
+const totalResults = searchResults.length;
 
 $(function () {
   $('.card1').on('click', function () {
@@ -26,14 +28,4 @@ function openTab(tabName) {
   event.currentTarget.classList.add('active');
 }
 
-// 假设这里是你的查询结果数组
-var searchResults = [
-  /* 查询结果 */
-];
-
-// 获取查询结果的数量
-var totalResults = searchResults.length;
-
-// 在页面上显示查询结果的数量
-var searchResultsCountElement = document.getElementById('search-results-count');
 searchResultsCountElement.innerText = '搜尋結果共 ' + totalResults + ' 筆';

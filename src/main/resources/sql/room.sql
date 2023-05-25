@@ -16,55 +16,29 @@ CREATE TABLE `ROOM`
     `ROOM_BED`       VARCHAR(30)  NOT NULL COMMENT '房型床位',
     `ROOM_PEOPLE`    INT          NOT NULL COMMENT '房型人數',
     `ROOM_STATUS`    TINYINT(1)   NOT NULL COMMENT '房型狀態',
+    `ROOM_PHOTO`	 LONGBLOB			   COMMENT '房型照片',
     PRIMARY KEY (`ROOM_ID`)
-) ENGINE = InnoDB
-  AUTO_INCREMENT = 19
-  DEFAULT CHARSET = UTF8MB4
-  COLLATE = UTF8MB4_0900_AI_CI COMMENT ='房型資料表';
+) COMMENT ='房型資料表';
+
+INSERT INTO ROOM(COM_ID, ROOM_NAME, ROOM_PRICE, ROOM_DESC, ROOM_WIFI, ROOM_PET, ROOM_BREAKFAST,
+                 ROOM_PARKING, ROOM_SMOKING, ROOM_24HOURS, ROOM_STOCK, ROOM_BED, ROOM_PEOPLE, ROOM_STATUS)
+VALUES (1, '邊緣單人房', 9000, '專為單身邊緣的你所設立', 0, 0, 1, 0, 1, 0, 2, '單人房', 1, 1),
+       (1, '情侶雙人房', 10000, '鏡子絕對沒有鏡頭，預設絕對沒有攝影', 1, 0, 1, 1, 1, 1, 2, '雙人房', 2, 1),
+       (1, '男男雙人房', 12000, '浴室提供滑滑的東西', 0, 1, 1, 0, 1, 0, 1, '雙人房', 2, 1),
+       (1, '家庭四人房', 15000, '牆壁很薄請勿發出噪音', 0, 0, 0, 1, 1, 1, 1, '四人房', 4, 1);
+
+INSERT INTO ROOM(COM_ID, ROOM_NAME, ROOM_PRICE, ROOM_DESC, ROOM_WIFI, ROOM_PET, ROOM_BREAKFAST,
+                 ROOM_PARKING, ROOM_SMOKING, ROOM_24HOURS, ROOM_STOCK, ROOM_BED, ROOM_PEOPLE, ROOM_STATUS)
+VALUES (2, '總統單人房', 10000, '就是鳥籠啦', 0, 0, 1, 0, 1, 0, 2, '單人房', 1, 1),
+       (2, '土城單人房', 15000, '扁水哥御用', 1, 0, 1, 1, 1, 1, 2, '單人房', 1, 1),
+       (2, '婆媽四人房', 15000, '專為大聲婆的你們所設計，牆壁很厚!', 0, 1, 1, 0, 1, 0, 1, '四人房', 4, 1),
+       (2, '寵物雙人房', 20000, '可以帶上你男友(狗)', 0, 0, 0, 1, 1, 1, 1, '雙人房', 2, 1);
+
+INSERT INTO ROOM(COM_ID, ROOM_NAME, ROOM_PRICE, ROOM_DESC, ROOM_WIFI, ROOM_PET, ROOM_BREAKFAST,
+                 ROOM_PARKING, ROOM_SMOKING, ROOM_24HOURS, ROOM_STOCK, ROOM_BED, ROOM_PEOPLE, ROOM_STATUS)
+VALUES (3, '樂團四人房', 10000, '熱音社請洽談', 0, 0, 1, 0, 1, 0, 2, '四人房', 4, 1),
+       (3, '乞丐單人房', 15000, '洪七公已簽約，放心休息吧', 0, 1, 1, 0, 1, 0, 1, '單人房', 1, 1),
+       (3, '彼得單人房', 20000, '配有喉糖，安心服用', 0, 0, 0, 1, 1, 1, 1, '單人房', 1, 1);
 
 SELECT *
 FROM TIMETOTRAVEL.ROOM;
-
-# USE TIMETOTRAVEL;
-#
-# DROP TABLE ROOM;
-
-INSERT INTO ROOM(COM_ID, ROOM_NAME, ROOM_PRICE, ROOM_DESC, ROOM_WIFI, ROOM_PET, ROOM_BREAKFAST,
-                 ROOM_PARKING, ROOM_SMOKING, ROOM_24HOURS, ROOM_STOCK, ROOM_BED, ROOM_PEOPLE, ROOM_STATUS)
-VALUES (1, '豪華二人房', 9000, '這是一間很豪華的房間', 0, 0, 1, 0, 1, 0, 2, '一張雙人床', 2, 1),
-       (1, '豪華三人房', 10000, '這是一間很豪華的房間', 1, 0, 1, 1, 1, 1, 2, '一張雙人床', 3, 1),
-       (1, '豪華四人房', 12000, '這是一間很豪華的房間', 0, 1, 1, 0, 1, 0, 1, '一張雙人床', 4, 1),
-       (1, '豪華六人房', 15000, '這是一間很豪華的房間', 0, 0, 0, 1, 1, 1, 1, '一張雙人床', 6, 1);
-
-INSERT INTO ROOM(COM_ID, ROOM_NAME, ROOM_PRICE, ROOM_DESC, ROOM_WIFI, ROOM_PET, ROOM_BREAKFAST,
-                 ROOM_PARKING, ROOM_SMOKING, ROOM_24HOURS, ROOM_STOCK, ROOM_BED, ROOM_PEOPLE, ROOM_STATUS)
-VALUES (2, '普通二人房', 10000, '這是一間很豪華的房間', 0, 0, 1, 0, 1, 0, 2, '一張雙人床', 2, 1),
-       (2, '普通三人房', 15000, '這是一間很豪華的房間', 1, 0, 1, 1, 1, 1, 2, '一張雙人床', 3, 1),
-       (2, '普通四人房', 15000, '這是一間很豪華的房間', 0, 1, 1, 0, 1, 0, 1, '一張雙人床', 4, 1),
-       (2, '普通六人房', 20000, '這是一間很豪華的房間', 0, 0, 0, 1, 1, 1, 1, '一張雙人床', 6, 1);
-
-INSERT INTO ROOM(COM_ID, ROOM_NAME, ROOM_PRICE, ROOM_DESC, ROOM_WIFI, ROOM_PET, ROOM_BREAKFAST,
-                 ROOM_PARKING, ROOM_SMOKING, ROOM_24HOURS, ROOM_STOCK, ROOM_BED, ROOM_PEOPLE, ROOM_STATUS)
-VALUES (3, '二人房', 10000, '這是一間很豪華的房間', 0, 0, 1, 0, 1, 0, 2, '一張雙人床', 2, 1),
-       (3, '四人房', 15000, '這是一間很豪華的房間', 0, 1, 1, 0, 1, 0, 1, '一張雙人床', 4, 1),
-       (3, '六人房', 20000, '這是一間很豪華的房間', 0, 0, 0, 1, 1, 1, 1, '一張雙人床', 6, 1);
-
-INSERT INTO ROOM(COM_ID, ROOM_NAME, ROOM_PRICE, ROOM_DESC, ROOM_WIFI, ROOM_PET, ROOM_BREAKFAST,
-                 ROOM_PARKING, ROOM_SMOKING, ROOM_24HOURS, ROOM_STOCK, ROOM_BED, ROOM_PEOPLE, ROOM_STATUS)
-VALUES (4, '二人房', 15000, '這是一間很豪華的房間', 0, 0, 1, 0, 1, 0, 1, '一張雙人床', 2, 1),
-       (4, '四人房', 15000, '這是一間很豪華的房間', 0, 1, 1, 0, 1, 0, 1, '一張雙人床', 4, 1),
-       (4, '六人房', 15000, '這是一間很豪華的房間', 0, 0, 0, 1, 1, 1, 1, '一張雙人床', 6, 1);
-
-INSERT INTO ROOM(COM_ID, ROOM_NAME, ROOM_PRICE, ROOM_DESC, ROOM_WIFI, ROOM_PET, ROOM_BREAKFAST,
-                 ROOM_PARKING, ROOM_SMOKING, ROOM_24HOURS, ROOM_STOCK, ROOM_BED, ROOM_PEOPLE, ROOM_STATUS)
-VALUES (5, '超普通二人房', 8000, '這是一間很豪華的房間', 0, 0, 1, 0, 1, 0, 1, '一張雙人床', 2, 1),
-       (5, '超普通三人房', 8000, '這是一間很豪華的房間', 1, 0, 1, 1, 1, 1, 1, '一張雙人床', 3, 1),
-       (5, '超普通四人房', 18000, '這是一間很豪華的房間', 0, 1, 1, 0, 1, 0, 1, '一張雙人床', 4, 1),
-       (5, '超普通六人房', 18000, '這是一間很豪華的房間', 0, 0, 0, 1, 1, 1, 1, '一張雙人床', 6, 1);
-
-INSERT INTO ROOM(COM_ID, ROOM_NAME, ROOM_PRICE, ROOM_DESC, ROOM_WIFI, ROOM_PET, ROOM_BREAKFAST,
-                 ROOM_PARKING, ROOM_SMOKING, ROOM_24HOURS, ROOM_STOCK, ROOM_BED, ROOM_PEOPLE, ROOM_STATUS)
-VALUES (6, '新二人房', 8888, '這是一間很豪華的房間', 1, 0, 1, 0, 1, 0, 1, '一張雙人床', 2, 1),
-       (6, '新三人房', 8888, '這是一間很豪華的房間', 1, 0, 1, 1, 1, 1, 1, '一張雙人床', 3, 1),
-       (6, '新四人房', 18888, '這是一間很豪華的房間', 1, 1, 1, 0, 1, 0, 1, '一張雙人床', 4, 1),
-       (6, '新六人房', 18888, '這是一間很豪華的房間', 1, 0, 0, 1, 1, 1, 1, '一張雙人床', 6, 1);

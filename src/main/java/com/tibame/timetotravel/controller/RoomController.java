@@ -33,6 +33,18 @@ public class RoomController {
     }
     @GetMapping("/room")
     public List<Room> findAll(){
+        System.out.println("找全部房間");
         return roomService.findAll();
+    }
+    @GetMapping("/room/{keyword}")
+    public List<Room> findByKeyword(@PathVariable String keyword){
+        System.out.println("關鍵字搜尋");
+        return roomService.findByKeyword(keyword);
+    }
+    @GetMapping("/room/roomType/{roomTypeValue}")
+    public List<Room> findByRoomType(@PathVariable String roomTypeValue){
+        System.out.println(roomTypeValue);
+        System.out.println("分類查詢");
+        return roomService.findByRoomType(roomTypeValue);
     }
 }

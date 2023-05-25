@@ -26,6 +26,7 @@ public class RoomServiceImpl implements RoomService {
     public void insert(Room room) {
         roomRepository.save(room);
     }
+
     @Override
     @Transactional
     public void deleteById(Integer roomId) {
@@ -35,7 +36,11 @@ public class RoomServiceImpl implements RoomService {
     @Override
     @Transactional
     public void update(Integer roomId, Room room) {
-        entityManager.merge(room);
+        // 把舊的roomId拖出來
+        Room newRoom = entityManager.find(Room.class, roomId);
+        System.out.println(newRoom.getRoomStatus());
+        newRoom.setRoomStatus(room.getRoomStatus());
+        entityManager.merge(newRoom);
     }
 
     public Room findById(Integer roomId) {
@@ -45,4 +50,20 @@ public class RoomServiceImpl implements RoomService {
     public List<Room> findAll() {
         return roomRepository.findAll();
     }
+
+    @Override
+    public List<Room> findByKeyword(String keyword) {
+        if (keyword != null && !("".equals(keyword))) {
+            System.out.println(keyword + "hahaha");
+            return roomRepository.findByKeyword(keyword);
+        } else {
+            return null;
+        }
+    }
+
+    @Override
+    public List<Room> findByRoomType(String roomTypeValue) {
+        return roomRepository.findByRoomType(roomTypeValue);
+    }
+
 }
