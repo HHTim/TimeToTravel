@@ -15,6 +15,7 @@
         <setting name="provider-name" value="Hibernate" />
         <datasource-mapping>
           <factory-entry name="TimeToTravel" value="6cf0dfb7-c8e5-4525-ad1e-48889779ab7b" />
+          <factory-entry name="entityManagerFactory" value="c62ed23b-52e3-4778-bea9-914fe325ca74" />
         </datasource-mapping>
         <naming-strategy-map />
       </configuration>

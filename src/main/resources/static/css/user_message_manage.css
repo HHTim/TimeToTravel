@@ -348,7 +348,7 @@ section:not(:first-child) {
   text-align: center;
 }
 .list thead {
-  background-color: rgb(56, 56, 56);
+  background-color: #006caa;
   color: white;
 }
 .list th#col__1 {
@@ -405,7 +405,7 @@ section:not(:first-child) {
   cursor: pointer;
 }
 .list .button__detl {
-  background-color: rgb(56, 56, 56);
+  background-color: #006caa;
   color: white;
   border-radius: 10px;
   padding: 0.25rem 1rem;
@@ -413,7 +413,7 @@ section:not(:first-child) {
   border-style: none;
 }
 .list .button__detl:hover {
-  background-color: rgb(91, 91, 91);
+  background-color: rgb(36, 37, 92);
 }
 .list h2 {
   font-size: 28px;
@@ -446,11 +446,11 @@ section:not(:first-child) {
 }
 
 .page-link {
-  color: #495057;
+  color: #006caa;
 }
 
 .page-link:hover {
-  color: #495057; /* 懸停時文字顏色變色 */
+  color: #006caa; /* 懸停時文字顏色變色 */
 }
 
 .page-active {
