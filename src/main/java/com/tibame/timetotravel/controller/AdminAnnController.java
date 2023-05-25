@@ -48,16 +48,6 @@ public class AdminAnnController {
         return "執行資料庫的 Delete 操作";
     }
 
-//    @GetMapping("/anns/{annId}")
-//    public AnnVO readById(@PathVariable Integer annId){
-//        return adminAnnRepository.findById(annId).orElse(null);
-//    }
-
-//    @GetMapping("/anns")
-//    public List<AnnVO> readAll(){
-//        return adminAnnRepository.findAll();
-//    }
-
     @GetMapping("/anns/page/{currPage}/{rows}")
     public PageBean<Ann> readByPage(@PathVariable Integer currPage, @PathVariable Integer rows){
         System.out.println("分頁搜尋");

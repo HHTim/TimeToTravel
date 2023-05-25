@@ -4,6 +4,7 @@ import com.tibame.timetotravel.common.PageBean;
 import com.tibame.timetotravel.entity.A2UMessage;
 import com.tibame.timetotravel.service.A2UMessageService;
 
+import com.tibame.timetotravel.view.A2UMsgView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
@@ -32,12 +33,9 @@ public class Admin2UserController {
         return a2uMessageService.findAnnPageByRowData(currPage,rows);
     }
 
-    @GetMapping("/getAll")
-    public String getAll(){
-        List<A2UMessage> list = a2uMessageService.getALl();
-        for (int i = 0; i < list.size(); i++) {
-            System.out.println("num: " + i + ",list.getAdmin: "+list.get(i).getA2uMsgId());
-        }
-        return "執行資料庫的 queryAll 操作";
+    @GetMapping("/message/a2u/view/page/{currPage}/{rows}")
+    public PageBean<A2UMsgView> readViewByPage(@PathVariable Integer currPage, @PathVariable Integer rows){
+        System.out.println("View分頁搜尋");
+        return a2uMessageService.findViewByPageRowData(currPage, rows);
     }
 }

@@ -11,33 +11,30 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "VIEW_ANN")
-public class AnnView {
+@Table(name = "VIEW_A2C_MSG")
+public class A2CMsgView {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ANN_ID")
-    private Integer annId;
+    @Column(name = "A2C_MSG_ID")
+    private Integer a2cMsgId;
 
-    @Column(name = "ADMIN_ID_REF")
-    private Integer adminId;
+    @Column(name = "A2C_SENDER_ID")
+    private Integer a2cSenderId;
 
-    @Column(name = "ANN_SENDING_TIME")
-    private Timestamp annSendingTime;
+    @Column(name = "A2C_RECEIVER_ID")
+    private Integer a2cReceiverId;
 
-    @Column(name = "ANN_TITLE")
-    private String annTitle;
+    @Column(name = "A2C_SENDING_TIME")
+    private Timestamp a2cSendingTime;
 
-    @Column(name = "ANN_CONTENT")
-    private String annContent;
+    @Column(name = "A2C_MSG_TITLE")
+    private String a2cMsgTitle;
 
-    @Column(name = "ANN_PIC")
-    private byte[] annPic;
-
-    @Column(name = "COM_ID_REF")
-    private Integer comId;
+    @Column(name = "A2C_MSG_CONTENT")
+    private String a2cMsgContent;
 
     @Column(name = "ADMIN_ID")
-    private Integer adminIdRef;
+    private Integer adminId;
 
     @Column(name = "ADMIN_ACCOUNT")
     private String adminAccount;
@@ -49,7 +46,7 @@ public class AnnView {
     private String adminName;
 
     @Column(name = "COM_ID")
-    private Integer comIdRef;
+    private Integer comId;
 
     @Column(name = "COM_ACCOUNT")
     private String comAccount;

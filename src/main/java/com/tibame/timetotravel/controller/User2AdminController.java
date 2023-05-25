@@ -3,11 +3,10 @@ package com.tibame.timetotravel.controller;
 import com.tibame.timetotravel.common.PageBean;
 import com.tibame.timetotravel.entity.U2AMessage;
 import com.tibame.timetotravel.service.U2AMessageService;
+import com.tibame.timetotravel.view.U2AMsgView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/User2AdminController")
@@ -26,15 +25,25 @@ public class User2AdminController {
     @GetMapping("/message/page/{currPage}/{rows}")
     public PageBean<U2AMessage> readByPage(@PathVariable Integer currPage, @PathVariable Integer rows){
         System.out.println("分頁搜尋");
-        return u2AMessageService.findAnnPageByRowData(currPage,rows);
+        return u2AMessageService.findMsgByPageRowData(currPage,rows);
     }
 
-    @GetMapping("/getAll")
-    public String getAll(){
-        List<U2AMessage> list = u2AMessageService.getALl();
-        for (int i = 0; i < list.size(); i++) {
-            System.out.println("num: " + i + ",list.getAdmin: "+list.get(i).getU2aMsgId());
-        }
-        return "執行資料庫的 queryAll 操作";
+    @GetMapping("/message/u2a/view/page/{currPage}/{rows}")
+    public PageBean<U2AMsgView> readViewByPage(@PathVariable Integer currPage, @PathVariable Integer rows){
+        System.out.println("View分頁搜尋");
+        return u2AMessageService.findViewByPageRowData(currPage, rows);
     }
+
+    @GetMapping("/message/u2a/view/page/{currPage}/{rows}/keyword/{keyword}")
+    public PageBean<U2AMsgView> readViewByKeWords(@PathVariable Integer currPage, @PathVariable Integer rows, @PathVariable String keyword){
+        System.out.println("關鍵字搜尋");
+        return u2AMessageService.findBeanPageViewByKeyWords(keyword, currPage, rows);
+    }
+
+    @GetMapping("/message/u2a/view/page/dateRange/{currPage}/{rows}/{startDate}/{endDate}")
+    public PageBean<U2AMsgView> readViewByDateRange(@PathVariable Integer currPage, @PathVariable Integer rows , @PathVariable String startDate, @PathVariable String endDate){
+        System.out.println("日期分頁搜尋range: "+ startDate + " ~ " + endDate);
+        return u2AMessageService.findBeanPageViewByDateRange(startDate, endDate , currPage, rows);
+    }
+
 }

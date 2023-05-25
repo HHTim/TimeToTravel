@@ -1,5 +1,6 @@
 package com.tibame.timetotravel.view;
 
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,45 +12,31 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "VIEW_ANN")
-public class AnnView {
+@Table(name = "VIEW_C2A_MSG")
+public class C2AMsgView {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ANN_ID")
-    private Integer annId;
+    @Column(name = "C2A_MSG_ID")
+    private Integer c2aMsgId;
 
-    @Column(name = "ADMIN_ID_REF")
-    private Integer adminId;
+    @Column(name = "C2A_SENDER_ID")
+    private Integer c2aSenderId;
 
-    @Column(name = "ANN_SENDING_TIME")
-    private Timestamp annSendingTime;
+    @Column(name = "C2A_RECEIVER_ID")
+    private Integer c2aReceiverId;
 
-    @Column(name = "ANN_TITLE")
-    private String annTitle;
+    @Column(name = "C2A_SENDING_TIME")
+    private Timestamp c2aSendingTime;
 
-    @Column(name = "ANN_CONTENT")
-    private String annContent;
+    @Column(name = "C2A_MSG_TITLE")
+    private String c2aMsgTitle;
 
-    @Column(name = "ANN_PIC")
-    private byte[] annPic;
-
-    @Column(name = "COM_ID_REF")
-    private Integer comId;
-
-    @Column(name = "ADMIN_ID")
-    private Integer adminIdRef;
-
-    @Column(name = "ADMIN_ACCOUNT")
-    private String adminAccount;
-
-    @Column(name = "ADMIN_PASSWORD")
-    private String adminPassword;
-
-    @Column(name = "ADMIN_NAME")
-    private String adminName;
+    @Column(name = "C2A_MSG_CONTENT")
+    private String c2aMsgContent;
 
     @Column(name = "COM_ID")
-    private Integer comIdRef;
+    private Integer comId;
 
     @Column(name = "COM_ACCOUNT")
     private String comAccount;
@@ -92,4 +79,17 @@ public class AnnView {
 
     @Column(name = "COM_NEWS_STATUS")
     private boolean comNewsStatus;
+
+    @Column(name = "ADMIN_ID")
+    private Integer adminId;
+
+    @Column(name = "ADMIN_ACCOUNT")
+    private String adminAccount;
+
+    @Column(name = "ADMIN_PASSWORD")
+    private String adminPassword;
+
+    @Column(name = "ADMIN_NAME")
+    private String adminName;
+
 }

@@ -17,21 +17,21 @@ public class A2CMessage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "A2C_MSG_ID")
-    private Integer A2CMsgId;
+    private Integer a2cMsgId;
 
     @Column(name = "A2C_SENDER_ID")
-    private Integer A2CSenderId;
+    private Integer a2cSenderId;
 
     @Column(name = "A2C_RECEIVER_ID")
-    private Integer A2CReceiverId;
+    private Integer a2cReceiverId;
 
     @Column(name = "A2C_SENDING_TIME")
-    private Timestamp A2CSendingTime;
+    private Timestamp a2cSendingTime;
 
     @Column(name = "A2C_MSG_TITLE")
-    private String A2CMsgTitle;
+    private String a2cMsgTitle;
 
     @Column(name = "A2C_MSG_CONTENT")
-    private String A2CContent;
+    private String a2cMsgContent;
 
 }

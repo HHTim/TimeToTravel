@@ -123,11 +123,9 @@ $(function () {
             if (index <= Pages) {
               $(this).css('display', 'block');
             } else {
-              // $(this).hide();
               $(this).css('display', 'none');
             }
             if (index === $('ul.pagination > li').length - 1) {
-              // $(this).show();
               $(this).css('display', 'block');
             }
           });
