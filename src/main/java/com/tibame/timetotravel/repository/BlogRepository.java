@@ -1,13 +1,9 @@
 package com.tibame.timetotravel.repository;
 
-import java.util.List;
-
+import com.tibame.timetotravel.entity.Blog;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
-
-import com.tibame.timetotravel.entity.ArticleTags;
-import com.tibame.timetotravel.entity.Blog;
 
 @Repository("blogRepository") // 與@Autowired @Qualifier("blogRepository")綁定
 public interface BlogRepository extends JpaRepository<Blog, Integer> {

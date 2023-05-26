@@ -1,12 +1,11 @@
 package com.tibame.timetotravel.repository;
 
-import java.util.List;
-
+import com.tibame.timetotravel.entity.ArticleComment;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import com.tibame.timetotravel.entity.ArticleComment;
+import java.util.List;
 
 @Repository("articleCommentRepository")
 public interface ArticleCommentRepository extends JpaRepository<ArticleComment, Integer> {

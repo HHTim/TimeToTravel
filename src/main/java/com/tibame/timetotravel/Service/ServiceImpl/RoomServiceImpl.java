@@ -1,6 +1,5 @@
 package com.tibame.timetotravel.service.ServiceImpl;
 
-import com.tibame.timetotravel.common.PageBean;
 import com.tibame.timetotravel.entity.Room;
 import com.tibame.timetotravel.repository.RoomRepository;
 import com.tibame.timetotravel.service.RoomService;

@@ -1,10 +1,9 @@
 package com.tibame.timetotravel.repository;
 
+import com.tibame.timetotravel.entity.FavoriteArticle;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
-
-import com.tibame.timetotravel.entity.FavoriteArticle;
 
 @Repository("favoriteArticleRepository")
 public interface FavoriteArticleRepository extends JpaRepository<FavoriteArticle, Integer>{

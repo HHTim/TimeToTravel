@@ -1,11 +1,10 @@
 package com.tibame.timetotravel.repository;
 
 
+import com.tibame.timetotravel.entity.PressLike;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
-
-import com.tibame.timetotravel.entity.PressLike;
 
 @Repository("pressLikeRepository")
 public interface PressLikeRepository extends JpaRepository<PressLike, Integer> {

@@ -48,7 +48,7 @@ window.addEventListener('load', function () {
 			roomStatus: false, // 預設為未上架
 		};
 
-		if (roomName !== null && roomPrice !== null && roomStock) {
+		if (roomName !== null && roomPrice !== null && roomStock !== null) {
 			fetch('http://localhost:8080/roomController/room', {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },

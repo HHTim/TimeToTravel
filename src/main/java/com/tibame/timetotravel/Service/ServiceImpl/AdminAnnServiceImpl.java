@@ -1,9 +1,9 @@
 package com.tibame.timetotravel.service.ServiceImpl;
 
-import com.tibame.timetotravel.entity.Ann;
-import com.tibame.timetotravel.service.AdminAnnService;
 import com.tibame.timetotravel.common.PageBean;
+import com.tibame.timetotravel.entity.Ann;
 import com.tibame.timetotravel.repository.AdminAnnRepository;
+import com.tibame.timetotravel.service.AdminAnnService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;

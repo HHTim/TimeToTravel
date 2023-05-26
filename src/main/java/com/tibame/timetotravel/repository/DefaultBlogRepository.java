@@ -1,12 +1,11 @@
 package com.tibame.timetotravel.repository;
 
-import java.util.List;
-
+import com.tibame.timetotravel.view.DefaultBlogView;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import com.tibame.timetotravel.view.DefaultBlogView;
+import java.util.List;
 
 @Repository("defaultBlogRepository")
 public interface DefaultBlogRepository extends JpaRepository<DefaultBlogView, Integer>{	

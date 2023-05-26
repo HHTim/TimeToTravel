@@ -2,9 +2,9 @@ package com.tibame.timetotravel.service.ServiceImpl;
 
 import com.tibame.timetotravel.common.PageBean;
 import com.tibame.timetotravel.entity.U2AMessage;
+import com.tibame.timetotravel.repository.U2AMessageRepository;
 import com.tibame.timetotravel.repository.U2AMessageViewRepository;
 import com.tibame.timetotravel.service.U2AMessageService;
-import com.tibame.timetotravel.repository.U2AMessageRepository;
 import com.tibame.timetotravel.view.U2AMsgView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

@@ -7,8 +7,6 @@ import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
 
-import com.tibame.timetotravel.entity.Blog;
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

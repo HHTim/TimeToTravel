@@ -3,7 +3,6 @@ package com.tibame.timetotravel.controller;
 import com.tibame.timetotravel.common.PageBean;
 import com.tibame.timetotravel.entity.A2UMessage;
 import com.tibame.timetotravel.service.A2UMessageService;
-
 import com.tibame.timetotravel.view.A2UMsgView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

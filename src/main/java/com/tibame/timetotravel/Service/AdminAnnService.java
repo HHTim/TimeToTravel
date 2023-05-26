@@ -1,7 +1,7 @@
 package com.tibame.timetotravel.service;
 
-import com.tibame.timetotravel.entity.Ann;
 import com.tibame.timetotravel.common.PageBean;
+import com.tibame.timetotravel.entity.Ann;
 
 import java.util.List;
 

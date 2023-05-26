@@ -2,17 +2,18 @@ package com.tibame.timetotravel.controller;
 
 import com.tibame.timetotravel.Entity.PublicScene;
 import com.tibame.timetotravel.Service.PublicSceneService;
-import com.tibame.timetotravel.Service.ServiceImpl.PublicSceneServicelmpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.sql.SQLOutput;
 import java.util.List;
 
 
 @RestController
 @RequestMapping("/scenes")
-public class    PublicSceneController {
+public class PublicSceneController {
 
     @Autowired
     private PublicSceneService publicSceneService;
@@ -24,7 +25,7 @@ public class    PublicSceneController {
     }
 
     @RequestMapping("/hi")
-    public String text(){
+    public String text() {
         System.out.println("今天天氣很好");
         return "return";//顯示在網頁頁面
     }
