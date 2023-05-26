@@ -4,11 +4,8 @@ import com.tibame.timetotravel.common.SearchRoom;
 import com.tibame.timetotravel.repository.Room2Repository;
 import com.tibame.timetotravel.service.Room2Service;
 import com.tibame.timetotravel.view.ViewCompanyRoom;
-import com.tibame.timetotravel.webConfig.BeanConfig;
 import org.apache.commons.beanutils.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Service;
 
 import java.lang.reflect.InvocationTargetException;
@@ -21,7 +18,6 @@ public class Room2ServiceImpl implements Room2Service {
     @Autowired
     private Room2Repository room2Repository;
 
-    private ApplicationContext ioc = new AnnotationConfigApplicationContext(BeanConfig.class);
 
     @Override
     public List<SearchRoom> findAvailableCompany(String keyWord, Integer people, String start, String end) throws InvocationTargetException, IllegalAccessException {
@@ -30,7 +26,7 @@ public class Room2ServiceImpl implements Room2Service {
 
         for (ViewCompanyRoom company : companies) {
             // 每次獲取一個新的searchRoom Bean
-            SearchRoom searchRoom = ioc.getBean(SearchRoom.class);
+            SearchRoom searchRoom = new SearchRoom();
             // 取得房間的房型編號
             Integer roomId = company.getRoomId();
             // 透過房型編號跟時間區間去查該段時間的訂單數
