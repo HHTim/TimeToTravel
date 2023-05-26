@@ -18,7 +18,6 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name= "BLOG")
 public class Blog {
-// 之後欄位可能還要檢查 !!!!!!!!!
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "POST_ID")

@@ -1,10 +1,12 @@
 package com.tibame.timetotravel.repository;
+
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import com.tibame.timetotravel.entity.ArticleTags;
 import com.tibame.timetotravel.entity.Blog;
 
 @Repository("blogRepository") // 與@Autowired @Qualifier("blogRepository")綁定
@@ -23,11 +25,12 @@ public interface BlogRepository extends JpaRepository<Blog, Integer> {
 //	deleteAll()：刪除所有實體對象。
 //	findAll(Pageable)：根據分頁參數查詢實體對象，支持分頁和排序功能。
 
-
 	/* 方法二 :自定義條件查詢，使用原生SQL */
 	// 先不管 先顯示就好
-	
+
 //	@Query(value = "select * from default_blog ",nativeQuery = true)
 //    List<DefaultBlogViewo> findAlltest();
+	@Query(value = "SELECT POST_ID,USER_ID,POST_TITLE,POST_CONTENT,POST_DATE,LIKES,POST_PHOTO,POST_TYPE_ID,POST_UPDATE_TIME,COMMENTS FROM BLOG where POST_ID = ?1 ", nativeQuery = true)
+	Blog findByPostId(Integer postId);
 
 }

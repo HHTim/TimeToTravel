@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="../../css/03_leo/blog.css" />
     <!-- 我們自己的 css 檔案，路徑記得改 -->
     <script src="../../js/template.js" defer></script>
+    <script src="../../js/blog.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>TimeToTravel | blog</title>
     <style>
       /*  */
@@ -79,11 +81,17 @@
 
     <div class="row margin-center mt-4 mb-4">
       <div class="col test2 text-align-center align-self-center">留白廣告</div>
+      <!--  -->
+      <!--  -->
+
+
+      
       <div class="col">
         <div class="article-out test2 row">
           <div>
             <button class="button-1 mb-3"><a href="./blog_search.html">回上頁</a></button>
           </div>
+          
           <div class="article-main col-12">
             <div class="article-toppart">
               <h1 class="col-12 mb-2" id="article-topic">文章標題熱帶氣旋</h1>
@@ -91,14 +99,14 @@
               <hr />
               <div class="d-flex justify-content-end flex-wrap mb-1">
                 <span id="article-tags" class=""></span>
-                <span class="badge bg-primary mr-2">颱風1</span>
+                <!-- <span class="badge bg-primary mr-2">颱風1</span>
                 <span class="badge bg-secondary mr-2">熱帶氣旋2</span>
                 <span class="badge bg-success mr-2">豪大雨3</span>
                 <span class="badge bg-danger mr-2">強颱4</span>
                 <span class="badge bg-primary mr-2">颱風1</span>
                 <span class="badge bg-secondary mr-2">熱帶氣旋2</span>
                 <span class="badge bg-success mr-2">豪大雨3</span>
-                <span class="badge bg-danger mr-2">強颱4</span>
+                <span class="badge bg-danger mr-2">強颱4</span> -->
               </div>
             </div>
             <div class="author-content-part">
@@ -117,18 +125,7 @@
               </div>
               <div class="article-content" id="article-content">
                 <span id="article-content-textarea"></span>
-                <p>
-                  <img
-                    src="https://photo.settour.com.tw/900x600/https%3A%2F%2Fwww.settour.com.tw%2Fss_img%2FGFP%2F0000%2F0034%2F45%2Fori_26214821.jpg"
-                    alt=""
-                    width="372"
-                    height="248"
-                  />
-                </p>
-                <div>
-                  內文（英語：tropical
-                  cyclone）是發生在熱帶與副熱帶地區海面上的氣旋性環流（風暴），由水蒸氣冷卻凝結時放出潛熱發展而出的暖心結構。
-                </div>
+              
               </div>
               <hr />
 
@@ -154,10 +151,10 @@
                     <i class="fa-solid fa-gear"></i>
                   </button>
                   <ul class="dropdown-menu" aria-labelledby="moreButton">
-                    <li><a class="dropdown-item" href="./edit_blog.html">編輯文章</a></li>
+                    <li><a class="dropdown-item edit-article" href="./edit_blog.html">編輯文章</a></li>
                     <li><a class="dropdown-item delete-article" href="./blog_search.html">刪除文章</a></li>
-                    <li><a class="dropdown-item" href="#">複製文章連結</a></li>
-                    <li><a class="dropdown-item" href="#">加入收藏</a></li>
+                    <li><a class="dropdown-item copy-article-link" >複製文章連結</a></li>
+                    <li><a class="dropdown-item add-like-article" >加入收藏</a></li>
                   </ul>
                 </div>
               </div>
@@ -168,7 +165,7 @@
             <div class="msg-add-msg-part col-12 margin-center  ">
               <div class="msg-part mb-2 col-12  ">
                 <div class="add-comment">
-                <div class="d-flex comment">
+                <!-- <div  class="d-flex comment">
                   <div class=" align-self-center me-2">
                     <img src="../../images/avatar.svg" width="30px" height="30px" alt="avatar" />
                   </div>
@@ -196,7 +193,7 @@
                     </ul>
                   </div>
                   <br />
-                </div>
+                </div> -->
               </div>
               </div>
               
@@ -219,130 +216,14 @@
           </div>
         </div>
       </div>
+      <!--  -->
+      <!--  -->
       <div class="col test2 text-align-center">留白廣告</div>
     </div>
     
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-      $("a.delete-article").on("click", function(e) {
-        e.preventDefault(); // 阻止默认的链接跳转行为
-        var confirmation = confirm("確認刪除文章？");
-        if (confirmation) {
-          var url = $(this).attr("href");
-          window.location.href = url; // 跳转到指定链接
-        }
-      });
-
-      $(".article-like").on("click", function() {
-        var likeCount = parseInt($("#article-like").text()); // 获取当前赞数
-        if ($(this).hasClass("liked")) { // 如果已经点过赞了
-          likeCount--; // 减少赞数
-          $(this).removeClass("liked"); // 移除 liked 类
-        } else {
-          likeCount++; // 增加赞数
-          $(this).addClass("liked"); // 添加 liked 类
-        }
-        $("#article-like").text(likeCount); // 更新赞数显示
-      });
-
-
-      //  修改留言 ===== //
-      $("div.add-comment").on("click", "a.comment-update", function(){
-          if ($(this).attr("data-edit") == undefined) { // 进入编辑状态
-              $(this).attr("data-edit", true);
-              let commentText = $(this).closest("div.comment").find("p#article-comment");
-              let commentInput = $(this).closest("div.comment").find("input.article-comment-update");
-              commentInput.val(commentText.text()).removeClass("-none");
-              commentText.addClass("-none");
-          } else {
-              let updateTaskName = ($(this).closest("div.comment").find("input.article-comment-update").val()).trim();
-              if (updateTaskName == "") {
-                  // 提示用户输入留言
-              } else {
-                  let commentText = $(this).closest("div.comment").find("p.article-comment");
-                  let commentInput = $(this).closest("div.comment").find("input.article-comment-update");
-                  commentText.text(updateTaskName).removeClass("-none");
-                  commentInput.addClass("-none");
-                  $(this).removeAttr("data-edit");
-              }
-          }
-      });
-
-        // ==== 新增 留言 ===== //
-      $("input.reply-comment-word").on("keyup", function(e){
-        //console.log(e.which);
-        if(e.which == 13){ // 按下 Enter 鍵
-          $("button.reply-comment").click();
-        }
-      });
-
-      $("button.reply-comment").on("click", function(){
-        let comment =  ($("input.reply-comment-word").val()).trim();
-
-        if(comment !=""){
-          let comment_html=
-          `
-          <div class="d-flex comment">
-                  <div class=" align-self-center me-2">
-                    <img src="../../images/avatar.svg" width="30px" height="30px" alt="avatar" />
-                  </div>
-                  <div class="me-2">
-                    <p id="article-comment-name">邱翰森</p>
-                    <span id="article-comment-date-time">2023/5/19</span>
-                  </div>
-                  <div class="align-self-center text-break align-self-center flex-grow-1">
-                    <p id="article-comment">${comment}</p>
-                    <input type="text" class="article-comment-update -none w-100" placeholder="更新待辦事項…" value="${comment}">
-                  </div>
-                  <div class="ms-auto align-self-center dropdown">
-                    <button
-                      class="btn "
-                      type="button"
-                      id="moreButton"
-                      data-bs-toggle="dropdown"
-                      aria-expanded="false"
-                    >
-                      ⋯
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="moreButton">
-                      <li><a class="dropdown-item comment-update" href="#">修改留言</a></li>
-                      <li><a class="dropdown-item comment-delete" href="#">刪除留言</a></li>
-                    </ul>
-                  </div>
-                  <br />
-                </div>
-          `;
-           $("div.add-comment").append(comment_html);
-           var commentCount = parseInt($("#article-comment-count").text());
-           console.log(commentCount);
-           commentCount++;
-           $("#article-comment-count").text(commentCount); // 留言數+1
-           $("input.reply-comment-word").val("");
-
-        }
-
-
-      });
-
-      $("div.add-comment").on("click", "a.comment-delete", function(){
-      // $("div.comment").on("click", "a.comment-delete", function(){
-      let r = confirm("確認移除？");
-      if (r){
-      
-        $(this).closest("div.comment").animate({
-          "opacity": 0
-        }, 500, "swing", function(){
-          $(this).remove();
-          var commentCount = parseInt($("#article-comment-count").text());
-          commentCount--;
-          $("#article-comment-count").text(commentCount); // 留言數-1
-
-        });
-      
-      }
-
-      });
-    </script>
+    </script> -->
 
 
     

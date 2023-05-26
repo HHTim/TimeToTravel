@@ -38,7 +38,7 @@ public class TagServiceImpl {
 				getTags.add(tags);
 			}
 		}
-
+		// SELECT a.* , t.* FROM ARTICLE_TAG a,tags t where a.Tag_ID=t.TAG_ID and POST_ID = 1;
 		return getTags;
 	}
 
