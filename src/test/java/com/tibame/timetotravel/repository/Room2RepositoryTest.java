@@ -15,17 +15,17 @@ class Room2RepositoryTest {
 
     @Test
     public void findAvailableRoomTest() {
-        List<ViewCompanyRoom> companies = room2Repository.findCompany("新北市", 4);
+        List<ViewCompanyRoom> companies = room2Repository.findCompany("台北市", 2);
 
         for (ViewCompanyRoom company : companies) {
-            System.out.println(company);
+            System.out.println(company.getComName());
         }
     }
 
     @Test
     public void findRoomStockTest() {
-        String start = "2023-05-10";
-        String end = "2023-05-15";
+        String start = "2023-05-01";
+        String end = "2023-05-05";
 
         Integer roomStock = room2Repository.findRoomStock(5, start, end);
         System.out.println(roomStock);

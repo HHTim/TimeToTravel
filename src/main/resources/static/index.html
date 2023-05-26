@@ -85,13 +85,18 @@
                     <div>
                       <button id="tab-1" class="tab-1" type="button">找飯店</button>
                       <button id="tab-2" class="tab-2" type="button">找景點</button>
-                      <!-- <button id="tab-3" class="tab-3" type="button">飯店土產</button> -->
                     </div>
                     <div class="tab-body">
                       <div class="tab-1 left-container">
                         <div class="top-area">
                           <div class="fa-div">
-                            <input type="text" class="form-control form-input" placeholder="新北市..." />
+                            <input
+                              type="text"
+                              id="keyword"
+                              class="form-control form-input"
+                              placeholder="請輸入城市或地區"
+                              autocomplete="off"
+                            />
                             <i class="fa fa-search"></i>
                           </div>
                         </div>
@@ -102,17 +107,19 @@
                             <input
                               type="date"
                               placeholder="yyyy-mm-dd"
-                              id="adminfilterstartdate"
+                              id="startDate"
                               class="form-control"
+                              autocomplete="off"
                             />
                             <span class="start-date-text">迄</span>
                             <input
                               type="date"
                               placeholder="yyyy-mm-dd"
-                              id="adminfilterstartdate"
+                              id="endDate"
                               class="form-control"
+                              autocomplete="off"
                             />
-                            <select class="custom-select">
+                            <select id="people" class="custom-select" autocomplete="off">
                               <option disabled selected hidden>人數</option>
                               <option value="1">1</option>
                               <option value="2">2</option>

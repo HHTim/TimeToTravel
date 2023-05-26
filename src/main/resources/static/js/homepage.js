@@ -197,3 +197,31 @@ function slider(slider_name) {
     leftAnimate();
   });
 }
+
+/* ---------------------------------------------------------------- */
+
+// 要存到session的物件
+let searchBody = {};
+
+// 搜尋鈕加入點擊事件，將searchBody物件轉換為JSON字串並存入SessionStorage
+const search = document.querySelector('.btn-query').addEventListener('click', () => {
+  const { keyword, people, startDate, endDate } = searchBody;
+  // 判斷是否有值
+  if (keyword === '' || people === 0 || startDate === '' || endDate === '') {
+    alert('輸入欄請物留空');
+    return;
+  } else {
+    sessionStorage.setItem('searchBody', JSON.stringify(searchBody));
+    // 儲存完畢後跳轉到搜尋結果頁面
+    location.assign('html/search_room.html');
+  }
+});
+
+// 選取所有input，加入blur事件
+const [keyword, people, startDate, endDate] = ['keyword', 'people', 'startDate', 'endDate'].forEach((elem) => {
+  document.querySelector(`#${elem}`).addEventListener('blur', (e) => {
+    // 讓searchBody的key-value為輸入欄的數值，EX {input: '新北市'}
+    searchBody[elem] = elem === 'people' ? Number(e.target.value.trim()) : e.target.value.trim();
+    console.log(searchBody);
+  });
+});

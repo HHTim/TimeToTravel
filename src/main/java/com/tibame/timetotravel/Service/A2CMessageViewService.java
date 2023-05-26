@@ -8,5 +8,10 @@ import java.util.List;
 public interface A2CMessageViewService {
     List<A2CMsgView> findViewByPage(Integer currPage, Integer row);
     PageBean<A2CMsgView> findViewByPageRowData(Integer currPage, Integer rows);
+
     List<A2CMsgView> getViewAll();
+
+    Integer findViewByDateRange(String startDate, String endDate);
+    List<A2CMsgView>findViewByDateRangePage(String startDate, String endDate, Integer currPage, Integer rows);
+    PageBean<A2CMsgView> findBeanPageViewByDateRange(String startDate, String endDate, Integer currPage, Integer rows);
 }

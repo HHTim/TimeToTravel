@@ -36,4 +36,10 @@ public class Admin2ComController {
         return a2cMessageService.findViewByPageRowData(currPage, rows);
     }
 
+    @GetMapping("/message/a2c/view/page/dateRange/{currPage}/{rows}/{startDate}/{endDate}")
+    public PageBean<A2CMsgView> readViewByDateRange(@PathVariable Integer currPage, @PathVariable Integer rows , @PathVariable String startDate, @PathVariable String endDate){
+        System.out.println("日期分頁搜尋range: "+ startDate + " ~ " + endDate);
+        return a2cMessageService.findBeanPageViewByDateRange(startDate, endDate , currPage, rows);
+    }
+
 }
