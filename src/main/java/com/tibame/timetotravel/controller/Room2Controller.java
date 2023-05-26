@@ -18,14 +18,14 @@ public class Room2Controller {
     @Autowired
     Room2Service room2Service;
 
-    @GetMapping("/search/{keyWord}/{people}/{start}/{end}")
+    @GetMapping("/search/{keyword}/{people}/{startDate}/{endDate}")
     public List<SearchRoom> findAvailableCompany(
-            @PathVariable String keyWord,
+            @PathVariable String keyword,
             @PathVariable Integer people,
-            @PathVariable String start,
-            @PathVariable String end
+            @PathVariable String startDate,
+            @PathVariable String endDate
     ) throws InvocationTargetException, IllegalAccessException {
         System.out.println("收到請求");
-        return room2Service.findAvailableCompany(keyWord, people, start, end);
+        return room2Service.findAvailableCompany(keyword, people, startDate, endDate);
     }
 }

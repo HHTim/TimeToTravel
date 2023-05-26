@@ -18,12 +18,6 @@ function openTab(tabName) {
 
 /* =========================================================================== */
 
-let searchBody = {
-  keyWord: '新北市',
-  people: 4,
-  start: '2023-05-01',
-  end: '2023-05-02',
-};
 const searchHotel = document.querySelector('#search-hotel');
 
 async function fetchData(url, method = 'GET', requestBody = null) {
@@ -52,17 +46,20 @@ async function fetchData(url, method = 'GET', requestBody = null) {
 
 function renderRank(rank) {
   let html = '';
-  for (let i = 0; i <= rank; i++) {
+  for (let i = 0; i < rank; i++) {
     html += `<li><i class="fa-solid fa-star fa-lg"></i></li>`;
   }
   return html;
 }
 
-searchHotel.addEventListener('click', async () => {
-  const { keyWord, people, start, end } = searchBody;
-  const resultList = await fetchData(
-    `http://localhost:8080/roomController/search/${keyWord}/${people}/${start}/${end}`
-  );
+async function handleSearch(searchBody) {
+  let { keyword, people, startDate, endDate } = searchBody;
+  console.log(keyword, people, startDate, endDate);
+
+  const url = `http://localhost:8080/roomController/search/${keyword}/${people}/${startDate}/${endDate}`;
+  console.log(url);
+
+  const resultList = await fetchData(url);
   searchResultsCountElement.innerText = '搜尋結果共 ' + resultList.length + ' 筆';
   console.log(resultList);
 
@@ -71,7 +68,7 @@ searchHotel.addEventListener('click', async () => {
   resultList.forEach((result) => {
     const { comId, comName, comAddress, roomDesc, roomPhoto, orderRanks } = result;
     const sum = orderRanks.reduce((curr, acc) => curr + acc, 0);
-    const avg = orderRanks.length === 0 ? 0 : Math.ceil(sum / orderRanks.length);
+    const avg = orderRanks.length === 0 ? 1 : Math.ceil(sum / orderRanks.length);
     console.log('avg: ' + avg);
     html += `
     <div class="hotel__card" data-id=${comId}>
@@ -82,7 +79,7 @@ searchHotel.addEventListener('click', async () => {
         <div class="d-flex align-items-center">
           <h3 class="hotel__title">${comName}</h3>
           <ul class="hotel__rank" data-rank=${orderRanks.length}>
-            ${renderRank(orderRanks.length)}
+            ${renderRank(avg)}
           </ul>
         </div>
         <a class="hotel__address" target="_blank">${comAddress} 🗺️</a>
@@ -91,6 +88,15 @@ searchHotel.addEventListener('click', async () => {
     </div> 
     `;
   });
-
   searchResult.innerHTML = html;
-});
+}
+
+// let searchBody = {
+//   keyword: '新北市',
+//   people: 4,
+//   startDate: '2023-05-01',
+//   endDate: '2023-05-02',
+// };
+let searchBody = JSON.parse(sessionStorage.getItem('searchBody'));
+searchHotel.addEventListener('click', () => handleSearch(searchBody));
+handleSearch(searchBody);
