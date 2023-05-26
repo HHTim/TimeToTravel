@@ -6,6 +6,7 @@ $(function () {
   var title_input_phd = $('.show-placeholder-title');
   var title_input_content_phd = $('.show-placeholder-content');
   var upload_file = $('#upload');
+  var select_compoent = document.querySelector('.custom-select');
   var img_base64;
 
   function publish(title, content) {
@@ -23,7 +24,7 @@ $(function () {
       annTitle: title,
       annContent: content,
       annPic: imageData,
-      comId: 1,
+      comId: select_compoent.selectedIndex,
     };
     const url = 'http://localhost:8080/AdminAnnController/anns';
     fetch(url, {
@@ -38,13 +39,28 @@ $(function () {
       });
   }
 
-  function getComName() {
-    console.log('get comName');
-    const url = 'http://localhost:8080/AdminAnnController/anns/annView';
+  function getComNameById() {
+    console.log('get comNameById');
+    const url = 'http://localhost:8080/CompanyController/all';
     fetch(url)
       .then((r) => r.json())
       .then((d) => {
         console.log(d);
+        select_compoent.innerHTML = `<option disabled selected hidden>請選擇廠商</option>`;
+
+        select_compoent.innerHTML += d
+          .map((e) => {
+            return (
+              `
+            <option value="` +
+              e.comId +
+              `">` +
+              e.comName +
+              `</option>
+            `
+            );
+          })
+          .join('');
       });
   }
 
@@ -89,8 +105,8 @@ $(function () {
     if (verificationData()) {
       publish(title_input.val().trim(), title_content.val().trim());
     }
-    // history.back();
+    history.back();
   });
 
-  getComName();
+  getComNameById();
 });

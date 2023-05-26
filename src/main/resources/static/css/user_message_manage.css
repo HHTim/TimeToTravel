@@ -318,7 +318,7 @@ section:not(:first-child) {
   margin-top: 0.5rem;
 }
 .search__item {
-  width: 50%;
+  width: 40%;
 }
 .search__date {
   width: 80%;
@@ -430,6 +430,18 @@ section:not(:first-child) {
 }
 .list__order:nth-child(odd) {
   background-color: #dfdcdc;
+}
+
+.button-search {
+  background-color: rgb(56, 56, 56);
+  color: white;
+  border-radius: 10px;
+  padding: 0.25rem 1rem;
+  white-space: nowrap;
+  border-style: none;
+}
+.button-search:hover {
+  background-color: rgb(91, 91, 91);
 }
 
 .page {

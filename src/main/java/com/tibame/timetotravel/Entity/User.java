@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 @Entity
 @Table(name = "user")
@@ -41,6 +42,9 @@ public class User {
 
     @Column(name = "USER_BIRTHDATE", nullable = false)
     private Date userBirthDay;
+
+    @Column(name = "USER_SIGN_DATETIME", nullable = false)
+    private Timestamp userSignDatetime;
 
     @Column(name = "USER_EMAIL", nullable = false)
     private String userEmail;

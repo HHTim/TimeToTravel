@@ -32,7 +32,7 @@ section:not(:first-child) {
   }
 
   &__item {
-    width: 50%;
+    width: 40%;
   }
 
   &__date {
@@ -170,6 +170,19 @@ section:not(:first-child) {
 
   &__order:nth-child(odd) {
     background-color: $secondary-gray;
+  }
+}
+
+.button-search {
+  background-color: rgb(56, 56, 56);
+  color: white;
+  border-radius: $border-radius;
+  padding: 0.25rem 1rem;
+  white-space: nowrap;
+  border-style: none;
+
+  &:hover {
+    background-color: rgb(91, 91, 91);
   }
 }
 
