@@ -5,11 +5,13 @@ import com.tibame.timetotravel.repository.Room2Repository;
 import com.tibame.timetotravel.service.Room2Service;
 import com.tibame.timetotravel.view.ViewCompanyRoom;
 import com.tibame.timetotravel.webConfig.BeanConfig;
+import org.apache.commons.beanutils.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Service;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +24,7 @@ public class Room2ServiceImpl implements Room2Service {
     private ApplicationContext ioc = new AnnotationConfigApplicationContext(BeanConfig.class);
 
     @Override
-    public List<SearchRoom> findAvailableCompany(String keyWord, Integer people, String start, String end) {
+    public List<SearchRoom> findAvailableCompany(String keyWord, Integer people, String start, String end) throws InvocationTargetException, IllegalAccessException {
         List<ViewCompanyRoom> companies = room2Repository.findCompany(keyWord, people);
         List<SearchRoom> resultList = new ArrayList<>();
 
@@ -37,12 +39,8 @@ public class Room2ServiceImpl implements Room2Service {
 //            System.out.println(start + " " + end + " 期間訂單數: " + orderCount);
             // 如果庫存數大於訂單數則將該房間加入
             if (company.getRoomStock() > orderCount) {
-                searchRoom.setComId(company.getComId());
-                searchRoom.setComName(company.getComName());
-                searchRoom.setComAddress(company.getComAddress());
-                searchRoom.setRoomDesc(company.getRoomDesc());
-                searchRoom.setRoomPhoto(company.getRoomPhoto());
-
+                // Common Util 複製Entity到DTO
+                BeanUtils.copyProperties(searchRoom, company);
                 List<Integer> roomRank = room2Repository.findRoomRank(roomId);
                 searchRoom.setOrderRanks(roomRank);
                 resultList.add(searchRoom);

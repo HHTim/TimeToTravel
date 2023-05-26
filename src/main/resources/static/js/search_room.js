@@ -41,12 +41,12 @@ async function fetchData(url, method = 'GET', requestBody = null) {
     const resp = await fetch(url, init);
 
     if (!resp.ok) {
-      throw new Error('Available Company Search Error ' + resp.statusText);
+      throw new Error();
     }
 
     return await resp.json();
-  } catch (error) {
-    console.error(error);
+  } catch (err) {
+    console.error(err);
   }
 }
 
@@ -71,7 +71,7 @@ searchHotel.addEventListener('click', async () => {
   resultList.forEach((result) => {
     const { comId, comName, comAddress, roomDesc, roomPhoto, orderRanks } = result;
     const sum = orderRanks.reduce((curr, acc) => curr + acc, 0);
-    const avg = Math.ceil(sum / orderRanks.length);
+    const avg = orderRanks.length === 0 ? 0 : Math.ceil(sum / orderRanks.length);
     console.log('avg: ' + avg);
     html += `
     <div class="hotel__card" data-id=${comId}>
@@ -94,5 +94,3 @@ searchHotel.addEventListener('click', async () => {
 
   searchResult.innerHTML = html;
 });
-
-// searchResultsCountElement.innerText = '搜尋結果共 ' + 0 + ' 筆';
