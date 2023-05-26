@@ -207,7 +207,8 @@ div.nav-btn {
 	}
 }
 
-.room__price {
+.room__price,
+.room__stock {
 	display: flex;
 	margin: 1rem;
 
@@ -231,6 +232,10 @@ div.nav-btn {
 	}
 }
 
+.row-r3{
+	display: flex;
+	justify-content: flex-start;
+}
 .room__photo {
 	display: flex;
 	margin: 1rem;
@@ -239,16 +244,31 @@ div.nav-btn {
 	&__title {
 		font-weight: bold;
 		white-space: nowrap;
+		height: 5rem;
 		display: flex;
 		align-items: center;
-		height: 5rem;
 	}
-	& input {
-		border-radius: $input-radius;
-		margin: 1.5rem auto auto 3rem;
-		border-color: $admin-aside-blue;
-		font-weight: bold;
-		height: 3rem;
+	// & input {
+	// 	border-radius: $input-radius;
+	// 	margin: 1.5rem auto auto 3rem;
+	// 	border-color: $admin-aside-blue;
+	// 	font-weight: bold;
+	// 	height: 3rem;
+	// }
+
+	&__preview {
+		border: 1px dashed #b3b3b3;
+		height: 5rem;
+		width: 230px;
+		margin-left: 3rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		&:empty:before {
+			content: attr(placeholder);
+			color: #b3b3b3;
+		}
 	}
 }
 
