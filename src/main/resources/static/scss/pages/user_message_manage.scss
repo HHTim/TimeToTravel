@@ -66,7 +66,7 @@ section:not(:first-child) {
   text-align: center;
 
   thead {
-    background-color: rgb(56, 56, 56);
+    background-color: $primary-blue;
     color: white;
   }
 
@@ -138,7 +138,7 @@ section:not(:first-child) {
   }
 
   .button__detl {
-    background-color: rgb(56, 56, 56);
+    background-color: $primary-blue;
     color: white;
     border-radius: $border-radius;
     padding: 0.25rem 1rem;
@@ -146,7 +146,7 @@ section:not(:first-child) {
     border-style: none;
 
     &:hover {
-      background-color: rgb(91, 91, 91);
+      background-color: rgb(36, 37, 92);
     }
   }
 
@@ -201,10 +201,10 @@ section:not(:first-child) {
 }
 
 .page-link {
-  color: #495057;
+  color: $primary-blue;
 }
 .page-link:hover {
-  color: #495057; /* 懸停時文字顏色變色 */
+  color: $primary-blue; /* 懸停時文字顏色變色 */
 }
 
 .page-active {
