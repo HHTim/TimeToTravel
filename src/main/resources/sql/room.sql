@@ -21,24 +21,24 @@ CREATE TABLE `ROOM`
 ) COMMENT ='房型資料表';
 
 INSERT INTO ROOM(COM_ID, ROOM_NAME, ROOM_PRICE, ROOM_DESC, ROOM_WIFI, ROOM_PET, ROOM_BREAKFAST,
-                 ROOM_PARKING, ROOM_SMOKING, ROOM_24HOURS, ROOM_STOCK, ROOM_BED, ROOM_PEOPLE, ROOM_STATUS)
-VALUES (1, '邊緣單人房', 9000, '專為單身邊緣的你所設立', 0, 0, 1, 0, 1, 0, 2, '單人房', 1, 1),
-       (1, '情侶雙人房', 10000, '鏡子絕對沒有鏡頭，預設絕對沒有攝影', 1, 0, 1, 1, 1, 1, 2, '雙人房', 2, 1),
-       (1, '男男雙人房', 12000, '浴室提供滑滑的東西', 0, 1, 1, 0, 1, 0, 1, '雙人房', 2, 1),
-       (1, '家庭四人房', 15000, '牆壁很薄請勿發出噪音', 0, 0, 0, 1, 1, 1, 1, '四人房', 4, 1);
+                 ROOM_PARKING, ROOM_SMOKING, ROOM_24HOURS, ROOM_STOCK, ROOM_BED, ROOM_PEOPLE, ROOM_STATUS, ROOM_PHOTO)
+VALUES (1, '邊緣單人房', 9000, '專為單身邊緣的你所設立', 0, 0, 1, 0, 1, 0, 2, '單人房', 1, 1 ,NULL),
+       (1, '情侶雙人房', 10000, '鏡子絕對沒有鏡頭，預設絕對沒有攝影', 1, 0, 1, 1, 1, 1, 2, '雙人房', 2, 1, NULL),
+       (1, '男男雙人房', 12000, '浴室提供滑滑的東西', 0, 1, 1, 0, 1, 0, 1, '雙人房', 2, 1, NULL),
+       (1, '家庭四人房', 15000, '牆壁很薄請勿發出噪音', 0, 0, 0, 1, 1, 1, 1, '四人房', 4, 1, NULL);
 
 INSERT INTO ROOM(COM_ID, ROOM_NAME, ROOM_PRICE, ROOM_DESC, ROOM_WIFI, ROOM_PET, ROOM_BREAKFAST,
-                 ROOM_PARKING, ROOM_SMOKING, ROOM_24HOURS, ROOM_STOCK, ROOM_BED, ROOM_PEOPLE, ROOM_STATUS)
-VALUES (2, '總統單人房', 10000, '就是鳥籠啦', 0, 0, 1, 0, 1, 0, 2, '單人房', 1, 1),
-       (2, '土城單人房', 15000, '扁水哥御用', 1, 0, 1, 1, 1, 1, 2, '單人房', 1, 1),
-       (2, '婆媽四人房', 15000, '專為大聲婆的你們所設計，牆壁很厚!', 0, 1, 1, 0, 1, 0, 1, '四人房', 4, 1),
-       (2, '寵物雙人房', 20000, '可以帶上你男友(狗)', 0, 0, 0, 1, 1, 1, 1, '雙人房', 2, 1);
+                 ROOM_PARKING, ROOM_SMOKING, ROOM_24HOURS, ROOM_STOCK, ROOM_BED, ROOM_PEOPLE, ROOM_STATUS, ROOM_PHOTO)
+VALUES (2, '總統單人房', 10000, '就是鳥籠啦', 0, 0, 1, 0, 1, 0, 2, '單人房', 1, 1, NULL),
+       (2, '土城單人房', 15000, '扁水哥御用', 1, 0, 1, 1, 1, 1, 2, '單人房', 1, 1, NULL),
+       (2, '婆媽四人房', 15000, '專為大聲婆的你們所設計，牆壁很厚!', 0, 1, 1, 0, 1, 0, 1, '四人房', 4, 1, NULL),
+       (2, '寵物雙人房', 20000, '可以帶上你男友(狗)', 0, 0, 0, 1, 1, 1, 1, '雙人房', 2, 1, NULL);
 
 INSERT INTO ROOM(COM_ID, ROOM_NAME, ROOM_PRICE, ROOM_DESC, ROOM_WIFI, ROOM_PET, ROOM_BREAKFAST,
-                 ROOM_PARKING, ROOM_SMOKING, ROOM_24HOURS, ROOM_STOCK, ROOM_BED, ROOM_PEOPLE, ROOM_STATUS)
-VALUES (3, '樂團四人房', 10000, '熱音社請洽談', 0, 0, 1, 0, 1, 0, 2, '四人房', 4, 1),
-       (3, '乞丐單人房', 15000, '洪七公已簽約，放心休息吧', 0, 1, 1, 0, 1, 0, 1, '單人房', 1, 1),
-       (3, '彼得單人房', 20000, '配有喉糖，安心服用', 0, 0, 0, 1, 1, 1, 1, '單人房', 1, 1);
+                 ROOM_PARKING, ROOM_SMOKING, ROOM_24HOURS, ROOM_STOCK, ROOM_BED, ROOM_PEOPLE, ROOM_STATUS, ROOM_PHOTO)
+VALUES (3, '樂團四人房', 10000, '熱音社請洽談', 0, 0, 1, 0, 1, 0, 2, '四人房', 4, 1, NULL),
+       (3, '乞丐單人房', 15000, '洪七公已簽約，放心休息吧', 0, 1, 1, 0, 1, 0, 1, '單人房', 1, 1, NULL),
+       (3, '彼得單人房', 20000, '配有喉糖，安心服用', 0, 0, 0, 1, 1, 1, 1, '單人房', 1, 1, NULL);
 
 SELECT *
 FROM TIMETOTRAVEL.ROOM;

@@ -12,4 +12,10 @@ public interface A2CMessageViewRepository extends JpaRepository<A2CMsgView,Integ
 
     @Query(value = "SELECT * FROM VIEW_A2C_MSG ORDER BY A2C_SENDING_TIME DESC LIMIT ?1,?2",nativeQuery = true)
     List<A2CMsgView> findViewByPage(Integer currPage, Integer limit);
+
+    @Query(value = "SELECT COUNT(*) FROM VIEW_A2C_MSG where A2C_SENDING_TIME between ?1 and ?2 ORDER BY A2C_SENDING_TIME DESC",nativeQuery = true)
+    Integer findViewByDateRange(String startDate, String endDate);
+
+    @Query(value = "SELECT * FROM VIEW_A2C_MSG where A2C_SENDING_TIME between ?1 and ?2 ORDER BY A2C_SENDING_TIME DESC LIMIT ?3,?4",nativeQuery = true)
+    List<A2CMsgView> findViewByDateRangePage(String startDate, String endDate, Integer currPage, Integer rows);
 }

@@ -15,6 +15,7 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
+        /*===========================Admin==============================*/
         registry.addViewController("/admin").setViewName("forward:/html/admin.html");
         registry.addViewController("/admin_ann").setViewName("forward:/html/admin_ann.html");
         registry.addViewController("/admin_ann_publish").setViewName("forward:/html/admin_ann_publish.html");
@@ -25,6 +26,8 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addViewController("/admin_message_recv").setViewName("forward:/html/admin_message_recv.html");
         registry.addViewController("/admin_user_manager").setViewName("forward:/html/admin_user_manager.html");
         registry.addViewController("/admin_comp_manager").setViewName("forward:/html/admin_comp_manager.html");
+
+        registry.addViewController("/user_message_manage").setViewName("forward:/html/user_message_manage.html");
     }
 
     @Override
