@@ -121,7 +121,7 @@ h4 {
   display: inline-block;
   font-size: 1rem;
   min-width: 13dvw;
-  width: 60dvw;
+  width: 30dvw;
   margin-top: 1%;
   text-align: center;
   border-radius: $border-radius;
@@ -155,4 +155,9 @@ textarea.textarea {
   resize: none;
   border-radius: $border-radius;
   outline-color: $primary-blue;
+}
+.custom-select {
+  display: inline-block;
+  margin-top: 20px;
+  width: 45%;
 }

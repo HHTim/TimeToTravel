@@ -10,4 +10,7 @@ public interface RoomService {
     void update(Integer roomId, Room room);
     Room findById(Integer roomId);
     List<Room> findAll();
+    List<Room> findByKeyword(String keyword);
+
+    List<Room> findByRoomType(String roomTypeValue);
 }

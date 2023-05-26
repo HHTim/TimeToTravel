@@ -408,7 +408,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 div.order-detail {
-  border-left: 1px solid #333;
+  border-left: 1px solid #ccc;
 }
 
 div.customer-info {
@@ -471,13 +471,33 @@ div.use-info {
   margin-left: 10px;
 }
 
-button.auto-btn.active {
+div.auto-input.active button.auto-btn {
+  border: 2px solid #006caa;
+  margin: -1.3px;
+}
+div.auto-input.active button.auto-btn::before {
+  background-color: #006caa;
+}
+
+button.auto-btn:hover {
   border: 2px solid #006caa;
   margin: -1.3px;
 }
 
-button.auto-btn.active::before {
-  background-color: #006caa;
+div.auto-input.active button::after {
+  content: "";
+}
+
+button.auto-btn::after {
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  height: 12px;
+  transform: translate(-260%, -10%) rotateZ(45deg);
+  width: 6px;
+}
+
+button.auto-btn::after {
+  position: absolute;
 }
 
 div.auto-input {
@@ -486,7 +506,7 @@ div.auto-input {
 }
 
 div.line {
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid #ccc;
   margin: 10px 0;
 }
 

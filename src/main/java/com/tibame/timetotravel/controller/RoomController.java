@@ -4,8 +4,11 @@ import com.tibame.timetotravel.entity.Room;
 import com.tibame.timetotravel.service.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.http.HttpRequest;
 import java.util.List;
 
 @RestController
@@ -18,7 +21,7 @@ public class RoomController {
     @PostMapping("/room")
     public String insert(@RequestBody Room room){
         roomService.insert(room);
-        return "新增成功";
+        return "新增成功!";
     }
     @DeleteMapping("/room/{roomId}")
     public String deleteById(@PathVariable Integer roomId){
@@ -33,6 +36,18 @@ public class RoomController {
     }
     @GetMapping("/room")
     public List<Room> findAll(){
+        System.out.println("找全部房間");
         return roomService.findAll();
+    }
+    @GetMapping("/room/{keyword}")
+    public List<Room> findByKeyword(@PathVariable String keyword){
+        System.out.println("關鍵字搜尋");
+        return roomService.findByKeyword(keyword);
+    }
+    @GetMapping("/room/roomType/{roomTypeValue}")
+    public List<Room> findByRoomType(@PathVariable String roomTypeValue){
+        System.out.println(roomTypeValue);
+        System.out.println("分類查詢");
+        return roomService.findByRoomType(roomTypeValue);
     }
 }

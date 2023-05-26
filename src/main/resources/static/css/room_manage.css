@@ -304,10 +304,8 @@ main.main {
   box-shadow: -5px 0 5px 3px rgba(172, 164, 164, 0.5), 5px 0 5px 3px rgba(172, 164, 164, 0.5), 0 5px 5px 3px rgba(172, 164, 164, 0.5), 0 -5px 5px 3px rgba(172, 164, 164, 0.5);
 }
 
-h3.subtitle {
-  display: flex;
-  justify-content: space-around;
-  font-size: x-large;
+h3 {
+  cursor: pointer;
 }
 
 .reset__area {
@@ -337,7 +335,7 @@ div.r1 div {
 div.r1 button {
   font-size: 1rem;
   min-width: 90px;
-  border: 1px solid #333;
+  border: 1px solid #ccc;
   border-radius: 10px;
 }
 

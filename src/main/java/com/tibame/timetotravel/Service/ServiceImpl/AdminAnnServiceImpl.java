@@ -94,8 +94,4 @@ public class AdminAnnServiceImpl implements AdminAnnService {
         return pageBean;
     }
 
-    @Override
-    public List<Ann> findTestAll() {
-        return adminAnnRepository.findAlltest();
-    }
 }

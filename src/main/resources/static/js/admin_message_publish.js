@@ -7,21 +7,53 @@ $(function () {
   var select_obj_phd = $('.show-placeholder-obj');
   var title_input_phd = $('.show-placeholder-title');
   var title_input_content_phd = $('.show-placeholder-content');
+  var radioValue;
 
-  function publish(title, content) {
-    //   const url = 'http://localhost:8081/TIME_TO_TRAVEL/AnnController';
-    //   const formData = new FormData();
-    //   formData.append('action', 'publish_ann');
-    //   formData.append('title', title);
-    //   formData.append('content', content);
-    //   fetch(url, {
-    //     method: 'POST',
-    //     body: new URLSearchParams(formData),
-    //   })
-    //     .then((r) => r.json())
-    //     .then((d) => {
-    //       console.log(d);
-    //     });
+  function getSessionData() {
+    radioValue = sessionStorage.getItem('radioData');
+    console.log('radioData: ' + radioValue);
+  }
+
+  function publish(recviver, title, content) {
+    console.log('publish');
+    let body;
+    let url;
+    let headers = {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    };
+
+    if (radioValue == 1) {
+      body = {
+        a2uMsgId: null,
+        a2uSenderId: 1,
+        a2uReceiverId: recviver.val(),
+        a2uSendingTime: null,
+        a2uMsgTitle: title,
+        a2uMsgContent: content,
+      };
+      url = 'http://localhost:8080/Admin2UserController/message';
+    } else {
+      body = {
+        a2cMsgId: null,
+        a2cSenderId: 1,
+        a2cReceiverId: recviver.val(),
+        a2cSendingTime: null,
+        a2cMsgTitle: title,
+        a2cMsgContent: content,
+      };
+      url = 'http://localhost:8080/Admin2ComController/message';
+    }
+    fetch(url, {
+      method: 'POST',
+      headers: headers,
+      body: JSON.stringify(body),
+    })
+      .then((r) => r.text())
+      .then((d) => {
+        console.log(d);
+        location.href = '../admin_message_recv';
+      });
   }
 
   function verificationData() {
@@ -54,8 +86,9 @@ $(function () {
   });
   publish_button.on('click', function () {
     if (verificationData()) {
-      publish(title_input.val().trim(), title_content.val().trim());
+      publish(select_obj, title_input.val().trim(), title_content.val());
     }
-    history.back();
   });
+
+  getSessionData();
 });

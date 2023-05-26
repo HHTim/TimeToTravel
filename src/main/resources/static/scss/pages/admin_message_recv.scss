@@ -167,6 +167,24 @@ main.main {
   }
 }
 
+.btn-search {
+  border: none;
+  background-color: $primary-blue;
+  border-radius: 5px;
+  color: $white;
+  font-size: 1rem;
+  min-width: 6dvw;
+  padding: 1% 0px;
+  text-align: center;
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:active {
+    opacity: 0.5;
+  }
+}
+
 .btn-send {
   border: none;
   background-color: $primary-blue;
@@ -231,13 +249,14 @@ main.main {
   background-color: $primary-blue;
   color: $white;
   .head-time {
-    width: 20%;
+    width: 27%;
     min-width: 100px;
     text-align: center;
   }
   .head-sender {
     width: 20%;
     min-width: 100px;
+    text-align: center;
   }
   .head-title {
     width: 40%;
@@ -264,15 +283,16 @@ table {
   table-layout: fixed;
   // border: 1px solid black;
   .tb-time {
-    width: 20%;
+    width: 30%;
     min-width: 100px;
     line-height: 8dvh;
     text-align: center;
   }
   .tb-sender {
-    width: 20%;
+    width: 23%;
     min-width: 100px;
     line-height: 8dvh;
+    text-align: center;
   }
   .tb-title {
     width: 40%;
@@ -306,4 +326,12 @@ tbody {
 
 .data-text {
   line-height: 8dvh;
+}
+
+.content-area {
+  min-height: 53dvh;
+}
+
+.custom-check {
+  display: inline-block;
 }

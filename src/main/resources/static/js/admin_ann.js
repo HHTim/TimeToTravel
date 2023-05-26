@@ -114,6 +114,7 @@ $(function () {
                 <td class="content" style='display:none;'>${e.annContent}</td>
                 <td class="adminID" style='display:none;'>${e.adminId}</td>
                 <td class="comId" style='display:none;'>${e.comId}</td>
+                <td class="pic" style='display:none;'>${e.annPic}</td>
                 </tr>
                 `
               );
@@ -123,11 +124,9 @@ $(function () {
             if (index <= Pages) {
               $(this).css('display', 'block');
             } else {
-              // $(this).hide();
               $(this).css('display', 'none');
             }
             if (index === $('ul.pagination > li').length - 1) {
-              // $(this).show();
               $(this).css('display', 'block');
             }
           });
@@ -174,6 +173,7 @@ $(function () {
           <td class="content" style='display:none;'>${e.annContent}</td>
           <td class="adminID" style='display:none;'>${e.adminId}</td>
           <td class="comId" style='display:none;'>${e.comId}</td>
+          <td class="pic" style='display:none;'>${e.annPic}</td>
           </tr>`
                   );
                 })
@@ -225,6 +225,7 @@ $(function () {
           <td class="content" style='display:none;'>${e.annContent}</td>
           <td class="adminID" style='display:none;'>${e.adminId}</td>
           <td class="comId" style='display:none;'>${e.comId}</td>
+          <td class="pic" style='display:none;'>${e.annPic}</td>
           </tr>`
                 );
               })
@@ -245,7 +246,6 @@ $(function () {
   }
 
   function cb(start, end) {
-    // console.log('apply');
     if (init == false) {
       start_dateflag = true;
     } else {
@@ -283,7 +283,6 @@ $(function () {
 
   $('.tbody').on('click', 'button.table-edit-button', function (e) {
     e.stopPropagation();
-    // console.log($(this).closest('tr').find('td').eq(4).text());
     sessionStorage.setItem(
       'ann-edit',
       JSON.stringify({
@@ -293,16 +292,17 @@ $(function () {
         ann_content: $(this).closest('tr').find('td').eq(4).text(),
         admin_id: $(this).closest('tr').find('td').eq(5).text(),
         com_id: $(this).closest('tr').find('td').eq(6).text(),
+        ann_pic: $(this).closest('tr').find('td').eq(7).text(),
       })
     );
-    location.href = '../html/admin_ann_edit.html';
+    location.href = '../admin_ann_edit';
   });
 
   $('.detail-close').on('click', function (e) {
     // $('.row-detail-float-box').css('display', 'none');
     // console.log('uufwfef');
     // e.preventDefault();
-    // location.href('/html/admin_ann_detail.html');
+    // location.href('/admin_ann_detail.html');
   });
 
   $('input.form-input').on('change', function (e) {
@@ -332,11 +332,11 @@ $(function () {
         ann_content: $(this).children().eq(4).text(),
       })
     );
-    location.href = '../html/admin_ann_detail.html';
+    location.href = '../admin_ann_detail';
   });
 
   $('.ann-publish-btn').on('click', function (e) {
-    location.href = '../html/admin_ann_publish.html';
+    location.href = '../admin_ann_publish';
   });
 
   cb(start, end);

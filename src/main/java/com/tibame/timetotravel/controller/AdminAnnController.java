@@ -12,7 +12,6 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
 
-
 @RestController
 @RequestMapping("/AdminAnnController")
 public class AdminAnnController {
@@ -27,7 +26,7 @@ public class AdminAnnController {
       //此為重導寫法，可以指定導到哪個頁面
     @RequestMapping("/redirect")
     public RedirectView redirect(){
-        return new RedirectView("/html/admin_ann.html");
+        return new RedirectView("/admin_ann");
     }
 
     @PostMapping("/anns")
@@ -39,6 +38,7 @@ public class AdminAnnController {
     @PutMapping("/anns/{annId}")
     public String update(@PathVariable Integer annId,
                          @RequestBody Ann ann){
+        System.out.println("執行資料庫的 Update 操作");
         return adminAnnService.update(annId,ann);
     }
 
@@ -47,16 +47,6 @@ public class AdminAnnController {
         adminAnnService.deleteById(annId);
         return "執行資料庫的 Delete 操作";
     }
-
-//    @GetMapping("/anns/{annId}")
-//    public AnnVO readById(@PathVariable Integer annId){
-//        return adminAnnRepository.findById(annId).orElse(null);
-//    }
-
-//    @GetMapping("/anns")
-//    public List<AnnVO> readAll(){
-//        return adminAnnRepository.findAll();
-//    }
 
     @GetMapping("/anns/page/{currPage}/{rows}")
     public PageBean<Ann> readByPage(@PathVariable Integer currPage, @PathVariable Integer rows){
@@ -78,11 +68,10 @@ public class AdminAnnController {
         return adminAnnService.findAnnPageByKeyWords(keyword,currPage,rows);
     }
 
-
-
     @GetMapping("/anns/annView")
     public List<AnnView> findAllofAnnView(){
         System.out.println("VIEW全查詢");
-        return adminAnnViewService.findAllDemo();
+        return adminAnnViewService.findAll();
     }
+
 }

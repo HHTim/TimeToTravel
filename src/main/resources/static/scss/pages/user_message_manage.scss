@@ -66,8 +66,8 @@ section:not(:first-child) {
   text-align: center;
 
   thead {
-    background-color: $primary-blue;
-    color: $white;
+    background-color: rgb(56, 56, 56);
+    color: white;
   }
 
   th#col__1 {
@@ -138,15 +138,15 @@ section:not(:first-child) {
   }
 
   .button__detl {
-    background-color: $primary-blue;
-    color: $white;
+    background-color: rgb(56, 56, 56);
+    color: white;
     border-radius: $border-radius;
     padding: 0.25rem 1rem;
     white-space: nowrap;
     border-style: none;
 
     &:hover {
-      background-color: $primary-blue-hover;
+      background-color: rgb(91, 91, 91);
     }
   }
 
@@ -185,6 +185,17 @@ section:not(:first-child) {
     align-items: center;
     justify-content: center;
   }
+}
+
+.page-link {
+  color: #495057;
+}
+.page-link:hover {
+  color: #495057; /* 懸停時文字顏色變色 */
+}
+
+.page-active {
+  color: #495057;
 }
 
 .comment {
