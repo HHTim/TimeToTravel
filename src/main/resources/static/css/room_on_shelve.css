@@ -477,17 +477,20 @@ div.nav-btn {
   border: 2px solid #3d8ebd;
 }
 
-.room__price {
+.room__price,
+.room__stock {
   display: flex;
   margin: 1rem;
 }
-.room__price__title {
+.room__price__title,
+.room__stock__title {
   font-weight: bold;
   white-space: nowrap;
   display: flex;
   align-items: center;
 }
-.room__price input {
+.room__price input,
+.room__stock input {
   border-radius: 5px;
   margin-left: 3rem;
   border-color: #3d8ebd;
@@ -499,6 +502,11 @@ div.nav-btn {
   border: 2px solid #3d8ebd;
 }
 
+.row-r3 {
+  display: flex;
+  justify-content: flex-start;
+}
+
 .room__photo {
   display: flex;
   margin: 1rem;
@@ -507,16 +515,22 @@ div.nav-btn {
 .room__photo__title {
   font-weight: bold;
   white-space: nowrap;
+  height: 5rem;
   display: flex;
   align-items: center;
-  height: 5rem;
 }
-.room__photo input {
-  border-radius: 5px;
-  margin: 1.5rem auto auto 3rem;
-  border-color: #3d8ebd;
-  font-weight: bold;
-  height: 3rem;
+.room__photo__preview {
+  border: 1px dashed #b3b3b3;
+  height: 5rem;
+  width: 230px;
+  margin-left: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.room__photo__preview:empty:before {
+  content: attr(placeholder);
+  color: #b3b3b3;
 }
 
 .room__description {

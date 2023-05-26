@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 @Service("roomService")
@@ -24,6 +25,8 @@ public class RoomServiceImpl implements RoomService {
     @Override
     @Transactional
     public void insert(Room room) {
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        room.setRoomRelease(timestamp);
         roomRepository.save(room);
     }
 

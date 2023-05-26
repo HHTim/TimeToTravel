@@ -323,29 +323,25 @@ th {
 }
 
 th {
-  background-color: #006caa;
+  background-color: #494949;
   color: white;
   font-size: 15px;
 }
 
 th:nth-child(1) {
-  width: 80px;
+  width: 10%;
 }
 
 th:nth-child(2) {
-  width: 120px;
+  width: 15%;
 }
 
 th:nth-child(3) {
-  width: 140px;
+  width: 25%;
 }
 
-th:nth-child(6) {
-  width: 65px;
-}
-
-th:nth-child(7) {
-  width: 80px;
+th:nth-child(4) {
+  width: 30%;
 }
 
 td {
@@ -356,17 +352,9 @@ td {
 
 tr {
   padding: 5pxs;
-  border-bottom: rgb(131, 131, 131);
+  border-bottom: rgb(197, 197, 197);
   border-style: solid;
   border-bottom-width: 1px;
-}
-
-tr:nth-child(odd) {
-  background-color: rgb(235, 235, 235);
-}
-
-tr:nth-child(even) {
-  background-color: #9abacd;
 }
 
 img {
@@ -374,5 +362,9 @@ img {
 }
 
 .btn.btn-primary {
-  background-color: #006caa;
+  background-color: #484848;
+  border: none;
+}
+.btn.btn-primary:hover {
+  background-color: rgb(171, 171, 171);
 }

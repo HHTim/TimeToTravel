@@ -35,7 +35,7 @@ public class User2AdminController {
     }
 
     @GetMapping("/message/u2a/view/page/{currPage}/{rows}/keyword/{keyword}")
-    public PageBean<U2AMsgView> readViewByKeWords(@PathVariable Integer currPage, @PathVariable Integer rows, @PathVariable String keyword){
+    public PageBean<U2AMsgView> readViewByKeyWords(@PathVariable Integer currPage, @PathVariable Integer rows, @PathVariable String keyword){
         System.out.println("關鍵字搜尋");
         return u2AMessageService.findBeanPageViewByKeyWords(keyword, currPage, rows);
     }

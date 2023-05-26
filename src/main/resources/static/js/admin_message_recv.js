@@ -52,7 +52,7 @@ $(function () {
     } else if (start_dateflag === true) {
       if (tab_user.attr('data-value') == '1') {
         url =
-          'http://localhost:8080/User2AdminController/message/c2a/view/page/dateRange/' +
+          'http://localhost:8080/User2AdminController/message/u2a/view/page/dateRange/' +
           currentPage.toString() +
           '/' +
           limit +
@@ -161,13 +161,20 @@ $(function () {
   });
 
   function cb(start, end) {
+    console.log('datechange');
     if (domInitFlag !== true) {
+      console.log('start_dateflag = true');
       start_dateflag = true;
       keywordFlag = false;
+      $('.page-link')
+        .filter(function () {
+          currentPage = 1;
+          return $(this).text() === currentPage.toString();
+        })
+        .click();
     } else {
       domInitFlag = false;
     }
-    $('input.form-input').val('');
     $('#reportrange span').html(start.format('YYYY-MM-DD') + ' - ' + end.format('YYYY-MM-DD'));
     choose_start_date = start.format('YYYY-MM-DD');
     choose_end_date = end.startOf('days').add(1, 'days').format('YYYY-MM-DD');
@@ -206,8 +213,6 @@ $(function () {
         return $(this).text() === currentPage.toString();
       })
       .click();
-
-    getData();
   });
 
   tab_company.on('click', function () {

@@ -20,7 +20,7 @@ public interface Room2Repository extends CrudRepository<ViewCompanyRoom, Integer
     /**
      * 根據輸入的關鍵字查符合的商家回傳結果集合
      */
-    @Query(value = "SELECT * FROM VIEW_COMPANY_ROOM WHERE (COM_ADDRESS LIKE ?1%) AND (ROOM_PEOPLE = ?2)", nativeQuery = true)
+    @Query(value = "SELECT * FROM VIEW_COMPANY_ROOM WHERE (COM_ADDRESS LIKE ?1%) AND (ROOM_PEOPLE = ?2) AND (ROOM_STATUS = 1)", nativeQuery = true)
     public List<ViewCompanyRoom> findCompany(String keyWord, Integer people);
 
     /**

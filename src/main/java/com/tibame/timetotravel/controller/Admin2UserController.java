@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @RestController
 @RequestMapping("/Admin2UserController")
@@ -30,12 +29,18 @@ public class Admin2UserController {
     @GetMapping("/message/page/{currPage}/{rows}")
     public PageBean<A2UMessage> readByPage(@PathVariable Integer currPage, @PathVariable Integer rows){
         System.out.println("分頁搜尋");
-        return a2uMessageService.findAnnPageByRowData(currPage,rows);
+        return a2uMessageService.findAllByPageRowData(currPage,rows);
     }
 
     @GetMapping("/message/a2u/view/page/{currPage}/{rows}")
     public PageBean<A2UMsgView> readViewByPage(@PathVariable Integer currPage, @PathVariable Integer rows){
         System.out.println("View分頁搜尋");
         return a2uMessageService.findViewByPageRowData(currPage, rows);
+    }
+
+    @GetMapping("/message/a2u/view/page/dateRange/{currPage}/{rows}/{startDate}/{endDate}")
+    public PageBean<A2UMsgView> readViewByDateRange(@PathVariable Integer currPage, @PathVariable Integer rows , @PathVariable String startDate, @PathVariable String endDate){
+        System.out.println("日期分頁搜尋range: "+ startDate + " ~ " + endDate);
+        return a2uMessageService.findBeanPageViewByDateRange(startDate, endDate , currPage, rows);
     }
 }

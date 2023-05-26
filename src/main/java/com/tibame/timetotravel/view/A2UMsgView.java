@@ -67,7 +67,7 @@ public class A2UMsgView {
     private byte[] userAvatar;
 
     @Column(name = "USER_GENDER")
-    private boolean userGender;
+    private Boolean userGender;
 
     @Column(name = "USER_BIRTHDATE")
     private Timestamp userBirthdate;
@@ -79,8 +79,8 @@ public class A2UMsgView {
     private String userEmail;
 
     @Column(name = "USER_STATUS")
-    private boolean userStatus;
+    private Boolean userStatus;
 
     @Column(name = "USER_NEWS_STATUS")
-    private boolean userNewsStatus;
+    private Boolean userNewsStatus;
 }

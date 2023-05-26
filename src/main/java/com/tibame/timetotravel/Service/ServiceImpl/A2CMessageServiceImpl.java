@@ -53,6 +53,11 @@ public class A2CMessageServiceImpl implements A2CMessageService {
     }
 
     @Override
+    public List<A2CMessage> getAll() {
+        return a2CMessageRepository.findAll();
+    }
+
+    @Override
     public List<A2CMsgView> findViewByPage(Integer currPage, Integer row) {
         return a2CMessageViewRepository.findViewByPage(currPage,row);
     }
@@ -71,6 +76,22 @@ public class A2CMessageServiceImpl implements A2CMessageService {
         return pageBeanView;
     }
 
+    @Override
+    public Integer findViewByDateRange(String startDate, String endDate) {
+        return a2CMessageViewRepository.findViewByDateRange(startDate, endDate);
+    }
 
+    @Override
+    public List<A2CMsgView> findViewByDateRangePage(String startDate, String endDate, Integer currPage, Integer rows) {
+        return a2CMessageViewRepository.findViewByDateRangePage(startDate, endDate, currPage, rows);
+    }
 
+    @Override
+    public PageBean<A2CMsgView> findBeanPageViewByDateRange(String startDate, String endDate, Integer currPage, Integer rows) {
+        int start = (currPage - 1) * rows;
+        int pageSize = (int)(Math.ceil(findViewByDateRange(startDate, endDate)/(double)rows));
+        pageBeanView.setRows(findViewByDateRangePage(startDate, endDate, start, rows));
+        pageBeanView.setPageSize(Math.max(pageSize,1));
+        return pageBeanView;
+    }
 }
