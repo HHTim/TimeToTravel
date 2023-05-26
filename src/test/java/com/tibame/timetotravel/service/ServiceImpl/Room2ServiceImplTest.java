@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 @SpringBootTest
@@ -15,12 +16,12 @@ class Room2ServiceImplTest {
     Room2Service room2Service;
 
     @Test
-    public void findAvailableCompanyTest() {
-        List<SearchRoom> companies = room2Service.findAvailableCompany("新北市", 4, "2023-05-25", "2023-05-30");
+    public void findAvailableCompanyTest() throws InvocationTargetException, IllegalAccessException {
+        List<SearchRoom> companies = room2Service.findAvailableCompany("台北市", 2, "2023-05-01", "2023-05-05");
         System.out.println("共有: " + companies.size() + " 間符合條件");
 
         for (SearchRoom company : companies) {
-            System.out.println(company.getComName());
+            System.out.println(company);
         }
     }
 }
