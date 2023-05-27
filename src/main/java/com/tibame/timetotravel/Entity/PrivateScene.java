@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "private_scene")
+@Table(name = "PRIVATE_SCENE")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

@@ -93,7 +93,7 @@ main.main div.decorator {
 	}
 }
 
-.primary__scene__name {
+.private__scene__name {
 	display: flex;
 	margin: 2rem auto 3rem 1rem;
 	position: relative;
@@ -124,7 +124,7 @@ main.main div.decorator {
 	}
 }
 
-.primary__scene__address {
+.private__scene__address {
 	display: flex;
 	margin: auto auto 2rem 1rem;
 
@@ -146,7 +146,7 @@ main.main div.decorator {
 	}
 }
 
-.primary__scene__distance {
+.private__scene__distance {
 	display: flex;
 	margin-left: 1rem;
 
@@ -159,7 +159,7 @@ main.main div.decorator {
 
 	& input {
 		border-radius: $input-radius;
-		margin-left: 3.8rem;
+		margin-left: 4rem;
 		border-color: $admin-aside-blue;
 		padding: 0 10px;
 		border-style: none;
@@ -169,7 +169,7 @@ main.main div.decorator {
 	}
 }
 
-.primary__scene__photo {
+.private__scene__photo {
 	display: flex;
 	margin: 1rem auto 1.5rem 1rem;
 	height: 5rem;
@@ -181,16 +181,24 @@ main.main div.decorator {
 		align-items: center;
 		height: 5rem;
 	}
-	& input {
-		border-radius: $input-radius;
-		margin: 1.5rem auto auto 5.5rem;
-		border-color: $admin-aside-blue;
-		font-weight: bold;
-		height: 3rem;
+
+	&__preview {
+		border: 1px dashed #b3b3b3;
+		height: 5rem;
+		width: 230px;
+		margin-left: 5.5rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		&:empty:before {
+			content: attr(placeholder);
+			color: #b3b3b3;
+		}
 	}
 }
 
-.primary__scene__description {
+.private__scene__description {
 	display: flex;
 	margin-left: 1rem;
 	&__title {
@@ -201,7 +209,7 @@ main.main div.decorator {
 	}
 	& textarea {
 		border-radius: $input-radius;
-		margin-left: 3rem;
+		margin-left: 5.5rem;
 		border-color: $admin-aside-blue;
 		padding: 0 10px;
 		border-style: none;
