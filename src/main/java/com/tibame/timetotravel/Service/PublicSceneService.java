@@ -1,4 +1,4 @@
-package com.tibame.timetotravel.Service;
+package com.tibame.timetotravel.service;
 
 import com.tibame.timetotravel.entity.PublicScene;
 

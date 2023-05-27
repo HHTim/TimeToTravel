@@ -7,8 +7,8 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository("room2Repository")
-public interface Room2Repository extends CrudRepository<ViewCompanyRoom, Integer> {
+@Repository("searchRepository")
+public interface SearchRepository extends CrudRepository<ViewCompanyRoom, Integer> {
 
     String findRoomStock = " SELECT COUNT(1) FROM ORDER_DETAIL " +
             "WHERE " +
@@ -30,6 +30,9 @@ public interface Room2Repository extends CrudRepository<ViewCompanyRoom, Integer
     @Query(value = findRoomStock, nativeQuery = true)
     public Integer findRoomStock(Integer roomId, String start, String end);
 
+    /**
+     * 根據傳進來的roomId查詢房間的所有評價，回傳一個所有評價的集合
+     */
     @Query(value = "SELECT ORDER_RANK FROM ORDER_DETAIL WHERE ROOM_ID = ?1", nativeQuery = true)
     public List<Integer> findRoomRank(Integer roomId);
 }
