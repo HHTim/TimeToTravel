@@ -124,67 +124,22 @@ main.main div.decorator {
 	}
 }
 
-.private__scene__address {
-	display: flex;
-	margin: auto auto 2rem 1rem;
-
-	&__title {
-		font-weight: bold;
-		white-space: nowrap;
-		display: flex;
-		align-items: center;
-	}
-	& input {
-		border-radius: $input-radius;
-		margin-left: 5.5rem;
-		border-color: $admin-aside-blue;
-		padding: 0 10px;
-		border-style: none;
-		border: 2px solid $admin-aside-blue;
-		font-weight: bold;
-		height: 3rem;
-	}
-}
-
-.private__scene__distance {
-	display: flex;
-	margin-left: 1rem;
-
-	&__title {
-		font-weight: bold;
-		white-space: nowrap;
-		display: flex;
-		align-items: center;
-	}
-
-	& input {
-		border-radius: $input-radius;
-		margin-left: 4rem;
-		border-color: $admin-aside-blue;
-		padding: 0 10px;
-		border-style: none;
-		border: 2px solid $admin-aside-blue;
-		font-weight: bold;
-		height: 3rem;
-	}
-}
-
 .private__scene__photo {
 	display: flex;
 	margin: 1rem auto 1.5rem 1rem;
-	height: 5rem;
+	height: 10rem;
 
 	&__title {
 		font-weight: bold;
 		white-space: nowrap;
 		display: flex;
 		align-items: center;
-		height: 5rem;
+		height: 100%;
 	}
 
 	&__preview {
 		border: 1px dashed #b3b3b3;
-		height: 5rem;
+		height: 10rem;
 		width: 230px;
 		margin-left: 5.5rem;
 		display: flex;
@@ -201,6 +156,7 @@ main.main div.decorator {
 .private__scene__description {
 	display: flex;
 	margin-left: 1rem;
+	// margin-top: 6.5rem;
 	&__title {
 		font-weight: bold;
 		white-space: nowrap;
@@ -215,7 +171,7 @@ main.main div.decorator {
 		border-style: none;
 		border: 2px solid $admin-aside-blue;
 		font-weight: bold;
-		height: 20rem;
+		height: 15rem;
 		width: 100%;
 	}
 }

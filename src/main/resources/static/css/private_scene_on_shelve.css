@@ -403,63 +403,21 @@ main.main div.decorator {
   margin-left: 4.5rem;
 }
 
-.private__scene__address {
-  display: flex;
-  margin: auto auto 2rem 1rem;
-}
-.private__scene__address__title {
-  font-weight: bold;
-  white-space: nowrap;
-  display: flex;
-  align-items: center;
-}
-.private__scene__address input {
-  border-radius: 5px;
-  margin-left: 5.5rem;
-  border-color: #3d8ebd;
-  padding: 0 10px;
-  border-style: none;
-  border: 2px solid #3d8ebd;
-  font-weight: bold;
-  height: 3rem;
-}
-
-.private__scene__distance {
-  display: flex;
-  margin-left: 1rem;
-}
-.private__scene__distance__title {
-  font-weight: bold;
-  white-space: nowrap;
-  display: flex;
-  align-items: center;
-}
-.private__scene__distance input {
-  border-radius: 5px;
-  margin-left: 4rem;
-  border-color: #3d8ebd;
-  padding: 0 10px;
-  border-style: none;
-  border: 2px solid #3d8ebd;
-  font-weight: bold;
-  height: 3rem;
-}
-
 .private__scene__photo {
   display: flex;
   margin: 1rem auto 1.5rem 1rem;
-  height: 5rem;
+  height: 10rem;
 }
 .private__scene__photo__title {
   font-weight: bold;
   white-space: nowrap;
   display: flex;
   align-items: center;
-  height: 5rem;
+  height: 100%;
 }
 .private__scene__photo__preview {
   border: 1px dashed #b3b3b3;
-  height: 5rem;
+  height: 10rem;
   width: 230px;
   margin-left: 5.5rem;
   display: flex;
@@ -489,7 +447,7 @@ main.main div.decorator {
   border-style: none;
   border: 2px solid #3d8ebd;
   font-weight: bold;
-  height: 20rem;
+  height: 15rem;
   width: 100%;
 }
 

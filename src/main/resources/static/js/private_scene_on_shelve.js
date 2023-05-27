@@ -2,12 +2,22 @@ window.addEventListener('load', function () {
 	let saveBtn = document.querySelector('.save__btn__commit');
 
 	saveBtn.addEventListener('click', function () {
+		let privateSceneName = document.querySelector('.private__scene__name > input').value;
+		let privateSceneDesc = document.querySelector('#private__scene__description__content').value;
+
 		// 要按下儲存後才能取到imgUrl
 		let imgUrl = picturePreview.querySelector('img').getAttribute('src');
-		let roomPhoto = extractBase64String(imgUrl).base64String;
+		let privateScenePic = extractBase64String(imgUrl).base64String;
 
-		if (roomName !== null && roomPrice !== null && roomStock !== null) {
-			fetch('http://localhost:8080/roomController/room', {
+		let requestData = {
+			comId: 123, // 假的comId
+			privateSceneName: privateSceneName,
+			privateSceneDesc: privateSceneDesc,
+			privateScenePic: privateScenePic,
+		};
+
+		if (privateSceneName !== null && privateSceneDesc !== null && privateScenePic !== null) {
+			fetch('http://localhost:8080/privateSceneController/privateScene', {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify(requestData),
@@ -15,7 +25,7 @@ window.addEventListener('load', function () {
 				.then((resp) => resp)
 				.then((body) => {
 					alert('新增成功!!');
-					window.location.href = '../html/room_manage.html';
+					window.location.href = '../html/private_scene_manage.html';
 				});
 		} else {
 			alert('請確認所有欄位皆不能為空');
@@ -23,12 +33,12 @@ window.addEventListener('load', function () {
 	});
 
 	// 隱藏input=file的預設按鈕，並設立預覽區
-	let pictureUpdateBtn = document.querySelector('.private__scene__photo__update');
 	let picturePreview = document.querySelector('.private__scene__photo__preview');
 	picturePreview.addEventListener('click', function () {
 		pictureUpdateBtn.click();
 	});
-
+	
+	let pictureUpdateBtn = document.querySelector('.private__scene__photo__update');
 	// click()後，發生change()
 	pictureUpdateBtn.addEventListener('change', function (e) {
 		const file = e.target.files[0]; // 第0個檔案
