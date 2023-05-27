@@ -58,12 +58,13 @@ async function handleSearch(searchBody) {
   const searchResult = document.querySelector('#search-result');
   let html = '';
   resultList.forEach((result) => {
-    const { comId, comName, comAddress, roomName, roomDesc, roomPhoto, orderRanks } = result;
+    const { comId, comName, comAddress, roomName, roomDesc, roomPhoto, orderRanks, roomId } = result;
     const sum = orderRanks.reduce((curr, acc) => curr + acc, 0);
     const avg = orderRanks.length === 0 ? 1 : Math.ceil(sum / orderRanks.length);
-    // console.log('avg: ' + avg);
+    console.log(orderRanks);
+    console.log('avg: ' + avg);
     html += `
-    <div class="hotel__card" data-id=${comId}>
+    <div class="hotel__card" data-comId=${comId} data-roomId=${roomId}>
       <div class="hotel__img">
         <img src="data:image/png;base64,${roomPhoto}" alt="pic" />
       </div>
@@ -83,10 +84,12 @@ async function handleSearch(searchBody) {
   searchResult.innerHTML = html;
 }
 
-async function handleSelectRoom(comId) {
-  console.log(isNaN(Number(comId)));
-  if (isNaN(Number(comId))) return;
-  const resp = await fetch(`http://localhost:8080/BookingController/forward/${comId}`, {
+async function handleSelectRoom(dataset) {
+  const { comid, roomid } = dataset;
+  console.log(comid + ' ' + roomid);
+  console.log(isNaN(Number(dataset.comid)));
+  if (isNaN(Number(comid))) return;
+  const resp = await fetch(`http://localhost:8080/BookingController/forward/${comid}/${roomid}`, {
     redirect: 'follow',
   });
   if (resp.redirected) {
@@ -103,5 +106,5 @@ async function handleSelectRoom(comId) {
 
 let searchBody = JSON.parse(sessionStorage.getItem('searchBody'));
 searchHotel.addEventListener('click', () => handleSearch(searchBody));
-searchContent.addEventListener('click', (e) => handleSelectRoom(e.target.dataset.id));
+searchContent.addEventListener('click', (e) => handleSelectRoom(e.target.dataset));
 handleSearch(searchBody);

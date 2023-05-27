@@ -30,4 +30,6 @@ public interface SearchRepository extends CrudRepository<ViewCompanyRoom, Intege
     @Query(value = findRoomStock, nativeQuery = true)
     public Integer findRoomStock(Integer roomId, String start, String end);
 
+    public ViewCompanyRoom findByComIdAndRoomId(Integer comId, Integer roomId);
+
 }

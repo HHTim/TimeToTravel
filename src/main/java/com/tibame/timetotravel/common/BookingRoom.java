@@ -12,10 +12,13 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class BookingRoom {
-    String comName;
-    String comAddress;
-    List<Room> rooms;
-    List<PrivateScene> privateScenes;
-    List<String> orderComments;
-    List<Integer> orderRanks;
+    private String comName;
+    private String comAddress;
+    private String roomName;
+    private String roomDesc;
+    private List<Integer> orderRanks;
+    private List<Room> rooms;
+    private List<PrivateScene> privateScenes;
+    private List<String> orderComments;
+    private List<List<Integer>> allOrderRanks;
 }

@@ -10,11 +10,12 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SearchRoom {
-    Integer comId;
-    String comName;
-    String comAddress;
-    String roomName;
-    String roomDesc;
-    byte[] roomPhoto;
-    List<Integer> orderRanks;
+    private Integer comId;
+    private String comName;
+    private String comAddress;
+    private Integer roomId;
+    private String roomName;
+    private String roomDesc;
+    private byte[] roomPhoto;
+    private List<Integer> orderRanks;
 }

@@ -20,13 +20,14 @@ public class BookingController {
     @Autowired
     BookingService bookingService;
 
-    @RequestMapping("forward/{comId}")
-    public RedirectView redirect(@PathVariable String comId, HttpServletRequest req) {
+    @RequestMapping("forward/{comId}/{roomId}")
+    public RedirectView redirect(@PathVariable String comId, @PathVariable String roomId, HttpServletRequest req) {
 
         System.out.println("test connection " + comId);
         HttpSession session = req.getSession();
 
         session.setAttribute("comId", Integer.parseInt(comId));
+        session.setAttribute("roomId", Integer.parseInt(roomId));
         return new RedirectView("/booking_room");
     }
 
@@ -34,8 +35,9 @@ public class BookingController {
     public BookingRoom booking(HttpServletRequest req) throws InvocationTargetException, IllegalAccessException {
         HttpSession session = req.getSession();
         Integer comId = (Integer) session.getAttribute("comId");
+        Integer roomId = (Integer) session.getAttribute("roomId");
         System.out.println(comId);
-        return bookingService.bookingRoom(comId);
+        return bookingService.bookingRoom(comId, roomId);
     }
 
 }

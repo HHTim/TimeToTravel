@@ -18,9 +18,10 @@ class BookingServiceImplTest {
 
     @Test
     public void bookingRoomTest() throws InvocationTargetException, IllegalAccessException {
-        BookingRoom bookingRoom = bookingService.bookingRoom(2);
+        BookingRoom bookingRoom = bookingService.bookingRoom(2, 5);
         System.out.println(bookingRoom.getComName());
         System.out.println(bookingRoom.getComAddress());
+        System.out.println(bookingRoom.getRoomDesc());
 
         for (Room room : bookingRoom.getRooms()) {
             System.out.println(room);
@@ -34,8 +35,7 @@ class BookingServiceImplTest {
             System.out.println(comment);
         }
 
-        for (Integer rank : bookingRoom.getOrderRanks()) {
-            System.out.println(rank);
-        }
+        System.out.println(bookingRoom.getOrderRanks());
+        System.out.println(bookingRoom.getAllOrderRanks());
     }
 }

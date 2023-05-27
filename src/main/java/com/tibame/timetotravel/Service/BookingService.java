@@ -5,5 +5,6 @@ import com.tibame.timetotravel.common.BookingRoom;
 import java.lang.reflect.InvocationTargetException;
 
 public interface BookingService {
-    public BookingRoom bookingRoom(Integer comId) throws InvocationTargetException, IllegalAccessException;
+    public BookingRoom bookingRoom(Integer comId, Integer roomId) throws InvocationTargetException, IllegalAccessException;
+
 }
