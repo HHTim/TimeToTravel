@@ -2,53 +2,11 @@ window.addEventListener('load', function () {
 	let saveBtn = document.querySelector('.save__btn__commit');
 
 	saveBtn.addEventListener('click', function () {
-		let roomName = document.querySelector('.room__name > input').value;
-		let roomBed = document.querySelector('.room__equip__options__bed > optgroup > option').value;
-		let room24Hours = Boolean(document.querySelector('.room__equip__options__service24hr > optgroup > option').value);
-		let roomSmoking = Boolean(document.querySelector('.room__equip__options__smoking > optgroup > option').value);
-		let roomPet = Boolean(document.querySelector('.room__equip__options__pets > optgroup > option').value);
-		let roomWifi = Boolean(document.querySelector('.room__equip__options__wifi > optgroup > option').value);
-		let roomBreakfast = Boolean(document.querySelector('.room__equip__options__breakfast > optgroup > option').value);
-		let roomParking = Boolean(document.querySelector('.room__equip__options__parking > optgroup > option').value);
-		let roomPrice = document.querySelector('.room__price > input').value;
-		let roomStock = document.querySelector('.room__stock > input').value;
-		let roomDesc = document.querySelector('.room__description > textarea').value;
-		// 建議人數 = 房型value
-		let roomPeople;
-		switch (roomBed) {
-			case '單人房':
-				roomPeople = 1;
-				break;
-			case '雙人房':
-				roomPeople = 2;
-				break;
-			case '四人房':
-				roomPeople = 4;
-				break;
-		}
 		// 要按下儲存後才能取到imgUrl
 		let imgUrl = picturePreview.querySelector('img').getAttribute('src');
 		let roomPhoto = extractBase64String(imgUrl).base64String;
 
-		let requestData = {
-			comId: 123, // 假的comId
-			roomName: roomName,
-			roomBed: roomBed,
-			roomPeople: roomPeople,
-			room24Hours: room24Hours,
-			roomSmoking: roomSmoking,
-			roomPet: roomPet,
-			roomWifi: roomWifi,
-			roomBreakfast: roomBreakfast,
-			roomParking: roomParking,
-			roomPrice: roomPrice,
-			roomStock: roomStock,
-			roomPhoto: roomPhoto,
-			roomDesc: roomDesc,
-			roomStatus: false, // 預設為未上架
-		};
-
-		if (roomName !== null && roomPrice !== null && roomStock !== null ) {
+		if (roomName !== null && roomPrice !== null && roomStock !== null) {
 			fetch('http://localhost:8080/roomController/room', {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
@@ -65,8 +23,8 @@ window.addEventListener('load', function () {
 	});
 
 	// 隱藏input=file的預設按鈕，並設立預覽區
-	let pictureUpdateBtn = document.querySelector('.room__photo__update');
-	let picturePreview = document.querySelector('.room__photo__preview');
+	let pictureUpdateBtn = document.querySelector('.private__scene__photo__update');
+	let picturePreview = document.querySelector('.private__scene__photo__preview');
 	picturePreview.addEventListener('click', function () {
 		pictureUpdateBtn.click();
 	});

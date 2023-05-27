@@ -407,6 +407,7 @@ div.nav-btn {
   margin-left: 2.2rem;
   border-style: none;
   border: 2px solid #3d8ebd;
+  width: 195px;
 }
 
 .room__equip {
@@ -421,18 +422,18 @@ div.nav-btn {
   align-items: center;
 }
 .room__equip__options {
+  margin-left: 3rem;
   display: flex;
-  justify-content: space-evenly;
-  flex-wrap: nowrap;
-  margin-left: 2.5rem;
+  flex-direction: column;
 }
 .room__equip__options__bed {
   font-weight: bold;
   border-radius: 5px;
   border-color: #3d8ebd;
-  height: 3rem;
   border-style: none;
   border: 2px solid #3d8ebd;
+  height: 3rem;
+  width: 195px;
 }
 .room__equip__options__wifi {
   font-weight: bold;
@@ -440,6 +441,8 @@ div.nav-btn {
   border-color: #3d8ebd;
   border-style: none;
   border: 2px solid #3d8ebd;
+  height: 3rem;
+  width: 195px;
 }
 .room__equip__options__pets {
   font-weight: bold;
@@ -447,6 +450,8 @@ div.nav-btn {
   border-color: #3d8ebd;
   border-style: none;
   border: 2px solid #3d8ebd;
+  height: 3rem;
+  width: 195px;
 }
 .room__equip__options__breakfast {
   font-weight: bold;
@@ -454,6 +459,8 @@ div.nav-btn {
   border-color: #3d8ebd;
   border-style: none;
   border: 2px solid #3d8ebd;
+  height: 3rem;
+  width: 195px;
 }
 .room__equip__options__parking {
   font-weight: bold;
@@ -461,6 +468,8 @@ div.nav-btn {
   border-color: #3d8ebd;
   border-style: none;
   border: 2px solid #3d8ebd;
+  height: 3rem;
+  width: 195px;
 }
 .room__equip__options__smoking {
   font-weight: bold;
@@ -468,6 +477,8 @@ div.nav-btn {
   border-color: #3d8ebd;
   border-style: none;
   border: 2px solid #3d8ebd;
+  height: 3rem;
+  width: 195px;
 }
 .room__equip__options__service24hr {
   font-weight: bold;
@@ -475,21 +486,43 @@ div.nav-btn {
   border-color: #3d8ebd;
   border-style: none;
   border: 2px solid #3d8ebd;
+  height: 3rem;
+  width: 195px;
 }
 
-.room__price,
-.room__stock {
+.room__price {
   display: flex;
   margin: 1rem;
 }
-.room__price__title,
+.room__price__title {
+  font-weight: bold;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+}
+.room__price input {
+  border-radius: 5px;
+  margin-left: 3rem;
+  border-color: #3d8ebd;
+  padding: 0 10px;
+  outline-style: none;
+  font-weight: bold;
+  height: 3rem;
+  border-style: none;
+  border: 2px solid #3d8ebd;
+  width: 195px;
+}
+
+.room__stock {
+  display: flex;
+  margin: auto auto auto 2.8rem;
+}
 .room__stock__title {
   font-weight: bold;
   white-space: nowrap;
   display: flex;
   align-items: center;
 }
-.room__price input,
 .room__stock input {
   border-radius: 5px;
   margin-left: 3rem;
@@ -500,9 +533,10 @@ div.nav-btn {
   height: 3rem;
   border-style: none;
   border: 2px solid #3d8ebd;
+  width: 195px;
 }
 
-.row-r3 {
+.row-r4 {
   display: flex;
   justify-content: flex-start;
 }
