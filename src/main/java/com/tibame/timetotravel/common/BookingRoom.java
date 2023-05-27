@@ -1,5 +1,7 @@
 package com.tibame.timetotravel.common;
 
+import com.tibame.timetotravel.entity.PrivateScene;
+import com.tibame.timetotravel.entity.Room;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,14 +9,13 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class SearchRoom {
-    Integer comId;
+@NoArgsConstructor
+public class BookingRoom {
     String comName;
     String comAddress;
-    String roomName;
-    String roomDesc;
-    byte[] roomPhoto;
+    List<Room> rooms;
+    List<PrivateScene> privateScenes;
+    List<String> orderComments;
     List<Integer> orderRanks;
 }

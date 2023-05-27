@@ -9,18 +9,18 @@ import java.sql.Date;
 import java.sql.Timestamp;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "view_company_room")
 public class ViewCompanyRoom {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ROOM_ID", nullable = false, insertable = false, updatable = false)
+    @Column(name = "ROOM_ID", nullable = false)
     private Integer roomId;
 
-    @Column(name = "ID", nullable = false)
-    private Integer id;
+    @Column(name = "COM_ID", nullable = false)
+    private Integer comId;
 
     @Column(name = "COM_ACCOUNT", nullable = false)
     private String comAccount;
@@ -50,7 +50,7 @@ public class ViewCompanyRoom {
     private String comEmail;
 
     @Column(name = "COM_STATUS", nullable = false)
-    private Boolean comStatus;
+    private byte[] comStatus;
 
     @Column(name = "COM_LONGITUDE", nullable = false)
     private String comLongitude;
@@ -58,14 +58,11 @@ public class ViewCompanyRoom {
     @Column(name = "COM_LATITUDE", nullable = false)
     private String comLatitude;
 
-    @Column(name = "COM_AVATAR", nullable = false)
+    @Column(name = "COM_AVATAR")
     private byte[] comAvatar;
 
     @Column(name = "COM_NEWS_STATUS", nullable = false)
-    private Boolean comNewsStatus;
-
-    @Column(name = "COM_ID", nullable = false)
-    private Integer comId;
+    private byte[] comNewsStatus;
 
     @Column(name = "ROOM_NAME", nullable = false)
     private String roomName;
@@ -80,22 +77,22 @@ public class ViewCompanyRoom {
     private Date roomRelease;
 
     @Column(name = "ROOM_WIFI", nullable = false)
-    private Boolean roomWifi;
+    private byte[] roomWifi;
 
     @Column(name = "ROOM_PET", nullable = false)
-    private Boolean roomPet;
+    private byte[] roomPet;
 
     @Column(name = "ROOM_BREAKFAST", nullable = false)
-    private Boolean roomBreakfast;
+    private byte[] roomBreakfast;
 
     @Column(name = "ROOM_PARKING", nullable = false)
-    private Boolean roomParking;
+    private byte[] roomParking;
 
     @Column(name = "ROOM_SMOKING", nullable = false)
-    private Boolean roomSmoking;
+    private byte[] roomSmoking;
 
     @Column(name = "ROOM_24HOURS", nullable = false)
-    private Boolean room24Hours;
+    private byte[] room24Hours;
 
     @Column(name = "ROOM_STOCK", nullable = false)
     private Integer roomStock;
@@ -107,8 +104,8 @@ public class ViewCompanyRoom {
     private Integer roomPeople;
 
     @Column(name = "ROOM_STATUS", nullable = false)
-    private Boolean roomStatus;
+    private byte[] roomStatus;
 
-    @Column(name = "ROOM_PHOTO", nullable = false)
+    @Column(name = "ROOM_PHOTO")
     private byte[] roomPhoto;
 }

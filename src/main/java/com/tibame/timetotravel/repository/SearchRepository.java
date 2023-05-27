@@ -30,9 +30,4 @@ public interface SearchRepository extends CrudRepository<ViewCompanyRoom, Intege
     @Query(value = findRoomStock, nativeQuery = true)
     public Integer findRoomStock(Integer roomId, String start, String end);
 
-    /**
-     * 根據傳進來的roomId查詢房間的所有評價，回傳一個所有評價的集合
-     */
-    @Query(value = "SELECT ORDER_RANK FROM ORDER_DETAIL WHERE ROOM_ID = ?1", nativeQuery = true)
-    public List<Integer> findRoomRank(Integer roomId);
 }

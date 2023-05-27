@@ -12,13 +12,13 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 @RestController
-@RequestMapping("/search")
+@RequestMapping("/SearchController")
 public class SearchController {
 
     @Autowired
     SearchService searchService;
 
-    @GetMapping("/{keyword}/{people}/{startDate}/{endDate}")
+    @GetMapping("/company/{keyword}/{people}/{startDate}/{endDate}")
     public List<SearchRoom> findAvailableCompany(
             @PathVariable String keyword,
             @PathVariable Integer people,
@@ -28,4 +28,6 @@ public class SearchController {
         System.out.println("收到請求");
         return searchService.findAvailableCompany(keyword, people, startDate, endDate);
     }
+
+
 }

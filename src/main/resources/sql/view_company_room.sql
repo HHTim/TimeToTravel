@@ -51,8 +51,8 @@ SELECT C.*,
        R.ROOM_STATUS,
        R.ROOM_PHOTO
 FROM COMPANY C
-         JOIN ROOM R
-              ON C.ID = R.COM_ID;
+         LEFT JOIN ROOM R
+                   ON C.COM_ID = R.COM_ID;
 
 CREATE VIEW VIEW_COMPANY_ROOM
 AS

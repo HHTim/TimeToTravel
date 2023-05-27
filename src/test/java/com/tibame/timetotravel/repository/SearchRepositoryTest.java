@@ -13,6 +13,9 @@ class SearchRepositoryTest {
     @Autowired
     SearchRepository searchRepository;
 
+    @Autowired
+    OrderDetailRepository orderDetailRepository;
+
     @Test
     public void findAvailableRoomTest() {
         List<ViewCompanyRoom> companies = searchRepository.findCompany("新北市", 1);
@@ -33,7 +36,7 @@ class SearchRepositoryTest {
 
     @Test
     public void findRoomRankTest() {
-        List<Integer> roomRanks = searchRepository.findRoomRank(7);
+        List<Integer> roomRanks = orderDetailRepository.findRoomRank(7);
         System.out.println(roomRanks);
     }
 }
