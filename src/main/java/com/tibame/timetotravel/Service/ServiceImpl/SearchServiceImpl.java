@@ -1,8 +1,8 @@
 package com.tibame.timetotravel.service.ServiceImpl;
 
 import com.tibame.timetotravel.common.SearchRoom;
-import com.tibame.timetotravel.repository.OrderDetailRepository;
 import com.tibame.timetotravel.repository.SearchRepository;
+import com.tibame.timetotravel.repository.ViewUserOrderDetailRepository;
 import com.tibame.timetotravel.service.SearchService;
 import com.tibame.timetotravel.view.ViewCompanyRoom;
 import org.apache.commons.beanutils.BeanUtils;
@@ -19,7 +19,7 @@ public class SearchServiceImpl implements SearchService {
     @Autowired
     private SearchRepository searchRepository;
     @Autowired
-    private OrderDetailRepository orderDetailRepository;
+    private ViewUserOrderDetailRepository viewUserOrderDetailRepository;
 
 
     @Override
@@ -40,7 +40,7 @@ public class SearchServiceImpl implements SearchService {
             if (company.getRoomStock() > orderCount) {
                 // Common Util 複製Entity到DTO
                 BeanUtils.copyProperties(searchRoom, company);
-                List<Integer> roomRank = orderDetailRepository.findRoomRank(roomId);
+                List<Integer> roomRank = viewUserOrderDetailRepository.findRoomRank(roomId);
                 searchRoom.setOrderRanks(roomRank);
                 resultList.add(searchRoom);
             }

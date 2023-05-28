@@ -480,7 +480,7 @@ body {
   cursor: pointer;
 }
 .p-scene__img {
-  width: 25%;
+  width: 30%;
   height: 155px;
   margin: -0.5rem;
   margin-right: 1rem;
@@ -489,8 +489,8 @@ body {
   border-radius: 10px 0 0 10px;
 }
 .p-scene__img img {
-  width: 100%;
-  height: 100%;
+  scale: 1.3;
+  transform-origin: 0 0;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -498,8 +498,7 @@ body {
   transition: all 0.2s ease-in-out;
 }
 .p-scene__card:hover .p-scene__img img {
-  width: 110%;
-  height: 110%;
+  scale: 1.4;
 }
 @media screen and (min-width: 1400px) {
   .p-scene__img {

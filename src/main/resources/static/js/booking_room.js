@@ -26,6 +26,26 @@ function renderRank(rank) {
   return html;
 }
 
+function renderComments(allComments, allOrderRanks, allUserAvatars, allUserNames) {
+  let html = '';
+  for (let i in allUserNames) {
+    html += `<div class="comment__card">
+              <div class="comment__content">
+                <div class="comment__avatar">
+                  <img src="data:image/png;base64,${allUserAvatars[i]}" alt="comment-avatar" />
+                </div>
+                <p class="comment__user">${allUserNames[i]}</p>
+                <ul class="comment__rank">
+                  ${renderRank(allOrderRanks[i])}
+                </ul>
+              </div>
+              <p class="comment__desc">${allComments[i]}</p>
+            </div> 
+    `;
+  }
+  return html;
+}
+
 // 渲染房間
 function renderRooms(rooms) {
   let html = '';
@@ -168,8 +188,19 @@ function renderPrivateScene(privateScenes) {
 async function fetchData() {
   const resp = await fetch('http://localhost:8080/BookingController/booking');
   const data = await resp.json();
-  const { comName, comAddress, roomName, roomDesc, orderComments, orderRanks, allOrderRanks, privateScenes, rooms } =
-    data;
+  const {
+    comName,
+    comAddress,
+    roomName,
+    roomDesc,
+    allComments,
+    orderRanks,
+    allOrderRanks,
+    privateScenes,
+    allUserNames,
+    allUserAvatars,
+    rooms,
+  } = data;
   console.log(data);
   const sum = orderRanks.reduce((curr, acc) => curr + acc, 0);
   // 沒有訂單沒有評價分數，最低就是1
@@ -225,6 +256,9 @@ async function fetchData() {
 
   /* Rooms */
   roomSection.innerHTML = renderRooms(rooms);
+
+  /* Comments */
+  commentSection.innerHTML = renderComments(allComments, allOrderRanks, allUserAvatars, allUserNames);
 }
 
 fetchData();

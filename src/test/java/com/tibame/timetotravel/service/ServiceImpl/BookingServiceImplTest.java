@@ -31,11 +31,11 @@ class BookingServiceImplTest {
             System.out.println(privateScene);
         }
 
-        for (String comment : bookingRoom.getOrderComments()) {
-            System.out.println(comment);
-        }
 
         System.out.println(bookingRoom.getOrderRanks());
+        System.out.println(bookingRoom.getAllUserNames());
+        System.out.println(bookingRoom.getAllComments());
         System.out.println(bookingRoom.getAllOrderRanks());
+        System.out.println(bookingRoom.getAllUserAvatars());
     }
 }

@@ -19,6 +19,9 @@ public class BookingRoom {
     private List<Integer> orderRanks;
     private List<Room> rooms;
     private List<PrivateScene> privateScenes;
-    private List<String> orderComments;
-    private List<List<Integer>> allOrderRanks;
+    private List<String> allComments;
+    private List<Integer> allOrderRanks;
+    private List<byte[]> allUserAvatars;
+    private List<String> allUserNames;
+//    private List<ViewUserOrderDetail> viewUserOrderDetails;
 }

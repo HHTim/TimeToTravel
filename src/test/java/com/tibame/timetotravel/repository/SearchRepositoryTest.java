@@ -14,7 +14,7 @@ class SearchRepositoryTest {
     SearchRepository searchRepository;
 
     @Autowired
-    OrderDetailRepository orderDetailRepository;
+    ViewUserOrderDetailRepository viewUserOrderDetailRepository;
 
     @Test
     public void findAvailableRoomTest() {
@@ -36,7 +36,7 @@ class SearchRepositoryTest {
 
     @Test
     public void findRoomRankTest() {
-        List<Integer> roomRanks = orderDetailRepository.findRoomRank(7);
+        List<Integer> roomRanks = viewUserOrderDetailRepository.findRoomRank(7);
         System.out.println(roomRanks);
     }
 }
