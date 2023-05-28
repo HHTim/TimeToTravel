@@ -473,7 +473,6 @@ body {
 .p-scene__card {
   width: 100%;
   display: flex;
-  align-items: center;
   padding: 0.5rem;
   background-color: #fff;
   border-radius: 10px;
@@ -575,14 +574,14 @@ body {
   border-radius: 10px;
   box-shadow: 0 0 3px #9b9999;
 }
-.room__device > button {
+.room__device {
   border: none;
   background-color: #006caa;
   color: #fff;
   padding: 4px;
   border-radius: 5px;
 }
-.room__device > button:hover {
+.room__device:hover {
   color: #fff;
   background-color: #004c77;
 }
@@ -599,14 +598,14 @@ body {
   color: #fff;
   background-color: #006caa;
 }
-.room__booking > button {
+.room__booking {
   border: none;
   background-color: #006caa;
   color: #fff;
   padding: 4px;
   border-radius: 5px;
 }
-.room__booking > button:hover {
+.room__booking:hover {
   color: #fff;
   background-color: #004c77;
 }
