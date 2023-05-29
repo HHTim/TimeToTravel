@@ -1,4 +1,4 @@
-package com.tibame.timetotravel.Entity;
+package com.tibame.timetotravel.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
