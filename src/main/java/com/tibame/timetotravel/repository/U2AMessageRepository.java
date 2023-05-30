@@ -11,5 +11,5 @@ import java.util.List;
 public interface U2AMessageRepository extends JpaRepository<U2AMessage,Integer> {
 
     @Query(value = "SELECT * FROM USER_TO_ADMIN ORDER BY U2A_SENDING_TIME DESC LIMIT ?1,?2",nativeQuery = true)
-    List<U2AMessage> findByPage(Integer currPage, Integer limit);
+    List<U2AMessage> findByPage(Integer currPage, Integer rows);
 }

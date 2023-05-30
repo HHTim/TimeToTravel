@@ -162,6 +162,11 @@ $(function () {
 
   function cb(start, end) {
     console.log('datechange');
+
+    $('#reportrange span').html(start.format('YYYY-MM-DD') + ' - ' + end.format('YYYY-MM-DD'));
+    choose_start_date = start.format('YYYY-MM-DD');
+    choose_end_date = end.startOf('days').add(1, 'days').format('YYYY-MM-DD');
+
     if (domInitFlag !== true) {
       console.log('start_dateflag = true');
       start_dateflag = true;
@@ -174,12 +179,8 @@ $(function () {
         .click();
     } else {
       domInitFlag = false;
+      getData();
     }
-    $('#reportrange span').html(start.format('YYYY-MM-DD') + ' - ' + end.format('YYYY-MM-DD'));
-    choose_start_date = start.format('YYYY-MM-DD');
-    choose_end_date = end.startOf('days').add(1, 'days').format('YYYY-MM-DD');
-
-    getData();
   }
 
   $('#reportrange').daterangepicker(

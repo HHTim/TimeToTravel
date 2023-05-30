@@ -12,7 +12,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class WebConfig implements WebMvcConfigurer {
     @Autowired
     private CorsHandler corsHandler;
-
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         /*===========================Admin==============================*/
@@ -31,7 +30,7 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addViewController("/search_room").setViewName("forward:/html/search_room.html");
         registry.addViewController("/booking_room").setViewName("forward:/html/booking_room.html");
         registry.addViewController("/booking_paid").setViewName("forward:/html/booking_paid.html");
-
+        registry.addViewController("/company_message_manage").setViewName("forward:/html/company_message_manage.html");
     }
 
     @Override

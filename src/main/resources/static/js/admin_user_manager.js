@@ -44,12 +44,12 @@ $(function () {
             ${
               e.userStatus == false
                 ? `
-                <td>
+                <td class="user-status" data-status=${e.userStatus}>
                   <button class="btn-forbidden">停權</button>
                 </td>
                 `
                 : `
-                <td>
+                <td class="user-status" data-status=${e.userStatus}>
                   <button class="btn-warning">待審核</button>
                 </td>
                 `
@@ -93,12 +93,12 @@ $(function () {
             ${
               e.userStatus == false
                 ? `
-                <td>
+                <td class="user-status" data-status=${e.userStatus}>
                   <button class="btn-forbidden">停權</button>
                 </td>
                 `
                 : `
-                <td>
+                <td class="user-status" data-status=${e.userStatus}>
                   <button class="btn-warning">待審核</button>
                 </td>
                 `
@@ -143,12 +143,12 @@ $(function () {
             ${
               e.userStatus == false
                 ? `
-                <td>
+                <td class="user-status" data-status=${e.userStatus}>
                   <button class="btn-forbidden">停權</button>
                 </td>
                 `
                 : `
-                <td>
+                <td class="user-status" data-status=${e.userStatus}>
                   <button class="btn-warning">待審核</button>
                 </td>
                 `
@@ -169,6 +169,40 @@ $(function () {
             $(this).css('display', 'block');
           }
         });
+      });
+  }
+
+  function updateUserStatus(account, status) {
+    console.log('account:' + account);
+    console.log('status:' + status);
+
+    if (status === 'true') {
+      status = 'false';
+    } else {
+      status = 'true';
+    }
+
+    let url = 'http://localhost:8080/UserController/user/status';
+    const formData = new FormData();
+    formData.append('account', account);
+    formData.append('status', status);
+    let headers = {
+      Accept: 'application/json',
+    };
+    fetch(url, {
+      method: 'PATCH',
+      headers: headers,
+      body: formData,
+    })
+      .then((r) => r.text())
+      .then((d) => {
+        console.log(d);
+        $('.page-link')
+          .filter(function () {
+            return $(this).text() === currentPage.toString();
+          })
+          .click();
+        console.log('刷新當前資料');
       });
   }
 
@@ -290,6 +324,22 @@ $(function () {
         return $(this).text() === currentPage.toString();
       })
       .click();
+  });
+
+  $('tbody').on('click', 'button.btn-forbidden', function (e) {
+    e.stopPropagation();
+    console.log('forbidden click');
+    let account = $(this).closest('tr').find('.data-text').eq(0).text();
+    let status = $(this).closest('tr').find('.user-status').attr('data-status');
+    updateUserStatus(account, status);
+  });
+
+  $('tbody').on('click', 'button.btn-warning', function (e) {
+    e.stopPropagation();
+    console.log('warning click');
+    let account = $(this).closest('tr').find('.data-text').eq(0).text();
+    let status = $(this).closest('tr').find('.user-status').attr('data-status');
+    updateUserStatus(account, status);
   });
 
   cb(start, end);

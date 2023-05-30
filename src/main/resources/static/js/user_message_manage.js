@@ -15,8 +15,9 @@ var startDate = '2023-01-01';
 var endDate = '2023-12-31';
 var start_dateflag = false;
 
-function openLightbox(lightboxId) {
-  $('#' + lightboxId).show();
+function openLightbox(e) {
+  console.log(e);
+  $('#' + e).show();
 }
 
 function getMessageAll() {
@@ -34,8 +35,8 @@ function getMessageAll() {
             <td class="list__date">${e.a2uSendingTime}</td>
             <td class="list__title">${e.a2uMsgTitle}</td>
             <td class="list__detail">
-              <button class="button__detl" onclick="openLightbox('lightbox1')">查看</button>
-              <div id="lightbox1" class="lightbox">
+              <button class="button__detl" onclick="openLightbox('lightbox${e.a2uMsgId}')">查看</button>
+              <div id="lightbox${e.a2uMsgId}" class="lightbox">
                 <div class="lightbox__content">
                   <span class="close">&times;</span>
                   <h2>${e.a2uMsgTitle}</h2>
@@ -89,8 +90,8 @@ function getMessageByDate() {
             <td class="list__date">${e.a2uSendingTime}</td>
             <td class="list__title">${e.a2uMsgTitle}</td>
             <td class="list__detail">
-              <button class="button__detl" onclick="openLightbox('lightbox1')">查看</button>
-              <div id="lightbox1" class="lightbox">
+              <button class="button__detl" onclick="openLightbox('lightbox${e.a2uMsgId}')">查看</button>
+              <div id="lightbox${e.a2uMsgId}" class="lightbox">
                 <div class="lightbox__content">
                   <span class="close">&times;</span>
                   <h2>${e.a2uMsgTitle}</h2>
@@ -194,6 +195,11 @@ $(document).ready(function () {
     console.log('inputEndDate change');
     endDate = $(this).val();
     start_dateflag = true;
+    let selectedDate = new Date(endDate);
+    selectedDate.setDate(selectedDate.getDate() + 1);
+
+    // 格式化日期字串為 yyyy-mm-dd 格式
+    endDate = selectedDate.toISOString().split('T')[0];
     $('.page-link')
       .filter(function () {
         currentPage = 1;

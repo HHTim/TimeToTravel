@@ -7,6 +7,7 @@ import com.tibame.timetotravel.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -20,9 +21,26 @@ public class UserServiceImpl implements UserService {
     @Autowired
     PageBean<User> pageBean;
 
+    @Transactional
     @Override
     public void insert(User user) {
         userRepository.save(user);
+    }
+
+    @Transactional
+    @Override
+    public String updateByAccount(String account) {
+            User user = userRepository.findByUserAccount(account);
+            user.setUserNewsStatus(1);
+            userRepository.save(user);
+            return account;
+    }
+
+    @Transactional
+    @Override
+    public String updateUserStatusByAccount(String account, Integer status) {
+        userRepository.updateUserStatus(account, status);
+        return "更新User: " + account + "的Status成功";
     }
 
     @Override
@@ -68,7 +86,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> getAll() {
+    public List<User> findAll() {
         return userRepository.findAll();
     }
 }

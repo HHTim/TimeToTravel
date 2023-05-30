@@ -58,5 +58,5 @@ public class Company {
     private byte[] comAvatar;
 
     @Column(name = "COM_NEWS_STATUS", nullable = false)
-    private Boolean comNewsStatus;
+    private Integer comNewsStatus;
 }

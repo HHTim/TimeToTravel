@@ -166,7 +166,7 @@ main.main {
   width: 100%;
   height: 100%;
   border: none;
-  background-image: url("../images/info.svg");
+  background-image: url("../images/notify-normal.png");
   background-color: transparent;
   background-size: contain;
   background-position: center;
@@ -475,7 +475,7 @@ main.main {
 .table-container {
   display: flex;
   width: 100%;
-  height: 60dvh;
+  min-height: 60dvh;
   margin-top: 1%;
   background-color: #dfdcdc;
   border-radius: 10px;

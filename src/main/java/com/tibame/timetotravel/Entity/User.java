@@ -53,11 +53,5 @@ public class User {
     private Boolean userStatus;
 
     @Column(name = "USER_NEWS_STATUS", nullable = false)
-    private Boolean userNewsStatus;
-
-    public User(String userName, String userPhone, String userEmail) {
-        this.userName = userName;
-        this.userPhone = userPhone;
-        this.userEmail = userEmail;
-    }
+    private Integer userNewsStatus;
 }

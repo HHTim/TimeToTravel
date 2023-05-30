@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RestController
 @RequestMapping("/UserController")
@@ -20,6 +22,15 @@ public class UserController {
     public String insert(@RequestBody User user){
         userService.insert(user);
         return "執行資料庫的 Insert 操作";
+    }
+
+    @PatchMapping(value = "/user/status", consumes = "multipart/form-data")
+    public String updateUserStatus(@RequestParam("account") String account,
+                                   @RequestParam("status") String status){
+        System.out.println("接收到的User帳號為:"+account);
+        System.out.println("接收到的User status為:"+status);
+
+        return userService.updateUserStatusByAccount(account, ("true".equals(status) ? 1 : 0));
     }
 
     @GetMapping("/user/page/{currPage}/{rows}")
@@ -54,4 +65,8 @@ public class UserController {
 //        return userService.findBeanPageByDateRange(startDate, endDate , currPage, rows);
 //    }
 
+    @GetMapping("/all")
+    public List<User> findAll() {
+        return userService.findAll();
+    }
 }
