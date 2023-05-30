@@ -1,9 +1,9 @@
 package com.tibame.timetotravel.service.ServiceImpl;
 
-import com.tibame.timetotravel.entity.Ann;
-import com.tibame.timetotravel.service.AdminAnnService;
 import com.tibame.timetotravel.common.PageBean;
+import com.tibame.timetotravel.entity.Ann;
 import com.tibame.timetotravel.repository.AdminAnnRepository;
+import com.tibame.timetotravel.service.AdminAnnService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -48,8 +48,8 @@ public class AdminAnnServiceImpl implements AdminAnnService {
     }
 
     @Override
-    public List<Ann> findByDateRange(String startDate, String endDate, Integer currPage, Integer limit) {
-        return adminAnnRepository.findByDateRange(startDate,endDate,currPage,limit);
+    public List<Ann> findByDateRange(String startDate, String endDate, Integer currPage, Integer rows) {
+        return adminAnnRepository.findByDateRange(startDate,endDate,currPage,rows);
     }
 
     public Integer findAllDateRange(String startDate, String endDate) {
@@ -57,8 +57,8 @@ public class AdminAnnServiceImpl implements AdminAnnService {
     }
 
     @Override
-    public List<Ann> findByKeyWords(String keyword, Integer currPage, Integer limit) {
-        return adminAnnRepository.findByKeyWords(keyword,currPage,limit);
+    public List<Ann> findByKeyWords(String keyword, Integer currPage, Integer rows) {
+        return adminAnnRepository.findByKeyWords(keyword,currPage,rows);
     }
 
     @Override

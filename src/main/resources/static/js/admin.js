@@ -37,7 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   tab1.on('click', function () {
-    console.log('ishfs');
     $(this).css('background-color', '#4d4f52');
     $(this).css('border-color', '#4d4f52');
     tab2.css('background-color', '#bbb8b8');

@@ -53,5 +53,5 @@ public class User {
     private Boolean userStatus;
 
     @Column(name = "USER_NEWS_STATUS", nullable = false)
-    private Boolean userNewsStatus;
+    private Integer userNewsStatus;
 }

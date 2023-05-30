@@ -22,7 +22,7 @@ function openLightbox(e) {
 
 function getMessageAll() {
   const tbody = document.querySelector('tbody');
-  let url = 'http://localhost:8080/Admin2UserController/message/a2u/view/page/' + currentPage.toString() + '/' + limit;
+  let url = 'http://localhost:8080/Admin2ComController/message/a2c/view/page/' + currentPage.toString() + '/' + limit;
   fetch(url)
     .then((r) => r.json())
     .then((d) => {
@@ -32,18 +32,18 @@ function getMessageAll() {
         .map((e) => {
           return `
           <tr class="list__message">
-            <td class="list__date">${e.a2uSendingTime}</td>
-            <td class="list__title">${e.a2uMsgTitle}</td>
+            <td class="list__date">${e.a2cSendingTime}</td>
+            <td class="list__title">${e.a2cMsgTitle}</td>
             <td class="list__detail">
-              <button class="button__detl" onclick="openLightbox('lightbox${e.a2uMsgId}')">查看</button>
-              <div id="lightbox${e.a2uMsgId}" class="lightbox">
+              <button class="button__detl" onclick="openLightbox('lightbox${e.a2cMsgId}')">查看</button>
+              <div id="lightbox${e.a2cMsgId}" class="lightbox">
                 <div class="lightbox__content">
                   <span class="close">&times;</span>
-                  <h2>${e.a2uMsgTitle}</h2>
-                  <p class="text__time">${e.a2uSendingTime}</p>
+                  <h2>${e.a2cMsgTitle}</h2>
+                  <p class="text__time">${e.a2cSendingTime}</p>
                   <div class="lightbox__text">
                     <p>
-                    ${e.a2uMsgContent}
+                    ${e.a2cMsgContent}
                     </p>
                   </div>
                 </div>
@@ -69,7 +69,7 @@ function getMessageAll() {
 function getMessageByDate() {
   const tbody = document.querySelector('tbody');
   let url =
-    'http://localhost:8080/Admin2UserController/message/a2u/view/page/dateRange/' +
+    'http://localhost:8080/Admin2ComController/message/a2c/view/page/dateRange/' +
     currentPage.toString() +
     '/' +
     limit +
@@ -87,18 +87,18 @@ function getMessageByDate() {
         .map((e) => {
           return `
           <tr class="list__message">
-            <td class="list__date">${e.a2uSendingTime}</td>
-            <td class="list__title">${e.a2uMsgTitle}</td>
+            <td class="list__date">${e.a2cSendingTime}</td>
+            <td class="list__title">${e.a2cMsgTitle}</td>
             <td class="list__detail">
-              <button class="button__detl" onclick="openLightbox('lightbox${e.a2uMsgId}')">查看</button>
-              <div id="lightbox${e.a2uMsgId}" class="lightbox">
+              <button class="button__detl" onclick="openLightbox('lightbox${e.a2cMsgId}')">查看</button>
+              <div id="lightbox${e.a2cMsgId}" class="lightbox">
                 <div class="lightbox__content">
                   <span class="close">&times;</span>
-                  <h2>${e.a2uMsgTitle}</h2>
-                  <p class="text__time">${e.a2uSendingTime}</p>
+                  <h2>${e.a2cMsgTitle}</h2>
+                  <p class="text__time">${e.a2cSendingTime}</p>
                   <div class="lightbox__text">
                     <p>
-                    ${e.a2uMsgContent}
+                    ${e.a2cMsgContent}
                     </p>
                   </div>
                 </div>

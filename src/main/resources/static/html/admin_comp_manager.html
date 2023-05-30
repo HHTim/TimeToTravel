@@ -106,18 +106,18 @@
             <div class="top-container-up">
               <div class="left-container">
                 <span>商家帳號</span>
-                <input type="text" class="form-control form-input" placeholder="" />
+                <input id="comAccountKeyword" type="text" class="form-control form-input" placeholder="" />
               </div>
               <div class="right-container">
                 <span>商家名稱</span>
-                <input type="text" class="form-control form-input" placeholder="" />
+                <input id="comNameKeyword" type="text" class="form-control form-input" placeholder="" />
               </div>
             </div>
 
             <div class="top-container-down">
               <div class="left-container">
                 <span>負責人</span>
-                <input type="text" class="form-control form-input" placeholder="" />
+                <input id="comManagerKeyword" type="text" class="form-control form-input" placeholder="" />
               </div>
               <div class="right-container">
                 <span>狀態</span>
@@ -129,7 +129,7 @@
               </div>
             </div>
             <div class="row justify-content-center align-items-center">
-              <input class="btn-search" type="button" value="搜尋" />
+              <input class="btn-search" type="button" value="搜尋全部" />
             </div>
             <!-- <h2 class="subtitle">消費者列表</h2> -->
             <div class="result-text">搜尋結果</div>
@@ -147,7 +147,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
+                  <!-- <tr>
                     <td class="data-text">sdcscd</td>
                     <td class="data-text">sdcscd</td>
                     <td class="data-text">sdcscd</td>
@@ -182,9 +182,72 @@
                     <td class="data-text">sdcscd</td>
                     <td><button class="btn-warning">待審核</button></td>
                     <td><button class="btn-query">查詢</button></td>
-                  </tr>
+                  </tr> -->
                 </tbody>
               </table>
+            </div>
+
+            <div class="pages">
+              <ul class="pagination pt-5 justify-content-center">
+                <li class="prev page-item">
+                  <a class="page-link" href="javascript:;" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                  </a>
+                </li>
+                <li class="page-item active">
+                  <a class="page-link" href="javascript:;">1</a>
+                </li>
+                <li class="page-item" style="display: none">
+                  <a class="page-link" href="javascript:;">2</a>
+                </li>
+                <li class="page-item" style="display: none">
+                  <a class="page-link" href="javascript:;">3</a>
+                </li>
+                <li class="page-item" style="display: none">
+                  <a class="page-link" href="javascript:;">4</a>
+                </li>
+                <li class="page-item" style="display: none">
+                  <a class="page-link" href="javascript:;">5</a>
+                </li>
+                <li class="page-item" style="display: none">
+                  <a class="page-link" href="javascript:;">6</a>
+                </li>
+                <li class="page-item" style="display: none">
+                  <a class="page-link" href="javascript:;">7</a>
+                </li>
+                <li class="page-item" style="display: none">
+                  <a class="page-link" href="javascript:;">8</a>
+                </li>
+                <li class="page-item" style="display: none">
+                  <a class="page-link" href="javascript:;">9</a>
+                </li>
+                <li class="page-item" style="display: none">
+                  <a class="page-link" href="javascript:;">10</a>
+                </li>
+                <li class="page-item" style="display: none">
+                  <a class="page-link" href="javascript:;">11</a>
+                </li>
+                <li class="page-item" style="display: none">
+                  <a class="page-link" href="javascript:;">12</a>
+                </li>
+                <li class="page-item" style="display: none">
+                  <a class="page-link" href="javascript:;">13</a>
+                </li>
+                <li class="page-item" style="display: none">
+                  <a class="page-link" href="javascript:;">14</a>
+                </li>
+                <li class="page-item" style="display: none">
+                  <a class="page-link" href="javascript:;">15</a>
+                </li>
+                <li class="page-item" style="display: none">
+                  <a class="page-link" href="javascript:;">16</a>
+                </li>
+                <li class="next page-item">
+                  <a class="page-link" href="javascript:;" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                  </a>
+                </li>
+              </ul>
             </div>
           </main>
           <!-- Main End -->

@@ -11,5 +11,5 @@ import java.util.List;
 public interface A2UMessageRepository extends JpaRepository<A2UMessage,Integer> {
 
     @Query(value = "SELECT * FROM ADMIN_TO_USER ORDER BY A2U_SENDING_TIME DESC LIMIT ?1,?2",nativeQuery = true)
-    List<A2UMessage> findByPage(Integer currPage, Integer limit);
+    List<A2UMessage> findByPage(Integer currPage, Integer rows);
 }

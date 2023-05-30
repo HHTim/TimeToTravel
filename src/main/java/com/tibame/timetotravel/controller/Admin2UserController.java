@@ -3,7 +3,7 @@ package com.tibame.timetotravel.controller;
 import com.tibame.timetotravel.common.PageBean;
 import com.tibame.timetotravel.entity.A2UMessage;
 import com.tibame.timetotravel.service.A2UMessageService;
-
+import com.tibame.timetotravel.service.UserService;
 import com.tibame.timetotravel.view.A2UMsgView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -18,12 +18,22 @@ public class Admin2UserController {
     @Qualifier("A2UMessageService")
     A2UMessageService a2uMessageService;
 
+    @Autowired
+    @Qualifier("UserService")
+    UserService userService;
+
     @PostMapping("/message")
     public String insert(@RequestBody A2UMessage message){
         System.out.println("執行資料庫Insert");
-        System.out.println("+++++++++++++++" + message);
         a2uMessageService.insert(message);
         return "執行資料庫的 Insert 操作";
+    }
+
+    @PatchMapping(value = "/userAccount", consumes = "multipart/form-data")
+    public String update(@RequestParam("account") String account){
+        System.out.println("接收到的帳號為:"+account);
+        String act = userService.updateByAccount(account);
+        return "更新會員帳號: " + act + "的消息狀態";
     }
 
     @GetMapping("/message/page/{currPage}/{rows}")

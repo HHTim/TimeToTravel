@@ -11,5 +11,5 @@ import java.util.List;
 public interface C2AMessageRepository extends JpaRepository<C2AMessage,Integer> {
 
     @Query(value = "SELECT * FROM COM_TO_ADMIN ORDER BY C2A_SENDING_TIME DESC LIMIT ?1,?2",nativeQuery = true)
-    List<C2AMessage> findByPage(Integer currPage, Integer limit);
+    List<C2AMessage> findByPage(Integer currPage, Integer rows);
 }

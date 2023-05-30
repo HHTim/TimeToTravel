@@ -3,6 +3,7 @@ package com.tibame.timetotravel.controller;
 import com.tibame.timetotravel.common.PageBean;
 import com.tibame.timetotravel.entity.A2CMessage;
 import com.tibame.timetotravel.service.A2CMessageService;
+import com.tibame.timetotravel.service.CompanyService;
 import com.tibame.timetotravel.view.A2CMsgView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -16,6 +17,10 @@ public class Admin2ComController {
     @Qualifier("A2CMessageService")
     A2CMessageService a2cMessageService;
 
+    @Autowired
+    @Qualifier("CompanyService")
+    CompanyService companyService;
+
     @PostMapping("/message")
     public String insert(@RequestBody A2CMessage message){
         System.out.println("執行資料庫Insert");
@@ -24,6 +29,12 @@ public class Admin2ComController {
         return "執行資料庫的 Insert 操作";
     }
 
+    @PatchMapping(value = "/comName", consumes = "multipart/form-data")
+    public String update(@RequestParam("comName") String comName){
+        System.out.println("接收到的廠商名為:"+comName);
+        String act = companyService.updateByComName(comName);
+        return "更新廠商: " + act + "的消息狀態";
+    }
     @GetMapping("/message/page/{currPage}/{rows}")
     public PageBean<A2CMessage> readByPage(@PathVariable Integer currPage, @PathVariable Integer rows){
         System.out.println("分頁搜尋");

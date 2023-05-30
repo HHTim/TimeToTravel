@@ -11,5 +11,5 @@ import java.util.List;
 public interface A2CMessageRepository extends JpaRepository<A2CMessage,Integer> {
 
     @Query(value = "SELECT * FROM ADMIN_TO_COM ORDER BY A2C_SENDING_TIME DESC LIMIT ?1,?2",nativeQuery = true)
-    List<A2CMessage> findByPage(Integer currPage, Integer limit);
+    List<A2CMessage> findByPage(Integer currPage, Integer rows);
 }
