@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class BookingServiceImpl implements BookingService {
@@ -74,6 +75,9 @@ public class BookingServiceImpl implements BookingService {
 
             // 將目前這間房間查回來的評論再跑迴圈，將評論、分數、頭像放到一維陣列中
             for (ViewUserOrderDetail order : orders) {
+                // 略過沒有評價分數與評論的訂單
+                if (Objects.isNull(order.getOrderComment())) continue;
+
                 comments.add(order.getOrderComment());
                 ranks.add(order.getOrderRank());
                 avatars.add(order.getUserAvatar());

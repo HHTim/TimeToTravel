@@ -330,7 +330,7 @@ body {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  scale: 0.25;
+  scale: 0.38;
   transform-origin: 0 0;
 }
 .order__content {
@@ -360,7 +360,7 @@ body {
 .order__detail {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-self: flex-end;
   margin-top: 1rem;
 }
@@ -412,7 +412,7 @@ body {
   box-shadow: 0 0 3px #9b9999;
 }
 .journey__img img {
-  scale: 0.25;
+  scale: 0.35;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -421,7 +421,7 @@ body {
   transition: all 0.2s ease-in-out;
 }
 a:hover .journey__img img {
-  scale: 0.28;
+  scale: 0.38;
 }
 @media screen and (max-width: 992px) {
   .journey a {
