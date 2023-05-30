@@ -375,22 +375,6 @@ div.nav-btn div.search-name input {
   height: 3rem;
 }
 
-.primary__scene__type {
-  display: flex;
-  justify-content: end;
-}
-.primary__scene__type__options {
-  border-radius: 5px;
-  border-color: #3d8ebd;
-  padding: 0 10px;
-  outline-style: none;
-  font-weight: bold;
-  height: 3rem;
-  border-style: none;
-  border: 2px solid #3d8ebd;
-  margin-right: 1.5rem;
-}
-
 .search__area {
   display: flex;
   justify-content: end;
@@ -425,29 +409,26 @@ div.manage-type div {
   border-radius: 10px 10px 0 0;
 }
 
-.primary__scene__table {
-  border-top: 3px solid #004c77;
+.r4 {
+  border-bottom: 3px solid #004c77;
 }
 
-th,
+th {
+  text-align: center;
+  font-weight: bold;
+  font-size: x-large;
+}
+
 td {
   text-align: center;
   font-weight: bold;
 }
+td div {
+  text-align: center;
+}
 
 tbody tr {
   height: 50px;
-}
-
-.primary__scene__status {
-  border-radius: 5px;
-  border-color: #3d8ebd;
-  padding: 0 10px;
-  outline-style: none;
-  font-weight: bold;
-  height: 2rem;
-  border-style: none;
-  border: 2px solid #3d8ebd;
 }
 
 .-ontype {
@@ -458,11 +439,16 @@ tbody tr {
   color: #fff;
 }
 
-.table-wrap {
-  text-align: start;
-  width: 70%;
-  white-space: normal;
-  word-wrap: break-word;
-  word-break: break-all;
-  font-size: small;
+.private__scene__delete {
+  padding: 5px;
+  font-weight: bold;
+  width: 60px;
+  border: 1px solid #bbb8b8;
+  border-radius: 10px;
+  background-color: brown;
+  color: #fff;
+}
+.private__scene__delete:hover {
+  background-color: red;
+  color: #fff;
 }

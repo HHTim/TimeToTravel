@@ -93,7 +93,7 @@ main.main div.decorator {
 	}
 }
 
-.gift__name {
+.journey__name {
 	display: flex;
 	margin: 2rem auto 3rem 1rem;
 	position: relative;
@@ -124,18 +124,16 @@ main.main div.decorator {
 	}
 }
 
-.gift__stock {
+.journey__price {
 	display: flex;
-	margin: 2rem auto;
+	margin: 2rem auto 3rem 1rem;
+	position: relative;
 
 	&__title {
+		margin: auto 1rem auto 0;
 		font-weight: bold;
-		margin-left: 1rem;
 		white-space: nowrap;
-		display: flex;
-		align-items: center;
 	}
-
 	& input {
 		border-radius: $input-radius;
 		border-color: $admin-aside-blue;
@@ -144,58 +142,11 @@ main.main div.decorator {
 		border: 2px solid $admin-aside-blue;
 		font-weight: bold;
 		height: 3rem;
-		margin-left: 5.5rem;
+		margin-left: 4.5rem;
 	}
 }
 
-.gift__type {
-	display: flex;
-	margin: 2rem auto 2rem auto;
-
-	&__title {
-		font-weight: bold;
-		margin-left: 1rem;
-		white-space: nowrap;
-		display: flex;
-		align-items: center;
-	}
-
-	&__option {
-		border-radius: $input-radius;
-		border-color: $admin-aside-blue;
-		padding: 0 10px;
-		border-style: none;
-		border: 2px solid $admin-aside-blue;
-		font-weight: bold;
-		height: 3rem;
-		margin-left: 5.5rem;
-		width: 226px;
-	}
-}
-
-.gift__price {
-	display: flex;
-	margin-left: 1rem;
-
-	&__title {
-		font-weight: bold;
-		white-space: nowrap;
-		display: flex;
-		align-items: center;
-	}
-
-	& input {
-		border-radius: $input-radius;
-		margin-left: 5.5rem;
-		border-color: $admin-aside-blue;
-		padding: 0 10px;
-		border-style: none;
-		border: 2px solid $admin-aside-blue;
-		font-weight: bold;
-		height: 3rem;
-	}
-}
-.gift__photo {
+.journey__photo {
 	display: flex;
 	margin: 1rem auto 1.5rem 1rem;
 	height: 10rem;
@@ -224,9 +175,10 @@ main.main div.decorator {
 	}
 }
 
-.gift__description {
+.journey__description {
 	display: flex;
 	margin-left: 1rem;
+	// margin-top: 6.5rem;
 	&__title {
 		font-weight: bold;
 		white-space: nowrap;

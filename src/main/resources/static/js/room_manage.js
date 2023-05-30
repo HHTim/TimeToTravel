@@ -15,7 +15,7 @@ window.addEventListener('load', function () {
 
 	/* 架上商品 */
 	roomsOnShelve.addEventListener('click', function () {
-		fetch('http://localhost:8080/roomController/room')
+		fetch('/roomController/room')
 			.then((resp) => resp.json())
 			.then((body) => {
 				tbody.innerHTML = body
@@ -41,13 +41,14 @@ window.addEventListener('load', function () {
 							  `;
 						}
 					})
+					.reverse()
 					.join('');
 			});
 	});
 
 	/* 未上架商品 */
 	roomsOffShelve.addEventListener('click', function () {
-		fetch('http://localhost:8080/roomController/room')
+		fetch('/roomController/room')
 			.then((resp) => resp.json())
 			.then((body) => {
 				tbody.innerHTML = body
@@ -73,6 +74,7 @@ window.addEventListener('load', function () {
 							  `;
 						}
 					})
+					.reverse()
 					.join('');
 			});
 	});
@@ -115,7 +117,7 @@ window.addEventListener('load', function () {
 			// console.log(roomId); // 每個選到的房型id
 			let requestData = { roomStatus: roomStatus }; // 這裡的欄位要對應Entity屬性
 
-			fetch('http://localhost:8080/roomController/room/' + roomId, {
+			fetch('/roomController/room/' + roomId, {
 				method: 'PUT',
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify(requestData),
@@ -135,7 +137,7 @@ window.addEventListener('load', function () {
 			alert('請輸入有效關鍵字');
 			window.location.reload();
 		} else {
-			fetch('http://localhost:8080/roomController/room/' + searchInput)
+			fetch('/roomController/room/' + searchInput)
 				.then((resp) => resp.json())
 				.then((body) => {
 					if (body.length === 0) {
@@ -168,6 +170,7 @@ window.addEventListener('load', function () {
               						</tr>
               					`;
 							})
+							.reverse()
 							.join('');
 					}
 				});
@@ -176,7 +179,7 @@ window.addEventListener('load', function () {
 
 	/* 找全部 */
 	function findAll() {
-		fetch('http://localhost:8080/roomController/room')
+		fetch('/roomController/room')
 			.then((resp) => resp.json())
 			.then((body) => {
 				tbody.innerHTML = body
@@ -205,13 +208,14 @@ window.addEventListener('load', function () {
 					</tr>
 				`;
 					})
+					.reverse()
 					.join('');
 			});
 	}
 
 	/* 房型種類 */
 	function findByType(roomTypeValue) {
-		fetch('http://localhost:8080/roomController/room/roomType/' + roomTypeValue)
+		fetch('/roomController/room/roomType/' + roomTypeValue)
 			.then((resp) => resp.json())
 			.then((body) => {
 				tbody.innerHTML = body
@@ -239,6 +243,7 @@ window.addEventListener('load', function () {
             				</tr>
           				`;
 					})
+					.reverse()
 					.join('');
 			});
 	}

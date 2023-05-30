@@ -429,7 +429,12 @@ div.manage-type div {
   border-top: 3px solid #004c77;
 }
 
-th,
+th {
+  text-align: center;
+  font-weight: bold;
+  font-size: x-large;
+}
+
 td {
   text-align: center;
   font-weight: bold;

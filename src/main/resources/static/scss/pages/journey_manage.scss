@@ -17,12 +17,9 @@ main.main {
 		0 5px 5px 3px rgba(172, 164, 164, 0.5), 0 -5px 5px 3px rgba(172, 164, 164, 0.5);
 }
 
-h3.subtitle {
-	display: flex;
-	justify-content: space-around;
-	font-size: x-large;
+h3 {
+	cursor: pointer;
 }
-
 .reset__area {
 	display: flex;
 	justify-content: end;
@@ -91,23 +88,6 @@ div.nav-btn div.search-name input {
 	height: 3rem;
 }
 
-.gift__type {
-	display: flex;
-	justify-content: end;
-
-	&__options {
-		border-radius: $input-radius;
-		border-color: $admin-aside-blue;
-		padding: 0 10px;
-		outline-style: none;
-		font-weight: bold;
-		height: 3rem;
-		border-style: none;
-		border: 2px solid $admin-aside-blue;
-		margin-right: 1.5rem;
-	}
-}
-
 .search__area {
 	display: flex;
 	justify-content: end;
@@ -145,8 +125,8 @@ div.manage-type div {
 	border-radius: $border-radius $border-radius 0 0;
 }
 
-.gift-table {
-	border-top: 3px solid $primary-blue-hover;
+.r4 {
+	border-bottom: 3px solid $primary-blue-hover;
 }
 
 th {
@@ -158,21 +138,16 @@ th {
 td {
 	text-align: center;
 	font-weight: bold;
+
+	& div {
+		text-align: center;
+	}
 }
 
 tbody tr {
 	height: 50px;
 }
-.gift__status {
-	border-radius: $input-radius;
-	border-color: $admin-aside-blue;
-	padding: 0 10px;
-	outline-style: none;
-	font-weight: bold;
-	height: 2rem;
-	border-style: none;
-	border: 2px solid $admin-aside-blue;
-}
+
 .-ontype {
 	background-color: $primary-blue !important;
 	color: $white;
@@ -181,8 +156,13 @@ tbody tr {
 		color: $white;
 	}
 }
-
-h3 {
-	display: flex;
-	justify-content: space-around;
+.journey__status {
+	border-radius: $input-radius;
+	border-color: $admin-aside-blue;
+	padding: 0 10px;
+	outline-style: none;
+	font-weight: bold;
+	height: 2rem;
+	border-style: none;
+	border: 2px solid $admin-aside-blue;
 }

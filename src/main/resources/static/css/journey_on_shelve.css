@@ -373,12 +373,12 @@ main.main div.decorator {
   color: #fff;
 }
 
-.gift__name {
+.journey__name {
   display: flex;
   margin: 2rem auto 3rem 1rem;
   position: relative;
 }
-.gift__name::after {
+.journey__name::after {
   content: "";
   height: 5px;
   width: 100%;
@@ -387,12 +387,12 @@ main.main div.decorator {
   left: 0;
   bottom: -50%;
 }
-.gift__name__title {
+.journey__name__title {
   margin: auto 1rem auto 0;
   font-weight: bold;
   white-space: nowrap;
 }
-.gift__name input {
+.journey__name input {
   border-radius: 5px;
   border-color: #3d8ebd;
   padding: 0 10px;
@@ -403,18 +403,17 @@ main.main div.decorator {
   margin-left: 4.5rem;
 }
 
-.gift__stock {
+.journey__price {
   display: flex;
-  margin: 2rem auto;
+  margin: 2rem auto 3rem 1rem;
+  position: relative;
 }
-.gift__stock__title {
+.journey__price__title {
+  margin: auto 1rem auto 0;
   font-weight: bold;
-  margin-left: 1rem;
   white-space: nowrap;
-  display: flex;
-  align-items: center;
 }
-.gift__stock input {
+.journey__price input {
   border-radius: 5px;
   border-color: #3d8ebd;
   padding: 0 10px;
@@ -422,66 +421,22 @@ main.main div.decorator {
   border: 2px solid #3d8ebd;
   font-weight: bold;
   height: 3rem;
-  margin-left: 5.5rem;
+  margin-left: 4.5rem;
 }
 
-.gift__type {
-  display: flex;
-  margin: 2rem auto 2rem auto;
-}
-.gift__type__title {
-  font-weight: bold;
-  margin-left: 1rem;
-  white-space: nowrap;
-  display: flex;
-  align-items: center;
-}
-.gift__type__option {
-  border-radius: 5px;
-  border-color: #3d8ebd;
-  padding: 0 10px;
-  border-style: none;
-  border: 2px solid #3d8ebd;
-  font-weight: bold;
-  height: 3rem;
-  margin-left: 5.5rem;
-  width: 226px;
-}
-
-.gift__price {
-  display: flex;
-  margin-left: 1rem;
-}
-.gift__price__title {
-  font-weight: bold;
-  white-space: nowrap;
-  display: flex;
-  align-items: center;
-}
-.gift__price input {
-  border-radius: 5px;
-  margin-left: 5.5rem;
-  border-color: #3d8ebd;
-  padding: 0 10px;
-  border-style: none;
-  border: 2px solid #3d8ebd;
-  font-weight: bold;
-  height: 3rem;
-}
-
-.gift__photo {
+.journey__photo {
   display: flex;
   margin: 1rem auto 1.5rem 1rem;
   height: 10rem;
 }
-.gift__photo__title {
+.journey__photo__title {
   font-weight: bold;
   white-space: nowrap;
   display: flex;
   align-items: center;
   height: 100%;
 }
-.gift__photo__preview {
+.journey__photo__preview {
   border: 1px dashed #b3b3b3;
   height: 10rem;
   width: 230px;
@@ -490,22 +445,22 @@ main.main div.decorator {
   justify-content: center;
   align-items: center;
 }
-.gift__photo__preview:empty:before {
+.journey__photo__preview:empty:before {
   content: attr(placeholder);
   color: #b3b3b3;
 }
 
-.gift__description {
+.journey__description {
   display: flex;
   margin-left: 1rem;
 }
-.gift__description__title {
+.journey__description__title {
   font-weight: bold;
   white-space: nowrap;
   display: flex;
   align-items: start;
 }
-.gift__description textarea {
+.journey__description textarea {
   border-radius: 5px;
   margin-left: 5.5rem;
   border-color: #3d8ebd;

@@ -146,8 +146,14 @@ div.manage-type div {
 	border-top: 3px solid $primary-blue-hover;
 }
 
-th,
-td {
+th
+ {
+	text-align: center;
+	font-weight: bold;
+	font-size: x-large;
+}
+
+td{
 	text-align: center;
 	font-weight: bold;
 }
