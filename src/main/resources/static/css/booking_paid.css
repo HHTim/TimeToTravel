@@ -387,15 +387,19 @@ body {
 }
 .journey a {
   width: 49%;
+  background-color: #dfdcdc;
+  border-radius: 10px;
+  box-shadow: 0 0 3px #9b9999;
 }
 .journey__card {
   width: 100%;
-  background-color: #dfdcdc;
-  border-radius: 10px;
   display: flex;
   padding: 0.5rem;
   margin: 0;
-  box-shadow: 0 0 3px #9b9999;
+}
+.journey .active {
+  border: 1px solid #006caa;
+  background-color: #afebff;
 }
 .journey__img {
   position: relative;
@@ -467,6 +471,10 @@ a:hover .journey__img img {
   flex-wrap: wrap;
   margin-bottom: 1rem;
 }
+.booking input {
+  width: 50%;
+  padding: 0 0.5rem;
+}
 .booking__firstname {
   width: 50%;
   padding: 0.5rem 0;
@@ -494,6 +502,12 @@ a:hover .journey__img img {
   flex-wrap: wrap;
   align-items: baseline;
   position: relative;
+  box-shadow: none;
+}
+.booking__method input {
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 0 0.5rem;
 }
 .booking__method p {
   width: 100%;

@@ -103,7 +103,7 @@
         <!-- journey -->
         <h2 class="subtitle">考慮我們的私房特別行程</h2>
         <section class="journey">
-          <a href="#">
+          <a role="button" data-id="1">
             <div class="journey__card">
               <div class="journey__img"><img src="../images/hotel.jpg" alt="journey__img" /></div>
               <div class="journey__content">
@@ -115,7 +115,7 @@
               </div>
             </div>
           </a>
-          <a href="#">
+          <a role="button" data-id="2">
             <div class="journey__card">
               <div class="journey__img"><img src="../images/hotel.jpg" alt="journey__img" /></div>
               <div class="journey__content">
@@ -127,7 +127,7 @@
               </div>
             </div>
           </a>
-          <a href="#">
+          <a role="button" data-id="3">
             <div class="journey__card">
               <div class="journey__img"><img src="../images/hotel.jpg" alt="journey__img" /></div>
               <div class="journey__content">
@@ -139,7 +139,7 @@
               </div>
             </div>
           </a>
-          <a href="#">
+          <a role="button" data-id="4">
             <div class="journey__card">
               <div class="journey__img"><img src="../images/hotel.jpg" alt="journey__img" /></div>
               <div class="journey__content">
@@ -158,13 +158,13 @@
           <h3>房客資料</h3>
           <small>房客姓名需與辦理入住時使用的有效證件一致</small>
           <div class="booking__firstname">
-            <p class="booking__title">姓氏</p>
+            <p class="booking__title">姓名</p>
             <input type="text" id="booking__firstname" />
           </div>
-          <div class="booking__lastname">
+          <!-- <div class="booking__lastname">
             <p class="booking__title">名字</p>
             <input type="text" id="booking__lastname" />
-          </div>
+          </div> -->
           <div class="booking__email">
             <p class="booking__title">信箱</p>
             <input type="text" id="booking__email" />
@@ -175,7 +175,7 @@
           </div>
           <div class="booking__number">
             <p class="booking__title">預定人數</p>
-            <input type="number" id="booking__number" min="1" />
+            <input type="number" id="booking__number" min="1" max="6" />
           </div>
           <div class="booking__method">
             <p class="booking__title">付款方式</p>
