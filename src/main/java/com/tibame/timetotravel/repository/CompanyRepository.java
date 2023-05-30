@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository("CompanyRepository")
 public interface CompanyRepository extends JpaRepository<Company, Integer> {
-
+    Company findByComId(Integer comId);
 }

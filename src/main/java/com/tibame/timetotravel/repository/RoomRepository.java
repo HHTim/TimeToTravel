@@ -15,4 +15,6 @@ public interface RoomRepository extends JpaRepository<Room, Integer> {
     @Query(value = "SELECT * FROM ROOM WHERE ROOM_BED LIKE %?1%", nativeQuery = true)
     List<Room> findByRoomType(String roomTypeValue);
 
+    List<Room> findAllByComId(Integer comId);
+
 }

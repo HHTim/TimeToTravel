@@ -3,15 +3,22 @@
 
 //------搜尋筆數------//
 .search-results-count {
-  max-width: 15%;
   padding: 5px 10px;
   background-color: #f0f0f0;
   border: 1px solid #ccc;
   margin-left: auto;
+  border-radius: $input-radius;
+  // background-color: $primary-blue;
+  // color: $white;
+}
+.search-hotel {
+  background-color: $white;
+  border: none;
+  color: $primary-blue;
+  padding: 4px 24px;
+  border-radius: 0 5px 5px 0;
 }
 .top {
-  // border-style: solid;
-  // border-color: #000000;
   display: flex;
   margin-bottom: 10px;
 }
@@ -147,7 +154,7 @@
 }
 
 .tab-content.active {
-  display: block;
+  display: flex;
   margin-bottom: 10px;
   padding-left: 10px;
 }
@@ -158,14 +165,12 @@
 }
 
 input[type='text'] {
-  font-size: 14px; /* 提示文本字体大小 */
+  font-size: 14px;
   width: 90%;
   height: 30px;
-  // border-radius: 5px;
-  // padding-left: 20px;
   color: #000000;
   border: none;
-  border-radius: 5px;
+  border-radius: 5px 0 0 5px;
   cursor: pointer;
   padding-left: 5px;
 }

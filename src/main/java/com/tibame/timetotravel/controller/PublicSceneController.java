@@ -1,7 +1,7 @@
 package com.tibame.timetotravel.controller;
 
-import com.tibame.timetotravel.Service.PublicSceneService;
 import com.tibame.timetotravel.entity.PublicScene;
+import com.tibame.timetotravel.service.PublicSceneService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
