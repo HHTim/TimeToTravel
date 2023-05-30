@@ -3,33 +3,44 @@ const scenesSection = document.querySelector('.p-scene');
 const roomSection = document.querySelector('.room');
 const commentSection = document.querySelector('.comment');
 
-function handleRoomClick(e) {
-  const target = e.target.classList.value;
+async function handleRoomClick(e) {
+    const target = e.target.classList.value;
+    const roomId = e.target.dataset.roomid;
 
-  if (target === 'room__device') {
-    const lightbox = e.target.nextElementSibling;
-    const closeBtn = lightbox.childNodes[1];
+    if (target === 'room__device') {
+        const lightbox = e.target.nextElementSibling;
+        const closeBtn = lightbox.childNodes[1];
 
-    lightbox.classList.add('active');
-    if (lightbox.classList.value.includes('active')) {
-      closeBtn.addEventListener('click', () => lightbox.classList.remove('active'));
+        lightbox.classList.add('active');
+        if (lightbox.classList.value.includes('active')) {
+            closeBtn.addEventListener('click', () => lightbox.classList.remove('active'));
+        }
     }
-  }
+
+    if (target === 'room__booking') {
+        console.log(roomId);
+        const resp = await fetch(`http://localhost:8080/PaidController/redirect/3/${roomId}`, {
+            redirect: 'follow',
+        });
+        if (resp.redirected) {
+            location.href = resp.url;
+        }
+    }
 }
 
 // 渲染星星
 function renderRank(rank) {
-  let html = '';
-  for (let i = 0; i < rank; i++) {
-    html += `<li><i class="fa-solid fa-star fa-lg"></i></li>`;
-  }
-  return html;
+    let html = '';
+    for (let i = 0; i < rank; i++) {
+        html += `<li><i class="fa-solid fa-star fa-lg"></i></li>`;
+    }
+    return html;
 }
 
 function renderComments(allComments, allOrderRanks, allUserAvatars, allUserNames) {
-  let html = '';
-  for (let i in allUserNames) {
-    html += `<div class="comment__card">
+    let html = '';
+    for (let i in allUserNames) {
+        html += `<div class="comment__card">
               <div class="comment__content">
                 <div class="comment__avatar">
                   <img src="data:image/png;base64,${allUserAvatars[i]}" alt="comment-avatar" />
@@ -42,31 +53,32 @@ function renderComments(allComments, allOrderRanks, allUserAvatars, allUserNames
               <p class="comment__desc">${allComments[i]}</p>
             </div> 
     `;
-  }
-  return html;
+    }
+    return html;
 }
 
 // 渲染房間
 function renderRooms(rooms) {
-  let html = '';
+    let html = '';
 
-  for (let i in rooms) {
-    const {
-      roomName,
-      roomPhoto,
-      roomStock,
-      roomPeople,
-      roomPrice,
-      roomBed,
-      roomWifi,
-      roomSmoking,
-      roomPet,
-      roomParking,
-      room24Hours,
-      roomBreakfast,
-    } = rooms[i];
+    for (let i in rooms) {
+        const {
+            roomId,
+            roomName,
+            roomPhoto,
+            roomStock,
+            roomPeople,
+            roomPrice,
+            roomBed,
+            roomWifi,
+            roomSmoking,
+            roomPet,
+            roomParking,
+            room24Hours,
+            roomBreakfast,
+        } = rooms[i];
 
-    html += `<div class="room__card">
+        html += `<div class="room__card">
                 <h3 class="room__title">${roomName}</h3>
                 <div class="room__img">
                   <img src="data:image/png;base64,${roomPhoto}" alt="room1" />
@@ -126,50 +138,50 @@ function renderRooms(rooms) {
                     </div>
                       </td>
                       <td>
-                        <button class="room__booking">訂房去</button>
+                        <button class="room__booking" data-roomId=${roomId}>訂房去</button>
                       </td>
                     </tr>
                   </tbody>
                 </table>
               </div>
     `;
-  }
+    }
 
-  return html;
+    return html;
 }
 
 // 根據房間的數量渲染輪播的照片
 function renderCarousel(rooms) {
-  let html = '';
+    let html = '';
 
-  for (let i in rooms) {
-    const { roomPhoto } = rooms[i];
+    for (let i in rooms) {
+        const {roomPhoto} = rooms[i];
 
-    if (i == 0) {
-      html += `
+        if (i == 0) {
+            html += `
       <div class="carousel-item active">
         <img src="data:image/png;base64,${roomPhoto}" class="d-block slide-img" />
       </div>
       `;
-    } else {
-      html += `
+        } else {
+            html += `
       <div class="carousel-item">
         <img src="data:image/png;base64,${roomPhoto}" class="d-block slide-img" />
       </div>
       `;
+        }
     }
-  }
-  return html;
+    return html;
 }
 
 // 渲染私房景點
 function renderPrivateScene(privateScenes) {
-  let html = '';
+    let html = '';
 
-  for (let i in privateScenes) {
-    const { privateSceneName, privateSceneDesc, privateScenePic } = privateScenes[i];
+    for (let i in privateScenes) {
+        const {privateSceneName, privateSceneDesc, privateScenePic} = privateScenes[i];
 
-    html += `
+        html += `
     <a src="#" class="p-scene__card">
       <div class="p-scene__img">
         <img src="data:image/png;base64,${privateScenePic}" alt="scene__img" />
@@ -180,36 +192,36 @@ function renderPrivateScene(privateScenes) {
       </div>
     </a>
     `;
-  }
+    }
 
-  return html;
+    return html;
 }
 
 async function fetchData() {
-  const resp = await fetch('http://localhost:8080/BookingController/booking');
-  const data = await resp.json();
-  const {
-    comName,
-    comAddress,
-    roomName,
-    roomDesc,
-    allComments,
-    orderRanks,
-    allOrderRanks,
-    privateScenes,
-    allUserNames,
-    allUserAvatars,
-    rooms,
-  } = data;
-  console.log(data);
-  const sum = orderRanks.reduce((curr, acc) => curr + acc, 0);
-  // 沒有訂單沒有評價分數，最低就是1
-  const avg = orderRanks.length === 0 ? 1 : Math.ceil(sum / orderRanks.length);
-  // console.log(orderRanks);
-  // console.log(avg);
+    const resp = await fetch('http://localhost:8080/BookingController/booking');
+    const data = await resp.json();
+    const {
+        comName,
+        comAddress,
+        roomName,
+        roomDesc,
+        allComments,
+        orderRanks,
+        allOrderRanks,
+        privateScenes,
+        allUserNames,
+        allUserAvatars,
+        rooms,
+    } = data;
+    console.log(data);
+    const sum = orderRanks.reduce((curr, acc) => curr + acc, 0);
+    // 沒有訂單沒有評價分數，最低就是1
+    const avg = orderRanks.length === 0 ? 1 : Math.ceil(sum / orderRanks.length);
+    // console.log(orderRanks);
+    // console.log(avg);
 
-  /* Hotel */
-  hotelSection.innerHTML = `
+    /* Hotel */
+    hotelSection.innerHTML = `
     <div id="carouselExample" class="carousel slide">
     <div class="carousel-inner">
       ${renderCarousel(rooms)}
@@ -251,14 +263,14 @@ async function fetchData() {
   </div>
   `;
 
-  /* Private Scene */
-  scenesSection.innerHTML = renderPrivateScene(privateScenes);
+    /* Private Scene */
+    scenesSection.innerHTML = renderPrivateScene(privateScenes);
 
-  /* Rooms */
-  roomSection.innerHTML = renderRooms(rooms);
+    /* Rooms */
+    roomSection.innerHTML = renderRooms(rooms);
 
-  /* Comments */
-  commentSection.innerHTML = renderComments(allComments, allOrderRanks, allUserAvatars, allUserNames);
+    /* Comments */
+    commentSection.innerHTML = renderComments(allComments, allOrderRanks, allUserAvatars, allUserNames);
 }
 
 fetchData();

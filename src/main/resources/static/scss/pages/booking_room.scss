@@ -221,7 +221,7 @@
     border-radius: 10px 0 0 10px;
 
     img {
-      scale: 1.3;
+      scale: 0.15;
       transform-origin: 0 0;
       position: absolute;
       left: 50%;
@@ -232,7 +232,7 @@
   }
 
   &__card:hover &__img img {
-    scale: 1.4;
+    scale: 0.18;
   }
 
   @media screen and (min-width: 1400px) {

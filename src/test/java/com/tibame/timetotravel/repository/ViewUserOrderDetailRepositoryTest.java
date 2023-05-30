@@ -29,7 +29,7 @@ class ViewUserOrderDetailRepositoryTest {
 
     @Test
     public void findRoomRankTest() {
-        List<Integer> ranks = viewUserOrderDetailRepository.findRoomRank(7);
+        List<Integer> ranks = viewUserOrderDetailRepository.findRankByRoomId(7);
         System.out.println(ranks);
     }
 }

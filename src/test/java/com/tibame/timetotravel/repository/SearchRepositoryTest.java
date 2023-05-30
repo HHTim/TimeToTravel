@@ -11,14 +11,15 @@ import java.util.List;
 class SearchRepositoryTest {
 
     @Autowired
-    SearchRepository searchRepository;
-
+    ViewCompanyRoomRepository viewCompanyRoomRepository;
     @Autowired
     ViewUserOrderDetailRepository viewUserOrderDetailRepository;
+    @Autowired
+    OrderDetailRepository orderDetailRepository;
 
     @Test
     public void findAvailableRoomTest() {
-        List<ViewCompanyRoom> companies = searchRepository.findCompany("新北市", 1);
+        List<ViewCompanyRoom> companies = viewCompanyRoomRepository.findCompany("新北市", 1);
 
         for (ViewCompanyRoom company : companies) {
             System.out.println(company);
@@ -30,13 +31,13 @@ class SearchRepositoryTest {
         String start = "2023-05-01";
         String end = "2023-05-05";
 
-        Integer roomStock = searchRepository.findRoomStock(5, start, end);
+        Integer roomStock = orderDetailRepository.findOrderByDate(5, start, end);
         System.out.println(roomStock);
     }
 
     @Test
     public void findRoomRankTest() {
-        List<Integer> roomRanks = viewUserOrderDetailRepository.findRoomRank(7);
+        List<Integer> roomRanks = viewUserOrderDetailRepository.findRankByRoomId(7);
         System.out.println(roomRanks);
     }
 }

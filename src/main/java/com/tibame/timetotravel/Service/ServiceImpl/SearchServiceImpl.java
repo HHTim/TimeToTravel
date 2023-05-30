@@ -1,7 +1,8 @@
 package com.tibame.timetotravel.service.ServiceImpl;
 
-import com.tibame.timetotravel.common.SearchRoom;
-import com.tibame.timetotravel.repository.SearchRepository;
+import com.tibame.timetotravel.dto.SearchRoom;
+import com.tibame.timetotravel.repository.OrderDetailRepository;
+import com.tibame.timetotravel.repository.ViewCompanyRoomRepository;
 import com.tibame.timetotravel.repository.ViewUserOrderDetailRepository;
 import com.tibame.timetotravel.service.SearchService;
 import com.tibame.timetotravel.view.ViewCompanyRoom;
@@ -17,14 +18,16 @@ import java.util.List;
 public class SearchServiceImpl implements SearchService {
 
     @Autowired
-    private SearchRepository searchRepository;
+    private ViewCompanyRoomRepository viewCompanyRoomRepository;
     @Autowired
     private ViewUserOrderDetailRepository viewUserOrderDetailRepository;
+    @Autowired
+    private OrderDetailRepository orderDetailRepository;
 
 
     @Override
     public List<SearchRoom> findAvailableCompany(String keyWord, Integer people, String start, String end) throws InvocationTargetException, IllegalAccessException {
-        List<ViewCompanyRoom> companies = searchRepository.findCompany(keyWord, people);
+        List<ViewCompanyRoom> companies = viewCompanyRoomRepository.findCompany(keyWord, people);
         List<SearchRoom> resultList = new ArrayList<>();
 
         for (ViewCompanyRoom company : companies) {
@@ -33,14 +36,14 @@ public class SearchServiceImpl implements SearchService {
             // 取得房間的房型編號
             Integer roomId = company.getRoomId();
             // 透過房型編號跟時間區間去查該段時間的訂單數
-            Integer orderCount = searchRepository.findRoomStock(roomId, start, end);
+            Integer orderCount = orderDetailRepository.findOrderByDate(roomId, start, end);
 //            System.out.println("房型編號: " + roomId);
 //            System.out.println(start + " " + end + " 期間訂單數: " + orderCount);
             // 如果庫存數大於訂單數則將該房間加入
             if (company.getRoomStock() > orderCount) {
                 // Common Util 複製Entity到DTO
                 BeanUtils.copyProperties(searchRoom, company);
-                List<Integer> roomRank = viewUserOrderDetailRepository.findRoomRank(roomId);
+                List<Integer> roomRank = viewUserOrderDetailRepository.findRankByRoomId(roomId);
                 searchRoom.setOrderRanks(roomRank);
                 resultList.add(searchRoom);
             }

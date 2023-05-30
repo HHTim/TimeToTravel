@@ -1,6 +1,6 @@
 package com.tibame.timetotravel.controller;
 
-import com.tibame.timetotravel.common.BookingRoom;
+import com.tibame.timetotravel.dto.BookingRoom;
 import com.tibame.timetotravel.service.BookingService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -21,7 +21,7 @@ public class BookingController {
     BookingService bookingService;
 
     @RequestMapping("forward/{comId}/{roomId}")
-    public RedirectView redirect(@PathVariable String comId, @PathVariable String roomId, HttpServletRequest req) {
+    public RedirectView forward(@PathVariable String comId, @PathVariable String roomId, HttpServletRequest req) {
 
         System.out.println("test connection " + comId);
         HttpSession session = req.getSession();
@@ -39,5 +39,6 @@ public class BookingController {
         System.out.println(comId);
         return bookingService.bookingRoom(comId, roomId);
     }
+
 
 }

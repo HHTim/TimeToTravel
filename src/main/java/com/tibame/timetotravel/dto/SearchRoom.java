@@ -1,4 +1,4 @@
-package com.tibame.timetotravel.common;
+package com.tibame.timetotravel.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

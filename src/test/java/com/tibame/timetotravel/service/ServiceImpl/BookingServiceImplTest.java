@@ -1,6 +1,6 @@
 package com.tibame.timetotravel.service.ServiceImpl;
 
-import com.tibame.timetotravel.common.BookingRoom;
+import com.tibame.timetotravel.dto.BookingRoom;
 import com.tibame.timetotravel.entity.PrivateScene;
 import com.tibame.timetotravel.entity.Room;
 import com.tibame.timetotravel.service.BookingService;

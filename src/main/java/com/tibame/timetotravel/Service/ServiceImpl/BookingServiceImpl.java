@@ -1,11 +1,11 @@
 package com.tibame.timetotravel.service.ServiceImpl;
 
-import com.tibame.timetotravel.common.BookingRoom;
+import com.tibame.timetotravel.dto.BookingRoom;
 import com.tibame.timetotravel.entity.PrivateScene;
 import com.tibame.timetotravel.entity.Room;
 import com.tibame.timetotravel.repository.PrivateSceneRepository;
 import com.tibame.timetotravel.repository.RoomRepository;
-import com.tibame.timetotravel.repository.SearchRepository;
+import com.tibame.timetotravel.repository.ViewCompanyRoomRepository;
 import com.tibame.timetotravel.repository.ViewUserOrderDetailRepository;
 import com.tibame.timetotravel.service.BookingService;
 import com.tibame.timetotravel.view.ViewCompanyRoom;
@@ -22,7 +22,7 @@ import java.util.List;
 public class BookingServiceImpl implements BookingService {
 
     @Autowired
-    SearchRepository searchRepository;
+    ViewCompanyRoomRepository viewCompanyRoomRepository;
     @Autowired
     RoomRepository roomRepository;
     @Autowired
@@ -36,11 +36,11 @@ public class BookingServiceImpl implements BookingService {
         BookingRoom bookingRoom = new BookingRoom();
 
         // 查詢商家名稱跟地址
-        ViewCompanyRoom company = searchRepository.findByComIdAndRoomId(comId, roomId);
+        ViewCompanyRoom company = viewCompanyRoomRepository.findByComIdAndRoomId(comId, roomId);
         BeanUtils.copyProperties(bookingRoom, company);
 
         // 將目前的房間的評價分數放入
-        List<Integer> roomRank = viewUserOrderDetailRepository.findRoomRank(roomId);
+        List<Integer> roomRank = viewUserOrderDetailRepository.findRankByRoomId(roomId);
         bookingRoom.setOrderRanks(roomRank);
 
         // 查詢comId對應的所有房間
@@ -62,7 +62,7 @@ public class BookingServiceImpl implements BookingService {
         for (Room room : rooms) {
             Integer currRoomId = room.getRoomId();
 //            List<String> comments = viewUserOrderDetailRepository.findCommentByRoomId(currRoomId);
-//            List<Integer> ranks = viewUserOrderDetailRepository.findRoomRank(currRoomId);
+//            List<Integer> ranks = viewUserOrderDetailRepository.findRankByRoomId(currRoomId);
             // 每個房間查回來的評論也會是一個一維陣列，先宣告到時候要放入外面的雙重陣列
             List<String> comments = new ArrayList<>();
             List<Integer> ranks = new ArrayList<>();

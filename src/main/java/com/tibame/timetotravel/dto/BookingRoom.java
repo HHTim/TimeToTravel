@@ -1,4 +1,4 @@
-package com.tibame.timetotravel.common;
+package com.tibame.timetotravel.dto;
 
 import com.tibame.timetotravel.entity.PrivateScene;
 import com.tibame.timetotravel.entity.Room;

@@ -1,6 +1,6 @@
 package com.tibame.timetotravel.service.ServiceImpl;
 
-import com.tibame.timetotravel.common.SearchRoom;
+import com.tibame.timetotravel.dto.SearchRoom;
 import com.tibame.timetotravel.service.SearchService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,161 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <!-- import -->
     <script src="../node_modules/@popperjs/core/dist/umd/popper.min.js" defer></script>
     <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js" defer></script>
     <script src="../node_modules/jquery/dist/jquery.min.js" defer></script>
     <script src="https://kit.fontawesome.com/e3af248fb2.js" crossorigin="anonymous" defer></script>
-    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css"/>
     <!-- 我們自己的 js 檔案，路徑記得改 -->
-    <link rel="stylesheet" href="../css/search_room.css" />
+    <link rel="stylesheet" href="../css/search_room.css"/>
     <!-- 我們自己的 css 檔案，路徑記得改 -->
-    <script src="../js/search_room.js" defer></script>
+    <script type="module" src="../js/search_room.js" defer></script>
     <!-- 輪播需要添加 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- title 記得改 -->
     <title>TimeToTravel | Search</title>
-  </head>
-  <body>
-    <!-- Header -->
-    <div class="decorator"></div>
-    <header>
-      <div class="container-fluid header__container">
+</head>
+<body>
+<!-- Header -->
+<div class="decorator"></div>
+<header>
+    <div class="container-fluid header__container">
         <h1 class="logo">
-          <a href="http://localhost:8080" class="logo__link">
-            <img src="../images/LOGO.png" alt="logo" class="logo__img" />
-          </a>
+            <a href="http://localhost:8080" class="logo__link">
+                <img src="../images/LOGO.png" alt="logo" class="logo__img"/>
+            </a>
         </h1>
         <nav>
-          <ul class="nav">
-            <li class="nav__link"><a href="#">我的訂單</a></li>
-            <li class="nav__link"><a href="#">伴手禮商城</a></li>
-            <li class="nav__link"><a href="#">部落格</a></li>
-            <li class="nav__info">
-              <div class="dropdown-center">
-                <button class="dropdown-toggle nav__info-btn" type="button" data-bs-toggle="dropdown"></button>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">訊息一</a></li>
-                  <li><a class="dropdown-item" href="#">訊息二</a></li>
-                  <li><a class="dropdown-item" href="#">訊息三</a></li>
-                  <li><hr class="dropdown-divider" /></li>
-                  <li><a class="dropdown-item" href="#">See More</a></li>
-                </ul>
-              </div>
-            </li>
-            <li class="nav__avatar">
-              <div class="dropdown-center">
-                <a href="#" class="dropdown-toggle nav__avatar-btn" type="button" data-bs-toggle="dropdown">
-                  <div class="nav__avatar-img">
-                    <img src="../images/avatar.svg" alt="avatar" />
-                  </div>
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">註冊</a></li>
-                  <li><a class="dropdown-item" href="#">登入</a></li>
-                  <li><a class="dropdown-item" href="#">其他</a></li>
-                  <li><a class="dropdown-item" href="#">其他</a></li>
-                  <li><hr class="dropdown-divider" /></li>
-                  <li><a class="dropdown-item" href="#">登出</a></li>
-                </ul>
-              </div>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </header>
-    <!-- Header End -->
-
-    <div class="container custom-container" style="margin-bottom: 10px">
-      <div class="row">
-        <main class="col-12">
-          <!-- Main -->
-          <div class="search-container">
-            <div class="tabs">
-              <button class="tab active" onclick="openTab('tab1')">飯店查詢</button>
-              <button class="tab" onclick="openTab('tab2')">景點查詢</button>
-            </div>
-            <div class="tab-content active" id="tab1">
-              <input type="text" placeholder="搜索..." />
-              <button id="search-hotel" type="button" class="search-hotel">
-                <i class="fa-solid fa-magnifying-glass"></i>
-              </button>
-            </div>
-            <div class="tab-content" id="tab2">
-              <input type="text" placeholder="搜索..." />
-              <button id="search-scene" type="button" class="search-hotel">
-                <i class="fa-solid fa-magnifying-glass"></i>
-              </button>
-            </div>
-          </div>
-          <!-- search -->
-          <div class="top">
-            <!-- <div class="checkbox_all">
-              <div class="check_all">
-                <input id="check1" type="checkbox" />
-                <label for="check1" class="ee">北部</label>
-              </div>
-              <div class="check_all">
-                <input id="check2" type="checkbox" />
-                <label for="check2" class="ee">中部</label>
-              </div>
-              <div class="check_all">
-                <input id="check2" type="checkbox" />
-                <label for="check2" class="ee">南部</label>
-              </div>
-            </div> -->
-            <div id="search-results-count" class="search-results-count"></div>
-          </div>
-          <!-- search end -->
-
-          <!-- list -->
-          <section id="search-result" class="hotel">
-            <div class="hotel__card">
-              <div class="hotel__img">
-                <div class="loader"></div>
-                <div class="hotel__loading"></div>
-              </div>
-              <div class="hotel__content">
-                <div class="d-flex align-items-center">
-                  <ul class="hotel__rank"></ul>
-                </div>
-                <p class="hotel__desc"></p>
-              </div>
-            </div>
-          </section>
-          <!-- list end -->
-
-          <!-- 分頁 -->
-          <nav aria-label="Page navigation example" class="page1">
-            <ul class="pagination">
-              <li class="page-item">
-                <a class="page-link" href="#" aria-label="Previous">
-                  <span aria-hidden="true">&laquo;</span>
-                </a>
-              </li>
-              <li class="page-item"><a class="page-link" href="#">1</a></li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item">
-                <a class="page-link" href="#" aria-label="Next">
-                  <span aria-hidden="true">&raquo;</span>
-                </a>
-              </li>
+            <ul class="nav">
+                <li class="nav__link"><a href="#">我的訂單</a></li>
+                <li class="nav__link"><a href="#">伴手禮商城</a></li>
+                <li class="nav__link"><a href="#">部落格</a></li>
+                <li class="nav__info">
+                    <div class="dropdown-center">
+                        <button class="dropdown-toggle nav__info-btn" type="button" data-bs-toggle="dropdown"></button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">訊息一</a></li>
+                            <li><a class="dropdown-item" href="#">訊息二</a></li>
+                            <li><a class="dropdown-item" href="#">訊息三</a></li>
+                            <li>
+                                <hr class="dropdown-divider"/>
+                            </li>
+                            <li><a class="dropdown-item" href="#">See More</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav__avatar">
+                    <div class="dropdown-center">
+                        <a href="#" class="dropdown-toggle nav__avatar-btn" type="button" data-bs-toggle="dropdown">
+                            <div class="nav__avatar-img">
+                                <img src="../images/avatar.svg" alt="avatar"/>
+                            </div>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">註冊</a></li>
+                            <li><a class="dropdown-item" href="#">登入</a></li>
+                            <li><a class="dropdown-item" href="#">其他</a></li>
+                            <li><a class="dropdown-item" href="#">其他</a></li>
+                            <li>
+                                <hr class="dropdown-divider"/>
+                            </li>
+                            <li><a class="dropdown-item" href="#">登出</a></li>
+                        </ul>
+                    </div>
+                </li>
             </ul>
-          </nav>
-          <!-- 分頁 -->
+        </nav>
+    </div>
+</header>
+<!-- Header End -->
+
+<div class="container custom-container" style="margin-bottom: 10px">
+    <div class="row">
+        <main class="col-12">
+            <!-- Main -->
+            <div class="search-container">
+                <div class="tabs">
+                    <button class="tab active" onclick="openTab('tab1')">飯店查詢</button>
+                    <button class="tab" onclick="openTab('tab2')">景點查詢</button>
+                </div>
+                <div class="tab-content active" id="tab1">
+                    <input type="text" placeholder="搜索..."/>
+                    <button id="search-hotel" type="button" class="search-hotel">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+                <div class="tab-content" id="tab2">
+                    <input type="text" placeholder="搜索..."/>
+                    <button id="search-scene" type="button" class="search-hotel">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- search -->
+            <div class="top">
+                <!-- <div class="checkbox_all">
+                  <div class="check_all">
+                    <input id="check1" type="checkbox" />
+                    <label for="check1" class="ee">北部</label>
+                  </div>
+                  <div class="check_all">
+                    <input id="check2" type="checkbox" />
+                    <label for="check2" class="ee">中部</label>
+                  </div>
+                  <div class="check_all">
+                    <input id="check2" type="checkbox" />
+                    <label for="check2" class="ee">南部</label>
+                  </div>
+                </div> -->
+                <div id="search-results-count" class="search-results-count"></div>
+            </div>
+            <!-- search end -->
+
+            <!-- list -->
+            <section id="search-result" class="hotel">
+                <div class="hotel__card">
+                    <div class="hotel__img">
+                        <div class="loader"></div>
+                        <div class="hotel__loading"></div>
+                    </div>
+                    <div class="hotel__content">
+                        <div class="d-flex align-items-center">
+                            <ul class="hotel__rank"></ul>
+                        </div>
+                        <p class="hotel__desc"></p>
+                    </div>
+                </div>
+            </section>
+            <!-- list end -->
+
+            <!-- 分頁 -->
+            <nav aria-label="Page navigation example" class="page1">
+                <ul class="pagination">
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <!-- 分頁 -->
         </main>
         <!-- Main End -->
-      </div>
     </div>
+</div>
 
-    <!-- Footer -->
-    <footer>
-      <div class="footer"></div>
-    </footer>
-    <!-- Footer End -->
-  </body>
+<!-- Footer -->
+<footer>
+    <div class="footer"></div>
+</footer>
+<!-- Footer End -->
+</body>
 </html>

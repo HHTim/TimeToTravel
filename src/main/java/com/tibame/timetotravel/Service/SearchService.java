@@ -1,6 +1,6 @@
 package com.tibame.timetotravel.service;
 
-import com.tibame.timetotravel.common.SearchRoom;
+import com.tibame.timetotravel.dto.SearchRoom;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
