@@ -18,4 +18,6 @@ public interface PrivateSceneRepository extends JpaRepository<PrivateScene, Inte
 
     @Query(value = "SELECT * FROM PRIVATE_SCENE WHERE PRIVATE_SCENE_NAME LIKE %?1%", nativeQuery = true)
     List<PrivateScene> findByKeyword(String keyword);
+
+    List<PrivateScene> findAllByComId(Integer comId);
 }
