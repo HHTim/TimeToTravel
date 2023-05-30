@@ -5,28 +5,29 @@ import com.tibame.timetotravel.service.PaidService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.Map;
 
 @RestController
-@RequestMapping("/PaidController")
+@RequestMapping("/user")
 public class PaidController {
 
     @Autowired
     PaidService paidService;
 
-    @RequestMapping("redirect/{userId}/{roomId}")
-    public RedirectView redirect(@PathVariable Integer userId, @PathVariable Integer roomId, HttpServletRequest req) {
-        System.out.println("test paid " + userId + " " + roomId);
+    @PostMapping("/redirect-paid")
+    public RedirectView redirect(@RequestBody Map<String, Object> requestBody, HttpServletRequest req) {
         HttpSession session = req.getSession();
 
+        Integer userId = (Integer) requestBody.get("userId");
+        String roomId = (String) requestBody.get("roomId");
         session.setAttribute("userId", userId);
         session.setAttribute("roomId", roomId);
+        System.out.println("Paid for: " + userId + " " + roomId);
+
         return new RedirectView("/booking_paid");
     }
 
@@ -34,11 +35,11 @@ public class PaidController {
     public BookingPaid paid(HttpServletRequest req) throws InvocationTargetException, IllegalAccessException {
         HttpSession session = req.getSession();
         Integer userId = (Integer) session.getAttribute("userId");
-        Integer roomId = (Integer) session.getAttribute("roomId");
+        String roomId = (String) session.getAttribute("roomId");
         String startDate = (String) session.getAttribute("startDate");
         String endDate = (String) session.getAttribute("endDate");
 
-        return paidService.bookingPaid(userId, roomId, startDate, endDate);
+        return paidService.bookingPaid(userId, Integer.parseInt(roomId), startDate, endDate);
     }
 
 }

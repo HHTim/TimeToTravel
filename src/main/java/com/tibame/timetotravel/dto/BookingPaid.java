@@ -20,6 +20,7 @@ public class BookingPaid {
     String roomPeople;
     String roomDesc;
     Integer roomPrice;
+    byte[] roomPhoto;
     String userName;
     String userEmail;
     String userPhone;

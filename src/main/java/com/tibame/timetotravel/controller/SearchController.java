@@ -13,27 +13,27 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/SearchController")
+@RequestMapping("/user")
 public class SearchController {
 
     @Autowired
     SearchService searchService;
 
-
-    @PostMapping("/redirect")
+    @PostMapping("/redirect-search")
     public RedirectView redirect(@RequestBody Map<String, Object> requestBody, HttpServletRequest req) {
+        HttpSession session = req.getSession();
+
         String keyword = (String) requestBody.get("keyword");
         String people = (String) requestBody.get("people");
         String startDate = (String) requestBody.get("startDate");
         String endDate = (String) requestBody.get("endDate");
-        HttpSession session = req.getSession();
 
         session.setAttribute("keyword", keyword);
         session.setAttribute("people", people);
         session.setAttribute("startDate", startDate);
         session.setAttribute("endDate", endDate);
 
-        System.out.println("TEST CONNECTION " + keyword + " " + people + " " + startDate + " " + endDate);
+        System.out.println("Search for: " + keyword + " " + people + " " + startDate + " " + endDate);
         return new RedirectView("/search_room");
     }
 

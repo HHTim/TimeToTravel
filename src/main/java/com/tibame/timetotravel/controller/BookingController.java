@@ -5,29 +5,29 @@ import com.tibame.timetotravel.service.BookingService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.Map;
 
 @RestController
-@RequestMapping("/BookingController")
+@RequestMapping("/user")
 public class BookingController {
 
     @Autowired
     BookingService bookingService;
 
-    @RequestMapping("forward/{comId}/{roomId}")
-    public RedirectView forward(@PathVariable String comId, @PathVariable String roomId, HttpServletRequest req) {
-
-        System.out.println("test connection " + comId);
+    @PostMapping("/redirect-booking")
+    public RedirectView redirect(@RequestBody Map<String, Object> requestBody, HttpServletRequest req) {
         HttpSession session = req.getSession();
 
+        String comId = (String) requestBody.get("comId");
+        String roomId = (String) requestBody.get("roomId");
         session.setAttribute("comId", Integer.parseInt(comId));
         session.setAttribute("roomId", Integer.parseInt(roomId));
+        System.out.println("Booking for: " + comId + " " + roomId);
+
         return new RedirectView("/booking_room");
     }
 

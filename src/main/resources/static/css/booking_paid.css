@@ -316,18 +316,22 @@ body {
   box-shadow: 0 0 3px #9b9999;
 }
 .order__img {
-  width: 250px;
+  width: 50%;
+  max-width: 250px;
   height: 200px;
   margin-right: 1rem;
+  position: relative;
   border-radius: 10px;
   box-shadow: 0 0 3px #9b9999;
   overflow: hidden;
 }
 .order__img img {
-  height: 100%;
-  min-width: 100%;
-  left: 0;
-  top: 0;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  scale: 0.25;
+  transform-origin: 0 0;
 }
 .order__content {
   width: 100%;
@@ -348,7 +352,10 @@ body {
 }
 .order__desc {
   width: 100%;
-  vertical-align: middle;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 .order__detail {
   width: 100%;
@@ -392,31 +399,47 @@ body {
 }
 .journey__img {
   position: relative;
-  width: 200px;
+  width: 100%;
+  max-width: 200px;
+  height: 150px;
   overflow: hidden;
   border-radius: 10px;
   margin-right: 0.5rem;
   box-shadow: 0 0 3px #9b9999;
 }
-@media screen and (min-width: 992px) {
-  .journey__img {
+.journey__img img {
+  scale: 0.25;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transform-origin: 0 0;
+  transition: all 0.2s ease-in-out;
+}
+a:hover .journey__img img {
+  scale: 0.28;
+}
+@media screen and (max-width: 992px) {
+  .journey a {
     width: 100%;
   }
-}
-@media screen and (min-width: 1200px) {
   .journey__img {
-    width: 50%;
+    position: relative;
+    width: 40%;
+    height: 150px;
+    overflow: hidden;
+    border-radius: 10px;
+    margin-right: 0.5rem;
+    box-shadow: 0 0 3px #9b9999;
   }
-}
-.journey__img img {
-  height: 100%;
-  min-width: 100%;
-  position: absolute;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  left: 0;
-  top: 0;
+  .journey__img img {
+    scale: 0.25;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transform-origin: 0 0;
+  }
 }
 .journey__title {
   font-size: 24px;
@@ -427,6 +450,11 @@ body {
   font-size: 20px;
   text-align: right;
   font-weight: bold;
+}
+.journey__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .booking {
@@ -566,6 +594,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  white-space: nowrap;
 }
 .submit__forward {
   border: none;

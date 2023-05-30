@@ -234,20 +234,15 @@ const startDate = document.querySelector('#startDate');
 const endDate = document.querySelector('#endDate');
 
 search.onclick = async () => {
-  const { keyword, people, startDate, endDate } = searchBody;
-  if (keyword === '' || people === 0 || startDate === '' || endDate === '') {
-    alert('輸入欄請勿留空');
-  } else {
-    const resp = await fetch('http://localhost:8080/SearchController/redirect', {
-      method: 'POST',
-      cache: 'no-cache',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(searchBody),
-    });
-    console.log(resp);
-    if (resp.redirected) {
-      location.href = resp.url;
-    }
+  const resp = await fetch('http://localhost:8080/user/redirect-search', {
+    method: 'POST',
+    cache: 'no-cache',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(searchBody),
+    redirect: 'follow',
+  });
+  if (resp.redirected) {
+    location.href = resp.url;
   }
 };
 
