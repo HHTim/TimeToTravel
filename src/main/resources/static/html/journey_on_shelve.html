@@ -11,13 +11,13 @@
 		<script src="https://kit.fontawesome.com/e3af248fb2.js" crossorigin="anonymous" defer></script>
 		<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
 		<!-- 我們自己的 css 檔案，路徑記得改 -->
-		<link rel="stylesheet" href="..//css/gift_on_shelve.css" />
+		<link rel="stylesheet" href="..//css/journey_on_shelve.css" />
 		<!-- 我們自己的 js 檔案，路徑記得改 -->
-		<script src="../js/gift_on_shelve.js" defer></script>
+		<script src="../js/journey_on_shelve.js" defer></script>
 		<!-- 輪播需要添加 -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 		<!-- title 記得改 -->
-		<title>TimeToTravel | Gift on Shelve</title>
+		<title>TimeToTravel | Journey on Shelve</title>
 	</head>
 	<body>
 		<!-- Header -->
@@ -114,48 +114,34 @@
 									><button class="btn btn-primary btn__update__journey">新增行程+</button></a
 								>
 							</div>
-							<div class="gift">
-								<span class="gift__name">
-									<h4 class="gift__name__title">土產名稱</h4>
-									<input type="text" placeholder="請輸入名稱..." />
+						</div>
+						<div class="journey">
+							<span class="journey__name">
+								<h4 class="journey__name__title">行程名稱</h4>
+								<input type="text" placeholder="請輸入名稱..." />
+							</span>
+							<span class="journey__price">
+								<h4 class="journey__price__title">行程價格</h4>
+								<input type="text" placeholder="請輸入價格..." />
+							</span>
+							<div>
+								<span class="journey__photo">
+									<h4 class="journey__photo__title">行程照片</h4>
+									<input type="file" style="display: none" class="journey__photo__update" />
+									<div class="journey__photo__preview" placeholder="請點擊上傳圖片..."></div>
 								</span>
-								<div>
-									<span class="gift__stock">
-										<h4 class="gift__stock__title">土產庫存</h4>
-										<input type="text" placeholder="請輸入數量..." />
-									</span>
-									<span class="gift__type">
-										<h4 class="gift__type__title">土產類別</h4>
-										<select name="gift__type__option" class="gift__type__option">
-											<option disabled selected hidden>請選擇</option>
-											<option value="好吃的">好吃的</option>
-											<option value="不好吃的">不好吃的</option>
-											<option value="阿嬤的">阿嬤的</option>
-										</select>
-									</span>
-									<span class="gift__price">
-										<h4 class="gift__price__title">土產價格</h4>
-										<input type="text" placeholder="請輸入價格..." />
-									</span>
-									<span class="gift__photo">
-										<h4 class="gift__photo__title">土產照片</h4>
-										<input type="file" style="display: none" class="gift__photo__update" />
-										<div class="gift__photo__preview" placeholder="請點擊上傳圖片..."></div>
-									</span>
-									<span class="gift__description">
-										<h4 class="gift__description__title">土產介紹</h4>
-										<textarea
-											id="gift__description__content"
-											name="gift__description__content"
-											rows="4"
-											cols="10"
-											maxlength="30">
-										</textarea>
-									</span>
-									<span class="save__btn">
-										<button class="btn btn-primary save__btn__commit">儲存</button>
-									</span>
-								</div>
+								<span class="journey__description">
+									<h4 class="journey__description__title">行程介紹</h4>
+									<textarea
+										id="journey__description__content"
+										name="journey__description__content"
+										rows="4"
+										cols="10"
+										maxlength="30"></textarea>
+								</span>
+								<span class="save__btn">
+									<button class="btn btn-primary save__btn__commit">儲存</button>
+								</span>
 							</div>
 						</div>
 					</main>

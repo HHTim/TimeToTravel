@@ -57,7 +57,7 @@ public class RoomServiceImpl implements RoomService {
     @Override
     public List<Room> findByKeyword(String keyword) {
         if (keyword != null && !("".equals(keyword))) {
-            System.out.println(keyword + "hahaha");
+//            System.out.println(keyword + "hahaha");
             return roomRepository.findByKeyword(keyword);
         } else {
             return null;

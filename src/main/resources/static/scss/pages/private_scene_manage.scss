@@ -91,22 +91,6 @@ div.nav-btn div.search-name input {
 	height: 3rem;
 }
 
-.primary__scene__type {
-	display: flex;
-	justify-content: end;
-
-	&__options {
-		border-radius: $input-radius;
-		border-color: $admin-aside-blue;
-		padding: 0 10px;
-		outline-style: none;
-		font-weight: bold;
-		height: 3rem;
-		border-style: none;
-		border: 2px solid $admin-aside-blue;
-		margin-right: 1.5rem;
-	}
-}
 
 .search__area {
 	display: flex;
@@ -145,29 +129,31 @@ div.manage-type div {
 	border-radius: $border-radius $border-radius 0 0;
 }
 
-.primary__scene__table {
-	border-top: 3px solid $primary-blue-hover;
+.r4 {
+	border-bottom: 3px solid $primary-blue-hover;
 }
 
-th,
+th {
+	text-align: center;
+	font-weight: bold;
+	font-size: x-large;
+}
+
 td {
 	text-align: center;
 	font-weight: bold;
+
+	& div {
+		text-align: center;
+	}
 }
+
+
 
 tbody tr {
 	height: 50px;
 }
-.primary__scene__status {
-	border-radius: $input-radius;
-	border-color: $admin-aside-blue;
-	padding: 0 10px;
-	outline-style: none;
-	font-weight: bold;
-	height: 2rem;
-	border-style: none;
-	border: 2px solid $admin-aside-blue;
-}
+
 .-ontype {
 	background-color: $primary-blue !important;
 	color: $white;
@@ -177,11 +163,19 @@ tbody tr {
 	}
 }
 
-.table-wrap {
-	text-align: start;
-	width: 70%;
-	white-space: normal;
-	word-wrap: break-word;
-	word-break: break-all;
-	font-size: small;
+.private__scene__delete {
+	padding: 5px;
+	font-weight: bold;
+	width: 60px;
+
+	border: $custom-border;
+	border-radius: $border-radius;
+
+	background-color: brown;
+	color: $white;
+
+	&:hover {
+		background-color: $test-red;
+		color: $font-normal-white;
+	}
 }
