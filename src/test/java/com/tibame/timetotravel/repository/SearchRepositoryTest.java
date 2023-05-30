@@ -8,17 +8,21 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.List;
 
 @SpringBootTest
-class Room2RepositoryTest {
+class SearchRepositoryTest {
 
     @Autowired
-    Room2Repository room2Repository;
+    ViewCompanyRoomRepository viewCompanyRoomRepository;
+    @Autowired
+    ViewUserOrderDetailRepository viewUserOrderDetailRepository;
+    @Autowired
+    OrderDetailRepository orderDetailRepository;
 
     @Test
     public void findAvailableRoomTest() {
-        List<ViewCompanyRoom> companies = room2Repository.findCompany("台北市", 2);
+        List<ViewCompanyRoom> companies = viewCompanyRoomRepository.findCompany("新北市", 1);
 
         for (ViewCompanyRoom company : companies) {
-            System.out.println(company.getComName());
+            System.out.println(company);
         }
     }
 
@@ -27,14 +31,13 @@ class Room2RepositoryTest {
         String start = "2023-05-01";
         String end = "2023-05-05";
 
-        Integer roomStock = room2Repository.findRoomStock(5, start, end);
+        Integer roomStock = orderDetailRepository.findOrderByDate(5, start, end);
         System.out.println(roomStock);
     }
 
     @Test
     public void findRoomRankTest() {
-        List<Integer> roomRanks = room2Repository.findRoomRank(7);
+        List<Integer> roomRanks = viewUserOrderDetailRepository.findRankByRoomId(7);
         System.out.println(roomRanks);
     }
-
 }

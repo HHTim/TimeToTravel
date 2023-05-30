@@ -1,4 +1,4 @@
-package com.tibame.timetotravel.entity;
+package com.tibame.timetotravel.view;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -8,16 +8,43 @@ import lombok.NoArgsConstructor;
 import java.sql.Date;
 import java.sql.Timestamp;
 
-@Entity
-@Table(name = "user")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
+@Entity
+@Table(name = "view_user_order_detail")
+public class ViewUserOrderDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ORDER_ID", nullable = false, insertable = false, updatable = false)
+    private Integer orderId;
+
     @Column(name = "USER_ID", nullable = false)
     private Integer userId;
+
+    @Column(name = "ROOM_ID", nullable = false)
+    private Integer roomId;
+
+    @Column(name = "JOURNEY_ID", nullable = false)
+    private Integer journeyId;
+
+    @Column(name = "ORDER_DATETIME", nullable = false)
+    private Timestamp orderDatetime;
+
+    @Column(name = "ORDER_AMOUNT", nullable = false)
+    private Integer orderAmount;
+
+    @Column(name = "ORDER_CHECK_IN", nullable = false)
+    private Date orderCheckIn;
+
+    @Column(name = "ORDER_CHECK_OUT", nullable = false)
+    private Date orderCheckOut;
+
+    @Column(name = "ORDER_RANK", nullable = false)
+    private Integer orderRank;
+
+    @Column(name = "ORDER_COMMENT", nullable = false)
+    private String orderComment;
 
     @Column(name = "USER_ACCOUNT", nullable = false)
     private String userAccount;
@@ -32,7 +59,7 @@ public class User {
     private String userPhone;
 
     @Column(name = "USER_NICKNAME", nullable = false)
-    private String userNickName;
+    private String userNickname;
 
     @Column(name = "USER_AVATAR")
     private byte[] userAvatar;
@@ -41,7 +68,7 @@ public class User {
     private Boolean userGender;
 
     @Column(name = "USER_BIRTHDATE", nullable = false)
-    private Date userBirthDay;
+    private Date userBirthdate;
 
     @Column(name = "USER_SIGN_DATETIME", nullable = false)
     private Timestamp userSignDatetime;
@@ -54,10 +81,4 @@ public class User {
 
     @Column(name = "USER_NEWS_STATUS", nullable = false)
     private Boolean userNewsStatus;
-
-    public User(String userName, String userPhone, String userEmail) {
-        this.userName = userName;
-        this.userPhone = userPhone;
-        this.userEmail = userEmail;
-    }
 }
