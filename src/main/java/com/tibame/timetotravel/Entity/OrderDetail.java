@@ -8,12 +8,12 @@ import lombok.NoArgsConstructor;
 import java.sql.Date;
 import java.sql.Timestamp;
 
-@Entity
-@Table(name = "order_list")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class OrderList {
+@Entity
+@Table(name = "order_detail")
+public class OrderDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ORDER_ID", nullable = false, insertable = false, updatable = false)

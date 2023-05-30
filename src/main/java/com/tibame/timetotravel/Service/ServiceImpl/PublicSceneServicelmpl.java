@@ -1,9 +1,9 @@
-package com.tibame.timetotravel.Service.ServiceImpl;
+package com.tibame.timetotravel.service.ServiceImpl;
 
 
-import com.tibame.timetotravel.Service.PublicSceneService;
 import com.tibame.timetotravel.entity.PublicScene;
 import com.tibame.timetotravel.repository.PublicSceneRepository;
+import com.tibame.timetotravel.service.PublicSceneService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;

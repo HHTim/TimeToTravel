@@ -201,27 +201,63 @@ function slider(slider_name) {
 /* ---------------------------------------------------------------- */
 
 // 要存到session的物件
+// let searchBody = {};
+//
+// // 搜尋鈕加入點擊事件，將searchBody物件轉換為JSON字串並存入SessionStorage
+// const search = document.querySelector('.btn-query').addEventListener('click', () => {
+//   const { keyword, people, startDate, endDate } = searchBody;
+//   // 判斷是否有值
+//   if (keyword === '' || people === 0 || startDate === '' || endDate === '') {
+//     alert('輸入欄請物留空');
+//     return;
+//   } else {
+//     sessionStorage.setItem('searchBody', JSON.stringify(searchBody));
+//     // 儲存完畢後跳轉到搜尋結果頁面
+//     location.assign('html/search_room.html');
+//   }
+// });
+//
+// // 選取所有input，加入blur事件
+// const [keyword, people, startDate, endDate] = ['keyword', 'people', 'startDate', 'endDate'].forEach((elem) => {
+//   document.querySelector(`#${elem}`).addEventListener('blur', (e) => {
+//     // 讓searchBody的key-value為輸入欄的數值，EX {input: '新北市'}
+//     searchBody[elem] = elem === 'people' ? Number(e.target.value.trim()) : e.target.value.trim();
+//     console.log(searchBody);
+//   });
+// });
+
 let searchBody = {};
+const search = document.querySelector('.btn-query');
+const keyword = document.querySelector('#keyword');
+const people = document.querySelector('#people');
+const startDate = document.querySelector('#startDate');
+const endDate = document.querySelector('#endDate');
 
-// 搜尋鈕加入點擊事件，將searchBody物件轉換為JSON字串並存入SessionStorage
-const search = document.querySelector('.btn-query').addEventListener('click', () => {
+search.onclick = async () => {
   const { keyword, people, startDate, endDate } = searchBody;
-  // 判斷是否有值
   if (keyword === '' || people === 0 || startDate === '' || endDate === '') {
-    alert('輸入欄請物留空');
-    return;
+    alert('輸入欄請勿留空');
   } else {
-    sessionStorage.setItem('searchBody', JSON.stringify(searchBody));
-    // 儲存完畢後跳轉到搜尋結果頁面
-    location.assign('html/search_room.html');
+    const resp = await fetch('http://localhost:8080/SearchController/redirect', {
+      method: 'POST',
+      cache: 'no-cache',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(searchBody),
+    });
+    console.log(resp);
+    if (resp.redirected) {
+      location.href = resp.url;
+    }
   }
-});
+};
 
-// 選取所有input，加入blur事件
-const [keyword, people, startDate, endDate] = ['keyword', 'people', 'startDate', 'endDate'].forEach((elem) => {
-  document.querySelector(`#${elem}`).addEventListener('blur', (e) => {
-    // 讓searchBody的key-value為輸入欄的數值，EX {input: '新北市'}
-    searchBody[elem] = elem === 'people' ? Number(e.target.value.trim()) : e.target.value.trim();
-    console.log(searchBody);
+[keyword, people, startDate, endDate].forEach((elem) => {
+  elem.addEventListener('blur', (e) => {
+    if (e.target.value === '') {
+      alert('輸入欄位請勿留空');
+    } else {
+      searchBody[elem.id] = e.target.value;
+      console.log(searchBody);
+    }
   });
 });
