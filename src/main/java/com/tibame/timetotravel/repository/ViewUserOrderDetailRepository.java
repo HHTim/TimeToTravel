@@ -14,5 +14,5 @@ public interface ViewUserOrderDetailRepository extends CrudRepository<ViewUserOr
     List<String> findCommentByRoomId(Integer roomId);
 
     @Query(value = "SELECT ORDER_RANK FROM ORDER_DETAIL WHERE ROOM_ID = ?1", nativeQuery = true)
-    public List<Integer> findRankByRoomId(Integer roomId);
+    List<Integer> findRankByRoomId(Integer roomId);
 }

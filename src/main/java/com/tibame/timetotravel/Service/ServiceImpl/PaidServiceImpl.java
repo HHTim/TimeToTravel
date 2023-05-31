@@ -14,6 +14,7 @@ import com.tibame.timetotravel.view.ViewCompanyRoom;
 import org.apache.commons.beanutils.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.lang.reflect.InvocationTargetException;
 import java.sql.Date;
@@ -49,18 +50,22 @@ public class PaidServiceImpl implements PaidService {
         return bookingPaid;
     }
 
+    @Transactional
     @Override
     public Integer insertOrder(Integer userId, Integer roomId, RoomOrder order) {
+        // 建立Entity
         OrderDetail orderDetail = new OrderDetail();
         orderDetail.setUserId(userId);
         orderDetail.setRoomId(roomId);
         orderDetail.setOrderAmount(order.getOrderAmount());
 
+        // 將DTO中的日期從字串轉成java.sql.Date型別
         Date checkIn = Date.valueOf(order.getOrderCheckIn());
         Date checkOut = Date.valueOf(order.getOrderCheckOut());
         orderDetail.setOrderCheckIn(checkIn);
         orderDetail.setOrderCheckOut(checkOut);
 
+        // 沒有選購行程則journeyId為null
         Integer journeyId = order.getJourneyId();
         if (Objects.isNull(journeyId)) {
             orderDetail.setJourneyId(0);
