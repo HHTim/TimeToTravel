@@ -166,7 +166,7 @@ main.main {
   width: 100%;
   height: 100%;
   border: none;
-  background-image: url("../images/notify-normal.png");
+  background-image: url("../images/info.svg");
   background-color: transparent;
   background-size: contain;
   background-position: center;
@@ -366,6 +366,7 @@ h4 {
 
 .content-bg {
   width: 100%;
+  min-height: 60dvh;
   margin-top: 2%;
   padding: 2%;
   font-size: 1.2rem;
@@ -374,12 +375,12 @@ h4 {
   border-radius: 10px;
 }
 
-.div-btn {
+.div-back-btn {
   margin-top: 20px;
   text-align: right;
 }
 
-.btn-style {
+.back-btn {
   border: none;
   background-color: #006caa;
   border-radius: 5px;
@@ -389,55 +390,9 @@ h4 {
   min-width: 10dvw;
   text-align: center;
 }
-.btn-style:hover {
+.back-btn:hover {
   opacity: 0.8;
 }
-.btn-style:active {
+.back-btn:active {
   opacity: 0.5;
-}
-
-.form-input {
-  display: inline-block;
-  font-size: 1rem;
-  min-width: 13dvw;
-  width: 30dvw;
-  margin-top: 1%;
-  text-align: center;
-  border-radius: 10px;
-  padding: 9px 9px 9px 9px;
-}
-
-.ann-title {
-  display: inline-block;
-  font-size: 1.2rem;
-}
-
-.ann-content-title {
-  display: inline-block;
-  margin-top: 2%;
-}
-
-.show-placeholder-title {
-  margin-left: 3%;
-  color: red;
-}
-
-.show-placeholder-content {
-  margin-left: 3%;
-  color: red;
-}
-
-textarea.textarea {
-  width: 90%;
-  height: 55dvh;
-  padding: 10px;
-  resize: none;
-  border-radius: 10px;
-  outline-color: #006caa;
-}
-
-.custom-select {
-  display: inline-block;
-  margin-top: 20px;
-  width: 45%;
 }

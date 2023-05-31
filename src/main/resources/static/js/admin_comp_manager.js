@@ -33,7 +33,7 @@ $(function () {
         tbody.innerHTML = d.rows
           .map((e) => {
             return `
-            <tr>
+            <tr data-id=${e.comId}>
             <td class="data-text">${e.comAccount}</td>
             <td class="data-text">${e.comName}</td>
             <td class="data-text">${e.comManager}</td>
@@ -51,7 +51,15 @@ $(function () {
                   <button class="btn-warning">待審核</button>
                 </td>
                 `
-            }             
+            }
+            <td class="data-text" hidden>${e.comAvatar}</td>
+            <td class="data-text" hidden>${e.comEmail}</td>
+            <td class="data-text" hidden>${e.comAddress}</td>
+            <td class="data-text" hidden>${e.comTaxId}</td>
+            <td class="data-text" hidden>${e.comPassword}</td>
+            <td class="data-text" hidden>${e.comLongitude}</td> 
+            <td class="data-text" hidden>${e.comLatitude}</td>
+            <td class="data-text" hidden>${e.comNewsStatus}</td>
             <td><button class="btn-query">查詢</button></td>
           </tr>
             `;
@@ -88,7 +96,7 @@ $(function () {
         tbody.innerHTML = d.rows
           .map((e) => {
             return `
-            <tr>
+            <tr data-id=${e.comId}>
             <td class="data-text">${e.comAccount}</td>
             <td class="data-text">${e.comName}</td>
             <td class="data-text">${e.comManager}</td>
@@ -106,7 +114,15 @@ $(function () {
                   <button class="btn-warning">待審核</button>
                 </td>
                 `
-            }             
+            }
+            <td class="data-text" hidden>${e.comAvatar}</td>
+            <td class="data-text" hidden>${e.comEmail}</td>
+            <td class="data-text" hidden>${e.comAddress}</td>
+            <td class="data-text" hidden>${e.comTaxId}</td>
+            <td class="data-text" hidden>${e.comPassword}</td>
+            <td class="data-text" hidden>${e.comLongitude}</td> 
+            <td class="data-text" hidden>${e.comLatitude}</td>
+            <td class="data-text" hidden>${e.comNewsStatus}</td>
             <td><button class="btn-query">查詢</button></td>
           </tr>
             `;
@@ -144,7 +160,7 @@ $(function () {
         tbody.innerHTML = d.rows
           .map((e) => {
             return `
-            <tr>
+            <tr data-id=${e.comId}>
             <td class="data-text">${e.comAccount}</td>
             <td class="data-text">${e.comName}</td>
             <td class="data-text">${e.comManager}</td>
@@ -162,7 +178,15 @@ $(function () {
                   <button class="btn-warning">待審核</button>
                 </td>
                 `
-            }             
+            }
+            <td class="data-text" hidden>${e.comAvatar}</td>
+            <td class="data-text" hidden>${e.comEmail}</td>
+            <td class="data-text" hidden>${e.comAddress}</td>
+            <td class="data-text" hidden>${e.comTaxId}</td>
+            <td class="data-text" hidden>${e.comPassword}</td>
+            <td class="data-text" hidden>${e.comLongitude}</td> 
+            <td class="data-text" hidden>${e.comLatitude}</td>
+            <td class="data-text" hidden>${e.comNewsStatus}</td>
             <td><button class="btn-query">查詢</button></td>
           </tr>
             `;
@@ -200,7 +224,7 @@ $(function () {
         tbody.innerHTML = d.rows
           .map((e) => {
             return `
-            <tr>
+            <tr data-id=${e.comId}>
             <td class="data-text">${e.comAccount}</td>
             <td class="data-text">${e.comName}</td>
             <td class="data-text">${e.comManager}</td>
@@ -218,7 +242,15 @@ $(function () {
                   <button class="btn-warning">待審核</button>
                 </td>
                 `
-            }             
+            }
+            <td class="data-text" hidden>${e.comAvatar}</td>
+            <td class="data-text" hidden>${e.comEmail}</td>
+            <td class="data-text" hidden>${e.comAddress}</td>
+            <td class="data-text" hidden>${e.comTaxId}</td>
+            <td class="data-text" hidden>${e.comPassword}</td>
+            <td class="data-text" hidden>${e.comLongitude}</td> 
+            <td class="data-text" hidden>${e.comLatitude}</td>
+            <td class="data-text" hidden>${e.comNewsStatus}</td>
             <td><button class="btn-query">查詢</button></td>
           </tr>
             `;
@@ -256,7 +288,7 @@ $(function () {
         tbody.innerHTML = d.rows
           .map((e) => {
             return `
-            <tr>
+            <tr data-id=${e.comId}>
             <td class="data-text">${e.comAccount}</td>
             <td class="data-text">${e.comName}</td>
             <td class="data-text">${e.comManager}</td>
@@ -274,7 +306,15 @@ $(function () {
                   <button class="btn-warning">待審核</button>
                 </td>
                 `
-            }             
+            }
+            <td class="data-text" hidden>${e.comAvatar}</td>
+            <td class="data-text" hidden>${e.comEmail}</td>
+            <td class="data-text" hidden>${e.comAddress}</td>
+            <td class="data-text" hidden>${e.comTaxId}</td>
+            <td class="data-text" hidden>${e.comPassword}</td> 
+            <td class="data-text" hidden>${e.comLongitude}</td> 
+            <td class="data-text" hidden>${e.comLatitude}</td>
+            <td class="data-text" hidden>${e.comNewsStatus}</td>
             <td><button class="btn-query">查詢</button></td>
           </tr>
             `;
@@ -504,6 +544,31 @@ $(function () {
     let comName = $(this).closest('tr').find('.data-text').eq(1).text();
     let status = $(this).closest('tr').find('.comp-status').attr('data-status');
     updateCompStatus(comName, status);
+  });
+
+  $('tbody').on('click', 'button.btn-query', function (e) {
+    e.stopPropagation();
+    sessionStorage.setItem(
+      'comp-info',
+      JSON.stringify({
+        id: $(this).closest('tr').attr('data-id'),
+        account: $(this).closest('tr').find('.data-text').eq(0).text(),
+        name: $(this).closest('tr').find('.data-text').eq(1).text(),
+        manager: $(this).closest('tr').find('.data-text').eq(2).text(),
+        phone: $(this).closest('tr').find('.data-text').eq(3).text(),
+        signdate: $(this).closest('tr').find('.data-text').eq(4).text(),
+        avatar: $(this).closest('tr').find('.data-text').eq(5).text(),
+        email: $(this).closest('tr').find('.data-text').eq(6).text(),
+        address: $(this).closest('tr').find('.data-text').eq(7).text(),
+        taxId: $(this).closest('tr').find('.data-text').eq(8).text(),
+        password: $(this).closest('tr').find('.data-text').eq(9).text(),
+        longitude: $(this).closest('tr').find('.data-text').eq(10).text(),
+        latitude: $(this).closest('tr').find('.data-text').eq(11).text(),
+        newsStatus: $(this).closest('tr').find('.data-text').eq(12).text(),
+        status: $(this).closest('tr').find('.comp-status').attr('data-status'),
+      })
+    );
+    location.href = '../admin_company_info';
   });
 
   getCompanyInfomationByNormalPage();

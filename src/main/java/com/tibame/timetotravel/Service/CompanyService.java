@@ -2,6 +2,7 @@ package com.tibame.timetotravel.service;
 
 import com.tibame.timetotravel.common.PageBean;
 import com.tibame.timetotravel.entity.Company;
+
 import java.util.List;
 
 public interface CompanyService {
@@ -9,6 +10,8 @@ public interface CompanyService {
     void insert(Company company);
 
     String updateByComName(String comName);
+
+    String updateByPassword(String password, Integer id);
 
     String updateCompStatusByComName(String comName, Integer status);
 

@@ -31,6 +31,15 @@ public class CompanyController {
         return companyService.updateCompStatusByComName(comName, ("1".equals(status) ? 1 : 0));
     }
 
+    @PatchMapping(value = "/company/password", consumes = "multipart/form-data")
+    public String updateCompanyStatus(@RequestParam("comId") Integer comId,
+                                      @RequestParam("password") String password){
+        System.out.println("接收到的Company ID為:"+comId);
+        System.out.println("接收到的Company password為:"+password);
+
+        return companyService.updateByPassword(password, comId);
+    }
+
     @GetMapping("/company/page/{currPage}/{rows}")
     public PageBean<Company> readByPage(@PathVariable Integer currPage, @PathVariable Integer rows){
         System.out.println("分頁搜尋");

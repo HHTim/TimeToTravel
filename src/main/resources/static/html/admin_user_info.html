@@ -11,11 +11,11 @@
     <script src="https://kit.fontawesome.com/e3af248fb2.js" crossorigin="anonymous" defer></script>
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
 
-    <script src="../js/company_info.js" defer></script>
+    <script src="../js/admin_user_info.js" defer></script>
 
     <!-- 我們自己的 css 檔案，路徑記得改 -->
-    <link rel="stylesheet" href="../css/company_info.css" />
-    <title>company_info</title>
+    <link rel="stylesheet" href="../css/admin_user_info.css" />
+    <title>Admin user info</title>
   </head>
   <body>
     <div class="wrapper">
@@ -76,12 +76,12 @@
             <aside>
               <nav class="nav-custom">
                 <ul class="nav_list">
-                  <li><a href="#">商品訂單管理</a></li>
-                  <li><a href="#">公告管理</a></li>
-                  <li><a href="#">訊息管理</a></li>
-                  <li><a href="#">商家管理</a></li>
+                  <li><a href="../admin">商品訂單管理</a></li>
+                  <li><a href="../admin_ann">公告管理</a></li>
+                  <li><a href="../admin_message_recv">訊息管理</a></li>
+                  <li><a href="../admin_comp_manager">商家管理</a></li>
                   <li>
-                    <a href="#">消費者管理</a>
+                    <a href="../admin_user_manager">消費者管理</a>
                   </li>
                   <li><a href="#">景點管理</a></li>
                 </ul>
@@ -94,7 +94,9 @@
             <main>
               <div class="mgmtPanel w-100">
                 <div class="mgmtInner p-5">
-                  <p style="padding-bottom: 5px; border-bottom: 4px solid #0078bb" class="fs-4 fw-bold">商家基本資料</p>
+                  <p style="padding-bottom: 5px; border-bottom: 4px solid #0078bb" class="fs-4 fw-bold">
+                    消費者基本資料
+                  </p>
                   <p class="fw-bold mt-1">基本資料修改</p>
                   <div>
                     <form class="mgmt-form">
@@ -154,33 +156,43 @@
                             style="font-size: 16px; white-space: nowrap"
                             class="form-label mb-0"
                           >
-                            負責人姓名
+                            姓名
                           </label>
                           <label
                             for="exampleInputPassword1"
-                            style="font-size: 16px; white-space: nowrap; padding-left: 36%"
+                            style="font-size: 16px; white-space: nowrap; padding-left: 37%"
                             class="form-label mb-0"
                           >
-                            聯絡電話
+                            性別
                           </label>
                           <label
                             for="exampleInputPassword1"
-                            style="font-size: 16px; white-space: nowrap; padding-left: 21%"
+                            style="font-size: 16px; white-space: nowrap; padding-left: 30%"
                             class="form-label mb-0"
                           >
-                            統一編號
+                            電話號碼
                           </label>
                         </div>
                         <div style="display: flex; justify-content: space-between">
                           <input
-                            id="manager"
-                            style="height: 45px; width: 44%"
+                            id="name"
+                            style="height: 45px; width: 34%"
                             type=""
                             class="form-control"
                             id="exampleInputPassword1"
                             value="王曉明"
                             disabled
                           />
+                          <select
+                            id="gender"
+                            class="form-select custom-select"
+                            aria-label="Default select example"
+                            style="height: 45px; width: 27%; font-weight: bold"
+                          >
+                            <option disabled selected hidden>性別</option>
+                            <option value="1">男</option>
+                            <option value="0">女</option>
+                          </select>
                           <input
                             id="phone"
                             style="height: 45px; width: 27%; font-weight: bold"
@@ -188,15 +200,6 @@
                             class="form-control"
                             id="verity-code"
                             value="0910234567"
-                            disabled
-                          />
-                          <input
-                            id="texId"
-                            style="height: 45px; width: 27%; font-weight: bold"
-                            type=""
-                            class="form-control"
-                            id="verity-code"
-                            value="12345678"
                             disabled
                           />
                         </div>
@@ -208,7 +211,7 @@
                             style="font-size: 16px; white-space: nowrap"
                             class="form-label mb-0"
                           >
-                            註冊日期
+                            出生日期
                           </label>
                           <label
                             for="exampleInputPassword1"
@@ -217,11 +220,18 @@
                           >
                             電子信箱
                           </label>
+                          <label
+                            for="exampleInputPassword1"
+                            style="font-size: 16px; white-space: nowrap"
+                            class="form-label mb-0"
+                          >
+                            暱稱
+                          </label>
                         </div>
                         <div style="display: flex; justify-content: space-between">
                           <input
                             id="signdate"
-                            style="height: 45px; width: 30%"
+                            style="height: 45px; width: 30%; padding-left: 20px"
                             type=""
                             class="form-control"
                             id="exampleInputPassword1"
@@ -237,26 +247,6 @@
                             value="abc@gmail.com"
                             disabled
                           />
-                        </div>
-                      </div>
-                      <div class="mb-3">
-                        <div style="display: flex">
-                          <label
-                            for="exampleInputPassword1"
-                            style="font-size: 16px; white-space: nowrap"
-                            class="form-label mb-0"
-                          >
-                            商家名稱
-                          </label>
-                          <label
-                            for="exampleInputPassword1"
-                            style="font-size: 16px; white-space: nowrap; padding-left: 24%"
-                            class="form-label mb-0"
-                          >
-                            商家地址
-                          </label>
-                        </div>
-                        <div style="display: flex">
                           <input
                             id="comName"
                             style="height: 45px; width: 30%; margin-right: 10px"
@@ -266,17 +256,9 @@
                             value="凱薩飯店"
                             disabled
                           />
-                          <input
-                            id="address"
-                            style="height: 45px; width: 69%; font-weight: bold"
-                            type=""
-                            class="form-control"
-                            id="verity-code"
-                            value="台北市南京東路三段"
-                            disabled
-                          />
                         </div>
                       </div>
+
                       <div style="display: flex; justify-content: end">
                         <input
                           id="update"

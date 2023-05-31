@@ -17,6 +17,10 @@ public interface CompanyRepository extends JpaRepository<Company, Integer> {
     @Modifying
     @Query(value = "UPDATE COMPANY JOIN (SELECT COM_ID FROM COMPANY WHERE COM_NAME = ?1) AS subquery SET COM_STATUS = ?2 WHERE COMPANY.COM_ID = subquery.COM_ID", nativeQuery = true)
     void updateCompanyStatus(String comName, Integer status);
+
+    @Modifying
+    @Query(value = "UPDATE COMPANY SET COM_PASSWORD = ?1 WHERE COM_ID = ?2", nativeQuery = true)
+    void updateCompanyPassword(String password, Integer comId);
     @Query(value = "SELECT * FROM COMPANY ORDER BY COM_SIGNDATE DESC LIMIT ?1,?2",nativeQuery = true)
     List<Company> findByPage(Integer currPage, Integer limit);
 

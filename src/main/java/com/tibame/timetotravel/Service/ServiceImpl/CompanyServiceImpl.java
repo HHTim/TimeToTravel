@@ -39,6 +39,13 @@ public class CompanyServiceImpl implements CompanyService {
 
     @Transactional
     @Override
+    public String updateByPassword(String password, Integer id) {
+        companyRepository.updateCompanyPassword(password, id);
+        return "更新密碼成功";
+    }
+
+    @Transactional
+    @Override
     public String updateCompStatusByComName(String comName, Integer status) {
         companyRepository.updateCompanyStatus(comName, status);
         return "更新Company: " + comName + "的Status成功";
