@@ -122,20 +122,30 @@
 								<div>
 									<span class="gift__stock">
 										<h4 class="gift__stock__title">土產庫存</h4>
-										<input type="text" placeholder="請輸入數量..." />
+										<input
+											type="text"
+											placeholder="請輸入數量..."
+											oninput="this.value = this.value.replace(/[^0-9]/g, '')" />
 									</span>
 									<span class="gift__type">
 										<h4 class="gift__type__title">土產類別</h4>
 										<select name="gift__type__option" class="gift__type__option">
 											<option disabled selected hidden>請選擇</option>
-											<option value="好吃的">好吃的</option>
-											<option value="不好吃的">不好吃的</option>
-											<option value="阿嬤的">阿嬤的</option>
+											<optgroup label="土產類別">
+												<option value="冷凍食品">冷凍食品</option>
+												<option value="彌月食品">彌月食品</option>
+												<option value="店取限定">店取限定</option>
+												<option value="團購美食">團購美食</option>
+												<option value="熱門美食">熱門美食</option>
+											</optgroup>
 										</select>
 									</span>
 									<span class="gift__price">
 										<h4 class="gift__price__title">土產價格</h4>
-										<input type="text" placeholder="請輸入價格..." />
+										<input
+											type="text"
+											placeholder="請輸入價格..."
+											oninput="this.value = this.value.replace(/[^0-9]/g, '')" />
 									</span>
 									<span class="gift__photo">
 										<h4 class="gift__photo__title">土產照片</h4>
@@ -149,7 +159,7 @@
 											name="gift__description__content"
 											rows="4"
 											cols="10"
-											maxlength="30">
+											maxlength="100">
 										</textarea>
 									</span>
 									<span class="save__btn">

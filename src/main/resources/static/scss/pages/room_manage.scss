@@ -146,14 +146,13 @@ div.manage-type div {
 	border-top: 3px solid $primary-blue-hover;
 }
 
-th
- {
+th {
 	text-align: center;
 	font-weight: bold;
 	font-size: x-large;
 }
 
-td{
+td {
 	text-align: center;
 	font-weight: bold;
 }
@@ -178,4 +177,10 @@ tbody tr {
 	a:hover {
 		color: $white;
 	}
+}
+
+.pagination__area {
+	display: flex;
+	justify-content: center;
+	margin-top: 2rem;
 }
