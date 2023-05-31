@@ -4,7 +4,7 @@ $(function () {
   let dropdown_cart_btn = document.querySelector('.open-cart');
 
   $(document).on('click', function (e) {
-    console.log(e);
+    // console.log(e);
     let target = e.target;
 
     if (!dropdown_cart.contains(target) && target!= dropdown_cart_btn) {
