@@ -77,9 +77,9 @@
             <nav class="nav-custom">
               <ul class="nav_list">
                 <li><a href="#">基本資料</a></li>
-                <li><a href="#">訂單管理</a></li>
-                <li><a href="./room_manage.html">商品管理</a></li>
-                <li><a href="./room_on_shelve.html">上架頁面</a></li>
+                <li><a href="./gift_order_management.html">訂單管理</a></li>
+                <li><a href="./gift_manage.html">商品管理</a></li>
+                <li><a href="./gift_on_shelve.html">上架頁面</a></li>
                 <li><a href="#">訊息管理</a></li>
               </ul>
             </nav>
@@ -95,10 +95,8 @@
                 <div class="col-2">
                   <a href="#"><h3>全部商品</h3></a>
                 </div>
-                <div class="col-2">
-                </div>
-                <div class="col-2">
-                </div>
+                <div class="col-2"></div>
+                <div class="col-2"></div>
                 <div class="col-4"></div>
                 <div class="col-2 reset__area">
                   <button class="reset__area__btn">重設</button>
@@ -109,7 +107,9 @@
                 <!-- test bootstrap style -->
                 <a href="./room_on_shelve.html"><button class="btn btn-primary btn__update__room">新增房型+</button></a>
                 <a href="./gift_on_shelve.html"><button class="btn btn-primary btn__update__gift">新增土產+</button></a>
-                <a href="./primary_scene_on_shelve.html"><button class="btn btn-primary btn__update__private__scene">新增景點+</button></a>
+                <a href="./primary_scene_on_shelve.html"
+                  ><button class="btn btn-primary btn__update__private__scene">新增景點+</button></a
+                >
               </div>
               <div class="gift">
                 <span class="gift__name">
@@ -119,28 +119,47 @@
                 <div>
                   <span class="gift__stock">
                     <h4 class="gift__stock__title">商品庫存</h4>
-                    <input type="text" placeholder="請輸入數量..." />
+                    <input
+                      type="text"
+                      placeholder="請輸入數量..."
+                      oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                    />
                   </span>
                   <span class="gift__type">
                     <h4 class="gift__type__title">土產類別</h4>
                     <select name="gift__type__option" class="gift__type__option">
                       <option disabled selected hidden>請選擇</option>
-                      <option value="">好吃的</option>
-                      <option value="">不好吃的</option>
+                      <optgroup label="土產類別">
+                        <option value="冷凍食品">冷凍食品</option>
+                        <option value="彌月食品">彌月食品</option>
+                        <option value="店取限定">店取限定</option>
+                        <option value="團購美食">團購美食</option>
+                        <option value="熱門美食">熱門美食</option>
+                      </optgroup>
                     </select>
                   </span>
                   <span class="gift__price">
                     <h4 class="gift__price__title">商品價格</h4>
-                    <input type="text" placeholder="請輸入價格..." />
+                    <input
+                      type="text"
+                      placeholder="請輸入價格..."
+                      oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                    />
                   </span>
                   <span class="gift__photo">
                     <h4 class="gift__photo__title">商品照片</h4>
-                    <input type="file" />
+                    <input type="file" style="display: none" class="gift__photo__update" />
+                    <div class="gift__photo__preview" placeholder="請點擊上傳圖片..."></div>
                   </span>
                   <span class="gift__description">
                     <h4 class="gift__description__title">商品介紹</h4>
-                    <textarea id="gift__description__content" name="gift__description__content" rows="20" cols="50">
-                    </textarea>
+                    <textarea
+                      id="gift__description__content"
+                      name="gift__description__content"
+                      rows="4"
+                      cols="10"
+                      maxlength="100"
+                    ></textarea>
                   </span>
                   <span class="save__btn">
                     <button class="btn btn-primary save__btn__commit">儲存</button>

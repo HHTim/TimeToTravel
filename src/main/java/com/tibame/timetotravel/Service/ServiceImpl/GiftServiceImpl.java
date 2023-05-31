@@ -1,6 +1,7 @@
 package com.tibame.timetotravel.service.ServiceImpl;
 
 import com.tibame.timetotravel.entity.Gift;
+import com.tibame.timetotravel.entity.Room;
 import com.tibame.timetotravel.repository.GiftRepository;
 import com.tibame.timetotravel.service.GiftService;
 import jakarta.persistence.EntityManager;
@@ -37,7 +38,11 @@ public class  GiftServiceImpl implements GiftService {
     @Override
     @Transactional
     public void update(Integer giftId, Gift gift) {
-        entityManager.merge(gift);
+//        // 把舊的GIFTId拖出來
+//        Gift newGift = entityManager.find(Gift.class, giftId);
+//        System.out.println(newGift.getGiftStatus());
+//        newGift.setGiftStatus(gift.getGiftStatus());
+//        entityManager.merge(newGift);
     }
 
     @Override
@@ -48,5 +53,20 @@ public class  GiftServiceImpl implements GiftService {
     @Override
     public List<Gift> findAll() {
         return giftRepository.findAll();
+    }
+
+    @Override
+    public List<Gift> findByKeyword(String keyword) {
+        if (keyword != null && !("".equals(keyword))) {
+            System.out.println(keyword + "hahaha");
+            return giftRepository.findByKeyword(keyword);
+        } else {
+            return null;
+        }
+    }
+
+    @Override
+    public List<Gift> findByGiftType(String giftTypeValue) {
+        return giftRepository.findByGiftType(giftTypeValue);
     }
 }

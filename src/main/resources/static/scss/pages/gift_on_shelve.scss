@@ -3,256 +3,264 @@
 
 /*以下為測試用，可刪*/
 .subtitle {
-	width: 100%;
-	position: relative;
-	font-size: 20px;
-	font-weight: bold;
-	margin-bottom: 1.5rem;
+  width: 100%;
+  position: relative;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
 
-	&::after {
-		content: '';
-		height: 5px;
-		width: 100%;
-		background-color: $primary-blue;
-		position: absolute;
-		left: 0;
-		bottom: -50%;
-	}
+  &::after {
+    content: '';
+    height: 5px;
+    width: 100%;
+    background-color: $primary-blue;
+    position: absolute;
+    left: 0;
+    bottom: -50%;
+  }
 }
 
 main.main {
-	width: 80dvw;
-	min-height: 100dvh;
-	padding: 20px 20px;
-	// margin-left: 35px;
-	// display: flex;
-	border: 3px solid $admin-aside-blue;
-	font-size: 1.1rem;
-	box-shadow: -5px 0 5px 3px rgba(172, 164, 164, 0.5), 5px 0 5px 3px rgba(172, 164, 164, 0.5),
-		0 5px 5px 3px rgba(172, 164, 164, 0.5), 0 -5px 5px 3px rgba(172, 164, 164, 0.5);
+  width: 80dvw;
+  min-height: 100dvh;
+  padding: 20px 20px;
+  // margin-left: 35px;
+  // display: flex;
+  border: 3px solid $admin-aside-blue;
+  font-size: 1.1rem;
+  box-shadow: -5px 0 5px 3px rgba(172, 164, 164, 0.5), 5px 0 5px 3px rgba(172, 164, 164, 0.5),
+    0 5px 5px 3px rgba(172, 164, 164, 0.5), 0 -5px 5px 3px rgba(172, 164, 164, 0.5);
 }
 
 h3.subtitle {
-	display: flex;
-	justify-content: space-around;
-	font-size: x-large;
+  display: flex;
+  justify-content: space-around;
+  font-size: x-large;
 }
 
 div.r1 {
-	font-size: 1.2rem;
-	font-weight: bold;
+  font-size: 1.2rem;
+  font-weight: bold;
 }
 
 div.r1 div {
-	text-align: center;
+  text-align: center;
 }
 
 div.r1 button {
-	font-size: 1rem;
-	min-width: 90px;
+  font-size: 1rem;
+  min-width: 90px;
 
-	border: $normal-border;
-	border-radius: $border-radius;
+  border: $normal-border;
+  border-radius: $border-radius;
 }
 
 main.main div.decorator {
-	width: 100%;
-	height: 5px;
-	background-color: $primary-blue;
-	margin: 20px 0 25px 0;
+  width: 100%;
+  height: 5px;
+  background-color: $primary-blue;
+  margin: 20px 0 25px 0;
 }
 
 .update__btn__area button {
-	background-color: $primary-blue;
-	border: $normal-border;
-	margin: 1rem 0.5rem;
-	padding: 10px;
-	font-weight: bold;
-	font-size: larger;
+  background-color: $primary-blue;
+  border: $normal-border;
+  margin: 1rem 0.5rem;
+  padding: 10px;
+  font-weight: bold;
+  font-size: larger;
 
-	&:hover {
-		background-color: $primary-blue-hover;
-		color: $font-normal-white;
-	}
+  &:hover {
+    background-color: $primary-blue-hover;
+    color: $font-normal-white;
+  }
 }
 
 .reset__area {
-	display: flex;
-	justify-content: end;
-	padding-right: 2rem;
+  display: flex;
+  justify-content: end;
+  padding-right: 2rem;
 
-	&__btn {
-		padding: 10px;
-		font-weight: bold;
-		font-size: larger;
+  &__btn {
+    padding: 10px;
+    font-weight: bold;
+    font-size: larger;
 
-		&:hover {
-			background-color: $primary-blue-hover;
-			color: $font-normal-white;
-		}
-	}
+    &:hover {
+      background-color: $primary-blue-hover;
+      color: $font-normal-white;
+    }
+  }
 }
 
 .gift__name {
-	display: flex;
-	margin: 2rem auto 3rem 1rem;
-	position: relative;
-	&::after {
-		content: '';
-		height: 5px;
-		width: 100%;
-		background-color: $tertiary-gray;
-		position: absolute;
-		left: 0;
-		bottom: -50%;
-	}
+  display: flex;
+  margin: 2rem auto 3rem 1rem;
+  position: relative;
+  &::after {
+    content: '';
+    height: 5px;
+    width: 100%;
+    background-color: $tertiary-gray;
+    position: absolute;
+    left: 0;
+    bottom: -50%;
+  }
 
-	&__title {
-		margin: auto 1rem auto 0;
-		font-weight: bold;
-		white-space: nowrap;
-	}
-	& input {
-		border-radius: $input-radius;
-		border-color: $admin-aside-blue;
-		padding: 0 10px;
-		border-style: none;
-		border: 2px solid $admin-aside-blue;
-		font-weight: bold;
-		height: 3rem;
-		margin-left: 4.5rem;
-	}
+  &__title {
+    margin: auto 1rem auto 0;
+    font-weight: bold;
+    white-space: nowrap;
+  }
+  & input {
+    border-radius: $input-radius;
+    border-color: $admin-aside-blue;
+    padding: 0 10px;
+    border-style: none;
+    border: 2px solid $admin-aside-blue;
+    font-weight: bold;
+    height: 3rem;
+    margin-left: 4.5rem;
+  }
 }
 
 .gift__stock {
-	display: flex;
-	margin: 2rem auto;
+  display: flex;
+  margin: 2rem auto;
 
-	&__title {
-		font-weight: bold;
-		margin-left: 1rem;
-		white-space: nowrap;
-		display: flex;
-		align-items: center;
-	}
+  &__title {
+    font-weight: bold;
+    margin-left: 1rem;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+  }
 
-	& input {
-		border-radius: $input-radius;
-		border-color: $admin-aside-blue;
-		padding: 0 10px;
-		border-style: none;
-		border: 2px solid $admin-aside-blue;
-		font-weight: bold;
-		height: 3rem;
-		margin-left: 5.5rem;
-	}
+  & input {
+    border-radius: $input-radius;
+    border-color: $admin-aside-blue;
+    padding: 0 10px;
+    border-style: none;
+    border: 2px solid $admin-aside-blue;
+    font-weight: bold;
+    height: 3rem;
+    margin-left: 5.5rem;
+  }
 }
 
 .gift__type {
-	display: flex;
-	margin: 2rem auto 2rem auto;
+  display: flex;
+  margin: 2rem auto 2rem auto;
 
-	&__title {
-		font-weight: bold;
-		margin-left: 1rem;
-		white-space: nowrap;
-		display: flex;
-		align-items: center;
-	}
+  &__title {
+    font-weight: bold;
+    margin-left: 1rem;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+  }
 
-	&__option {
-		border-radius: $input-radius;
-		border-color: $admin-aside-blue;
-		padding: 0 10px;
-		border-style: none;
-		border: 2px solid $admin-aside-blue;
-		font-weight: bold;
-		height: 3rem;
-		margin-left: 5.5rem;
-	}
+  &__option {
+    border-radius: $input-radius;
+    border-color: $admin-aside-blue;
+    padding: 0 10px;
+    border-style: none;
+    border: 2px solid $admin-aside-blue;
+    font-weight: bold;
+    height: 3rem;
+    margin-left: 5.5rem;
+    width: 226px;
+  }
 }
 
 .gift__price {
-	display: flex;
-	margin-left: 1rem;
+  display: flex;
+  margin-left: 1rem;
 
-	&__title {
-		font-weight: bold;
-		white-space: nowrap;
-		display: flex;
-		align-items: center;
-	}
+  &__title {
+    font-weight: bold;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+  }
 
-	& input {
-		border-radius: $input-radius;
-		margin-left: 5.5rem;
-		border-color: $admin-aside-blue;
-		padding: 0 10px;
-		border-style: none;
-		border: 2px solid $admin-aside-blue;
-		font-weight: bold;
-		height: 3rem;
-	}
+  & input {
+    border-radius: $input-radius;
+    margin-left: 5.5rem;
+    border-color: $admin-aside-blue;
+    padding: 0 10px;
+    border-style: none;
+    border: 2px solid $admin-aside-blue;
+    font-weight: bold;
+    height: 3rem;
+  }
 }
-
 .gift__photo {
-	display: flex;
-	margin: 1rem auto 1.5rem 1rem;
-	height: 5rem;
+  display: flex;
+  margin: 1rem auto 1.5rem 1rem;
+  height: 10rem;
 
-	&__title {
-		font-weight: bold;
-		white-space: nowrap;
-		display: flex;
-		align-items: center;
-		height: 5rem;
-	}
-	& input {
-		border-radius: $input-radius;
-		margin: 1.5rem auto auto 5.5rem;
-		border-color: $admin-aside-blue;
-		font-weight: bold;
-		height: 3rem;
-	}
+  &__title {
+    font-weight: bold;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+
+  &__preview {
+    border: 1px dashed #b3b3b3;
+    height: 10rem;
+    width: 230px;
+    margin-left: 5.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:empty:before {
+      content: attr(placeholder);
+      color: #b3b3b3;
+    }
+  }
 }
 
 .gift__description {
-	display: flex;
-	margin-left: 1rem;
-	&__title {
-		font-weight: bold;
-		white-space: nowrap;
-		display: flex;
-		align-items: start;
-	}
-	& textarea {
-		border-radius: $input-radius;
-		margin-left: 3rem;
-		border-color: $admin-aside-blue;
-		padding: 0 10px;
-		border-style: none;
-		border: 2px solid $admin-aside-blue;
-		font-weight: bold;
-		height: 20rem;
-		width: 100%;
-	}
+  display: flex;
+  margin-left: 1rem;
+  &__title {
+    font-weight: bold;
+    white-space: nowrap;
+    display: flex;
+    align-items: start;
+  }
+  & textarea {
+    border-radius: $input-radius;
+    margin-left: 5.5rem;
+    border-color: $admin-aside-blue;
+    padding: 0 10px;
+    border-style: none;
+    border: 2px solid $admin-aside-blue;
+    font-weight: bold;
+    height: 5rem;
+    width: 100%;
+  }
 }
 
 .save__btn {
-	display: flex;
-	justify-content: flex-end;
+  display: flex;
+  justify-content: flex-end;
 
-	&__commit {
-		background-color: $primary-blue;
-		border: $normal-border;
-		margin: 1rem 0.5rem;
-		padding: 10px;
-		font-weight: bold;
-		font-size: larger;
+  &__commit {
+    background-color: $primary-blue;
+    border: $normal-border;
+    margin: 1rem 0.5rem;
+    padding: 10px;
+    font-weight: bold;
+    font-size: larger;
 
-		&:hover {
-			background-color: $primary-blue-hover;
-			color: $font-normal-white;
-		}
-	}
+    &:hover {
+      background-color: $primary-blue-hover;
+      color: $font-normal-white;
+    }
+  }
 }

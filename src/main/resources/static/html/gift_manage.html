@@ -78,9 +78,9 @@
             <nav class="nav-custom">
               <ul class="nav_list">
                 <li><a href="#">基本資料</a></li>
-                <li><a href="#">訂單管理</a></li>
-                <li><a href="./room_manage.html">商品管理</a></li>
-                <li><a href="./room_on_shelve.html">上架頁面</a></li>
+                <li><a href="./gift_order_management.html">訂單管理</a></li>
+                <li><a href="./gift_manage.html">商品管理</a></li>
+                <li><a href="./gift_on_shelve.html">上架頁面</a></li>
                 <li><a href="#">訊息管理</a></li>
               </ul>
             </nav>
@@ -120,9 +120,11 @@
                 <div class="col-2 gift__type">
                   <select name="gift__type__options" class="gift__type__options">
                     <option disabled selected hidden>商品分類</option>
-                    <option value="1">彌月禮盒</option>
-                    <option value="2">送禮好用</option>
-                    <option value="4">超難吃的</option>
+                    <option value="冷凍食品">冷凍食品</option>
+                    <option value="彌月食品">彌月食品</option>
+                    <option value="店取限定">店取限定</option>
+                    <option value="團購美食">團購美食</option>
+                    <option value="熱門美食">熱門美食</option>
                   </select>
                 </div>
                 <div class="col-6 search__area">
@@ -156,7 +158,7 @@
                   </thead>
                   <tbody>
                     <tr>
-                      <td>蛇肉</td>
+                      <td>蛇肉(test寫死)</td>
                       <td>snake01</td>
                       <td>彌月美食</td>
                       <td>$3800</td>
@@ -170,6 +172,8 @@
                         </select>
                       </td>
                     </tr>
+
+                    <!-- JS 生成 -->
                   </tbody>
                 </table>
               </div>

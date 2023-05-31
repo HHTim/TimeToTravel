@@ -31,10 +31,10 @@ public class Gift {
     private Integer giftStock;
 
     @Column(name = "GIFT_STATUS", nullable = false, columnDefinition = "tinyint(1) default 0")
-    private Integer giftStatus;
+    private boolean giftStatus;
 
     @Column(name = "GIFT_TYPE_ID", nullable = false)
-    private Integer giftTypeId;
+    private String giftTypeId;
 
     @Column(name = "GIFT_INTRO", nullable = false, length = 300)
     private String giftIntro;

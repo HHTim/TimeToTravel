@@ -445,6 +445,7 @@ main.main div.decorator {
   font-weight: bold;
   height: 3rem;
   margin-left: 5.5rem;
+  width: 226px;
 }
 
 .gift__price {
@@ -471,21 +472,27 @@ main.main div.decorator {
 .gift__photo {
   display: flex;
   margin: 1rem auto 1.5rem 1rem;
-  height: 5rem;
+  height: 10rem;
 }
 .gift__photo__title {
   font-weight: bold;
   white-space: nowrap;
   display: flex;
   align-items: center;
-  height: 5rem;
+  height: 100%;
 }
-.gift__photo input {
-  border-radius: 5px;
-  margin: 1.5rem auto auto 5.5rem;
-  border-color: #3d8ebd;
-  font-weight: bold;
-  height: 3rem;
+.gift__photo__preview {
+  border: 1px dashed #b3b3b3;
+  height: 10rem;
+  width: 230px;
+  margin-left: 5.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.gift__photo__preview:empty:before {
+  content: attr(placeholder);
+  color: #b3b3b3;
 }
 
 .gift__description {
@@ -500,13 +507,13 @@ main.main div.decorator {
 }
 .gift__description textarea {
   border-radius: 5px;
-  margin-left: 3rem;
+  margin-left: 5.5rem;
   border-color: #3d8ebd;
   padding: 0 10px;
   border-style: none;
   border: 2px solid #3d8ebd;
   font-weight: bold;
-  height: 20rem;
+  height: 5rem;
   width: 100%;
 }
 
