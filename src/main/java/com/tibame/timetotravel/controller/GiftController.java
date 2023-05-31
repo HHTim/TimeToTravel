@@ -33,11 +33,25 @@ public class GiftController {
     public String updateById(@PathVariable Integer giftId,
                              @RequestBody Gift gift){
         giftService.update(giftId, gift);
+
         return "修改成功";
     }
     @GetMapping("/gift")
     public List<Gift> findAll(){
+        System.out.println("找全部土產");
         return giftService.findAll();
+    }
+
+    @GetMapping("/gift/{keyword}")
+    public List<Gift> findByKeyword(@PathVariable String keyword){
+        System.out.println("關鍵字搜尋");
+        return giftService.findByKeyword(keyword);
+    }
+    @GetMapping("/room/roomType/{roomTypeValue}")
+    public List<Gift> findByRoomType(@PathVariable String giftTypeValue){
+        System.out.println(giftTypeValue);
+        System.out.println("分類查詢");
+        return giftService.findByGiftType(giftTypeValue);
     }
 
 
