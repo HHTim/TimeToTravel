@@ -152,6 +152,7 @@ function renderOrder() {
   return html;
 }
 
+// 跳轉頁面後的第一次請求
 async function fetchData() {
   const resp = await fetch('http://localhost:8080/user/order');
   data = await resp.json();
@@ -218,6 +219,7 @@ journeySection.addEventListener('click', (e) => {
   }
 });
 
+// 確認付款
 forward.addEventListener('click', () => {
   fetch('http://localhost:8080/user/order', {
     method: 'POST',
@@ -226,13 +228,18 @@ forward.addEventListener('click', () => {
     body: JSON.stringify(requestBody),
   })
     .then((resp) => {
-      resp.text();
+      if (resp.ok) {
+        swal('已完成訂房', '祝您旅途愉快', 'success');
+      } else {
+        throw new Error('訂房失敗');
+      }
     })
-    .then((message) => {
-      console.log(message);
+    .catch((e) => {
+      swal('訂房發生錯誤', '我們會盡快檢查是否有不足的地方', 'error');
     });
 });
 
+// 取消回上一頁
 back.addEventListener('click', () => history.back());
 
 fetchData();

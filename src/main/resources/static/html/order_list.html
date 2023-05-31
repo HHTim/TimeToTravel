@@ -94,10 +94,6 @@
               <h2 class="subtitle">訂房紀錄</h2>
               <section class="search">
                 <div class="search__item">
-                  <p>入住期間</p>
-                  <input type="date" class="search__date" name="search__date" />
-                </div>
-                <div class="search__item">
                   <p>商家名稱</p>
                   <input type="text" class="search__com" name="search__com" />
                 </div>
@@ -108,10 +104,14 @@
                 <button class="search__submit">搜尋</button>
               </section>
               <section class="list">
+                <div class="tab">
+                  <button id="tab-1" class="tab-1" type="button">訂房消費紀錄</button>
+                  <button id="tab-2" class="tab-2" type="button">土產消費紀錄</button>
+                </div>
                 <table class="table list__table">
                   <thead>
                     <tr>
-                      <th scope="col">訂單邊號</th>
+                      <th scope="col">訂單編號</th>
                       <th scope="col">預定日期</th>
                       <th scope="col">商家名稱</th>
                       <th scope="col">金額</th>
@@ -126,10 +126,46 @@
                       <td class="list__com">OO青年旅館</td>
                       <td class="list__price">NT $18000</td>
                       <td class="list__detail">
-                        <a href="#" role="button">查看</a>
+                        <button id="detail">查看</button>
+                        <div class="lightbox">
+                          <button class="lightbox__close"></button>
+                          <h2 class="lightbox__title">OO青年旅館</h2>
+                          <div>
+                            <p>房型：</p>
+                            <p>精緻套房</p>
+                          </div>
+                          <div>
+                            <p>床型：</p>
+                            <p>雙人床</p>
+                          </div>
+                          <div>
+                            <p>入住時間：</p>
+                            <p>2023-05-01</p>
+                          </div>
+                          <div>
+                            <p>退房時間:</p>
+                            <p>2023-05-03</p>
+                          </div>
+                          <div>
+                            <p>一間房一晚價格:</p>
+                            <p>NT $ 9000</p>
+                          </div>
+                          <div>
+                            <p>行程名稱:</p>
+                            <p>好棒棒行程</p>
+                          </div>
+                          <div>
+                            <p>行程價格:</p>
+                            <p>NT $ 9000</p>
+                          </div>
+                          <div>
+                            <p>總金額:</p>
+                            <p>NT $ 25500</p>
+                          </div>
+                        </div>
                       </td>
                       <td class="list__comment">
-                        <a href="#" role="button">評論</a>
+                        <button id="comment">評論</button>
                       </td>
                     </tr>
                     <tr class="list__order">
@@ -138,10 +174,10 @@
                       <td class="list__com">OO青年旅館</td>
                       <td class="list__price">NT $18000</td>
                       <td class="list__detail">
-                        <a href="#" role="button">查看</a>
+                        <button id="detail">查看</button>
                       </td>
                       <td class="list__comment">
-                        <a href="#" role="button">評論</a>
+                        <button id="detail">查看</button>
                       </td>
                     </tr>
                     <tr class="list__order">
@@ -150,10 +186,10 @@
                       <td class="list__com">OO青年旅館</td>
                       <td class="list__price">NT $18000</td>
                       <td class="list__detail">
-                        <a href="#" role="button">查看</a>
+                        <button id="detail">查看</button>
                       </td>
                       <td class="list__comment">
-                        <a href="#" role="button">評論</a>
+                        <button id="detail">查看</button>
                       </td>
                     </tr>
                     <tr class="list__order">
@@ -162,10 +198,10 @@
                       <td class="list__com">OO青年旅館</td>
                       <td class="list__price">NT $18000</td>
                       <td class="list__detail">
-                        <a href="#" role="button">查看</a>
+                        <button id="detail">查看</button>
                       </td>
                       <td class="list__comment">
-                        <a href="#" role="button">評論</a>
+                        <button id="detail">查看</button>
                       </td>
                     </tr>
                     <tr class="list__order">
@@ -174,10 +210,10 @@
                       <td class="list__com">OO青年旅館</td>
                       <td class="list__price">NT $18000</td>
                       <td class="list__detail">
-                        <a href="#" role="button">查看</a>
+                        <button id="detail">查看</button>
                       </td>
                       <td class="list__comment">
-                        <a href="#" role="button">評論</a>
+                        <button id="detail">查看</button>
                       </td>
                     </tr>
                   </tbody>

@@ -54,14 +54,13 @@ public class PaidController {
     }
 
     @PostMapping("/order")
-    public String insertOrder(@RequestBody RoomOrder order, HttpServletRequest req) {
+    public void insertOrder(@RequestBody RoomOrder order, HttpServletRequest req) {
         HttpSession session = req.getSession();
         Integer userId = (Integer) session.getAttribute("userId");
         String roomId = (String) session.getAttribute("roomId");
         System.out.println(order);
         System.out.println("Insert order: " + userId + " " + roomId);
         System.out.println(paidService.insertOrder(userId, Integer.parseInt(roomId), order));
-        return "已完成訂房";
     }
 
 }

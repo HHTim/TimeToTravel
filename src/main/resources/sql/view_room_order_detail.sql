@@ -1,0 +1,13 @@
+SELECT O.*,
+       R.COM_ID,
+       R.ROOM_NAME,
+       R.ROOM_PRICE,
+       R.ROOM_DESC,
+       R.ROOM_RELEASE,
+       R.ROOM_STOCK,
+       R.ROOM_BED,
+       R.ROOM_PEOPLE,
+       R.ROOM_STATUS,
+       R.ROOM_PHOTO
+FROM ORDER_DETAIL O
+         JOIN ROOM R ON O.ROOM_ID = R.ROOM_ID;

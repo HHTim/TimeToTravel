@@ -17,4 +17,7 @@ public interface RoomRepository extends JpaRepository<Room, Integer> {
 
     List<Room> findAllByComId(Integer comId);
 
+    @Query(value = "SELECT COM_NAME FROM COMPANY WHERE COM_ID = (SELECT COM_ID FROM ROOM WHERE ROOM.ROOM_ID = ?1)", nativeQuery = true)
+    String findComNameByRoomId(Integer roomId);
+
 }
