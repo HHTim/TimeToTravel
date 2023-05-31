@@ -12,4 +12,6 @@ public interface JourneyRepository extends JpaRepository<Journey, Integer> {
 
     @Query(value = "SELECT * FROM JOURNEY WHERE JOURNEY_NAME LIKE %?1%", nativeQuery = true)
     List<Journey> findByKeyword(String keyword);
+
+    List<Journey> findByComId(Integer comId);
 }

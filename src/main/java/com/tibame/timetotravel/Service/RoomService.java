@@ -1,5 +1,6 @@
 package com.tibame.timetotravel.service;
 
+import com.tibame.timetotravel.dto.RoomPagination;
 import com.tibame.timetotravel.entity.Room;
 
 import java.util.List;
@@ -11,6 +12,7 @@ public interface RoomService {
     Room findById(Integer roomId);
     List<Room> findAll();
     List<Room> findByKeyword(String keyword);
-
     List<Room> findByRoomType(String roomTypeValue);
+
+    RoomPagination findByPage(Integer pageNumber);
 }

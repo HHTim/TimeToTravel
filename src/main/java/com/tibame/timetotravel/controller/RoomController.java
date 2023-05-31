@@ -1,5 +1,6 @@
 package com.tibame.timetotravel.controller;
 
+import com.tibame.timetotravel.dto.RoomPagination;
 import com.tibame.timetotravel.entity.Room;
 import com.tibame.timetotravel.service.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,5 +47,10 @@ public class RoomController {
         System.out.println(roomTypeValue);
         System.out.println("分類查詢");
         return roomService.findByRoomType(roomTypeValue);
+    }
+
+    @GetMapping("/room/pagination/{pageNumber}")
+    public RoomPagination findByPage(@PathVariable Integer pageNumber){
+        return roomService.findByPage(pageNumber);
     }
 }

@@ -8,9 +8,19 @@ window.addEventListener('load', function () {
 	let allRooms = this.document.querySelector('.all__rooms');
 	let roomsOnShelve = this.document.querySelector('.all__rooms__on-shelve');
 	let roomsOffShelve = this.document.querySelector('.all__rooms__off-shelve');
+	let pagination = this.document.querySelector('#pagination');
+
+	pagination.addEventListener('click', function (e) {
+		e.preventDefault(); // 預防a標籤的跳頁
+		if (e.target.classList.contains('page-link')) {
+			const currentPage = e.target.dataset.currentPage;
+			console.log(currentPage); // 1, 2, 3
+			findByPage(currentPage);
+		}
+	});
 
 	allRooms.addEventListener('click', function () {
-		findAll();
+		findByPage(1);
 	});
 
 	/* 架上商品 */
@@ -182,6 +192,8 @@ window.addEventListener('load', function () {
 		fetch('/roomController/room')
 			.then((resp) => resp.json())
 			.then((body) => {
+				console.log(body);
+				console.log(body.length);
 				tbody.innerHTML = body
 					.map((i) => {
 						// 更改房型狀態
@@ -247,5 +259,65 @@ window.addEventListener('load', function () {
 					.join('');
 			});
 	}
-	findAll();
+
+	/* 分頁查詢 */
+	function findByPage(pageNumber) {
+		fetch('/roomController/room/pagination/' + pageNumber)
+			.then((resp) => resp.json())
+			.then((body) => {
+				const totalPage = body.totalPage;
+				console.log(body);
+				console.log(totalPage);
+
+				/* 分頁器 */
+				let html = '';
+				for (let i = 0; i < totalPage; i++) {
+					html += `
+					<li class="page-item"><a class="page-link" href="#" data-current-page="${i + 1}">${i + 1}</a></li>
+					`;
+				}
+				const paginationHtml = `
+				<li class="page-item disabled">
+					<a class="page-link">Previous</a>
+			  	</li>
+				${html}
+				<li class="page-item">
+					<a class="page-link" href="#">Next</a>
+			  	</li>
+				`;
+				pagination.innerHTML = paginationHtml;
+
+				/* 整張table */
+				tbody.innerHTML = body.roomList
+					.map((i) => {
+						roomStatus = i.roomStatus;
+						if (roomStatus) {
+							roomStatus = '上架中';
+						} else roomStatus = '未上架';
+
+						return `
+            				<tr>
+            				  <td>${i.roomName}</td>
+            				  <td>${i.roomId}</td>
+            				  <td>${i.roomBed}</td>
+            				  <td>$${i.roomPrice}</td>
+            				  <td>${i.roomStock}</td>
+            				  <td>${i.roomPeople}人</td>
+            				  <td>
+            				    <select name="room__status" class="room__status" data-room-id="${i.roomId}">
+            				      <option disabled selected hidden>${roomStatus}</option>
+            				      <option value="1">上架</option>
+            				      <option value="0">下架</option>
+            				    </select>
+            				  </td>
+            				</tr>
+          				`;
+					})
+					.reverse()
+					.join('');
+			});
+	}
+
+	findByPage(1);
+	// findAll();
 });
