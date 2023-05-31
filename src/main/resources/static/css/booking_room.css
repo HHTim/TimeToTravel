@@ -333,9 +333,13 @@ body {
   }
 }
 .hotel .slide {
+  width: 50%;
+  max-width: 250px;
   height: 100%;
-  aspect-ratio: 1.5/1;
   margin-right: 0.5rem;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
 }
 .hotel .slide .carousel-inner {
   width: 100%;
@@ -346,9 +350,12 @@ body {
   height: 100%;
 }
 .hotel .slide img {
-  width: 100%;
-  height: 100%;
-  border-radius: 10px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transform-origin: 0 0;
+  scale: 0.45;
   box-shadow: 0 0 3px #9b9999;
 }
 .hotel__content {
@@ -556,6 +563,7 @@ body {
   background-color: #dfdcdc;
   padding: 0.5rem;
   border-radius: 10px;
+  justify-content: space-between;
 }
 .room__title {
   width: 100%;
@@ -564,14 +572,21 @@ body {
   margin-bottom: 0.5rem;
 }
 .room__img {
-  width: calc(20% - 0.5rem);
-  height: 100%;
-  margin-right: 0.5rem;
+  height: 150px;
+  width: 20%;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 3px #9b9999;
+  border-radius: 10px;
 }
 .room__img img {
-  width: 100%;
-  border-radius: 10px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   box-shadow: 0 0 3px #9b9999;
+  scale: 0.3;
+  transform-origin: 0 0;
 }
 .room__device {
   border: none;
@@ -585,7 +600,7 @@ body {
   background-color: #004c77;
 }
 .room__table {
-  width: 80%;
+  width: 79%;
   margin: 0;
   background-color: #fff;
   text-align: center;

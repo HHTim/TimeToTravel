@@ -19,7 +19,7 @@ async function handleRoomClick(e) {
 
   if (target === 'room__booking') {
     console.log(roomId);
-    const resp = await fetch(`http://localhost:8080/user/redirect-paid`, {
+    const resp = await fetch(`http://localhost:8080/user/redirect-order`, {
       method: 'POST',
       cache: 'no-cache',
       headers: { 'Content-Type': 'application/json' },

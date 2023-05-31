@@ -1,7 +1,10 @@
 const orderSection = document.querySelector('.order');
 const journeySection = document.querySelector('.journey');
 const billSection = document.querySelector('.bill');
+const forward = document.querySelector('.submit__forward');
+const back = document.querySelector('.submit__return');
 let data;
+let day;
 let requestBody = {
   journeyId: '',
   journeyName: '',
@@ -35,8 +38,6 @@ function renderBill() {
     checkOut,
     roomPrice,
   } = data;
-
-  const day = calculateDay(checkIn, checkOut);
 
   let html = `
           <div class="bill__card">
@@ -152,12 +153,17 @@ function renderOrder() {
 }
 
 async function fetchData() {
-  const resp = await fetch('http://localhost:8080/user/paid');
+  const resp = await fetch('http://localhost:8080/user/order');
   data = await resp.json();
   console.log(data);
 
   const { checkIn, checkOut, roomPrice } = data;
-  let day = calculateDay(checkIn, checkOut);
+
+  booking__name.value = data.userName;
+  booking__email.value = data.userEmail;
+  booking__phone.value = data.userPhone;
+
+  day = calculateDay(checkIn, checkOut);
   requestBody.orderCheckIn = checkIn;
   requestBody.orderCheckOut = checkOut;
   requestBody.orderAmount = roomPrice * day;
@@ -182,7 +188,7 @@ journeySection.addEventListener('click', (e) => {
     cards.forEach((card) => {
       card.classList.remove('active');
       requestBody.journeyId = 0;
-      requestBody.orderAmount = data.roomPrice;
+      requestBody.orderAmount = data.roomPrice * day;
       requestBody.journeyName = '';
       requestBody.journeyPrice = 0;
     });
@@ -211,5 +217,22 @@ journeySection.addEventListener('click', (e) => {
     }
   }
 });
+
+forward.addEventListener('click', () => {
+  fetch('http://localhost:8080/user/order', {
+    method: 'POST',
+    cache: 'no-cache',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(requestBody),
+  })
+    .then((resp) => {
+      resp.text();
+    })
+    .then((message) => {
+      console.log(message);
+    });
+});
+
+back.addEventListener('click', () => history.back());
 
 fetchData();
