@@ -24,4 +24,6 @@ public interface UserRepository extends JpaRepository<User,Integer> {
 
     @Query(value = "SELECT * FROM USER WHERE USER_ACCOUNT like %?1% OR USER_NAME like %?1% ORDER BY USER_SIGN_DATETIME DESC LIMIT ?2,?3",nativeQuery = true)
     List<User> findKeywordByPage(String keyword, Integer currPage, Integer rows);
+
+    User findByUserAccount(String userAccount);
 }

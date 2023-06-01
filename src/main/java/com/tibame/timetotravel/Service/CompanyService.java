@@ -1,14 +1,17 @@
 package com.tibame.timetotravel.service;
 
+import com.tibame.timetotravel.dto.LoginCompanyDto;
+import com.tibame.timetotravel.dto.RegisterCompanyDto;
 import com.tibame.timetotravel.entity.Company;
 
 import java.util.List;
 
 public interface CompanyService {
-    public void insert(Company company);
-    public void deleteById(Integer comId);
-    public void updateById(Integer comId, Company company);
-    public Company findById(Integer comId);
-    public List<Company> findAll();
+    void insert(RegisterCompanyDto dto) throws Exception;
+    int login(LoginCompanyDto dto) throws Exception;
+    void deleteById(Integer comId);
+    void updateById(Integer comId, Company company);
+    Company findById(Integer comId);
+    List<Company> findAll();
 
 }
