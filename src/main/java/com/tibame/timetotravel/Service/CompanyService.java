@@ -1,11 +1,19 @@
 package com.tibame.timetotravel.service;
 
 import com.tibame.timetotravel.common.PageBean;
+import com.tibame.timetotravel.dto.LoginCompanyDto;
+import com.tibame.timetotravel.dto.RegisterCompanyDto;
 import com.tibame.timetotravel.entity.Company;
 
 import java.util.List;
 
 public interface CompanyService {
+    void insertRegisterCompany(RegisterCompanyDto dto) throws Exception;
+    int login(LoginCompanyDto dto) throws Exception;
+    void deleteById(Integer comId);
+    void updateById(Integer comId, Company company);
+    Company findById(Integer comId);
+    List<Company> findAll();
 
     void insert(Company company);
 
@@ -33,6 +41,4 @@ public interface CompanyService {
     List<Company> findComManagerKeywordByPage(String keyword, Integer currPage, Integer limit);
 
     PageBean<Company> findComManagerKeywordByPageRowData(String keyword, Integer currPage, Integer rows);
-
-    List<Company> findAll();
 }

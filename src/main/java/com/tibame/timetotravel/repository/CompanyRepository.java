@@ -13,6 +13,8 @@ import java.util.List;
 public interface CompanyRepository extends JpaRepository<Company, Integer> {
 
     Company findByComName(String comName);
+    Company findByComAccount(String comAccount);
+    Company findByComTaxId(String comTaxId);
 
     @Modifying
     @Query(value = "UPDATE COMPANY JOIN (SELECT COM_ID FROM COMPANY WHERE COM_NAME = ?1) AS subquery SET COM_STATUS = ?2 WHERE COMPANY.COM_ID = subquery.COM_ID", nativeQuery = true)
@@ -47,4 +49,5 @@ public interface CompanyRepository extends JpaRepository<Company, Integer> {
 
     @Query(value = "SELECT * FROM COMPANY WHERE COM_MANAGER like %?1% ORDER BY COM_SIGNDATE DESC LIMIT ?2,?3",nativeQuery = true)
     List<Company> findComManagerKeywordByPage(String keyword, Integer currPage, Integer rows);
+    
 }
