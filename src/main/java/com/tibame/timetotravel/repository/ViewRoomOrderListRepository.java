@@ -12,7 +12,7 @@ public interface ViewRoomOrderListRepository extends CrudRepository<ViewRoomOrde
 
     List<ViewRoomOrderDetail> findByUserId(Integer userId);
 
-    ViewRoomOrderDetail findByUserIdAndOrderId(Integer userId, Integer orderId);
+    List<ViewRoomOrderDetail> findByUserIdAndOrderId(Integer userId, Integer orderId);
 
     @Query(value = "SELECT O.* FROM ROOM R JOIN ORDER_DETAIL O ON R.ROOM_ID = O.ROOM_ID WHERE R.COM_ID = ?1 LIMIT ?2, ?3", nativeQuery = true)
     List<ViewRoomOrderDetail> findByComId(Integer comId);
