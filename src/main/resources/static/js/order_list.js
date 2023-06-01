@@ -12,6 +12,16 @@ let commentBody = {
   orderComment: '',
 };
 
+function restoreComment() {
+  comment.classList.remove('comment--on');
+  commentBody.orderId = 0;
+  commentBody.orderRank = 0;
+  commentBody.orderComment = '';
+  commentContent.value = '';
+  stars.forEach((star) => (star.style.color = '#000'));
+  console.log(commentBody);
+}
+
 async function handleUpdateComment() {
   try {
     const resp = await fetch(`/user/orders`, {
@@ -143,15 +153,7 @@ list.addEventListener('click', (e) => {
 
     if (comment.classList.contains('comment--on')) {
       // 取消按鈕事件，會復原searchBody
-      commentCancel.onclick = () => {
-        comment.classList.remove('comment--on');
-        commentBody.orderId = 0;
-        commentBody.orderRank = 0;
-        commentBody.orderComment = '';
-        commentContent.value = '';
-        stars.forEach((star) => (star.style.color = '#000'));
-        console.log(commentBody);
-      };
+      commentCancel.onclick = () => restoreComment();
       // 評論欄內容事件
       commentContent.addEventListener('blur', (e) => {
         console.log(e.target.value);
@@ -194,8 +196,8 @@ list.addEventListener('click', (e) => {
           }
           return;
         }
-
         handleUpdateComment();
+        restoreComment();
       };
     }
   }
