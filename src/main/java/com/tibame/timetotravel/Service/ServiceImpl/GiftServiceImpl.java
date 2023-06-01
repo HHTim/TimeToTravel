@@ -1,7 +1,6 @@
 package com.tibame.timetotravel.service.ServiceImpl;
 
 import com.tibame.timetotravel.entity.Gift;
-import com.tibame.timetotravel.entity.Room;
 import com.tibame.timetotravel.repository.GiftRepository;
 import com.tibame.timetotravel.service.GiftService;
 import jakarta.persistence.EntityManager;

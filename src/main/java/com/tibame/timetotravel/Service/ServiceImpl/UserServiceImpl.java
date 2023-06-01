@@ -1,6 +1,8 @@
 package com.tibame.timetotravel.service.ServiceImpl;
 
 import com.tibame.timetotravel.common.PageBean;
+import com.tibame.timetotravel.dto.LoginUserDto;
+import com.tibame.timetotravel.dto.RegisterUserDto;
 import com.tibame.timetotravel.entity.User;
 import com.tibame.timetotravel.repository.UserRepository;
 import com.tibame.timetotravel.service.UserService;
@@ -9,6 +11,9 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.sql.Timestamp;
 import java.util.List;
 
 @Service("UserService")
@@ -21,10 +26,48 @@ public class UserServiceImpl implements UserService {
     @Autowired
     PageBean<User> pageBean;
 
-    @Transactional
+    private String sha512(String input) {
+        String toReturn = null;
+        try {
+            MessageDigest digest = MessageDigest.getInstance("SHA-512");
+            digest.reset();
+            digest.update(input.getBytes("utf8"));
+            toReturn = String.format("%0128x", new BigInteger(1, digest.digest()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return toReturn;
+    }
+
+    @Override
+    public void insertRegisterUser(RegisterUserDto dto) throws Exception {
+        if (userRepository.findByUserAccount(dto.getAccount()) != null) {
+            throw new Exception("該帳號已存在");
+        }
+
+        User user = new User();
+        user.setUserAccount(dto.getAccount());
+        user.setUserPassword(sha512(dto.getPassword()));
+        user.setUserEmail(dto.getEmail());
+        user.setUserGender(dto.isGender());
+        user.setUserBirthDay(dto.getBirthday());
+        user.setUserPhone(dto.getPhone());
+        user.setUserName(dto.getName());
+        user.setUserAvatar(dto.getAvatar());
+
+        // 預設值
+        user.setUserNickName("");
+        user.setUserStatus(true);
+        user.setUserNewsStatus(0);
+        user.setUserSignDatetime(new Timestamp(System.currentTimeMillis()));
+
+        userRepository.save(user);
+    }
+
     @Override
     public void insert(User user) {
-        userRepository.save(user);
+
     }
 
     @Transactional
@@ -41,6 +84,16 @@ public class UserServiceImpl implements UserService {
     public String updateUserStatusByAccount(String account, Integer status) {
         userRepository.updateUserStatus(account, status);
         return "更新User: " + account + "的Status成功";
+    }
+
+    @Override
+    public int login(LoginUserDto dto) throws Exception {
+        User user = userRepository.findByUserAccount(dto.getAccount());
+        if (user == null || !sha512(dto.getPassword()).equals(user.getUserPassword())) {
+            throw new Exception("登入失敗");
+        }
+
+        return user.getUserId();
     }
 
     @Override
@@ -88,5 +141,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> findAll() {
         return userRepository.findAll();
+    }
+
+    @Override
+    public List<User> getAll() {
+        return null;
     }
 }

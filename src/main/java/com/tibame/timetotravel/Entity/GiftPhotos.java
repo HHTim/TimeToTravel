@@ -24,8 +24,3 @@ public class GiftPhotos {
     private byte[] giftPhoto;
 
 }
-
-    @Lob
-    @Column(name = "GIFT_PHOTO")
-    private byte[] giftPhoto;
-}
