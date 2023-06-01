@@ -33,6 +33,15 @@ public class UserController {
         return userService.updateUserStatusByAccount(account, ("true".equals(status) ? 1 : 0));
     }
 
+    @PatchMapping(value = "/user/password", consumes = "multipart/form-data")
+    public String updateUserPassword(@RequestParam("userId") Integer userId,
+                                   @RequestParam("password") String password){
+        System.out.println("接收到的User Id為:"+userId);
+        System.out.println("接收到的User password為:"+password);
+
+        return userService.updateByPassword(password, userId);
+    }
+
     @GetMapping("/user/page/{currPage}/{rows}")
     public PageBean<User> readByPage(@PathVariable Integer currPage, @PathVariable Integer rows){
         System.out.println("分頁搜尋");

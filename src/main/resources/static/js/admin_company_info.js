@@ -17,6 +17,7 @@ $(function () {
   var new_password = $('#new_password');
   var password_vaild = $('#password_vaild');
   var confirm_password = $('#confirm_password');
+  var checkUpdate = $('#checkUpdate');
   var comInfo;
   var oldPwd;
   var oldPwdVaild = false;
@@ -44,6 +45,8 @@ $(function () {
       console.log('set pic');
       img_base64 = comInfo.avatar;
       avatar_img.attr('src', `data:image/jpeg;base64,${comInfo.avatar}`);
+    } else {
+      avatar_img.attr('src', '../images/avatar.svg');
     }
 
     // img src="data:image/*;base64,e.annPic";
@@ -56,7 +59,7 @@ $(function () {
       Accept: 'application/json',
     };
 
-    const imageData = comInfo.avatar.replace(/^data:image\/(png|jpg|jpeg);base64,/, '');
+    comInfo.avatar = comInfo.avatar.replace(/^data:image\/(png|jpg|jpeg);base64,/, '');
     let body = {
       comId: comInfo.id,
       comAccount: comInfo.account,
@@ -71,7 +74,7 @@ $(function () {
       comStatus: Number(comInfo.status),
       comLongitude: comInfo.longitude,
       comLatitude: comInfo.latitude,
-      comAvatar: imageData,
+      comAvatar: comInfo.avatar,
       comNewsStatus: Number(comInfo.newsStatus),
     };
 
@@ -83,7 +86,7 @@ $(function () {
       .then((r) => r.text())
       .then((d) => {
         console.log(d);
-        location.href = '../admin_comp_manager';
+        // location.href = '../admin_comp_manager';
       });
   }
 
@@ -119,8 +122,16 @@ $(function () {
     }
   });
 
+  function hintUpdateSuccessText(success) {
+    checkUpdate.text(success);
+    checkUpdate.css('color', 'green');
+    checkUpdate.css('display', 'inline-block');
+  }
+
   update.on('click', function () {
     updateData(comInfo);
+    sessionStorage.setItem('com-info', JSON.stringify(comInfo));
+    hintUpdateSuccessText('更新成功');
   });
 
   old_password.blur(function () {
@@ -163,6 +174,7 @@ $(function () {
     console.log(confirm_password.val());
     if (oldPwdVaild === true && newPwdVaild === true && newPwdAgainVaild === true) {
       console.log('修改密碼成功');
+      comInfo.password = password_vaild.val();
       updateCompPassword(comInfo.id, password_vaild.val());
     } else {
       oldPwdVaild == false

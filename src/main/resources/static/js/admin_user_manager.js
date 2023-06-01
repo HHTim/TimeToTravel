@@ -36,7 +36,7 @@ $(function () {
         tbody.innerHTML = d.rows
           .map((e) => {
             return `
-            <tr>
+            <tr data-id=${e.userId}>
             <td class="data-text">${e.userAccount}</td>
             <td class="data-text">${e.userName}</td>
             <td class="data-text">${e.userPhone}</td>
@@ -53,7 +53,14 @@ $(function () {
                   <button class="btn-warning">待審核</button>
                 </td>
                 `
-            }             
+            }
+            <td class="data-text" hidden>${e.userPassword}</td>
+            <td class="data-text" hidden>${e.userNickName}</td>
+            <td class="data-text" hidden>${e.userAvatar}</td>
+            <td class="data-text" hidden>${e.userGender}</td>
+            <td class="data-text" hidden>${e.userBirthDay}</td>
+            <td class="data-text" hidden>${e.userEmail}</td>
+            <td class="data-text" hidden>${e.userNewsStatus}</td>
             <td><button class="btn-query">查詢</button></td>
           </tr>
             `;
@@ -102,7 +109,14 @@ $(function () {
                   <button class="btn-warning">待審核</button>
                 </td>
                 `
-            }        
+            }
+            <td class="data-text" hidden>${e.userPassword}</td>
+            <td class="data-text" hidden>${e.userNickName}</td>
+            <td class="data-text" hidden>${e.userAvatar}</td>
+            <td class="data-text" hidden>${e.userGender}</td>
+            <td class="data-text" hidden>${e.userBirthDay}</td>
+            <td class="data-text" hidden>${e.userEmail}</td>
+            <td class="data-text" hidden>${e.userNewsStatus}</td>  
             <td><button class="btn-query">查詢</button></td>
           </tr>
             `;
@@ -152,7 +166,14 @@ $(function () {
                   <button class="btn-warning">待審核</button>
                 </td>
                 `
-            }            
+            }
+            <td class="data-text" hidden>${e.userPassword}</td>
+            <td class="data-text" hidden>${e.userNickName}</td>
+            <td class="data-text" hidden>${e.userAvatar}</td>
+            <td class="data-text" hidden>${e.userGender}</td>
+            <td class="data-text" hidden>${e.userBirthDay}</td>
+            <td class="data-text" hidden>${e.userEmail}</td>
+            <td class="data-text" hidden>${e.userNewsStatus}</td>      
             <td><button class="btn-query">查詢</button></td>
           </tr>
             `;
@@ -340,6 +361,30 @@ $(function () {
     let account = $(this).closest('tr').find('.data-text').eq(0).text();
     let status = $(this).closest('tr').find('.user-status').attr('data-status');
     updateUserStatus(account, status);
+  });
+
+  $('tbody').on('click', 'button.btn-query', function (e) {
+    e.stopPropagation();
+
+    sessionStorage.setItem(
+      'user-info',
+      JSON.stringify({
+        id: $(this).closest('tr').attr('data-id'),
+        account: $(this).closest('tr').find('.data-text').eq(0).text(),
+        name: $(this).closest('tr').find('.data-text').eq(1).text(),
+        phone: $(this).closest('tr').find('.data-text').eq(2).text(),
+        signdate: $(this).closest('tr').find('.data-text').eq(3).text(),
+        password: $(this).closest('tr').find('.data-text').eq(4).text(),
+        nickName: $(this).closest('tr').find('.data-text').eq(5).text(),
+        avatar: $(this).closest('tr').find('.data-text').eq(6).text(),
+        gender: $(this).closest('tr').find('.data-text').eq(7).text(),
+        birthday: $(this).closest('tr').find('.data-text').eq(8).text(),
+        email: $(this).closest('tr').find('.data-text').eq(9).text(),
+        newsStatus: $(this).closest('tr').find('.data-text').eq(10).text(),
+        status: $(this).closest('tr').find('.user-status').attr('data-status'),
+      })
+    );
+    location.href = '../admin_user_info';
   });
 
   cb(start, end);

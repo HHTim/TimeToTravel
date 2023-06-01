@@ -126,45 +126,24 @@
                                 placeholder=""
                                 aria-describedby="button-addon2"
                               />
-                              <!-- <button
-                                id="fileUpload"
-                                class="btn btn-outline-secondary"
-                                style="
-                                  color: white;
-                                  background-color: #006caa;
-                                  border-radius: 0px 10px 10px 0px;
-                                  font-size: 16px;
-                                  white-space: nowrap;
-                                  width: 10%;
-                                  padding: 6px;
-                                "
-                                type="button"
-                                id="button-addon2"
-                              >
-                                上傳
-                              </button> -->
                             </div>
                           </div>
                         </div>
                       </div>
                       <div class="mb-3">
                         <div style="display: flex">
-                          <label
-                            for="exampleInputPassword1"
-                            style="font-size: 16px; white-space: nowrap"
-                            class="form-label mb-0"
-                          >
+                          <label for="manager" style="font-size: 16px; white-space: nowrap" class="form-label mb-0">
                             負責人姓名
                           </label>
                           <label
-                            for="exampleInputPassword1"
+                            for="phone"
                             style="font-size: 16px; white-space: nowrap; padding-left: 36%"
                             class="form-label mb-0"
                           >
                             聯絡電話
                           </label>
                           <label
-                            for="exampleInputPassword1"
+                            for="texId"
                             style="font-size: 16px; white-space: nowrap; padding-left: 21%"
                             class="form-label mb-0"
                           >
@@ -177,7 +156,6 @@
                             style="height: 45px; width: 44%"
                             type=""
                             class="form-control"
-                            id="exampleInputPassword1"
                             value="王曉明"
                             disabled
                           />
@@ -186,7 +164,6 @@
                             style="height: 45px; width: 27%; font-weight: bold"
                             type="text"
                             class="form-control"
-                            id="verity-code"
                             value="0910234567"
                             disabled
                           />
@@ -195,7 +172,6 @@
                             style="height: 45px; width: 27%; font-weight: bold"
                             type=""
                             class="form-control"
-                            id="verity-code"
                             value="12345678"
                             disabled
                           />
@@ -203,15 +179,11 @@
                       </div>
                       <div class="mb-3">
                         <div style="display: flex">
-                          <label
-                            for="exampleInputPassword1"
-                            style="font-size: 16px; white-space: nowrap"
-                            class="form-label mb-0"
-                          >
+                          <label for="signdate" style="font-size: 16px; white-space: nowrap" class="form-label mb-0">
                             註冊日期
                           </label>
                           <label
-                            for="exampleInputPassword1"
+                            for="email"
                             style="font-size: 16px; white-space: nowrap; padding-left: 24%"
                             class="form-label mb-0"
                           >
@@ -224,7 +196,6 @@
                             style="height: 45px; width: 30%"
                             type=""
                             class="form-control"
-                            id="exampleInputPassword1"
                             value="1993-03-08"
                             disabled
                           />
@@ -233,7 +204,6 @@
                             style="height: 45px; width: 69%; font-weight: bold"
                             type=""
                             class="form-control"
-                            id="verity-code"
                             value="abc@gmail.com"
                             disabled
                           />
@@ -241,15 +211,11 @@
                       </div>
                       <div class="mb-3">
                         <div style="display: flex">
-                          <label
-                            for="exampleInputPassword1"
-                            style="font-size: 16px; white-space: nowrap"
-                            class="form-label mb-0"
-                          >
+                          <label for="comName" style="font-size: 16px; white-space: nowrap" class="form-label mb-0">
                             商家名稱
                           </label>
                           <label
-                            for="exampleInputPassword1"
+                            for="address"
                             style="font-size: 16px; white-space: nowrap; padding-left: 24%"
                             class="form-label mb-0"
                           >
@@ -262,7 +228,6 @@
                             style="height: 45px; width: 30%; margin-right: 10px"
                             type=""
                             class="form-control"
-                            id="exampleInputPassword1"
                             value="凱薩飯店"
                             disabled
                           />
@@ -271,19 +236,23 @@
                             style="height: 45px; width: 69%; font-weight: bold"
                             type=""
                             class="form-control"
-                            id="verity-code"
                             value="台北市南京東路三段"
                             disabled
                           />
                         </div>
                       </div>
                       <div style="display: flex; justify-content: end">
+                        <label
+                          id="checkUpdate"
+                          style="font-size: 20px; color: red; margin-right: 20px; display: none"
+                          class="form-label mb-0"
+                          >欄位不可為空</label
+                        >
                         <input
                           id="update"
                           style="color: white; background-color: #006caa; width: 150px"
                           type="button"
                           class="form-control"
-                          id="verity-code"
                           value="更新商家資料"
                         />
                       </div>
@@ -294,61 +263,34 @@
                     變更密碼
                   </p>
                   <div class="mb-1">
-                    <label for="exampleInputPassword1" style="font-size: 20px" class="form-label mb-0"
-                      >請輸入舊密碼</label
-                    >
+                    <label for="old_password" style="font-size: 20px" class="form-label mb-0">請輸入舊密碼</label>
                     <label
                       id="old_password_hint"
-                      for="exampleInputPassword1"
                       style="font-size: 20px; color: red; margin-left: 20px; display: none"
                       class="form-label mb-0"
                       >密碼不存在</label
                     >
-                    <input
-                      id="old_password"
-                      type="password"
-                      style="height: 45px"
-                      class="form-control mb-2"
-                      id="exampleInputPassword1"
-                    />
+                    <input id="old_password" type="password" style="height: 45px" class="form-control mb-2" />
                   </div>
                   <div class="mb-1">
-                    <label for="exampleInputPassword1" style="font-size: 20px" class="form-label mb-0"
-                      >設定新密碼</label
-                    >
+                    <label for="new_password" style="font-size: 20px" class="form-label mb-0">設定新密碼</label>
                     <label
                       id="new_password_hint"
-                      for="exampleInputPassword1"
                       style="font-size: 20px; color: red; margin-left: 20px; display: none"
                       class="form-label mb-0"
                       >密碼請輸入8個字元以上</label
                     >
-                    <input
-                      id="new_password"
-                      type="password"
-                      style="height: 45px"
-                      class="form-control mb-2"
-                      id="exampleInputPassword1"
-                    />
+                    <input id="new_password" type="password" style="height: 45px" class="form-control mb-2" />
                   </div>
                   <div class="mb-1">
-                    <label for="exampleInputPassword1" style="font-size: 20px" class="form-label mb-0"
-                      >再次輸入新密碼</label
-                    >
+                    <label for="password_vaild" style="font-size: 20px" class="form-label mb-0">再次輸入新密碼</label>
                     <label
                       id="new_password_vaild_hint"
-                      for="exampleInputPassword1"
                       style="font-size: 20px; color: red; margin-left: 20px; display: none"
                       class="form-label mb-0"
                       >密碼不匹配</label
                     >
-                    <input
-                      id="password_vaild"
-                      type="password"
-                      style="height: 45px"
-                      class="form-control mb-3"
-                      id="exampleInputPassword1"
-                    />
+                    <input id="password_vaild" type="password" style="height: 45px" class="form-control mb-3" />
                   </div>
                   <div style="display: flex; justify-content: end">
                     <input
@@ -356,7 +298,6 @@
                       style="color: white; background-color: #006caa; width: 150px"
                       type="button"
                       class="form-control"
-                      id="verity-code"
                       value="確認"
                     />
                   </div>
