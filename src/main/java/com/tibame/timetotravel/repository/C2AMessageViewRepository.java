@@ -11,7 +11,7 @@ import java.util.List;
 public interface C2AMessageViewRepository extends JpaRepository<C2AMsgView,Integer> {
 
     @Query(value = "SELECT * FROM VIEW_C2A_MSG ORDER BY C2A_SENDING_TIME DESC LIMIT ?1,?2",nativeQuery = true)
-    List<C2AMsgView> findViewByPage(Integer currPage, Integer limit);
+    List<C2AMsgView> findViewByPage(Integer currPage, Integer rows);
 
     @Query(value = "SELECT COUNT(*) FROM VIEW_C2A_MSG WHERE COM_NAME like %?1% ORDER BY C2A_SENDING_TIME DESC",nativeQuery = true)
     Integer findViewByKeyWords(String keyword);

@@ -7,11 +7,57 @@ $(function () {
   var select_obj_phd = $('.show-placeholder-obj');
   var title_input_phd = $('.show-placeholder-title');
   var title_input_content_phd = $('.show-placeholder-content');
+  var select_compoent = document.querySelector('.custom-select');
   var radioValue;
 
   function getSessionData() {
     radioValue = sessionStorage.getItem('radioData');
     console.log('radioData: ' + radioValue);
+  }
+
+  function getAllUserOrCompany() {
+    let url = '';
+    if (radioValue == 1) {
+      url = 'http://localhost:8080/UserController/all';
+    } else {
+      url = 'http://localhost:8080/CompanyController/all';
+    }
+    fetch(url)
+      .then((r) => r.json())
+      .then((d) => {
+        console.log(d);
+        if (radioValue == 1) {
+          select_compoent.innerHTML = `<option disabled selected hidden>請選擇會員</option>`;
+          select_compoent.innerHTML += d
+            .map((e) => {
+              return (
+                `
+            <option value="` +
+                e.userId +
+                `">` +
+                e.userAccount +
+                `</option>
+            `
+              );
+            })
+            .join('');
+        } else {
+          select_compoent.innerHTML = `<option disabled selected hidden>請選擇廠商</option>`;
+          select_compoent.innerHTML += d
+            .map((e) => {
+              return (
+                `
+            <option value="` +
+                e.comId +
+                `">` +
+                e.comName +
+                `</option>
+            `
+              );
+            })
+            .join('');
+        }
+      });
   }
 
   function publish(recviver, title, content) {
@@ -52,7 +98,48 @@ $(function () {
       .then((r) => r.text())
       .then((d) => {
         console.log(d);
+      });
+  }
+
+  function updateUserNewsState(account) {
+    console.log('update user news status');
+    const formData = new FormData();
+    formData.append('account', account);
+    let url = 'http://localhost:8080/Admin2UserController/userAccount';
+    let headers = {
+      Accept: 'application/json',
+    };
+
+    fetch(url, {
+      method: 'PATCH',
+      headers: headers,
+      body: formData,
+    })
+      .then((r) => r.text())
+      .then((d) => {
+        console.log(d);
         location.href = '../admin_message_recv';
+      });
+  }
+
+  function updateCompanyNewsState(comName) {
+    console.log('update company news status');
+    const formData = new FormData();
+    formData.append('comName', comName);
+    let url = 'http://localhost:8080/Admin2ComController/comName';
+    let headers = {
+      Accept: 'application/json',
+    };
+
+    fetch(url, {
+      method: 'PATCH',
+      headers: headers,
+      body: formData,
+    })
+      .then((r) => r.text())
+      .then((d) => {
+        console.log(d);
+        // location.href = '../admin_message_recv';
       });
   }
 
@@ -86,9 +173,16 @@ $(function () {
   });
   publish_button.on('click', function () {
     if (verificationData()) {
+      var selected_text = select_compoent.options[select_compoent.selectedIndex].text;
       publish(select_obj, title_input.val().trim(), title_content.val());
+      if (radioValue == 1) {
+        updateUserNewsState(selected_text);
+      } else {
+        updateCompanyNewsState(selected_text);
+      }
     }
   });
 
   getSessionData();
+  getAllUserOrCompany();
 });

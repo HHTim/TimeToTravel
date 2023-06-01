@@ -460,3 +460,9 @@ tbody tr {
 .-ontype a:hover {
   color: #fff;
 }
+
+.pagination__area {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}

@@ -11,8 +11,8 @@ public interface U2AMessageViewService{
     List<U2AMsgView> getViewAll();
 
     Integer findViewByKeyWords(String keyword);
-    List<U2AMsgView>findViewByKeyWordsPage(String keyword, Integer currPage, Integer limit);
-    PageBean<U2AMsgView>findBeanPageViewByKeyWords(String keyword, Integer currPage, Integer limit);
+    List<U2AMsgView>findViewByKeyWordsPage(String keyword, Integer currPage, Integer rows);
+    PageBean<U2AMsgView>findBeanPageViewByKeyWords(String keyword, Integer currPage, Integer rows);
     Integer findViewByDateRange(String startDate, String endDate);
     List<U2AMsgView>findViewByDateRangePage(String startDate, String endDate, Integer currPage, Integer rows);
     PageBean<U2AMsgView> findBeanPageViewByDateRange(String startDate, String endDate, Integer currPage, Integer rows);

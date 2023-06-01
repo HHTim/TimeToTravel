@@ -7,6 +7,7 @@ import com.tibame.timetotravel.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -20,9 +21,45 @@ public class UserServiceImpl implements UserService {
     @Autowired
     PageBean<User> pageBean;
 
+    @Transactional
     @Override
     public void insert(User user) {
         userRepository.save(user);
+    }
+
+    @Transactional
+    @Override
+    public String updateByAccount(String account) {
+            User user = userRepository.findByUserAccount(account);
+            user.setUserNewsStatus(1);
+            userRepository.save(user);
+            return account;
+    }
+
+    @Transactional
+    @Override
+    public String updateByPassword(String password, Integer id) {
+        userRepository.updateUserPassword(password, id);
+        return "使用者密碼更新成功";
+    }
+
+    @Transactional
+    @Override
+    public String updateUserStatusByAccount(String account, Integer status) {
+        userRepository.updateUserStatus(account, status);
+        return "更新User: " + account + "的Status成功";
+    }
+
+    @Transactional
+    @Override
+    public String updateUserNewsStatusByAccount(String account, Integer newsStatus) {
+        userRepository.updateUserNewsStatus(account, newsStatus);
+        return "更新User: " + account + "的newsStatus成功";
+    }
+
+    @Override
+    public User findByUserId(Integer userId) {
+        return userRepository.findByUserId(userId);
     }
 
     @Override
@@ -68,7 +105,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> getAll() {
+    public List<User> findAll() {
         return userRepository.findAll();
     }
 }
