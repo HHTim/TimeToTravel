@@ -15,10 +15,25 @@ class OrderListServiceImplTest {
 
     @Test
     public void findUserOrderTest() throws InvocationTargetException, IllegalAccessException {
-        List<OrderList> userOrders = orderListService.findUserOrder(3);
+        List<OrderList> userOrders = orderListService.findUserOrder(2);
         for (OrderList userOrder : userOrders) {
             System.out.println(userOrder);
         }
+    }
+
+    @Test
+    public void findUserOrderByName() throws InvocationTargetException, IllegalAccessException {
+        List<OrderList> orders = orderListService.findUserOrderByName(2, "noSuch");
+        System.out.println(orders.size());
+        for (OrderList order : orders) {
+            System.out.println(order);
+        }
+    }
+
+    @Test
+    public void findUserOrderByNo() throws InvocationTargetException, IllegalAccessException {
+        OrderList order = orderListService.findUserOrderByNo(2, 9);
+        System.out.println(order);
     }
 
 }

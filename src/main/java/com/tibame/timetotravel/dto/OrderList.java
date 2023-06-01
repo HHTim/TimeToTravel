@@ -17,6 +17,6 @@ public class OrderList {
     private Integer roomPrice;
     private String journeyName;
     private Integer journeyPrice;
-    private String orderDateTime;
+    private String orderDatetime;
     private Integer orderAmount;
 }

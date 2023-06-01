@@ -15,6 +15,6 @@ public interface JourneyRepository extends JpaRepository<Journey, Integer> {
 
     List<Journey> findByComId(Integer comId);
 
-    @Query(value = "SELECT JOURNEY_NAME FROM JOURNEY WHERE JOURNEY_ID = ?1", nativeQuery = true)
-    String findJourneyNameByJourneyId(Integer journeyId);
+    @Query(value = "SELECT * FROM JOURNEY WHERE JOURNEY_ID = ?1", nativeQuery = true)
+    Journey findByJourneyId(Integer journeyId);
 }

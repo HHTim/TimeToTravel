@@ -9,12 +9,11 @@
     <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js" defer></script>
     <script src="../node_modules/jquery/dist/jquery.min.js" defer></script>
     <script src="https://kit.fontawesome.com/e3af248fb2.js" crossorigin="anonymous" defer></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
     <!-- 我們自己的 js 檔案，路徑記得改 -->
-    <link rel="stylesheet" href="../css/order_list.css" />
+    <link rel="stylesheet" href="../css/gift_order_list.css" />
     <!-- 我們自己的 css 檔案，路徑記得改 -->
-    <script src="../js/order_list.js" defer></script>
+    <script src="../js/gift_order_list.js" defer></script>
     <!-- 輪播需要添加 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- title 記得改 -->
@@ -27,7 +26,7 @@
       <header>
         <div class="container-fluid header__container">
           <h1 class="logo">
-            <a href="http://localhost:8080" class="logo__link">
+            <a href="#" class="logo__link">
               <img src="../images/LOGO.png" alt="logo" class="logo__img" />
             </a>
           </h1>
@@ -102,7 +101,7 @@
                   <p>訂單編號</p>
                   <input type="text" class="search__no" name="search__no" />
                 </div>
-                <!-- <button class="search__submit">搜尋</button> -->
+                <button class="search__submit">搜尋</button>
               </section>
               <section class="list">
                 <div class="tab">
@@ -178,26 +177,26 @@
                 <h3 class="comment__title">留下你的評分與留言</h3>
                 <ul class="comment__rank">
                   <li>
-                    <button data-rank="1"><i class="fa-solid fa-star fa-lg"></i></button>
+                    <a href=""><i class="fa-solid fa-star fa-lg"></i></a>
                   </li>
                   <li>
-                    <button data-rank="2"><i class="fa-solid fa-star fa-lg"></i></button>
+                    <a href=""><i class="fa-solid fa-star fa-lg"></i></a>
                   </li>
                   <li>
-                    <button data-rank="3"><i class="fa-solid fa-star fa-lg"></i></button>
+                    <a href=""><i class="fa-solid fa-star fa-lg"></i></a>
                   </li>
                   <li>
-                    <button data-rank="4"><i class="fa-solid fa-star fa-lg"></i></button>
+                    <a href=""><i class="fa-solid fa-star fa-lg"></i></a>
                   </li>
                   <li>
-                    <button data-rank="5"><i class="fa-solid fa-star fa-lg"></i></button>
+                    <a href=""><i class="fa-solid fa-star fa-lg"></i></a>
                   </li>
                 </ul>
                 <!-- <input type="text" class="comment__content" placeholder="最多50字" /> -->
                 <textarea id="" class="comment__content" placeholder="最多50字"></textarea>
                 <div class="comment__btn">
                   <button class="comment__submit">送出</button>
-                  <button class="comment__cancel">取消</button>
+                  <button class="comment__cancle">取消</button>
                 </div>
               </section>
               <nav class="page">

@@ -237,6 +237,12 @@ forward.addEventListener('click', () => {
     .catch((e) => {
       swal('訂房發生錯誤', '我們會盡快檢查是否有不足的地方', 'error');
     });
+
+  setTimeout(() => {
+    const success = document.querySelector('.swal-button');
+    console.log(success);
+    success.onclick = () => (location.href = '/order_list');
+  }, 500);
 });
 
 // 取消回上一頁
