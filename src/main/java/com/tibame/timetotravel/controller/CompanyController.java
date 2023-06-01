@@ -29,9 +29,10 @@ public class CompanyController extends BaseController {
     CompanyService companyService;
 
     @PostMapping("/company")
-    public String insert(@RequestBody Company company){
+    public String insert(@RequestBody Company company) {
         companyService.insert(company);
         return "執行資料庫的 Insert 操作";
+    }
     @PostMapping("/company/register")
     public ResponseEntity insertRegisterCompany(@RequestBody RegisterCompanyDto dto){
         Set<ConstraintViolation<RegisterCompanyDto>> validateSet = validator.validate(dto);
