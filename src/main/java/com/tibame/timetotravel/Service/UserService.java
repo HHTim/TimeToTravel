@@ -11,6 +11,8 @@ public interface UserService {
 
     String updateByPassword(String password, Integer id);
     String updateUserStatusByAccount(String account, Integer status);
+    String updateUserNewsStatusByAccount(String account, Integer newsStatus);
+    User findByUserId(Integer userId);
     List<User> findByPage(Integer currPage, Integer rows);
     PageBean<User> findByPageRowData(Integer currPage, Integer rows);
     List<User> findStatusByPage(Integer status, Integer currPage, Integer rows);

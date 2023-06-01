@@ -1,3 +1,5 @@
+import { getNotifyNewsStatus } from './header.js';
+
 $(window).on('load', function () {
   const tab1 = $('#tab-1');
   const tab2 = $('#tab-2');
@@ -68,6 +70,7 @@ $(window).on('load', function () {
     tab2_body.css('display', 'none');
     tab_body.css('align-items', 'baseline');
   });
+  getNotifyNewsStatus();
   getAnnPic();
   slider('slider2');
   slider('slider3');

@@ -6,11 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- import -->
-    <script
-      src="https://kit.fontawesome.com/e3af248fb2.js"
-      crossorigin="anonymous"
-      defer
-    ></script>
+    <script src="https://kit.fontawesome.com/e3af248fb2.js" crossorigin="anonymous" defer></script>
     <!-- 輪播需要添加 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- BS5 js lib -->
@@ -19,7 +15,6 @@
       integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
       crossorigin="anonymous"
     ></script>
-    <script src="../js/homepage.js" defer></script>
 
     <!-- BS5 StyleSheet -->
     <link
@@ -29,7 +24,7 @@
       crossorigin="anonymous"
     />
     <!-- 我們自己的 js 檔案，路徑記得改 -->
-    <link rel="stylesheet" href="../js/user_login.js" />
+    <script src="../js/user_login.js" defer></script>
     <!-- 我們自己的 css 檔案，路徑記得改 -->
     <link rel="stylesheet" href="../css/user_login.css" />
     <!-- title 記得改 -->
@@ -51,11 +46,7 @@
               <ul class="nav">
                 <li class="nav__info">
                   <div class="dropdown-center">
-                    <button
-                      class="dropdown-toggle nav__info-btn"
-                      type="button"
-                      data-bs-toggle="dropdown"
-                    ></button>
+                    <button class="dropdown-toggle nav__info-btn" type="button" data-bs-toggle="dropdown"></button>
                     <ul class="dropdown-menu">
                       <li><a class="dropdown-item" href="#">訊息一</a></li>
                       <li><a class="dropdown-item" href="#">訊息二</a></li>
@@ -67,12 +58,7 @@
                 </li>
                 <li class="nav__avatar">
                   <div class="dropdown-center">
-                    <a
-                      href="#"
-                      class="dropdown-toggle nav__avatar-btn"
-                      type="button"
-                      data-bs-toggle="dropdown"
-                    >
+                    <a href="#" class="dropdown-toggle nav__avatar-btn" type="button" data-bs-toggle="dropdown">
                       <div class="nav__avatar-img">
                         <img src="../images/avatar.svg" alt="avatar" />
                       </div>
@@ -95,18 +81,10 @@
             <div class="col-md-auto">
               <div class="theme">
                 <div class="img-theme-div">
-                  <img
-                    class="img-theme"
-                    src="../images/theme.png"
-                    alt="theme"
-                  />
+                  <img class="img-theme" src="../images/theme.png" alt="theme" />
                 </div>
                 <div class="title-theme-div">
-                  <img
-                    class="title-theme"
-                    src="../images/theme_title.png"
-                    alt="theme-title"
-                  />
+                  <img class="title-theme" src="../images/theme_title.png" alt="theme-title" />
                 </div>
                 <div class="theme-login-column" style="padding-bottom: 40px">
                   <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -153,100 +131,48 @@
                       </button>
                     </li>
                   </ul>
-                  <hr
-                    style="
-                      width: 400px;
-                      margin: 0 auto;
-                      border: 2px black solid;
-                    "
-                  />
+                  <hr style="width: 400px; margin: 0 auto; border: 2px black solid" />
                   <div class="tab-content" id="login-member">
-                    <div
-                      class="tab-pane fade show active"
-                      id="home"
-                      role="tabpanel"
-                      aria-labelledby="home-tab"
-                    >
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                       <form class="login-form">
                         <div class="mb-2">
-                          <label
-                            for="exampleInputEmail1"
-                            style="font-size: 20px"
-                            class="form-label"
-                            >登入帳號</label
-                          >
-                          <input
-                            type="email"
-                            style="height: 45px"
-                            class="form-control"
-                            id="exampleInputEmail1"
-                            aria-describedby="emailHelp"
-                          />
+                          <label for="user_account_input" style="font-size: 20px" class="form-label">登入帳號</label>
+                          <input id="user_account_input" type="text" style="height: 45px" class="form-control" />
                         </div>
                         <div class="mb-3">
-                          <label
-                            for="exampleInputPassword1"
-                            style="font-size: 20px"
-                            class="form-label"
-                            >登入密碼</label
-                          >
-                          <input
-                            type="password"
-                            style="height: 45px"
-                            class="form-control"
-                            id="exampleInputPassword1"
-                          />
+                          <label for="user_password_input" style="font-size: 20px" class="form-label">登入密碼</label>
+                          <input id="user_password_input" type="password" style="height: 45px" class="form-control" />
                         </div>
-                        <div class="mb-3">
-                          <label
-                            for="exampleInputPassword1"
-                            style="font-size: 20px"
-                            class="form-label"
-                          >
-                            驗證碼
-                          </label>
-                          <div
-                            style="
-                              display: flex;
-                              justify-content: space-between;
-                            "
-                          >
+                        <!-- <div class="mb-3">
+                          <label for="vaildcode" style="font-size: 20px" class="form-label"> 驗證碼 </label>
+                          <div style="display: flex; justify-content: space-between">
                             <input
+                              id="UserVaildCodeInput"
                               style="height: 45px; width: 190px"
-                              type="password"
+                              type="text"
                               class="form-control"
-                              id="exampleInputPassword1"
                             />
                             <input
-                              style="
-                                height: 45px;
-                                width: 190px;
-                                text-align: center;
-                                font-weight: bold;
-                              "
+                              id="UserVaildCode"
+                              style="height: 45px; width: 190px; text-align: center; font-weight: bold"
                               type=""
                               class="form-control"
-                              id="verity-code"
                               value="DKJLAJ88"
                               disabled
                             />
                           </div>
-                        </div>
+                        </div> -->
                         <div class="mb-3">
-                          <div
-                            style="
-                              display: flex;
-                              justify-content: space-between;
-                            "
-                          >
+                          <div style="display: flex; justify-content: center">
                             <input
+                              id="btn_user_login"
                               style="height: 45px; width: 190px"
                               type="button"
                               class="form-control button"
-                              id="exampleInputPassword1"
                               value="登入"
                             />
-                            <input
+                            <!-- <input
+                              id="user_signin_google"
                               style="
                                 padding-left: 30px;
                                 background-position: 18px 12px;
@@ -261,7 +187,7 @@
                               type="button"
                               class="form-control button"
                               value="Sign in with Google"
-                            />
+                            /> -->
                           </div>
                         </div>
                         <div style="text-align: center; margin-top: 30px">
@@ -269,75 +195,40 @@
                         </div>
                       </form>
                     </div>
-                    <div
-                      class="tab-pane fade"
-                      id="profile"
-                      role="tabpanel"
-                      aria-labelledby="profile-tab"
-                    >
-                      <div
-                        class="tab-pane fade show active"
-                        id="home"
-                        role="tabpanel"
-                        aria-labelledby="home-tab"
-                      >
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                      <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                         <form class="login-form">
                           <div class="mb-2">
-                            <label
-                              for="exampleInputEmail1"
-                              style="font-size: 20px"
-                              class="form-label"
+                            <label for="company_account_input" style="font-size: 20px" class="form-label"
                               >登入帳號</label
                             >
-                            <input
-                              type="email"
-                              style="height: 45px"
-                              class="form-control"
-                              id="exampleInputEmail1"
-                              aria-describedby="emailHelp"
-                            />
+                            <input id="company_account_input" type="email" style="height: 45px" class="form-control" />
                           </div>
                           <div class="mb-3">
-                            <label
-                              for="exampleInputPassword1"
-                              style="font-size: 20px"
-                              class="form-label"
+                            <label for="company_password_input" style="font-size: 20px" class="form-label"
                               >登入密碼</label
                             >
                             <input
+                              id="company_password_input"
                               type="password"
                               style="height: 45px"
                               class="form-control"
-                              id="exampleInputPassword1"
                             />
                           </div>
-                          <div class="mb-3">
-                            <label
-                              for="exampleInputPassword1"
-                              style="font-size: 20px"
-                              class="form-label"
-                            >
+                          <!-- <div class="mb-3">
+                            <label for="CompanyVaildCodeInput" style="font-size: 20px" class="form-label">
                               驗證碼
                             </label>
-                            <div
-                              style="
-                                display: flex;
-                                justify-content: space-between;
-                              "
-                            >
+                            <div style="display: flex; justify-content: space-between">
                               <input
                                 style="height: 45px; width: 190px"
-                                type="password"
+                                type="text"
                                 class="form-control"
-                                id="exampleInputPassword1"
+                                id="CompanyVaildCodeInput"
                               />
                               <input
-                                style="
-                                  height: 45px;
-                                  width: 190px;
-                                  text-align: center;
-                                  font-weight: bold;
-                                "
+                                id="CompanyVaildCode"
+                                style="height: 45px; width: 190px; text-align: center; font-weight: bold"
                                 type=""
                                 class="form-control"
                                 id="verity-code"
@@ -345,22 +236,18 @@
                                 disabled
                               />
                             </div>
-                          </div>
+                          </div> -->
                           <div class="mb-3">
-                            <div
-                              style="
-                                display: flex;
-                                justify-content: space-between;
-                              "
-                            >
+                            <div style="display: flex; justify-content: center">
                               <input
+                                id="btn_company_login"
                                 style="height: 45px; width: 190px"
                                 type="button"
                                 class="form-control button"
-                                id="exampleInputPassword1"
                                 value="登入"
                               />
-                              <input
+                              <!-- <input
+                                id="company_signin_google"
                                 style="
                                   padding-left: 30px;
                                   background-position: 18px 12px;
@@ -375,7 +262,7 @@
                                 type="button"
                                 class="form-control button"
                                 value="Sign in with Google"
-                              />
+                              /> -->
                             </div>
                           </div>
                           <div style="text-align: center; margin-top: 30px">
@@ -384,98 +271,54 @@
                         </form>
                       </div>
                     </div>
-                    <div
-                      class="tab-pane fade"
-                      id="contact"
-                      role="tabpanel"
-                      aria-labelledby="contact-tab"
-                    >
-                      <div
-                        class="tab-pane fade show active"
-                        id="home"
-                        role="tabpanel"
-                        aria-labelledby="home-tab"
-                      >
+                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                      <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                         <form class="login-form">
                           <div class="mb-2">
-                            <label
-                              for="exampleInputEmail1"
-                              style="font-size: 20px"
-                              class="form-label"
-                              >登入帳號</label
-                            >
-                            <input
-                              type="email"
-                              style="height: 45px"
-                              class="form-control"
-                              id="exampleInputEmail1"
-                              aria-describedby="emailHelp"
-                            />
+                            <label for="admin_account_input" style="font-size: 20px" class="form-label">登入帳號</label>
+                            <input id="admin_account_input" type="text" style="height: 45px" class="form-control" />
                           </div>
                           <div class="mb-3">
-                            <label
-                              for="exampleInputPassword1"
-                              style="font-size: 20px"
-                              class="form-label"
+                            <label for="admin_password_input" style="font-size: 20px" class="form-label"
                               >登入密碼</label
                             >
                             <input
                               type="password"
                               style="height: 45px"
                               class="form-control"
-                              id="exampleInputPassword1"
+                              id="admin_password_input"
                             />
                           </div>
-                          <div class="mb-3">
-                            <label
-                              for="exampleInputPassword1"
-                              style="font-size: 20px"
-                              class="form-label"
-                            >
-                              驗證碼
-                            </label>
-                            <div
-                              style="
-                                display: flex;
-                                justify-content: space-between;
-                              "
-                            >
+                          <!-- <div class="mb-3">
+                            <label for="adminVaildCode" style="font-size: 20px" class="form-label"> 驗證碼 </label>
+                            <div style="display: flex; justify-content: space-between">
                               <input
+                                id="adminVaildCodeInput"
                                 style="height: 45px; width: 190px"
                                 type="password"
                                 class="form-control"
-                                id="exampleInputPassword1"
                               />
                               <input
-                                style="
-                                  height: 45px;
-                                  width: 190px;
-                                  text-align: center;
-                                  font-weight: bold;
-                                "
+                                id="adminVaildCode"
+                                style="height: 45px; width: 190px; text-align: center; font-weight: bold"
                                 type=""
                                 class="form-control"
-                                id="verity-code"
                                 value="DKJLAJ88"
                                 disabled
                               />
                             </div>
-                          </div>
+                          </div> -->
                           <div class="mb-3">
-                            <div
-                              style="
-                                display: flex;
-                                justify-content: space-between;
-                              "
-                            >
+                            <div style="display: flex; justify-content: center">
                               <input
+                                id="btn_admin_login"
                                 style="height: 45px; width: 190px"
                                 type="button"
                                 class="form-control button"
-                                id="exampleInputPassword1"
                                 value="登入"
                               />
-                              <input
+                              <!-- <input
+                                id="admin_signin_google"
                                 style="
                                   padding-left: 30px;
                                   background-position: 18px 12px;
@@ -490,7 +333,7 @@
                                 type="button"
                                 class="form-control button"
                                 value="Sign in with Google"
-                              />
+                              /> -->
                             </div>
                           </div>
                           <div style="text-align: center; margin-top: 30px">

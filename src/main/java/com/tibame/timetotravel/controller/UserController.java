@@ -33,6 +33,21 @@ public class UserController {
         return userService.updateUserStatusByAccount(account, ("true".equals(status) ? 1 : 0));
     }
 
+    @PatchMapping(value = "/user/newsStatus", consumes = "multipart/form-data")
+    public String updateUserNewsStatus(@RequestParam("account") String account,
+                                   @RequestParam("newsStatus") Integer newsStatus){
+        System.out.println("接收到的User帳號為:"+account);
+        System.out.println("接收到的User newsStatus為:"+newsStatus);
+
+        return userService.updateUserNewsStatusByAccount(account, newsStatus);
+    }
+
+    @GetMapping(value = "/user/{userId}")
+    public User getUserById(@PathVariable("userId") Integer userId){
+        System.out.println("接收到的userId為:"+userId);
+        return userService.findByUserId(userId);
+    }
+
     @PatchMapping(value = "/user/password", consumes = "multipart/form-data")
     public String updateUserPassword(@RequestParam("userId") Integer userId,
                                    @RequestParam("password") String password){

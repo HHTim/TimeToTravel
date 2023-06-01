@@ -50,6 +50,18 @@ public class UserServiceImpl implements UserService {
         return "更新User: " + account + "的Status成功";
     }
 
+    @Transactional
+    @Override
+    public String updateUserNewsStatusByAccount(String account, Integer newsStatus) {
+        userRepository.updateUserNewsStatus(account, newsStatus);
+        return "更新User: " + account + "的newsStatus成功";
+    }
+
+    @Override
+    public User findByUserId(Integer userId) {
+        return userRepository.findByUserId(userId);
+    }
+
     @Override
     public List<User> findByPage(Integer currPage, Integer rows) {
         return userRepository.findByPage(currPage,rows);
