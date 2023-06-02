@@ -297,10 +297,6 @@ main * {
   font-size: 16px;
 }
 
-table th {
-  white-space: nowrap;
-}
-
 section:not(:first-child) {
   margin-top: 1rem;
 }
@@ -348,32 +344,30 @@ section:not(:first-child) {
   width: -moz-fit-content;
   width: fit-content;
   border: none;
-  background-color: #006caa;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   color: #fff;
   font-weight: bold;
-  border-color: #006caa;
   min-width: 100px;
   text-align: center;
   border-style: solid;
   font-size: 16px;
   padding: 0 0.5rem;
+  background-color: #bbb8b8;
+  border-color: #bbb8b8;
 }
 .tab .tab-2 {
   font-size: 16px;
-  background-color: #bbb8b8;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   color: #fff;
   font-weight: bold;
-  border-color: #bbb8b8;
-  width: -moz-fit-content;
-  width: fit-content;
   min-width: 100px;
   text-align: center;
   border-style: solid;
   padding: 0 0.5rem;
+  background-color: #006caa;
+  border-color: #006caa;
 }
 
 .list {
@@ -425,7 +419,7 @@ section:not(:first-child) {
 .comment {
   position: fixed;
   width: 40%;
-  max-width: 500px;
+  min-width: 300px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -448,26 +442,18 @@ section:not(:first-child) {
   text-align: center;
   font-size: 20px;
   font-weight: bold;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 .comment__rank {
   width: 100%;
   display: flex;
-  color: #333;
+  color: #eeab0f;
   padding: 0;
   margin: 0;
   justify-content: center;
 }
-.comment__rank button {
-  border: none;
-  background-color: transparent;
-}
 .comment__rank i {
   font-size: 32px;
-  transition: all 0.08s ease-in-out;
-}
-.comment__rank button:hover i {
-  font-size: 36px;
 }
 .comment__content {
   display: block;
@@ -509,11 +495,11 @@ section:not(:first-child) {
 .comment__submit:hover {
   background-color: #004c77;
 }
-.comment__cancel {
+.comment__cancle {
   width: 30%;
   background-color: #be4b4b;
 }
-.comment__cancel:hover {
+.comment__cancle:hover {
   background-color: #9d3939;
 }
 

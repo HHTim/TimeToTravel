@@ -5,8 +5,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
 @Repository
 public interface OrderDetailRepository extends CrudRepository<OrderDetail, Integer> {
     String findOrderByDate = " SELECT COUNT(1) FROM ORDER_DETAIL " +
@@ -22,8 +20,4 @@ public interface OrderDetailRepository extends CrudRepository<OrderDetail, Integ
     @Query(value = findOrderByDate, nativeQuery = true)
     Integer findOrderByDate(Integer roomId, String start, String end);
 
-    List<OrderDetail> findByUserId(Integer userId);
-
-    @Query(value = "SELECT O.* FROM ROOM R JOIN ORDER_DETAIL O ON R.ROOM_ID = O.ROOM_ID WHERE R.COM_ID = ?1", nativeQuery = true)
-    List<OrderDetail> findByComId(Integer comId);
 }

@@ -8,10 +8,6 @@ main * {
   font-size: 16px;
 }
 
-table th {
-  white-space: nowrap;
-}
-
 section:not(:first-child) {
   margin-top: 1rem;
 }
@@ -62,32 +58,31 @@ section:not(:first-child) {
   .tab-1 {
     width: fit-content;
     border: none;
-    background-color: $primary-blue;
     border-top-left-radius: $border-radius;
     border-top-right-radius: $border-radius;
     color: $white;
     font-weight: bold;
-    border-color: $primary-blue;
     min-width: 100px;
     text-align: center;
     border-style: solid;
     font-size: 16px;
     padding: 0 0.5rem;
+    background-color: $custom-gray;
+    border-color: $custom-gray;
   }
 
   .tab-2 {
     font-size: 16px;
-    background-color: $custom-gray;
     border-top-left-radius: $border-radius;
     border-top-right-radius: $border-radius;
     color: $white;
     font-weight: bold;
-    border-color: $custom-gray;
-    width: fit-content;
     min-width: 100px;
     text-align: center;
     border-style: solid;
     padding: 0 0.5rem;
+    background-color: $primary-blue;
+    border-color: $primary-blue;
   }
 }
 
@@ -147,7 +142,7 @@ section:not(:first-child) {
 .comment {
   position: fixed;
   width: 40%;
-  max-width: 500px;
+  min-width: 300px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -171,29 +166,19 @@ section:not(:first-child) {
     text-align: center;
     font-size: 20px;
     font-weight: bold;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
   }
 
   &__rank {
     width: 100%;
     display: flex;
-    color: $black;
+    color: $rank-yellow;
     padding: 0;
     margin: 0;
     justify-content: center;
 
-    button {
-      border: none;
-      background-color: transparent;
-    }
-
     i {
       font-size: 32px;
-      transition: all 0.08s ease-in-out;
-    }
-
-    button:hover i {
-      font-size: 36px;
     }
   }
 
@@ -238,7 +223,7 @@ section:not(:first-child) {
     }
   }
 
-  &__cancel {
+  &__cancle {
     width: 30%;
     background-color: $danger-red;
 
