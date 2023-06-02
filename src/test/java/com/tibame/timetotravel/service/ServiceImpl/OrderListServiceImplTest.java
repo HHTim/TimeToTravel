@@ -32,7 +32,7 @@ class OrderListServiceImplTest {
 
     @Test
     public void findUserOrderByNo() throws InvocationTargetException, IllegalAccessException {
-        OrderList order = orderListService.findUserOrderByNo(2, 9);
+        List<OrderList> order = orderListService.findUserOrderByNo(2, 9);
         System.out.println(order);
     }
 

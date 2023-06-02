@@ -11,13 +11,7 @@
   // background-color: $primary-blue;
   // color: $white;
 }
-.search-hotel {
-  background-color: $white;
-  border: none;
-  color: $primary-blue;
-  padding: 4px 24px;
-  border-radius: 0 5px 5px 0;
-}
+
 .top {
   display: flex;
   margin-bottom: 10px;
@@ -147,7 +141,7 @@
   background-color: #007bff;
   border-radius: 0 10px 10px 10px; //圓角
   margin-bottom: 10px;
-  height: 50px;
+  // height: 50px;
   -moz-box-shadow: 2px 2px 2px 2px #accefb;
   -webkit-box-shadow: 2px 2px 2px 2px #accefb;
   box-shadow: 2px 2px 2px 2px #accefb;
@@ -164,7 +158,28 @@
   justify-content: left;
 }
 
-input[type='text'] {
+#tab1 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.search-hotel {
+  background-color: $white;
+  border: none;
+  color: $primary-blue;
+  padding: 3px 24px;
+  border-radius: 0 5px 5px 0;
+}
+
+.search-location {
   font-size: 14px;
   width: 90%;
   height: 30px;
@@ -173,6 +188,29 @@ input[type='text'] {
   border-radius: 5px 0 0 5px;
   cursor: pointer;
   padding-left: 5px;
+}
+
+.search-start {
+  width: 40%;
+  border: none;
+  margin-right: 0.5rem;
+  padding: 3px 0.5rem;
+  border-radius: $input-radius;
+}
+
+.search-end {
+  width: 40%;
+  border: none;
+  margin-right: 0.5rem;
+  padding: 3px 0.5rem;
+  border-radius: $input-radius;
+}
+
+.search-option {
+  width: 17%;
+  border: none;
+  padding: 4px 0.5rem;
+  border-radius: $input-radius;
 }
 
 //分頁

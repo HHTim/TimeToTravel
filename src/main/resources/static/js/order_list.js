@@ -12,9 +12,19 @@ let commentBody = {
   orderComment: '',
 };
 
+function restoreComment() {
+  comment.classList.remove('comment--on');
+  commentBody.orderId = 0;
+  commentBody.orderRank = 0;
+  commentBody.orderComment = '';
+  commentContent.value = '';
+  stars.forEach((star) => (star.style.color = '#000'));
+  console.log(commentBody);
+}
+
 async function handleUpdateComment() {
   try {
-    const resp = await fetch(`/user/orders/${commentBody.orderId}`, {
+    const resp = await fetch(`/user/orders`, {
       method: 'PUT',
       cache: 'no-cache',
       headers: { 'Content-Type': 'application/json' },
@@ -24,13 +34,13 @@ async function handleUpdateComment() {
     if (!resp.ok) throw new Error('修改評論失敗');
 
     if (typeof swal === 'function') {
-      swal('您的評論已經成功送出', '期待您下一次光臨', success);
+      swal('您的評論已經成功送出', '期待您下一次光臨', 'success');
     } else {
       alert('您的評論已經成功送出');
     }
   } catch (error) {
     if (typeof swal === 'function') {
-      swal('評論未修改成功', '我們會盡快找出問題', error);
+      swal('評論未修改成功', '我們會盡快找出問題', 'error');
     } else {
       alert('評論未修改成功');
     }
@@ -143,15 +153,7 @@ list.addEventListener('click', (e) => {
 
     if (comment.classList.contains('comment--on')) {
       // 取消按鈕事件，會復原searchBody
-      commentCancel.onclick = () => {
-        comment.classList.remove('comment--on');
-        commentBody.orderId = 0;
-        commentBody.orderRank = 0;
-        commentBody.orderComment = '';
-        commentContent.value = '';
-        stars.forEach((star) => (star.style.color = '#000'));
-        console.log(commentBody);
-      };
+      commentCancel.onclick = () => restoreComment();
       // 評論欄內容事件
       commentContent.addEventListener('blur', (e) => {
         console.log(e.target.value);
@@ -194,8 +196,8 @@ list.addEventListener('click', (e) => {
           }
           return;
         }
-
         handleUpdateComment();
+        restoreComment();
       };
     }
   }
@@ -214,6 +216,7 @@ searchCom.addEventListener('blur', async (e) => {
 
   const resp = await fetch(url);
   result = await resp.json();
+  console.log('Name: ');
   console.log(result);
   list.innerHTML = renderList(result);
   name = '';
@@ -232,6 +235,7 @@ searchNo.addEventListener('blur', async (e) => {
 
   const resp = await fetch(url);
   result = await resp.json();
+  console.log('NO: ');
   console.log(result);
   list.innerHTML = renderList(result);
   no = '';

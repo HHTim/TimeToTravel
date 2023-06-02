@@ -26,17 +26,18 @@ public class OrderListController {
     }
 
     @GetMapping("/orders/{userId}/no/{no}")
-    public OrderList findUserOrderByNo(@PathVariable Integer userId, @PathVariable String no) throws InvocationTargetException, IllegalAccessException {
+    public List<OrderList> findUserOrderByNo(@PathVariable Integer userId, @PathVariable String no) throws InvocationTargetException, IllegalAccessException {
         System.out.println("test " + userId + " " + no);
         return orderListService.findUserOrderByNo(userId, Integer.parseInt(no));
     }
 
-    @PutMapping("orders/{orderId}")
+    @PutMapping("orders")
     public void updateCommentByOrderId(@RequestBody Map<String, Object> commentBody) {
         Integer orderId = (Integer) commentBody.get("orderId");
         Integer orderRank = (Integer) commentBody.get("orderRank");
         String orderComment = (String) commentBody.get("orderComment");
         orderListService.updateCommentByOrderId(orderId, orderRank, orderComment);
+        System.out.println("修改評論與分數成功");
     }
 
 }
