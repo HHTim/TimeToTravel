@@ -496,7 +496,7 @@ body {
   border-radius: 10px 0 0 10px;
 }
 .p-scene__img img {
-  scale: 0.15;
+  scale: 0.3;
   transform-origin: 0 0;
   position: absolute;
   left: 50%;
@@ -505,7 +505,7 @@ body {
   transition: all 0.2s ease-in-out;
 }
 .p-scene__card:hover .p-scene__img img {
-  scale: 0.17;
+  scale: 0.32;
 }
 @media screen and (min-width: 1400px) {
   .p-scene__img {
