@@ -63,7 +63,7 @@ public class UserController extends BaseController {
             return badRequest(e.getMessage());
         }
 
-        return ResponseEntity.ok("{}");
+        return ResponseEntity.ok("{id}");
     }
 
     @PatchMapping(value = "/user/status", consumes = "multipart/form-data")
