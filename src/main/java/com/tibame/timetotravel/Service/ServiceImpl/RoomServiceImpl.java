@@ -2,6 +2,7 @@ package com.tibame.timetotravel.service.ServiceImpl;
 
 import com.tibame.timetotravel.common.PageBean;
 import com.tibame.timetotravel.dto.RoomPagination;
+import com.tibame.timetotravel.dto.RoomPaginationByStatus;
 import com.tibame.timetotravel.entity.Room;
 import com.tibame.timetotravel.repository.RoomRepository;
 import com.tibame.timetotravel.service.RoomService;
@@ -77,5 +78,14 @@ public class RoomServiceImpl implements RoomService {
         double totalPage = Math.ceil(total / 10);
         return new RoomPagination(roomList, (int) totalPage);
     }
+
+    @Override
+    public RoomPaginationByStatus findByPageByStatus(Integer roomStatus, Integer pageNumber) {
+        List<Room> roomListByStatus = roomRepository.RoomPaginationByStatus(roomStatus, (pageNumber - 1) * 10);
+        double total = roomRepository.totalPageByStatus(roomStatus);
+        double totalPage = Math.ceil(total / 10);
+        return new RoomPaginationByStatus(roomListByStatus, (int) totalPage);
+    }
+
 
 }

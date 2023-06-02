@@ -6,12 +6,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class RoomPagination {
+public class RoomPaginationByStatus {
     private List<Room> roomList;
     private Integer totalPage;
-//    private Integer roomStatus;
 }

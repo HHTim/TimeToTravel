@@ -12,9 +12,21 @@ window.addEventListener('load', function () {
 
 	pagination.addEventListener('click', function (e) {
 		e.preventDefault(); // 預防a標籤的跳頁
-		if (e.target.classList.contains('page-link')) {
-			const currentPage = e.target.dataset.currentPage;
-			console.log(currentPage); // 1, 2, 3
+		let currentPage;
+		// 如果點到的是上架中的pagination
+		if (e.target.classList.contains('onShelve-page')) {
+			currentPage = e.target.dataset.currentPage;
+			findRoomByRoomStatus(1, currentPage);
+		}
+		// 如果點到的是未上架的pagination
+		else if (e.target.classList.contains('offShelve-page')) {
+			currentPage = e.target.dataset.currentPage;
+			findRoomByRoomStatus(0, currentPage);
+		}
+		// 如果點到的是全部商品的pagination
+		else if (e.target.classList.contains('page-link')) {
+			currentPage = e.target.dataset.currentPage;
+			// console.log(currentPage); // 1, 2, 3
 			findByPage(currentPage);
 		}
 	});
@@ -25,68 +37,12 @@ window.addEventListener('load', function () {
 
 	/* 架上商品 */
 	roomsOnShelve.addEventListener('click', function () {
-		fetch('/roomController/room')
-			.then((resp) => resp.json())
-			.then((body) => {
-				tbody.innerHTML = body
-					.map((i) => {
-						roomStatus = i.roomStatus;
-						if (roomStatus) {
-							roomStatus = '上架中';
-							return `
-								<tr>
-								  <td>${i.roomName}</td>
-								  <td>${i.roomId}</td>
-								  <td>${i.roomBed}</td>
-								  <td>$${i.roomPrice}</td>
-								  <td>${i.roomStock}</td>
-								  <td>${i.roomPeople}人</td>
-								  <td>
-									<select name="room__status" class="room__status" data-room-id="${i.roomId}">
-									  <option disabled selected hidden>${roomStatus}</option>
-									  <option value="0">下架</option>
-									</select>
-								  </td>
-								</tr>
-							  `;
-						}
-					})
-					.reverse()
-					.join('');
-			});
+		findRoomByRoomStatus(1, 1);
 	});
 
 	/* 未上架商品 */
 	roomsOffShelve.addEventListener('click', function () {
-		fetch('/roomController/room')
-			.then((resp) => resp.json())
-			.then((body) => {
-				tbody.innerHTML = body
-					.map((i) => {
-						roomStatus = i.roomStatus;
-						if (!roomStatus) {
-							roomStatus = '未上架';
-							return `
-								<tr>
-								  <td>${i.roomName}</td>
-								  <td>${i.roomId}</td>
-								  <td>${i.roomBed}</td>
-								  <td>$${i.roomPrice}</td>
-								  <td>${i.roomStock}</td>
-								  <td>${i.roomPeople}人</td>
-								  <td>
-									<select name="room__status" class="room__status" data-room-id="${i.roomId}">
-									  <option disabled selected hidden>${roomStatus}</option>
-									  <option value="1">上架</option>
-									</select>
-								  </td>
-								</tr>
-							  `;
-						}
-					})
-					.reverse()
-					.join('');
-			});
+		findRoomByRoomStatus(0, 1);
 	});
 
 	/* 重設按鈕 */
@@ -192,32 +148,35 @@ window.addEventListener('load', function () {
 		fetch('/roomController/room')
 			.then((resp) => resp.json())
 			.then((body) => {
+				const total = body.length;
+				const totalPage = Math.ceil(total / 10);
 				console.log(body);
-				console.log(body.length);
+				console.log(totalPage);
 				tbody.innerHTML = body
 					.map((i) => {
 						// 更改房型狀態
 						roomStatus = i.roomStatus;
 						if (roomStatus) {
 							roomStatus = '上架中';
-						} else roomStatus = '未上架';
-
+						} else {
+							roomStatus = '未上架';
+						}
 						return `
-					<tr>
-					  <td>${i.roomName}</td>
-					  <td>${i.roomId}</td>
-					  <td>${i.roomBed}</td>
-					  <td>$${i.roomPrice}</td>
-					  <td>${i.roomStock}</td>
-					  <td>${i.roomPeople}人</td>
-					  <td>
-						<select name="room__status" class="room__status" data-room-id="${i.roomId}">
-						  <option disabled selected hidden>${roomStatus}</option>
-						  <option value="1">上架</option>
-						  <option value="0">下架</option>
-						</select>
-					  </td>
-					</tr>
+				  <tr>
+					<td>${i.roomName}</td>
+					<td>${i.roomId}</td>
+					<td>${i.roomBed}</td>
+					<td>$${i.roomPrice}</td>
+					<td>${i.roomStock}</td>
+					<td>${i.roomPeople}人</td>
+					<td>
+					  <select name="room__status" class="room__status" data-room-id="${i.roomId}">
+						<option disabled selected hidden>${roomStatus}</option>
+						<option value="1">上架</option>
+						<option value="0">下架</option>
+					  </select>
+					</td>
+				  </tr>
 				`;
 					})
 					.reverse()
@@ -313,11 +272,120 @@ window.addEventListener('load', function () {
             				</tr>
           				`;
 					})
-					.reverse()
+					// .reverse()
 					.join('');
 			});
 	}
 
+	/**
+	 * 架上/未上架的商品分頁
+	 */
+	function findRoomByRoomStatus(roomStatus, pageNumber) {
+		fetch(`/roomController/room/pagination/${roomStatus}/${pageNumber}`)
+			.then((resp) => resp.json())
+			.then((body) => {
+				/**
+				 * array.filter((element, index, array)，先判斷房型狀態，只要留上架 => true
+				 * element：目前正在被評估的元素。
+				 * index（選擇性）：目前元素的索引。
+				 * array（選擇性）：原始陣列。
+				 * onShelveRoomList => 新的list，取得所有狀態為上架中的房型
+				 */
+				const RoomList = body.roomList;
+				const onShelveRoomList = body.roomList.filter((i) => i.roomStatus);
+				const offShelveRoomList = body.roomList.filter((i) => !i.roomStatus);
+				const onShelvePage = Math.ceil(onShelveRoomList.length / 10);
+				const offShelvePage = Math.ceil(offShelveRoomList.length / 10);
+				console.log(offShelvePage);
+				console.log(RoomList);
+				for (let i = 0; i < RoomList.length; i++) {
+					// console.log(RoomList[i].roomStatus);
+					if (RoomList[i].roomStatus) {
+						roomStatus = '上架中';
+
+						let html = '';
+						for (let i = 0; i < body.totalPage; i++) {
+							html += `
+						<li class="page-item"><a class="page-link onShelve-page" href="#" data-current-page="${i + 1}">${i + 1}</a></li>
+					`;
+						}
+						const paginationHtml = `
+					<li class="page-item disabled">
+						<a class="page-link">Previous</a>
+					</li>
+					${html}
+					<li class="page-item">
+						<a class="page-link" href="#">Next</a>
+					</li>
+					`;
+						pagination.innerHTML = paginationHtml;
+
+						tbody.innerHTML = onShelveRoomList
+							.map((i) => {
+								return `
+						<tr>
+							<td>${i.roomName}</td>
+							<td>${i.roomId}</td>
+							<td>${i.roomBed}</td>
+							<td>$${i.roomPrice}</td>
+							<td>${i.roomStock}</td>
+							<td>${i.roomPeople}人</td>
+							<td>
+							<select name="room__status" class="room__status" data-room-id="${i.roomId}">
+								<option disabled selected hidden>${roomStatus}</option>
+								<option value="0">下架</option>
+							</select>
+							</td>
+						</tr>
+					`;
+							})
+							// .reverse()
+							.join('');
+					}
+					// 未上架
+					else {
+						roomStatus = '未上架';
+						let html = '';
+						for (let i = 0; i < body.totalPage; i++) {
+							html += `
+						<li class="page-item"><a class="page-link offShelve-page" href="#" data-current-page="${i + 1}">${i + 1}</a></li>
+					`;
+						}
+
+						const paginationHtml = `
+					<li class="page-item disabled">
+						<a class="page-link">Previous</a>
+					</li>
+					${html}
+					<li class="page-item">
+						<a class="page-link" href="#">Next</a>
+					</li>
+					`;
+						pagination.innerHTML = paginationHtml;
+
+						tbody.innerHTML = offShelveRoomList
+							.map((i) => {
+								return `
+							<tr>
+								<td>${i.roomName}</td>
+								<td>${i.roomId}</td>
+								<td>${i.roomBed}</td>
+								<td>$${i.roomPrice}</td>
+								<td>${i.roomStock}</td>
+								<td>${i.roomPeople}人</td>
+								<td>
+								<select name="room__status" class="room__status" data-room-id="${i.roomId}">
+									<option disabled selected hidden>${roomStatus}</option>
+									<option value="1">上架</option>
+								</select>
+								</td>
+							</tr>`;
+							})
+							// .reverse()
+							.join('');
+					}
+				}
+			});
+	}
 	findByPage(1);
-	// findAll();
 });
