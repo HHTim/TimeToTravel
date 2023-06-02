@@ -1,5 +1,6 @@
 package com.tibame.timetotravel.controller;
 
+import com.tibame.timetotravel.common.PageBean;
 import com.tibame.timetotravel.dto.SearchRoomDto;
 import com.tibame.timetotravel.service.SearchService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -9,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -37,15 +37,15 @@ public class SearchController {
         return new RedirectView("/search_room");
     }
 
-    @GetMapping("/search")
-    public List<SearchRoomDto> search(HttpServletRequest req) throws InvocationTargetException, IllegalAccessException {
+    @GetMapping("/search/{currPage}")
+    public PageBean<SearchRoomDto> search(@PathVariable Integer currPage, HttpServletRequest req) throws InvocationTargetException, IllegalAccessException {
         HttpSession session = req.getSession();
         String keyword = (String) session.getAttribute("keyword");
         Integer people = Integer.parseInt((String) session.getAttribute("people"));
         String startDate = (String) session.getAttribute("startDate");
         String endDate = (String) session.getAttribute("endDate");
 
-        return searchService.findAvailableCompany(keyword, people, startDate, endDate);
+        return searchService.findAvailableCompany(keyword, people, startDate, endDate, currPage);
     }
 
 

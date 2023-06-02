@@ -1,6 +1,9 @@
 const searchResultsCountElement = document.getElementById('search-results-count');
 const searchHotel = document.querySelector('#search-hotel');
 const searchContent = document.querySelector('#search-result');
+const pageBtnWrapper = document.querySelector('#page-btn-wrapper');
+const searchResult = document.querySelector('#search-result');
+let isRenderPage = false;
 
 function openTab(tabName) {
   const tabContent = document.getElementsByClassName('tab-content');
@@ -44,20 +47,45 @@ function renderRank(rank) {
   return html;
 }
 
-// 開場再對Controller發一次GET請求，取回剛剛輸入的關鍵字查詢出來的結果
-async function handleSearch() {
-  const resultList = await fetchData('http://localhost:8080/user/search');
-  searchResultsCountElement.innerText = '搜尋結果共 ' + resultList.length + ' 筆';
-  console.log(resultList);
+function handlePageBtn(e) {
+  // 按鈕代表的頁數
+  const pageNum = e.target.dataset.page;
+  // 所有按鈕集合
+  const pageItems = pageBtnWrapper.childNodes;
+  // 先刪掉所有按鈕的active class
+  pageItems.forEach((i) => {
+    console.log(i);
+    i.classList.remove('active');
+  });
+  // 選取點擊的按鈕最近的那個li標籤加上active
+  e.target.closest('li').classList.add('active');
+  console.log('當前頁數' + pageNum);
+  // 處理搜尋
+  handleSearch(pageNum);
+}
 
-  const searchResult = document.querySelector('#search-result');
+function renderPaganation(pageSize) {
+  let html = `<li id="page-btn" role="button" class="page-item active">
+    <a class="page-link"  data-page="1">1</a>
+  </li>`;
+
+  for (let i = 1; i < pageSize; i++) {
+    html += `<li id="page-btn" role="button" class="page-item" >
+              <a class="page-link" data-page="${i + 1}">${i + 1}</a>
+            </li>`;
+  }
+  return html;
+}
+
+function renderSearchResult(result) {
   let html = '';
-  resultList.forEach((result) => {
-    const { comId, comName, comAddress, roomName, roomDesc, roomPhoto, orderRanks, roomId } = result;
+
+  for (let i in result) {
+    const { comId, comName, comAddress, roomName, roomDesc, roomPhoto, orderRanks, roomId } = result[i];
     const sum = orderRanks.reduce((curr, acc) => curr + acc, 0);
     const avg = orderRanks.length === 0 ? 1 : Math.ceil(sum / orderRanks.length);
-    console.log(orderRanks);
-    console.log('avg: ' + avg);
+    // console.log(orderRanks);
+    // console.log('avg: ' + avg);
     html += `
     <div class="hotel__card" data-comId=${comId} data-roomId=${roomId}>
       <div class="hotel__img">
@@ -66,7 +94,7 @@ async function handleSearch() {
       <div class="hotel__content">
         <div class="d-flex align-items-center">
           <h3 class="hotel__title">${comName} - ${roomName}</h3>
-          <ul class="hotel__rank" data-rank=${orderRanks.length}>
+          <ul class="hotel__rank" data-rank=${avg}>
             ${renderRank(avg)}
           </ul>
         </div>
@@ -75,8 +103,26 @@ async function handleSearch() {
       </div>
     </div> 
     `;
-  });
-  searchResult.innerHTML = html;
+  }
+  return html;
+}
+
+// 開場再對Controller發一次GET請求，取回剛剛輸入的關鍵字查詢出來的結果
+async function handleSearch(page) {
+  const result = await fetchData(`http://localhost:8080/user/search/${page}`);
+  searchResultsCountElement.innerText = '搜尋結果共 ' + result.rows.length + ' 筆';
+  console.log(result);
+  // 總頁數
+  let pageSize = Math.ceil(result.pageSize / 5);
+  console.log('頁數: ' + pageSize);
+
+  /* Search Result */
+  searchResult.innerHTML = renderSearchResult(result.rows);
+  /* Paganation */
+  // 渲染過一次分頁器就不再渲染
+  if (isRenderPage) return;
+  pageBtnWrapper.innerHTML = renderPaganation(pageSize);
+  isRenderPage = true;
 }
 
 async function handleSelectRoom(dataset) {
@@ -103,6 +149,7 @@ async function handleSelectRoom(dataset) {
 //   endDate: '2023-05-02',
 // };
 
-searchHotel.addEventListener('click', () => handleSearch());
+// searchHotel.addEventListener('click', () => handleSearch());
 searchContent.addEventListener('click', (e) => handleSelectRoom(e.target.dataset));
-handleSearch();
+pageBtnWrapper.addEventListener('click', (e) => handlePageBtn(e));
+handleSearch(1);
