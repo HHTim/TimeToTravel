@@ -1,6 +1,6 @@
 package com.tibame.timetotravel.service.ServiceImpl;
 
-import com.tibame.timetotravel.dto.BookingRoom;
+import com.tibame.timetotravel.dto.BookingRoomDto;
 import com.tibame.timetotravel.entity.PrivateScene;
 import com.tibame.timetotravel.entity.Room;
 import com.tibame.timetotravel.repository.PrivateSceneRepository;
@@ -32,25 +32,25 @@ public class BookingServiceImpl implements BookingService {
     ViewUserOrderDetailRepository viewUserOrderDetailRepository;
 
     @Override
-    public BookingRoom bookingRoom(Integer comId, Integer roomId) throws InvocationTargetException, IllegalAccessException {
+    public BookingRoomDto bookingRoom(Integer comId, Integer roomId) throws InvocationTargetException, IllegalAccessException {
         // 建立DTO
-        BookingRoom bookingRoom = new BookingRoom();
+        BookingRoomDto bookingRoomDto = new BookingRoomDto();
 
         // 查詢商家名稱跟地址
         ViewCompanyRoom company = viewCompanyRoomRepository.findByComIdAndRoomId(comId, roomId);
-        BeanUtils.copyProperties(bookingRoom, company);
+        BeanUtils.copyProperties(bookingRoomDto, company);
 
         // 將目前的房間的評價分數放入
         List<Integer> roomRank = viewUserOrderDetailRepository.findRankByRoomId(roomId);
-        bookingRoom.setOrderRanks(roomRank);
+        bookingRoomDto.setOrderRanks(roomRank);
 
         // 查詢comId對應的所有房間
         List<Room> rooms = roomRepository.findAllByComId(comId);
-        bookingRoom.setRooms(rooms);
+        bookingRoomDto.setRooms(rooms);
 
         // 查詢comId對應的所有私房景點
         List<PrivateScene> scenes = privateSceneRepository.findAllByComId(comId);
-        bookingRoom.setPrivateScenes(scenes);
+        bookingRoomDto.setPrivateScenes(scenes);
 
         // DTO最終需要所有房間的評論、星星及消費者頭像，一間飯店會有多個評價也可能沒有評價所以用雙重陣列表示
         // 先宣告最後要塞給DTO的所有雙重陣列
@@ -92,10 +92,10 @@ public class BookingServiceImpl implements BookingService {
         }
 
         // 將最後的二維陣列塞給DTO
-        bookingRoom.setAllComments(allComments);
-        bookingRoom.setAllOrderRanks(allRanks);
-        bookingRoom.setAllUserAvatars(allAvatars);
-        bookingRoom.setAllUserNames(allNames);
-        return bookingRoom;
+        bookingRoomDto.setAllComments(allComments);
+        bookingRoomDto.setAllOrderRanks(allRanks);
+        bookingRoomDto.setAllUserAvatars(allAvatars);
+        bookingRoomDto.setAllUserNames(allNames);
+        return bookingRoomDto;
     }
 }

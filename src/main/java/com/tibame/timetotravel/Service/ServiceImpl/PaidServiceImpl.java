@@ -1,7 +1,7 @@
 package com.tibame.timetotravel.service.ServiceImpl;
 
-import com.tibame.timetotravel.dto.BookingPaid;
-import com.tibame.timetotravel.dto.RoomOrder;
+import com.tibame.timetotravel.dto.BookingPaidDto;
+import com.tibame.timetotravel.dto.RoomOrderDto;
 import com.tibame.timetotravel.entity.Journey;
 import com.tibame.timetotravel.entity.OrderDetail;
 import com.tibame.timetotravel.entity.User;
@@ -35,24 +35,24 @@ public class PaidServiceImpl implements PaidService {
     OrderDetailRepository orderDetailRepository;
 
     @Override
-    public BookingPaid bookingPaid(Integer userId, Integer roomId, String startDate, String endDate) throws InvocationTargetException, IllegalAccessException {
-        BookingPaid bookingPaid = new BookingPaid();
-        bookingPaid.setCheckIn(startDate);
-        bookingPaid.setCheckOut(endDate);
+    public BookingPaidDto bookingPaid(Integer userId, Integer roomId, String startDate, String endDate) throws InvocationTargetException, IllegalAccessException {
+        BookingPaidDto bookingPaidDto = new BookingPaidDto();
+        bookingPaidDto.setCheckIn(startDate);
+        bookingPaidDto.setCheckOut(endDate);
         User user = userRepository.findByUserId(userId);
-        BeanUtils.copyProperties(bookingPaid, user);
+        BeanUtils.copyProperties(bookingPaidDto, user);
         ViewCompanyRoom companyRoom = viewCompanyRoomRepository.findByRoomId(roomId);
-        BeanUtils.copyProperties(bookingPaid, companyRoom);
+        BeanUtils.copyProperties(bookingPaidDto, companyRoom);
         Integer comId = companyRoom.getComId();
         List<Journey> journeys = journeyRepository.findByComId(comId);
-        bookingPaid.setJourney(journeys);
+        bookingPaidDto.setJourney(journeys);
 
-        return bookingPaid;
+        return bookingPaidDto;
     }
 
     @Transactional
     @Override
-    public Integer insertOrder(Integer userId, Integer roomId, RoomOrder order) {
+    public Integer insertOrder(Integer userId, Integer roomId, RoomOrderDto order) {
         // 建立Entity
         OrderDetail orderDetail = new OrderDetail();
         orderDetail.setUserId(userId);

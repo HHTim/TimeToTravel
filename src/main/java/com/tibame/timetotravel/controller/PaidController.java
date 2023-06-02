@@ -1,7 +1,7 @@
 package com.tibame.timetotravel.controller;
 
-import com.tibame.timetotravel.dto.BookingPaid;
-import com.tibame.timetotravel.dto.RoomOrder;
+import com.tibame.timetotravel.dto.BookingPaidDto;
+import com.tibame.timetotravel.dto.RoomOrderDto;
 import com.tibame.timetotravel.service.PaidService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -43,7 +43,7 @@ public class PaidController {
     }
 
     @GetMapping("/order")
-    public BookingPaid paid(HttpServletRequest req) throws InvocationTargetException, IllegalAccessException {
+    public BookingPaidDto paid(HttpServletRequest req) throws InvocationTargetException, IllegalAccessException {
         HttpSession session = req.getSession();
         Integer userId = (Integer) session.getAttribute("userId");
         String roomId = (String) session.getAttribute("roomId");
@@ -54,7 +54,7 @@ public class PaidController {
     }
 
     @PostMapping("/order")
-    public void insertOrder(@RequestBody RoomOrder order, HttpServletRequest req) {
+    public void insertOrder(@RequestBody RoomOrderDto order, HttpServletRequest req) {
         HttpSession session = req.getSession();
         Integer userId = (Integer) session.getAttribute("userId");
         String roomId = (String) session.getAttribute("roomId");
