@@ -17,6 +17,14 @@ public interface UserRepository extends JpaRepository<User,Integer> {
     @Query(value = "UPDATE USER JOIN (SELECT USER_ID FROM USER WHERE USER_ACCOUNT = ?1) AS subquery SET USER_STATUS = ?2 WHERE USER.USER_ID = subquery.USER_ID", nativeQuery = true)
     void updateUserStatus(String Account, Integer status);
 
+    @Modifying
+    @Query(value = "UPDATE USER JOIN (SELECT USER_ID FROM USER WHERE USER_ACCOUNT = ?1) AS subquery SET USER_NEWS_STATUS = ?2 WHERE USER.USER_ID = subquery.USER_ID", nativeQuery = true)
+    void updateUserNewsStatus(String Account, Integer newsStatus);
+
+    @Modifying
+    @Query(value = "UPDATE USER SET USER_PASSWORD = ?1 WHERE USER_ID = ?2", nativeQuery = true)
+    void updateUserPassword(String password, Integer userId);
+
     @Query(value = "SELECT * FROM USER ORDER BY USER_SIGN_DATETIME DESC LIMIT ?1,?2",nativeQuery = true)
     List<User> findByPage(Integer currPage, Integer rows);
 

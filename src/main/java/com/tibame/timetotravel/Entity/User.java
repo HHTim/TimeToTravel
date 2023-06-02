@@ -1,5 +1,6 @@
 package com.tibame.timetotravel.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -41,6 +42,7 @@ public class User {
     @Column(name = "USER_GENDER", nullable = false)
     private Boolean userGender;
 
+    @JsonFormat(pattern = "yyyy-MM-dd")
     @Column(name = "USER_BIRTHDATE", nullable = false)
     private Date userBirthDay;
 

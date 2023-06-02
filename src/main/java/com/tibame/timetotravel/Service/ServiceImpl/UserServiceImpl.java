@@ -81,9 +81,28 @@ public class UserServiceImpl implements UserService {
 
     @Transactional
     @Override
+    public String updateByPassword(String password, Integer id) {
+        userRepository.updateUserPassword(password, id);
+        return "使用者密碼更新成功";
+    }
+
+    @Transactional
+    @Override
     public String updateUserStatusByAccount(String account, Integer status) {
         userRepository.updateUserStatus(account, status);
         return "更新User: " + account + "的Status成功";
+    }
+
+    @Transactional
+    @Override
+    public String updateUserNewsStatusByAccount(String account, Integer newsStatus) {
+        userRepository.updateUserNewsStatus(account, newsStatus);
+        return "更新User: " + account + "的newsStatus成功";
+    }
+
+    @Override
+    public User findByUserId(Integer userId) {
+        return userRepository.findByUserId(userId);
     }
 
     @Override

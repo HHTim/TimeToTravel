@@ -10,7 +10,11 @@ import java.util.List;
 public interface UserService {
     void insert(User user);
     String updateByAccount(String account);
+
+    String updateByPassword(String password, Integer id);
     String updateUserStatusByAccount(String account, Integer status);
+    String updateUserNewsStatusByAccount(String account, Integer newsStatus);
+    User findByUserId(Integer userId);
     void insertRegisterUser(RegisterUserDto dto) throws Exception;
 
     int login(LoginUserDto dto) throws Exception;
