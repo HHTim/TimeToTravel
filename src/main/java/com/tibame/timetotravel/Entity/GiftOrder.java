@@ -8,15 +8,15 @@ import lombok.NoArgsConstructor;
 import java.sql.Timestamp;
 
 @Data
-@Table(name = "GIFT_ORDER")
-@Entity
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name = "gift_order")
 public class GiftOrder {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "GIFT_ORDER_ID")
+    @Column(name = "GIFT_ORDER_ID", insertable = false, updatable = false)
     private Integer giftOrderId;
 
     @Column(name = "USER_ID", nullable = false)
@@ -25,10 +25,10 @@ public class GiftOrder {
     @Column(name = "GIFT_ORDER_AMOUNT")
     private Integer giftOrderAmount;
 
-    @Column(name = "GIFT_ORDER_DATETIME", nullable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @Column(name = "GIFT_ORDER_DATETIME", nullable = false)
     private Timestamp giftOrderDatetime;
 
-    @Column(name = "GIFT_ORDER_TAKETYPE", nullable = false)
+    @Column(name = "GIFT_ORDER_TAKETYPE", nullable = false, columnDefinition = "tinyint(1)")
     private Integer giftOrderTaketype;
 
     @Column(name = "GIFT_ORDER_RECEIVER", length = 30)
@@ -40,7 +40,7 @@ public class GiftOrder {
     @Column(name = "GIFT_ORDER_CELLPHONE", length = 10)
     private String giftOrderCellphone;
 
-    @Column(name = "GIFT_ORDER_STATUS")
+    @Column(name = "GIFT_ORDER_STATUS", columnDefinition = "tinyint(1)")
     private Integer giftOrderStatus;
 
 }

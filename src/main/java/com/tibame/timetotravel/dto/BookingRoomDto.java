@@ -11,7 +11,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class BookingRoom {
+public class BookingRoomDto {
     private String comName;
     private String comAddress;
     private String roomName;

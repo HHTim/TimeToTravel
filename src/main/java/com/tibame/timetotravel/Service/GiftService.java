@@ -1,7 +1,6 @@
 package com.tibame.timetotravel.service;
 
 import com.tibame.timetotravel.entity.Gift;
-import com.tibame.timetotravel.entity.Room;
 
 import java.util.List;
 

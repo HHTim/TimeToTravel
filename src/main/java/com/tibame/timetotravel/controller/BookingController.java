@@ -1,6 +1,6 @@
 package com.tibame.timetotravel.controller;
 
-import com.tibame.timetotravel.dto.BookingRoom;
+import com.tibame.timetotravel.dto.BookingRoomDto;
 import com.tibame.timetotravel.service.BookingService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -32,7 +32,7 @@ public class BookingController {
     }
 
     @GetMapping("booking")
-    public BookingRoom booking(HttpServletRequest req) throws InvocationTargetException, IllegalAccessException {
+    public BookingRoomDto booking(HttpServletRequest req) throws InvocationTargetException, IllegalAccessException {
         HttpSession session = req.getSession();
         Integer comId = (Integer) session.getAttribute("comId");
         Integer roomId = (Integer) session.getAttribute("roomId");

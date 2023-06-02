@@ -6,15 +6,15 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@Table(name = "GiftFollow")
-@Entity
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name = "gift_follow")
 public class GiftFollow {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "GIFT_FOLLOW_ID")
+    @Column(name = "GIFT_FOLLOW_ID", insertable = false, updatable = false)
     private Integer giftFollowId;
 
     @Column(name = "GIFT_ID", nullable = false)
@@ -22,6 +22,5 @@ public class GiftFollow {
 
     @Column(name = "USER_ID", nullable = false)
     private Integer userId;
-
 
 }

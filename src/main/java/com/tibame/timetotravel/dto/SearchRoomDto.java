@@ -9,7 +9,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class SearchRoom {
+public class SearchRoomDto {
     private Integer comId;
     private String comName;
     private String comAddress;

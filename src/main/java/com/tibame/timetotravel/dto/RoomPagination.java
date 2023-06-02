@@ -13,4 +13,5 @@ import java.util.List;
 public class RoomPagination {
     private List<Room> roomList;
     private Integer totalPage;
+//    private Integer roomStatus;
 }

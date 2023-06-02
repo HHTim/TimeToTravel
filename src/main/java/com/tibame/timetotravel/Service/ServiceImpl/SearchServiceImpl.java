@@ -1,6 +1,6 @@
 package com.tibame.timetotravel.service.ServiceImpl;
 
-import com.tibame.timetotravel.dto.SearchRoom;
+import com.tibame.timetotravel.dto.SearchRoomDto;
 import com.tibame.timetotravel.repository.OrderDetailRepository;
 import com.tibame.timetotravel.repository.ViewCompanyRoomRepository;
 import com.tibame.timetotravel.repository.ViewUserOrderDetailRepository;
@@ -26,13 +26,13 @@ public class SearchServiceImpl implements SearchService {
 
 
     @Override
-    public List<SearchRoom> findAvailableCompany(String keyWord, Integer people, String start, String end) throws InvocationTargetException, IllegalAccessException {
+    public List<SearchRoomDto> findAvailableCompany(String keyWord, Integer people, String start, String end) throws InvocationTargetException, IllegalAccessException {
         List<ViewCompanyRoom> companies = viewCompanyRoomRepository.findCompany(keyWord, people);
-        List<SearchRoom> resultList = new ArrayList<>();
+        List<SearchRoomDto> resultList = new ArrayList<>();
 
         for (ViewCompanyRoom company : companies) {
             // 每次獲取一個新的searchRoom Bean
-            SearchRoom searchRoom = new SearchRoom();
+            SearchRoomDto searchRoomDto = new SearchRoomDto();
             // 取得房間的房型編號
             Integer roomId = company.getRoomId();
             // 透過房型編號跟時間區間去查該段時間的訂單數
@@ -42,10 +42,10 @@ public class SearchServiceImpl implements SearchService {
             // 如果庫存數大於訂單數則將該房間加入
             if (company.getRoomStock() > orderCount) {
                 // Common Util 複製Entity到DTO
-                BeanUtils.copyProperties(searchRoom, company);
+                BeanUtils.copyProperties(searchRoomDto, company);
                 List<Integer> roomRank = viewUserOrderDetailRepository.findRankByRoomId(roomId);
-                searchRoom.setOrderRanks(roomRank);
-                resultList.add(searchRoom);
+                searchRoomDto.setOrderRanks(roomRank);
+                resultList.add(searchRoomDto);
             }
         }
         return resultList;
