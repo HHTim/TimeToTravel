@@ -10,7 +10,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class BookingPaid {
+public class BookingPaidDto {
     String comName;
     String comAddress;
     String comPhone;
