@@ -11,7 +11,7 @@ $(window).on('load', function () {
 
   const advList = $('.slider .list');
 
-  var advListData = {};
+  var advListData;
   function getAnnPic() {
     var i = 0;
     fetch('http://localhost:8080/AdminAnnController/anns/annView')
@@ -19,7 +19,7 @@ $(window).on('load', function () {
       .then((d) => {
         console.log('讀取廣告資訊');
         console.log(d);
-
+        advListData = d;
         advList.append(
           d.map((e) => {
             return (
@@ -27,20 +27,8 @@ $(window).on('load', function () {
               <a data-id=${i} href="javascript:;" class="advImg"><img src="data:image/*;base64,` +
               e.annPic +
               `" alt="..." /></a>
-              <a data-title-id=${i} href="javascript:;" class="data-text underline">` +
+              <a data-id=${i++} href="javascript:;" class="data-text underline">` +
               e.annTitle +
-              `</a>
-              <a data-content-id=${i} hidden href="javascript:;" class="data-text underline">` +
-              e.annContent +
-              `</a>
-              <a data-sendingTime=${i} hidden href="javascript:;" class="data-text underline">` +
-              e.annSendingTime +
-              `</a>
-              <a data-comName=${i} hidden href="javascript:;" class="data-text underline">` +
-              e.comName +
-              `</a>
-              <a data-comPhone=${i++} hidden href="javascript:;" class="data-text underline">` +
-              e.comPhone +
               `</a>
             </li>`
             );
@@ -56,14 +44,18 @@ $(window).on('load', function () {
       });
   }
 
-  $('.slider .list').on('click', '.advImg', '.data-text', function (e) {
+  $('.slider .list').on('click', '.advImg, .data-text', function (e) {
     console.log($(this).attr('data-id'));
   });
 
-  $('.slider .list').on('click', '.data-text', function (e) {
-    console.log($(this).attr('data-title-id'));
-    console.log('fwf:' + JSON.parse(advList));
-  });
+  // $('.slider .list').on('click', '.data-text', function (e) {
+  //   console.log($(this).attr('data-title-id'));
+  //   if (advListData) {
+  //     advListData.forEach((e) => {
+  //       console.log(e.annContent);
+  //     });
+  //   }
+  // });
 
   tab1.on('click', function () {
     $(this).css('background-color', 'rgba(118,194,238,0.7)');

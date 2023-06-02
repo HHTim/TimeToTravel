@@ -68,7 +68,7 @@ $(function () {
       return;
     }
 
-    register('http://localhost:8080/UserController/user/register', JSON.stringify(data));
+    register('/UserController/user/register', JSON.stringify(data));
   });
 
   $('#companyRegisterForm').on('submit', (e) => {
