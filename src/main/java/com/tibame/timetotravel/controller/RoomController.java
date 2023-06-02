@@ -1,6 +1,7 @@
 package com.tibame.timetotravel.controller;
 
 import com.tibame.timetotravel.dto.RoomPagination;
+import com.tibame.timetotravel.dto.RoomPaginationByStatus;
 import com.tibame.timetotravel.entity.Room;
 import com.tibame.timetotravel.service.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,5 +53,9 @@ public class RoomController {
     @GetMapping("/room/pagination/{pageNumber}")
     public RoomPagination findByPage(@PathVariable Integer pageNumber){
         return roomService.findByPage(pageNumber);
+    }
+    @GetMapping("/room/pagination/{roomStatus}/{pageNumber}")
+    public RoomPaginationByStatus findByPageOnShelve(@PathVariable Integer roomStatus, @PathVariable Integer pageNumber){
+        return roomService.findByPageByStatus(roomStatus, pageNumber);
     }
 }
