@@ -88,6 +88,13 @@ li {
   text-align: -webkit-match-parent;
 }
 
+div.top-down {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
 .collect_list .item_text {
   display: block;
   text-align: center;
@@ -221,9 +228,11 @@ ul {
   flex: 0 0 50%;
   max-width: 50%;
   padding: 20px;
+  min-width: 300px;
 }
 .col-6.content {
   padding: 20px;
+  min-width: 300px;
 }
 
 //滑動照片=============================================
@@ -334,8 +343,8 @@ ul {
   border: 1px solid #e2e2e2;
   height: 40px;
 
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
+  // border-top-right-radius: 0;
+  // border-bottom-right-radius: 0;
 
   position: relative;
   flex: 1 1 auto;
@@ -362,4 +371,106 @@ ul {
   cursor: pointer;
   border-radius: 5px;
   display: inline-block;
+  width: 50%;
 }
+
+input.qty-input {
+  width: 100%;
+  text-align: center;
+  border: none;
+  border: 1px solid $secondary-gray;
+}
+
+/* 購物車小視窗 start */ 
+li.cart {
+  position: relative;
+}
+
+.show {
+  display: block !important;
+}
+
+div.dropdown-cart {
+  display: none;
+  position: absolute;
+  width: 300px;
+  padding: 5px 0;
+  left: auto !important;
+  right: 0;
+  font-size: 15px;
+  margin: 0;
+  top: 100% !important;
+  z-index: 1000;
+  text-align: left;
+  background-color: $white;
+  border: $custom-border;
+}
+
+div.cart-list {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+div.gift-item {
+  display: flex;
+  margin: 0 15px;
+  padding: 10px 0;
+}
+
+div.gift-item:not(:first-child) {
+  border-top: $custom-border;
+}
+
+div.gift-item > * {
+  margin-right: 10px;
+}
+
+div.small-img {
+  flex: 0 0 50px;
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  vertical-align: top;
+}
+
+div.small-img img {
+  opacity: 1;
+  max-height: 100%;
+  max-width: 100%;
+}
+
+div.item-info {
+  max-width: calc(100% - 60px);
+}
+
+div.item-info p {
+  margin: 0;
+  line-height: 1.6;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+div.cart-button {
+  margin: 10px 15px;
+}
+
+a.btn-checkout {
+  background-color: $price-color;
+  border-color: $price-color;
+  border-radius: $border-radius;
+  color: $white !important;
+  text-align: center;
+  border-style: none;
+  line-height: 38px;
+  display: inline-block;
+  text-decoration: none;
+  width: 100%;
+}
+
+a.btn-checkout:hover, a.btn-checkout:visited {
+  color: $white !important;
+}
+
+/* 購物車小視窗 end */ 
+

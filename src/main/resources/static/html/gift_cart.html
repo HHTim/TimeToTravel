@@ -32,6 +32,7 @@
         <nav>
           <ul class="nav">
             <li class="nav__link"><a href="#">我的訂單</a></li>
+            <li class="nav__link"><a href="#">我的最愛</a></li>
             <li class="nav__link"><a href="#">購物車</a></li>
             <li class="nav__link"><a href="#">部落格</a></li>
             <li class="nav__info">
@@ -97,7 +98,7 @@
                   <td>
                     <div class="quantity">
                       <button class="minus-btn">-</button>
-                      <div class="qty"><input type="number" class="qty-input" value="1" /></div>
+                      <div class="qty"><input type="text" oninput="this.value = this.value.replace(/[^0-9]/g, '')" class="qty-input" maxlength="2" value="1" /></div>
                       <button class="plus-btn">+</button>
                     </div>
                   </td>
@@ -110,7 +111,7 @@
                   <td>
                     <div class="quantity">
                       <button class="minus-btn">-</button>
-                      <div class="qty"><input type="number" class="qty-input" value="2" /></div>
+                      <div class="qty"><input type="text" oninput="this.value = this.value.replace(/[^0-9]/g, '')" class="qty-input" maxlength="2" value="1" /></div>
                       <button class="plus-btn">+</button>
                     </div>
                   </td>
@@ -123,7 +124,7 @@
                   <td>
                     <div class="quantity">
                       <button class="minus-btn">-</button>
-                      <div class="qty"><input type="number" class="qty-input" value="3" /></div>
+                      <div class="qty"><input type="text" oninput="this.value = this.value.replace(/[^0-9]/g, '')" class="qty-input" maxlength="2" value="1" /></div>
                       <button class="plus-btn">+</button>
                     </div>
                   </td>
@@ -136,7 +137,7 @@
                   <td>
                     <div class="quantity">
                       <button class="minus-btn">-</button>
-                      <div class="qty"><input type="number" class="qty-input" value="4" /></div>
+                      <div class="qty"><input type="text" oninput="this.value = this.value.replace(/[^0-9]/g, '')" class="qty-input" maxlength="2" value="1" /></div>
                       <button class="plus-btn">+</button>
                     </div>
                   </td>
@@ -149,7 +150,7 @@
                   <td>
                     <div class="quantity">
                       <button class="minus-btn">-</button>
-                      <div class="qty"><input type="number" class="qty-input" value="5" /></div>
+                      <div class="qty"><input type="text" oninput="this.value = this.value.replace(/[^0-9]/g, '')" class="qty-input" maxlength="2" value="1" /></div>
                       <button class="plus-btn">+</button>
                     </div>
                   </td>

@@ -11,7 +11,7 @@ public interface GiftFollowService {
 
     void deleteById(Integer giftFollowId);
 
-    void update(Integer giftFollowId, GiftFollow gift);
+    GiftFollow updateById(Integer giftFollowId, GiftFollow gift);
 
     GiftFollow findById(Integer giftFollowId);
 
