@@ -27,7 +27,7 @@ $(function () {
         .done(() => {
             $('#errorMessage').html('');
             alert('註冊成功');
-            location.href = 'user_login.html';
+            location.href = 'user_login';
         })
         .fail((response) => {
             console.log('fail', response);
