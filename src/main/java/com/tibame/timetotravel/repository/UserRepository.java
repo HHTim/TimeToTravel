@@ -12,8 +12,7 @@ import java.util.List;
 public interface UserRepository extends JpaRepository<User,Integer> {
 
     User findByUserId(Integer userId);
-    User findByUserAccount(String username);
-
+    User findByUserAccount(String userAccount);
     @Modifying
     @Query(value = "UPDATE USER JOIN (SELECT USER_ID FROM USER WHERE USER_ACCOUNT = ?1) AS subquery SET USER_STATUS = ?2 WHERE USER.USER_ID = subquery.USER_ID", nativeQuery = true)
     void updateUserStatus(String Account, Integer status);
@@ -41,4 +40,5 @@ public interface UserRepository extends JpaRepository<User,Integer> {
     @Query(value = "SELECT * FROM USER WHERE USER_ACCOUNT LIKE %?1% OR USER_NAME LIKE %?1% ORDER BY USER_SIGN_DATETIME DESC LIMIT ?2,?3", nativeQuery = true)
     List<User> findKeywordByPage(String keyword, Integer currPage, Integer rows);
 
+    
 }

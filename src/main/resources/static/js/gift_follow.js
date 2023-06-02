@@ -1,20 +1,27 @@
 $(function () {
   /* 購物車小視窗 start */
+  let dropdown_cart = document.querySelector('.dropdown-cart');
+  let dropdown_cart_btn = document.querySelector('.open-cart');
+
+  $(document).on('click', function (e) {
+    // console.log(e);
+    let target = e.target;
+
+    if (!dropdown_cart.contains(target) && target!= dropdown_cart_btn) {
+      dropdown_cart.classList.remove('show');
+    }
+    
+  });
+
   $('.open-cart').on('click', function (e) {
     // console.log(e);
     $('.dropdown-cart').toggleClass('show');
+    
   });
   /* 購物車小視窗 end */
 
   
-  // const dropdown_cart = document.querySelector('.dropdown-cart');
 
-  // document.addEventListener('click', function (e) {
-  //   console.log(e.target.classList);
-  //   if (e.target.classList[0] === 'dropdown-cart') {
-  //     // dropdown_cart.
-  //   }
-  // });
 
 
 

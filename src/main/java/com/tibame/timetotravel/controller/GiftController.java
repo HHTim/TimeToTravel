@@ -1,7 +1,6 @@
 package com.tibame.timetotravel.controller;
 
 import com.tibame.timetotravel.entity.Gift;
-import com.tibame.timetotravel.entity.Room;
 import com.tibame.timetotravel.service.GiftService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

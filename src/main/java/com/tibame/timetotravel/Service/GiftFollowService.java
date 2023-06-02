@@ -1,6 +1,5 @@
 package com.tibame.timetotravel.service;
 
-import com.tibame.timetotravel.entity.Gift;
 import com.tibame.timetotravel.entity.GiftFollow;
 
 import java.util.List;
@@ -11,7 +10,7 @@ public interface GiftFollowService {
 
     void deleteById(Integer giftFollowId);
 
-    void update(Integer giftFollowId, GiftFollow gift);
+    GiftFollow updateById(Integer giftFollowId, GiftFollow gift);
 
     GiftFollow findById(Integer giftFollowId);
 
