@@ -7,7 +7,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.*;
 
 @Configuration
-@EnableWebMvc
 public class WebConfig implements WebMvcConfigurer {
     @Autowired
     private CorsHandler corsHandler;
@@ -48,7 +47,7 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(corsHandler).addPathPatterns("/**");
-//        registry.addInterceptor(loginInterceptor).addPathPatterns("/roomController/**");
+        registry.addInterceptor(loginInterceptor).addPathPatterns("/roomController/**");
     }
 
 
