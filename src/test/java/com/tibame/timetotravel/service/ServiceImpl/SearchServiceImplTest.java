@@ -1,6 +1,6 @@
 package com.tibame.timetotravel.service.ServiceImpl;
 
-import com.tibame.timetotravel.dto.SearchRoom;
+import com.tibame.timetotravel.dto.SearchRoomDto;
 import com.tibame.timetotravel.service.SearchService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,10 +17,10 @@ class SearchServiceImplTest {
 
     @Test
     public void findAvailableCompanyTest() throws InvocationTargetException, IllegalAccessException {
-        List<SearchRoom> companies = searchService.findAvailableCompany("新北市", 1, "2023-05-01", "2023-05-05");
+        List<SearchRoomDto> companies = searchService.findAvailableCompany("新北市", 1, "2023-05-01", "2023-05-05");
         System.out.println("共有: " + companies.size() + " 間符合條件");
 
-        for (SearchRoom company : companies) {
+        for (SearchRoomDto company : companies) {
             System.out.println(company);
         }
     }

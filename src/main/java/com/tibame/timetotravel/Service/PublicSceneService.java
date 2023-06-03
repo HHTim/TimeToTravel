@@ -9,4 +9,7 @@ public interface PublicSceneService {
 
     List<PublicScene> getAll();
 
+    void update(Integer sceneId,PublicScene publicScene);
+
+
 }

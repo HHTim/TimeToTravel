@@ -71,29 +71,26 @@
 
     <div class="container custom-container" style="margin-bottom: 10px">
       <div class="row">
-        <main class="col-12">
+        <div class="col-1"></div>
+        <main class="col-10">
           <!-- Main -->
           <div class="search-container">
             <div class="tabs">
-              <button class="tab active" onclick="openTab('tab1')">飯店查詢</button>
-              <button class="tab" onclick="openTab('tab2')">景點查詢</button>
+              <button class="tab" onclick="openTab('tab1')">飯店查詢</button>
+              <button class="tab active" onclick="openTab('tab2')">景點查詢</button>
             </div>
             <div class="tab-content active" id="tab1">
               <input type="text" placeholder="搜索..." />
-              <button type="button" class="btn btn-success btn-sm">搜尋</button>
+              <button id="search-scene" type="button" class="btn btn-success btn-sm">搜尋</button>
             </div>
             <div class="tab-content" id="tab2">
-              <input type="text" placeholder="搜索..." />
-              <button type="button" class="btn btn-success btn-sm">搜尋</button>
-            </div>
-            <div class="tab-content" id="tab3">
               <input type="text" placeholder="搜索..." />
               <button type="button" class="btn btn-success btn-sm">搜尋</button>
             </div>
           </div>
           <!-- search -->
           <div class="top">
-            <div class="checkbox_all">
+            <!-- <div class="checkbox_all">
               <div class="check_all">
                 <input id="check1" type="checkbox" />
                 <label for="check1" class="ee">北部</label>
@@ -103,18 +100,18 @@
                 <label for="check2" class="ee">中部</label>
               </div>
               <div class="check_all">
-                <input id="check2" type="checkbox" />
-                <label for="check2" class="ee">南部</label>
+                <input id="check3" type="checkbox" />
+                <label for="check3" class="ee">南部</label>
               </div>
-            </div>
+            </div> -->
             <div id="search-results-count" class="search-results-count"></div>
           </div>
           <!-- search end -->
 
           <!-- list -->
           <div class="card_all">
-            <!--  景點一 -->
-            <div class="card card1">
+            <!-- 景點一 -->
+            <div class="card card1" data-toggle="lightbox">
               <div class="card-body">
                 <div class="left_pic">
                   <img src="../images/幾米公園.jpg" class="pic_style" />
@@ -130,35 +127,25 @@
                     位在宜蘭火車站南側的幾米公園，原本是廢棄的鐵路局舊宿舍區，後來為保留歷史建築，遂將整體區塊融入藝術色彩並規劃為全台第一座「幾米主題廣場」。
                     廣場上所有角色皆來自幾米的繪本作品，除了總是向左走、向右走的男女主角外，《星空》中小男孩與小女孩一起等待公車的場景也出現在路邊，和你一起等待那台永遠不會到來的公車。
                   </div>
-                  <a class="btn-primary toggle-text">查看更多▼</a>
-                  <div class="weather"></div>
+                  <!-- <a class="btn-primary toggle-text">查看更多▼</a> -->
                 </div>
               </div>
             </div>
-
-            <div class="card card1">
-              <div class="card-body">
-                <div class="left_pic">
-                  <img src="../images/幾米公園.jpg" class="pic_style" />
-                </div>
-                <div class="card_word">
-                  <h5 class="card-title">幾米公園</h5>
-                  <p class="url_style">
-                    <a href="https://goo.gl/maps/B9WRVcGhnn4Q12rp6" target="_blank"
-                      >地址:宜蘭縣宜蘭市宜興路一段240號🗺️</a
-                    >
-                  </p>
-                  <div class="card-text multiline-ellipsis">
-                    位在宜蘭火車站南側的幾米公園，原本是廢棄的鐵路局舊宿舍區，後來為保留歷史建築，遂將整體區塊融入藝術色彩並規劃為全台第一座「幾米主題廣場」。
-                    廣場上所有角色皆來自幾米的繪本作品，除了總是向左走、向右走的男女主角外，《星空》中小男孩與小女孩一起等待公車的場景也出現在路邊，和你一起等待那台永遠不會到來的公車。
-                  </div>
-                  <a class="btn-primary toggle-text">查看更多▼</a>
-                  <div class="weather"></div>
-                </div>
+            <div class="box">
+              <div class="close">x</div>
+              <div class="left_pic">
+                <img src="../images/幾米公園.jpg" class="lightbox_pic_style" />
+              </div>
+              <h5>幾米公園</h5>
+              <p class="url_style">
+                <a href="https://goo.gl/maps/B9WRVcGhnn4Q12rp6" target="_blank">地址:宜蘭縣宜蘭市宜興路一段240號🗺️</a>
+              </p>
+              <div class="card-text">
+                位在宜蘭火車站南側的幾米公園，原本是廢棄的鐵路局舊宿舍區，後來為保留歷史建築，遂將整體區塊融入藝術色彩並規劃為全台第一座「幾米主題廣場」。
+                廣場上所有角色皆來自幾米的繪本作品，除了總是向左走、向右走的男女主角外，《星空》中小男孩與小女孩一起等待公車的場景也出現在路邊，和你一起等待那台永遠不會到來的公車。
               </div>
             </div>
           </div>
-          <!-- list end -->
 
           <!-- 分頁 -->
           <nav aria-label="Page navigation example" class="page1">
@@ -180,6 +167,7 @@
           </nav>
           <!-- 分頁 -->
         </main>
+        <div class="col-1"></div>
         <!-- Main End -->
       </div>
     </div>

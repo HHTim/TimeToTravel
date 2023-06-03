@@ -1,6 +1,6 @@
 package com.tibame.timetotravel.controller;
 
-import com.tibame.timetotravel.dto.SearchRoom;
+import com.tibame.timetotravel.dto.SearchRoomDto;
 import com.tibame.timetotravel.service.SearchService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -38,7 +38,7 @@ public class SearchController {
     }
 
     @GetMapping("/search")
-    public List<SearchRoom> search(HttpServletRequest req) throws InvocationTargetException, IllegalAccessException {
+    public List<SearchRoomDto> search(HttpServletRequest req) throws InvocationTargetException, IllegalAccessException {
         HttpSession session = req.getSession();
         String keyword = (String) session.getAttribute("keyword");
         Integer people = Integer.parseInt((String) session.getAttribute("people"));
@@ -50,7 +50,7 @@ public class SearchController {
 
 
 //    @GetMapping("/company/{keyword}/{people}/{startDate}/{endDate}")
-//    public List<SearchRoom> findAvailableCompany(
+//    public List<SearchRoomDto> findAvailableCompany(
 //            @PathVariable String keyword,
 //            @PathVariable Integer people,
 //            @PathVariable String startDate,

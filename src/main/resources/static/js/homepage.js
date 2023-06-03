@@ -286,3 +286,9 @@ search.onclick = async () => {
     }
   });
 });
+
+
+const avatar = document.querySelector('.nav__avatar-img');
+avatar.addEventListener('click', function(){
+  
+})

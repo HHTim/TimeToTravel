@@ -1,6 +1,6 @@
 package com.tibame.timetotravel.service.ServiceImpl;
 
-import com.tibame.timetotravel.dto.OrderList;
+import com.tibame.timetotravel.dto.OrderListDto;
 import com.tibame.timetotravel.entity.Journey;
 import com.tibame.timetotravel.entity.OrderDetail;
 import com.tibame.timetotravel.repository.JourneyRepository;
@@ -32,42 +32,42 @@ public class OrderListServiceImpl implements OrderListService {
     OrderDetailRepository orderDetailRepository;
 
     @Override
-    public List<OrderList> findUserOrder(Integer userId) throws InvocationTargetException, IllegalAccessException {
+    public List<OrderListDto> findUserOrder(Integer userId) throws InvocationTargetException, IllegalAccessException {
         // 建立DTO陣列
-        List<OrderList> orderLists = new ArrayList<>();
+        List<OrderListDto> orderListDtos = new ArrayList<>();
 
         // 根據userId查出所有消費者的訂房紀錄
         List<ViewRoomOrderDetail> orders = viewRoomOrderListRepository.findByUserId(userId);
         // 跑迴圈，每次迴圈建立一個DTO將entity中有的資料塞給DTO
         for (ViewRoomOrderDetail order : orders) {
-            OrderList orderList = new OrderList();
-            BeanUtils.copyProperties(orderList, order);
+            OrderListDto orderListDto = new OrderListDto();
+            BeanUtils.copyProperties(orderListDto, order);
             // 取出entity的roomId journeyId查詢商家名稱跟形成名稱塞給DTO
             int roomId = order.getRoomId();
             int journeyId = order.getJourneyId();
             // 取得journeyName、journeyPrice
             Journey journey = journeyRepository.findByJourneyId(journeyId);
-            BeanUtils.copyProperties(orderList, journey);
+            BeanUtils.copyProperties(orderListDto, journey);
             // 取得comName
             String comName = roomRepository.findComNameByRoomId(roomId);
-            orderList.setComName(comName);
+            orderListDto.setComName(comName);
             // 將完備的DTO放到List回傳
-            orderLists.add(orderList);
+            orderListDtos.add(orderListDto);
         }
-        return orderLists;
+        return orderListDtos;
     }
 
     @Override
-    public List<OrderList> findUserOrderByName(Integer userId, String name) throws InvocationTargetException, IllegalAccessException {
+    public List<OrderListDto> findUserOrderByName(Integer userId, String name) throws InvocationTargetException, IllegalAccessException {
         // 建立DTO陣列
-        List<OrderList> orderLists = new ArrayList<>();
+        List<OrderListDto> orderListDtos = new ArrayList<>();
 
         // 根據userId查出所有消費者的訂房紀錄
         List<ViewRoomOrderDetail> orders = viewRoomOrderListRepository.findByUserId(userId);
         // 跑迴圈，每次迴圈建立一個DTO將entity中有的資料塞給DTO
         for (ViewRoomOrderDetail order : orders) {
-            OrderList orderList = new OrderList();
-            BeanUtils.copyProperties(orderList, order);
+            OrderListDto orderListDto = new OrderListDto();
+            BeanUtils.copyProperties(orderListDto, order);
             // 取出entity的roomId journeyId查詢商家名稱跟形成名稱塞給DTO
             int roomId = order.getRoomId();
             int journeyId = order.getJourneyId();
@@ -75,40 +75,40 @@ public class OrderListServiceImpl implements OrderListService {
             String comName = roomRepository.findComNameByRoomId(roomId);
             // 如果查出來的comName跟輸入欄的查詢值一樣才把值放入否則直接跳過
             if (Objects.equals(comName, name)) {
-                orderList.setComName(comName);
+                orderListDto.setComName(comName);
             } else {
                 continue;
             }
             // 取得journeyName、journeyPrice
             Journey journey = journeyRepository.findByJourneyId(journeyId);
-            BeanUtils.copyProperties(orderList, journey);
+            BeanUtils.copyProperties(orderListDto, journey);
             // 將完備的DTO放到List回傳
-            orderLists.add(orderList);
+            orderListDtos.add(orderListDto);
         }
-        return orderLists;
+        return orderListDtos;
     }
 
     @Override
-    public List<OrderList> findUserOrderByNo(Integer userId, Integer orderId) throws InvocationTargetException, IllegalAccessException {
+    public List<OrderListDto> findUserOrderByNo(Integer userId, Integer orderId) throws InvocationTargetException, IllegalAccessException {
         // 建立DTO陣列
-        List<OrderList> orderLists = new ArrayList<>();
+        List<OrderListDto> orderListDtos = new ArrayList<>();
 
         List<ViewRoomOrderDetail> orders = viewRoomOrderListRepository.findByUserIdAndOrderId(userId, orderId);
         for (ViewRoomOrderDetail order : orders) {
-            OrderList orderList = new OrderList();
-            BeanUtils.copyProperties(orderList, order);
+            OrderListDto orderListDto = new OrderListDto();
+            BeanUtils.copyProperties(orderListDto, order);
             int roomId = order.getRoomId();
             int journeyId = order.getJourneyId();
             // 取得journeyName、journeyPrice
             Journey journey = journeyRepository.findByJourneyId(journeyId);
-            BeanUtils.copyProperties(orderList, journey);
+            BeanUtils.copyProperties(orderListDto, journey);
             // 取得comName
             String comName = roomRepository.findComNameByRoomId(roomId);
-            orderList.setComName(comName);
+            orderListDto.setComName(comName);
 
-            orderLists.add(orderList);
+            orderListDtos.add(orderListDto);
         }
-        return orderLists;
+        return orderListDtos;
     }
 
     @Override
