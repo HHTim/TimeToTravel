@@ -20,8 +20,7 @@ function renderCards(data) {
           <div class="card-text multiline-ellipsis">${data[i].sceneDesc}</div>
         </div>
       </div>
-    </div>  
-    <div class="box">
+      <div class="box">
       <div class="close">x</div>
       <div class="left_pic">
         <img src="data:image/png;base64,${data[i].scenePhtot}" class="lightbox_pic_style" />
@@ -34,6 +33,8 @@ function renderCards(data) {
         ${data[i].sceneDesc}
       </div>
     </div>
+    </div>  
+    
     `;
   }
 
@@ -135,12 +136,10 @@ $('.card_all').click(function (e) {
   console.log(e.target.classList.contains('card-body'));
 
   if (e.target.classList.contains('card-body')) {
-    var lightbox = $('.card1').next();
-    lightbox.toggleClass('open');
-
-    lightbox.click(function () {
-      lightbox.removeClass('open');
-    });
+    var lightbox = e.target.nextElementSibling;
+    console.log(e.target);
+    lightbox.classList.add('open');
+    const close = lightbox.firstElementChild.addEventListener('click', () => lightbox.classList.remove('open'));
   } else {
     console.log('no');
   }

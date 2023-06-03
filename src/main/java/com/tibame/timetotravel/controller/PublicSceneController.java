@@ -2,11 +2,10 @@ package com.tibame.timetotravel.controller;
 
 import com.tibame.timetotravel.entity.PublicScene;
 import com.tibame.timetotravel.service.PublicSceneService;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -35,7 +34,7 @@ public class PublicSceneController {
     }
 
     @RequestMapping("/upPublicscene/{sceneId}")
-    public void update(@PathVariable Integer sceneId,@RequestBody PublicScene publicScene){
+    public void update(@PathVariable Integer sceneId, @RequestBody PublicScene publicScene){
         PublicScene upPublicscene = entityManager.find(PublicScene.class, sceneId);
         entityManager.merge(upPublicscene);
     }
