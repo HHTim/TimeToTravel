@@ -1,3 +1,4 @@
+const tab2 = document.querySelector('.tab2');
 const searchResultsCountElement = document.getElementById('search-results-count');
 const searchHotel = document.querySelector('#search-hotel');
 const searchContent = document.querySelector('#search-result');
@@ -5,19 +6,23 @@ const pageBtnWrapper = document.querySelector('#page-btn-wrapper');
 const searchResult = document.querySelector('#search-result');
 let isRenderPage = false;
 
-function openTab(tabName) {
-  const tabContent = document.getElementsByClassName('tab-content');
-  const tabLinks = document.getElementsByClassName('tab');
+// function openTab(tabName) {
+//   const tabContent = document.getElementsByClassName('tab-content');
+//   const tabLinks = document.getElementsByClassName('tab');
 
-  for (let i = 0; i < tabContent.length; i++) {
-    tabContent[i].style.display = 'none';
-  }
-  for (let i = 0; i < tabLinks.length; i++) {
-    tabLinks[i].classList.remove('active');
-  }
-  document.getElementById(tabName).style.display = 'flex';
-  event.currentTarget.classList.add('active');
-}
+//   for (let i = 0; i < tabContent.length; i++) {
+//     tabContent[i].style.display = 'none';
+//   }
+//   for (let i = 0; i < tabLinks.length; i++) {
+//     tabLinks[i].classList.remove('active');
+//   }
+//   document.getElementById(tabName).style.display = 'flex';
+//   event.currentTarget.classList.add('active');
+// }
+
+tab2.addEventListener('click', () => {
+  window.location.href = '/search';
+});
 
 async function fetchData(url, method = 'GET', requestBody = null) {
   try {

@@ -20,28 +20,34 @@ public class SearchController {
     SearchService searchService;
 
     @PostMapping("/redirect-search")
-    public RedirectView redirect(@RequestBody Map<String, Object> requestBody, HttpServletRequest req) {
+    public RedirectView searchRoom(@RequestBody Map<String, Object> requestBody, HttpServletRequest req) {
         HttpSession session = req.getSession();
 
         String keyword = (String) requestBody.get("keyword");
-        String people = (String) requestBody.get("people");
+        String sceneKeyword = (String) requestBody.get("sceneKeyword");
+        Integer people = (Integer) requestBody.get("people");
         String startDate = (String) requestBody.get("startDate");
         String endDate = (String) requestBody.get("endDate");
+        Integer isSearchRoom = (Integer) requestBody.get("isSearchRoom");
 
         session.setAttribute("keyword", keyword);
         session.setAttribute("people", people);
         session.setAttribute("startDate", startDate);
         session.setAttribute("endDate", endDate);
 
-        System.out.println("Search for: " + keyword + " " + people + " " + startDate + " " + endDate);
-        return new RedirectView("/search_room");
+        System.out.println("Search for: " + keyword + " " + sceneKeyword + " " + people + " " + startDate + " " + endDate + " " + isSearchRoom);
+        if (isSearchRoom == 1) {
+            return new RedirectView("/search_room");
+        } else {
+            return new RedirectView("/search");
+        }
     }
 
     @GetMapping("/search/{currPage}")
     public PageBean<SearchRoomDto> search(@PathVariable Integer currPage, HttpServletRequest req) throws InvocationTargetException, IllegalAccessException {
         HttpSession session = req.getSession();
         String keyword = (String) session.getAttribute("keyword");
-        Integer people = Integer.parseInt((String) session.getAttribute("people"));
+        Integer people = (Integer) session.getAttribute("people");
         String startDate = (String) session.getAttribute("startDate");
         String endDate = (String) session.getAttribute("endDate");
 

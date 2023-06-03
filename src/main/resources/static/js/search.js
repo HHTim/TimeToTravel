@@ -1,16 +1,17 @@
+const tab1 = document.querySelector('.tab1');
 const showcard = $('.card_all');
-var lightbox;
+const search = document.querySelector('#search-scene');
+let lightbox;
 
 function renderCards(data) {
   let html = '';
 
   for (let i in data) {
     html += `
-    
     <div class="card card1" data-toggle="lightbox">
       <div class="card-body">
         <div class="left_pic">
-          <img src="data:image/png;base64,${data[i].scenePhtot}" class="pic_style" />
+          <img src="data:image/png;base64,${data[i].scenePhoto}" class="pic_style" />
         </div>
         <div class="card_word">
           <h5 class="card-title">${data[i].sceneName}</h5>
@@ -24,7 +25,7 @@ function renderCards(data) {
     <div class="box">
       <div class="close">x</div>
       <div class="left_pic">
-        <img src="data:image/png;base64,${data[i].scenePhtot}" class="lightbox_pic_style" />
+        <img src="data:image/png;base64,${data[i].scenePhoto}" class="lightbox_pic_style" />
       </div>
       <h5>${data[i].sceneName}</h5>
         <p class="url_style">
@@ -36,11 +37,11 @@ function renderCards(data) {
     </div>
     `;
   }
-
   return html;
 }
+
 async function fetchData() {
-  const resp = await fetch('http://localhost:8080/scenes/getall');
+  const resp = await fetch('http://localhost:8080/scenes');
   const data = await resp.json();
   console.log(data);
 
@@ -51,58 +52,6 @@ async function fetchData() {
   searchResultsCountElement.innerText = '搜尋結果共 ' + totalResults + ' 筆';
   console.log(totalResults);
 }
-
-$(window).on('load', function () {
-  const search = document.querySelector('#search-scene');
-  var card1 = document.querySelector('.card1');
-  search.onclick = () => fetchData();
-
-  // 點擊搜尋把所有搜尋結果列出
-  // search.addEventListener('click', () => {
-  //   fetch('http://localhost:8080/scenes/getall')
-  //     .then((resp) => resp.json())
-  //     .then((data) => {
-  //       console.log(data);
-
-  //       showcard.append(
-  //         data.map((e) => {
-  //           return (
-  //             // console.log(e.sceneName);
-  //             // console.log(e.sceneName);
-
-  //             ` <div class="card card1">
-  //             <div class="card-body">
-  //               <div class="left_pic">
-  //                 <img src="data:image/png;base64,${e.scenePhtot}" class="pic_style" />
-  //               </div>
-  //               <div class="card_word">
-  //                 <h5 class="card-title">` +
-  //             e.sceneName +
-  //             `</h5>
-  //                 <p class="url_style">
-  //                   <a href="https://www.google.com/maps/search/?api=1&query=` +
-  //             e.sceneLat +
-  //             `,` +
-  //             e.sceneLng +
-  //             `&query_place_id=` +
-  //             e.scenePlaceId +
-  //             ` " target="_blank"
-  //                     >地址:` +
-  //             e.sceneAddr +
-  //             `🗺️</a></p>
-  //                 <div class="card-text multiline-ellipsis">` +
-  //             e.sceneDesc +
-  //             `</div>
-  //                 <div class="weather"></div>
-  //               </div>
-  //             </div>
-  //           </div>`
-  //           );
-  //         })
-  //       );
-  //     });
-  // });
-});
 
 // lightbox燈箱
 
@@ -157,19 +106,25 @@ $('.card_all').click(function (e) {
 // });
 
 // 搜尋欄的切換
-function openTab(tabName) {
-  var i, tabContent, tabLinks;
-  tabContent = document.getElementsByClassName('tab-content');
-  for (i = 0; i < tabContent.length; i++) {
-    tabContent[i].style.display = 'none';
-  }
-  tabLinks = document.getElementsByClassName('tab');
-  for (i = 0; i < tabLinks.length; i++) {
-    tabLinks[i].classList.remove('active');
-  }
-  document.getElementById(tabName).style.display = 'block';
-  event.currentTarget.classList.add('active');
-}
+// function openTab(tabName) {
+//   var i, tabContent, tabLinks;
+//   tabContent = document.getElementsByClassName('tab-content');
+//   for (i = 0; i < tabContent.length; i++) {
+//     tabContent[i].style.display = 'none';
+//   }
+//   tabLinks = document.getElementsByClassName('tab');
+//   for (i = 0; i < tabLinks.length; i++) {
+//     tabLinks[i].classList.remove('active');
+//   }
+//   document.getElementById(tabName).style.display = 'block';
+//   event.currentTarget.classList.add('active');
+// }
+tab1.addEventListener('click', () => {
+  window.location.href = '/search_room';
+});
 
-//新增景點
+search.addEventListener('click', () => {
+  fetchData();
+});
+
 fetchData();
