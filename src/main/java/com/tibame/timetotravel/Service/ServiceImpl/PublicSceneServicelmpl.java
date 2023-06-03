@@ -17,6 +17,9 @@ public class PublicSceneServicelmpl implements PublicSceneService {
     @Qualifier("PublicSceneRepository")
     private PublicSceneRepository publicSceneRepository;
 
+    @PersistenceContext
+    private EntityManager entityManager;
+
     @Override
     public void insert(PublicScene publicScene) {
         publicSceneRepository.save(publicScene);
@@ -26,5 +29,12 @@ public class PublicSceneServicelmpl implements PublicSceneService {
     public List<PublicScene> getAll() {
         return publicSceneRepository.findAll();
     }
+
+    @Override
+    public void update (Integer sceneId,PublicScene publicScene){
+        PublicScene upPublicscene = entityManager.find(PublicScene.class, sceneId);
+        entityManager.merge(upPublicscene);
+    }
+
 }
 
