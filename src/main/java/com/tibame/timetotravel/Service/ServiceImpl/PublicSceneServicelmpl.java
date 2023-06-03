@@ -3,12 +3,7 @@ package com.tibame.timetotravel.service.ServiceImpl;
 
 import com.tibame.timetotravel.entity.PublicScene;
 import com.tibame.timetotravel.repository.PublicSceneRepository;
-<<<<<<< HEAD
 import com.tibame.timetotravel.service.PublicSceneService;
-=======
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
->>>>>>> Nancy
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
