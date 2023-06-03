@@ -52,10 +52,10 @@ function updateUserNewsStatus(role, account) {
 }
 
 async function getCurrentUserData() {
+  const avator_menu_ul = $('.nav__avatar .dropdown-center ul');
   try {
     let identifyRoleUrl = 'http://localhost:8080/getCurrentUserController/current-user';
     let getCurrentUserDataUrl;
-    const avator_menu_ul = $('.nav__avatar .dropdown-center ul');
     // 執行第一個 Fetch 請求
     const identifyRoleResponse = await fetch(identifyRoleUrl);
     if (identifyRoleResponse.status === 401) {
@@ -88,7 +88,6 @@ async function getCurrentUserData() {
         <li><hr class="dropdown-divider" /></li>
         <li><a class="dropdown-item logout" href="#">登出</a></li>`
       );
-      bindEventToButtons();
     } else {
       role = '無法辨別使用者';
       throw new Error('請求失敗');
@@ -102,22 +101,38 @@ async function getCurrentUserData() {
     );
     console.error(error);
   }
+  bindEventToButtons();
 }
 
-async function getCurrentUserData() {}
+function logout() {
+  fetch((url = 'http://localhost:8080/UserLogout/logout'), {
+    method: 'POST',
+  })
+    .then((r) => {
+      if (r.ok) {
+        return r.json();
+      }
+    })
+    .then((d) => {
+      console.log(d);
+      location.reload();
+    });
+}
 
 function bindEventToButtons() {
   $('.register').on('click', function () {
     console.log('點擊了註冊!');
+    location.href = '../user_register';
   });
 
   $('.loggin').on('click', function () {
     console.log('點擊了登入!');
+    location.href = '../user_login';
   });
 
   $('.logout').on('click', function () {
     console.log('點擊了登出!');
-    location.reload();
+    logout();
   });
 }
 
