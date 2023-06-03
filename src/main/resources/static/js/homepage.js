@@ -1,4 +1,4 @@
-import { getCurrentUserInfomation } from './header.js';
+import { getCurrentUserInformation } from './header.js';
 
 $(window).on('load', function () {
   const tab1 = $('#tab-1');
@@ -98,7 +98,7 @@ $(window).on('load', function () {
     tab2_body.css('display', 'none');
     tab_body.css('align-items', 'baseline');
   });
-  getCurrentUserInfomation();
+  getCurrentUserInformation();
   getAnnPic();
   slider('slider2');
   slider('slider3');
