@@ -290,7 +290,7 @@ body {
 }
 
 .search-results-count {
-  max-width: 15%;
+  max-width: 30%;
   padding: 5px 10px;
   background-color: #f0f0f0;
   border: 1px solid #ccc;
@@ -311,56 +311,37 @@ body {
   margin: 0 10px 0 10px;
 }
 
+.card_all {
+  overflow: hidden;
+  max-width: 100%;
+}
+
 .card {
   margin-bottom: 10px;
   box-shadow: 2px 2px 2px 2px #dadada;
-  max-width: 100%;
-  height: 10%;
-  margin-left: 8px;
+  margin: 8px 15px 8px 15px;
+  width: 30%;
+  float: left;
 }
 
-.card_word {
-  float: right;
-  width: 730px;
-  margin: 0 45px 0 0px;
-}
-
-@media (max-width: 1400px) {
-  .card_word {
-    width: 580px;
-  }
-}
-@media (max-width: 1200px) {
-  .card_word {
-    width: 430px;
-  }
-}
-@media (max-width: 1000px) {
-  .card_word {
-    width: 230px;
-  }
-}
-@media (max-width: 768px) {
-  .card_word {
-    width: 100px;
-  }
-}
 .card-title {
   font-weight: bold;
 }
 
 .pic_style {
-  max-width: 200px;
+  width: 100%;
   border-radius: 10px;
   float: left;
-  margin-right: 10px;
+  margin-bottom: 10px;
+  height: 177.344px;
 }
 
 .multiline-ellipsis {
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 2;
   overflow: hidden;
+  height: 50px;
 }
 
 .btn-primary {
@@ -371,17 +352,6 @@ body {
 .url_style {
   text-decoration: underline;
   font-size: 12px;
-}
-
-.weather {
-  position: absolute;
-  top: 10px;
-  right: 0px;
-  width: 120px;
-  height: 30px;
-  border-radius: 20px 0 0 20px;
-  background-color: #b5d2f1;
-  background-size: cover;
 }
 
 .card-body {
@@ -441,4 +411,36 @@ input[type=text] {
 .page1 {
   display: flex;
   justify-content: center;
+}
+
+.box {
+  z-index: 2;
+  position: fixed;
+  opacity: 1;
+  display: none;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: auto;
+  height: auto;
+  width: 600px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 0px 99999px rgba(0, 0, 0, 0.3);
+}
+.box * {
+  z-index: 3;
+}
+.box .close {
+  float: right;
+  cursor: pointer;
+}
+
+.open {
+  display: block;
+}
+
+.lightbox_pic_style {
+  width: 50%;
 }
