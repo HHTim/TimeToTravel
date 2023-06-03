@@ -15,7 +15,7 @@ class OrderListDtoServiceImplTest {
 
     @Test
     public void findUserOrderTest() throws InvocationTargetException, IllegalAccessException {
-        List<OrderListDto> userOrders = orderListService.findUserOrder(2);
+        List<OrderListDto> userOrders = orderListService.findUserOrder(3);
         for (OrderListDto userOrder : userOrders) {
             System.out.println(userOrder);
         }

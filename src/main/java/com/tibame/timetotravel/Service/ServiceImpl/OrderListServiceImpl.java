@@ -45,9 +45,16 @@ public class OrderListServiceImpl implements OrderListService {
             // 取出entity的roomId journeyId查詢商家名稱跟形成名稱塞給DTO
             int roomId = order.getRoomId();
             int journeyId = order.getJourneyId();
+            System.out.println("Journey ID: " + journeyId);
             // 取得journeyName、journeyPrice
-            Journey journey = journeyRepository.findByJourneyId(journeyId);
-            BeanUtils.copyProperties(orderListDto, journey);
+            if (journeyId != 0) {
+                Journey journey = journeyRepository.findByJourneyId(journeyId);
+                System.out.println(journey.getJourneyId());
+                BeanUtils.copyProperties(orderListDto, journey);
+            } else {
+                orderListDto.setJourneyName("");
+                orderListDto.setJourneyPrice(0);
+            }
             // 取得comName
             String comName = roomRepository.findComNameByRoomId(roomId);
             orderListDto.setComName(comName);
