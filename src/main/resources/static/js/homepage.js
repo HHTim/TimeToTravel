@@ -261,30 +261,34 @@ const keyword = document.querySelector('#keyword');
 const people = document.querySelector('#people');
 const startDate = document.querySelector('#startDate');
 const endDate = document.querySelector('#endDate');
+let isSearchRoom = true;
 let searchBody = {
   keyword: '',
   people: 0,
-  sceneKeyword: '',
   startDate: '',
   endDate: '',
-  isSearchRoom: 1,
 };
 
-search.onclick = async () => {
-  const resp = await fetch('/user/redirect-search', {
-    method: 'POST',
-    cache: 'no-cache',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(searchBody),
-    redirect: 'follow',
-  });
-  if (resp.redirected) {
-    location.href = resp.url;
-  }
-};
+// 先清空session
+sessionStorage.clear();
+
+// 後端跳頁
+// search.onclick = async () => {
+//   const resp = await fetch('/user/redirect-search', {
+//     method: 'POST',
+//     cache: 'no-cache',
+//     headers: { 'Content-Type': 'application/json' },
+//     body: JSON.stringify(searchBody),
+//     redirect: 'follow',
+//   });
+//   if (resp.redirected) {
+//     location.href = resp.url;
+//   }
+// };
 
 [keyword, people, startDate, endDate].forEach((elem) => {
   elem.addEventListener('blur', (e) => {
+    console.log(e.target.value);
     if (e.target.value === '') {
       if (typeof swal === 'function') {
         swal('輸入欄位請勿留空', '', 'warning');
@@ -297,9 +301,8 @@ search.onclick = async () => {
       } else {
         searchBody[elem.id] = e.target.value;
       }
-      searchBody.sceneKeyword = searchBody.keyword;
       console.log(searchBody);
-      searchBody.isSearchRoom = 1;
+      isSearchRoom = true;
     }
   });
 });
@@ -321,17 +324,17 @@ sceneKeyword.addEventListener('blur', (e) => {
     const date = today.getDate().toString().padStart(2, '0');
     const tomorrow = (today.getDate() + 1).toString().padStart(2, '0');
 
-    searchBody.sceneKeyword = e.target.value;
-    searchBody.keyword = searchBody.sceneKeyword;
-    searchBody.people = 2;
+    searchBody.keyword = e.target.value;
+    searchBody.people = 1;
     searchBody.startDate = year + '-' + month + '-' + date;
     searchBody.endDate = year + '-' + month + '-' + tomorrow;
     console.log(searchBody);
-    searchBody.isSearchRoom = 0;
+    isSearchRoom = false;
   }
 });
 
-// ------------------------------------------------------------
-
-const avatar = document.querySelector('.nav__avatar-img');
-avatar.addEventListener('click', function () {});
+search.onclick = () => {
+  let url = isSearchRoom ? 'search/rooms' : 'search/scenes';
+  sessionStorage.setItem('searchBody', JSON.stringify(searchBody));
+  window.location.href = url;
+};

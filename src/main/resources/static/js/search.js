@@ -120,7 +120,7 @@ $('.card_all').click(function (e) {
 //   event.currentTarget.classList.add('active');
 // }
 tab1.addEventListener('click', () => {
-  window.location.href = '/search_room';
+  window.location.href = '/search/rooms';
 });
 
 search.addEventListener('click', () => {

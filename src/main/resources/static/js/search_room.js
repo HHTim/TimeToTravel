@@ -3,26 +3,13 @@ const searchResultsCountElement = document.getElementById('search-results-count'
 const searchHotel = document.querySelector('#search-hotel');
 const searchContent = document.querySelector('#search-result');
 const pageBtnWrapper = document.querySelector('#page-btn-wrapper');
+const searchLocation = document.querySelector('.search-location');
+const searchPeople = document.querySelector('.search-option');
+const searchStart = document.querySelector('.search-start');
+const searchEnd = document.querySelector('.search-end');
 const searchResult = document.querySelector('#search-result');
+let searchBody = JSON.parse(sessionStorage.getItem('searchBody'));
 let isRenderPage = false;
-
-// function openTab(tabName) {
-//   const tabContent = document.getElementsByClassName('tab-content');
-//   const tabLinks = document.getElementsByClassName('tab');
-
-//   for (let i = 0; i < tabContent.length; i++) {
-//     tabContent[i].style.display = 'none';
-//   }
-//   for (let i = 0; i < tabLinks.length; i++) {
-//     tabLinks[i].classList.remove('active');
-//   }
-//   document.getElementById(tabName).style.display = 'flex';
-//   event.currentTarget.classList.add('active');
-// }
-
-tab2.addEventListener('click', () => {
-  window.location.href = '/search';
-});
 
 async function fetchData(url, method = 'GET', requestBody = null) {
   try {
@@ -112,9 +99,9 @@ function renderSearchResult(result) {
   return html;
 }
 
-// 開場再對Controller發一次GET請求，取回剛剛輸入的關鍵字查詢出來的結果
 async function handleSearch(page) {
-  const result = await fetchData(`http://localhost:8080/user/search/${page}`);
+  const { keyword, people, startDate, endDate } = searchBody;
+  const result = await fetchData(`/search/rooms/${keyword}/${people}/${startDate}/${endDate}/${page}`);
   searchResultsCountElement.innerText = '搜尋結果共 ' + result.rows.length + ' 筆';
   console.log(result);
   // 總頁數
@@ -124,17 +111,17 @@ async function handleSearch(page) {
   /* Search Result */
   searchResult.innerHTML = renderSearchResult(result.rows);
   /* Paganation */
-  // 渲染過一次分頁器就不再渲染
+  // 渲染過一次分頁器就不再渲染;
   if (isRenderPage) return;
   pageBtnWrapper.innerHTML = renderPaganation(pageSize);
   isRenderPage = true;
 }
 
-async function handleSelectRoom(dataset) {
+async function handleSelectRoom(e) {
+  const dataset = e.target.closest('div.hotel__card').dataset;
   const { comid, roomid } = dataset;
-  console.log(comid + ' ' + roomid);
-  // console.log(isNaN(Number(dataset.comid)));
-  if (isNaN(Number(comid))) return;
+  // console.log(comid + ' ' + roomid);
+  // if (isNaN(Number(comid))) return;
   const resp = await fetch(`http://localhost:8080/user/redirect-booking`, {
     method: 'POST',
     cache: 'no-cache',
@@ -154,7 +141,46 @@ async function handleSelectRoom(dataset) {
 //   endDate: '2023-05-02',
 // };
 
-// searchHotel.addEventListener('click', () => handleSearch());
-searchContent.addEventListener('click', (e) => handleSelectRoom(e.target.dataset));
+searchLocation.value = searchBody.keyword;
+searchPeople.value = searchBody.people;
+searchStart.value = searchBody.startDate;
+searchEnd.value = searchBody.endDate;
+
+[searchLocation, searchPeople, searchStart, searchEnd].forEach((elem) => {
+  elem.addEventListener('blur', (e) => {
+    console.log(e.target.value);
+    if (e.target.value === '') {
+      if (typeof swal === 'function') {
+        swal('輸入欄位請勿留空', '', 'warning');
+      } else {
+        alert('輸入欄位請勿留空');
+      }
+    } else {
+      if (elem.id === 'people') {
+        searchBody[elem.id] = Number(e.target.value);
+      } else {
+        searchBody[elem.id] = e.target.value;
+      }
+      console.log(searchBody);
+    }
+  });
+});
+
+// 重新搜尋
+searchHotel.addEventListener('click', () => {
+  isRenderPage = false;
+  sessionStorage.setItem('searchBody', JSON.stringify(searchBody));
+  handleSearch(1);
+});
+
+// 搜尋景點
+tab2.addEventListener('click', () => {
+  window.location.href = '/search/scenes';
+});
+
+// 點選房間
+searchContent.addEventListener('click', (e) => handleSelectRoom(e));
+
+// 點選分頁
 pageBtnWrapper.addEventListener('click', (e) => handlePageBtn(e));
 handleSearch(1);
