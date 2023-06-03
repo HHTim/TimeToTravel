@@ -267,6 +267,9 @@ search.onclick = async () => {
 [keyword, people, startDate, endDate].forEach((elem) => {
   elem.addEventListener('blur', (e) => {
     if (e.target.value === '') {
+      if (typeof swal === 'function') {
+        swal('輸入欄位請勿留空', '', 'warning');
+      }
       alert('輸入欄位請勿留空');
     } else {
       searchBody[elem.id] = e.target.value;
