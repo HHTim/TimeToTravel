@@ -12,6 +12,8 @@ public interface CompanyService {
     int login(LoginCompanyDto dto) throws Exception;
     void deleteById(Integer comId);
     void updateById(Integer comId, Company company);
+
+    String updateComapnyNewsStatusByAccount(String account, Integer newsStatus);
     Company findById(Integer comId);
     List<Company> findAll();
 

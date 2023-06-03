@@ -102,6 +102,13 @@ public class CompanyServiceImpl implements CompanyService {
 
     @Transactional
     @Override
+    public String updateComapnyNewsStatusByAccount(String account, Integer newsStatus) {
+        companyRepository.updateCompanyNewsStatus(account, newsStatus);
+        return "更新Company: " + account + "的newsStatus成功";
+    }
+
+    @Transactional
+    @Override
     public String updateByComName(String companyName) {
         System.out.println(companyName);
         Company company = companyRepository.findByComName(companyName);

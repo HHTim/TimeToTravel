@@ -1,5 +1,6 @@
 package com.tibame.timetotravel.webConfig;
 
+import com.tibame.timetotravel.common.AuthenticationInterceptor;
 import com.tibame.timetotravel.common.CorsHandler;
 import com.tibame.timetotravel.common.LoginInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,11 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Autowired
     private LoginInterceptor loginInterceptor;
+
+    @Autowired
+    private AuthenticationInterceptor authenticationInterceptor;
+
+
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         /*===========================Admin==============================*/
@@ -48,7 +54,9 @@ public class WebConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(corsHandler).addPathPatterns("/**");
         registry.addInterceptor(loginInterceptor).addPathPatterns("/roomController/**");
-    }
 
+        registry.addInterceptor(authenticationInterceptor)
+                .addPathPatterns("/xxxController/**"); // 指定攔截的路徑模式
+    }
 
 }
