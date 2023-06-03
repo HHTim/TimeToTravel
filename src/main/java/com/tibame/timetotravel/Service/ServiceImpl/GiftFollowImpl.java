@@ -50,4 +50,9 @@ public class GiftFollowImpl implements GiftFollowService{
     public List<GiftFollow> findAll() {
         return giftFollowRepository.findAll();
     }
+
+    @Override
+    public GiftFollow updateById(Integer giftFollowId, GiftFollow giftFollow) {
+        return null;
+    }
 }

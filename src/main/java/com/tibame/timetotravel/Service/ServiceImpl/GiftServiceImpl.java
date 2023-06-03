@@ -29,6 +29,7 @@ public class  GiftServiceImpl implements GiftService {
     public void insert(Gift gift) {
         giftRepository.save(gift);
     }
+
     @Override
     @Transactional
     public void deleteById(Integer giftId) {
@@ -38,11 +39,10 @@ public class  GiftServiceImpl implements GiftService {
     @Override
     @Transactional
     public void update(Integer giftId, Gift gift) {
-//        // 把舊的GIFTId拖出來
-//        Gift newGift = entityManager.find(Gift.class, giftId);
-//        System.out.println(newGift.getGiftStatus());
-//        newGift.setGiftStatus(gift.getGiftStatus());
-//        entityManager.merge(newGift);
+//        // 把舊的giftId拖出來
+        Gift newGift = entityManager.find(Gift.class, giftId);
+        newGift.setGiftStatus(gift.getGiftStatus());
+        entityManager.merge(newGift);
     }
 
     @Override

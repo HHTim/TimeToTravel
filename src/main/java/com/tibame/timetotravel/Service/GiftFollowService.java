@@ -17,4 +17,5 @@ public interface GiftFollowService {
 
     List <GiftFollow> findAll();
 
+    GiftFollow updateById(Integer giftFollowId, GiftFollow giftFollow);
 }

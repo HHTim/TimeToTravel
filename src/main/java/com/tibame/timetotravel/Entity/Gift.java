@@ -15,7 +15,7 @@ public class Gift {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "GIFT_ID")
+    @Column(name = "GIFT_ID", insertable = false, updatable = false)
     private Integer giftId;
 
     @Column(name = "COM_ID", nullable = false)
@@ -30,16 +30,14 @@ public class Gift {
     @Column(name = "GIFT_STOCK", nullable = false, columnDefinition = "int unsigned default 0")
     private Integer giftStock;
 
-    @Column(name = "GIFT_STATUS", nullable = false, columnDefinition = "tinyint(1) default 0")
-    private boolean giftStatus;
+    @Column(name = "GIFT_STATUS", nullable = false)
+    private Boolean giftStatus;
 
     @Column(name = "GIFT_TYPE_ID", nullable = false)
     private String giftTypeId;
 
     @Column(name = "GIFT_INTRO", nullable = false, length = 300)
     private String giftIntro;
-
-
 
 
 }

@@ -20,12 +20,9 @@ public class GiftPhotos {
     @Column(name = "GIFT_ID", nullable = false)
     private Integer giftId;
 
-    @Column(name = "GIFT_PHOTO")
-    private byte[] giftPhoto;
-
-}
-
     @Lob
     @Column(name = "GIFT_PHOTO")
     private byte[] giftPhoto;
+
 }
+
