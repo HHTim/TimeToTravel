@@ -141,7 +141,7 @@ $(function () {
       .then((r) => r.text())
       .then((d) => {
         console.log(d);
-        // location.href = '../admin_message_recv';
+        location.href = '../admin_message_recv';
       });
   }
 
