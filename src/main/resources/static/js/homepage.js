@@ -1,4 +1,4 @@
-import { getNotifyNewsStatus } from './header.js';
+import { getCurrentUserInfomation } from './header.js';
 
 $(window).on('load', function () {
   const tab1 = $('#tab-1');
@@ -10,8 +10,8 @@ $(window).on('load', function () {
   const tab3_body = $('.tab-3.left-container');
 
   const advList = $('.slider .list');
-
   var advListData;
+
   function getAnnPic() {
     var i = 0;
     fetch('http://localhost:8080/AdminAnnController/anns/annView')
@@ -30,32 +30,44 @@ $(window).on('load', function () {
               <a data-id=${i++} href="javascript:;" class="data-text underline">` +
               e.annTitle +
               `</a>
-            </li>`
+              <div class="lightbox-content">
+                  <button class="close-button"></button>
+                  <h1>${e.annTitle}</h1>
+                  <div class="decorator-lightbox"></div>
+                  <img src="data:image/*;base64,` +
+              e.annPic +
+              `" alt="..." />
+              <h2>${e.annContent}</h2>
+                </div>
+            </li>
+            `
             );
           })
         );
 
         slider('slider');
-
-        // advList.append(`<li>
-        // <a href="javascript:;"><img src="images/adv-1.png" alt="" /></a>
-        // <a href="javascript:;" class="data-text underline">歡樂寶貝月◆著色比賽</a>
-        // </li>`);
+        bindEventToButtons();
       });
   }
 
-  $('.slider .list').on('click', '.advImg, .data-text', function (e) {
-    console.log($(this).attr('data-id'));
-  });
+  function bindEventToButtons() {
+    $('.advImg').on('click', function () {
+      console.log('點擊了廣告圖片!');
+      $(this).parent().find('.data-text').next().toggleClass('open');
+    });
 
-  // $('.slider .list').on('click', '.data-text', function (e) {
-  //   console.log($(this).attr('data-title-id'));
-  //   if (advListData) {
-  //     advListData.forEach((e) => {
-  //       console.log(e.annContent);
-  //     });
-  //   }
-  // });
+    $('.data-text').on('click', function () {
+      console.log('點擊了廣告文字!');
+      $(this).next().toggleClass('open');
+    });
+
+    $('.data-text')
+      .next()
+      .find('button')
+      .on('click', function () {
+        $(this).parent().removeClass('open');
+      });
+  }
 
   tab1.on('click', function () {
     $(this).css('background-color', 'rgba(118,194,238,0.7)');
@@ -86,7 +98,7 @@ $(window).on('load', function () {
     tab2_body.css('display', 'none');
     tab_body.css('align-items', 'baseline');
   });
-  getNotifyNewsStatus();
+  getCurrentUserInfomation();
   getAnnPic();
   slider('slider2');
   slider('slider3');

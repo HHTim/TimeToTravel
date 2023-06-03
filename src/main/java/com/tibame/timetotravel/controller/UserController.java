@@ -4,6 +4,7 @@ import com.google.code.kaptcha.Constants;
 import com.tibame.timetotravel.common.PageBean;
 import com.tibame.timetotravel.dto.LoginUserDto;
 import com.tibame.timetotravel.dto.RegisterUserDto;
+import com.tibame.timetotravel.dto.UserSessionDto;
 import com.tibame.timetotravel.entity.User;
 import com.tibame.timetotravel.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -28,6 +29,7 @@ public class UserController extends BaseController {
     @Autowired
     @Qualifier("UserService")
     UserService userService;
+
 
     @PostMapping("/user/register")
     public ResponseEntity insertRegisterUser(@RequestBody RegisterUserDto dto){
@@ -58,7 +60,10 @@ public class UserController extends BaseController {
 
         try {
             int id = userService.login(dto);
-            request.getSession().setAttribute("user_id", id);
+            User user = userService.findByUserId(id);
+//            request.getSession().setAttribute("user_id", id);
+            request.getSession().setAttribute("user", new UserSessionDto(user, null, null, "會員"));
+            System.out.println("UserSession: " + request.getSession().getAttribute("user"));
         } catch (Exception e) {
             return badRequest(e.getMessage());
         }
