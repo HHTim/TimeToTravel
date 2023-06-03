@@ -70,7 +70,7 @@ async function getCurrentUserData() {
       } else if (identifyRoleData.role === '商家') {
         console.log('商家');
         role = '商家';
-        getCurrentUserDataUrl = 'http://localhost:8080/CompanyController/company/' + identifyRoleData.company.companyId;
+        getCurrentUserDataUrl = 'http://localhost:8080/CompanyController/company/' + identifyRoleData.company.comId;
       } else {
         console.log('平台');
         role = '平台';
@@ -83,33 +83,41 @@ async function getCurrentUserData() {
       updateNotifyIcon(currentUserData.userNewsStatus);
       console.log(currentUserData);
 
-      // avator_menu_ul.append(
-      //   `<li><a class="dropdown-item register" href="#">註冊</a></li>
-      //   <li><hr class="dropdown-divider" /></li>
-      //   <li><a class="dropdown-item logout" href="#">登出</a></li>`
-      // );
-      // bindEventToButtons();
+      avator_menu_ul.append(
+        `<li><a class="dropdown-item register" href="#">註冊</a></li>
+        <li><hr class="dropdown-divider" /></li>
+        <li><a class="dropdown-item logout" href="#">登出</a></li>`
+      );
+      bindEventToButtons();
     } else {
       role = '無法辨別使用者';
       throw new Error('請求失敗');
     }
   } catch (error) {
     // 錯誤處理
-    // avator_menu_ul.append(
-    //   `<li><a class="dropdown-item" href="#">註冊</a></li>
-    //   <li><a class="dropdown-item" href="#">登入</a></li>`
-    // );
+    avator_menu_ul.append(
+      `<li><a class="dropdown-item register" href="#">註冊</a></li>
+      <li><hr class="dropdown-divider" /></li>
+      <li><a class="dropdown-item loggin" href="#">登入</a></li>`
+    );
     console.error(error);
   }
 }
+
+async function getCurrentUserData() {}
 
 function bindEventToButtons() {
   $('.register').on('click', function () {
     console.log('點擊了註冊!');
   });
 
-  $('.register').on('click', function () {
-    console.log('點擊了註冊!');
+  $('.loggin').on('click', function () {
+    console.log('點擊了登入!');
+  });
+
+  $('.logout').on('click', function () {
+    console.log('點擊了登出!');
+    location.reload();
   });
 }
 
@@ -122,10 +130,12 @@ btn_notify.on('click', function () {
   console.log(currentUserData);
   if (role === '會員') {
     updateUserNewsStatus(role, currentUserData.userAccount);
+  } else if (role === '商家') {
+    updateUserNewsStatus(role, currentUserData.comAccount);
   }
 });
 
 /* export function define below Here!*/
-export function getCurrentUserInfomation() {
+export function getCurrentUserInformation() {
   getCurrentUserData();
 }

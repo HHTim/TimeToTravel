@@ -6,16 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/getCurrentUserController")
 public class getCurrentUserController {
-
-    @Autowired
-    private HttpSession session;
-
     @GetMapping("/current-user")
     public ResponseEntity<UserSessionDto> getCurrentUser(HttpSession session) {
         UserSessionDto user = (UserSessionDto) session.getAttribute("user");
