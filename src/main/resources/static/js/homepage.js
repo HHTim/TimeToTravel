@@ -281,8 +281,9 @@ search.onclick = async () => {
     if (e.target.value === '') {
       if (typeof swal === 'function') {
         swal('輸入欄位請勿留空', '', 'warning');
+      } else {
+        alert('輸入欄位請勿留空');
       }
-      alert('輸入欄位請勿留空');
     } else {
       searchBody[elem.id] = e.target.value;
       console.log(searchBody);
@@ -290,8 +291,5 @@ search.onclick = async () => {
   });
 });
 
-
 const avatar = document.querySelector('.nav__avatar-img');
-avatar.addEventListener('click', function(){
-  
-})
+avatar.addEventListener('click', function () {});

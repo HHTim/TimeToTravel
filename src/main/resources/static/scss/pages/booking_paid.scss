@@ -142,7 +142,7 @@ $width: 100%;
     box-shadow: $shadow;
 
     img {
-      scale: 0.35;
+      scale: 0.3;
       position: absolute;
       left: 50%;
       top: 50%;
@@ -153,7 +153,7 @@ $width: 100%;
   }
 
   a:hover &__img img {
-    scale: 0.38;
+    scale: 0.35;
   }
 
   @media screen and (max-width: 992px) {
@@ -171,13 +171,17 @@ $width: 100%;
       box-shadow: $shadow;
 
       img {
-        scale: 0.25;
+        scale: 0.3;
         position: absolute;
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
         transform-origin: 0 0;
       }
+    }
+
+    a:hover &__img img {
+      scale: 0.35;
     }
   }
 

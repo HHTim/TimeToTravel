@@ -4,6 +4,8 @@ package com.tibame.timetotravel.service.ServiceImpl;
 import com.tibame.timetotravel.entity.PublicScene;
 import com.tibame.timetotravel.repository.PublicSceneRepository;
 import com.tibame.timetotravel.service.PublicSceneService;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -31,7 +33,7 @@ public class PublicSceneServicelmpl implements PublicSceneService {
     }
 
     @Override
-    public void update (Integer sceneId,PublicScene publicScene){
+    public void update(Integer sceneId, PublicScene publicScene) {
         PublicScene upPublicscene = entityManager.find(PublicScene.class, sceneId);
         entityManager.merge(upPublicscene);
     }
