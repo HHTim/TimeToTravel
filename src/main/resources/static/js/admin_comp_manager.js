@@ -1,3 +1,5 @@
+import { getCurrentUserInformation } from './header.js';
+
 $(function () {
   /*pages*/
   var pageItem = $('.pagination li').not('.prev,.next');
@@ -572,4 +574,5 @@ $(function () {
   });
 
   getCompanyInfomationByNormalPage();
+  getCurrentUserInformation();
 });

@@ -1,3 +1,5 @@
+import { getCurrentUserInformation } from './header.js';
+
 $(function () {
   var title_input = $('.form-input');
   var title_content = $('.textarea');
@@ -185,4 +187,5 @@ $(function () {
 
   getSessionData();
   getAllUserOrCompany();
+  getCurrentUserInformation();
 });

@@ -1,3 +1,5 @@
+import { getCurrentUserInformation } from './header.js';
+
 window.addEventListener('load', function () {
   var base64img; //宣告並把照片轉為Base64存入
   var the_file_element = document.getElementById('the_file');
@@ -57,6 +59,8 @@ window.addEventListener('load', function () {
         window.location.href = '../html/scene_manage.html';
       });
   });
+
+  getCurrentUserInformation();
 });
 //HTML
 /* <input type="file" id="the_file">

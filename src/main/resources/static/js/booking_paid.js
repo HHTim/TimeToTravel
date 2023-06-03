@@ -1,3 +1,5 @@
+import { getCurrentUserInformation } from './header.js';
+
 const orderSection = document.querySelector('.order');
 const journeySection = document.querySelector('.journey');
 const billSection = document.querySelector('.bill');
@@ -249,3 +251,4 @@ forward.addEventListener('click', () => {
 back.addEventListener('click', () => history.back());
 
 fetchData();
+getCurrentUserInformation();

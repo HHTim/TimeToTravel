@@ -1,3 +1,5 @@
+import { getCurrentUserInformation } from './header.js';
+
 $(function () {
   var account_input = $('#account');
   var nickName_input = $('#nickName');
@@ -24,7 +26,7 @@ $(function () {
   var newPwdVaild = false;
   var newPwdAgainVaild = false;
 
-  getSessionData = () => {
+  function getSessionData() {
     let revDate;
     userInfo = JSON.parse(sessionStorage.getItem('user-info'));
     account_input.val(userInfo.account);
@@ -41,12 +43,12 @@ $(function () {
     select_gender.val(userInfo.gender ? 1 : 0);
     if (userInfo.avatar != null) {
       console.log('set pic');
-      img_base64 = userInfo.avatar;
+      userInfo.avatar = userInfo.avatar.replace(/^data:image\/(png|jpg|jpeg);base64,/, '');
       avatar_img.attr('src', `data:image/jpeg;base64,${userInfo.avatar}`);
     } else {
       avatar_img.attr('src', '../images/avatar.svg');
     }
-  };
+  }
 
   function updateInputData() {
     userInfo.nickName = nickName_input.val();
@@ -238,4 +240,5 @@ $(function () {
   });
 
   getSessionData();
+  getCurrentUserInformation();
 });

@@ -1,4 +1,4 @@
-// 綁定點擊事件
+import { getCurrentUserInformation } from './header.js';
 
 //燈箱
 document.addEventListener('DOMContentLoaded', () => {
@@ -51,4 +51,5 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   register_sapns();
+  getCurrentUserInformation();
 });

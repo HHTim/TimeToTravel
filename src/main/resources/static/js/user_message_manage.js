@@ -1,3 +1,5 @@
+import { getCurrentUserInformation } from './header.js';
+
 /*pages*/
 var pageItem = $('.pagination li').not('.prev,.next');
 var prev = $('.pagination li.prev');
@@ -220,4 +222,5 @@ $(document).ready(function () {
   });
 
   getMessageAll();
+  getCurrentUserInformation();
 });

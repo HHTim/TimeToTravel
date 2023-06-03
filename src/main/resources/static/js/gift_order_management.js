@@ -1,3 +1,5 @@
+import { getCurrentUserInformation } from './header.js';
+
 // 綁定點擊事件
 
 //燈箱
@@ -80,6 +82,8 @@ function createPaginationItem(label, page) {
   listItem.appendChild(link);
   return listItem;
 }
+
+getCurrentUserInformation();
 
 // 使用範例
 const totalPages = 3; // 總頁數

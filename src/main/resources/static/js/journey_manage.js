@@ -1,72 +1,73 @@
+import { getCurrentUserInformation } from './header.js';
+
 window.addEventListener('load', function () {
-	let tbody = document.querySelector('tbody');
-	let searchBtn = document.querySelector('.search__area__btn');
-	let resetBtn = document.querySelector('.reset__area__btn');
-	let journeyStatus; // 行程狀態
-	let allJourney = document.querySelector('.all__journey');
-	let journeyOnShelve = document.querySelector('.all__journey_on-shelve');
-	let journeyOffShelve = document.querySelector('.all__journey__off-shelve');
+  let tbody = document.querySelector('tbody');
+  let searchBtn = document.querySelector('.search__area__btn');
+  let resetBtn = document.querySelector('.reset__area__btn');
+  let journeyStatus; // 行程狀態
+  let allJourney = document.querySelector('.all__journey');
+  let journeyOnShelve = document.querySelector('.all__journey_on-shelve');
+  let journeyOffShelve = document.querySelector('.all__journey__off-shelve');
 
+  /* 重設按鈕 */
+  resetBtn.addEventListener('click', function () {
+    window.location.reload();
+  });
 
-	/* 重設按鈕 */
-	resetBtn.addEventListener('click', function () {
-		window.location.reload();
-	});
+  allJourney.addEventListener('click', function () {
+    findAll();
+  });
 
-	allJourney.addEventListener('click', function () {
-		findAll();
-	});
+  /* 搜尋按Enter */
+  document.addEventListener('keydown', function (e) {
+    console.log(e);
+    if (e.keyCode === 13) {
+      searchByKeyword();
+    }
+  });
 
-	/* 搜尋按Enter */
-	document.addEventListener('keydown', function (e) {
-		console.log(e);
-		if (e.keyCode === 13) {
-			searchByKeyword();
-		}
-	});
+  searchBtn.addEventListener('click', () => {
+    searchByKeyword();
+  });
 
-	searchBtn.addEventListener('click', () => {
-		searchByKeyword();
-	});
+  tbody.addEventListener('change', (e) => {
+    const target = e.target;
+    console.log(target);
+    if (target.classList.contains('journey__status')) {
+      journeyStatus = target.value;
+      if (journeyStatus == 1) {
+        journeyStatus = true;
+      } else journeyStatus = false;
 
-	tbody.addEventListener('change', (e) => {
-		const target = e.target;
-		console.log(target);
-		if (target.classList.contains('journey__status')) {
-			journeyStatus = target.value;
-			if (journeyStatus == 1) {
-				journeyStatus = true;
-			} else journeyStatus = false;
+      console.log(journeyStatus);
+      const journeyId = target.dataset.journeyId;
+      console.log(journeyId);
+      let requestData = { journeyStatus: journeyStatus };
 
-			console.log(journeyStatus);
-			const journeyId = target.dataset.journeyId;
-			console.log(journeyId);
-			let requestData = { journeyStatus: journeyStatus };
+      fetch('/journeyController/journey/' + journeyId, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(requestData),
+      })
+        .then((resp) => resp)
+        .then((body) => {
+          alert('修改成功!');
+          window.location.reload();
+        });
+    }
+  });
 
-			fetch('/journeyController/journey/' + journeyId, {
-				method: 'PUT',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify(requestData),
-			})
-				.then((resp) => resp)
-				.then((body) => {
-					alert('修改成功!');
-					window.location.reload();
-				});
-		}
-	});
-
-	/* 架上商品 */
-	journeyOnShelve.addEventListener('click', function () {
-		fetch('/journeyController/journey')
-			.then((resp) => resp.json())
-			.then((body) => {
-				tbody.innerHTML = body
-					.map((i) => {
-						journeyStatus = i.journeyStatus;
-						if (journeyStatus) {
-							journeyStatus = '上架中';
-							return `
+  /* 架上商品 */
+  journeyOnShelve.addEventListener('click', function () {
+    fetch('/journeyController/journey')
+      .then((resp) => resp.json())
+      .then((body) => {
+        tbody.innerHTML = body
+          .map((i) => {
+            journeyStatus = i.journeyStatus;
+            if (journeyStatus) {
+              journeyStatus = '上架中';
+              return `
 							<tr>
 								<td>${i.journeyName}</td>
 								<td>${i.journeyId}</td>
@@ -82,24 +83,24 @@ window.addEventListener('load', function () {
 								</td>
 							</tr>
 							`;
-						}
-					})
-					.reverse()
-					.join('');
-			});
-	});
+            }
+          })
+          .reverse()
+          .join('');
+      });
+  });
 
-	/* 未上架商品 */
-	journeyOffShelve.addEventListener('click', function () {
-		fetch('/journeyController/journey')
-			.then((resp) => resp.json())
-			.then((body) => {
-				tbody.innerHTML = body
-					.map((i) => {
-						journeyStatus = i.journeyStatus;
-						if (!journeyStatus) {
-							journeyStatus = '未上架';
-							return `
+  /* 未上架商品 */
+  journeyOffShelve.addEventListener('click', function () {
+    fetch('/journeyController/journey')
+      .then((resp) => resp.json())
+      .then((body) => {
+        tbody.innerHTML = body
+          .map((i) => {
+            journeyStatus = i.journeyStatus;
+            if (!journeyStatus) {
+              journeyStatus = '未上架';
+              return `
 								<tr>
 									<td>${i.journeyName}</td>
 									<td>${i.journeyId}</td>
@@ -115,36 +116,36 @@ window.addEventListener('load', function () {
 									</td>
 								</tr>
 								`;
-						}
-					})
-					.reverse()
-					.join('');
-			});
-	});
+            }
+          })
+          .reverse()
+          .join('');
+      });
+  });
 
-	/* 關鍵字搜尋 */
-	let searchByKeyword = function () {
-		let searchInput = document.querySelector('.name-input').value.trim();
-		if (searchInput === '') {
-			alert('請輸入有效關鍵字');
-			window.location.reload();
-		} else {
-			fetch('/journeyController/journey/' + searchInput)
-				.then((resp) => resp.json())
-				.then((body) => {
-					if (body.length === 0) {
-						alert('查無此行程');
-						document.querySelector('.name-input').value = '';
-						window.location.reload();
-					} else {
-						tbody.innerHTML = body
-							.map((i) => {
-								journeyStatus = i.journeyStatus;
-								if (journeyStatus) {
-									journeyStatus = '上架中';
-								} else journeyStatus = '未上架';
+  /* 關鍵字搜尋 */
+  let searchByKeyword = function () {
+    let searchInput = document.querySelector('.name-input').value.trim();
+    if (searchInput === '') {
+      alert('請輸入有效關鍵字');
+      window.location.reload();
+    } else {
+      fetch('/journeyController/journey/' + searchInput)
+        .then((resp) => resp.json())
+        .then((body) => {
+          if (body.length === 0) {
+            alert('查無此行程');
+            document.querySelector('.name-input').value = '';
+            window.location.reload();
+          } else {
+            tbody.innerHTML = body
+              .map((i) => {
+                journeyStatus = i.journeyStatus;
+                if (journeyStatus) {
+                  journeyStatus = '上架中';
+                } else journeyStatus = '未上架';
 
-								return `
+                return `
 								<tr>
 									<td>${i.journeyName}</td>
 									<td>${i.journeyId}</td>
@@ -161,27 +162,27 @@ window.addEventListener('load', function () {
 									</td>
 								</tr>
               					`;
-							})
-							.reverse()
-							.join('');
-					}
-				});
-		}
-	};
+              })
+              .reverse()
+              .join('');
+          }
+        });
+    }
+  };
 
-	/* 找全部 */
-	function findAll() {
-		fetch('/journeyController/journey')
-			.then((resp) => resp.json())
-			.then((body) => {
-				tbody.innerHTML = body
-					.map((i) => {
-						journeyStatus = i.journeyStatus;
-						if (journeyStatus) {
-							journeyStatus = '上架中';
-						} else journeyStatus = '未上架';
+  /* 找全部 */
+  function findAll() {
+    fetch('/journeyController/journey')
+      .then((resp) => resp.json())
+      .then((body) => {
+        tbody.innerHTML = body
+          .map((i) => {
+            journeyStatus = i.journeyStatus;
+            if (journeyStatus) {
+              journeyStatus = '上架中';
+            } else journeyStatus = '未上架';
 
-						return `
+            return `
 						<tr>
 							<td>${i.journeyName}</td>
 							<td>${i.journeyId}</td>
@@ -198,11 +199,12 @@ window.addEventListener('load', function () {
 							</td>
 						</tr>
 					`;
-					})
-					.reverse()
-					.join('');
-			});
-	}
+          })
+          .reverse()
+          .join('');
+      });
+  }
 
-	findAll();
+  findAll();
+  getCurrentUserInformation();
 });
