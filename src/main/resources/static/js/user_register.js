@@ -27,7 +27,7 @@ $(function () {
         .done(() => {
             $('#errorMessage').html('');
             alert('註冊成功');
-            location.href = 'user_login';
+            location.href = 'user_login.html';
         })
         .fail((response) => {
             console.log('fail', response);
@@ -87,7 +87,7 @@ $(function () {
             avatar: $('#companyAvatarImage').attr('src'),
         };
 
-        if (data.avatar.indexOf('data:image/jpeg;base64') === -1) {
+        if (data.avatar.indexOf(';base64') === -1) {
             data.avatar = '';
         }
 

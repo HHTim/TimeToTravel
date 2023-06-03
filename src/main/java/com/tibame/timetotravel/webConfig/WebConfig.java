@@ -29,8 +29,7 @@ public class WebConfig implements WebMvcConfigurer {
 
         registry.addViewController("/user_message_manage").setViewName("forward:/html/user_message_manage.html");
 
-        registry.addViewController("/user_register").setViewName("forward:/html/user_register.html");
-        registry.addViewController("/user_login").setViewName("forward:/html/user_login.html");
+
     }
 
     @Override
