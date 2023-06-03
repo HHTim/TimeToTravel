@@ -8,4 +8,7 @@ public interface PublicSceneService {
     void insert(PublicScene publicScene);
     List<PublicScene> getAll();
 
+    void update(Integer sceneId,PublicScene publicScene);
+
+
 }

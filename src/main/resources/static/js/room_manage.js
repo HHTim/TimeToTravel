@@ -134,7 +134,7 @@ window.addEventListener('load', function () {
 		if (searchInput === '') {
 			alert('請輸入有效關鍵字');
 			window.location.reload();
-		} else {
+		} else
 			fetch('http://localhost:8080/roomController/room/' + searchInput)
 				.then((resp) => resp.json())
 				.then((body) => {

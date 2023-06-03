@@ -25,7 +25,7 @@ public class PublicScene {
     private String sceneName;
     @Lob
     @Column(name = "SCENE_PHTOT")
-    private Blob scenePhtot;
+    private byte[] scenePhtot;
 
     @Column(name = "SCENE_DESC")
     private String sceneDesc;
@@ -38,4 +38,7 @@ public class PublicScene {
 
     @Column(name = "SCENE_LNG")
     private String sceneLng;
+
+    @Column(name = "SCENE_PLACE_ID")
+    private String scenePlaceId;
 }

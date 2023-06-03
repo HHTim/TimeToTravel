@@ -3,7 +3,7 @@
 
 //------搜尋筆數------//
 .search-results-count {
-  max-width: 15%;
+  max-width: 30%;
   padding: 5px 10px;
   background-color: #f0f0f0;
   border: 1px solid #ccc;
@@ -24,42 +24,51 @@
   margin: 0 10px 0 10px;
 }
 //--------卡片------//
+.card_all {
+  // border-style: solid;
+  overflow: hidden; // 清除浮動
+  max-width: 100%;
+}
+
 .card {
   margin-bottom: 10px;
   -moz-box-shadow: 2px 2px 2px 2px #dadada;
   -webkit-box-shadow: 2px 2px 2px 2px #dadada;
   box-shadow: 2px 2px 2px 2px #dadada;
-  max-width: 100%;
-  height: 10%;
-  margin-left: 8px;
-}
-//卡片裡文字
-.card_word {
-  float: right;
-  width: 730px;
-  margin: 0 45px 0 0px;
+  // max-width: 100%;
+  // height: 10%;
+  margin: 8px 15px 8px 15px;
+  width: 30%;
+  float: left;
 }
 
-@media (max-width: 1400px) {
-  .card_word {
-    width: 580px;
-  }
-}
-@media (max-width: 1200px) {
-  .card_word {
-    width: 430px;
-  }
-}
-@media (max-width: 1000px) {
-  .card_word {
-    width: 230px;
-  }
-}
-@media (max-width: 768px) {
-  .card_word {
-    width: 100px;
-  }
-}
+//卡片裡文字
+// .card_word {
+//   float: right;
+//   // width: %;
+//   // margin: 0 45px 0 0px;
+// }
+
+// @media (max-width: 1400px) {
+//   .card_word {
+//     // width: 580px;
+//   }
+// }
+// @media (max-width: 1200px) {
+//   .card_word {
+//     width: 430px;
+//   }
+// }
+// @media (max-width: 1000px) {
+//   .card_word {
+//     width: 230px;
+//   }
+// }
+// @media (max-width: 768px) {
+//   .card_word {
+//     width: 100px;
+//   }
+// }
 //卡片裡的標題
 .card-title {
   font-weight: bold;
@@ -67,21 +76,23 @@
 
 //卡片裡照片
 .pic_style {
-  max-width: 200px;
+  width: 100%;
+  // max-width: 600px;
   // max-height: 100%;
   border-radius: 10px; //圓角
   float: left;
-  margin-right: 10px;
+  margin-bottom: 10px;
   // width: 100%;
-  // height: 100%;
+  height: 177.344px;
 }
 
 //顯示文字行
 .multiline-ellipsis {
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 2;
   overflow: hidden;
+  height: 50px;
 }
 
 //展開/縮排 按鈕
@@ -98,18 +109,18 @@
 
 //--------天氣------//
 
-.weather {
-  position: absolute;
-  top: 10px;
-  right: 0px;
-  width: 120px;
-  height: 30px;
-  // border-style: solid;
-  border-radius: 20px 0 0 20px;
-  background-color: #b5d2f1;
-  // background-image: url('https://img.ltn.com.tw/Upload/news/600/2019/03/30/phpUCF6ub.jpg');
-  background-size: cover;
-}
+// .weather {
+//   position: absolute;
+//   top: 10px;
+//   right: 0px;
+//   width: 120px;
+//   height: 30px;
+//   // border-style: solid;
+//   border-radius: 20px 0 0 20px;
+//   background-color: #b5d2f1;
+//   // background-image: url('https://img.ltn.com.tw/Upload/news/600/2019/03/30/phpUCF6ub.jpg');
+//   background-size: cover;
+// }
 
 .card-body {
   position: relative;
@@ -174,4 +185,55 @@ input[type='text'] {
 .page1 {
   display: flex;
   justify-content: center;
+}
+
+//lightbox
+
+// .backdrop {
+//   z-index: 1;
+//   opacity: 0;
+//   filter: alpha(opacity=0);
+//   display: none;
+//   position: fixed;
+//   top: 0px;
+//   left: 0px;
+//   width: 100%;
+//   height: 100%;
+//   background: #000;
+// }
+
+.box {
+  z-index: 2;
+  position: fixed;
+  opacity: 1;
+  display: none;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: auto;
+  height: auto;
+  width: 600px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  -moz-box-shadow: 0px 0px 5px #444444;
+  -webkit-box-shadow: 0px 0px 5px #444444;
+  box-shadow: 0px 0px 0px 99999px rgba($color: #000000, $alpha: 0.3);
+
+  * {
+    z-index: 3;
+  }
+
+  .close {
+    float: right;
+    cursor: pointer;
+  }
+}
+
+.open {
+  display: block;
+}
+
+.lightbox_pic_style {
+  width: 50%;
 }
