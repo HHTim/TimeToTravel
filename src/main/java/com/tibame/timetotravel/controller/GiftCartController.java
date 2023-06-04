@@ -50,7 +50,8 @@ public class GiftCartController {
         List<UserGiftCart> userGiftCartList = giftCartService.getCart(userId);
 
         if (userGiftCartList == null) {
-            return ResponseEntity.ok("沒有商品 :(");
+            String empty = "沒有商品 :)";
+            return ResponseEntity.ok(empty);
         }
 
         return ResponseEntity.ok(userGiftCartList);

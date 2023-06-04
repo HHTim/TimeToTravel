@@ -40,11 +40,14 @@
               ><!-- 購物車小視窗 start -->
               <div class="dropdown-cart">
                 <div class="cart-list">
+                  <div class="if-empty">
+                    <div>沒有商品</div>
+                  </div>
                   <div class="gift-item">
-                    <div class="small-img"><img src="#" alt="小圖片" /></div>
+                    <div class="small-img"><img src="data:image/png;base64,${i.giftPhoto}" /></div>
                     <div class="item-info">
-                      <p class="title">歹丸茶</p>
-                      <p class="amount"><span>數量：</span><span class="quantity">5</span></p>
+                      <p class="title">${i.giftName}</p>
+                      <p class="amount"><span>數量：</span><span class="quantity">${i.giftCount}</span></p>
                     </div>
                   </div>
                   <div class="gift-item">
@@ -138,74 +141,70 @@
               </div>
             </div>
             <div class="collect_list row">
+              <div class="item-mask"></div>
               <ul class="item_list">
-                <li>
+                <li data-gift-id="${i.giftId}">
                   <div class="top-down">
                     <a href="#" class="lightbox-link">
                       <div class="img_block">
-                        <img src="data:image/png;base64,${i.giftPhoto}" />
+                        <img src="../images/gift1.jpg" class="lightbox-link" />
                       </div>
+                    </a>
 
-                      <div class="lightbox-content">
-                        <button class="close-button"></button>
-                        <div class="gift_cart_row">
-                          <div class="col-6_custom">
-                            <div class="swiper-container photos">
-                              <div class="photo swiper-slide swiper-slide-active">
-                                <img src="data:image/png;base64,${i.giftPhoto}" alt="" />
-                              </div>
+                    <div class="lightbox-content">
+                      <button class="close-button"></button>
+                      <div class="gift_cart_row">
+                        <div class="col-6_custom">
+                          <div class="swiper-container photos">
+                            <div class="photo swiper-slide swiper-slide-active">
+                              <img src="../images/gift1.jpg" alt="" />
                             </div>
                           </div>
+                        </div>
 
-                          <div class="col-6 content">
-                            <h4>${i.giftName}</h4>
-                            <p class="brief">${i.giftIntro}</p>
-                            <div class="price_area">
-                              <span class="price_title">優惠價格</span>
-                              <div>
-                                <span class="variant-price">NT$ ${i.giftPrice}</span>
-                                <del class="variant-del-price">NT$ ${cheap}</del>
-                              </div>
+                        <div class="col-6 content">
+                          <h4>${i.giftName}</h4>
+                          <p class="brief">${i.giftIntro}</p>
+                          <div class="price_area">
+                            <span class="price_title">優惠價格</span>
+                            <div>
+                              <span class="variant-price">NT$ ${i.giftPrice}</span>
+                              <del class="variant-del-price">NT$ ${cheap}</del>
                             </div>
-                            <div class="cart-controls">
-                              <div class="variant-quantity">
+                          </div>
+                          <div class="cart-controls">
+                            <div class="variant-quantity">
+                              <div class="product-variant-option">
+                                <div class="advance">
+                                  <div class="title">飯店</div>
+                                  <div class="option_select">${i.comName}</div>
+                                </div>
                                 <div class="product-variant-option">
                                   <div class="advance">
-                                    <div class="title">飯店</div>
-                                    <div class="option_select">${i.comName}</div>
-                                  </div>
-                                  <div class="product-variant-option">
-                                    <div class="advance">
-                                      <div class="title">分類</div>
-                                      <div class="option_select">${i.giftTypeName}</div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="product_quantity">
-                                  <div role="group" aria-label="First group" class="btn-group">
-                                    <button type="button" class="btn add-down">-</button>
-                                    <input
-                                      type="text"
-                                      oninput="this.value = this.value.replace(/[^0-9]/g, '')"
-                                      class="qty-input"
-                                      maxlength="2"
-                                      value="1"
-                                    />
-                                    <button type="button" class="btn add-up">+</button>
+                                    <div class="title">分類</div>
+                                    <div class="option_select">${i.giftTypeName}</div>
                                   </div>
                                 </div>
                               </div>
-                              <div class="add-button-wrapper">
-                                <button type="button" class="btn btn-default add-button">加入購物車</button>
+                              <div class="product_quantity">
+                                <div role="group" aria-label="First group" class="btn-group">
+                                  <button type="button" class="btn add-down">-</button>
+                                  <input type="text" class="qty-input" maxlength="2" value="1" />
+                                  <button type="button" class="btn add-up">+</button>
+                                </div>
                               </div>
-                              <div class="product-others">
-                                <button id="fav-btn" class="fav-btn">加入最愛</button>
-                              </div>
+                            </div>
+                            <div class="add-button-wrapper">
+                              <button type="button" class="btn btn-default add-button">加入購物車</button>
+                            </div>
+                            <div class="product-others">
+                              <button id="fav-btn" class="fav-btn">加入最愛</button>
                             </div>
                           </div>
                         </div>
                       </div>
-                    </a>
+                    </div>
+
                     <div class="product_price">
                       <span class="item_text">${i.giftName}</span>
                       <span class="price">
@@ -215,54 +214,6 @@
                         <span class="money_tag">NT$ ${cheap}</span>
                       </del>
                     </div>
-                  </div>
-                </li>
-                <li>
-                  <a href="#" class="lightbox-link">
-                    <div class="img_block">
-                      <img src="../images/gift2.jpg" />
-                    </div>
-                    <span class="item_text">【冷凍組合】手路菜豪華組</span>
-                  </a>
-                  <div class="product_price">
-                    <span class="price">
-                      <span class="money_tag">NT$2120</span>
-                    </span>
-                    <del class="comparable_price">
-                      <span class="money_tag">NT$2369</span>
-                    </del>
-                  </div>
-                </li>
-                <li>
-                  <a href="#" class="lightbox-link">
-                    <div class="img_block">
-                      <img src="../images/gift3.jpg" />
-                    </div>
-                    <span class="item_text">【團購組合】匈牙利牛腩 5入</span>
-                  </a>
-                  <div class="product_price">
-                    <span class="price">
-                      <span class="money_tag">NT$1615</span>
-                    </span>
-                    <del class="comparable_price">
-                      <span class="money_tag">NT$1900</span>
-                    </del>
-                  </div>
-                </li>
-                <li>
-                  <a href="#" class="lightbox-link">
-                    <div class="img_block">
-                      <img src="../images/gift4.jpg" />
-                    </div>
-                    <span class="item_text">【團購組合】港式臘味蘿蔔糕 8入</span>
-                  </a>
-                  <div class="product_price">
-                    <span class="price">
-                      <span class="money_tag">NT$1904</span>
-                    </span>
-                    <del class="comparable_price">
-                      <span class="money_tag">NT$2240</span>
-                    </del>
                   </div>
                 </li>
               </ul>
@@ -292,6 +243,16 @@
       </main>
       <!-- Main End -->
     </div>
+    <!-- 成功加入購物車確認 -->
+    <div class="success-mask"></div>
+    <div class="add-success">
+      <div>
+        <div class="success-icon"><i class="fa-solid fa-circle-check fa-2xl" style="color: #0bc117"></i></div>
+        <div class="success-msg"><i class="fa-regular fa-face-smile fa-xl" style="color: #ff7e05;"></i>加入成功<i class="fa-regular fa-face-smile fa-xl" style="color: #ff7e05;"></i></div>
+        <div class="success-btn"><button>確認</button></div>
+      </div>
+    </div>
+    <!-- 成功加入購物車確認 End -->
     <!-- Footer -->
     <footer>
       <div class="footer"></div>

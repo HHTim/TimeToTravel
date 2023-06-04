@@ -49,9 +49,10 @@ public class GiftCartServiceImpl implements GiftCartService {
             if (giftId.equals(oldItem.getGiftId())) {
                 int totalCount = oldItem.getGiftCount() + giftCount;
                 oldItem.setGiftCount(totalCount);
-                return save(userId, key, giftCart);
+                return save(userId, key, giftCart); // 回傳列表
             }
         }
+        // 如果無此商品，新增進去
         GiftCartItem item = new GiftCartItem(giftId, giftCount);
         itemList.add(item);
         return save(userId, key, giftCart);
@@ -64,6 +65,7 @@ public class GiftCartServiceImpl implements GiftCartService {
         GiftCart giftCart = (GiftCart) redisTemplate.opsForValue().get(key);
         if (giftCart != null) {
             List<GiftCartItem> itemList = giftCart.getItemList();
+            // 將指定giftId的商品刪除
             itemList.removeIf(item -> giftId.equals(item.getGiftId()));
             save(userId, key, giftCart);
         }
@@ -76,6 +78,7 @@ public class GiftCartServiceImpl implements GiftCartService {
         GiftCart giftCart = (GiftCart) redisTemplate.opsForValue().get(key);
         if (giftCart != null) {
             List<GiftCartItem> itemList = giftCart.getItemList();
+            // 購物車列表清空
             itemList.clear();
             save(userId, key, giftCart);
         }
@@ -89,8 +92,9 @@ public class GiftCartServiceImpl implements GiftCartService {
         if (giftCart != null) {
             List<GiftCartItem> itemList = giftCart.getItemList();
             for (GiftCartItem oldItem : itemList) {
+                // 找到指定giftId的商品
                 if (giftId.equals(oldItem.getGiftId())) {
-                    oldItem.setGiftCount(giftCount);
+                    oldItem.setGiftCount(giftCount); // 更新數量
                     redisTemplate.opsForValue().set(key, giftCart);
                     redisTemplate.expire(key, expireTimeInDays, TimeUnit.DAYS);
 
@@ -144,10 +148,12 @@ public class GiftCartServiceImpl implements GiftCartService {
     }
 
     private String getCartKey(Integer userId) {
+        // 給個前綴，變字串
         return "cart: " + userId;
     }
 
     private List<UserGiftCart> save(Integer userId, String key, GiftCart giftCart) {
+        // 固定的存入Redis動作
         redisTemplate.opsForValue().set(key, giftCart);
         redisTemplate.expire(key, expireTimeInDays, TimeUnit.DAYS);
         return getCart(userId);
