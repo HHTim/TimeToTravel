@@ -1,3 +1,5 @@
+import { getCurrentUserInformation } from './header.js';
+
 $(function () {
   var title_input = $('.form-input');
   var title_content = $('.textarea');
@@ -139,7 +141,7 @@ $(function () {
       .then((r) => r.text())
       .then((d) => {
         console.log(d);
-        // location.href = '../admin_message_recv';
+        location.href = '../admin_message_recv';
       });
   }
 
@@ -185,4 +187,5 @@ $(function () {
 
   getSessionData();
   getAllUserOrCompany();
+  getCurrentUserInformation();
 });

@@ -1,3 +1,5 @@
+import { getCurrentUserInformation } from './header.js';
+
 const tab1 = document.querySelector('.tab1');
 const showcard = $('.card_all');
 const search = document.querySelector('#search-scene');
@@ -52,6 +54,8 @@ async function fetchData() {
   searchResultsCountElement.innerText = '搜尋結果共 ' + totalResults + ' 筆';
   console.log(totalResults);
 }
+
+getCurrentUserInformation();
 
 // lightbox燈箱
 

@@ -1,3 +1,5 @@
+import { getCurrentUserInformation } from './header.js';
+
 window.addEventListener('load', function () {
   let tbody = document.querySelector('tbody');
   let searchBtn = document.querySelector('.search__area__btn');
@@ -11,4 +13,6 @@ window.addEventListener('load', function () {
   allGifts.addEventListener('click', function () {
     findAll();
   });
+
+  getCurrentUserInformation();
 });
