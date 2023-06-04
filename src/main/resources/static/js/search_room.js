@@ -101,7 +101,7 @@ function renderSearchResult(result) {
 
 async function handleSearch(page) {
   const { keyword, people, startDate, endDate } = searchBody;
-  const result = await fetchData(`/search/rooms/${keyword}/${people}/${startDate}/${endDate}/${page}`);
+  const result = await fetchData(`/rooms/search/${keyword}/${people}/${startDate}/${endDate}/${page}`);
   searchResultsCountElement.innerText = '搜尋結果共 ' + result.rows.length + ' 筆';
   console.log(result);
   // 總頁數
@@ -119,19 +119,22 @@ async function handleSearch(page) {
 
 async function handleSelectRoom(e) {
   const dataset = e.target.closest('div.hotel__card').dataset;
-  const { comid, roomid } = dataset;
+  searchBody.comId = dataset.comid;
+  searchBody.roomId = dataset.roomid;
+  sessionStorage.setItem('searchBody', JSON.stringify(searchBody));
+  window.location.href = '/rooms/booking';
   // console.log(comid + ' ' + roomid);
   // if (isNaN(Number(comid))) return;
-  const resp = await fetch(`http://localhost:8080/user/redirect-booking`, {
-    method: 'POST',
-    cache: 'no-cache',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ comId: comid, roomId: roomid }),
-    redirect: 'follow',
-  });
-  if (resp.redirected) {
-    location.href = resp.url;
-  }
+  // const resp = await fetch(`/user/redirect-booking`, {
+  //   method: 'POST',
+  //   cache: 'no-cache',
+  //   headers: { 'Content-Type': 'application/json' },
+  //   body: JSON.stringify({ comId: comid, roomId: roomid }),
+  //   redirect: 'follow',
+  // });
+  // if (resp.redirected) {
+  //   location.href = resp.url;
+  // }
 }
 
 // let searchBody = {
@@ -175,7 +178,7 @@ searchHotel.addEventListener('click', () => {
 
 // 搜尋景點
 tab2.addEventListener('click', () => {
-  window.location.href = '/search/scenes';
+  window.location.href = '/scenes/search';
 });
 
 // 點選房間

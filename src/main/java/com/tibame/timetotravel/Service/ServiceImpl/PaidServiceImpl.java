@@ -52,11 +52,11 @@ public class PaidServiceImpl implements PaidService {
 
     @Transactional
     @Override
-    public Integer insertOrder(Integer userId, Integer roomId, RoomOrderDto order) {
+    public Integer insertOrder(Integer userId, RoomOrderDto order) {
         // 建立Entity
         OrderDetail orderDetail = new OrderDetail();
         orderDetail.setUserId(userId);
-        orderDetail.setRoomId(roomId);
+        orderDetail.setRoomId(order.getRoomId());
         orderDetail.setOrderAmount(order.getOrderAmount());
 
         // 將DTO中的日期從字串轉成java.sql.Date型別

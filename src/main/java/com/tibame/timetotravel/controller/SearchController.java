@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.lang.reflect.InvocationTargetException;
 
 @RestController
-@RequestMapping("/search")
+@RequestMapping("/rooms")
 public class SearchController {
 
     @Autowired
@@ -42,7 +42,7 @@ public class SearchController {
 //        }
 //    }
 
-    @GetMapping("/rooms/{keyword}/{people}/{startDate}/{endDate}/{currPage}")
+    @GetMapping("/search/{keyword}/{people}/{startDate}/{endDate}/{currPage}")
     public PageBean<SearchRoomDto> search(
             @PathVariable String keyword,
             @PathVariable Integer people,

@@ -28,7 +28,7 @@ public class PublicSceneController {
     }
 
 
-    @RequestMapping("/getall")
+    @RequestMapping("/search/all")
     public List<PublicScene> getAll() {
         System.out.println("找全部景點");
         return publicSceneService.getAll();

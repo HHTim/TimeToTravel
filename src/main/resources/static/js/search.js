@@ -41,7 +41,7 @@ function renderCards(data) {
 }
 
 async function fetchData() {
-  const resp = await fetch('http://localhost:8080/scenes');
+  const resp = await fetch('http://localhost:8080/scenes/search/all');
   const data = await resp.json();
   console.log(data);
 
@@ -120,7 +120,7 @@ $('.card_all').click(function (e) {
 //   event.currentTarget.classList.add('active');
 // }
 tab1.addEventListener('click', () => {
-  window.location.href = '/search/rooms';
+  window.location.href = '/rooms/search';
 });
 
 search.addEventListener('click', () => {

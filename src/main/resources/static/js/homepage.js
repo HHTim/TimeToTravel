@@ -334,7 +334,7 @@ sceneKeyword.addEventListener('blur', (e) => {
 });
 
 search.onclick = () => {
-  let url = isSearchRoom ? 'search/rooms' : 'search/scenes';
+  let url = isSearchRoom ? 'rooms/search' : 'scenes/search';
   sessionStorage.setItem('searchBody', JSON.stringify(searchBody));
   window.location.href = url;
 };
