@@ -25,6 +25,10 @@ public interface UserService {
     PageBean<User> findStatusByPageRowData(Integer status, Integer currPage, Integer rows);
     List<User> findKeywordByPage(String keyword, Integer currPage, Integer rows);
     PageBean<User> findKeywordByPageRowData(String keyword, Integer currPage, Integer rows);
+
+    List<User> findDateRangeByPage(String startDate, String endDate, Integer currPage, Integer rows);
+
+    PageBean<User> findBeanPageByDateRange(String startDate, String endDate, Integer currPage, Integer rows);
     List<User> findAll();
 
     List<User> getAll();

@@ -13,10 +13,12 @@ var url_normal = '../images/notify-normal.png';
 var url_red = '../images/notify-red.png';
 var btn_avatar = $('.nav__avatar');
 var btn_notify = $('.nav__info');
+var notify_menu = $('.nav__info .dropdown-center .dropdown-menu');
 var nav_avatar = $('.nav__avatar-img img');
 
 var role;
 var currentUserData;
+const msgRow = 3;
 
 function updateNotifyIcon(userNewsStatus) {
   if (userNewsStatus == 1) {
@@ -30,6 +32,27 @@ function updateNotifyIcon(userNewsStatus) {
 
 function updateAvatar(avatar) {
   nav_avatar.attr('src', avatar);
+}
+
+function getRelativeTime(dateTimeString) {
+  const dateTime = new Date(dateTimeString);
+  const now = new Date();
+
+  const diffInMilliseconds = now - dateTime;
+  const diffInSeconds = Math.floor(diffInMilliseconds / 1000);
+  const diffInMinutes = Math.floor(diffInSeconds / 60);
+  const diffInHours = Math.floor(diffInMinutes / 60);
+  const diffInDays = Math.floor(diffInHours / 24);
+
+  if (diffInDays >= 1) {
+    return diffInDays + '天前';
+  } else if (diffInHours >= 1) {
+    return diffInHours + '小時前';
+  } else if (diffInMinutes >= 1) {
+    return diffInMinutes + '分鐘前';
+  } else {
+    return '剛剛';
+  }
 }
 
 function updateUserNewsStatus(role, account) {
@@ -53,6 +76,41 @@ function updateUserNewsStatus(role, account) {
     .then((d) => {
       console.log(d);
       notifyIcon.css('background-image', `url(${url_normal})`);
+    });
+}
+
+function getUserNewsMessage(role) {
+  let url;
+
+  if (role === '會員') url = 'http://localhost:8080/Admin2UserController/message/a2u/view/notify/0/' + msgRow;
+  else if (role === '商家') url = 'http://localhost:8080/Admin2ComController/message/a2c/view/notify/0/' + msgRow;
+  else url = 'http://localhost:8080/AdminController/admin/newsStatus';
+  fetch(url)
+    .then((r) => r.json())
+    .then((d) => {
+      console.log(d);
+      notify_menu.append(
+        d
+          .map((e) => {
+            return `
+            <li>
+            <a class="dropdown-item" style="color: #006caa; font-size: 1rem;" href="#">
+            <img src="https://i2.bahamut.com.tw/icon_notice-mail.png" style="border-radius: 50%; width: 10%">&nbsp
+            ${role === '會員' ? e.a2uMsgTitle : e.a2cMsgTitle}
+            &nbsp-<span class="time-text" style="color:#9b9999; font-size: 0.6rem;">&nbsp
+            ${getRelativeTime(role === '會員' ? e.a2uSendingTime : e.a2cSendingTime)}&nbsp&nbsp&nbsp</span></a></li>
+          `;
+          })
+          .join(' ') +
+          `
+        <li><hr class="dropdown-divider" /></li>
+        <li><a class="dropdown-item more-msg" href="#" style="color:#4d4f52; font-weight: bolder">顯示更多訊息</a></li>
+        `
+      );
+      bindEventToNews();
+    })
+    .catch((e) => {
+      console.error(e);
     });
 }
 
@@ -88,9 +146,11 @@ async function getCurrentUserData() {
       if (role === '會員') {
         updateNotifyIcon(currentUserData.userNewsStatus);
         updateAvatar(currentUserData.userAvatar);
+        getUserNewsMessage(role, msgRow);
       } else if (role === '商家') {
         updateNotifyIcon(currentUserData.comNewsStatus);
         updateAvatar(currentUserData.comAvatar);
+        getUserNewsMessage(role, msgRow);
       } else if (role === '平台') {
         console.log('待加入');
       }
@@ -111,6 +171,11 @@ async function getCurrentUserData() {
       `<li><a class="dropdown-item register" href="#">註冊</a></li>
       <li><hr class="dropdown-divider" /></li>
       <li><a class="dropdown-item loggin" href="#">登入</a></li>`
+    );
+    notify_menu.append(
+      `
+      <li><a class="dropdown-item" href="#" style="color:#4d4f52; font-weight: bolder">尚未登入</a></li>
+      `
     );
     console.error(error);
   }
@@ -135,6 +200,21 @@ function logout() {
       location.href = '../';
       // location.reload();
     });
+}
+
+function bindEventToNews() {
+  $('.more-msg').on('click', function () {
+    console.log('點擊了更多信息!');
+    switch (role) {
+      case '會員':
+        location.href = '../html/user_message_manage.html';
+        break;
+
+      case '商家':
+        location.href = '../html/company_message_manage.html';
+        break;
+    }
+  });
 }
 
 function bindEventToButtons() {

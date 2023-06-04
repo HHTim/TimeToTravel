@@ -130,11 +130,11 @@ public class UserController extends BaseController {
 //
 //
 //
-//    @GetMapping("/user/page/dateRange/{currPage}/{rows}/{startDate}/{endDate}")
-//    public PageBean<User> readViewByDateRange(@PathVariable Integer currPage, @PathVariable Integer rows , @PathVariable String startDate, @PathVariable String endDate){
-//        System.out.println("日期分頁搜尋range: "+ startDate + " ~ " + endDate);
-//        return userService.findBeanPageByDateRange(startDate, endDate , currPage, rows);
-//    }
+    @GetMapping("/user/page/dateRange/{currPage}/{rows}/{startDate}/{endDate}")
+    public PageBean<User> readViewByDateRange(@PathVariable Integer currPage, @PathVariable Integer rows , @PathVariable String startDate, @PathVariable String endDate){
+        System.out.println("日期分頁搜尋range: "+ startDate + " ~ " + endDate);
+        return userService.findBeanPageByDateRange(startDate, endDate , currPage, rows);
+    }
 
     @GetMapping("/all")
     public List<User> findAll() {
