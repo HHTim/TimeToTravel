@@ -1,10 +1,12 @@
 package com.tibame.timetotravel.controller;
 
-import com.tibame.timetotravel.dto.GiftCart;
+import com.tibame.timetotravel.dto.UserGiftCart;
 import com.tibame.timetotravel.service.GiftCartService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -14,23 +16,44 @@ public class GiftCartController {
     @Autowired
     GiftCartService giftCartService;
 
-    @GetMapping("/{userId}")
-    public GiftCart getCart(@PathVariable Integer userId) {
-        return giftCartService.getCart(userId);
-    }
-
-    @PostMapping("/{userId}")
-    public void addToCart(@RequestBody Map<String, Object> map) {
-        Integer userId = (Integer) map.get("userId");
+    @PostMapping("/giftCart/{userId}")
+    public ResponseEntity<List<UserGiftCart>> addToCart(@PathVariable Integer userId,
+                                                        @RequestBody Map<String, Object> map) {
         Integer giftId = (Integer) map.get("giftId");
         Integer giftCount = (Integer) map.get("giftCount");
-        giftCartService.addToCart(userId, giftId, giftCount);
+        return ResponseEntity.ok(giftCartService.addToCart(userId, giftId, giftCount));
     }
 
-    @DeleteMapping("/{userId}/remove/{giftId}")
-    public void removeFromCart(@PathVariable Integer userId,
-                               @PathVariable Integer giftId) {
+    @DeleteMapping("/giftCart/{userId}/{giftId}")
+    public ResponseEntity<String> removeFromCart(@PathVariable Integer userId,
+                                                 @PathVariable Integer giftId) {
         giftCartService.removeFromCart(userId, giftId);
+        return ResponseEntity.ok("刪除成功囉！");
+    }
+
+    @DeleteMapping("/giftCart/{userId}")
+    public ResponseEntity<String> clearCart(@PathVariable Integer userId) {
+        giftCartService.clearCart(userId);
+        return ResponseEntity.ok("全部清空喔耶～");
+    }
+
+    @PutMapping("/giftCart/{userId}")
+    public ResponseEntity<UserGiftCart> updateCart(@PathVariable Integer userId,
+                                                   @RequestBody Map<String, Object> map) {
+        Integer giftId = (Integer) map.get("giftId");
+        Integer giftCount = (Integer) map.get("giftCount");
+        return ResponseEntity.ok(giftCartService.updateCart(userId, giftId, giftCount));
+    }
+
+    @GetMapping("/giftCart/{userId}")
+    public ResponseEntity<?> getCart(@PathVariable Integer userId) {
+        List<UserGiftCart> userGiftCartList = giftCartService.getCart(userId);
+
+        if (userGiftCartList == null) {
+            return ResponseEntity.ok("沒有商品 :(");
+        }
+
+        return ResponseEntity.ok(userGiftCartList);
     }
 
 }

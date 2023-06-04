@@ -1,13 +1,18 @@
 // 記得引入基本設定
 @import '../base/base';
 
+// 主框框高度調整了一下
+main {
+  min-height: calc(100vh - 20px - 20px - 80px);
+  padding: 1.1rem 0;
+}
+
 //===========================================
 //aside====
 
 .gift_searchresult {
-  margin-left: 20%;
-  margin-right: 20%;
-  width: 60%;
+  margin: 0 auto;
+  width: 80%;
 }
 
 .collapse_collection {
@@ -17,7 +22,9 @@
 
 .collapse_collection li {
   border-bottom: 1px dotted #ccc; /* 設定列表項目間的線條樣式 */
-  padding: 5px 0; /* 設定列表項目的內邊距 */
+  padding: 15px 0; /* 設定列表項目的內邊距 */
+  text-align: center;
+  font-size: 1.18rem;
 }
 
 //========
@@ -28,16 +35,20 @@
 }
 
 .collection_title h1 {
-  font-size: 1.5rem; /* 設定適當的字體大小值 */
+  font-size: 1.8rem; /* 設定適當的字體大小值 */
+  text-align: center;
 }
 
 .collection_title.row {
-  margin-bottom: 30px;
+  margin-bottom: 40px;
 }
-.col-3.total_product {
-  width: 15% !important;
-  font-size: 1rem;
-  text-align: center;
+.total_product {
+  width: 20% !important;
+  font-size: 1.3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: end;
 }
 
 //============= 預設下拉選單
@@ -50,18 +61,21 @@
 
 .col-3.select_item {
   display: flex;
-  justify-content: flex-end;
-  width: 35% !important;
+  justify-content: center;
+  width: 30% !important;
 }
 
 .col-3.select_item select {
-  margin-left: auto;
+  // margin-left: auto;
 }
 
 .custom_select {
-  height: 60%; /* 調整為所需的高度 */
+  height: 90%; /* 調整為所需的高度 */
+  width: 75%;
 }
+
 .select_item {
+  align-items: center;
 }
 
 // select {
@@ -76,6 +90,11 @@
 .item_list li {
   flex-basis: calc(33.33% - 30px); /* 每行显示三张照片，计算每个项的宽度 */
   margin-bottom: 10px; /* 设置项之间的间距 */
+}
+
+.img_block {
+  display: flex;
+  justify-content: center;
 }
 
 .item_list li img {
@@ -98,6 +117,7 @@ div.top-down {
 .collect_list .item_text {
   display: block;
   text-align: center;
+  font-size: 1.2rem;
 }
 
 .collect_list .item_list li a .item_text {

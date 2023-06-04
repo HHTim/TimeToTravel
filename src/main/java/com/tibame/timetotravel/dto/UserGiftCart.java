@@ -9,8 +9,12 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-// 真正和Redis對映的class
-public class GiftCart {
+public class UserGiftCart {
     private Integer userId;
-    private List<GiftCartItem> itemList;
+    private Integer giftCount;
+    private Integer giftId;
+    private String giftName;
+    private Integer giftPrice;
+    private byte[] giftPhoto;
+    private Integer unitPrice;
 }

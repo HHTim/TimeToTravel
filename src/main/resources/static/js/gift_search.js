@@ -1,7 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
 // =============宣告=============
   const giftList = document.querySelector('.item_list');
-  const totalProduct = document.querySelector('div.total_product');
+  const totalProduct = document.querySelector('div.total_product div');
+  const collectionTitle = document.querySelector('.collection_title h1');
 
 
 // ========一載入便查詢出所有商品========
@@ -14,6 +15,9 @@ function findAll() {
   fetch('http://localhost:8080/giftSearchController/giftSearch')
     .then(resp => resp.json())
     .then(body => {
+      // Title 回到 "全部商品"
+      collectionTitle.innerHTML = "全部商品";
+
       // console.log(body);
       // 顯示幾件商品
       // console.log(body.length);
@@ -327,6 +331,8 @@ function findAll() {
     fetch('http://localhost:8080/giftSearchController/giftSearch/giftSort/' + giftSort)
       .then(resp => resp.json())
       .then(body => {
+        // Title 回到 "全部商品"
+        collectionTitle.innerHTML = "全部商品";
         // 清空搜尋框
         $('input.form-control').val("");
 
@@ -454,6 +460,8 @@ function findAll() {
         if (giftTypeId === '全部商品') {
           findAll();
         }
+        // Title 會跟著變化
+        collectionTitle.innerHTML = giftTypeId;
 
         // 顯示幾件商品
         // console.log(body.length);
@@ -556,6 +564,9 @@ function findAll() {
       });
   };
 
+
+
+  
 
 
 
