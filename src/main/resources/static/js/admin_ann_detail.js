@@ -1,3 +1,4 @@
+import { getCurrentUserInformation } from './header.js';
 $(function () {
   function getSessionData() {
     var ann = JSON.parse(sessionStorage.getItem('ann'));
@@ -12,4 +13,5 @@ $(function () {
   });
 
   getSessionData();
+  getCurrentUserInformation();
 });

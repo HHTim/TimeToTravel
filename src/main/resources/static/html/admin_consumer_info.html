@@ -5,26 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- import -->
-    <script
-      src="../node_modules/@popperjs/core/dist/umd/popper.min.js"
-      defer
-    ></script>
-    <script
-      src="../node_modules/bootstrap/dist/js/bootstrap.min.js"
-      defer
-    ></script>
+    <script src="../node_modules/@popperjs/core/dist/umd/popper.min.js" defer></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js" defer></script>
     <!-- <script src="../node_modules/jquery/dist/jquery.min.js" defer></script> -->
-    <script
-      src="https://kit.fontawesome.com/e3af248fb2.js"
-      crossorigin="anonymous"
-      defer
-    ></script>
-    <link
-      rel="stylesheet"
-      href="../node_modules/bootstrap/dist/css/bootstrap.min.css"
-    />
+    <script src="https://kit.fontawesome.com/e3af248fb2.js" crossorigin="anonymous" defer></script>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
     <!-- 我們自己的 js 檔案，路徑記得改 -->
-    <script src="../js/admin_consumer_info.js" defer></script>
+    <script type="module" src="../js/admin_consumer_info.js" defer></script>
     <!-- 我們自己的 css 檔案，路徑記得改 -->
     <link rel="stylesheet" href="../css/admin_consumer_info.css" />
     <!-- 輪播需要添加 -->
@@ -34,23 +21,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/eonasdan-bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
 
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"
-    ></script>
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"
-    ></script>
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"
-    ></script>
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"
-    />
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <!-- title 記得改 -->
     <title>admin_consumer_info</title>
   </head>
@@ -71,11 +45,7 @@
             <li class="nav__link"><a href="#">部落格</a></li>
             <li class="nav__info">
               <div class="dropdown-center">
-                <button
-                  class="dropdown-toggle nav__info-btn"
-                  type="button"
-                  data-bs-toggle="dropdown"
-                ></button>
+                <button class="dropdown-toggle nav__info-btn" type="button" data-bs-toggle="dropdown"></button>
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="#">訊息一</a></li>
                   <li><a class="dropdown-item" href="#">訊息二</a></li>
@@ -88,23 +58,18 @@
             <li class="nav__avatar">
               <div class="dropdown-center">
                 <!-- <button class="dropdown-toggle nav__avatar-btn" type="button" data-bs-toggle="dropdown"></button> -->
-                <a
-                  href="#"
-                  class="dropdown-toggle nav__avatar-btn"
-                  type="button"
-                  data-bs-toggle="dropdown"
-                >
+                <a href="#" class="dropdown-toggle nav__avatar-btn" type="button" data-bs-toggle="dropdown">
                   <div class="nav__avatar-img">
                     <img src="../images/avatar.svg" alt="avatar" />
                   </div>
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">註冊</a></li>
+                  <!-- <li><a class="dropdown-item" href="#">註冊</a></li>
                   <li><a class="dropdown-item" href="#">登入</a></li>
                   <li><a class="dropdown-item" href="#">其他</a></li>
                   <li><a class="dropdown-item" href="#">其他</a></li>
                   <li><hr class="dropdown-divider" /></li>
-                  <li><a class="dropdown-item" href="#">登出</a></li>
+                  <li><a class="dropdown-item" href="#">登出</a></li> -->
                 </ul>
               </div>
             </li>
@@ -137,42 +102,19 @@
         <div class="col-10">
           <!-- Main -->
           <div class="tab-content" id="v-pills-tabContent">
-            <div
-              class="tab-pane active"
-              id="v-pills-customer"
-              role="tabpanel"
-              aria-labelledby="v-pills-customer-tab"
-            >
+            <div class="tab-pane active" id="v-pills-customer" role="tabpanel" aria-labelledby="v-pills-customer-tab">
               <div class="mgmtInner p-5">
-                <p
-                  style="
-                    padding-bottom: 5px;
-                    border-bottom: 4px solid #0078bb;
-                    width: 900px;
-                  "
-                  class="fs-4 fw-bold"
-                >
+                <p style="padding-bottom: 5px; border-bottom: 4px solid #0078bb; width: 900px" class="fs-4 fw-bold">
                   消費者基本資料
                 </p>
                 <p class="fw-bold mt-1">基本資料修改</p>
                 <div>
                   <form class="mgmt-form">
                     <div style="display: flex" class="mgmtheader">
-                      <div
-                        class=""
-                        style="display: flex; align-items: flex-end"
-                      >
-                        <img
-                          style="height: 150px"
-                          class="p-2"
-                          src="/images/avatar.svg"
-                          alt=""
-                        />
+                      <div class="" style="display: flex; align-items: flex-end">
+                        <img style="height: 150px" class="p-2" src="/images/avatar.svg" alt="" />
                       </div>
-                      <div
-                        style="display: flex; flex-direction: column"
-                        class="mt-2 mgmtheaderInner"
-                      >
+                      <div style="display: flex; flex-direction: column" class="mt-2 mgmtheaderInner">
                         <div class="" style="">
                           <p>帳號</p>
                           <input
@@ -184,15 +126,9 @@
                             aria-describedby="button-addon2"
                           />
                         </div>
-                        <div
-                          class=""
-                          style="display: flex; align-items: flex-end"
-                        >
+                        <div class="" style="display: flex; align-items: flex-end">
                           <input
-                            style="
-                              width: 700px;
-                              border-radius: 10px 0px 0px 10px;
-                            "
+                            style="width: 700px; border-radius: 10px 0px 0px 10px"
                             type="text"
                             class="mb-1 form-control"
                             placeholder=""
@@ -229,30 +165,20 @@
                         </label>
                         <label
                           for="exampleInputPassword1"
-                          style="
-                            font-size: 16px;
-                            white-space: nowrap;
-                            padding-left: 42%;
-                          "
+                          style="font-size: 16px; white-space: nowrap; padding-left: 42%"
                           class="form-label mb-0"
                         >
                           性別
                         </label>
                         <label
                           for="exampleInputPassword1"
-                          style="
-                            font-size: 16px;
-                            white-space: nowrap;
-                            padding-left: 14%;
-                          "
+                          style="font-size: 16px; white-space: nowrap; padding-left: 14%"
                           class="form-label mb-0"
                         >
                           電話號碼
                         </label>
                       </div>
-                      <div
-                        style="display: flex; justify-content: space-between"
-                      >
+                      <div style="display: flex; justify-content: space-between">
                         <input
                           style="height: 45px; width: 44%"
                           type="password"
@@ -284,19 +210,13 @@
                         </label>
                         <label
                           for="exampleInputPassword1"
-                          style="
-                            font-size: 16px;
-                            white-space: nowrap;
-                            padding-left: 24%;
-                          "
+                          style="font-size: 16px; white-space: nowrap; padding-left: 24%"
                           class="form-label mb-0"
                         >
                           電子信箱
                         </label>
                       </div>
-                      <div
-                        style="display: flex; justify-content: space-between"
-                      >
+                      <div style="display: flex; justify-content: space-between">
                         <input
                           style="height: 45px; width: 30%"
                           type="password"
@@ -322,11 +242,7 @@
                         </label>
                         <label
                           for="exampleInputPassword1"
-                          style="
-                            font-size: 16px;
-                            white-space: nowrap;
-                            padding-left: 23%;
-                          "
+                          style="font-size: 16px; white-space: nowrap; padding-left: 23%"
                           class="form-label mb-0"
                         >
                           密碼
@@ -351,22 +267,14 @@
                     </div>
                     <div style="display: flex; justify-content: space-between">
                       <input
-                        style="
-                          color: white;
-                          background-color: #006caa;
-                          width: 100px;
-                        "
+                        style="color: white; background-color: #006caa; width: 100px"
                         type="button"
                         class="form-control"
                         id="exampleInputPassword1"
                         value="返回"
                       />
                       <input
-                        style="
-                          color: white;
-                          background-color: #006caa;
-                          width: 100px;
-                        "
+                        style="color: white; background-color: #006caa; width: 100px"
                         type="button"
                         class="form-control"
                         id="verity-code"

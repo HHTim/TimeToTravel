@@ -1,3 +1,5 @@
+import { getCurrentUserInformation } from './header.js';
+
 const list = document.querySelector('.list__table tbody');
 const searchCom = document.querySelector('.search__com');
 const searchNo = document.querySelector('.search__no');
@@ -242,3 +244,4 @@ searchNo.addEventListener('blur', async (e) => {
 });
 
 fetchData();
+getCurrentUserInformation();

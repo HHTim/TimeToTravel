@@ -1,4 +1,3 @@
-const tab2 = document.querySelector('.tab2');
 const searchResultsCountElement = document.getElementById('search-results-count');
 const searchHotel = document.querySelector('#search-hotel');
 const searchContent = document.querySelector('#search-result');
@@ -156,5 +155,4 @@ async function handleSelectRoom(dataset) {
 
 // searchHotel.addEventListener('click', () => handleSearch());
 searchContent.addEventListener('click', (e) => handleSelectRoom(e.target.dataset));
-pageBtnWrapper.addEventListener('click', (e) => handlePageBtn(e));
-handleSearch(1);
+handleSearch();

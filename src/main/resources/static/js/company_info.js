@@ -1,3 +1,5 @@
+import { getCurrentUserInformation } from './header.js';
+
 $(function () {
   var account_input = $('#account');
   var manager_input = $('#manager');
@@ -191,4 +193,5 @@ $(function () {
   });
 
   getSessionData();
+  getCurrentUserInformation();
 });

@@ -13,7 +13,7 @@
     <!-- 我們自己的 css 檔案，路徑記得改 -->
     <link rel="stylesheet" href="../css/gift_manage.css" />
     <!-- 我們自己的 js 檔案，路徑記得改 -->
-    <script src="../js/gift_manage.js" defer></script>
+    <script type="module" src="../js/gift_manage.js" defer></script>
     <!-- 輪播需要添加 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- title 記得改 -->
@@ -55,12 +55,12 @@
                   </div>
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">註冊</a></li>
+                  <!-- <li><a class="dropdown-item" href="#">註冊</a></li>
                   <li><a class="dropdown-item" href="#">登入</a></li>
                   <li><a class="dropdown-item" href="#">其他</a></li>
                   <li><a class="dropdown-item" href="#">其他</a></li>
                   <li><hr class="dropdown-divider" /></li>
-                  <li><a class="dropdown-item" href="#">登出</a></li>
+                  <li><a class="dropdown-item" href="#">登出</a></li> -->
                 </ul>
               </div>
             </li>
@@ -132,16 +132,16 @@
                 </div>
               </div>
 
-							<!-- 第四列 -->
-							<div class="row">
-								<div class="col-4 manage-type">
-									<div class="type-1"><a href="../html/room_manage.html">房型</a></div>
-									<div class="type-2 -ontype"><a href="../html/gift_manage.html">土產</a></div>
-									<div class="type-3"><a href="../html/private_scene_manage.html">景點</a></div>
-									<div class="type-4"><a href="../html/journey_manage.html">行程</a></div>
-								</div>
-								<div class="col-8"></div>
-							</div>
+              <!-- 第四列 -->
+              <div class="row">
+                <div class="col-4 manage-type">
+                  <div class="type-1"><a href="../html/room_manage.html">房型</a></div>
+                  <div class="type-2 -ontype"><a href="../html/gift_manage.html">土產</a></div>
+                  <div class="type-3"><a href="../html/private_scene_manage.html">景點</a></div>
+                  <div class="type-4"><a href="../html/journey_manage.html">行程</a></div>
+                </div>
+                <div class="col-8"></div>
+              </div>
 
               <!-- 第五列 -->
               <div class="row gift-table">
@@ -185,12 +185,12 @@
       </div>
     </div>
 
-		<!-- 土產細項(lightbox css) -->
-		<div class="gift-detail"></div>
+    <!-- 土產細項(lightbox css) -->
+    <div class="gift-detail"></div>
 
-		<!-- Footer -->
-		<footer>
-			<div class="footer"></div>
-		</footer>
-	</body>
+    <!-- Footer -->
+    <footer>
+      <div class="footer"></div>
+    </footer>
+  </body>
 </html>

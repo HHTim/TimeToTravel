@@ -1,3 +1,4 @@
+import { getCurrentUserInformation } from './header.js';
 $(function () {
   /* date */
   var start = moment().subtract(29, 'days');
@@ -285,4 +286,5 @@ $(function () {
 
   cb(start, end);
   getData();
+  getCurrentUserInformation();
 });

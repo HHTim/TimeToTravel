@@ -13,6 +13,7 @@ var url_normal = '../images/notify-normal.png';
 var url_red = '../images/notify-red.png';
 var btn_avatar = $('.nav__avatar');
 var btn_notify = $('.nav__info');
+var nav_avatar = $('.nav__avatar-img img');
 
 var role;
 var currentUserData;
@@ -25,6 +26,10 @@ function updateNotifyIcon(userNewsStatus) {
     notifyIcon.css('background-image', `url(${url_normal})`);
     console.log('none-notify');
   }
+}
+
+function updateAvatar(avatar) {
+  nav_avatar.attr('src', avatar);
 }
 
 function updateUserNewsStatus(role, account) {
@@ -80,9 +85,17 @@ async function getCurrentUserData() {
       const getCurrentUserDataResponse = await fetch(getCurrentUserDataUrl);
       currentUserData = await getCurrentUserDataResponse.json();
       // 第二個 Fetch 請求完成後的處理邏輯
-      updateNotifyIcon(currentUserData.userNewsStatus);
-      console.log(currentUserData);
+      if (role === '會員') {
+        updateNotifyIcon(currentUserData.userNewsStatus);
+        updateAvatar(currentUserData.userAvatar);
+      } else if (role === '商家') {
+        updateNotifyIcon(currentUserData.comNewsStatus);
+        updateAvatar(currentUserData.comAvatar);
+      } else if (role === '平台') {
+        console.log('待加入');
+      }
 
+      //comNewsStatus
       avator_menu_ul.append(
         `<li><a class="dropdown-item register" href="#">註冊</a></li>
         <li><hr class="dropdown-divider" /></li>
@@ -105,17 +118,22 @@ async function getCurrentUserData() {
 }
 
 function logout() {
-  fetch((url = 'http://localhost:8080/UserLogout/logout'), {
+  fetch('http://localhost:8080/UserLogout/logout', {
     method: 'POST',
+    cache: 'no-cache',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({}),
   })
     .then((r) => {
       if (r.ok) {
-        return r.json();
+        return r.text();
       }
     })
     .then((d) => {
       console.log(d);
-      location.reload();
+      alert('已登出');
+      location.href = '../';
+      // location.reload();
     });
 }
 
@@ -138,7 +156,7 @@ function bindEventToButtons() {
 
 btn_avatar.on('click', function () {
   // console.log('點擊頭像觸發');
-  console.log($('.nav__avatar .dropdown-center ul'));
+  console.log($('.nav__avatar-img img'));
 });
 
 btn_notify.on('click', function () {
