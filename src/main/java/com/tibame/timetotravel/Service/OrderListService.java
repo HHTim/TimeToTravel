@@ -1,12 +1,13 @@
 package com.tibame.timetotravel.service;
 
+import com.tibame.timetotravel.common.PageBean;
 import com.tibame.timetotravel.dto.OrderListDto;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 public interface OrderListService {
-    List<OrderListDto> findUserOrder(Integer userId) throws InvocationTargetException, IllegalAccessException;
+    PageBean<OrderListDto> findUserOrder(Integer userId, Integer page) throws InvocationTargetException, IllegalAccessException;
 
     List<OrderListDto> findUserOrderByName(Integer userId, String name) throws InvocationTargetException, IllegalAccessException;
 

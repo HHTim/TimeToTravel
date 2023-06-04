@@ -1,7 +1,9 @@
 package com.tibame.timetotravel.controller;
 
+import com.tibame.timetotravel.common.PageBean;
 import com.tibame.timetotravel.dto.OrderListDto;
 import com.tibame.timetotravel.service.OrderListService;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,20 +17,24 @@ public class OrderListController {
     @Autowired
     OrderListService orderListService;
 
-    @GetMapping("/orders/{userId}")
-    public List<OrderListDto> findUserOrder(@PathVariable Integer userId) throws InvocationTargetException, IllegalAccessException {
-        return orderListService.findUserOrder(userId);
+    @GetMapping("/orders/{page}")
+    public PageBean<OrderListDto> findUserOrder(HttpServletRequest req, @PathVariable Integer page) throws InvocationTargetException, IllegalAccessException {
+        Integer userId = (Integer) req.getSession().getAttribute("userId");
+        System.out.println("接受到的sessionID " + userId);
+        return orderListService.findUserOrder(3, page);
     }
 
-    @GetMapping("/orders/{userId}/name/{name}")
-    public List<OrderListDto> findUserOrderByName(@PathVariable Integer userId, @PathVariable String name) throws InvocationTargetException, IllegalAccessException {
-        return orderListService.findUserOrderByName(userId, name);
+    @GetMapping("/orders/name/{name}")
+    public List<OrderListDto> findUserOrderByName(@PathVariable String name, HttpServletRequest req) throws InvocationTargetException, IllegalAccessException {
+        Integer userId = (Integer) req.getSession().getAttribute("userId");
+        return orderListService.findUserOrderByName(3, name);
     }
 
-    @GetMapping("/orders/{userId}/no/{no}")
-    public List<OrderListDto> findUserOrderByNo(@PathVariable Integer userId, @PathVariable String no) throws InvocationTargetException, IllegalAccessException {
+    @GetMapping("/orders/no/{no}")
+    public List<OrderListDto> findUserOrderByNo(@PathVariable String no, HttpServletRequest req) throws InvocationTargetException, IllegalAccessException {
+        Integer userId = (Integer) req.getSession().getAttribute("userId");
         System.out.println("test " + userId + " " + no);
-        return orderListService.findUserOrderByNo(userId, Integer.parseInt(no));
+        return orderListService.findUserOrderByNo(3, Integer.parseInt(no));
     }
 
     @PutMapping("orders")

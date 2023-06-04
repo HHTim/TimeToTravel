@@ -1,5 +1,6 @@
 package com.tibame.timetotravel.service.ServiceImpl;
 
+import com.tibame.timetotravel.common.PageBean;
 import com.tibame.timetotravel.dto.OrderListDto;
 import com.tibame.timetotravel.entity.Journey;
 import com.tibame.timetotravel.entity.OrderDetail;
@@ -18,6 +19,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Service
 public class OrderListServiceImpl implements OrderListService {
@@ -32,7 +34,7 @@ public class OrderListServiceImpl implements OrderListService {
     OrderDetailRepository orderDetailRepository;
 
     @Override
-    public List<OrderListDto> findUserOrder(Integer userId) throws InvocationTargetException, IllegalAccessException {
+    public PageBean<OrderListDto> findUserOrder(Integer userId, Integer page) throws InvocationTargetException, IllegalAccessException {
         // 建立DTO陣列
         List<OrderListDto> orderListDtos = new ArrayList<>();
 
@@ -61,7 +63,10 @@ public class OrderListServiceImpl implements OrderListService {
             // 將完備的DTO放到List回傳
             orderListDtos.add(orderListDto);
         }
-        return orderListDtos;
+        PageBean<OrderListDto> pageBean = new PageBean<>();
+        pageBean.setPageSize(orderListDtos.size());
+        pageBean.setRows(orderListDtos.stream().skip((page - 1) * 5).limit(5).collect(Collectors.toList()));
+        return pageBean;
     }
 
     @Override

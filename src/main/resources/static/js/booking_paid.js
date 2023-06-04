@@ -159,7 +159,7 @@ function renderOrder() {
 // 跳轉頁面後的第一次請求
 async function fetchData() {
   const { roomId, startDate, endDate } = searchBody;
-  const resp = await fetch(`/rooms/paid/3/${roomId}/${startDate}/${endDate}`);
+  const resp = await fetch(`/rooms/paid/${roomId}/${startDate}/${endDate}`);
   data = await resp.json();
   console.log(data);
 

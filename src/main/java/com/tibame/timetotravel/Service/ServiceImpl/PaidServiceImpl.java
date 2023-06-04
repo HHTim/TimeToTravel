@@ -40,6 +40,7 @@ public class PaidServiceImpl implements PaidService {
         bookingPaidDto.setCheckIn(startDate);
         bookingPaidDto.setCheckOut(endDate);
         User user = userRepository.findByUserId(userId);
+        System.out.println(user);
         BeanUtils.copyProperties(bookingPaidDto, user);
         ViewCompanyRoom companyRoom = viewCompanyRoomRepository.findByRoomId(roomId);
         BeanUtils.copyProperties(bookingPaidDto, companyRoom);

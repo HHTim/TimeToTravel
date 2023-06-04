@@ -1,5 +1,6 @@
 package com.tibame.timetotravel.service.ServiceImpl;
 
+import com.tibame.timetotravel.common.PageBean;
 import com.tibame.timetotravel.dto.OrderListDto;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +16,8 @@ class OrderListDtoServiceImplTest {
 
     @Test
     public void findUserOrderTest() throws InvocationTargetException, IllegalAccessException {
-        List<OrderListDto> userOrders = orderListService.findUserOrder(3);
-        for (OrderListDto userOrder : userOrders) {
-            System.out.println(userOrder);
-        }
+        PageBean<OrderListDto> userOrders = orderListService.findUserOrder(3, 1);
+        System.out.println(userOrders);
     }
 
     @Test

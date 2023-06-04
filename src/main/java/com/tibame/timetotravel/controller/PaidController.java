@@ -3,6 +3,7 @@ package com.tibame.timetotravel.controller;
 import com.tibame.timetotravel.dto.BookingPaidDto;
 import com.tibame.timetotravel.dto.RoomOrderDto;
 import com.tibame.timetotravel.service.PaidService;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,27 +29,25 @@ public class PaidController {
 //        return new RedirectView("/booking_paid");
 //    }
 
-    @GetMapping("/paid/{userId}/{roomId}/{startDate}/{endDate}")
+    @GetMapping("/paid/{roomId}/{startDate}/{endDate}")
     public BookingPaidDto paid(
-            @PathVariable Integer userId,
+//            @PathVariable Integer userId,
             @PathVariable Integer roomId,
             @PathVariable String startDate,
-            @PathVariable String endDate
-//            HttpServletRequest req
+            @PathVariable String endDate,
+            HttpServletRequest req
     ) throws InvocationTargetException, IllegalAccessException {
 
-//        Integer userId = (Integer) req.getSession().getAttribute("userId");
-        return paidService.bookingPaid(userId, roomId, startDate, endDate);
+        Integer userId = (Integer) req.getSession().getAttribute("userId");
+        return paidService.bookingPaid(3, roomId, startDate, endDate);
     }
 
     @PostMapping("/insert/{userId}")
-    public void insertOrder(@PathVariable Integer userId, @RequestBody RoomOrderDto order) {
-//        HttpSession session = req.getSession();
-//        Integer userId = (Integer) session.getAttribute("userId");
-//        String roomId = (String) session.getAttribute("roomId");
+    public void insertOrder(HttpServletRequest req, @RequestBody RoomOrderDto order) {
+        Integer userId = (Integer) req.getSession().getAttribute("userId");
         System.out.println(order);
         System.out.println("Insert order: " + userId + " " + order.getRoomId());
-        System.out.println(paidService.insertOrder(userId, order));
+        System.out.println(paidService.insertOrder(3, order));
     }
 
 }

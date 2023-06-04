@@ -7,6 +7,7 @@ const searchPeople = document.querySelector('.search-option');
 const searchStart = document.querySelector('.search-start');
 const searchEnd = document.querySelector('.search-end');
 const searchResult = document.querySelector('#search-result');
+const tab2 = document.querySelector('.tab2');
 let searchBody = JSON.parse(sessionStorage.getItem('searchBody'));
 let isRenderPage = false;
 
