@@ -20,9 +20,9 @@ $(function () {
   function getAllUserOrCompany() {
     let url = '';
     if (radioValue == 1) {
-      url = 'http://localhost:8080/UserController/all';
+      url = '/UserController/all';
     } else {
-      url = 'http://localhost:8080/CompanyController/all';
+      url = '/CompanyController/all';
     }
     fetch(url)
       .then((r) => r.json())
@@ -80,7 +80,7 @@ $(function () {
         a2uMsgTitle: title,
         a2uMsgContent: content,
       };
-      url = 'http://localhost:8080/Admin2UserController/message';
+      url = '/Admin2UserController/message';
     } else {
       body = {
         a2cMsgId: null,
@@ -90,7 +90,7 @@ $(function () {
         a2cMsgTitle: title,
         a2cMsgContent: content,
       };
-      url = 'http://localhost:8080/Admin2ComController/message';
+      url = '/Admin2ComController/message';
     }
     fetch(url, {
       method: 'POST',
@@ -107,7 +107,7 @@ $(function () {
     console.log('update user news status');
     const formData = new FormData();
     formData.append('account', account);
-    let url = 'http://localhost:8080/Admin2UserController/userAccount';
+    let url = '/Admin2UserController/userAccount';
     let headers = {
       Accept: 'application/json',
     };
@@ -128,7 +128,7 @@ $(function () {
     console.log('update company news status');
     const formData = new FormData();
     formData.append('comName', comName);
-    let url = 'http://localhost:8080/Admin2ComController/comName';
+    let url = '/Admin2ComController/comName';
     let headers = {
       Accept: 'application/json',
     };

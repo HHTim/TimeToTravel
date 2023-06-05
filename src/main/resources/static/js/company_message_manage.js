@@ -22,9 +22,17 @@ function openLightbox(e) {
   $('#' + e).show();
 }
 
+function bindEventBtn() {
+  $('.button__detl').on('click', function () {
+    openLightbox($(this).attr('data-id'));
+  });
+
+  $('.button__detl').next();
+}
+
 function getMessageAll() {
   const tbody = document.querySelector('tbody');
-  let url = 'http://localhost:8080/Admin2ComController/message/a2c/view/page/' + currentPage.toString() + '/' + limit;
+  let url = '/Admin2ComController/message/a2c/view/page/' + currentPage.toString() + '/' + limit;
   fetch(url)
     .then((r) => r.json())
     .then((d) => {
@@ -37,7 +45,7 @@ function getMessageAll() {
             <td class="list__date">${e.a2cSendingTime}</td>
             <td class="list__title">${e.a2cMsgTitle}</td>
             <td class="list__detail">
-              <button class="button__detl" onclick="openLightbox('lightbox${e.a2cMsgId}')">查看</button>
+              <button class="button__detl" data-id=lightbox${e.a2cMsgId}>查看</button>
               <div id="lightbox${e.a2cMsgId}" class="lightbox">
                 <div class="lightbox__content">
                   <span class="close">&times;</span>
@@ -55,6 +63,8 @@ function getMessageAll() {
           `;
         })
         .join('');
+
+      bindEventBtn();
       $('ul.pagination > li').each(function (index) {
         if (index <= Pages) {
           $(this).css('display', 'block');
@@ -71,7 +81,7 @@ function getMessageAll() {
 function getMessageByDate() {
   const tbody = document.querySelector('tbody');
   let url =
-    'http://localhost:8080/Admin2ComController/message/a2c/view/page/dateRange/' +
+    '/Admin2ComController/message/a2c/view/page/dateRange/' +
     currentPage.toString() +
     '/' +
     limit +

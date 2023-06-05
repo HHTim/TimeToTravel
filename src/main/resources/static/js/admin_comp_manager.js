@@ -25,7 +25,7 @@ $(function () {
   var ComManagerKeyword_trigger_flag = false;
 
   function getCompanyInfomationByNormalPage() {
-    let url = 'http://localhost:8080/CompanyController/company/page/' + currentPage.toString() + '/' + limit;
+    let url = '/CompanyController/company/page/' + currentPage.toString() + '/' + limit;
     const tbody = document.querySelector('tbody');
     fetch(url)
       .then((r) => r.json())
@@ -82,13 +82,7 @@ $(function () {
   }
 
   function getCompanyInfomationByStatusPage(status) {
-    let url =
-      'http://localhost:8080/CompanyController/company/page/status/' +
-      status +
-      '/' +
-      currentPage.toString() +
-      '/' +
-      limit;
+    let url = '/CompanyController/company/page/status/' + status + '/' + currentPage.toString() + '/' + limit;
     const tbody = document.querySelector('tbody');
     fetch(url)
       .then((r) => r.json())
@@ -146,13 +140,7 @@ $(function () {
 
   function getCompanyInfomationByAccountKeywordPage(keyword) {
     console.log('account keyword:' + keyword);
-    let url =
-      'http://localhost:8080/CompanyController/company/page/' +
-      currentPage.toString() +
-      '/' +
-      limit +
-      '/keywordAccount/' +
-      keyword;
+    let url = '/CompanyController/company/page/' + currentPage.toString() + '/' + limit + '/keywordAccount/' + keyword;
     const tbody = document.querySelector('tbody');
     fetch(url)
       .then((r) => r.json())
@@ -210,13 +198,7 @@ $(function () {
 
   function getCompanyInfomationByComNameKeywordPage(keyword) {
     console.log('name keyword:' + keyword);
-    let url =
-      'http://localhost:8080/CompanyController/company/page/' +
-      currentPage.toString() +
-      '/' +
-      limit +
-      '/keywordComName/' +
-      keyword;
+    let url = '/CompanyController/company/page/' + currentPage.toString() + '/' + limit + '/keywordComName/' + keyword;
     const tbody = document.querySelector('tbody');
     fetch(url)
       .then((r) => r.json())
@@ -275,12 +257,7 @@ $(function () {
   function getCompanyInfomationByComManagerKeywordPage(keyword) {
     console.log('manager keyword:' + keyword);
     let url =
-      'http://localhost:8080/CompanyController/company/page/' +
-      currentPage.toString() +
-      '/' +
-      limit +
-      '/keywordComManager/' +
-      keyword;
+      '/CompanyController/company/page/' + currentPage.toString() + '/' + limit + '/keywordComManager/' + keyword;
     const tbody = document.querySelector('tbody');
     fetch(url)
       .then((r) => r.json())
@@ -343,7 +320,7 @@ $(function () {
       status = '1';
     }
 
-    let url = 'http://localhost:8080/CompanyController/company/status';
+    let url = '/CompanyController/company/status';
     const formData = new FormData();
     formData.append('comName', comName);
     formData.append('status', status);

@@ -64,9 +64,9 @@ function updateUserNewsStatus(role, account) {
     Accept: 'application/json',
   };
 
-  if (role === '會員') url = 'http://localhost:8080/UserController/user/newsStatus';
-  else if (role === '商家') url = 'http://localhost:8080/CompanyController/company/newsStatus';
-  else url = 'http://localhost:8080/AdminController/admin/newsStatus';
+  if (role === '會員') url = '/UserController/user/newsStatus';
+  else if (role === '商家') url = '/CompanyController/company/newsStatus';
+  else url = '/AdminController/admin/newsStatus';
   fetch(url, {
     method: 'PATCH',
     headers: headers,
@@ -82,9 +82,9 @@ function updateUserNewsStatus(role, account) {
 function getUserNewsMessage(role) {
   let url;
 
-  if (role === '會員') url = 'http://localhost:8080/Admin2UserController/message/a2u/view/notify/0/' + msgRow;
-  else if (role === '商家') url = 'http://localhost:8080/Admin2ComController/message/a2c/view/notify/0/' + msgRow;
-  else url = 'http://localhost:8080/AdminController/admin/newsStatus';
+  if (role === '會員') url = '/Admin2UserController/message/a2u/view/notify/0/' + msgRow;
+  else if (role === '商家') url = '/Admin2ComController/message/a2c/view/notify/0/' + msgRow;
+  else url = '/AdminController/admin/newsStatus';
   fetch(url)
     .then((r) => r.json())
     .then((d) => {
@@ -117,7 +117,7 @@ function getUserNewsMessage(role) {
 async function getCurrentUserData() {
   const avator_menu_ul = $('.nav__avatar .dropdown-center ul');
   try {
-    let identifyRoleUrl = 'http://localhost:8080/getCurrentUserController/current-user';
+    let identifyRoleUrl = '/getCurrentUserController/current-user';
     let getCurrentUserDataUrl;
     // 執行第一個 Fetch 請求
     const identifyRoleResponse = await fetch(identifyRoleUrl);
@@ -129,20 +129,21 @@ async function getCurrentUserData() {
       if (identifyRoleData.role === '會員') {
         console.log('會員');
         role = '會員';
-        getCurrentUserDataUrl = 'http://localhost:8080/UserController/user/' + identifyRoleData.user.userId;
+        getCurrentUserDataUrl = '/UserController/user/' + identifyRoleData.user.userId;
       } else if (identifyRoleData.role === '商家') {
         console.log('商家');
         role = '商家';
-        getCurrentUserDataUrl = 'http://localhost:8080/CompanyController/company/' + identifyRoleData.company.comId;
+        getCurrentUserDataUrl = '/CompanyController/company/' + identifyRoleData.company.comId;
       } else {
         console.log('平台');
         role = '平台';
-        getCurrentUserDataUrl = 'http://localhost:8080/AdminController/admin/' + identifyRoleData.admin.adminId;
+        getCurrentUserDataUrl = '/AdminController/admin/' + identifyRoleData.admin.adminId;
       }
       // 執行第二個 Fetch 請求
       const getCurrentUserDataResponse = await fetch(getCurrentUserDataUrl);
       currentUserData = await getCurrentUserDataResponse.json();
       // 第二個 Fetch 請求完成後的處理邏輯
+      console.log('wefwi' + JSON.stringify(currentUserData));
       if (role === '會員') {
         updateNotifyIcon(currentUserData.userNewsStatus);
         updateAvatar(currentUserData.userAvatar);
@@ -153,6 +154,7 @@ async function getCurrentUserData() {
         getUserNewsMessage(role, msgRow);
       } else if (role === '平台') {
         console.log('待加入');
+        updateAvatar('data:image/jpeg;base64,' + currentUserData.adminAvatar);
       }
 
       //comNewsStatus
@@ -183,7 +185,7 @@ async function getCurrentUserData() {
 }
 
 function logout() {
-  fetch('http://localhost:8080/UserLogout/logout', {
+  fetch('/UserLogout/logout', {
     method: 'POST',
     cache: 'no-cache',
     headers: { 'Content-Type': 'application/json' },
@@ -213,6 +215,9 @@ function bindEventToNews() {
       case '商家':
         location.href = '../html/company_message_manage.html';
         break;
+
+      case '平台':
+        location.href = '../html/admin.html';
     }
   });
 }
@@ -245,6 +250,7 @@ btn_notify.on('click', function () {
     updateUserNewsStatus(role, currentUserData.userAccount);
   } else if (role === '商家') {
     updateUserNewsStatus(role, currentUserData.comAccount);
+  } else if (role === '平台') {
   }
 });
 

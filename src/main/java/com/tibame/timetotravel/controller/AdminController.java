@@ -4,6 +4,7 @@ import com.google.code.kaptcha.Constants;
 import com.tibame.timetotravel.dto.LoginUserDto;
 import com.tibame.timetotravel.dto.UserSessionDto;
 import com.tibame.timetotravel.entity.Admin;
+import com.tibame.timetotravel.entity.User;
 import com.tibame.timetotravel.service.AdminService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.ConstraintViolation;
@@ -11,10 +12,7 @@ import jakarta.validation.Validator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Set;
 
@@ -51,5 +49,11 @@ public class AdminController extends BaseController{
         }
 
         return ResponseEntity.ok("{}");
+    }
+
+    @GetMapping(value = "/admin/{adminId}")
+    public Admin getAdminById(@PathVariable("adminId") Integer adminId){
+        System.out.println("接收到的adminId為:"+adminId);
+        return adminService.findByAdminId(adminId);
     }
 }

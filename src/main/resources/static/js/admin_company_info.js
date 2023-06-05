@@ -55,7 +55,7 @@ $(function () {
   }
 
   function updateData(comInfo) {
-    let url = 'http://localhost:8080/CompanyController/company';
+    let url = '/CompanyController/company';
     let headers = {
       'Content-Type': 'application/json',
       Accept: 'application/json',
@@ -93,7 +93,7 @@ $(function () {
   }
 
   function updateCompPassword(comId, password) {
-    let url = 'http://localhost:8080/CompanyController/company/password';
+    let url = '/CompanyController/company/password';
     const formData = new FormData();
     formData.append('comId', Number(comId));
     formData.append('password', password);

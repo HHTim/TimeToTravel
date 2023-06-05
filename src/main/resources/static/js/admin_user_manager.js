@@ -29,7 +29,7 @@ $(function () {
   var init_flag = true;
 
   function getUserInfomationByNormalPage() {
-    let url = 'http://localhost:8080/UserController/user/page/' + currentPage.toString() + '/' + limit;
+    let url = '/UserController/user/page/' + currentPage.toString() + '/' + limit;
     const tbody = document.querySelector('tbody');
     fetch(url)
       .then((r) => r.json())
@@ -84,8 +84,7 @@ $(function () {
   }
 
   function getUserInfomationByStatusPage(status) {
-    let url =
-      'http://localhost:8080/UserController/user/page/status/' + status + '/' + currentPage.toString() + '/' + limit;
+    let url = '/UserController/user/page/status/' + status + '/' + currentPage.toString() + '/' + limit;
     const tbody = document.querySelector('tbody');
     fetch(url)
       .then((r) => r.json())
@@ -141,8 +140,7 @@ $(function () {
 
   function getUserInfomationByKeywordPage(keyword) {
     console.log('keyword:' + keyword);
-    let url =
-      'http://localhost:8080/UserController/user/page/' + currentPage.toString() + '/' + limit + '/keyword/' + keyword;
+    let url = '/UserController/user/page/' + currentPage.toString() + '/' + limit + '/keyword/' + keyword;
     const tbody = document.querySelector('tbody');
     fetch(url)
       .then((r) => r.json())
@@ -198,7 +196,7 @@ $(function () {
 
   function getUserInfomationByDateRangPage() {
     let url =
-      'http://localhost:8080/UserController/user/page/dateRange/' +
+      '/UserController/user/page/dateRange/' +
       currentPage.toString() +
       '/' +
       limit +
@@ -269,7 +267,7 @@ $(function () {
       status = 'true';
     }
 
-    let url = 'http://localhost:8080/UserController/user/status';
+    let url = '/UserController/user/status';
     const formData = new FormData();
     formData.append('account', account);
     formData.append('status', status);

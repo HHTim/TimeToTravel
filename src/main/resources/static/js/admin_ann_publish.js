@@ -27,7 +27,7 @@ $(function () {
       annPic: imageData,
       comId: select_compoent.selectedIndex,
     };
-    const url = 'http://localhost:8080/AdminAnnController/anns';
+    const url = '/AdminAnnController/anns';
     fetch(url, {
       method: 'POST',
       headers: headers,
@@ -42,7 +42,7 @@ $(function () {
 
   function getComNameById() {
     console.log('get comNameById');
-    const url = 'http://localhost:8080/CompanyController/all';
+    const url = '/CompanyController/all';
     fetch(url)
       .then((r) => r.json())
       .then((d) => {

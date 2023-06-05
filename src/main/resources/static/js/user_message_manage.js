@@ -17,14 +17,22 @@ var startDate = '2023-01-01';
 var endDate = '2023-12-31';
 var start_dateflag = false;
 
-function openLightbox(e) {
+const openLightbox = (e) => {
   console.log(e);
   $('#' + e).show();
+};
+
+function bindEventBtn() {
+  $('.button__detl').on('click', function () {
+    openLightbox($(this).attr('data-id'));
+  });
+
+  $('.button__detl').next();
 }
 
 function getMessageAll() {
   const tbody = document.querySelector('tbody');
-  let url = 'http://localhost:8080/Admin2UserController/message/a2u/view/page/' + currentPage.toString() + '/' + limit;
+  let url = '/Admin2UserController/message/a2u/view/page/' + currentPage.toString() + '/' + limit;
   fetch(url)
     .then((r) => r.json())
     .then((d) => {
@@ -37,7 +45,7 @@ function getMessageAll() {
             <td class="list__date">${e.a2uSendingTime}</td>
             <td class="list__title">${e.a2uMsgTitle}</td>
             <td class="list__detail">
-              <button class="button__detl" onclick="openLightbox('lightbox${e.a2uMsgId}')">查看</button>
+              <button class="button__detl" data-id=lightbox${e.a2uMsgId}>查看</button>
               <div id="lightbox${e.a2uMsgId}" class="lightbox">
                 <div class="lightbox__content">
                   <span class="close">&times;</span>
@@ -55,6 +63,8 @@ function getMessageAll() {
           `;
         })
         .join('');
+
+      bindEventBtn();
       $('ul.pagination > li').each(function (index) {
         if (index <= Pages) {
           $(this).css('display', 'block');
@@ -71,7 +81,7 @@ function getMessageAll() {
 function getMessageByDate() {
   const tbody = document.querySelector('tbody');
   let url =
-    'http://localhost:8080/Admin2UserController/message/a2u/view/page/dateRange/' +
+    '/Admin2UserController/message/a2u/view/page/dateRange/' +
     currentPage.toString() +
     '/' +
     limit +

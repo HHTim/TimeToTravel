@@ -61,7 +61,7 @@ $(function () {
   }
 
   function updateData(userInfo) {
-    let url = 'http://localhost:8080/UserController/user';
+    let url = '/UserController/user';
     let headers = {
       'Content-Type': 'application/json',
       Accept: 'application/json',
@@ -96,7 +96,7 @@ $(function () {
   }
 
   function updateUserPassword(userId, password) {
-    let url = 'http://localhost:8080/UserController/user/password';
+    let url = '/UserController/user/password';
     const formData = new FormData();
     formData.append('userId', Number(userId));
     formData.append('password', password);
