@@ -1,3 +1,5 @@
+import { getCurrentUserInformation } from './header.js';
+
 $(function () {
   var account_input = $('#account');
   var manager_input = $('#manager');
@@ -24,7 +26,7 @@ $(function () {
   var newPwdVaild = false;
   var newPwdAgainVaild = false;
 
-  getSessionData = () => {
+  function getSessionData() {
     let revDate;
     comInfo = JSON.parse(sessionStorage.getItem('comp-info'));
     account_input.val(comInfo.account);
@@ -43,17 +45,17 @@ $(function () {
 
     if (comInfo.avatar != null) {
       console.log('set pic');
-      img_base64 = comInfo.avatar;
+      comInfo.avatar = comInfo.avatar.replace(/^data:image\/(png|jpg|jpeg);base64,/, '');
       avatar_img.attr('src', `data:image/jpeg;base64,${comInfo.avatar}`);
     } else {
       avatar_img.attr('src', '../images/avatar.svg');
     }
 
     // img src="data:image/*;base64,e.annPic";
-  };
+  }
 
   function updateData(comInfo) {
-    let url = 'http://localhost:8080/CompanyController/company';
+    let url = '/CompanyController/company';
     let headers = {
       'Content-Type': 'application/json',
       Accept: 'application/json',
@@ -91,7 +93,7 @@ $(function () {
   }
 
   function updateCompPassword(comId, password) {
-    let url = 'http://localhost:8080/CompanyController/company/password';
+    let url = '/CompanyController/company/password';
     const formData = new FormData();
     formData.append('comId', Number(comId));
     formData.append('password', password);
@@ -191,4 +193,5 @@ $(function () {
   });
 
   getSessionData();
+  getCurrentUserInformation();
 });

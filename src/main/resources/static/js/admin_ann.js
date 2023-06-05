@@ -1,3 +1,5 @@
+import { getCurrentUserInformation } from './header.js';
+
 $(function () {
   /* date */
   var start = moment().subtract(29, 'days');
@@ -48,7 +50,7 @@ $(function () {
 
   function deleteDataById(id) {
     let body = {};
-    fetch('http://localhost:8080/AdminAnnController/anns/' + id, {
+    fetch('/AdminAnnController/anns/' + id, {
       method: 'DELETE',
       body: JSON.stringify(body),
     })
@@ -70,7 +72,7 @@ $(function () {
     if (start_dateflag === true) {
       console.log('searchDate');
       url =
-        'http://localhost:8080/AdminAnnController/anns/page/' +
+        '/AdminAnnController/anns/page/' +
         currentPage.toString() +
         '/' +
         limit +
@@ -81,7 +83,7 @@ $(function () {
     } else if ($('input.form-input').val() !== '') {
       console.log('keywordSearch');
       url =
-        'http://localhost:8080/AdminAnnController/anns/page/' +
+        '/AdminAnnController/anns/page/' +
         currentPage.toString() +
         '/' +
         limit +
@@ -89,7 +91,7 @@ $(function () {
         $('input.form-input').val();
     } else {
       console.log('Normal Search');
-      url = 'http://localhost:8080/AdminAnnController/anns/page/' + currentPage.toString() + '/' + limit;
+      url = '/AdminAnnController/anns/page/' + currentPage.toString() + '/' + limit;
     }
     console.log('url=' + url);
     fetch(url)
@@ -142,7 +144,7 @@ $(function () {
     if ($('input.form-input').val() === '') {
       if (start_dateflag === true) {
         fetch(
-          'http://localhost:8080/AdminAnnController/anns/page/' +
+          '/AdminAnnController/anns/page/' +
             currentPage.toString() +
             '/' +
             limit +
@@ -197,7 +199,7 @@ $(function () {
       }
     } else {
       fetch(
-        'http://localhost:8080/AdminAnnController/anns/page/' +
+        '/AdminAnnController/anns/page/' +
           currentPage.toString() +
           '/' +
           limit +
@@ -341,4 +343,5 @@ $(function () {
 
   cb(start, end);
   getData();
+  getCurrentUserInformation();
 });

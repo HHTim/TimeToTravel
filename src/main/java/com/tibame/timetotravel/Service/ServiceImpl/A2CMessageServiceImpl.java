@@ -94,4 +94,9 @@ public class A2CMessageServiceImpl implements A2CMessageService {
         pageBeanView.setPageSize(Math.max(pageSize,1));
         return pageBeanView;
     }
+
+    @Override
+    public List<A2CMsgView> getNotifyMsgById(Integer comId, Integer startIndex, Integer endIndex) {
+        return a2CMessageViewRepository.findA2CViewMsgByComId(comId, startIndex, endIndex);
+    }
 }

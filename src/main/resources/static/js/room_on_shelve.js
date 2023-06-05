@@ -1,3 +1,5 @@
+import { getCurrentUserInformation } from './header.js';
+
 window.addEventListener('load', function () {
 	let saveBtn = document.querySelector('.save__btn__commit');
 	let mimeType = 'image/jpeg'; // 要將base64轉回img
@@ -107,23 +109,23 @@ window.addEventListener('load', function () {
 		let imgUrl = picturePreview.querySelector('img').getAttribute('src');
 		let roomPhoto = extractBase64String(imgUrl).base64String;
 
-		let requestData = {
-			comId: 123, // 假的comId
-			roomName: roomName,
-			roomBed: roomBed,
-			roomPeople: roomPeople,
-			room24Hours: room24Hours,
-			roomSmoking: roomSmoking,
-			roomPet: roomPet,
-			roomWifi: roomWifi,
-			roomBreakfast: roomBreakfast,
-			roomParking: roomParking,
-			roomPrice: roomPrice,
-			roomStock: roomStock,
-			roomPhoto: roomPhoto,
-			roomDesc: roomDesc,
-			roomStatus: false, // 預設為未上架
-		};
+    let requestData = {
+      comId: 123, // 假的comId
+      roomName: roomName,
+      roomBed: roomBed,
+      roomPeople: roomPeople,
+      room24Hours: room24Hours,
+      roomSmoking: roomSmoking,
+      roomPet: roomPet,
+      roomWifi: roomWifi,
+      roomBreakfast: roomBreakfast,
+      roomParking: roomParking,
+      roomPrice: roomPrice,
+      roomStock: roomStock,
+      roomPhoto: roomPhoto,
+      roomDesc: roomDesc,
+      roomStatus: false, // 預設為未上架
+    };
 
 		// console.log('aaaa:' + requestData.roomBed);
 		// console.log('ssss:' + roomPeople);
@@ -191,27 +193,27 @@ window.addEventListener('load', function () {
 		}
 	});
 
-	// 隱藏input=file的預設按鈕，並設立預覽區
-	let pictureUpdateBtn = document.querySelector('.room__photo__update');
-	let picturePreview = document.querySelector('.room__photo__preview');
-	picturePreview.addEventListener('click', function () {
-		pictureUpdateBtn.click();
-	});
+  // 隱藏input=file的預設按鈕，並設立預覽區
+  let pictureUpdateBtn = document.querySelector('.room__photo__update');
+  let picturePreview = document.querySelector('.room__photo__preview');
+  picturePreview.addEventListener('click', function () {
+    pictureUpdateBtn.click();
+  });
 
-	// click()後，發生change()
-	pictureUpdateBtn.addEventListener('change', function (e) {
-		const file = e.target.files[0]; // 第0個檔案
-		const reader = new FileReader(); // 用來讀取檔案
-		reader.onload = function (e) {
-			const img = document.createElement('img');
-			img.setAttribute('src', e.target.result);
-			img.addEventListener('load', function () {
-				// 圖片加載完後設立寬高
-				const width = img.width;
-				const height = img.height;
-				const maxWidth = picturePreview.offsetWidth;
-				const maxHeight = picturePreview.offsetHeight;
-				// const aspectRatio = width / height;
+  // click()後，發生change()
+  pictureUpdateBtn.addEventListener('change', function (e) {
+    const file = e.target.files[0]; // 第0個檔案
+    const reader = new FileReader(); // 用來讀取檔案
+    reader.onload = function (e) {
+      const img = document.createElement('img');
+      img.setAttribute('src', e.target.result);
+      img.addEventListener('load', function () {
+        // 圖片加載完後設立寬高
+        const width = img.width;
+        const height = img.height;
+        const maxWidth = picturePreview.offsetWidth;
+        const maxHeight = picturePreview.offsetHeight;
+        // const aspectRatio = width / height;
 
 				if (width > maxWidth || height > maxHeight) {
 					if (width / height > maxWidth / maxHeight) {

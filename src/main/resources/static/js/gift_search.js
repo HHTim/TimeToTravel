@@ -1,3 +1,5 @@
+import { getCurrentUserInformation } from './header.js';
+
 $('.btn-test-jquery').on('click', function () {
   alert('this is a test');
 });
@@ -95,6 +97,8 @@ favoriteBtn.addEventListener('click', function () {
 
   isFavorite = !isFavorite;
 });
+
+getCurrentUserInformation();
 
 // document.addEventListener('DOMContentLoaded', function () {
 //   var favoriteBtn = document.getElementById('fav-btn');

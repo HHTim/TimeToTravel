@@ -40,5 +40,10 @@ public interface UserRepository extends JpaRepository<User,Integer> {
     @Query(value = "SELECT * FROM USER WHERE USER_ACCOUNT LIKE %?1% OR USER_NAME LIKE %?1% ORDER BY USER_SIGN_DATETIME DESC LIMIT ?2,?3", nativeQuery = true)
     List<User> findKeywordByPage(String keyword, Integer currPage, Integer rows);
 
+    @Query(value = "SELECT COUNT(*) FROM USER WHERE USER_SIGN_DATETIME between ?1 AND ?2 ORDER BY USER_SIGN_DATETIME DESC", nativeQuery = true)
+    Integer findAllByDateRange(String startDate, String endDate);
+
+    @Query(value = "SELECT * FROM USER WHERE USER_SIGN_DATETIME between ?1 AND ?2 ORDER BY USER_SIGN_DATETIME DESC LIMIT ?3,?4", nativeQuery = true)
+    List<User> findDateRangeByPage(String startDate, String endDate, Integer currPage, Integer rows);
     
 }

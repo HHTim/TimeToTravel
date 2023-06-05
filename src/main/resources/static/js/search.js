@@ -1,3 +1,5 @@
+import { getCurrentUserInformation } from './header.js';
+
 const showcard = $('.card_all');
 var lightbox;
 
@@ -56,6 +58,8 @@ $(window).on('load', function () {
   const search = document.querySelector('#search-scene');
   var card1 = document.querySelector('.card1');
   search.onclick = () => fetchData();
+
+  getCurrentUserInformation();
 
   // 點擊搜尋把所有搜尋結果列出
   // search.addEventListener('click', () => {

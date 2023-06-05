@@ -1,3 +1,5 @@
+import { getCurrentUserInformation } from './header.js';
+
 const hotelSection = document.querySelector('.hotel');
 const scenesSection = document.querySelector('.p-scene');
 const roomSection = document.querySelector('.room');
@@ -278,5 +280,6 @@ async function fetchData() {
 }
 
 fetchData();
+getCurrentUserInformation();
 
 roomSection.addEventListener('click', handleRoomClick);

@@ -15,7 +15,7 @@
       integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
       crossorigin="anonymous"
     ></script>
-    <script src="../js/user_login.js" defer></script>
+    <script type="module" src="../js/user_login.js" defer></script>
 
     <!-- BS5 StyleSheet -->
     <link
@@ -63,8 +63,8 @@
                       </div>
                     </a>
                     <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">註冊</a></li>
-                      <li><a class="dropdown-item" href="#">登入</a></li>
+                      <!-- <li><a class="dropdown-item" href="#">註冊</a></li>
+                      <li><a class="dropdown-item" href="#">登入</a></li> -->
                     </ul>
                   </div>
                 </li>
@@ -193,7 +193,7 @@
                       <form class="login-form" id="adminLoginForm">
                         <div class="mb-2">
                           <label style="font-size: 20px" class="form-label">登入帳號</label>
-                          <input type="email" style="height: 45px" class="form-control" name="account" />
+                          <input type="text" style="height: 45px" class="form-control" name="account" />
                         </div>
                         <div class="mb-3">
                           <label style="font-size: 20px" class="form-label">登入密碼</label>

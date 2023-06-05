@@ -1,3 +1,5 @@
+import { getCurrentUserInformation } from './header.js';
+
 const searchResultsCountElement = document.getElementById('search-results-count');
 const searchHotel = document.querySelector('#search-hotel');
 const searchContent = document.querySelector('#search-result');
@@ -106,3 +108,4 @@ async function handleSelectRoom(dataset) {
 searchHotel.addEventListener('click', () => handleSearch());
 searchContent.addEventListener('click', (e) => handleSelectRoom(e.target.dataset));
 handleSearch();
+getCurrentUserInformation();

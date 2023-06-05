@@ -13,4 +13,6 @@ public interface A2CMessageViewService {
     Integer findViewByDateRange(String startDate, String endDate);
     List<A2CMsgView>findViewByDateRangePage(String startDate, String endDate, Integer currPage, Integer rows);
     PageBean<A2CMsgView> findBeanPageViewByDateRange(String startDate, String endDate, Integer currPage, Integer rows);
+
+    List<A2CMsgView> getNotifyMsgById(Integer comId, Integer startIndex, Integer endIndex);
 }

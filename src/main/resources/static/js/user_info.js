@@ -1,3 +1,5 @@
+import { getCurrentUserInformation } from './header.js';
+
 $(function () {
   var account_input = $('#account');
   var nickName_input = $('#nickName');
@@ -41,7 +43,7 @@ $(function () {
     select_gender.val(userInfo.gender ? 1 : 0);
     if (userInfo.avatar != null) {
       console.log('set pic');
-      img_base64 = userInfo.avatar;
+      userInfo.avatar = userInfo.avatar.replace(/^data:image\/(png|jpg|jpeg);base64,/, '');
       avatar_img.attr('src', `data:image/jpeg;base64,${userInfo.avatar}`);
     } else {
       avatar_img.attr('src', '../images/avatar.svg');
@@ -238,4 +240,6 @@ $(function () {
   });
 
   getSessionData();
+
+  getCurrentUserInformation();
 });

@@ -158,6 +158,20 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public List<User> findDateRangeByPage(String startDate, String endDate, Integer currPage, Integer rows) {
+        return userRepository.findDateRangeByPage(startDate, endDate, currPage, rows);
+    }
+
+    @Override
+    public PageBean<User> findBeanPageByDateRange(String startDate, String endDate, Integer currPage, Integer rows) {
+        int start = (currPage - 1) * rows;
+        int pageSize = (int)(Math.ceil(userRepository.findAllByDateRange(startDate, endDate)/(double)rows));
+        pageBean.setRows(findDateRangeByPage(startDate, endDate, start, rows));
+        pageBean.setPageSize(Math.max(pageSize,1));
+        return pageBean;
+    }
+
+    @Override
     public List<User> findAll() {
         return userRepository.findAll();
     }

@@ -1,3 +1,4 @@
+import { getCurrentUserInformation } from './header.js';
 $(function () {
   const userAvatarFile = $('#userAvatarFile');
   const companyAvatarFile = $('#companyAvatarFile');
@@ -114,4 +115,6 @@ $(function () {
   companyAvatarFile.on('change', function () {
     base64(this.files[0], 'companyAvatarImage');
   });
+
+  getCurrentUserInformation();
 });
