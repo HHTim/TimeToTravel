@@ -39,9 +39,11 @@ public class PublicSceneController {
         PublicScene upPublicscene = entityManager.find(PublicScene.class, sceneId);
         entityManager.merge(upPublicscene);
     }
-//        PublicSceneService.update(sceneId,publicScene);
-//        return ;
+
+    @GetMapping("/search/name/{name}")
+    public List<PublicScene> findByName(@PathVariable String name) {
+        return publicSceneService.findByName(name);
+    }
 
 
-    // Other methods for updating, deleting, or retrieving specific scenes
 }

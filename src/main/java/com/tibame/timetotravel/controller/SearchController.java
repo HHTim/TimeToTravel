@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.List;
 
 @RestController
 @RequestMapping("/rooms")
@@ -51,6 +52,16 @@ public class SearchController {
             @PathVariable Integer currPage
     ) throws InvocationTargetException, IllegalAccessException {
         return searchService.findAvailableCompany(keyword, people, startDate, endDate, currPage);
+    }
+
+    @GetMapping("/search/{keyword}/{people}/{startDate}/{endDate}")
+    public List<SearchRoomDto> searchForScenes(
+            @PathVariable String keyword,
+            @PathVariable Integer people,
+            @PathVariable String startDate,
+            @PathVariable String endDate
+    ) {
+        return searchService.findNearSceneRooms(keyword, people, startDate, endDate);
     }
 
 

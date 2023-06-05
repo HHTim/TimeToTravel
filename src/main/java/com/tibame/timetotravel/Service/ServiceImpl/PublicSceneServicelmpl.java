@@ -38,5 +38,9 @@ public class PublicSceneServicelmpl implements PublicSceneService {
         entityManager.merge(upPublicscene);
     }
 
+    @Override
+    public List<PublicScene> findByName(String name) {
+        return publicSceneRepository.findByName(name);
+    }
 }
 

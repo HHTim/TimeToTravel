@@ -9,7 +9,8 @@ public interface PublicSceneService {
 
     List<PublicScene> getAll();
 
-    void update(Integer sceneId,PublicScene publicScene);
+    void update(Integer sceneId, PublicScene publicScene);
 
 
+    List<PublicScene> findByName(String name);
 }

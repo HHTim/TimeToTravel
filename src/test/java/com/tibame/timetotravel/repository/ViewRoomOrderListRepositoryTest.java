@@ -20,4 +20,10 @@ class ViewRoomOrderListRepositoryTest {
         }
     }
 
+    @Test
+    public void findByUserIdAndOrderIdTest() {
+        List<ViewRoomOrderDetail> order = viewRoomOrderListRepository.findByUserIdAndOrderId(3, 39);
+        System.out.println(order);
+    }
+
 }

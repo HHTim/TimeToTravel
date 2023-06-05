@@ -70,7 +70,7 @@ public class OrderListServiceImpl implements OrderListService {
     }
 
     @Override
-    public List<OrderListDto> findUserOrderByName(Integer userId, String name) throws InvocationTargetException, IllegalAccessException {
+    public PageBean<OrderListDto> findUserOrderByName(Integer userId, String name, Integer page) throws InvocationTargetException, IllegalAccessException {
         // 建立DTO陣列
         List<OrderListDto> orderListDtos = new ArrayList<>();
 
@@ -92,16 +92,25 @@ public class OrderListServiceImpl implements OrderListService {
                 continue;
             }
             // 取得journeyName、journeyPrice
-            Journey journey = journeyRepository.findByJourneyId(journeyId);
-            BeanUtils.copyProperties(orderListDto, journey);
+            if (journeyId != 0) {
+                Journey journey = journeyRepository.findByJourneyId(journeyId);
+                System.out.println(journey.getJourneyId());
+                BeanUtils.copyProperties(orderListDto, journey);
+            } else {
+                orderListDto.setJourneyName("");
+                orderListDto.setJourneyPrice(0);
+            }
             // 將完備的DTO放到List回傳
             orderListDtos.add(orderListDto);
         }
-        return orderListDtos;
+        PageBean<OrderListDto> pageBean = new PageBean<>();
+        pageBean.setPageSize(orderListDtos.size());
+        pageBean.setRows(orderListDtos.stream().skip((page - 1) * 5).limit(5).collect(Collectors.toList()));
+        return pageBean;
     }
 
     @Override
-    public List<OrderListDto> findUserOrderByNo(Integer userId, Integer orderId) throws InvocationTargetException, IllegalAccessException {
+    public PageBean<OrderListDto> findUserOrderByNo(Integer userId, Integer orderId, Integer page) throws InvocationTargetException, IllegalAccessException {
         // 建立DTO陣列
         List<OrderListDto> orderListDtos = new ArrayList<>();
 
@@ -112,15 +121,24 @@ public class OrderListServiceImpl implements OrderListService {
             int roomId = order.getRoomId();
             int journeyId = order.getJourneyId();
             // 取得journeyName、journeyPrice
-            Journey journey = journeyRepository.findByJourneyId(journeyId);
-            BeanUtils.copyProperties(orderListDto, journey);
+            if (journeyId != 0) {
+                Journey journey = journeyRepository.findByJourneyId(journeyId);
+                System.out.println(journey.getJourneyId());
+                BeanUtils.copyProperties(orderListDto, journey);
+            } else {
+                orderListDto.setJourneyName("");
+                orderListDto.setJourneyPrice(0);
+            }
             // 取得comName
             String comName = roomRepository.findComNameByRoomId(roomId);
             orderListDto.setComName(comName);
 
             orderListDtos.add(orderListDto);
         }
-        return orderListDtos;
+        PageBean<OrderListDto> pageBean = new PageBean<>();
+        pageBean.setPageSize(orderListDtos.size());
+        pageBean.setRows(orderListDtos.stream().skip((page - 1) * 5).limit(5).collect(Collectors.toList()));
+        return pageBean;
     }
 
     @Override

@@ -251,9 +251,9 @@ searchCom.addEventListener('blur', async (e) => {
   let url;
 
   if (!name || name === '') {
-    url = '/rooms/orders/3';
+    url = '/rooms/orders/1';
   } else {
-    url = `/rooms/orders/3/name/${name}`;
+    url = `/rooms/orders/name/${name}/1`;
   }
 
   const resp = await fetch(url);
@@ -262,6 +262,14 @@ searchCom.addEventListener('blur', async (e) => {
   console.log(result);
   list.innerHTML = renderList(result);
   name = '';
+
+  // 總頁數
+  let pageSize = Math.ceil(result.pageSize / 5);
+  console.log('頁數: ' + pageSize);
+
+  // 渲染第一次請求結果
+  list.innerHTML = renderList(result.rows);
+  pageBtnWrapper.innerHTML = renderPaganation(pageSize);
 });
 
 searchNo.addEventListener('blur', async (e) => {
@@ -270,9 +278,9 @@ searchNo.addEventListener('blur', async (e) => {
   let url;
 
   if (!no || no === '') {
-    url = '/rooms/orders/3';
+    url = '/rooms/orders/1';
   } else {
-    url = `/rooms/orders/3/no/${no}`;
+    url = `/rooms/orders/no/${no}/1`;
   }
 
   const resp = await fetch(url);
@@ -281,6 +289,14 @@ searchNo.addEventListener('blur', async (e) => {
   console.log(result);
   list.innerHTML = renderList(result);
   no = '';
+
+  // 總頁數
+  let pageSize = Math.ceil(result.pageSize / 5);
+  console.log('頁數: ' + pageSize);
+
+  // 渲染第一次請求結果
+  list.innerHTML = renderList(result.rows);
+  pageBtnWrapper.innerHTML = renderPaganation(pageSize);
 });
 
 // 點選分頁

@@ -64,4 +64,9 @@ public class SearchServiceImpl implements SearchService {
         pageBean.setRows(collect);
         return pageBean;
     }
+
+    @Override
+    public List<SearchRoomDto> findNearSceneRooms(String keyword, Integer people, String startDate, String endDate) {
+
+    }
 }

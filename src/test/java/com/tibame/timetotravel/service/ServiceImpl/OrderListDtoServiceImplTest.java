@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.List;
 
 @SpringBootTest
 class OrderListDtoServiceImplTest {
@@ -22,16 +21,13 @@ class OrderListDtoServiceImplTest {
 
     @Test
     public void findUserOrderByName() throws InvocationTargetException, IllegalAccessException {
-        List<OrderListDto> orders = orderListService.findUserOrderByName(2, "noSuch");
-        System.out.println(orders.size());
-        for (OrderListDto order : orders) {
-            System.out.println(order);
-        }
+        PageBean<OrderListDto> orders = orderListService.findUserOrderByName(2, "noSuch", 1);
+        System.out.println(orders);
     }
 
     @Test
     public void findUserOrderByNo() throws InvocationTargetException, IllegalAccessException {
-        List<OrderListDto> order = orderListService.findUserOrderByNo(2, 9);
+        PageBean<OrderListDto> order = orderListService.findUserOrderByNo(2, 9, 1);
         System.out.println(order);
     }
 
