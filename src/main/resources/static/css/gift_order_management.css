@@ -538,7 +538,7 @@ tbody {
   font-size: 2rem;
 }
 .lightbox-content div {
-  width: 65%;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   margin-bottom: 1rem;
@@ -548,8 +548,8 @@ tbody {
   font-weight: bold;
 }
 
-.lightbox-content.open {
-  display: flex;
+.open {
+  display: block;
 }
 
 .close-button {

@@ -12,6 +12,7 @@ public interface GiftRepository extends JpaRepository<Gift, Integer> {
 
     @Query(value = "SELECT * FROM GIFT WHERE GIFT_NAME LIKE %?1%", nativeQuery = true)
     List<Gift> findByKeyword(String keyword);
-    @Query(value = "SELECT * FROM GIFT WHERE GIFT_STOCK LIKE %?1%", nativeQuery = true)
+
+    @Query(value = "SELECT * FROM GIFT WHERE GIFT_TYPE_ID LIKE %?1%", nativeQuery = true)
     List<Gift> findByGiftType(String giftTypeValue);
 }
