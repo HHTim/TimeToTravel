@@ -1,9 +1,6 @@
 package com.tibame.timetotravel.service.ServiceImpl;
 
-
-import com.tibame.timetotravel.common.PageBean;
-import com.tibame.timetotravel.dto.LoginCompanyDto;
-import com.tibame.timetotravel.dto.RegisterCompanyDto;
+import com.tibame.timetotravel.dto.*;
 import com.tibame.timetotravel.entity.Company;
 import com.tibame.timetotravel.repository.CompanyRepository;
 import com.tibame.timetotravel.service.CompanyService;
@@ -21,16 +18,7 @@ import java.util.List;
 public class CompanyServiceImpl implements CompanyService {
     @Autowired
     @Qualifier("CompanyRepository")
-    CompanyRepository companyRepository;
-
-    @Autowired
-    PageBean<Company> pageBean;
-
-    @Transactional
-    @Override
-    public void insert(Company company) {
-        companyRepository.save(company);
-    }
+    private CompanyRepository companyRepository;
 
     private String sha512(String input) {
         String toReturn = null;
@@ -47,7 +35,7 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
-    public void insertRegisterCompany(RegisterCompanyDto dto) throws Exception {
+    public void insert(RegisterCompanyDto dto) throws Exception {
         if (companyRepository.findByComAccount(dto.getAccount()) != null) {
             throw new Exception("該帳號已存在");
         }
@@ -68,7 +56,7 @@ public class CompanyServiceImpl implements CompanyService {
 
         company.setComSignDate(new Timestamp(System.currentTimeMillis()));
         company.setComStatus(1);
-        company.setComNewsStatus(0);
+        company.setComNewsStatus(false);
         company.setComLatitude("");
         company.setComLongitude("");
 
@@ -86,123 +74,71 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
+    public CompanyDetailResponseDto get(int companyId) throws Exception {
+        Company company = companyRepository.findById(companyId).orElseThrow(() -> new Exception("廠商不存在"));
+
+        CompanyDetailResponseDto dto = new CompanyDetailResponseDto();
+        dto.setAccount(company.getComAccount());
+        dto.setName(company.getComName());
+        dto.setManage(company.getComManager());
+        dto.setAddress(company.getComAddress());
+        dto.setPhone(company.getComPhone());
+        dto.setEmail(company.getComEmail());
+        dto.setAvatar(company.getComAvatar());
+        dto.setTax(company.getComTaxId());
+        dto.setSignDate(company.getComSignDate());
+
+        return dto;
+    }
+
+    @Override
+    public void modify(int companyId, ModifyCompanyDto dto) throws Exception {
+        Company company = companyRepository.findById(companyId).orElseThrow(() -> new Exception("廠商不存在"));
+        company.setComName(dto.getName());
+        company.setComManager(dto.getManage());
+        company.setComAddress(dto.getAddress());
+        company.setComPhone(dto.getPhone());
+        company.setComEmail(dto.getEmail());
+        company.setComAvatar(dto.getAvatar());
+        company.setComTaxId(dto.getTax());
+
+        companyRepository.save(company);
+    }
+
+    @Override
+    public void modify(int companyId, ModifyCompanyPasswordDto dto) throws Exception {
+        Company company = companyRepository.findById(companyId).orElseThrow(() -> new Exception("廠商不存在"));
+        if (!sha512(dto.getOriginalPassword()).equals(company.getComPassword())) {
+            throw new Exception("原始密碼不一致");
+        }
+
+        company.setComPassword(sha512(dto.getNewPassword()));
+
+        companyRepository.save(company);
+    }
+
+    @Override
+    @Transactional
     public void deleteById(Integer comId) {
+        System.out.println("資料庫刪除成功");
         companyRepository.deleteById(comId);
-        System.out.println("刪除comId: "+ comId);
     }
 
     @Override
+    @Transactional
     public void updateById(Integer comId, Company company) {
+        if(companyRepository.findById(comId).orElse(null) != null) {
+            System.out.println("資料庫更新成功");
+            companyRepository.save(company);
+        }
     }
 
-    @Override
     public Company findById(Integer comId) {
         return companyRepository.findById(comId).orElse(null);
     }
 
-    @Transactional
-    @Override
-    public String updateComapnyNewsStatusByAccount(String account, Integer newsStatus) {
-        companyRepository.updateCompanyNewsStatus(account, newsStatus);
-        return "更新Company: " + account + "的newsStatus成功";
-    }
-
-    @Transactional
-    @Override
-    public String updateByComName(String companyName) {
-        System.out.println(companyName);
-        Company company = companyRepository.findByComName(companyName);
-        company.setComNewsStatus(1);
-        companyRepository.save(company);
-        return companyName;
-    }
-
-    @Transactional
-    @Override
-    public String updateByPassword(String password, Integer id) {
-        companyRepository.updateCompanyPassword(password, id);
-        return "更新密碼成功";
-    }
-
-    @Transactional
-    @Override
-    public String updateCompStatusByComName(String comName, Integer status) {
-        companyRepository.updateCompanyStatus(comName, status);
-        return "更新Company: " + comName + "的Status成功";
-    }
-
-    @Override
-    public List<Company> findByPage(Integer currPage, Integer rows) {
-        return companyRepository.findByPage(currPage,rows);
-    }
-
-    @Override
-    public PageBean<Company> findByPageRowData(Integer currPage, Integer rows) {
-        int start = (currPage - 1) * rows;
-        int pageSize = (int)(Math.ceil(companyRepository.findAll().size()/(double)rows));
-        pageBean.setRows(findByPage(start,rows));
-        pageBean.setPageSize(Math.max(pageSize,1));
-        return pageBean;
-    }
-
-    @Override
-    public List<Company> findStatusByPage(Integer status, Integer currPage, Integer rows) {
-        return companyRepository.findStatusByPage(status, currPage, rows);
-    }
-
-    @Override
-    public PageBean<Company> findStatusByPageRowData(Integer status, Integer currPage, Integer rows) {
-        int start = (currPage - 1) * rows;
-        int pageSize = (int)(Math.ceil(companyRepository.findAllStatus(status)/(double)rows));
-        pageBean.setRows(findStatusByPage(status, start, rows));
-        pageBean.setPageSize(Math.max(pageSize,1));
-        return pageBean;
-    }
-
-    @Override
-    public List<Company> findAccountKeywordByPage(String keyword, Integer currPage, Integer rows) {
-        return companyRepository.findAccountKeywordByPage(keyword, currPage, rows);
-    }
-
-    @Override
-    public PageBean<Company> findAccountKeywordByPageRowData(String keyword, Integer currPage, Integer rows) {
-        int start = (currPage - 1) * rows;
-        int pageSize = (int)(Math.ceil(companyRepository.findAllByAccountKeword(keyword)/(double)rows));
-        pageBean.setRows(findAccountKeywordByPage(keyword, start, rows));
-        pageBean.setPageSize(Math.max(pageSize,1));
-        return pageBean;
-    }
-
-    @Override
-    public List<Company> findComNameKeywordByPage(String keyword, Integer currPage, Integer rows) {
-        return companyRepository.findComNameKeywordByPage(keyword, currPage, rows);
-    }
-
-    @Override
-    public PageBean<Company> findComNameKeywordByPageRowData(String keyword, Integer currPage, Integer rows) {
-        int start = (currPage - 1) * rows;
-        int pageSize = (int)(Math.ceil(companyRepository.findAllByComNameKeword(keyword)/(double)rows));
-        pageBean.setRows(findComNameKeywordByPage(keyword, start, rows));
-        pageBean.setPageSize(Math.max(pageSize,1));
-        return pageBean;
-    }
-
-    @Override
-    public List<Company> findComManagerKeywordByPage(String keyword, Integer currPage, Integer rows) {
-        return companyRepository.findComManagerKeywordByPage(keyword, currPage, rows);
-    }
-
-    @Override
-    public PageBean<Company> findComManagerKeywordByPageRowData(String keyword, Integer currPage, Integer rows) {
-        int start = (currPage - 1) * rows;
-        int pageSize = (int)(Math.ceil(companyRepository.findAllByComManagerKeword(keyword)/(double)rows));
-        pageBean.setRows(findComManagerKeywordByPage(keyword, start, rows));
-        pageBean.setPageSize(Math.max(pageSize,1));
-        return pageBean;
-    }
-
-    @Override
     public List<Company> findAll() {
         return companyRepository.findAll();
     }
+
 }

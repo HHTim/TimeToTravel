@@ -2,9 +2,7 @@ package com.tibame.timetotravel.controller;
 
 import com.tibame.timetotravel.common.PageBean;
 import com.google.code.kaptcha.Constants;
-import com.tibame.timetotravel.dto.LoginCompanyDto;
-import com.tibame.timetotravel.dto.RegisterCompanyDto;
-import com.tibame.timetotravel.dto.UserSessionDto;
+import com.tibame.timetotravel.dto.*;
 import com.tibame.timetotravel.entity.Company;
 import com.tibame.timetotravel.service.CompanyService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -136,6 +134,62 @@ public class CompanyController extends BaseController {
     public PageBean<Company> readByComManagerKeyWords(@PathVariable Integer currPage, @PathVariable Integer rows, @PathVariable String keyword){
         System.out.println("ComManager 關鍵字搜尋");
         return companyService.findComManagerKeywordByPageRowData(keyword, currPage, rows);
+    @GetMapping("/company")
+    public ResponseEntity detail(HttpServletRequest request){
+        if (request.getSession().getAttribute("company_id") == null) {
+            return unauthorized("尚未登入");
+        }
+
+        try {
+            int id = (int) request.getSession().getAttribute("company_id");
+            CompanyDetailResponseDto dto = companyService.get(id);
+
+            return ResponseEntity.ok(dto);
+        } catch (Exception e) {
+            return badRequest(e.getMessage());
+        }
+    }
+
+    @PutMapping("/company")
+    public ResponseEntity modify(@RequestBody ModifyCompanyDto dto, HttpServletRequest request){
+        if (request.getSession().getAttribute("company_id") == null) {
+            return unauthorized("尚未登入");
+        }
+
+        Set<ConstraintViolation<ModifyCompanyDto>> validateSet = validator.validate(dto);
+        if (!validateSet.isEmpty()) {
+            return badRequest(validateSet);
+        }
+
+        try {
+            int id = (int) request.getSession().getAttribute("company_id");
+            companyService.modify(id, dto);
+        } catch (Exception e) {
+            return badRequest(e.getMessage());
+        }
+
+        return ResponseEntity.ok("{}");
+    }
+
+    @PutMapping("/company/password")
+    public ResponseEntity modifyPassword(@RequestBody ModifyCompanyPasswordDto dto, HttpServletRequest request){
+        if (request.getSession().getAttribute("company_id") == null) {
+            return unauthorized("尚未登入");
+        }
+
+        Set<ConstraintViolation<ModifyCompanyPasswordDto>> validateSet = validator.validate(dto);
+        if (!validateSet.isEmpty()) {
+            return badRequest(validateSet);
+        }
+
+        try {
+            int id = (int) request.getSession().getAttribute("company_id");
+            companyService.modify(id, dto);
+        } catch (Exception e) {
+            return badRequest(e.getMessage());
+        }
+
+        return ResponseEntity.ok("{}");
     }
 
     @GetMapping("/all")

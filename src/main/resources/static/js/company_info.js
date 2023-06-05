@@ -1,197 +1,164 @@
 import { getCurrentUserInformation } from './header.js';
-
 $(function () {
-  var account_input = $('#account');
-  var manager_input = $('#manager');
-  var phone_input = $('#phone');
-  var taxid_input = $('#texId');
-  var signdate = $('#signdate');
-  var email_input = $('#email');
-  var com_name_input = $('#comName');
-  var address_input = $('#address');
-  var fileUpload = $('#pic');
-  var avatar_img = $('#avatarBig');
-  var update = $('#update');
-  var old_password = $('#old_password');
-  var old_password_hint = $('#old_password_hint');
-  var new_password_hint = $('#new_password_hint');
-  var new_password_vaild_hint = $('#new_password_vaild_hint');
-  var new_password = $('#new_password');
-  var password_vaild = $('#password_vaild');
-  var confirm_password = $('#confirm_password');
-  var checkUpdate = $('#checkUpdate');
-  var comInfo;
-  var oldPwd;
-  var oldPwdVaild = false;
-  var newPwdVaild = false;
-  var newPwdAgainVaild = false;
-
-  getSessionData = () => {
-    let revDate;
-    comInfo = JSON.parse(sessionStorage.getItem('comp-info'));
-    account_input.val(comInfo.account);
-    oldPwd = comInfo.password;
-    manager_input.val(comInfo.manager);
-    phone_input.val(comInfo.phone);
-    taxid_input.val(comInfo.taxId);
-    revDate = new Date(comInfo.signdate);
-
-    // 格式化日期字串為 yyyy-mm-dd 格式
-    revDate = revDate.toISOString().split('T')[0];
-    signdate.val(revDate);
-    email_input.val(comInfo.email);
-    com_name_input.val(comInfo.name);
-    address_input.val(comInfo.address);
-
-    if (comInfo.avatar != null) {
-      console.log('set pic');
-      img_base64 = comInfo.avatar;
-      avatar_img.attr('src', `data:image/jpeg;base64,${comInfo.avatar}`);
-    } else {
-      avatar_img.attr('src', '../images/avatar.svg');
+  const avatarFile = $('#avatarFile');
+  const account = $('#account');
+  const manage = $('#manage');
+  const name = $('#name');
+  const email = $('#email');
+  const phone = $('#phone');
+  const tax = $('#tax');
+  const address = $('#address');
+  const signDate = $('#signDate');
+  const avatarImage = $('#avatarImage');
+  const base64 = (file, imageId) => {
+    if (file === undefined) {
+      return;
     }
 
-    // img src="data:image/*;base64,e.annPic";
+    const reader = new FileReader();
+
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      avatarImage.attr('src', reader.result);
+    };
+    reader.onerror = (error) => {
+      console.log('Error: ', error);
+    };
+  };
+  const modify = () => {
+    const data = {
+      account: account.val(),
+      manage: manage.val(),
+      name: name.val(),
+      email: email.val(),
+      phone: phone.val(),
+      tax: tax.val(),
+      address: address.val(),
+      avatar: avatarImage.attr('src'),
+    };
+
+    if (data.avatar.indexOf(';base64') === -1) {
+      data.avatar = '';
+    }
+
+    $.ajax({
+      url: '/CompanyController/company',
+      data: JSON.stringify(data),
+      type: 'PUT',
+      dataType: 'json',
+      contentType: 'application/json;charset=utf-8',
+    })
+      .done(() => {
+        $('#errorMessage').html('');
+        alert('更新成功');
+        location.reload();
+      })
+      .fail((response) => {
+        console.log('fail', response);
+        let errorMessage = '發生錯誤';
+        if (response.status === 400) {
+          if (typeof response.responseJSON.error_message === 'string') {
+            errorMessage = response.responseJSON.error_message;
+          } else if (typeof response.responseJSON.error_message === 'object') {
+            errorMessage = Object.values(response.responseJSON.error_message).join('<br />');
+          }
+        }
+
+        $('#errorMessage').html(errorMessage);
+      });
+  };
+  const modifyPassword = () => {
+    const data = {
+      originalPassword: $('#originalPassword').val(),
+      newPassword: $('#newPassword').val(),
+    };
+
+    if (data.newPassword !== $('#newPasswordConfirm').val()) {
+      $('#passwordErrorMessage').html('兩次密碼不一致');
+      return;
+    }
+
+    $.ajax({
+      url: '/CompanyController/company/password',
+      data: JSON.stringify(data),
+      type: 'PUT',
+      dataType: 'json',
+      contentType: 'application/json;charset=utf-8',
+    })
+      .done(() => {
+        $('#passwordErrorMessage').html('');
+        alert('更新成功');
+        location.reload();
+      })
+      .fail((response) => {
+        console.log('fail', response);
+        let errorMessage = '發生錯誤';
+        if (response.status === 400) {
+          if (typeof response.responseJSON.error_message === 'string') {
+            errorMessage = response.responseJSON.error_message;
+          } else if (typeof response.responseJSON.error_message === 'object') {
+            errorMessage = Object.values(response.responseJSON.error_message).join('<br />');
+          }
+        }
+
+        $('#passwordErrorMessage').html(errorMessage);
+      });
+  };
+  const init = () => {
+    $.ajax({
+      url: '/CompanyController/company',
+      type: 'GET',
+      dataType: 'json',
+      contentType: 'application/json;charset=utf-8',
+    })
+      .done((response) => {
+        console.log(response);
+        account.val(response.account);
+        manage.val(response.manage);
+        name.val(response.name);
+        email.val(response.email);
+        phone.val(response.phone);
+        tax.val(response.tax);
+        address.val(response.address);
+        signDate.val(response.signDate.substr(0, 10));
+        if (typeof response.avatar === 'string' && response.avatar !== '') {
+          avatarImage.attr('src', response.avatar);
+        }
+      })
+      .fail((response) => {
+        console.log('fail', response);
+        if (response.status === 401) {
+          alert('請先登入');
+          location.href = 'user_login.html';
+          return;
+        }
+
+        alert('發生錯誤');
+      });
   };
 
-  function updateData(comInfo) {
-    let url = 'http://localhost:8080/CompanyController/company';
-    let headers = {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-    };
+  $('#modifyForm').on('submit', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
 
-    comInfo.avatar = comInfo.avatar.replace(/^data:image\/(png|jpg|jpeg);base64,/, '');
-    let body = {
-      comId: comInfo.id,
-      comAccount: comInfo.account,
-      comPassword: comInfo.password,
-      comName: comInfo.name,
-      comAddress: comInfo.address,
-      comManager: comInfo.manager,
-      comPhone: comInfo.phone,
-      comTaxId: comInfo.taxId,
-      comSignDate: comInfo.signdate,
-      comEmail: comInfo.email,
-      comStatus: Number(comInfo.status),
-      comLongitude: comInfo.longitude,
-      comLatitude: comInfo.latitude,
-      comAvatar: comInfo.avatar,
-      comNewsStatus: Number(comInfo.newsStatus),
-    };
-
-    fetch(url, {
-      method: 'POST',
-      headers: headers,
-      body: JSON.stringify(body),
-    })
-      .then((r) => r.text())
-      .then((d) => {
-        console.log(d);
-        // location.href = '../admin_comp_manager';
-      });
-  }
-
-  function updateCompPassword(comId, password) {
-    let url = 'http://localhost:8080/CompanyController/company/password';
-    const formData = new FormData();
-    formData.append('comId', Number(comId));
-    formData.append('password', password);
-    let headers = {
-      Accept: 'application/json',
-    };
-    fetch(url, {
-      method: 'PATCH',
-      headers: headers,
-      body: formData,
-    })
-      .then((r) => r.text())
-      .then((d) => {
-        console.log(d);
-      });
-  }
-
-  fileUpload.on('change', function (e) {
-    for (let i = 0; i < this.files.length; i++) {
-      let reader = new FileReader(); // 用來讀取檔案
-      reader.readAsDataURL(this.files[i]); // 讀取檔案
-      reader.addEventListener('load', function () {
-        comInfo.avatar = reader.result;
-
-        //console.log(reader.result);
-        avatar_img.attr('src', `${comInfo.avatar}`);
-      });
-    }
+    modify();
   });
 
-  function hintUpdateSuccessText(success) {
-    checkUpdate.text(success);
-    checkUpdate.css('color', 'green');
-    checkUpdate.css('display', 'inline-block');
-  }
+  $('#modifyPasswordForm').on('submit', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
 
-  update.on('click', function () {
-    updateData(comInfo);
-    sessionStorage.setItem('com-info', JSON.stringify(comInfo));
-    hintUpdateSuccessText('更新成功');
+    modifyPassword();
   });
 
-  old_password.blur(function () {
-    if (old_password.val() === oldPwd) {
-      console.log('密碼正確');
-      oldPwdVaild = true;
-      old_password_hint.css('display', 'none');
-    } else {
-      console.log('密碼錯誤');
-      oldPwdVaild = false;
-      old_password_hint.css('display', 'inline-block');
-    }
+  $('#avatarButton').on('click', () => {
+    avatarFile.click();
   });
 
-  new_password.blur(function () {
-    console.log(new_password.val());
-    if (new_password.val().length >= 8) {
-      console.log('輸入成功');
-      newPwdVaild = true;
-      new_password_hint.css('display', 'none');
-    } else {
-      console.log('輸入8字元以上');
-      newPwdVaild = false;
-      new_password_hint.css('display', 'inline-block');
-    }
+  avatarFile.on('change', function () {
+    base64(this.files[0]);
   });
 
-  password_vaild.blur(function () {
-    console.log(password_vaild.val());
-    if (password_vaild.val() === new_password.val()) {
-      newPwdAgainVaild = true;
-      new_password_vaild_hint.css('display', 'none');
-    } else {
-      newPwdAgainVaild = false;
-      new_password_vaild_hint.css('display', 'inline-block');
-    }
-  });
-
-  confirm_password.on('click', function () {
-    console.log(confirm_password.val());
-    if (oldPwdVaild === true && newPwdVaild === true && newPwdAgainVaild === true) {
-      console.log('修改密碼成功');
-      comInfo.password = password_vaild.val();
-      updateCompPassword(comInfo.id, password_vaild.val());
-    } else {
-      oldPwdVaild == false
-        ? old_password_hint.css('display', 'inline-block')
-        : old_password_hint.css('display', 'none');
-      newPwdVaild == false
-        ? new_password_hint.css('display', 'inline-block')
-        : new_password_hint.css('display', 'none');
-
-      newPwdAgainVaild == false
-        ? new_password_vaild_hint.css('display', 'inline-block')
-        : new_password_vaild_hint.css('display', 'none');
-    }
-  });
-
-  getSessionData();
+  init();
   getCurrentUserInformation();
 });
