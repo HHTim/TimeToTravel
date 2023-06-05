@@ -33,10 +33,14 @@ public class PublicSceneServicelmpl implements PublicSceneService {
     }
 
     @Override
-    public void update (Integer sceneId,PublicScene publicScene){
+    public void update(Integer sceneId, PublicScene publicScene) {
         PublicScene upPublicscene = entityManager.find(PublicScene.class, sceneId);
         entityManager.merge(upPublicscene);
     }
 
+    @Override
+    public List<PublicScene> findByName(String name) {
+        return publicSceneRepository.findByName(name);
+    }
 }
 

@@ -350,8 +350,12 @@ body {
 }
 
 .url_style {
-  text-decoration: underline;
   font-size: 12px;
+  color: #006caa;
+  line-height: 1.5;
+}
+.url_style:hover {
+  color: #004c77;
 }
 
 .card-body {
@@ -422,19 +426,61 @@ input[type=text] {
   left: 50%;
   transform: translate(-50%, -50%);
   width: auto;
-  height: auto;
+  height: 500px;
   width: 600px;
   background: #fff;
   padding: 20px;
+  padding-top: 32px;
   border-radius: 5px;
   box-shadow: 0px 0px 0px 99999px rgba(0, 0, 0, 0.3);
+  overflow-y: scroll;
 }
-.box * {
-  z-index: 3;
+.box .left_pic {
+  width: 100%;
+  height: 250px;
+  margin: auto;
+  background-color: red;
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 3px #9b9999;
+  margin-bottom: 0.5rem;
+}
+.box .left_pic img {
+  min-width: 100%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  scale: 1.1;
+  transform-origin: 0 0;
+}
+.box .title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  line-height: 1.5;
 }
 .box .close {
-  float: right;
+  position: absolute;
+  display: block;
+  width: 20px;
+  height: 20px;
+  top: 10px; /* 距離燈箱內容頂部的距離 */
+  right: 10px; /* 距離燈箱內容右側的距離 */
+  border: none;
+  background-color: #be4b4b;
+  color: #fff;
+  padding: 1rem;
+  border-radius: 5px;
+  box-shadow: 0 0 3px #9b9999;
   cursor: pointer;
+}
+.box .close::after {
+  content: "X";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .open {
@@ -443,4 +489,153 @@ input[type=text] {
 
 .lightbox_pic_style {
   width: 50%;
+}
+
+.hotel {
+  width: 100%;
+  position: relative;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.hotel__card {
+  width: 100%;
+  height: 150px;
+  border-radius: 10px;
+  display: flex;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  border: 1.5px solid #007bff;
+  box-shadow: 0 4px 2px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+.hotel__content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.hotel__img {
+  width: 100%;
+  max-width: 200px;
+  height: 100%;
+  background-color: transparent;
+  position: relative;
+  overflow: hidden;
+  margin-right: 0.5rem;
+  border-radius: 10px;
+}
+.hotel__img img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  scale: 0.24;
+  transform-origin: 0 0;
+  box-shadow: 0 0 3px #9b9999;
+  transition: all 0.2s ease-in-out;
+}
+.hotel__loading {
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ccc;
+}
+.hotel__card:hover {
+  background-color: #eee;
+}
+.hotel__card:hover .hotel__img img {
+  scale: 0.25;
+}
+.hotel__title {
+  height: -moz-fit-content;
+  height: fit-content;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 1.5;
+}
+.hotel__rank {
+  padding: 0;
+  margin: 0;
+  margin-left: 1rem;
+}
+.hotel__rank li {
+  display: inline-block;
+}
+.hotel__rank .fa-star {
+  font-size: 16px;
+  color: #eeab0f;
+}
+.hotel__address {
+  width: 100%;
+  display: block;
+  color: #2029f4;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+.hotel__desc {
+  width: 100%;
+  font-size: 16px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.hotel__detail {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-self: flex-end;
+  margin-top: 1rem;
+}
+.hotel__price {
+  width: 100%;
+  text-align: right;
+}
+.hotel__price p {
+  display: inline-block;
+  font-size: 24px;
+  font-weight: bold;
+  margin-right: 1rem;
+}
+.hotel__price a {
+  display: inline-block;
+  border: none;
+  font-size: 20px;
+  background-color: #006caa;
+  border-radius: 10px;
+  color: #fff;
+  padding: 0.5rem;
+}
+.hotel__price a:hover {
+  background-color: #004c77;
+}
+.hotel__favor {
+  border: none;
+  position: relative;
+  background-color: transparent;
+  color: #006caa;
+  font-size: 20px;
+  font-weight: bold;
+  float: left;
+  vertical-align: middle;
+  margin-top: 0.5rem;
+}
+.hotel__favor::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background-color: #006caa;
+  left: 0;
+  bottom: 0;
+  transition: all 0.1s ease-in-out;
+}
+.hotel__favor:hover::after {
+  width: 100%;
 }

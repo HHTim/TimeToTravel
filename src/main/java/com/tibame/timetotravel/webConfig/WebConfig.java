@@ -5,7 +5,10 @@ import com.tibame.timetotravel.common.CorsHandler;
 import com.tibame.timetotravel.common.LoginInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.*;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
@@ -34,9 +37,10 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addViewController("/admin_comp_manager").setViewName("forward:/html/admin_comp_manager.html");
 
         registry.addViewController("/user_message_manage").setViewName("forward:/html/user_message_manage.html");
-        registry.addViewController("/search_room").setViewName("forward:/html/search_room.html");
-        registry.addViewController("/booking_room").setViewName("forward:/html/booking_room.html");
-        registry.addViewController("/booking_paid").setViewName("forward:/html/booking_paid.html");
+        registry.addViewController("/scenes/search").setViewName("forward:/html/search.html");
+        registry.addViewController("/rooms/search").setViewName("forward:/html/search_room.html");
+        registry.addViewController("/rooms/booking").setViewName("forward:/html/booking_room.html");
+        registry.addViewController("/rooms/paid").setViewName("forward:/html/booking_paid.html");
         registry.addViewController("/order_list").setViewName("forward:/html/order_list.html");
 
         registry.addViewController("/company_message_manage").setViewName("forward:/html/company_message_manage.html");

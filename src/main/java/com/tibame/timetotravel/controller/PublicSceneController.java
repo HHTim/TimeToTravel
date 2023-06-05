@@ -20,6 +20,7 @@ public class PublicSceneController {
 
     @PersistenceContext
     private EntityManager entityManager;
+
     @PostMapping("/insert")
     public String insert(@RequestBody PublicScene publicScene) {
         publicSceneService.insert(publicScene);
@@ -27,22 +28,22 @@ public class PublicSceneController {
     }
 
 
-    @RequestMapping("/getall")
+    @RequestMapping("/search/all")
     public List<PublicScene> getAll() {
         System.out.println("找全部景點");
         return publicSceneService.getAll();
     }
 
     @RequestMapping("/upPublicscene/{sceneId}")
-    public void update(@PathVariable Integer sceneId, @RequestBody PublicScene publicScene){
+    public void update(@PathVariable Integer sceneId, @RequestBody PublicScene publicScene) {
         PublicScene upPublicscene = entityManager.find(PublicScene.class, sceneId);
         entityManager.merge(upPublicscene);
     }
-//        PublicSceneService.update(sceneId,publicScene);
-//        return ;
+
+    @GetMapping("/search/name/{name}")
+    public List<PublicScene> findByName(@PathVariable String name) {
+        return publicSceneService.findByName(name);
+    }
 
 
-
-
-    // Other methods for updating, deleting, or retrieving specific scenes
 }

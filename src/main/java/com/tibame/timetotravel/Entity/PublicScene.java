@@ -5,8 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.sql.Blob;
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -24,8 +22,8 @@ public class PublicScene {
     @Column(name = "SCENE_NAME")
     private String sceneName;
     @Lob
-    @Column(name = "SCENE_PHTOT")
-    private byte[] scenePhtot;
+    @Column(name = "SCENE_PHOTO")
+    private byte[] scenePhoto;
 
     @Column(name = "SCENE_DESC")
     private String sceneDesc;

@@ -1,5 +1,6 @@
 package com.tibame.timetotravel.service.ServiceImpl;
 
+import com.tibame.timetotravel.common.PageBean;
 import com.tibame.timetotravel.dto.SearchRoomDto;
 import com.tibame.timetotravel.repository.OrderDetailRepository;
 import com.tibame.timetotravel.repository.ViewCompanyRoomRepository;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class SearchServiceImpl implements SearchService {
@@ -26,9 +28,10 @@ public class SearchServiceImpl implements SearchService {
 
 
     @Override
-    public List<SearchRoomDto> findAvailableCompany(String keyWord, Integer people, String start, String end) throws InvocationTargetException, IllegalAccessException {
+    public PageBean<SearchRoomDto> findAvailableCompany(String keyWord, Integer people, String start, String end, Integer currPage) throws InvocationTargetException, IllegalAccessException {
         List<ViewCompanyRoom> companies = viewCompanyRoomRepository.findCompany(keyWord, people);
         List<SearchRoomDto> resultList = new ArrayList<>();
+        PageBean<SearchRoomDto> pageBean = new PageBean<>();
 
         for (ViewCompanyRoom company : companies) {
             // 每次獲取一個新的searchRoom Bean
@@ -48,6 +51,22 @@ public class SearchServiceImpl implements SearchService {
                 resultList.add(searchRoomDto);
             }
         }
-        return resultList;
+
+
+        // 只回傳5筆資料，並且根據頁數跳過前幾筆
+        List<SearchRoomDto> collect = resultList
+                .stream()
+                .skip((currPage - 1) * 5)
+                .limit(5)
+                .collect(Collectors.toList());
+
+        pageBean.setPageSize(resultList.size());
+        pageBean.setRows(collect);
+        return pageBean;
+    }
+
+    @Override
+    public List<SearchRoomDto> findNearSceneRooms(String keyword, Integer people, String startDate, String endDate) {
+
     }
 }
