@@ -99,7 +99,7 @@
                   <a href="./scene_manage.html">景點管理</a>
                 </div>
                 <div class="col-2">
-                  <a href="./scene_put_on.html">+ 景點上架</a>
+                  <a href="./scene_put_on.html">景點上架 +</a>
                 </div>
                 <div class="col-2"><a href="#"></a></div>
                 <div class="col-2"></div>
@@ -108,8 +108,8 @@
                   <label for="check_all" style="font-size: 14px">全部</label>
                 </div> -->
                 <div class="col-2">
-                  <input type="checkbox" id="check_noab" />
-                  <label for="check_noab" style="font-size: 14px">未上架</label>
+<!--                  <input type="checkbox" id="check_noab" />-->
+<!--                  <label for="check_noab" style="font-size: 14px">未上架</label>-->
                 </div>
               </div>
               <div class="decorator1"></div>
@@ -120,8 +120,8 @@
               <div class="row">
                 <div>
                   <p>
-                    <input id="search" type="text" placeholder="關鍵字" />
-                    <button class="btn btn-primary">查詢</button>
+                    <input id="search" type="text" placeholder="景點名稱、景點地址" />
+                    <button class="btn btn-primary" id="search-btn">查詢</button>
                   </p>
                 </div>
                 <br />
@@ -148,24 +148,12 @@
                       </td>
                       <td>
                         <div>
-                          <button type="button" class="btn btn-primary">刪除</button>
+                          <button type="button" class="btn btn-primary delete__btn" >刪除</button>
                         </div>
                       </td>
                       <td>
-                        <div class="btn-group">
-                          <button
-                            type="button"
-                            class="btn btn-danger dropdown-toggle"
-                            data-bs-toggle="dropdown"
-                            aria-expanded="false"
-                          >
-                            下架
-                          </button>
-                          <!-- <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">上架</a></li>
-                            <li><hr class="dropdown-divider" /></li>
-                            <li><a class="dropdown-item" href="#">下架</a></li>
-                          </ul> -->
+                        <div>
+                          <button type="button" class="btn btn-primary update__btn" >編輯</button>
                         </div>
                       </td>
                     </tr>

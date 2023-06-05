@@ -39,4 +39,5 @@ public class PublicScene {
 
     @Column(name = "SCENE_PLACE_ID")
     private String scenePlaceId;
+
 }

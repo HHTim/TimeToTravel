@@ -40,6 +40,8 @@ function renderCards(data) {
         ${sceneDesc}
       </div>
     </div>
+    </div>  
+    
     `;
   }
   return html;
@@ -159,3 +161,5 @@ searchInput.addEventListener('blur', (e) => {
 });
 
 fetchData();
+
+

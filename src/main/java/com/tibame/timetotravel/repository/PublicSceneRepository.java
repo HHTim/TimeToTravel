@@ -9,6 +9,6 @@ import java.util.List;
 
 @Repository("PublicSceneRepository")
 public interface PublicSceneRepository extends JpaRepository<PublicScene, Integer> {
-    @Query(value = "SELECT * FROM PUBLIC_SCENE WHERE SCENE_ADDR LIKE %:name%", nativeQuery = true)
-    List<PublicScene> findByName(String name);
+    @Query(value = "select * from public_scene where SCENE_NAME like %?1% OR SCENE_ADDR like %?1%",nativeQuery = true)
+    List<PublicScene> findBySceneAddress(String sceneKeyword);
 }
