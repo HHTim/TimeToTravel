@@ -1,5 +1,4 @@
-package com.tibame.timetotravel.entity;
-
+package com.tibame.timetotravel.view;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -7,12 +6,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@Table(name = "GIFT")
-@Entity
-@AllArgsConstructor
 @NoArgsConstructor
-public class Gift {
-
+@AllArgsConstructor
+@Entity
+@Table(name = "view_gift")
+public class ViewGift {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "GIFT_ID", insertable = false, updatable = false)
@@ -24,22 +22,24 @@ public class Gift {
     @Column(name = "GIFT_NAME", nullable = false)
     private String giftName;
 
-    @Column(name = "GIFT_PRICE", nullable = false, columnDefinition = "int unsigned")
+    @Column(name = "GIFT_PRICE", nullable = false)
     private Integer giftPrice;
 
-    @Column(name = "GIFT_STOCK", nullable = false, columnDefinition = "int unsigned default 0")
+    @Column(name = "GIFT_STOCK", nullable = false)
     private Integer giftStock;
 
-    @Column(name = "GIFT_STATUS", nullable = false, columnDefinition = "tinyint(1) default 0")
+    @Column(name = "GIFT_STATUS", nullable = false)
     private Boolean giftStatus;
 
     @Column(name = "GIFT_TYPE_ID", nullable = false)
     private String giftTypeId;
 
-    @Column(name = "GIFT_INTRO", nullable = false, length = 300)
+    @Column(name = "GIFT_INTRO", nullable = false)
     private String giftIntro;
 
     @Column(name = "GIFT_PHOTO")
     private byte[] giftPhoto;
 
+    @Column(name = "COM_NAME", nullable = false)
+    private String comName;
 }
