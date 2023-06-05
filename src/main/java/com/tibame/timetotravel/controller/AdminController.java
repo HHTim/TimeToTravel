@@ -4,7 +4,6 @@ import com.google.code.kaptcha.Constants;
 import com.tibame.timetotravel.dto.LoginUserDto;
 import com.tibame.timetotravel.dto.UserSessionDto;
 import com.tibame.timetotravel.entity.Admin;
-import com.tibame.timetotravel.entity.User;
 import com.tibame.timetotravel.service.AdminService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.ConstraintViolation;

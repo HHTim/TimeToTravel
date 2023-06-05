@@ -1,7 +1,7 @@
 package com.tibame.timetotravel.controller;
 
-import com.tibame.timetotravel.common.PageBean;
 import com.google.code.kaptcha.Constants;
+import com.tibame.timetotravel.common.PageBean;
 import com.tibame.timetotravel.dto.*;
 import com.tibame.timetotravel.entity.Company;
 import com.tibame.timetotravel.service.CompanyService;
@@ -62,7 +62,7 @@ public class CompanyController extends BaseController {
         try {
             int id = companyService.login(dto);
             Company company = companyService.findById(id);
-//            request.getSession().setAttribute("company_id", id);
+            request.getSession().setAttribute("company_id", id);
             request.getSession().setAttribute("user", new UserSessionDto(null, company, null, "商家"));
             System.out.println("CompanySession: " + request.getSession().getAttribute("user"));
         } catch (Exception e) {
@@ -131,9 +131,11 @@ public class CompanyController extends BaseController {
     }
 
     @GetMapping("/company/page/{currPage}/{rows}/keywordComManager/{keyword}")
-    public PageBean<Company> readByComManagerKeyWords(@PathVariable Integer currPage, @PathVariable Integer rows, @PathVariable String keyword){
+    public PageBean<Company> readByComManagerKeyWords(@PathVariable Integer currPage, @PathVariable Integer rows, @PathVariable String keyword) {
         System.out.println("ComManager 關鍵字搜尋");
         return companyService.findComManagerKeywordByPageRowData(keyword, currPage, rows);
+    }
+
     @GetMapping("/company")
     public ResponseEntity detail(HttpServletRequest request){
         if (request.getSession().getAttribute("company_id") == null) {

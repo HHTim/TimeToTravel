@@ -2,9 +2,6 @@ package com.tibame.timetotravel.controller;
 
 import com.tibame.timetotravel.entity.PublicScene;
 import com.tibame.timetotravel.service.PublicSceneService;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,21 +30,12 @@ public class PublicSceneController {
         return publicSceneService.getAll();
     }
 
-    @RequestMapping("/upPublicscene/{sceneId}")
-    public void update(@PathVariable Integer sceneId,@RequestBody PublicScene publicScene){
-        PublicScene upPublicscene = entityManager.find(PublicScene.class, sceneId);
-        entityManager.merge(upPublicscene);
-    }
-
     @GetMapping("/sceneManageSearch/{keyword}")
     public List<PublicScene> findBySceneAddress(@PathVariable String keyword){
         System.out.println("關鍵字查詢");
         return publicSceneService.findBySceneAddress(keyword);
     }
-    @GetMapping("/search/name/{name}")
-    public List<PublicScene> findByName(@PathVariable String name) {
-        return publicSceneService.findByName(name);
-    }
+
     @DeleteMapping("/deletePublicScene/{sceneId}")
     public String deleteById(@PathVariable Integer sceneId){
         publicSceneService.deleteById(sceneId);

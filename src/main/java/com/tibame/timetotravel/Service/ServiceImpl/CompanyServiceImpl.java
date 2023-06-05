@@ -2,8 +2,7 @@ package com.tibame.timetotravel.service.ServiceImpl;
 
 
 import com.tibame.timetotravel.common.PageBean;
-import com.tibame.timetotravel.dto.LoginCompanyDto;
-import com.tibame.timetotravel.dto.RegisterCompanyDto;
+import com.tibame.timetotravel.dto.*;
 import com.tibame.timetotravel.entity.Company;
 import com.tibame.timetotravel.repository.CompanyRepository;
 import com.tibame.timetotravel.service.CompanyService;
@@ -83,6 +82,50 @@ public class CompanyServiceImpl implements CompanyService {
         }
 
         return company.getComId();
+    }
+
+    @Override
+    public CompanyDetailResponseDto get(int companyId) throws Exception {
+        Company company = companyRepository.findById(companyId).orElseThrow(() -> new Exception("廠商不存在"));
+
+        CompanyDetailResponseDto dto = new CompanyDetailResponseDto();
+        dto.setAccount(company.getComAccount());
+        dto.setName(company.getComName());
+        dto.setManage(company.getComManager());
+        dto.setAddress(company.getComAddress());
+        dto.setPhone(company.getComPhone());
+        dto.setEmail(company.getComEmail());
+        dto.setAvatar(company.getComAvatar());
+        dto.setTax(company.getComTaxId());
+        dto.setSignDate(company.getComSignDate());
+
+        return dto;
+    }
+
+    @Override
+    public void modify(int companyId, ModifyCompanyDto dto) throws Exception {
+        Company company = companyRepository.findById(companyId).orElseThrow(() -> new Exception("廠商不存在"));
+        company.setComName(dto.getName());
+        company.setComManager(dto.getManage());
+        company.setComAddress(dto.getAddress());
+        company.setComPhone(dto.getPhone());
+        company.setComEmail(dto.getEmail());
+        company.setComAvatar(dto.getAvatar());
+        company.setComTaxId(dto.getTax());
+
+        companyRepository.save(company);
+    }
+
+    @Override
+    public void modify(int companyId, ModifyCompanyPasswordDto dto) throws Exception {
+        Company company = companyRepository.findById(companyId).orElseThrow(() -> new Exception("廠商不存在"));
+        if (!sha512(dto.getOriginalPassword()).equals(company.getComPassword())) {
+            throw new Exception("原始密碼不一致");
+        }
+
+        company.setComPassword(sha512(dto.getNewPassword()));
+
+        companyRepository.save(company);
     }
 
     @Override

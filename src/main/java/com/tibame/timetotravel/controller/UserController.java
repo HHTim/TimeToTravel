@@ -59,7 +59,7 @@ public class UserController extends BaseController {
         try {
             int id = userService.login(dto);
             User user = userService.findByUserId(id);
-//            request.getSession().setAttribute("user_id", id);
+            request.getSession().setAttribute("user_id", id);
             request.getSession().setAttribute("user", new UserSessionDto(user, null, null, "會員"));
             System.out.println("UserSession: " + request.getSession().getAttribute("user"));
         } catch (Exception e) {
@@ -103,9 +103,10 @@ public class UserController extends BaseController {
     }
 
     @GetMapping("/user/page/{currPage}/{rows}")
-    public PageBean<User> readByPage(@PathVariable Integer currPage, @PathVariable Integer rows){
+    public PageBean<User> readByPage(@PathVariable Integer currPage, @PathVariable Integer rows) {
         System.out.println("分頁搜尋");
-        return userService.findByPageRowData(currPage,rows);
+        return userService.findByPageRowData(currPage, rows);
+    }
     @GetMapping("/user")
     public ResponseEntity detail(HttpServletRequest request){
         if (request.getSession().getAttribute("user_id") == null) {
@@ -149,18 +150,6 @@ public class UserController extends BaseController {
             return unauthorized("尚未登入");
         }
 
-//    @GetMapping("/user/view/page/{currPage}/{rows}")
-//    public PageBean<User> readViewByPage(@PathVariable Integer currPage, @PathVariable Integer rows){
-//        System.out.println("View分頁搜尋");
-//        return userService.findViewByPageRowData(currPage, rows);
-//    }
-//
-//
-//
-    @GetMapping("/user/page/dateRange/{currPage}/{rows}/{startDate}/{endDate}")
-    public PageBean<User> readViewByDateRange(@PathVariable Integer currPage, @PathVariable Integer rows , @PathVariable String startDate, @PathVariable String endDate){
-        System.out.println("日期分頁搜尋range: "+ startDate + " ~ " + endDate);
-        return userService.findBeanPageByDateRange(startDate, endDate , currPage, rows);
         Set<ConstraintViolation<ModifyUserPasswordDto>> validateSet = validator.validate(dto);
         if (!validateSet.isEmpty()) {
             return badRequest(validateSet);
@@ -174,6 +163,12 @@ public class UserController extends BaseController {
         }
 
         return ResponseEntity.ok("{}");
+    }
+
+    @GetMapping("/user/page/dateRange/{currPage}/{rows}/{startDate}/{endDate}")
+    public PageBean<User> readViewByDateRange(@PathVariable Integer currPage, @PathVariable Integer rows , @PathVariable String startDate, @PathVariable String endDate){
+        System.out.println("日期分頁搜尋range: "+ startDate + " ~ " + endDate);
+        return userService.findBeanPageByDateRange(startDate, endDate , currPage, rows);
     }
 
     @GetMapping("/all")

@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Service
+@Service("searchService")
 public class SearchServiceImpl implements SearchService {
 
     @Autowired
@@ -67,6 +67,7 @@ public class SearchServiceImpl implements SearchService {
 
     @Override
     public List<SearchRoomDto> findNearSceneRooms(String keyword, Integer people, String startDate, String endDate) {
-
+        /*待補*/
+        return null;
     }
 }

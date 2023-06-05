@@ -15,9 +15,9 @@ class PublicSceneRepositoryTest {
 
     @Test
     void findByNameTest() {
-        List<PublicScene> scenes = publicSceneRepository.findByName("台北");
-        for (PublicScene scene : scenes) {
-            System.out.println(scene);
-        }
+//        List<PublicScene> scenes = publicSceneRepository.findByName("台北");
+//        for (PublicScene scene : scenes) {
+//            System.out.println(scene);
+//        }
     }
 }

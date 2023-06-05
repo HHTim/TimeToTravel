@@ -2,7 +2,6 @@ package com.tibame.timetotravel.service.ServiceImpl;
 
 import com.tibame.timetotravel.dto.LoginUserDto;
 import com.tibame.timetotravel.entity.Admin;
-import com.tibame.timetotravel.entity.User;
 import com.tibame.timetotravel.repository.AdminRepository;
 import com.tibame.timetotravel.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
