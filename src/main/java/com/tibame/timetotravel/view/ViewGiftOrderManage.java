@@ -11,7 +11,7 @@ import java.sql.Timestamp;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "View_Gift_Order_Manage")
+@Table(name = "VIEW_GIFT_ORDER_MANAGE")
 @Entity
 public class ViewGiftOrderManage {
 
@@ -25,7 +25,7 @@ public class ViewGiftOrderManage {
 //COLUMN 資料:
     //    GIFT_ORDER_ID             訂單編號
     //    USER ID                   會員
-    //    GIFT_ORDER_AMOUNT         訂單金額
+    //    GIFT_ORDER_AMOUNT         訂單總金額
     //    GIFT_ORDER_DATETIME       成立時間
     //    GIFT_ORDER_STATUS         訂單狀態 (0 已完成 / 1 未完成)
 
@@ -58,6 +58,9 @@ public class ViewGiftOrderManage {
 
     @Column(name = "USER_NAME", nullable = false)
     private String userName;
+
+    @Column(name = "USER_ID", nullable = false)
+    private Integer userId;
 
     @Column(name = "GIFT_NAME", nullable = false)
     private String giftName;
