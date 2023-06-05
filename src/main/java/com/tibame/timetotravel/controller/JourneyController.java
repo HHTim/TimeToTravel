@@ -1,7 +1,7 @@
 package com.tibame.timetotravel.controller;
 
 import com.tibame.timetotravel.entity.Journey;
-import com.tibame.timetotravel.service.JourneyService;
+import com.tibame.timetotravel.Service.JourneyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
@@ -23,7 +23,7 @@ public class JourneyController {
     @PutMapping("/journey/{journeyId}")
     public String updateById(@PathVariable Integer journeyId,
                              @RequestBody Journey journey){
-        journeyService.update(journeyId, journey);
+        journeyService.updateById(journeyId, journey);
         return "修改成功";
     }
 

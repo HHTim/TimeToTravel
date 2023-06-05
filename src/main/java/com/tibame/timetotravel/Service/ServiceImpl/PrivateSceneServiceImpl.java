@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service("privateSceneService")
 public class PrivateSceneServiceImpl implements PrivateSceneService {
@@ -39,7 +40,19 @@ public class PrivateSceneServiceImpl implements PrivateSceneService {
         } else {
             return null;
         }
+    }
 
+    @Override
+    public PrivateScene findById(Integer privateSceneId) {
+        return privateSceneRepository.findById(privateSceneId).orElse(null);
+    }
 
+    @Override
+    public void updateById(Integer privateSceneId, PrivateScene privateScene) {
+         PrivateScene newPrivateScene = privateSceneRepository.findById(privateSceneId).orElse(null);
+         newPrivateScene.setPrivateSceneName(privateScene.getPrivateSceneName());
+         newPrivateScene.setPrivateSceneDesc(privateScene.getPrivateSceneDesc());
+         newPrivateScene.setPrivateScenePic(privateScene.getPrivateScenePic());
+         privateSceneRepository.save(newPrivateScene);
     }
 }

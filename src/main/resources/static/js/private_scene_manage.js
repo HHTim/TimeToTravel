@@ -38,7 +38,7 @@ window.addEventListener('load', function () {
 							.map((i) => {
 								return `
 									<tr>
-										<td>${i.privateSceneName}</td>
+										<td data-scene-name=${i.privateSceneName} data-scene-id=${i.privateSceneId} style="cursor:pointer;" onmouseover="this.style.color='#006caa';" onmouseout="this.style.color='black';">${i.privateSceneName}</td>
 										<td>${i.privateSceneId}</td>
 										<td class="table-wrap">
 											<div>${i.privateSceneDesc}</div>
@@ -58,10 +58,23 @@ window.addEventListener('load', function () {
 
 	tbody.addEventListener('click', function (e) {
 		const target = e.target;
+		// 刪除功能
 		if (target.classList.contains('private__scene__delete')) {
 			const privateSceneName = target.dataset.sceneName;
 			const privateSceneId = target.dataset.sceneId;
 			deleteScene(privateSceneId, privateSceneName);
+		}
+		// 編輯景點
+		if (target.dataset.sceneName) {
+			const privateSceneName = target.dataset.sceneName;
+			const privateSceneId = target.dataset.sceneId;
+			fetch('/privateSceneController/privateScene/findByPrivateSceneId/' + privateSceneId)
+				.then((resp) => resp.json())
+				.then((body) => {
+					console.log(body); // 點到的私房景點
+					localStorage.setItem('selectedPrivateScene', JSON.stringify(body));
+					window.location.href = '../html/private_scene_on_shelve.html';
+				});
 		}
 	});
 
@@ -73,7 +86,7 @@ window.addEventListener('load', function () {
 					.map((i) => {
 						return `
 							<tr>
-								<td>${i.privateSceneName}</td>
+								<td data-scene-name=${i.privateSceneName} data-scene-id=${i.privateSceneId} style="cursor:pointer;" onmouseover="this.style.color='#006caa';" onmouseout="this.style.color='black';">${i.privateSceneName}</td>
 								<td>${i.privateSceneId}</td>
 								<td class="table-wrap">
 									<div>${i.privateSceneDesc}</div>

@@ -1,8 +1,8 @@
-package com.tibame.timetotravel.service.ServiceImpl;
+package com.tibame.timetotravel.Service.ServiceImpl;
 
 import com.tibame.timetotravel.entity.Journey;
 import com.tibame.timetotravel.repository.JourneyRepository;
-import com.tibame.timetotravel.service.JourneyService;
+import com.tibame.timetotravel.Service.JourneyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -20,9 +20,13 @@ public class JourneyServiceImpl implements JourneyService {
     }
 
     @Override
-    public void update(Integer journeyId, Journey journey) {
+    public void updateById(Integer journeyId, Journey journey) {
             Journey newJourney = journeyRepository.findById(journeyId).orElse(null);
             newJourney.setJourneyStatus(journey.getJourneyStatus());
+            newJourney.setJourneyName(journey.getJourneyName());
+            newJourney.setJourneyPic(journey.getJourneyPic());
+            newJourney.setJourneyPrice(journey.getJourneyPrice());
+            newJourney.setJourneyDesc(journey.getJourneyDesc());
             journeyRepository.save(newJourney);
     }
 

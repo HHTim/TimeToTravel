@@ -453,11 +453,13 @@ tbody tr {
   border: 2px solid #3d8ebd;
 }
 
-.-ontype {
+.-ontype,
+.active {
   background-color: #006caa !important;
   color: #fff;
 }
-.-ontype a:hover {
+.-ontype a:hover,
+.active a:hover {
   color: #fff;
 }
 

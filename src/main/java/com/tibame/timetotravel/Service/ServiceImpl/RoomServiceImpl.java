@@ -1,11 +1,11 @@
-package com.tibame.timetotravel.service.ServiceImpl;
+package com.tibame.timetotravel.Service.ServiceImpl;
 
 import com.tibame.timetotravel.common.PageBean;
 import com.tibame.timetotravel.dto.RoomPagination;
 import com.tibame.timetotravel.dto.RoomPaginationByStatus;
 import com.tibame.timetotravel.entity.Room;
 import com.tibame.timetotravel.repository.RoomRepository;
-import com.tibame.timetotravel.service.RoomService;
+import com.tibame.timetotravel.Service.RoomService;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,10 +42,22 @@ public class RoomServiceImpl implements RoomService {
     @Transactional
     public void update(Integer roomId, Room room) {
         // 把舊的roomId拖出來
-        Room newRoom = entityManager.find(Room.class, roomId);
-        System.out.println(newRoom.getRoomStatus());
+        Room newRoom = roomRepository.findById(roomId).orElse(null);
+        newRoom.setRoomName(room.getRoomName());
+        newRoom.setRoomBed(room.getRoomBed());
+        newRoom.setRoomPeople(room.getRoomPeople());
+        newRoom.setRoom24Hours(room.getRoom24Hours());
+        newRoom.setRoomSmoking(room.getRoomSmoking());
+        newRoom.setRoomPet(room.getRoomPet());
+        newRoom.setRoomWifi(room.getRoomWifi());
+        newRoom.setRoomBreakfast(room.getRoomBreakfast());
+        newRoom.setRoomParking(room.getRoomParking());
+        newRoom.setRoomPrice(room.getRoomPrice());
+        newRoom.setRoomStock(room.getRoomStock());
+        newRoom.setRoomPhoto(room.getRoomPhoto());
+        newRoom.setRoomDesc(room.getRoomDesc());
         newRoom.setRoomStatus(room.getRoomStatus());
-        entityManager.merge(newRoom);
+        roomRepository.save(newRoom);
     }
 
     public Room findById(Integer roomId) {
@@ -59,7 +71,6 @@ public class RoomServiceImpl implements RoomService {
     @Override
     public List<Room> findByKeyword(String keyword) {
         if (keyword != null && !("".equals(keyword))) {
-//            System.out.println(keyword + "hahaha");
             return roomRepository.findByKeyword(keyword);
         } else {
             return null;

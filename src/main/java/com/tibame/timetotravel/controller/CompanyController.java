@@ -71,7 +71,7 @@ public class CompanyController extends BaseController {
             return badRequest(e.getMessage());
         }
 
-        return ResponseEntity.ok("{id}");
+        return ResponseEntity.ok("{}");
     }
 
     @GetMapping(value = "/company/{comId}")

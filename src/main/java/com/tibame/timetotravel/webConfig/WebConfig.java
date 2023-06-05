@@ -53,8 +53,7 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(corsHandler).addPathPatterns("/**");
-        registry.addInterceptor(loginInterceptor).addPathPatterns("/roomController/**");
-
+//        registry.addInterceptor(authenticationInterceptor).addPathPatterns("/roomController/**");
         registry.addInterceptor(authenticationInterceptor)
                 .addPathPatterns("/xxxController/**"); // 指定攔截的路徑模式
     }

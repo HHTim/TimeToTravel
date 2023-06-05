@@ -1,4 +1,4 @@
-package com.tibame.timetotravel.service;
+package com.tibame.timetotravel.Service;
 
 import com.tibame.timetotravel.dto.RoomPagination;
 import com.tibame.timetotravel.dto.RoomPaginationByStatus;

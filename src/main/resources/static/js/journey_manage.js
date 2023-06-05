@@ -7,7 +7,6 @@ window.addEventListener('load', function () {
 	let journeyOnShelve = document.querySelector('.all__journey_on-shelve');
 	let journeyOffShelve = document.querySelector('.all__journey__off-shelve');
 
-
 	/* 重設按鈕 */
 	resetBtn.addEventListener('click', function () {
 		window.location.reload();
@@ -56,6 +55,15 @@ window.addEventListener('load', function () {
 		}
 	});
 
+	tbody.addEventListener('click', (e) => {
+		const target = e.target;
+		if (target.dataset.journeyName) {
+			const journeyName = target.dataset.journeyName;
+			const journeyId = target.dataset.journeyId;
+			fetch('/journeyController/journey/' + journeyId);
+		}
+	});
+
 	/* 架上商品 */
 	journeyOnShelve.addEventListener('click', function () {
 		fetch('/journeyController/journey')
@@ -68,7 +76,7 @@ window.addEventListener('load', function () {
 							journeyStatus = '上架中';
 							return `
 							<tr>
-								<td>${i.journeyName}</td>
+								<td data-journey-name=${i.journeyName} data-journey-id=${i.journeyId} style="cursor:pointer;" onmouseover="this.style.color='#006caa';" onmouseout="this.style.color='black';">${i.journeyName}</td>
 								<td>${i.journeyId}</td>
 								<td>${i.journeyPrice}</td>
 								<td class="table-wrap">
@@ -101,7 +109,7 @@ window.addEventListener('load', function () {
 							journeyStatus = '未上架';
 							return `
 								<tr>
-									<td>${i.journeyName}</td>
+									<td data-journey-name=${i.journeyName} data-journey-id=${i.journeyId} style="cursor:pointer;" onmouseover="this.style.color='#006caa';" onmouseout="this.style.color='black';">${i.journeyName}</td>
 									<td>${i.journeyId}</td>
 									<td>${i.journeyPrice}</td>
 									<td class="table-wrap">
@@ -146,7 +154,7 @@ window.addEventListener('load', function () {
 
 								return `
 								<tr>
-									<td>${i.journeyName}</td>
+									<td data-journey-name=${i.journeyName} data-journey-id=${i.journeyId} style="cursor:pointer;" onmouseover="this.style.color='#006caa';" onmouseout="this.style.color='black';">${i.journeyName}</td>
 									<td>${i.journeyId}</td>
 									<td>${i.journeyPrice}</td>
 									<td class="table-wrap">
@@ -183,7 +191,7 @@ window.addEventListener('load', function () {
 
 						return `
 						<tr>
-							<td>${i.journeyName}</td>
+							<td data-journey-name=${i.journeyName} data-journey-id=${i.journeyId} style="cursor:pointer;" onmouseover="this.style.color='#006caa';" onmouseout="this.style.color='black';">${i.journeyName}</td>
 							<td>${i.journeyId}</td>
 							<td>${i.journeyPrice}</td>
 							<td class="table-wrap">
