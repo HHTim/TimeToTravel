@@ -95,13 +95,13 @@
               <!-- 第一列 -->
               <div class="row r1">
                 <div class="col-2">
-                  <a href="#"><h3>全部商品</h3></a>
+                  <h3 class="all__gifts">全部商品</h3>
                 </div>
                 <div class="col-2">
-                  <a href="#"><h3>架上商品</h3></a>
+                  <h3 class="all__gifts__on-shelve">架上商品</h3>
                 </div>
                 <div class="col-2">
-                  <a href="#"><h3>未上架</h3></a>
+                  <h3 class="all__gifts__off-shelve">未上架</h3>
                 </div>
                 <div class="col-4"></div>
                 <div class="col-2 reset__area">
@@ -122,7 +122,6 @@
                     <option disabled selected hidden>商品分類</option>
                     <option value="冷凍食品">冷凍食品</option>
                     <option value="彌月食品">彌月食品</option>
-                    <option value="店取限定">店取限定</option>
                     <option value="團購美食">團購美食</option>
                     <option value="熱門美食">熱門美食</option>
                   </select>
@@ -153,30 +152,32 @@
                       <th>商品分類</th>
                       <th>價格</th>
                       <th>剩餘數量</th>
-                      <th>已售出</th>
+                      <!-- <th>已售出</th> -->
                       <th>操作</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>蛇肉(test寫死)</td>
-                      <td>snake01</td>
-                      <td>彌月美食</td>
-                      <td>$3800</td>
-                      <td>20</td>
-                      <td>3</td>
-                      <td>
-                        <select name="gift__status" class="gift__status">
-                          <option disabled selected hidden>狀態</option>
-                          <option value="">上架</option>
-                          <option value="">下架</option>
-                        </select>
-                      </td>
-                    </tr>
-
                     <!-- JS 生成 -->
                   </tbody>
                 </table>
+              </div>
+              <!-- Pagination -->
+              <div class="pagination__area" style="display: flex">
+                <nav aria-label="Page navigation example">
+                  <ul class="pagination justify-content-center" id="pagination">
+                    <!-- 
+									  		<li class="page-item disabled">
+												<a class="page-link">Previous</a>
+									  		</li>
+									  		<li class="page-item"><a class="page-link" href="#">1</a></li>
+									 		<li class="page-item"><a class="page-link" href="#">2</a></li>
+									  		<li class="page-item"><a class="page-link" href="#">3</a></li>
+									  		<li class="page-item">
+												<a class="page-link" href="#">Next</a>
+									  		</li> 
+										-->
+                  </ul>
+                </nav>
               </div>
             </div>
           </main>

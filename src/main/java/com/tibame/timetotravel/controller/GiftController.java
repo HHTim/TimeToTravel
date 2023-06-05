@@ -46,8 +46,8 @@ public class GiftController {
         System.out.println("關鍵字搜尋");
         return giftService.findByKeyword(keyword);
     }
-    @GetMapping("/room/roomType/{roomTypeValue}")
-    public List<Gift> findByRoomType(@PathVariable String giftTypeValue){
+    @GetMapping("/gift/giftType/{giftTypeValue}")
+    public List<Gift> findByGiftType(@PathVariable String giftTypeValue){
         System.out.println(giftTypeValue);
         System.out.println("分類查詢");
         return giftService.findByGiftType(giftTypeValue);

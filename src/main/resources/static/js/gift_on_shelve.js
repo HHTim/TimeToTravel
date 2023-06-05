@@ -89,6 +89,7 @@ window.addEventListener('load', function () {
    * Base64處理function
    *
    */
+
   function extractBase64String(dataURL) {
     var prefix = 'data:image/';
     var index = dataURL.indexOf(';base64,');

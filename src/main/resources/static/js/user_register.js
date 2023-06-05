@@ -28,7 +28,7 @@ $(function () {
       .done(() => {
         $('#errorMessage').html('');
         alert('註冊成功');
-        location.href = 'user_login.html';
+        location.href = '/user_login';
       })
       .fail((response) => {
         console.log('fail', response);
@@ -99,6 +99,9 @@ $(function () {
 
     register('/CompanyController/company/register', JSON.stringify(data));
   });
+  if (data.avatar.indexOf(';base64') === -1) {
+    data.avatar = '';
+  }
 
   $('#userAvatarButton').on('click', () => {
     userAvatarFile.click();

@@ -2,43 +2,37 @@ package com.tibame.timetotravel.controller;
 
 import com.tibame.timetotravel.dto.BookingRoomDto;
 import com.tibame.timetotravel.service.BookingService;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.view.RedirectView;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.Map;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/rooms")
 public class BookingController {
 
     @Autowired
     BookingService bookingService;
 
-    @PostMapping("/redirect-booking")
-    public RedirectView redirect(@RequestBody Map<String, Object> requestBody, HttpServletRequest req) {
-        HttpSession session = req.getSession();
+//    @PostMapping("/redirect-booking")
+//    public RedirectView redirect(@RequestBody Map<String, Object> requestBody, HttpServletRequest req) {
+//        HttpSession session = req.getSession();
+//
+//        String comId = (String) requestBody.get("comId");
+//        String roomId = (String) requestBody.get("roomId");
+//        session.setAttribute("comId", Integer.parseInt(comId));
+//        session.setAttribute("roomId", Integer.parseInt(roomId));
+//        System.out.println("Booking for: " + comId + " " + roomId);
+//
+//        return new RedirectView("/booking_room");
+//    }
 
-        String comId = (String) requestBody.get("comId");
-        String roomId = (String) requestBody.get("roomId");
-        session.setAttribute("comId", Integer.parseInt(comId));
-        session.setAttribute("roomId", Integer.parseInt(roomId));
-        System.out.println("Booking for: " + comId + " " + roomId);
-
-        return new RedirectView("/booking_room");
-    }
-
-    @GetMapping("booking")
-    public BookingRoomDto booking(HttpServletRequest req) throws InvocationTargetException, IllegalAccessException {
-        HttpSession session = req.getSession();
-        Integer comId = (Integer) session.getAttribute("comId");
-        Integer roomId = (Integer) session.getAttribute("roomId");
-        System.out.println(comId);
+    @GetMapping("booking/{comId}/{roomId}")
+    public BookingRoomDto booking(@PathVariable Integer comId, @PathVariable Integer roomId) throws InvocationTargetException, IllegalAccessException {
+        System.out.println("商家: " + comId + "房型: " + roomId);
         return bookingService.bookingRoom(comId, roomId);
     }
-
-
 }

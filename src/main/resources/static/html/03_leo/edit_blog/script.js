@@ -32,7 +32,7 @@ init_tinymce = function () {
         'advlist autolink lists link media image charmap print preview hr anchor pagebreak',
         'searchreplace visualblocks visualchars code fullscreen',
         'insertdatetime  nonbreaking save table contextmenu directionality',
-        'emoticons template paste textcolor colorpicker textpattern  codesample toc'
+        'emoticons template paste textcolor colorpicker textpattern  codesample toc imagetools media image'
       ],
       toolbar1: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent',
       toolbar2: 'link image tableprops | print preview media | forecolor backcolor emoticons | codesample code ',

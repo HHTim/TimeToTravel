@@ -9,6 +9,7 @@
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js" defer></script>
     <script src="node_modules/jquery/dist/jquery.min.js" defer></script>
     <script src="https://kit.fontawesome.com/e3af248fb2.js" crossorigin="anonymous" defer></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
     <!-- 我們自己的 js 檔案，路徑記得改 -->
     <link rel="stylesheet" href="css/homepage.css" />
@@ -132,7 +133,12 @@
                         </div>
                       </div>
                       <div class="tab-2 left-container">
-                        <input type="text" class="form-control form-input pos" placeholder="景點關鍵字" />
+                        <input
+                          type="text"
+                          id="sceneKeyword"
+                          class="form-control form-input pos"
+                          placeholder="景點關鍵字"
+                        />
                       </div>
                       <!-- <div class="tab-3 left-container">
                         <input type="text" class="form-control form-input" placeholder="土產關鍵字" />

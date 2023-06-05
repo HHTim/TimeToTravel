@@ -12,7 +12,6 @@ import com.tibame.timetotravel.entity.Blog;
 @Repository("blogRepository") // 與@Autowired @Qualifier("blogRepository")綁定
 public interface BlogRepository extends JpaRepository<Blog, Integer> {
 
-	// find all~~~
 //	save(entity)：保存一個實體對象到資料庫。 (（insert）操作 更新（update）操作)
 //	saveAll(entities)：保存多個實體對象到資料庫。
 //	findById(id)：根據主鍵查詢一個實體對象。
@@ -24,9 +23,6 @@ public interface BlogRepository extends JpaRepository<Blog, Integer> {
 //	findAllById(ids)：根據一組主鍵查詢多個實體對象。
 //	deleteAll()：刪除所有實體對象。
 //	findAll(Pageable)：根據分頁參數查詢實體對象，支持分頁和排序功能。
-
-	/* 方法二 :自定義條件查詢，使用原生SQL */
-	// 先不管 先顯示就好
 
 //	@Query(value = "select * from default_blog ",nativeQuery = true)
 //    List<DefaultBlogViewo> findAlltest();

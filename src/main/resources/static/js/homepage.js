@@ -256,36 +256,85 @@ function slider(slider_name) {
 //   });
 // });
 
-let searchBody = {};
 const search = document.querySelector('.btn-query');
 const keyword = document.querySelector('#keyword');
 const people = document.querySelector('#people');
 const startDate = document.querySelector('#startDate');
 const endDate = document.querySelector('#endDate');
-
-search.onclick = async () => {
-  const resp = await fetch('/user/redirect-search', {
-    method: 'POST',
-    cache: 'no-cache',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(searchBody),
-    redirect: 'follow',
-  });
-  if (resp.redirected) {
-    location.href = resp.url;
-  }
+let isSearchRoom = true;
+let searchBody = {
+  keyword: '',
+  people: 0,
+  startDate: '',
+  endDate: '',
 };
+
+// 先清空session
+sessionStorage.clear();
+
+// 後端跳頁
+// search.onclick = async () => {
+//   const resp = await fetch('/user/redirect-search', {
+//     method: 'POST',
+//     cache: 'no-cache',
+//     headers: { 'Content-Type': 'application/json' },
+//     body: JSON.stringify(searchBody),
+//     redirect: 'follow',
+//   });
+//   if (resp.redirected) {
+//     location.href = resp.url;
+//   }
+// };
 
 [keyword, people, startDate, endDate].forEach((elem) => {
   elem.addEventListener('blur', (e) => {
+    console.log(e.target.value);
     if (e.target.value === '') {
-      alert('輸入欄位請勿留空');
+      if (typeof swal === 'function') {
+        swal('輸入欄位請勿留空', '', 'warning');
+      } else {
+        alert('輸入欄位請勿留空');
+      }
     } else {
-      searchBody[elem.id] = e.target.value;
+      if (elem.id === 'people') {
+        searchBody[elem.id] = Number(e.target.value);
+      } else {
+        searchBody[elem.id] = e.target.value;
+      }
       console.log(searchBody);
+      isSearchRoom = true;
     }
   });
 });
 
-const avatar = document.querySelector('.nav__avatar-img');
-avatar.addEventListener('click', function () {});
+// ------------------------------------------------------------
+
+const sceneKeyword = document.querySelector('#sceneKeyword');
+sceneKeyword.addEventListener('blur', (e) => {
+  if (e.target.value === '') {
+    if (typeof swal === 'function') {
+      swal('輸入欄位請勿留空', '', 'warning');
+    } else {
+      alert('輸入欄位請勿留空');
+    }
+  } else {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = (today.getMonth() + 1).toString().padStart(2, '0');
+    const date = today.getDate().toString().padStart(2, '0');
+    const tomorrow = (today.getDate() + 1).toString().padStart(2, '0');
+
+    searchBody.keyword = e.target.value;
+    searchBody.people = 1;
+    searchBody.startDate = year + '-' + month + '-' + date;
+    searchBody.endDate = year + '-' + month + '-' + tomorrow;
+    console.log(searchBody);
+    isSearchRoom = false;
+  }
+});
+
+search.onclick = () => {
+  let url = isSearchRoom ? 'rooms/search' : 'scenes/search';
+  sessionStorage.setItem('searchBody', JSON.stringify(searchBody));
+  window.location.href = url;
+};

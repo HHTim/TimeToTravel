@@ -27,16 +27,16 @@ window.addEventListener('load', function () {
     e.preventDefault(); //阻止點擊後的預設事件
     const imageData = base64img.replace(/^data:image\/(png|jpg|jpeg);base64,/, ''); //前綴部分刪除，只保留 Base64 編碼的圖像數據部分
 
-    let scenePhtot = imageData;
+    let scenePhoto = imageData;
     let sceneName = document.querySelector('.scene__name > input').value;
     let sceneAddr = document.querySelector('.scene__addr > input').value;
     let sceneLat = document.querySelector('.scene__lat > input').value;
     let sceneLng = document.querySelector('.scene__lng > input').value;
     let scenePlaceId = document.querySelector('.scene__place__id > input').value;
-    let sceneDesc = document.querySelector('.scene__desc > input').value;
+    let sceneDesc = document.querySelector('.scene__desc > textarea').value;
 
     let Data = {
-      scenePhtot: scenePhtot,
+      scenePhoto: scenePhoto,
       sceneName: sceneName,
       sceneAddr: sceneAddr,
       sceneLat: sceneLat,
@@ -61,7 +61,14 @@ window.addEventListener('load', function () {
   });
 
   getCurrentUserInformation();
+  //刪除
+
+
+
 });
 //HTML
 /* <input type="file" id="the_file">
   <ul class="picture_list"></ul> */
+
+
+
