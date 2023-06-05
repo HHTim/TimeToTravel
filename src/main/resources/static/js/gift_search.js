@@ -1,10 +1,10 @@
-document.addEventListener('DOMContentLoaded', function () {
+window.addEventListener('load', function () {
   // =============宣告=============
   const giftList = document.querySelector('ul.item_list');
   const totalProduct = document.querySelector('div.total_product div');
   const collectionTitle = document.querySelector('div.collection_title h1');
   const smallCart = document.querySelector('div.cart-list');
-  const userId = 4;
+  const userId = 12;
 
   // ========一載入便查詢出所有商品========
   findAll();
@@ -355,6 +355,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // =================點擊查看小購物車=================
   $('a.open-cart').on('click', function (e) {
+    e.preventDefault();
     fetch('http://localhost:8080/giftCartController/giftCart/' + userId)
       .then((resp) => {
         if (resp.headers.get('content-type').includes('application/json')) {
@@ -364,7 +365,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
       })
       .then((body) => {
-        console.log(body);
+        // console.log(body);
         if (typeof body === 'object') {
           // console.log(body);
           // console.log(body[0]);
@@ -392,4 +393,30 @@ document.addEventListener('DOMContentLoaded', function () {
         }
       });
   });
+
+  // =================立即結帳按鈕=================
+  // ----------------有購物才會跳轉----------------
+  $('a.btn-checkout').on('click', function(e) {
+    e.preventDefault();
+    // window.location.href = "../html/gift_cart.html";
+    fetch('http://localhost:8080/giftCartController/redirect_cart/' + userId)
+    .then((resp) => {
+      if (resp.redirected) {
+        const redirectUrl = resp.url;
+        // console.log(redirectUrl);
+        window.location.href = redirectUrl;
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+
+  });
+
+
+
+
+
+
+
 });

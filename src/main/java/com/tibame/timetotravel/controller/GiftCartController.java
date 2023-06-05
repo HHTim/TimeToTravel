@@ -5,6 +5,7 @@ import com.tibame.timetotravel.service.GiftCartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
 import java.util.Map;
@@ -55,6 +56,16 @@ public class GiftCartController {
         }
 
         return ResponseEntity.ok(userGiftCartList);
+    }
+
+    @GetMapping("/redirect_cart/{userId}")
+    public RedirectView redirect(@PathVariable Integer userId) {
+        List<UserGiftCart> userGiftCartList = giftCartService.getCart(userId);
+
+        if (userGiftCartList == null) {
+            return new RedirectView("/gift_search");
+        }
+        return new RedirectView("/gift_cart");
     }
 
 }

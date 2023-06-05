@@ -21,7 +21,7 @@ import java.util.concurrent.TimeUnit;
 public class GiftCartServiceImpl implements GiftCartService {
 
     // 購物車存活時間(天)
-    Integer expireTimeInDays = 7; // 一個星期(7天)
+    Integer expireTimeInDays = 3;
 
     @Autowired
     RedisTemplate<String, Object> redisTemplate;
@@ -48,6 +48,9 @@ public class GiftCartServiceImpl implements GiftCartService {
             // 如果已經有此商品，數量增加
             if (giftId.equals(oldItem.getGiftId())) {
                 int totalCount = oldItem.getGiftCount() + giftCount;
+                if (totalCount > 99) {
+                    totalCount = 99;
+                }
                 oldItem.setGiftCount(totalCount);
                 return save(userId, key, giftCart); // 回傳列表
             }
@@ -101,6 +104,8 @@ public class GiftCartServiceImpl implements GiftCartService {
                     Gift gift = giftRepository.findById(giftId).orElse(null);
                     Integer unitPrice = gift.getGiftPrice() * giftCount;
                     UserGiftCart userGiftCart = new UserGiftCart();
+                    BeanUtils.copyProperties(gift, userGiftCart); // 複製商品資訊到購物車項目
+                    userGiftCart.setUserId(userId);
                     userGiftCart.setGiftCount(giftCount);
                     userGiftCart.setUnitPrice(unitPrice);
                     return userGiftCart;
