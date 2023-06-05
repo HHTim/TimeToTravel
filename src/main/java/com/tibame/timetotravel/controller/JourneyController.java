@@ -1,7 +1,7 @@
 package com.tibame.timetotravel.controller;
 
 import com.tibame.timetotravel.entity.Journey;
-import com.tibame.timetotravel.Service.JourneyService;
+import com.tibame.timetotravel.service.JourneyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;

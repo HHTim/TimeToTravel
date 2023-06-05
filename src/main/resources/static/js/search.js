@@ -1,11 +1,19 @@
 import { getCurrentUserInformation } from './header.js';
 
-const searchResult = document.querySelector('#search-result');
+// const searchResult = document.querySelector('.search-result');
 const tab1 = document.querySelector('.tab1');
 const cardAll = document.querySelector('.card_all');
 const search = document.querySelector('#search-scene');
 const searchInput = document.querySelector('#search-input');
 let searchBody = JSON.parse(sessionStorage.getItem('searchBody'));
+
+function renderRank(rank) {
+  let html = '';
+  for (let i = 0; i < rank; i++) {
+    html += `<li><i class="fa-solid fa-star fa-lg"></i></li>`;
+  }
+  return html;
+}
 
 function renderCards(data) {
   let html = '';
@@ -13,35 +21,36 @@ function renderCards(data) {
   for (let i in data) {
     const { scenePhoto, sceneName, sceneLat, sceneLng, scenePlaceId, sceneAddr, sceneDesc } = data[i];
     html += `
-    <div id="card" class="card card1" data-toggle="lightbox">
-      <div class="card-body">
-        <div class="left_pic">
-          <img src="data:image/png;base64,${scenePhoto}" class="pic_style" />
-        </div>
-        <div class="card_word">
-          <h5 class="card-title">${sceneName}</h5>
-          <p class="url_style">
-            <a href="https://www.google.com/maps/search/?api=1&query=${sceneLat},${sceneLng}&query_place_id=${scenePlaceId}" target="_blank">地址:${sceneAddr}🗺️</a>
-          </p>
-          <div class="card-text multiline-ellipsis">${sceneDesc}</div>
-        </div>
-      </div>
-    </div>  
-    <div class="box">
-      <div class="close"></div>
-      <div class="left_pic">
-        <img src="data:image/png;base63,${scenePhoto}" class="lightbox_pic_style" />
-      </div>
-      <h4>${sceneName}</h5>
-        <p class="url_style">
-          <a href="https://www.google.com/maps/search/?api=0&query=${sceneLat},${sceneLng}&query_place_id=${scenePlaceId}" target="_blank">地址:${sceneAddr}🗺️</a>
-        </p>
-      <div class="card-text">
-        ${sceneDesc}
-      </div>
-    </div>
-    </div>  
-    
+    <div class="card card1" data-toggle="lightbox">
+              <div class="card-body">
+                <div class="left_pic">
+                  <img src="data:image/png;base64,${scenePhoto}" class="pic_style" />
+                </div>
+                <div class="card_word">
+                  <h5 class="card-title">${sceneName}</h5>
+                  <p class="url_style">
+                    <a href="https://goo.gl/maps/${scenePlaceId}" target="_blank">${sceneAddr}🗺️</a>
+                  </p>
+                  <div class="card-text multiline-ellipsis">${sceneDesc}</div>
+                  <!-- <a class="btn-primary toggle-text">查看更多▼</a> -->
+                </div>
+              </div>
+            </div>
+            <div class="box">
+              <h2 class="subtitle">景點介紹</h2>
+              <div class="close"></div>
+              <div class="left_pic">
+                <img src="data:image/png;base64,${scenePhoto}" class="lightbox_pic_style" />
+              </div>
+              <h5 class="title">${sceneName}</h5>
+              <p class="url_style">
+                <a href="https://goo.gl/maps/${scenePlaceId}" target="_blank">${sceneAddr}🗺️</a>
+              </p>
+              <div class="card-text">${sceneDesc}</div>
+              <h2 class="subtitle mt-4">附近的飯店</h2>
+              <div class="search-result"></div>
+              </div>
+            </div>
     `;
   }
   return html;
@@ -49,7 +58,7 @@ function renderCards(data) {
 
 async function fetchData() {
   const { keyword } = searchBody;
-  const resp = await fetch(`/scenes/search/name/${keyword}`);
+  const resp = await fetch(`/scenes/sceneManageSearch/${keyword}`);
   const data = await resp.json();
   console.log(data);
 
@@ -104,21 +113,34 @@ cardAll.addEventListener('click', (e) => {
   if (card?.classList.contains('card')) {
     const lightbox = card.nextElementSibling;
     const close = lightbox.firstElementChild.nextElementSibling;
-    console.log(lightbox);
-    console.log(close);
+
+    // console.log(lightbox);
+    // console.log(close);
     lightbox.classList.add('open');
-    handleSearch();
+    handleSearch(lightbox);
     close.onclick = () => lightbox.classList.remove('open');
   }
 });
 
-async function handleSearch() {
+// async function handleSearch() {
+//   const { keyword, people, startDate, endDate } = searchBody;
+//   const resp = await fetch(`/rooms/search/${keyword}/${people}/${startDate}/${endDate}`);
+//   const result = await resp.json();
+//   console.log(result);
+//   /* Search Result */
+//   console.log(searchResult);
+//   searchResult.innerHTML = setTimeout(() => renderSearchResult(result), 0);
+// }
+
+function handleSearch(lightbox) {
   const { keyword, people, startDate, endDate } = searchBody;
-  const resp = await fetch(`/rooms/search/near/${keyword}/${people}/${startDate}/${endDate}`);
-  const result = await resp.json();
-  console.log(result);
-  /* Search Result */
-  searchResult.innerHTML = renderSearchResult(result);
+  fetch(`/rooms/search/${keyword}/${people}/${startDate}/${endDate}`)
+    .then((resp) => resp.json())
+    .then((result) => {
+      // console.log(lightbox.lastElementChild);
+      const searchResult = lightbox.lastElementChild;
+      searchResult.innerHTML = renderSearchResult(result);
+    });
 }
 
 function renderSearchResult(result) {
@@ -161,5 +183,3 @@ searchInput.addEventListener('blur', (e) => {
 });
 
 fetchData();
-
-

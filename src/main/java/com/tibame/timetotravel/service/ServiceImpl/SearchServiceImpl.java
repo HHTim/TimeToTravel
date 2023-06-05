@@ -66,8 +66,31 @@ public class SearchServiceImpl implements SearchService {
     }
 
     @Override
-    public List<SearchRoomDto> findNearSceneRooms(String keyword, Integer people, String startDate, String endDate) {
-        /*待補*/
-        return null;
+    public List<SearchRoomDto> findNearSceneRooms(String keyWord, Integer people, String start, String end) throws InvocationTargetException, IllegalAccessException {
+        List<ViewCompanyRoom> companies = viewCompanyRoomRepository.findCompany(keyWord, people);
+        List<SearchRoomDto> resultList = new ArrayList<>();
+
+        for (ViewCompanyRoom company : companies) {
+            // 每次獲取一個新的searchRoom Bean
+            SearchRoomDto searchRoomDto = new SearchRoomDto();
+            // 取得房間的房型編號
+            Integer roomId = company.getRoomId();
+            // 透過房型編號跟時間區間去查該段時間的訂單數
+            Integer orderCount = orderDetailRepository.findOrderByDate(roomId, start, end);
+//            System.out.println("房型編號: " + roomId);
+//            System.out.println(start + " " + end + " 期間訂單數: " + orderCount);
+            // 如果庫存數大於訂單數則將該房間加入
+            if (company.getRoomStock() > orderCount) {
+                // Common Util 複製Entity到DTO
+                BeanUtils.copyProperties(searchRoomDto, company);
+                List<Integer> roomRank = viewUserOrderDetailRepository.findRankByRoomId(roomId);
+                searchRoomDto.setOrderRanks(roomRank);
+                resultList.add(searchRoomDto);
+            }
+        }
+        return resultList.stream()
+                .filter(e -> Math.random() < 0.5)
+                .limit(3)
+                .collect(Collectors.toList());
     }
 }

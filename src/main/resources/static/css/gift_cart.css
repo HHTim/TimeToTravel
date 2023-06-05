@@ -289,7 +289,7 @@ body {
 }
 
 main.main {
-  width: 90%;
+  width: 75%;
   min-height: calc(100vh - 20px - 20px - 16px - 80px);
   padding: 1.25rem;
   margin-bottom: 1rem;
@@ -344,16 +344,36 @@ table.cart-table td {
 }
 
 table.cart-table td:first-child {
-  width: 50%;
+  width: 100%;
+  height: 120px;
   text-align: start;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+}
+
+div.gift-img {
+  width: 100px;
+  margin-right: 20px;
+}
+
+div.gift-img img {
+  max-width: 100%;
+  height: auto;
+}
+
+div.gift-name {
+  overflow: hidden;
+  width: 70%;
+  height: 120px;
+  text-overflow: ellipsis;
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
 }
 
 table.cart-table td:nth-child(3) {
   width: 20%;
-}
-
-table.cart-table img {
-  margin-right: 10px;
 }
 
 div.total {

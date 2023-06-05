@@ -3,7 +3,7 @@ package com.tibame.timetotravel.controller;
 import com.tibame.timetotravel.dto.RoomPagination;
 import com.tibame.timetotravel.dto.RoomPaginationByStatus;
 import com.tibame.timetotravel.entity.Room;
-import com.tibame.timetotravel.Service.RoomService;
+import com.tibame.timetotravel.service.RoomService;
 import com.tibame.timetotravel.repository.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

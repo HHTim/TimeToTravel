@@ -21,13 +21,13 @@ var currentUserData;
 const msgRow = 3;
 
 function updateNotifyIcon(userNewsStatus) {
-	if (userNewsStatus == 1) {
-		console.log('new-notify');
-		notifyIcon.css('background-image', `url(${url_red})`);
-	} else {
-		notifyIcon.css('background-image', `url(${url_normal})`);
-		console.log('none-notify');
-	}
+  if (userNewsStatus == 1) {
+    console.log('new-notify');
+    notifyIcon.css('background-image', `url(${url_red})`);
+  } else {
+    notifyIcon.css('background-image', `url(${url_normal})`);
+    console.log('none-notify');
+  }
 }
 
 function updateAvatar(avatar) {
@@ -56,13 +56,13 @@ function getRelativeTime(dateTimeString) {
 }
 
 function updateUserNewsStatus(role, account) {
-	let url;
-	const formData = new FormData();
-	formData.append('account', account);
-	formData.append('newsStatus', 0);
-	let headers = {
-		Accept: 'application/json',
-	};
+  let url;
+  const formData = new FormData();
+  formData.append('account', account);
+  formData.append('newsStatus', 0);
+  let headers = {
+    Accept: 'application/json',
+  };
 
   if (role === '會員') url = '/UserController/user/newsStatus';
   else if (role === '商家') url = '/CompanyController/company/newsStatus';
@@ -143,7 +143,7 @@ async function getCurrentUserData() {
       const getCurrentUserDataResponse = await fetch(getCurrentUserDataUrl);
       currentUserData = await getCurrentUserDataResponse.json();
       // 第二個 Fetch 請求完成後的處理邏輯
-      console.log('wefwi' + JSON.stringify(currentUserData));
+      // console.log('wefwi' + JSON.stringify(currentUserData));
       if (role === '會員') {
         updateNotifyIcon(currentUserData.userNewsStatus);
         updateAvatar(currentUserData.userAvatar);

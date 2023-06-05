@@ -9,5 +9,5 @@ import java.util.List;
 public interface SearchService {
     PageBean<SearchRoomDto> findAvailableCompany(String keyWord, Integer people, String start, String end, Integer currPage) throws InvocationTargetException, IllegalAccessException;
 
-    List<SearchRoomDto> findNearSceneRooms(String keyword, Integer people, String startDate, String endDate);
+    List<SearchRoomDto> findNearSceneRooms(String keyWord, Integer people, String start, String end) throws InvocationTargetException, IllegalAccessException;
 }

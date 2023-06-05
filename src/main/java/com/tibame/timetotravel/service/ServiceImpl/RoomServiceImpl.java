@@ -1,11 +1,11 @@
-package com.tibame.timetotravel.Service.ServiceImpl;
+package com.tibame.timetotravel.service.ServiceImpl;
 
 import com.tibame.timetotravel.common.PageBean;
 import com.tibame.timetotravel.dto.RoomPagination;
 import com.tibame.timetotravel.dto.RoomPaginationByStatus;
 import com.tibame.timetotravel.entity.Room;
 import com.tibame.timetotravel.repository.RoomRepository;
-import com.tibame.timetotravel.Service.RoomService;
+import com.tibame.timetotravel.service.RoomService;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import org.springframework.beans.factory.annotation.Autowired;
