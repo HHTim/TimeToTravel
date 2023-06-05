@@ -65,7 +65,7 @@ public class BlogController {
 		return articleCommentServiceImpl.insertComment(comment); // 要取得 他的id 到時候才能直接作修改
 	}
 
-	// 修改留言 ???
+	// 修改留言
 	@PutMapping("/comment/update") // 待確認朝和的 annController
 	public String update(@RequestBody ArticleComment comment) {
 		return articleCommentServiceImpl.updateComment(comment);
@@ -87,5 +87,11 @@ public class BlogController {
 	@PostMapping("/blog/favor")
 	public String favorArticle(@RequestBody FavoriteArticle favor) {
 		return blogService.addFavorArticle(favor);
+	}
+
+	// 刪文
+	@DeleteMapping("/blog/deleteBlog/{postId}")
+	public void deleteArticle(@PathVariable Integer postId) {
+		blogService.deleteArticle(postId);
 	}
 }

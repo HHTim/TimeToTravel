@@ -1,5 +1,6 @@
 package com.tibame.timetotravel.service.ServiceImpl;
 
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -7,12 +8,14 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.tibame.timetotravel.entity.ArticleComment;
 import com.tibame.timetotravel.entity.Blog;
 import com.tibame.timetotravel.entity.FavoriteArticle;
 import com.tibame.timetotravel.entity.PressLike;
 import com.tibame.timetotravel.repository.ArticleCommentRepository;
+import com.tibame.timetotravel.repository.ArticleTagsRepository;
 import com.tibame.timetotravel.repository.BlogRepository;
 import com.tibame.timetotravel.repository.DefaultBlogRepository;
 import com.tibame.timetotravel.repository.FavoriteArticleRepository;
@@ -36,6 +39,18 @@ public class BlogServiceImpl {
 	@Autowired
 	@Qualifier("favoriteArticleRepository")
 	private FavoriteArticleRepository favoriteArticleRepository;
+	@Autowired
+	@Qualifier("articleTagsRepository")
+	private ArticleTagsRepository articleTagsRepository;
+
+	// 新增 或 更新文章
+	public Blog saveBlog(Blog blog) {
+		if (blog.getPostDate() == null) {
+			blog.setPostDate(new Timestamp(System.currentTimeMillis()));
+		}
+		blog.setPostUpdateTime(new Timestamp(System.currentTimeMillis()));
+		return blogRepository.save(blog);
+	}
 
 	// Blog 資料
 	public DefaultBlogView getBlogView(Integer postId) {
@@ -54,9 +69,9 @@ public class BlogServiceImpl {
 	public int likeBlog(PressLike pressLike) {
 		// 查 存在
 		PressLike bool = pressLikeRepository.checkLike(pressLike.getPostId(), pressLike.getUserId());
-		if (bool== null) {
+		if (bool == null) {
 			// 新增 // blog +1
-			PressLike like= pressLikeRepository.save(pressLike);
+			PressLike like = pressLikeRepository.save(pressLike);
 			Blog blog = blogRepository.findById(like.getPostId()).orElse(null);
 			blog.setComments(blog.getComments() + 1);
 			blogRepository.save(blog);
@@ -72,14 +87,29 @@ public class BlogServiceImpl {
 	}
 
 	public String addFavorArticle(FavoriteArticle favor) {
+		System.out.println(favor);
 		FavoriteArticle bool = favoriteArticleRepository.checkFavorArticle(favor.getPostId(), favor.getUserId());
 		if (bool == null) {
 			favoriteArticleRepository.save(favor);
-			return "加入 文章收藏";
+			return "已加入 文章收藏";
 		} else {
 			favoriteArticleRepository.delete(bool);
-			return "移除 文章收藏";
+			return "已移除 文章收藏";
 		}
+	}
+
+	//
+	//
+	// 刪除文章 (likes favor comment articleTags blog 5表 都要刪除)
+	@Transactional
+	public void deleteArticle(Integer postId) {
+		// 刪除之後 1 若有被收藏後 將 看不到!!
+		// 標籤的部分 !!! 若是他唯一 則再刪除!!! 之後有緣再做
+		pressLikeRepository.deleteByPostId(postId);
+		favoriteArticleRepository.deleteByPostId(postId);
+		articleCommentRepository.deleteByPostId(postId);
+		articleTagsRepository.deleteByPostId(postId); // 此處未包含 Tags 刪除 !!
+		blogRepository.deleteById(postId);
 	}
 
 }

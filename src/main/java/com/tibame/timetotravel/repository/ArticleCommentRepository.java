@@ -17,4 +17,6 @@ public interface ArticleCommentRepository extends JpaRepository<ArticleComment, 
 	
 	@Query(value = "SELECT * from article_comment where post_id = ?1", nativeQuery = true)
 	List<ArticleComment> findByPostId(Integer postId);
+	
+	void deleteByPostId(Integer postId);
 }

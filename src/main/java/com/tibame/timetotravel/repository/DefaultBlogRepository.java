@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.tibame.timetotravel.view.DefaultBlogView;
 
 @Repository("defaultBlogRepository")
-public interface DefaultBlogRepository extends JpaRepository<DefaultBlogView, Integer>{	
+public interface DefaultBlogRepository extends JpaRepository<DefaultBlogView, Integer>,BlogSearchSelfDefine {	
 	
     @Query(value = "SELECT * FROM default_blog",nativeQuery = true)
     List<DefaultBlogView> findAllTest(); // DefaultBlogView extends Blog !!

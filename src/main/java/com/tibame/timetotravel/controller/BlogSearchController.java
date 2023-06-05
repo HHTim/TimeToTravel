@@ -1,5 +1,6 @@
 package com.tibame.timetotravel.controller;
 
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,8 +8,10 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.tibame.timetotravel.common.PageBean;
 import com.tibame.timetotravel.entity.Tags;
 import com.tibame.timetotravel.service.ServiceImpl.BlogSearchServiceImpl;
 import com.tibame.timetotravel.service.ServiceImpl.TagServiceImpl;
@@ -47,12 +50,26 @@ public class BlogSearchController {
 	public List<Tags> getArticleTags(@PathVariable Integer blogId) {
 		return tagServiceImpl.findArticleTags(blogId);
 	}
-	
-	// 模糊搜尋
-	
-	// 分類查詢
-	
-	// 讚數排序 時間排序 前端???
 
-	// 前兩者 結合 分頁功能
+	// 標籤測試是否存在 並回傳標籤Id
+	@GetMapping("/checkTag/{tagName}")
+	public String checkTag(@PathVariable String tagName) {
+		return tagServiceImpl.findCheckTag(tagName);
+	}
+
+	// 模糊搜尋 基礎
+	@GetMapping("/search")
+	public List<DefaultBlogView> search(@RequestParam("title") String title, @RequestParam("tags") List<Integer> tags) {
+		return blogsService.serachTitleAndTags(title, tags);
+	}
+
+	// 模糊搜尋 基礎 + 排序選擇(時間更新 、 讚數 討論度? 做但前端看狀況) + 類型 + 分頁
+	@GetMapping("/searchSQL")
+	public PageBean<DefaultBlogView> searchOrderTimeTypePage(@RequestParam("title") String title,
+			@RequestParam("tags") List<Integer> tags, @RequestParam("postType") Integer postTypeId,
+			@RequestParam("orderType") Integer orderInt, @RequestParam("currPage") Integer currPage,
+			@RequestParam("rows") Integer rows) {
+		return blogsService.searchOrderTimeTypePage(title, tags, postTypeId, orderInt, currPage, rows);
+	}
+
 }
