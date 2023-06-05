@@ -83,9 +83,9 @@ $(function () {
                 <img src="../../images/avatar.svg" width="30px" height="30px" alt="avatar" />
                 </div>
               <div class="me-2">
-                <p id="article-comment-name">${comment.userId}等串名字</p>
-                <span id="article-comment-date-time">${comment.commentDatetime}</span>
-              </div>
+                <p id="article-comment-name">${comment.userId}</p>`+
+                // <span id="article-comment-date-time">${comment.commentDatetime}</span>
+              `</div>
               <div class="align-self-center text-break align-self-center flex-grow-1">
                 <p id="article-comment">${comment.commentContent}</p>
                 <input type="text" class="article-comment-update -none w-100" placeholder="修改留言…" value="${comment.commentContent}">
@@ -324,7 +324,7 @@ $(function () {
         // }
         // 成功回傳 +1 -1
         $('#article-like').text(likeCount + like); // 更新赞数显示
-        // console.log(data);
+        console.log(data);
       },
       error: function (xhr) {
         // request 發生錯誤的話執行

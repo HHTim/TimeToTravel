@@ -73,14 +73,14 @@ public class BlogServiceImpl {
 			// 新增 // blog +1
 			PressLike like = pressLikeRepository.save(pressLike);
 			Blog blog = blogRepository.findById(like.getPostId()).orElse(null);
-			blog.setComments(blog.getComments() + 1);
-			blogRepository.save(blog);
+			blog.setLikes(blog.getLikes() + 1);
+			blog = blogRepository.save(blog);
 			return 1;
 		} else {
 			// 移除 // blog -1 // Objects.equals(str1,str2)
 			pressLikeRepository.delete(bool);
 			Blog blog = blogRepository.findById(bool.getPostId()).orElse(null);
-			blog.setComments(blog.getComments() - 1);
+			blog.setLikes(blog.getLikes() - 1);
 			blogRepository.save(blog);
 			return -1;
 		}
