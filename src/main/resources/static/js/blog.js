@@ -1,9 +1,12 @@
 $(function () {
   // session 取得 基本資料區塊
   var blog = JSON.parse(sessionStorage.getItem('default-blog-view'));
+
   var postId = blog.postId;
   var userId = 1;
   var userName = '邱翰森';
+  var blogTags;
+  var getBlogdata2Session;
   //
   //
   // 文章資料 API
@@ -14,15 +17,19 @@ $(function () {
       url: 'http://localhost:8080/BlogController/blog/' + postId,
       method: 'GET',
       success: function (data) {
+        getBlogdata2Session = data;
         $('#article-topic').text(data.postTitle);
         $('#article-type').text(data.lastPostType);
         $('#article-author-img').attr('src', data.userId); // 再去取 資料
         $('#article-author').text(data.userId + '再取名字'); // 再去取 資料
         $('#article-author-id').text(data.userId);
-        $('#article-content').text(data.postContent);
-        $('#article-content').append(data.postContent + '<h1>7777777777</h1>');
+        // $('#article-content').text(data.postContent);
+        $('#article-content').append(data.postContent);
         $('#article-tags').append(tagsHtml);
-        $('#article-post-date').text(data.postDate); // postDate postUpdateTime 後者非null  就娶後者
+        // 最後更新於
+        $('#article-post-date').text(data.postUpdateTime); // postDate postUpdateTime 後者非null  就娶後者
+        // 首次發布於
+        $('.first-post-dateTime').text(data.postDate);
         $('#article-like').text(data.likes);
         $('#article-comment-count').text(data.comments);
         // console.log(data);
@@ -42,8 +49,9 @@ $(function () {
       type: 'GET',
       async: false, // 设置为同步请求以确保获取到标签数据后再继续执行 ???
       success: function (tags) {
+        blogTags = tags;
         for (let i = 0; i < tags.length; i++) {
-          let tag = tags[i];
+          tag = tags[i];
           let badgeClass = ['bg-primary', 'bg-secondary', 'bg-success', 'bg-danger'][i % 4]; // 循环使用样式类
           tagsHtml += '<span class="badge small-tag ' + badgeClass + '">' + tag.tag + '</span>';
           //   console.log(tag.tag);
@@ -67,17 +75,17 @@ $(function () {
         if (Array.isArray(response)) {
           response.forEach(function (comment) {
             // 創建新的 comment div
-            var commentsContainer = $('.add-comment');
             // 添加內容
-            commentsContainer += `
+           let  commentsContainer = `
+            <div class="add-comment">
               <div comment-no="${comment.commentNo}" post-id="${comment.postId}"  class="d-flex comment">
                 <div class="align-self-center me-2">
                 <img src="../../images/avatar.svg" width="30px" height="30px" alt="avatar" />
                 </div>
               <div class="me-2">
-                <p id="article-comment-name">${comment.userId}等串名字</p>
-                <span id="article-comment-date-time">${comment.commentDatetime}</span>
-              </div>
+                <p id="article-comment-name">${comment.userId}</p>`+
+                // <span id="article-comment-date-time">${comment.commentDatetime}</span>
+              `</div>
               <div class="align-self-center text-break align-self-center flex-grow-1">
                 <p id="article-comment">${comment.commentContent}</p>
                 <input type="text" class="article-comment-update -none w-100" placeholder="修改留言…" value="${comment.commentContent}">
@@ -90,8 +98,9 @@ $(function () {
               </ul>
               </div>
               </div>
+            </div>
             `;
-            $('.add-comment').append(commentsContainer); // 將新的 comment div 加入到 add-comment 中
+            $('.msg-part').append(commentsContainer); // 將新的 comment div 加入到 msg-part 中
           });
         }
       },
@@ -128,6 +137,7 @@ $(function () {
         statusCode: {},
         success: function (data) {
           let comment_html = `
+          <div class="add-comment">
                 <div comment-no="${data.commentNo}" post-id="${data.postId}" class="d-flex comment">
                         <div class=" align-self-center me-2">
                           <img src="../../images/avatar.svg" width="30px" height="30px" alt="avatar" />
@@ -157,8 +167,9 @@ $(function () {
                         </div>
                         <br />
                       </div>
+                </div>
                 `;
-          $('div.add-comment').append(comment_html);
+          $('div.msg-part').append(comment_html);
           // 更改留言數
           var commentCount = parseInt($('#article-comment-count').text());
           commentCount++;
@@ -176,11 +187,11 @@ $(function () {
   });
 
   //   移除留言
-  //   $(".add-comment .comment .comment-delete").click(function() {
+  //   $(".msg-part .comment .comment-delete").click(function() {
   //     var commentNo = $(this).closest(".comment").attr("commentNo");
   //     console.log(commentNo);
   //   });
-  $('div.add-comment').on('click', 'a.comment-delete', function () {
+  $('div.msg-part').on('click', 'a.comment-delete', function () {
     // $("div.comment").on("click", "a.comment-delete", function(){
     let r = confirm('確認移除？');
     let commentId = $(this).closest('.comment').attr('comment-no');
@@ -232,10 +243,10 @@ $(function () {
   // enter 以後再加 !!!  未成功 ??
   $('input.article-comment-update').on('keyup', function (event) {
     if (event.which == 13) {
-      $('div.add-comment a.comment-update').click();
+      $('div.msg-part a.comment-update').click();
     }
   });
-  $('div.add-comment').on('click', 'a.comment-update', function () {
+  $('div.msg-part').on('click', 'a.comment-update', function () {
     if ($(this).attr('data-edit') == undefined) {
       // 进入编辑状态
       $(this).attr('data-edit', true);
@@ -313,7 +324,7 @@ $(function () {
         // }
         // 成功回傳 +1 -1
         $('#article-like').text(likeCount + like); // 更新赞数显示
-        // console.log(data);
+        console.log(data);
       },
       error: function (xhr) {
         // request 發生錯誤的話執行
@@ -325,20 +336,32 @@ $(function () {
 
   // 收藏
   $('a.add-like-article').on('click', function () {
-    console.log('gggggggggggggggg');
-
+    let favorArticle = {
+      favoriteArticle: null,
+      postId: postId,
+      userId: userId,
+    };
     $.ajax({
-      url: 'http://localhost:8080/BlogController/comment/', // 資料請求的網址
-      type: 'GET', // GET | POST | PUT | DELETE | PATCH
-      data: 物件資料, // 將物件資料(不用雙引號) 傳送到指定的 url
-      dataType: 'json', // 預期會接收到回傳資料的格式： json | xml | html
+      url: 'http://localhost:8080/BlogController/blog/favor', // 資料請求的網址
+      type: 'POST', // GET | POST | PUT | DELETE | PATCH
+      data: JSON.stringify(favorArticle), // 將物件資料(不用雙引號) 傳送到指定的 url
+      dataType: 'text', // 預期會接收到回傳資料的格式： json | xml | html | text
+      contentType: 'application/json',
       beforeSend: function () {
         // 在 request 發送之前執行
       },
       headers: {},
       statusCode: {},
       success: function (data) {
-        console.log(data);
+        if (data === '已加入 文章收藏') {
+          console.log(data);
+          showNotification('已加入 文章收藏', 'success');
+          alert("已加入 文章收藏");
+        } else {
+          console.log(data);
+          alert("加入收 藏失败");
+          showNotification('加入收 藏失败', 'error');
+        }
       },
       error: function (xhr) {
         console.log(xhr);
@@ -349,7 +372,27 @@ $(function () {
     });
     // ajax
   });
+  function showNotification(message, type) {
+    let notificationContainer = $('#notification-container');
 
+    // 创建提示框元素
+    let notification = $('<div class="toast" role="alert" aria-live="assertive" aria-atomic="true"></div>');
+    notification.addClass(`toast-${type}`);
+    // 创建提示框内容
+    let notificationContent = $(`<div class="toast-body">${message}</div>`);
+    // 将内容添加到提示框中
+    notification.append(notificationContent);
+    // 将提示框添加到容器中
+    notificationContainer.append(notification);
+    // 初始化提示框
+    let toast = new bootstrap.Toast(notification);
+    // 显示提示框
+    toast.show();
+    // 一定时间后隐藏提示框
+    setTimeout(function () {
+      toast.hide();
+    }, 1000);
+  }
   //   複製文章連結
   $('a.copy-article-link').on('click', function () {
     var articleLink = window.location.href;
@@ -358,9 +401,32 @@ $(function () {
 
   //   編輯文章
   $('a.edit-article').on('click', function () {
-    console.log('gggggggggggggggg');
+    var blogId = $(this).closest('div.blog').attr('blog-id');
+    console.log(blogId + '測試到有OK');
 
-    //session
+    sessionStorage.setItem(
+      'edit-blog', // view
+      JSON.stringify({
+        postId: postId,
+        userId: getBlogdata2Session.userId,
+        postTitle: getBlogdata2Session.postTitle,
+        postContent: getBlogdata2Session.postContent,
+        postDate: getBlogdata2Session.postDate,
+        postPhoto : getBlogdata2Session.postPhoto,
+        lastPostType: getBlogdata2Session.lastPostType,
+        postTypeId: getBlogdata2Session.postTypeId,
+        // 資料  .......... user data   blog data
+      }) // getBlogdata2Session
+    );
+    sessionStorage.setItem('blog-tags', JSON.stringify(blogTags));
+    sessionStorage.setItem(
+      'user-data',
+      JSON.stringify({
+        userId: userId,
+      })
+    );
+
+    location.href = './edit_blog.html';
   });
 
   //   刪除文章
@@ -368,8 +434,19 @@ $(function () {
     e.preventDefault(); // 阻止默认的链接跳转行为
     var confirmation = confirm('確認刪除文章？');
     if (confirmation) {
-      var url = $(this).attr('href');
-      window.location.href = url; // 跳转到指定链接
+      $.ajax({
+        url: "http://localhost:8080/BlogController/blog/deleteBlog/"+ postId,           // 資料請求的網址
+        type: "DELETE",                  // GET | POST | PUT | DELETE | PATCH
+        dataType: "json",             // 預期會接收到回傳資料的格式： json | xml | html
+        success: function(data){      // request 成功取得回應後執行
+          console.log(data);
+
+        },
+        error: function(xhr){         // request 發生錯誤的話執行
+          console.log(xhr);
+        },
+      });
+      // window.location.href = "./blog_search.html"; // 跳转到指定链接
     }
     //session
   });

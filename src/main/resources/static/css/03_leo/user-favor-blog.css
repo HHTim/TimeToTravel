@@ -9,7 +9,7 @@
     border: none;
     background-color: #006caa;
     color: #fff;
-    padding: 0.25rem 1rem;
+    padding: 0.25rem 2rem;
     border-radius: 10px;
     margin-right: 0.5rem;
 }
@@ -26,7 +26,7 @@
     border: none;
     background-color: #be4b4b;
     color: #fff;
-    padding: 0.25rem 1rem;
+    padding: 0.25rem 2rem;
     border-radius: 10px;
 }
 .remove-favor-blog:hover{
