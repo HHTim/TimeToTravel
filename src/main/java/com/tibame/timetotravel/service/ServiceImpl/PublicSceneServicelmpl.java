@@ -28,15 +28,35 @@ public class PublicSceneServicelmpl implements PublicSceneService {
     }
 
     @Override
+    public void deleteById(Integer sceneId) {
+        publicSceneRepository.deleteById(sceneId);
+    }
+
+    @Override
     public List<PublicScene> getAll() {
         return publicSceneRepository.findAll();
     }
 
     @Override
-    public void update (Integer sceneId,PublicScene publicScene){
-        PublicScene upPublicscene = entityManager.find(PublicScene.class, sceneId);
-        entityManager.merge(upPublicscene);
+    public List<PublicScene> findByAddress(String sceneKeyword) {
+        return publicSceneRepository.findBySceneAddress(sceneKeyword);
     }
+
+    @Override
+    public void update(Integer sceneId, PublicScene publicScene) {
+        PublicScene newPublicScene = entityManager.find(PublicScene.class,sceneId);
+    }
+
+    @Override
+    public List<PublicScene> findBySceneAddress(String keyword) {
+        if (keyword != null && !("".equals(keyword))) {
+            return publicSceneRepository.findBySceneAddress(keyword);
+        } else {
+            return null;
+        }
+
+    }
+
 
 }
 

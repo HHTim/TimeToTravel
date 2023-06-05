@@ -10,7 +10,7 @@ function renderCards(data) {
     <div class="card card1" data-toggle="lightbox">
       <div class="card-body">
         <div class="left_pic">
-          <img src="data:image/png;base64,${data[i].scenePhtot}" class="pic_style" />
+          <img src="data:image/png;base64,${data[i].scenePhoto}" class="pic_style" />
         </div>
         <div class="card_word">
           <h5 class="card-title">${data[i].sceneName}</h5>
@@ -172,3 +172,5 @@ function openTab(tabName) {
 
 //新增景點
 fetchData();
+
+
