@@ -289,12 +289,16 @@ body {
   color: white;
 }
 
+.custom-container {
+  min-height: calc(100dvh - 20px - 110px);
+}
+
 .search-results-count {
-  max-width: 30%;
   padding: 5px 10px;
   background-color: #f0f0f0;
   border: 1px solid #ccc;
   margin-left: auto;
+  border-radius: 5px;
 }
 
 .top {
@@ -637,4 +641,29 @@ input[type=text] {
 }
 .hotel__favor:hover::after {
   width: 100%;
+}
+
+.not-found {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-direction: column;
+}
+.not-found img {
+  width: 25%;
+}
+.not-found::before {
+  content: "未找到任何搜尋結果 :(";
+  font-size: 2rem;
+  font-weight: bold;
+  color: #ccc;
+}
+.not-found::after {
+  content: "請嘗試更換關鍵字";
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ccc;
 }

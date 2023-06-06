@@ -107,14 +107,22 @@ function renderSearchResult(result) {
 async function handleSearch(page) {
   const { keyword, people, startDate, endDate } = searchBody;
   const result = await fetchData(`/rooms/search/${keyword}/${people}/${startDate}/${endDate}/${page}`);
-  searchResultsCountElement.innerText = '搜尋結果共 ' + result.rows.length + ' 筆';
   console.log(result);
   // 總頁數
   let pageSize = Math.ceil(result.pageSize / 5);
   console.log('頁數: ' + pageSize);
+  searchResultsCountElement.innerText = '搜尋結果共 ' + result.pageSize + ' 筆';
 
   /* Search Result */
-  searchResult.innerHTML = renderSearchResult(result.rows);
+  if (result.rows.length === 0) {
+    searchResult.innerHTML = `
+    <div class="not-found">
+      <img src="../images/not_found.svg" alt="Results Not Found" />
+    </div>
+    `;
+  } else {
+    searchResult.innerHTML = renderSearchResult(result.rows);
+  }
   /* Paganation */
   // 渲染過一次分頁器就不再渲染;
   if (isRenderPage) return;

@@ -145,7 +145,15 @@ async function fetchData() {
   const data = await resp.json();
   console.log(data);
 
-  cardAll.innerHTML = renderCards(data);
+  if (data.length === 0) {
+    cardAll.innerHTML = `
+    <div class="not-found">
+      <img src="../images/not_found.svg" alt="Results Not Found" />
+    </div>
+    `;
+  } else {
+    cardAll.innerHTML = renderCards(data);
+  }
   searchInput.value = keyword;
 
   const searchResultsCountElement = document.getElementById('search-results-count');
