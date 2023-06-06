@@ -131,7 +131,11 @@ window.addEventListener('load', function () {
     tbody.addEventListener('click',function (e){
         console.log(e.target.classList.contains('update__btn'));
         if(e.target.classList.contains('update__btn')){
-            window.location.href();
+            var parent = e.target.parentNode.parentNode;
+            var firstSibling = parent.parentNode.firstElementChild;
+            var td_sceneId=firstSibling.textContent;
+            console.log(td_sceneId);
+            window.location.href="/html/scene_put_on.html?sceneId=" + td_sceneId;
         }
     });
 

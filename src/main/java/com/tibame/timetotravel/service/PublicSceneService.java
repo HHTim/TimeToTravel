@@ -11,9 +11,11 @@ public interface PublicSceneService {
 
     List<PublicScene> getAll();
 
-    List<PublicScene> findByAddress(String sceneKeyword);
+//    List<PublicScene> findByAddress(String sceneKeyword);
 
     void update(Integer sceneId, PublicScene publicScene);
 
     List<PublicScene> findBySceneAddress(String keyword);
+
+
 }

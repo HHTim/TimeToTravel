@@ -17,6 +17,8 @@ window.addEventListener('load', function () {
         picture_list.insertAdjacentHTML('beforeend', li_html); // 加進節點
       });
     }
+
+
   });
 
   let store = document.querySelector('.button__save');
@@ -57,15 +59,20 @@ window.addEventListener('load', function () {
         window.location.href = '../html/scene_manage.html';
       });
   });
+  // var sceneId='';
+  //
+  //   fetch('/scenes/updatePublicScene/'+sceneId)
+  //       .then((r) =>r.text())
+  //       .then((body)=>{
+  //         console.log(body);
+  //
+  //       });
+  var urlParams = new URLSearchParams(window.location.search);
+  var sceneId = urlParams.get("sceneId");
 
-  //刪除
-
-
-
+  console.log(sceneId); // 輸出獲取的 sceneId
 });
-//HTML
-/* <input type="file" id="the_file">
-  <ul class="picture_list"></ul> */
+
 
 
 

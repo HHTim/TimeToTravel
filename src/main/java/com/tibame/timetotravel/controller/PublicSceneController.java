@@ -33,12 +33,12 @@ public class PublicSceneController {
         return publicSceneService.getAll();
     }
 
-    @GetMapping("/search")
-    public List<PublicScene> findByAddress(HttpServletRequest req){
-        HttpSession session = req.getSession();
-        String sceneKeyword = (String) session.getAttribute("sceneKeyword");
-        return publicSceneService.findByAddress(sceneKeyword);
-    }
+//    @GetMapping("/search")
+//    public List<PublicScene> findByAddress(HttpServletRequest req){
+//        HttpSession session = req.getSession();
+//        String sceneKeyword = (String) session.getAttribute("sceneKeyword");
+//        return publicSceneService.findByAddress(sceneKeyword);
+//    }
 
     @GetMapping("/sceneManageSearch/{keyword}")
     public List<PublicScene> findBySceneAddress(@PathVariable String keyword){
@@ -54,7 +54,7 @@ public class PublicSceneController {
 
     @PutMapping ("/updatePublicScene/{sceneId}")
     public String update(@PathVariable Integer sceneId,
-                             @RequestBody PublicScene publicScene){
+                         @RequestBody PublicScene publicScene){
         publicSceneService.update(sceneId,publicScene);
         return "修改成功";
     }

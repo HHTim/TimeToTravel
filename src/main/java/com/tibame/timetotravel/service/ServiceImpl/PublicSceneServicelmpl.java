@@ -1,6 +1,7 @@
 package com.tibame.timetotravel.service.ServiceImpl;
 
 
+import ch.qos.logback.classic.Logger;
 import com.tibame.timetotravel.entity.PublicScene;
 import com.tibame.timetotravel.repository.PublicSceneRepository;
 import com.tibame.timetotravel.service.PublicSceneService;
@@ -37,14 +38,24 @@ public class PublicSceneServicelmpl implements PublicSceneService {
         return publicSceneRepository.findAll();
     }
 
-    @Override
-    public List<PublicScene> findByAddress(String sceneKeyword) {
-        return publicSceneRepository.findBySceneAddress(sceneKeyword);
-    }
+//    @Override
+//    public List<PublicScene> findByAddress(String sceneKeyword) {
+//        return publicSceneRepository.findBySceneAddress(sceneKeyword);
+//    }
 
     @Override
     public void update(Integer sceneId, PublicScene publicScene) {
         PublicScene newPublicScene = entityManager.find(PublicScene.class,sceneId);
+            if(newPublicScene != null){
+                newPublicScene.setScenePhtot(publicScene.getScenePhtot());
+                newPublicScene.setSceneName(publicScene.getSceneName());
+                newPublicScene.setSceneAddr(publicScene.getSceneAddr());
+                newPublicScene.setSceneLat(publicScene.getSceneLat());
+                newPublicScene.setSceneLng(publicScene.getSceneLng());
+                newPublicScene.setScenePlaceId(publicScene.getScenePlaceId());
+                newPublicScene.setSceneDesc(publicScene.getSceneDesc());
+                entityManager.merge(newPublicScene);
+            };
     }
 
     @Override
@@ -56,6 +67,7 @@ public class PublicSceneServicelmpl implements PublicSceneService {
         }
 
     }
+
 
 
 }
