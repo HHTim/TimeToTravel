@@ -59,7 +59,9 @@ public class OrderListServiceImpl implements OrderListService {
             }
             // 取得comName
             String comName = roomRepository.findComNameByRoomId(roomId);
+            Integer comId = roomRepository.findComIdByRoomId(roomId);
             orderListDto.setComName(comName);
+            orderListDto.setComId(comId);
             // 將完備的DTO放到List回傳
             orderListDtos.add(orderListDto);
         }
@@ -84,10 +86,12 @@ public class OrderListServiceImpl implements OrderListService {
             int roomId = order.getRoomId();
             int journeyId = order.getJourneyId();
             // 取得comName
+            Integer comId = roomRepository.findComIdByRoomId(roomId);
             String comName = roomRepository.findComNameByRoomId(roomId);
             // 如果查出來的comName跟輸入欄的查詢值一樣才把值放入否則直接跳過
             if (Objects.equals(comName, name)) {
                 orderListDto.setComName(comName);
+                orderListDto.setComId(comId);
             } else {
                 continue;
             }
@@ -131,7 +135,9 @@ public class OrderListServiceImpl implements OrderListService {
             }
             // 取得comName
             String comName = roomRepository.findComNameByRoomId(roomId);
+            Integer comId = roomRepository.findComIdByRoomId(roomId);
             orderListDto.setComName(comName);
+            orderListDto.setComId(comId);
 
             orderListDtos.add(orderListDto);
         }

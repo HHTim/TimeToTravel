@@ -16,7 +16,7 @@ class OrderListDtoServiceImplTest {
     @Test
     public void findUserOrderTest() throws InvocationTargetException, IllegalAccessException {
         PageBean<OrderListDto> userOrders = orderListService.findUserOrder(3, 1);
-        System.out.println(userOrders);
+        System.out.println(userOrders.getRows());
     }
 
     @Test

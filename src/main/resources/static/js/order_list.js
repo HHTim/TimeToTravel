@@ -9,6 +9,7 @@ const commentCancel = document.querySelector('.comment__cancel');
 const commentSubmit = document.querySelector('.comment__submit');
 const commentContent = document.querySelector('.comment__content');
 const stars = document.querySelectorAll('.comment__rank i');
+let searchBody = JSON.parse(sessionStorage.getItem('searchBody'));
 let isRenderPage = false;
 let commentBody = {
   orderId: 0,
@@ -69,7 +70,9 @@ function renderList(data) {
   let html = '';
 
   for (let i in data) {
-    const {
+    let {
+      roomId,
+      comId,
       orderId,
       orderDatetime,
       orderCheckOut,
@@ -83,11 +86,13 @@ function renderList(data) {
       journeyPrice,
     } = data[i];
 
+    orderDatetime = orderDatetime.slice(0, 16);
+
     html += `
     <tr class="list__order">
     <td class="list__no">${orderId}</td>
     <td class="list__date">${orderDatetime}</td>
-    <td class="list__com">${comName}</td>
+    <td class="list__com"><a id="link" data-comid=${comId} data-roomid=${roomId}>${comName}</a></td>
     <td class="list__room">${roomName}</td>
     <td class="list__price">NT $${orderAmount}</td>
     <td class="list__detail">
@@ -242,6 +247,14 @@ list.addEventListener('click', (e) => {
         restoreComment();
       };
     }
+  }
+
+  if ((e.target.id = 'link')) {
+    console.log(e.target.dataset);
+    searchBody.comId = e.target.dataset.comid;
+    searchBody.roomId = e.target.dataset.roomid;
+    sessionStorage.setItem('searchBody', JSON.stringify(searchBody));
+    window.location.href = '/rooms/booking';
   }
 });
 
