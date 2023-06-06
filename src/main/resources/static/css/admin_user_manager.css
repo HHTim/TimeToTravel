@@ -484,7 +484,7 @@ main.main {
   border-radius: 10px;
 }
 
-table {
+div.table-container table {
   width: 90%;
   height: 10%;
   text-align: center;
@@ -493,26 +493,25 @@ table {
   margin: 5%;
   border: 1px solid black;
 }
-table td {
+div.table-container table td {
   color: #333;
 }
-table tr {
+div.table-container table tr {
   border: 1px solid #333;
 }
-table tr:nth-child(2n+1) {
+div.table-container table tr:nth-child(2n+1) {
   background-color: #9b9999;
 }
-table tr:nth-child(2n) {
+div.table-container table tr:nth-child(2n) {
   background-color: #dfdcdc;
 }
-table thead tr:first-child {
+div.table-container table thead tr:first-child {
   background-color: #006caa;
 }
-table thead td {
+div.table-container table thead td {
   color: #fff;
 }
-
-tbody {
+div.table-container table tbody {
   height: 50%;
 }
 

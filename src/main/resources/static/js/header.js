@@ -21,13 +21,13 @@ var currentUserData;
 const msgRow = 3;
 
 function updateNotifyIcon(userNewsStatus) {
-	if (userNewsStatus == 1) {
-		console.log('new-notify');
-		notifyIcon.css('background-image', `url(${url_red})`);
-	} else {
-		notifyIcon.css('background-image', `url(${url_normal})`);
-		console.log('none-notify');
-	}
+  if (userNewsStatus == 1) {
+    console.log('new-notify');
+    notifyIcon.css('background-image', `url(${url_red})`);
+  } else {
+    notifyIcon.css('background-image', `url(${url_normal})`);
+    console.log('none-notify');
+  }
 }
 
 function updateAvatar(avatar) {
@@ -56,13 +56,13 @@ function getRelativeTime(dateTimeString) {
 }
 
 function updateUserNewsStatus(role, account) {
-	let url;
-	const formData = new FormData();
-	formData.append('account', account);
-	formData.append('newsStatus', 0);
-	let headers = {
-		Accept: 'application/json',
-	};
+  let url;
+  const formData = new FormData();
+  formData.append('account', account);
+  formData.append('newsStatus', 0);
+  let headers = {
+    Accept: 'application/json',
+  };
 
   if (role === '會員') url = '/UserController/user/newsStatus';
   else if (role === '商家') url = '/CompanyController/company/newsStatus';
@@ -79,12 +79,12 @@ function updateUserNewsStatus(role, account) {
     });
 }
 
-function getUserNewsMessage(role) {
+function getUserNewsMessage(role, msgRow) {
   let url;
+  role === '會員'
+    ? (url = '/Admin2UserController/message/a2u/view/notify/0/' + msgRow)
+    : (url = '/Admin2ComController/message/a2c/view/notify/0/' + msgRow);
 
-  if (role === '會員') url = '/Admin2UserController/message/a2u/view/notify/0/' + msgRow;
-  else if (role === '商家') url = '/Admin2ComController/message/a2c/view/notify/0/' + msgRow;
-  else url = '/AdminController/admin/newsStatus';
   fetch(url)
     .then((r) => r.json())
     .then((d) => {
@@ -108,6 +108,75 @@ function getUserNewsMessage(role) {
         `
       );
       bindEventToNews();
+    })
+    .catch((e) => {
+      console.error(e);
+    });
+}
+
+function getAdminFromCompNewsMessage(msgRow) {
+  let url = '/AdminController/message/c2a/view/notify/0/' + msgRow;
+  fetch(url)
+    .then((r) => r.json())
+    .then((d) => {
+      // console.log(d);
+      notify_menu.append(
+        `
+        <li><a class="dropdown-item" href="#" style="color:#4d4f52; font-weight: bolder">商家最新消息</a></li>
+        <li><hr class="dropdown-divider" /></li>
+        ` +
+          d
+            .map((e) => {
+              return `
+            <li>
+            <a class="dropdown-item" style="color: #006caa; font-size: 1rem;" href="#">
+            <img src="https://i2.bahamut.com.tw/icon_notice-mail.png" style="border-radius: 50%; width: 10%">&nbsp
+            ${e.c2aMsgTitle}
+            &nbsp-<span class="time-text" style="color:#9b9999; font-size: 0.6rem;">&nbsp
+            ${getRelativeTime(e.c2aSendingTime)}&nbsp&nbsp&nbsp&nbsp&nbsp${e.comAccount}</span></a></li>
+            
+          `;
+            })
+            .join(' ') +
+          `
+        <li><hr class="dropdown-divider" /></li>
+        <li><a class="dropdown-item more-msg" href="#" style="color:#4d4f52; font-weight: bolder">顯示更多訊息</a></li>
+        `
+      );
+      bindEventToNews();
+    })
+    .catch((e) => {
+      console.error(e);
+    });
+}
+
+function getAdminFromUserNewsMessage(msgRow) {
+  let url = '/AdminController/message/u2a/view/notify/0/' + msgRow;
+  fetch(url)
+    .then((r) => r.json())
+    .then((d) => {
+      // console.log(d);
+      notify_menu.append(
+        `
+        <li><a class="dropdown-item" href="#" style="color:#4d4f52; font-weight: bolder">會員最新消息</a></li>
+        <li><hr class="dropdown-divider" /></li>
+        ` +
+          d
+            .map((e) => {
+              return `
+            <li>
+            <a class="dropdown-item" style="color: #006caa; font-size: 1rem;" href="#">
+            <img src="https://i2.bahamut.com.tw/icon_notice-mail.png" style="border-radius: 50%; width: 10%">&nbsp
+            ${e.u2aMsgTitle}
+            &nbsp-<span class="time-text" style="color:#9b9999; font-size: 0.6rem;">&nbsp
+            ${getRelativeTime(e.u2aSendingTime)}&nbsp&nbsp&nbsp&nbsp&nbsp${e.userAccount}</span></a></li>
+            
+          `;
+            })
+            .join(' ')
+      );
+      bindEventToNews();
+      getAdminFromCompNewsMessage(msgRow);
     })
     .catch((e) => {
       console.error(e);
@@ -143,7 +212,7 @@ async function getCurrentUserData() {
       const getCurrentUserDataResponse = await fetch(getCurrentUserDataUrl);
       currentUserData = await getCurrentUserDataResponse.json();
       // 第二個 Fetch 請求完成後的處理邏輯
-      console.log('wefwi' + JSON.stringify(currentUserData));
+      // console.log('wefwi' + JSON.stringify(currentUserData));
       if (role === '會員') {
         updateNotifyIcon(currentUserData.userNewsStatus);
         updateAvatar(currentUserData.userAvatar);
@@ -153,8 +222,9 @@ async function getCurrentUserData() {
         updateAvatar(currentUserData.comAvatar);
         getUserNewsMessage(role, msgRow);
       } else if (role === '平台') {
-        console.log('待加入');
         updateAvatar('data:image/jpeg;base64,' + currentUserData.adminAvatar);
+        updateNotifyIcon(currentUserData.adminNewsStatus);
+        getAdminFromUserNewsMessage(msgRow);
       }
 
       //comNewsStatus
@@ -245,16 +315,18 @@ btn_avatar.on('click', function () {
 });
 
 btn_notify.on('click', function () {
-  console.log(currentUserData);
+  // console.log(currentUserData);
   if (role === '會員') {
     updateUserNewsStatus(role, currentUserData.userAccount);
   } else if (role === '商家') {
     updateUserNewsStatus(role, currentUserData.comAccount);
   } else if (role === '平台') {
+    updateUserNewsStatus(role, currentUserData.adminAccount);
   }
 });
 
 /* export function define below Here!*/
 export function getCurrentUserInformation() {
   getCurrentUserData();
+  return currentUserData;
 }

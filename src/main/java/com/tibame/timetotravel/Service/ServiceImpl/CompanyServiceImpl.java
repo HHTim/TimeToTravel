@@ -152,7 +152,7 @@ public class CompanyServiceImpl implements CompanyService {
 
     @Transactional
     @Override
-    public String updateByComName(String companyName) {
+    public String updateNewsByComName(String companyName) {
         System.out.println(companyName);
         Company company = companyRepository.findByComName(companyName);
         company.setComNewsStatus(1);

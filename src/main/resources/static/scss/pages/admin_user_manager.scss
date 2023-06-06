@@ -213,7 +213,7 @@ main.main {
   border-radius: $border-radius;
 }
 
-table {
+div.table-container table {
   width: 90%;
   height: 10%;
   text-align: center;
@@ -240,10 +240,10 @@ table {
   thead td {
     color: $white;
   }
-}
 
-tbody {
-  height: 50%;
+  tbody {
+    height: 50%;
+  }
 }
 
 .data-text {

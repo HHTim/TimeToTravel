@@ -15,4 +15,6 @@ public interface C2AMessageViewService {
     Integer findViewByDateRange(String startDate, String endDate);
     List<C2AMsgView>findViewByDateRangePage(String startDate, String endDate, Integer currPage, Integer rows);
     PageBean<C2AMsgView> findBeanPageViewByDateRange(String startDate, String endDate, Integer currPage, Integer rows);
+
+    List<C2AMsgView> getNotifyMsgByComps(Integer startIndex, Integer endIndex);
 }
