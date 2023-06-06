@@ -94,16 +94,28 @@
             <hr />
             <div class="select-row">
               <div class="col-4 input-container">
-                <input type="text" placeholder="搜尋訂單編號、會員編號" class="form-control search-input" />
+                <input type="text" placeholder="搜尋訂單編號、會員帳號" class="form-control search-input" />
               </div>
               <div class="col-3 empty-space">&nbsp;</div>
               <div class="col-2 input-container">
                 <label for="adminfilterstartdate">起</label>
-                <input type="date" placeholder="yyyy-mm-dd" id="adminfilterstartdate" class="form-control" />
+                <input
+                  type="date"
+                  placeholder="yyyy-mm-dd"
+                  id="adminfilterstartdate"
+                  class="form-control"
+                  name="search__date__starting"
+                />
               </div>
               <div class="col-2 input-container">
                 <label>迄</label>
-                <input type="date" placeholder="yyyy-mm-dd" id="adminfilterstartdate" class="form-control" />
+                <input
+                  type="date"
+                  placeholder="yyyy-mm-dd"
+                  id="adminfilterstartdate"
+                  class="form-control"
+                  name="search__date__to"
+                />
               </div>
               <div class="col-1 input-container">
                 <button type="submit" class="form-control btn btn-primary">確定</button>
@@ -114,7 +126,7 @@
                 <thead class="thead-dark">
                   <tr class="th">
                     <th scope="col" class="text-center first border-top-0 border-bottom-0 border-left-0">訂單編號</th>
-                    <th scope="col" class="text-center border-top-0 border-bottom-0">會員編號</th>
+                    <th scope="col" class="text-center border-top-0 border-bottom-0">會員帳號</th>
                     <!-- <th scope="col" class="text-center">(商品編號)商品名稱</th> -->
                     <th scope="col" class="text-center">訂單金額</th>
                     <th scope="col" class="text-center">成立時間</th>
