@@ -166,7 +166,7 @@ main.main {
   width: 100%;
   height: 100%;
   border: none;
-  background-image: url("../images/info.svg");
+  background-image: url("../images/notify-normal.png");
   background-color: transparent;
   background-size: contain;
   background-position: center;
@@ -453,11 +453,13 @@ tbody tr {
   border: 2px solid #3d8ebd;
 }
 
-.-ontype {
+.-ontype,
+.active {
   background-color: #006caa !important;
   color: #fff;
 }
-.-ontype a:hover {
+.-ontype a:hover,
+.active a:hover {
   color: #fff;
 }
 

@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* theme-color */
 /* border */
 /* effect */
@@ -165,7 +166,7 @@ main.main {
   width: 100%;
   height: 100%;
   border: none;
-  background-image: url("../images/info.svg");
+  background-image: url("../images/notify-normal.png");
   background-color: transparent;
   background-size: contain;
   background-position: center;
@@ -288,20 +289,16 @@ body {
   color: white;
 }
 
+.custom-container {
+  min-height: calc(100dvh - 20px - 110px);
+}
+
 .search-results-count {
   padding: 5px 10px;
   background-color: #f0f0f0;
   border: 1px solid #ccc;
   margin-left: auto;
   border-radius: 5px;
-}
-
-.search-hotel {
-  background-color: #fff;
-  border: none;
-  color: #006caa;
-  padding: 4px 24px;
-  border-radius: 0 5px 5px 0;
 }
 
 .top {
@@ -419,7 +416,6 @@ body {
   background-color: #007bff;
   border-radius: 0 10px 10px 10px;
   margin-bottom: 10px;
-  height: 50px;
   box-shadow: 2px 2px 2px 2px #accefb;
 }
 
@@ -434,7 +430,28 @@ body {
   justify-content: left;
 }
 
-input[type=text] {
+#tab1 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+#tab1 div {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.search-hotel {
+  width: 8.5%;
+  background-color: #fff;
+  border: none;
+  color: #006caa;
+  padding: 3px 0;
+  border-radius: 0 5px 5px 0;
+}
+
+.search-location {
   font-size: 14px;
   width: 90%;
   height: 30px;
@@ -443,6 +460,29 @@ input[type=text] {
   border-radius: 5px 0 0 5px;
   cursor: pointer;
   padding-left: 5px;
+}
+
+.search-start {
+  width: 40%;
+  border: none;
+  margin-right: 0.5rem;
+  padding: 3px 0.5rem;
+  border-radius: 5px;
+}
+
+.search-end {
+  width: 40%;
+  border: none;
+  margin-right: 0.5rem;
+  padding: 3px 0.5rem;
+  border-radius: 5px;
+}
+
+.search-option {
+  width: 17%;
+  border: none;
+  padding: 4px 0.5rem;
+  border-radius: 5px;
 }
 
 .page1 {
@@ -601,6 +641,31 @@ input[type=text] {
 }
 .hotel__favor:hover::after {
   width: 100%;
+}
+
+.not-found {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-direction: column;
+}
+.not-found img {
+  width: 25%;
+}
+.not-found::before {
+  content: "未找到任何搜尋結果 :(";
+  font-size: 2rem;
+  font-weight: bold;
+  color: #ccc;
+}
+.not-found::after {
+  content: "請嘗試更換關鍵字";
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ccc;
 }
 
 .loader {

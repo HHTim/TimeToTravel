@@ -1,6 +1,6 @@
 package com.tibame.timetotravel.service.ServiceImpl;
 
-import com.tibame.timetotravel.dto.BookingPaid;
+import com.tibame.timetotravel.dto.BookingPaidDto;
 import com.tibame.timetotravel.service.PaidService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ class PaidServiceImplTest {
 
     @Test
     public void test() throws InvocationTargetException, IllegalAccessException {
-        BookingPaid bookingPaid = paidService.bookingPaid(3, 5, "2023-05-01", "2023-05-02");
-        System.out.println(bookingPaid);
+        BookingPaidDto bookingPaidDto = paidService.bookingPaid(3, 5, "2023-05-01", "2023-05-02");
+        System.out.println(bookingPaidDto);
     }
 }

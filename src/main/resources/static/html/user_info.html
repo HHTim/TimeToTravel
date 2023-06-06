@@ -11,7 +11,7 @@
     <script src="https://kit.fontawesome.com/e3af248fb2.js" crossorigin="anonymous" defer></script>
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
 
-    <script src="../js/user_info.js" defer></script>
+    <script type="module" src="../js/user_info.js" defer></script>
 
     <!-- 我們自己的 css 檔案，路徑記得改 -->
     <link rel="stylesheet" href="../css/user_info.css" />
@@ -54,12 +54,12 @@
                       </div>
                     </a>
                     <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">註冊</a></li>
+                      <!-- <li><a class="dropdown-item" href="#">註冊</a></li>
                       <li><a class="dropdown-item" href="#">登入</a></li>
                       <li><a class="dropdown-item" href="#">其他</a></li>
                       <li><a class="dropdown-item" href="#">其他</a></li>
                       <li><hr class="dropdown-divider" /></li>
-                      <li><a class="dropdown-item" href="#">登出</a></li>
+                      <li><a class="dropdown-item" href="#">登出</a></li> -->
                     </ul>
                   </div>
                 </li>
@@ -76,12 +76,12 @@
             <aside>
               <nav class="nav-custom">
                 <ul class="nav_list">
-                  <li><a href="../admin">商品訂單管理</a></li>
-                  <li><a href="../admin_ann">公告管理</a></li>
-                  <li><a href="../admin_message_recv">訊息管理</a></li>
-                  <li><a href="../admin_comp_manager">商家管理</a></li>
+                  <li><a href="#">商品訂單管理</a></li>
+                  <li><a href="#">公告管理</a></li>
+                  <li><a href="#">訊息管理</a></li>
+                  <li><a href="#">商家管理</a></li>
                   <li>
-                    <a href="../admin_user_manager">消費者管理</a>
+                    <a href="#">消費者管理</a>
                   </li>
                   <li><a href="#">景點管理</a></li>
                 </ul>
@@ -94,13 +94,15 @@
             <main>
               <div class="mgmtPanel w-100">
                 <div class="mgmtInner p-5">
-                  <p style="padding-bottom: 5px; border-bottom: 4px solid #0078bb" class="fs-4 fw-bold">商家基本資料</p>
+                  <p style="padding-bottom: 5px; border-bottom: 4px solid #0078bb" class="fs-4 fw-bold">
+                    消費者基本資料
+                  </p>
                   <p class="fw-bold mt-1">基本資料修改</p>
                   <div>
                     <form class="mgmt-form">
                       <div style="display: flex" class="mgmtheader w-100">
                         <div class="" style="display: flex; align-items: flex-end">
-                          <img id="avatarBig" style="height: 150px" class="p-2" src="../images/avatar.svg" alt="" />
+                          <img id="avatarBig" style="height: 150px" class="p-2" src="" alt="" />
                         </div>
                         <div class="mt-2 mgmtheaderInner w-100">
                           <div class="" style="">
@@ -126,165 +128,115 @@
                                 placeholder=""
                                 aria-describedby="button-addon2"
                               />
-                              <!-- <button
-                                id="fileUpload"
-                                class="btn btn-outline-secondary"
-                                style="
-                                  color: white;
-                                  background-color: #006caa;
-                                  border-radius: 0px 10px 10px 0px;
-                                  font-size: 16px;
-                                  white-space: nowrap;
-                                  width: 10%;
-                                  padding: 6px;
-                                "
-                                type="button"
-                                id="button-addon2"
-                              >
-                                上傳
-                              </button> -->
                             </div>
                           </div>
                         </div>
                       </div>
                       <div class="mb-3">
                         <div style="display: flex">
-                          <label
-                            for="exampleInputPassword1"
-                            style="font-size: 16px; white-space: nowrap"
-                            class="form-label mb-0"
-                          >
-                            負責人姓名
+                          <label for="userName" style="font-size: 16px; white-space: nowrap" class="form-label mb-0">
+                            姓名
                           </label>
                           <label
-                            for="exampleInputPassword1"
-                            style="font-size: 16px; white-space: nowrap; padding-left: 36%"
+                            for="gender"
+                            style="font-size: 16px; white-space: nowrap; padding-left: 33%"
                             class="form-label mb-0"
                           >
-                            聯絡電話
+                            性別
                           </label>
                           <label
-                            for="exampleInputPassword1"
-                            style="font-size: 16px; white-space: nowrap; padding-left: 21%"
+                            for="phone"
+                            style="font-size: 16px; white-space: nowrap; padding-left: 34%"
                             class="form-label mb-0"
                           >
-                            統一編號
+                            電話號碼
                           </label>
                         </div>
                         <div style="display: flex; justify-content: space-between">
                           <input
-                            id="manager"
-                            style="height: 45px; width: 44%"
+                            id="userName"
+                            style="height: 45px; width: 34%"
                             type=""
                             class="form-control"
-                            id="exampleInputPassword1"
                             value="王曉明"
-                            disabled
                           />
+                          <select
+                            id="gender"
+                            class="form-select custom-select"
+                            aria-label="Default select example"
+                            style="height: 45px; width: 36%; font-weight: bold"
+                          >
+                            <option disabled selected hidden>性別</option>
+                            <option value="1">男</option>
+                            <option value="0">女</option>
+                          </select>
                           <input
                             id="phone"
                             style="height: 45px; width: 27%; font-weight: bold"
                             type="text"
                             class="form-control"
-                            id="verity-code"
                             value="0910234567"
-                            disabled
-                          />
-                          <input
-                            id="texId"
-                            style="height: 45px; width: 27%; font-weight: bold"
-                            type=""
-                            class="form-control"
-                            id="verity-code"
-                            value="12345678"
-                            disabled
                           />
                         </div>
                       </div>
                       <div class="mb-3">
                         <div style="display: flex">
-                          <label
-                            for="exampleInputPassword1"
-                            style="font-size: 16px; white-space: nowrap"
-                            class="form-label mb-0"
-                          >
-                            註冊日期
+                          <label for="birthday" style="font-size: 16px; white-space: nowrap" class="form-label mb-0">
+                            出生日期(YYYY-MM-DD)
                           </label>
                           <label
-                            for="exampleInputPassword1"
-                            style="font-size: 16px; white-space: nowrap; padding-left: 24%"
+                            for="email"
+                            style="font-size: 16px; white-space: nowrap; padding-left: 13%"
                             class="form-label mb-0"
                           >
                             電子信箱
                           </label>
+                          <label
+                            for="nickName"
+                            style="font-size: 16px; white-space: nowrap; padding-left: 30%"
+                            class="form-label mb-0"
+                          >
+                            暱稱
+                          </label>
                         </div>
                         <div style="display: flex; justify-content: space-between">
                           <input
-                            id="signdate"
-                            style="height: 45px; width: 30%"
+                            id="birthday"
+                            style="height: 45px; width: 30%; padding-left: 20px"
                             type=""
                             class="form-control"
-                            id="exampleInputPassword1"
                             value="1993-03-08"
-                            disabled
                           />
                           <input
                             id="email"
-                            style="height: 45px; width: 69%; font-weight: bold"
+                            style="height: 45px; width: 35%; font-weight: bold"
                             type=""
                             class="form-control"
-                            id="verity-code"
                             value="abc@gmail.com"
-                            disabled
                           />
-                        </div>
-                      </div>
-                      <div class="mb-3">
-                        <div style="display: flex">
-                          <label
-                            for="exampleInputPassword1"
-                            style="font-size: 16px; white-space: nowrap"
-                            class="form-label mb-0"
-                          >
-                            商家名稱
-                          </label>
-                          <label
-                            for="exampleInputPassword1"
-                            style="font-size: 16px; white-space: nowrap; padding-left: 24%"
-                            class="form-label mb-0"
-                          >
-                            商家地址
-                          </label>
-                        </div>
-                        <div style="display: flex">
                           <input
-                            id="comName"
+                            id="nickName"
                             style="height: 45px; width: 30%; margin-right: 10px"
                             type=""
                             class="form-control"
-                            id="exampleInputPassword1"
-                            value="凱薩飯店"
-                            disabled
-                          />
-                          <input
-                            id="address"
-                            style="height: 45px; width: 69%; font-weight: bold"
-                            type=""
-                            class="form-control"
-                            id="verity-code"
-                            value="台北市南京東路三段"
-                            disabled
+                            value="Peter"
                           />
                         </div>
                       </div>
+
                       <div style="display: flex; justify-content: end">
+                        <label
+                          id="checkUpdate"
+                          style="font-size: 20px; color: red; margin-right: 20px; display: none"
+                          class="form-label mb-0"
+                          >欄位不可為空</label
+                        >
                         <input
                           id="update"
                           style="color: white; background-color: #006caa; width: 150px"
                           type="button"
                           class="form-control"
-                          id="verity-code"
-                          value="更新商家資料"
+                          value="更新會員資料"
                         />
                       </div>
                     </form>
@@ -299,56 +251,32 @@
                     >
                     <label
                       id="old_password_hint"
-                      for="exampleInputPassword1"
+                      for="old_password"
                       style="font-size: 20px; color: red; margin-left: 20px; display: none"
                       class="form-label mb-0"
                       >密碼不存在</label
                     >
-                    <input
-                      id="old_password"
-                      type="password"
-                      style="height: 45px"
-                      class="form-control mb-2"
-                      id="exampleInputPassword1"
-                    />
+                    <input id="old_password" type="password" style="height: 45px" class="form-control mb-2" />
                   </div>
                   <div class="mb-1">
-                    <label for="exampleInputPassword1" style="font-size: 20px" class="form-label mb-0"
-                      >設定新密碼</label
-                    >
+                    <label for="new_password" style="font-size: 20px" class="form-label mb-0">設定新密碼</label>
                     <label
                       id="new_password_hint"
-                      for="exampleInputPassword1"
                       style="font-size: 20px; color: red; margin-left: 20px; display: none"
                       class="form-label mb-0"
                       >密碼請輸入8個字元以上</label
                     >
-                    <input
-                      id="new_password"
-                      type="password"
-                      style="height: 45px"
-                      class="form-control mb-2"
-                      id="exampleInputPassword1"
-                    />
+                    <input id="new_password" type="password" style="height: 45px" class="form-control mb-2" />
                   </div>
                   <div class="mb-1">
-                    <label for="exampleInputPassword1" style="font-size: 20px" class="form-label mb-0"
-                      >再次輸入新密碼</label
-                    >
+                    <label for="password_vaild" style="font-size: 20px" class="form-label mb-0">再次輸入新密碼</label>
                     <label
                       id="new_password_vaild_hint"
-                      for="exampleInputPassword1"
                       style="font-size: 20px; color: red; margin-left: 20px; display: none"
                       class="form-label mb-0"
                       >密碼不匹配</label
                     >
-                    <input
-                      id="password_vaild"
-                      type="password"
-                      style="height: 45px"
-                      class="form-control mb-3"
-                      id="exampleInputPassword1"
-                    />
+                    <input id="password_vaild" type="password" style="height: 45px" class="form-control mb-3" />
                   </div>
                   <div style="display: flex; justify-content: end">
                     <input
@@ -356,7 +284,6 @@
                       style="color: white; background-color: #006caa; width: 150px"
                       type="button"
                       class="form-control"
-                      id="verity-code"
                       value="確認"
                     />
                   </div>

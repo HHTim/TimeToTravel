@@ -14,10 +14,7 @@
       <configuration>
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="Hibernate" />
-        <datasource-mapping>
-          <factory-entry name="entityManagerFactory" />
-          <factory-entry name="noname-a.xml@0" value="339050be-b717-42fb-a5b0-536de394bc12" />
-        </datasource-mapping>
+        <datasource-mapping />
         <naming-strategy-map />
       </configuration>
     </facet>
@@ -36,6 +33,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.10.1" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-web:3.0.6" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter:3.0.6" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot:3.0.6" level="project" />
@@ -61,8 +59,11 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-web:6.0.8" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-beans:6.0.8" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-webmvc:6.0.8" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-context:6.0.8" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-expression:6.0.8" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-websocket:6.0.8" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-context:6.0.8" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-core:6.0.8" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-jcl:6.0.8" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-aop:3.0.6" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-aop:6.0.8" level="project" />
     <orderEntry type="library" name="Maven: org.aspectj:aspectjweaver:1.9.19" level="project" />
@@ -116,10 +117,23 @@
     <orderEntry type="library" scope="TEST" name="Maven: org.mockito:mockito-junit-jupiter:4.8.1" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.skyscreamer:jsonassert:1.5.1" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: com.vaadin.external.google:android-json:0.0.20131108.vaadin1" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-core:6.0.8" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-jcl:6.0.8" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework:spring-test:6.0.8" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.xmlunit:xmlunit-core:2.9.1" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-data-redis:3.0.6" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.data:spring-data-redis:3.0.5" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.data:spring-data-keyvalue:3.0.5" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-oxm:6.0.8" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-context-support:6.0.8" level="project" />
+    <orderEntry type="library" name="Maven: io.lettuce:lettuce-core:6.2.4.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: io.netty:netty-common:4.1.91.Final" level="project" />
+    <orderEntry type="library" name="Maven: io.netty:netty-handler:4.1.91.Final" level="project" />
+    <orderEntry type="library" name="Maven: io.netty:netty-resolver:4.1.91.Final" level="project" />
+    <orderEntry type="library" name="Maven: io.netty:netty-buffer:4.1.91.Final" level="project" />
+    <orderEntry type="library" name="Maven: io.netty:netty-transport-native-unix-common:4.1.91.Final" level="project" />
+    <orderEntry type="library" name="Maven: io.netty:netty-codec:4.1.91.Final" level="project" />
+    <orderEntry type="library" name="Maven: io.netty:netty-transport:4.1.91.Final" level="project" />
+    <orderEntry type="library" name="Maven: io.projectreactor:reactor-core:3.5.5" level="project" />
+    <orderEntry type="library" name="Maven: org.reactivestreams:reactive-streams:1.0.4" level="project" />
     <orderEntry type="library" name="Maven: junit:junit:4.13.2" level="project" />
     <orderEntry type="library" name="Maven: org.hamcrest:hamcrest-core:2.2" level="project" />
     <orderEntry type="library" name="Maven: com.mysql:mysql-connector-j:8.0.33" level="project" />
@@ -139,5 +153,8 @@
     <orderEntry type="library" name="Maven: commons-beanutils:commons-beanutils:1.9.4" level="project" />
     <orderEntry type="library" name="Maven: commons-logging:commons-logging:1.2" level="project" />
     <orderEntry type="library" name="Maven: commons-collections:commons-collections:3.2.2" level="project" />
+    <orderEntry type="library" name="Maven: com.github.penggle:kaptcha:2.3.2" level="project" />
+    <orderEntry type="library" name="Maven: javax.servlet:javax.servlet-api:3.1.0" level="project" />
+    <orderEntry type="library" name="Maven: com.jhlabs:filters:2.0.235-1" level="project" />
   </component>
 </module>

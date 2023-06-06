@@ -1,3 +1,6 @@
+import { getCurrentUserInformation } from './header.js';
+
+// 綁定點擊事件
 window.addEventListener('load', function () {
   /*宣告區域*/
   let tbody = document.querySelector('tbody');

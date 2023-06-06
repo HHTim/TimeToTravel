@@ -11,4 +11,6 @@ import com.tibame.timetotravel.entity.Tags;
 @Repository("tagsRepository")
 public interface TagsRepository extends JpaRepository<Tags, Integer>{
 
+	
+	List<Tags> findByTag(String tag);
 }

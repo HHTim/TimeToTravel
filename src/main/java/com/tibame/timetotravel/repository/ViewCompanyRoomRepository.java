@@ -1,5 +1,6 @@
 package com.tibame.timetotravel.repository;
 
+import com.tibame.timetotravel.dto.RoomWithCompanyDto;
 import com.tibame.timetotravel.view.ViewCompanyRoom;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -21,4 +22,7 @@ public interface ViewCompanyRoomRepository extends CrudRepository<ViewCompanyRoo
     ViewCompanyRoom findByComIdAndRoomId(Integer comId, Integer roomId);
 
     ViewCompanyRoom findByRoomId(Integer roomId);
+
+    @Query(value = "SELECT new com.tibame.timetotravel.dto.RoomWithCompanyDto(r.roomId, r.roomName, c.comName, c.comAddress) FROM Room r JOIN Company c ON r.comId = c.comId WHERE r.roomId = ?1")
+    RoomWithCompanyDto findJoin(Integer roomId);
 }

@@ -3,10 +3,7 @@ package com.tibame.timetotravel.controller;
 import com.tibame.timetotravel.entity.PublicScene;
 import com.tibame.timetotravel.service.PublicSceneService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -15,26 +12,41 @@ import java.util.List;
 @RequestMapping("/scenes")
 public class PublicSceneController {
 
+
     @Autowired
     private PublicSceneService publicSceneService;
 
-    @PostMapping("/send")
-    public String insertScene(@RequestBody PublicScene scene) {
-        publicSceneService.insert(scene);
-        return "Scene inserted successfully.";
-    }
 
-    @RequestMapping("/hi")
-    public String text() {
-        System.out.println("今天天氣很好");
-        return "return";//顯示在網頁頁面
+    @PostMapping("/insert")
+    public String insert(@RequestBody PublicScene publicScene) {
+        publicSceneService.insert(publicScene);
+        return "新增景點";
     }
 
 
-    @RequestMapping("/getall")
+    @RequestMapping("/search/all")
     public List<PublicScene> getAll() {
+        System.out.println("找全部景點");
         return publicSceneService.getAll();
     }
 
-    // Other methods for updating, deleting, or retrieving specific scenes
+    @GetMapping("/sceneManageSearch/{keyword}")
+    public List<PublicScene> findBySceneAddress(@PathVariable String keyword){
+        System.out.println("關鍵字查詢");
+        return publicSceneService.findBySceneAddress(keyword);
+    }
+
+    @DeleteMapping("/deletePublicScene/{sceneId}")
+    public String deleteById(@PathVariable Integer sceneId){
+        publicSceneService.deleteById(sceneId);
+        return "刪除成功";
+    }
+
+    @PutMapping ("/updatePublicScene/{sceneId}")
+    public String update(@PathVariable Integer sceneId,
+                             @RequestBody PublicScene publicScene){
+        publicSceneService.update(sceneId,publicScene);
+        return "修改成功";
+    }
+
 }

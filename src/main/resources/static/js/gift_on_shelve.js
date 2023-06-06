@@ -1,3 +1,5 @@
+import { getCurrentUserInformation } from './header.js';
+
 window.addEventListener('load', function () {
   let saveBtn = document.querySelector('.save__btn__commit');
 
@@ -104,4 +106,6 @@ window.addEventListener('load', function () {
     console.log(base64String);
     return null;
   }
+
+  getCurrentUserInformation();
 });

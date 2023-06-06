@@ -1,13 +1,18 @@
 package com.tibame.timetotravel.controller;
 
 import com.tibame.timetotravel.common.PageBean;
+import com.tibame.timetotravel.dto.UserSessionDto;
 import com.tibame.timetotravel.entity.A2CMessage;
 import com.tibame.timetotravel.service.A2CMessageService;
 import com.tibame.timetotravel.service.CompanyService;
 import com.tibame.timetotravel.view.A2CMsgView;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/Admin2ComController")
@@ -51,6 +56,15 @@ public class Admin2ComController {
     public PageBean<A2CMsgView> readViewByDateRange(@PathVariable Integer currPage, @PathVariable Integer rows , @PathVariable String startDate, @PathVariable String endDate){
         System.out.println("日期分頁搜尋range: "+ startDate + " ~ " + endDate);
         return a2cMessageService.findBeanPageViewByDateRange(startDate, endDate , currPage, rows);
+    }
+
+    @GetMapping("/message/a2c/view/notify/{startIndex}/{endIndex}")
+    public ResponseEntity<List<A2CMsgView>> readViewByCompanyNotify(@PathVariable Integer startIndex,
+                                                                 @PathVariable Integer endIndex,
+                                                                 HttpSession session){
+        Integer comId = ((UserSessionDto) session.getAttribute("user")).getCompany().getComId();
+        System.out.println("獲得商家ID: "+ comId);
+        return ResponseEntity.ok(a2cMessageService.getNotifyMsgById(comId, startIndex, endIndex));
     }
 
 }

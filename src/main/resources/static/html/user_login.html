@@ -6,11 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- import -->
-    <script
-      src="https://kit.fontawesome.com/e3af248fb2.js"
-      crossorigin="anonymous"
-      defer
-    ></script>
+    <script src="https://kit.fontawesome.com/e3af248fb2.js" crossorigin="anonymous" defer></script>
     <!-- 輪播需要添加 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- BS5 js lib -->
@@ -19,7 +15,7 @@
       integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
       crossorigin="anonymous"
     ></script>
-    <script src="../js/homepage.js" defer></script>
+    <script type="module" src="../js/user_login.js" defer></script>
 
     <!-- BS5 StyleSheet -->
     <link
@@ -28,8 +24,6 @@
       integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
       crossorigin="anonymous"
     />
-    <!-- 我們自己的 js 檔案，路徑記得改 -->
-    <link rel="stylesheet" href="../js/user_login.js" />
     <!-- 我們自己的 css 檔案，路徑記得改 -->
     <link rel="stylesheet" href="../css/user_login.css" />
     <!-- title 記得改 -->
@@ -47,44 +41,6 @@
                 <img src="../images/LOGO.png" alt="logo" class="logo__img" />
               </a>
             </h1>
-            <nav>
-              <ul class="nav">
-                <li class="nav__info">
-                  <div class="dropdown-center">
-                    <button
-                      class="dropdown-toggle nav__info-btn"
-                      type="button"
-                      data-bs-toggle="dropdown"
-                    ></button>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">訊息一</a></li>
-                      <li><a class="dropdown-item" href="#">訊息二</a></li>
-                      <li><a class="dropdown-item" href="#">訊息三</a></li>
-                      <li><hr class="dropdown-divider" /></li>
-                      <li><a class="dropdown-item" href="#">See More</a></li>
-                    </ul>
-                  </div>
-                </li>
-                <li class="nav__avatar">
-                  <div class="dropdown-center">
-                    <a
-                      href="#"
-                      class="dropdown-toggle nav__avatar-btn"
-                      type="button"
-                      data-bs-toggle="dropdown"
-                    >
-                      <div class="nav__avatar-img">
-                        <img src="../images/avatar.svg" alt="avatar" />
-                      </div>
-                    </a>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">註冊</a></li>
-                      <li><a class="dropdown-item" href="#">登入</a></li>
-                    </ul>
-                  </div>
-                </li>
-              </ul>
-            </nav>
           </div>
         </header>
       </div>
@@ -95,18 +51,10 @@
             <div class="col-md-auto">
               <div class="theme">
                 <div class="img-theme-div">
-                  <img
-                    class="img-theme"
-                    src="../images/theme.png"
-                    alt="theme"
-                  />
+                  <img class="img-theme" src="../images/theme.png" alt="theme" />
                 </div>
                 <div class="title-theme-div">
-                  <img
-                    class="title-theme"
-                    src="../images/theme_title.png"
-                    alt="theme-title"
-                  />
+                  <img class="title-theme" src="../images/theme_title.png" alt="theme-title" />
                 </div>
                 <div class="theme-login-column" style="padding-bottom: 40px">
                   <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -115,11 +63,9 @@
                         class="nav-link active"
                         id="home-tab"
                         data-bs-toggle="tab"
-                        data-bs-target="#home"
+                        data-bs-target="#userLogin"
                         type="button"
                         role="tab"
-                        aria-controls="home"
-                        aria-selected="true"
                       >
                         會員登入
                       </button>
@@ -129,11 +75,9 @@
                         class="nav-link"
                         id="profile-tab"
                         data-bs-toggle="tab"
-                        data-bs-target="#profile"
+                        data-bs-target="#companyLogin"
                         type="button"
                         role="tab"
-                        aria-controls="profile"
-                        aria-selected="false"
                       >
                         廠商登入
                       </button>
@@ -143,361 +87,106 @@
                         class="nav-link"
                         id="contact-tab"
                         data-bs-toggle="tab"
-                        data-bs-target="#contact"
+                        data-bs-target="#adminLogin"
                         type="button"
                         role="tab"
-                        aria-controls="contact"
-                        aria-selected="false"
                       >
                         平台登入
                       </button>
                     </li>
                   </ul>
-                  <hr
-                    style="
-                      width: 400px;
-                      margin: 0 auto;
-                      border: 2px black solid;
-                    "
-                  />
+                  <hr style="width: 400px; margin: 0 auto; border: 2px black solid" />
                   <div class="tab-content" id="login-member">
-                    <div
-                      class="tab-pane fade show active"
-                      id="home"
-                      role="tabpanel"
-                      aria-labelledby="home-tab"
-                    >
-                      <form class="login-form">
+                    <div id="errorMessage" style="color: red; font-weight: bold"></div>
+                    <div class="tab-pane fade show active" id="userLogin" role="tabpanel">
+                      <form class="login-form" id="userLoginForm">
                         <div class="mb-2">
-                          <label
-                            for="exampleInputEmail1"
-                            style="font-size: 20px"
-                            class="form-label"
-                            >登入帳號</label
-                          >
-                          <input
-                            type="email"
-                            style="height: 45px"
-                            class="form-control"
-                            id="exampleInputEmail1"
-                            aria-describedby="emailHelp"
-                          />
+                          <label style="font-size: 20px" class="form-label">登入帳號</label>
+                          <input type="text" style="height: 45px" class="form-control" name="account" />
                         </div>
                         <div class="mb-3">
-                          <label
-                            for="exampleInputPassword1"
-                            style="font-size: 20px"
-                            class="form-label"
-                            >登入密碼</label
-                          >
-                          <input
-                            type="password"
-                            style="height: 45px"
-                            class="form-control"
-                            id="exampleInputPassword1"
-                          />
+                          <label style="font-size: 20px" class="form-label">登入密碼</label>
+                          <input type="password" style="height: 45px" class="form-control" name="password" />
                         </div>
                         <div class="mb-3">
-                          <label
-                            for="exampleInputPassword1"
-                            style="font-size: 20px"
-                            class="form-label"
-                          >
-                            驗證碼
-                          </label>
-                          <div
-                            style="
-                              display: flex;
-                              justify-content: space-between;
-                            "
-                          >
-                            <input
-                              style="height: 45px; width: 190px"
-                              type="password"
-                              class="form-control"
-                              id="exampleInputPassword1"
-                            />
-                            <input
-                              style="
-                                height: 45px;
-                                width: 190px;
-                                text-align: center;
-                                font-weight: bold;
-                              "
-                              type=""
-                              class="form-control"
-                              id="verity-code"
-                              value="DKJLAJ88"
-                              disabled
+                          <label style="font-size: 20px" class="form-label"> 驗證碼 </label>
+                          <div style="display: flex; justify-content: space-between">
+                            <input style="height: 45px; width: 190px" type="text" class="form-control" name="captcha" />
+                            <img
+                              src=""
+                              style="height: 45px; width: 190px; border-radius: 10px; cursor: pointer"
+                              class="captcha"
                             />
                           </div>
                         </div>
                         <div class="mb-3">
-                          <div
-                            style="
-                              display: flex;
-                              justify-content: space-between;
-                            "
-                          >
-                            <input
-                              style="height: 45px; width: 190px"
-                              type="button"
-                              class="form-control button"
-                              id="exampleInputPassword1"
-                              value="登入"
-                            />
-                            <input
-                              style="
-                                padding-left: 30px;
-                                background-position: 18px 12px;
-                                background-image: url(/images/Vector.png);
-                                background-repeat: no-repeat;
-                                height: 45px;
-                                width: 190px;
-                                text-align: center;
-                                font-weight: bold;
-                                font-size: 12px;
-                              "
-                              type="button"
-                              class="form-control button"
-                              value="Sign in with Google"
-                            />
+                          <div style="display: flex; justify-content: space-between">
+                            <input type="submit" class="form-control button" value="登入" />
                           </div>
                         </div>
                         <div style="text-align: center; margin-top: 30px">
-                          <a href="" style="color: blue">沒有帳號?</a>
+                          <a href="/html/user_register.html" style="color: blue">沒有帳號?</a>
                         </div>
                       </form>
                     </div>
-                    <div
-                      class="tab-pane fade"
-                      id="profile"
-                      role="tabpanel"
-                      aria-labelledby="profile-tab"
-                    >
-                      <div
-                        class="tab-pane fade show active"
-                        id="home"
-                        role="tabpanel"
-                        aria-labelledby="home-tab"
-                      >
-                        <form class="login-form">
-                          <div class="mb-2">
-                            <label
-                              for="exampleInputEmail1"
-                              style="font-size: 20px"
-                              class="form-label"
-                              >登入帳號</label
-                            >
-                            <input
-                              type="email"
-                              style="height: 45px"
-                              class="form-control"
-                              id="exampleInputEmail1"
-                              aria-describedby="emailHelp"
+                    <div class="tab-pane fade" id="companyLogin" role="tabpanel">
+                      <form class="login-form" id="companyLoginForm">
+                        <div class="mb-2">
+                          <label style="font-size: 20px" class="form-label">登入帳號</label>
+                          <input type="text" style="height: 45px" class="form-control" name="account" />
+                        </div>
+                        <div class="mb-3">
+                          <label style="font-size: 20px" class="form-label">登入密碼</label>
+                          <input type="password" style="height: 45px" class="form-control" name="password" />
+                        </div>
+                        <div class="mb-3">
+                          <label style="font-size: 20px" class="form-label"> 驗證碼 </label>
+                          <div style="display: flex; justify-content: space-between">
+                            <input style="height: 45px; width: 190px" type="text" class="form-control" name="captcha" />
+                            <img
+                              src=""
+                              style="height: 45px; width: 190px; border-radius: 10px; cursor: pointer"
+                              class="captcha"
                             />
                           </div>
-                          <div class="mb-3">
-                            <label
-                              for="exampleInputPassword1"
-                              style="font-size: 20px"
-                              class="form-label"
-                              >登入密碼</label
-                            >
-                            <input
-                              type="password"
-                              style="height: 45px"
-                              class="form-control"
-                              id="exampleInputPassword1"
-                            />
+                        </div>
+                        <div class="mb-3">
+                          <div style="display: flex; justify-content: space-between">
+                            <input type="submit" class="form-control button" value="登入" />
                           </div>
-                          <div class="mb-3">
-                            <label
-                              for="exampleInputPassword1"
-                              style="font-size: 20px"
-                              class="form-label"
-                            >
-                              驗證碼
-                            </label>
-                            <div
-                              style="
-                                display: flex;
-                                justify-content: space-between;
-                              "
-                            >
-                              <input
-                                style="height: 45px; width: 190px"
-                                type="password"
-                                class="form-control"
-                                id="exampleInputPassword1"
-                              />
-                              <input
-                                style="
-                                  height: 45px;
-                                  width: 190px;
-                                  text-align: center;
-                                  font-weight: bold;
-                                "
-                                type=""
-                                class="form-control"
-                                id="verity-code"
-                                value="DKJLAJ88"
-                                disabled
-                              />
-                            </div>
-                          </div>
-                          <div class="mb-3">
-                            <div
-                              style="
-                                display: flex;
-                                justify-content: space-between;
-                              "
-                            >
-                              <input
-                                style="height: 45px; width: 190px"
-                                type="button"
-                                class="form-control button"
-                                id="exampleInputPassword1"
-                                value="登入"
-                              />
-                              <input
-                                style="
-                                  padding-left: 30px;
-                                  background-position: 18px 12px;
-                                  background-image: url(/images/Vector.png);
-                                  background-repeat: no-repeat;
-                                  height: 45px;
-                                  width: 190px;
-                                  text-align: center;
-                                  font-weight: bold;
-                                  font-size: 12px;
-                                "
-                                type="button"
-                                class="form-control button"
-                                value="Sign in with Google"
-                              />
-                            </div>
-                          </div>
-                          <div style="text-align: center; margin-top: 30px">
-                            <a href="" style="color: blue">沒有帳號?</a>
-                          </div>
-                        </form>
-                      </div>
+                        </div>
+                        <div style="text-align: center; margin-top: 30px">
+                          <a href="/html/user_register.html" style="color: blue">沒有帳號?</a>
+                        </div>
+                      </form>
                     </div>
-                    <div
-                      class="tab-pane fade"
-                      id="contact"
-                      role="tabpanel"
-                      aria-labelledby="contact-tab"
-                    >
-                      <div
-                        class="tab-pane fade show active"
-                        id="home"
-                        role="tabpanel"
-                        aria-labelledby="home-tab"
-                      >
-                        <form class="login-form">
-                          <div class="mb-2">
-                            <label
-                              for="exampleInputEmail1"
-                              style="font-size: 20px"
-                              class="form-label"
-                              >登入帳號</label
-                            >
-                            <input
-                              type="email"
-                              style="height: 45px"
-                              class="form-control"
-                              id="exampleInputEmail1"
-                              aria-describedby="emailHelp"
+                    <div class="tab-pane fade" id="adminLogin" role="tabpanel">
+                      <form class="login-form" id="adminLoginForm">
+                        <div class="mb-2">
+                          <label style="font-size: 20px" class="form-label">登入帳號</label>
+                          <input type="text" style="height: 45px" class="form-control" name="account" />
+                        </div>
+                        <div class="mb-3">
+                          <label style="font-size: 20px" class="form-label">登入密碼</label>
+                          <input type="password" style="height: 45px" class="form-control" name="password" />
+                        </div>
+                        <div class="mb-3">
+                          <label style="font-size: 20px" class="form-label"> 驗證碼 </label>
+                          <div style="display: flex; justify-content: space-between">
+                            <input style="height: 45px; width: 190px" type="text" class="form-control" name="captcha" />
+                            <img
+                              src=""
+                              style="height: 45px; width: 190px; border-radius: 10px; cursor: pointer"
+                              class="captcha"
                             />
                           </div>
-                          <div class="mb-3">
-                            <label
-                              for="exampleInputPassword1"
-                              style="font-size: 20px"
-                              class="form-label"
-                              >登入密碼</label
-                            >
-                            <input
-                              type="password"
-                              style="height: 45px"
-                              class="form-control"
-                              id="exampleInputPassword1"
-                            />
+                        </div>
+                        <div class="mb-3">
+                          <div style="display: flex; justify-content: space-between">
+                            <input type="submit" class="form-control button" value="登入" />
                           </div>
-                          <div class="mb-3">
-                            <label
-                              for="exampleInputPassword1"
-                              style="font-size: 20px"
-                              class="form-label"
-                            >
-                              驗證碼
-                            </label>
-                            <div
-                              style="
-                                display: flex;
-                                justify-content: space-between;
-                              "
-                            >
-                              <input
-                                style="height: 45px; width: 190px"
-                                type="password"
-                                class="form-control"
-                                id="exampleInputPassword1"
-                              />
-                              <input
-                                style="
-                                  height: 45px;
-                                  width: 190px;
-                                  text-align: center;
-                                  font-weight: bold;
-                                "
-                                type=""
-                                class="form-control"
-                                id="verity-code"
-                                value="DKJLAJ88"
-                                disabled
-                              />
-                            </div>
-                          </div>
-                          <div class="mb-3">
-                            <div
-                              style="
-                                display: flex;
-                                justify-content: space-between;
-                              "
-                            >
-                              <input
-                                style="height: 45px; width: 190px"
-                                type="button"
-                                class="form-control button"
-                                id="exampleInputPassword1"
-                                value="登入"
-                              />
-                              <input
-                                style="
-                                  padding-left: 30px;
-                                  background-position: 18px 12px;
-                                  background-image: url(/images/Vector.png);
-                                  background-repeat: no-repeat;
-                                  height: 45px;
-                                  width: 190px;
-                                  text-align: center;
-                                  font-weight: bold;
-                                  font-size: 12px;
-                                "
-                                type="button"
-                                class="form-control button"
-                                value="Sign in with Google"
-                              />
-                            </div>
-                          </div>
-                          <div style="text-align: center; margin-top: 30px">
-                            <a href="" style="color: blue">沒有帳號?</a>
-                          </div>
-                        </form>
-                      </div>
+                        </div>
+                      </form>
                     </div>
                   </div>
                 </div>

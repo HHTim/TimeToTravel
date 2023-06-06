@@ -13,7 +13,7 @@
     <!-- 我們自己的 css 檔案，路徑記得改 -->
     <link rel="stylesheet" href="../css/gift_cart.css" />
     <!-- 我們自己的 js 檔案，路徑記得改 -->
-    <script src="../js/gift_cart.js" defer></script>
+    <script type="module" src="../js/gift_cart.js" defer></script>
     <!-- 輪播需要添加 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- title 記得改 -->
@@ -32,7 +32,7 @@
         <nav>
           <ul class="nav">
             <li class="nav__link"><a href="#">我的訂單</a></li>
-            <li class="nav__link"><a href="#">購物車</a></li>
+            <li class="nav__link"><a href="#">我的最愛</a></li>
             <li class="nav__link"><a href="#">部落格</a></li>
             <li class="nav__info">
               <div class="dropdown-center">
@@ -55,12 +55,12 @@
                   </div>
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">註冊</a></li>
+                  <!-- <li><a class="dropdown-item" href="#">註冊</a></li>
                   <li><a class="dropdown-item" href="#">登入</a></li>
                   <li><a class="dropdown-item" href="#">其他</a></li>
                   <li><a class="dropdown-item" href="#">其他</a></li>
                   <li><hr class="dropdown-divider" /></li>
-                  <li><a class="dropdown-item" href="#">登出</a></li>
+                  <li><a class="dropdown-item" href="#">登出</a></li> -->
                 </ul>
               </div>
             </li>
@@ -76,7 +76,7 @@
           <main class="main">
             <nav style="--bs-breadcrumb-divider: '>'" aria-label="breadcrumb">
               <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">土產專區</a></li>
+                <li class="breadcrumb-item"><a href="/gift_search">土產專區</a></li>
                 <li class="breadcrumb-item active" aria-current="page">購物車</li>
               </ol>
             </nav>
@@ -90,66 +90,31 @@
                   <th>取消</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <td><img src="#" alt="這是圖片" />蛇肉串燒</td>
+              <tbody class="cart-list">
+                
+                <tr data-gift-id="${i.giftId}">
+                  <td><div class="gift-img"><img src="../images/gift1.jpg" alt="" /></div><div class="gift-name"><div>蛇肉串燒蛇肉串燒蛇肉串燒蛇肉串燒蛇肉串燒蛇肉串燒蛇肉串燒蛇肉串燒</div></div></td>
                   <td>$3800</td>
                   <td>
                     <div class="quantity">
                       <button class="minus-btn">-</button>
-                      <div class="qty"><input type="number" class="qty-input" value="1" /></div>
+                      <div class="qty"><input type="text" class="qty-input" maxlength="2" value="1" /></div>
                       <button class="plus-btn">+</button>
                     </div>
                   </td>
-                  <td>$11400</td>
-                  <td><button type="button" class="btn btn-danger">刪除</button></td>
+                  <td class="unit-price">$<span>11400</span></td>
+                  <td><button class="btn btn-danger delete-one">刪除</button></td>
                 </tr>
+
+
+
                 <tr>
                   <td><img src="#" alt="這是圖片" />蛇肉串燒</td>
                   <td>$3800</td>
                   <td>
                     <div class="quantity">
                       <button class="minus-btn">-</button>
-                      <div class="qty"><input type="number" class="qty-input" value="2" /></div>
-                      <button class="plus-btn">+</button>
-                    </div>
-                  </td>
-                  <td>$11400</td>
-                  <td><button type="button" class="btn btn-danger">刪除</button></td>
-                </tr>
-                <tr>
-                  <td><img src="#" alt="這是圖片" />蛇肉串燒</td>
-                  <td>$3800</td>
-                  <td>
-                    <div class="quantity">
-                      <button class="minus-btn">-</button>
-                      <div class="qty"><input type="number" class="qty-input" value="3" /></div>
-                      <button class="plus-btn">+</button>
-                    </div>
-                  </td>
-                  <td>$11400</td>
-                  <td><button type="button" class="btn btn-danger">刪除</button></td>
-                </tr>
-                <tr>
-                  <td><img src="#" alt="這是圖片" />蛇肉串燒</td>
-                  <td>$3800</td>
-                  <td>
-                    <div class="quantity">
-                      <button class="minus-btn">-</button>
-                      <div class="qty"><input type="number" class="qty-input" value="4" /></div>
-                      <button class="plus-btn">+</button>
-                    </div>
-                  </td>
-                  <td>$11400</td>
-                  <td><button type="button" class="btn btn-danger">刪除</button></td>
-                </tr>
-                <tr>
-                  <td><img src="#" alt="這是圖片" />蛇肉串燒</td>
-                  <td>$3800</td>
-                  <td>
-                    <div class="quantity">
-                      <button class="minus-btn">-</button>
-                      <div class="qty"><input type="number" class="qty-input" value="5" /></div>
+                      <div class="qty"><input type="text" oninput="this.value = this.value.replace(/[^0-9]/g, '')" class="qty-input" maxlength="2" value="1" /></div>
                       <button class="plus-btn">+</button>
                     </div>
                   </td>
@@ -162,17 +127,21 @@
               <div class="col-8"></div>
               <div class="col-2">總金額：$</div>
               <div class="col-1 total-price">81000</div>
-              <input type="hidden" name="frontend_total_price" value="81000">
+              <input type="hidden" name="frontend_total_price" value="81000" />
               <div class="1"></div>
             </div>
             <div class="row gotocheck">
-              <div class="col-8"></div>
               <div class="col-3">
-                <button onclick="location.href='./gift_check.html'" type="button" class="btn btn-success">
+                <button class="btn btn-danger clear-all">
+                  清空
+                </button>
+              </div>
+              <div class="col-6"></div>
+              <div class="col-3">
+                <button class="btn btn-success go-to-pay">
                   前往結帳
                 </button>
               </div>
-              <div class="col-1"></div>
             </div>
           </main>
           <!-- Main End -->

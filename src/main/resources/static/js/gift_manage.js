@@ -1,3 +1,5 @@
+import { getCurrentUserInformation } from './header.js';
+
 window.addEventListener('load', function () {
   /* 宣告區 */
   let tbody = document.querySelector('tbody');
@@ -24,6 +26,7 @@ window.addEventListener('load', function () {
     findAll();
   });
 
+  getCurrentUserInformation();
   /* 架上商品 */
   giftsOnShelve.addEventListener('click', function () {
     fetch('/giftController/gift')

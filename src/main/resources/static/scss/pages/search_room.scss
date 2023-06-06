@@ -1,6 +1,10 @@
 // // 記得引入基本設定
 @import '../base/base';
 
+.custom-container {
+  min-height: calc(100dvh - 20px - 110px);
+}
+
 //------搜尋筆數------//
 .search-results-count {
   padding: 5px 10px;
@@ -11,13 +15,7 @@
   // background-color: $primary-blue;
   // color: $white;
 }
-.search-hotel {
-  background-color: $white;
-  border: none;
-  color: $primary-blue;
-  padding: 4px 24px;
-  border-radius: 0 5px 5px 0;
-}
+
 .top {
   display: flex;
   margin-bottom: 10px;
@@ -147,7 +145,7 @@
   background-color: #007bff;
   border-radius: 0 10px 10px 10px; //圓角
   margin-bottom: 10px;
-  height: 50px;
+  // height: 50px;
   -moz-box-shadow: 2px 2px 2px 2px #accefb;
   -webkit-box-shadow: 2px 2px 2px 2px #accefb;
   box-shadow: 2px 2px 2px 2px #accefb;
@@ -164,7 +162,29 @@
   justify-content: left;
 }
 
-input[type='text'] {
+#tab1 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.search-hotel {
+  width: 8.5%;
+  background-color: $white;
+  border: none;
+  color: $primary-blue;
+  padding: 3px 0;
+  border-radius: 0 5px 5px 0;
+}
+
+.search-location {
   font-size: 14px;
   width: 90%;
   height: 30px;
@@ -173,6 +193,29 @@ input[type='text'] {
   border-radius: 5px 0 0 5px;
   cursor: pointer;
   padding-left: 5px;
+}
+
+.search-start {
+  width: 40%;
+  border: none;
+  margin-right: 0.5rem;
+  padding: 3px 0.5rem;
+  border-radius: $input-radius;
+}
+
+.search-end {
+  width: 40%;
+  border: none;
+  margin-right: 0.5rem;
+  padding: 3px 0.5rem;
+  border-radius: $input-radius;
+}
+
+.search-option {
+  width: 17%;
+  border: none;
+  padding: 4px 0.5rem;
+  border-radius: $input-radius;
 }
 
 //分頁
@@ -356,6 +399,34 @@ input[type='text'] {
     &:hover::after {
       width: 100%;
     }
+  }
+}
+
+.not-found {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-direction: column;
+
+  img {
+    width: 25%;
+  }
+
+  &::before {
+    content: '未找到任何搜尋結果 :(';
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ccc;
+  }
+
+  &::after {
+    content: '請嘗試更換關鍵字';
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ccc;
   }
 }
 
