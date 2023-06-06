@@ -370,7 +370,8 @@ input[type='text'] {
   &__rank {
     padding: 0;
     margin: 0;
-    margin-left: 1rem;
+    display: block;
+    // margin-left: 1rem;
 
     li {
       display: inline-block;

@@ -1,12 +1,13 @@
 import { getCurrentUserInformation } from './header.js';
 
-// const searchResult = document.querySelector('.search-result');
 const tab1 = document.querySelector('.tab1');
 const cardAll = document.querySelector('.card_all');
 const search = document.querySelector('#search-scene');
 const searchInput = document.querySelector('#search-input');
+// session storage
 let searchBody = JSON.parse(sessionStorage.getItem('searchBody'));
 
+// 渲染星星
 function renderRank(rank) {
   let html = '';
   for (let i = 0; i < rank; i++) {
@@ -15,6 +16,87 @@ function renderRank(rank) {
   return html;
 }
 
+// 渲染第二次fetch的結果，將飯店渲染到燈箱下面
+function renderSearchResult(result) {
+  let html = '';
+  for (let i in result) {
+    const { comId, comName, comAddress, roomName, roomDesc, roomPhoto, orderRanks, roomId } = result[i];
+    const sum = orderRanks.reduce((curr, acc) => curr + acc, 0);
+    const avg = orderRanks.length === 0 ? 1 : Math.ceil(sum / orderRanks.length);
+    // console.log(orderRanks);
+    // console.log('avg: ' + avg);
+    html += `
+    <div class="hotel__card" data-comId=${comId} data-roomId=${roomId}>
+      <div class="hotel__img">
+        <img src="data:image/png;base64,${roomPhoto}" alt="pic" />
+      </div>
+      <div class="hotel__content">
+        <div class="d-flex flex-column">
+          <h3 class="hotel__title">${comName} - ${roomName}</h3>
+          <ul class="hotel__rank" data-rank=${avg}>
+            ${renderRank(avg)}
+          </ul>
+        </div>
+        <p class="hotel__address" target="_blank">${comAddress} 🗺️</p>
+        <p class="hotel__desc">${roomDesc}</p>
+      </div>
+    </div> 
+    `;
+  }
+  return html;
+}
+
+// 處理第二次fetch後的結果
+function handleSearch(lightbox) {
+  const { keyword, people, startDate, endDate } = searchBody;
+  fetch(`/rooms/search/${keyword}/${people}/${startDate}/${endDate}`)
+    .then((resp) => resp.json())
+    .then((result) => {
+      // console.log(lightbox.lastElementChild);
+      const searchResult = lightbox.lastElementChild;
+      searchResult.innerHTML = renderSearchResult(result);
+      // 三間房間綁定點擊事件
+      const searchRooms = document.querySelectorAll('div.search-result div.hotel__card');
+      searchRooms.forEach((room) => {
+        room.addEventListener('click', () => {
+          // console.log(room.dataset);
+          const { comid, roomid } = room.dataset;
+          searchBody.comId = comid;
+          searchBody.roomId = roomid;
+          sessionStorage.setItem('searchBody', JSON.stringify(searchBody));
+          window.location.href = '/rooms/booking';
+        });
+      });
+    });
+}
+
+// 燈箱點擊事件，點擊後觸發第二次fetch取得三間飯店
+cardAll.addEventListener('click', (e) => {
+  // console.log(e.target.closest('div.card').id === 'card');
+  const card = e.target.closest('div.card');
+  if (card?.classList.contains('card')) {
+    const lightbox = card.nextElementSibling;
+    const close = lightbox.firstElementChild.nextElementSibling;
+
+    // console.log(lightbox);
+    // console.log(close);
+    lightbox.classList.add('open');
+    handleSearch(lightbox);
+    close.onclick = () => lightbox.classList.remove('open');
+  }
+});
+
+// async function handleSearch() {
+//   const { keyword, people, startDate, endDate } = searchBody;
+//   const resp = await fetch(`/rooms/search/${keyword}/${people}/${startDate}/${endDate}`);
+//   const result = await resp.json();
+//   console.log(result);
+//   /* Search Result */
+//   console.log(searchResult);
+//   searchResult.innerHTML = setTimeout(() => renderSearchResult(result), 0);
+// }
+
+// 渲染搜尋到的景點的結果
 function renderCards(data) {
   let html = '';
 
@@ -56,6 +138,7 @@ function renderCards(data) {
   return html;
 }
 
+// 跳頁後的搜尋
 async function fetchData() {
   const { keyword } = searchBody;
   const resp = await fetch(`/scenes/sceneManageSearch/${keyword}`);
@@ -71,110 +154,7 @@ async function fetchData() {
   console.log(totalResults);
 }
 
-getCurrentUserInformation();
-
-// lightbox燈箱
-
-/* Open lightbox on button click */
-// $('.card_all').click(function (e) {
-// $('.backdrop').animate({ opacity: '.50' }, 300, 'linear').css('display', 'block');
-// $('.box').fadeIn();
-// console.log($(e.target));
-// console.log('----------');
-// console.log($('.card1').next());
-//   console.log(e.target.classList.contains('card-body'));
-//   if (e.target.classList.contains('card-body')) {
-//     var lightbox = $('.card1').nextAll('.box').first();
-//     lightbox.toggleClass('open');
-
-//     $(lightbox.first()).click(function () {
-//       lightbox.removeClass('open');
-//     });
-//   } else {
-//     console.log('no');
-//   }
-// });
-
-// $('.card_all').click(function (e) {
-//   // console.log(e.target.classList.contains('card-body'));
-//   if (e.target.classList.contains('card-body')) {
-//     var lightbox = $('.card1').next();
-//     lightbox.addClass('open');
-
-//     lightbox.click(function () {
-//       lightbox.removeClass('open');
-//     });
-//   }
-// });
-
-cardAll.addEventListener('click', (e) => {
-  // console.log(e.target.closest('div.card').id === 'card');
-  const card = e.target.closest('div.card');
-  if (card?.classList.contains('card')) {
-    const lightbox = card.nextElementSibling;
-    const close = lightbox.firstElementChild.nextElementSibling;
-
-    // console.log(lightbox);
-    // console.log(close);
-    lightbox.classList.add('open');
-    handleSearch(lightbox);
-    close.onclick = () => lightbox.classList.remove('open');
-  }
-});
-
-// async function handleSearch() {
-//   const { keyword, people, startDate, endDate } = searchBody;
-//   const resp = await fetch(`/rooms/search/${keyword}/${people}/${startDate}/${endDate}`);
-//   const result = await resp.json();
-//   console.log(result);
-//   /* Search Result */
-//   console.log(searchResult);
-//   searchResult.innerHTML = setTimeout(() => renderSearchResult(result), 0);
-// }
-
-function handleSearch(lightbox) {
-  const { keyword, people, startDate, endDate } = searchBody;
-  fetch(`/rooms/search/${keyword}/${people}/${startDate}/${endDate}`)
-    .then((resp) => resp.json())
-    .then((result) => {
-      // console.log(lightbox.lastElementChild);
-      const searchResult = lightbox.lastElementChild;
-      searchResult.innerHTML = renderSearchResult(result);
-    });
-}
-
-function renderSearchResult(result) {
-  let html = '';
-
-  for (let i in result) {
-    const { comId, comName, comAddress, roomName, roomDesc, roomPhoto, orderRanks, roomId } = result[i];
-    const sum = orderRanks.reduce((curr, acc) => curr + acc, 0);
-    const avg = orderRanks.length === 0 ? 1 : Math.ceil(sum / orderRanks.length);
-    // console.log(orderRanks);
-    // console.log('avg: ' + avg);
-    html += `
-    <div class="hotel__card" data-comId=${comId} data-roomId=${roomId}>
-      <div class="hotel__img">
-        <img src="data:image/png;base64,${roomPhoto}" alt="pic" />
-      </div>
-      <div class="hotel__content">
-        <div class="d-flex align-items-center">
-          <h3 class="hotel__title">${comName} - ${roomName}</h3>
-          <ul class="hotel__rank" data-rank=${avg}>
-            ${renderRank(avg)}
-          </ul>
-        </div>
-        <p class="hotel__address" target="_blank">${comAddress} 🗺️</p>
-        <p class="hotel__desc">${roomDesc}</p>
-      </div>
-    </div> 
-    `;
-  }
-  return html;
-}
-
 tab1.addEventListener('click', () => (window.location.href = '/rooms/search'));
-
 search.addEventListener('click', () => fetchData());
 
 searchInput.addEventListener('blur', (e) => {
@@ -183,3 +163,4 @@ searchInput.addEventListener('blur', (e) => {
 });
 
 fetchData();
+getCurrentUserInformation();

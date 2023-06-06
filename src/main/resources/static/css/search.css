@@ -561,7 +561,7 @@ input[type=text] {
 .hotel__rank {
   padding: 0;
   margin: 0;
-  margin-left: 1rem;
+  display: block;
 }
 .hotel__rank li {
   display: inline-block;
