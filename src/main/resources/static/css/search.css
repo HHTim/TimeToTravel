@@ -422,7 +422,7 @@ input[type=text] {
 }
 
 .box {
-  z-index: 2;
+  z-index: 999;
   position: fixed;
   opacity: 1;
   display: none;

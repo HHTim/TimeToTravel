@@ -4,14 +4,49 @@ const tab1 = document.querySelector('.tab1');
 const cardAll = document.querySelector('.card_all');
 const search = document.querySelector('#search-scene');
 const searchInput = document.querySelector('#search-input');
+const pageBtnWrapper = document.querySelector('#page-btn-wrapper');
 // session storage
 let searchBody = JSON.parse(sessionStorage.getItem('searchBody'));
+let isRenderPage = false;
 
 // 渲染星星
 function renderRank(rank) {
   let html = '';
   for (let i = 0; i < rank; i++) {
     html += `<li><i class="fa-solid fa-star fa-lg"></i></li>`;
+  }
+  return html;
+}
+
+// 處理分頁器按鈕的點擊事件，將頁數丟回handleSearch重新搜尋渲染房間
+function handlePageBtn(e) {
+  // 按鈕代表的頁數
+  const pageNum = e.target.dataset.page;
+  // 所有按鈕集合
+  const pageItems = pageBtnWrapper.childNodes;
+  // 先刪掉所有按鈕的active class
+  pageItems.forEach((i) => {
+    console.log(i);
+    i.classList.remove('active');
+  });
+  // 選取點擊的按鈕最近的那個li標籤加上active
+  e.target.closest('li').classList.add('active');
+  console.log('當前頁數' + pageNum);
+  // 處理搜尋
+  fetchData(pageNum);
+}
+
+// 渲染分頁器
+function renderPaganation(pageSize) {
+  // 第一頁預設active
+  let html = `<li id="page-btn" role="button" class="page-item active">
+    <a class="page-link"  data-page="1">1</a>
+  </li>`;
+
+  for (let i = 1; i < pageSize; i++) {
+    html += `<li id="page-btn" role="button" class="page-item" >
+              <a class="page-link" data-page="${i + 1}">${i + 1}</a>
+            </li>`;
   }
   return html;
 }
@@ -139,9 +174,9 @@ function renderCards(data) {
 }
 
 // 跳頁後的搜尋
-async function fetchData() {
+async function fetchData(page) {
   const { keyword } = searchBody;
-  const resp = await fetch(`/scenes/sceneManageSearch/${keyword}`);
+  const resp = await fetch(`/scenes/sceneManageSearch/${keyword}/${page}`);
   const data = await resp.json();
   console.log(data);
 
@@ -152,14 +187,20 @@ async function fetchData() {
     </div>
     `;
   } else {
-    cardAll.innerHTML = renderCards(data);
+    cardAll.innerHTML = renderCards(data.rows);
   }
   searchInput.value = keyword;
 
   const searchResultsCountElement = document.getElementById('search-results-count');
-  const totalResults = data.length;
-  searchResultsCountElement.innerText = '搜尋結果共 ' + totalResults + ' 筆';
-  console.log(totalResults);
+  // 總頁數
+  let pageSize = Math.ceil(data.pageSize / 5);
+  console.log('頁數: ' + pageSize);
+  searchResultsCountElement.innerText = '搜尋結果共 ' + data.pageSize + ' 筆';
+  // console.log(totalResults);
+
+  if (isRenderPage) return;
+  pageBtnWrapper.innerHTML = renderPaganation(pageSize);
+  isRenderPage = true;
 }
 
 tab1.addEventListener('click', () => (window.location.href = '/rooms/search'));
@@ -170,5 +211,8 @@ searchInput.addEventListener('blur', (e) => {
   console.log(searchBody);
 });
 
-fetchData();
+// 點選分頁
+pageBtnWrapper.addEventListener('click', (e) => handlePageBtn(e));
+
+fetchData(1);
 getCurrentUserInformation();
