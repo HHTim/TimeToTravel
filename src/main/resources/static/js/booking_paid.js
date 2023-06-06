@@ -1,11 +1,15 @@
+import { getCurrentUserInformation } from './header.js';
+
 const orderSection = document.querySelector('.order');
 const journeySection = document.querySelector('.journey');
 const billSection = document.querySelector('.bill');
 const forward = document.querySelector('.submit__forward');
 const back = document.querySelector('.submit__return');
+let searchBody = JSON.parse(sessionStorage.getItem('searchBody'));
 let data;
 let day;
 let requestBody = {
+  roomId: searchBody.roomId,
   journeyId: '',
   journeyName: '',
   journeyPrice: 0,
@@ -154,7 +158,8 @@ function renderOrder() {
 
 // 跳轉頁面後的第一次請求
 async function fetchData() {
-  const resp = await fetch('http://localhost:8080/user/order');
+  const { roomId, startDate, endDate } = searchBody;
+  const resp = await fetch(`/rooms/paid/${roomId}/${startDate}/${endDate}`);
   data = await resp.json();
   console.log(data);
 
@@ -204,7 +209,7 @@ journeySection.addEventListener('click', (e) => {
     if (!isActive) {
       anchor.classList.add('active');
       // 將被選擇的行程ID放入請求體中
-      requestBody.journeyId = anchor.dataset.id;
+      requestBody.journeyId = Number(anchor.dataset.id);
       // 找出被選擇形成的價格，加到請求體的訂單總額上
       const selected = journey.filter((i) => i.journeyId == anchor.dataset.id);
       requestBody.orderAmount += selected[0].journeyPrice;
@@ -221,7 +226,7 @@ journeySection.addEventListener('click', (e) => {
 
 // 確認付款
 forward.addEventListener('click', () => {
-  fetch('http://localhost:8080/user/order', {
+  fetch('/rooms/insert/3', {
     method: 'POST',
     cache: 'no-cache',
     headers: { 'Content-Type': 'application/json' },
@@ -249,3 +254,4 @@ forward.addEventListener('click', () => {
 back.addEventListener('click', () => history.back());
 
 fetchData();
+getCurrentUserInformation();

@@ -23,7 +23,7 @@ public class JourneyController {
     @PutMapping("/journey/{journeyId}")
     public String updateById(@PathVariable Integer journeyId,
                              @RequestBody Journey journey){
-        journeyService.update(journeyId, journey);
+        journeyService.updateById(journeyId, journey);
         return "修改成功";
     }
 

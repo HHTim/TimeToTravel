@@ -1,16 +1,33 @@
+import { getCurrentUserInformation } from './header.js';
+
 const list = document.querySelector('.list__table tbody');
 const searchCom = document.querySelector('.search__com');
 const searchNo = document.querySelector('.search__no');
 const comment = document.querySelector('.comment');
+const pageBtnWrapper = document.querySelector('#page-btn-wrapper');
 const commentCancel = document.querySelector('.comment__cancel');
 const commentSubmit = document.querySelector('.comment__submit');
 const commentContent = document.querySelector('.comment__content');
 const stars = document.querySelectorAll('.comment__rank i');
+let isRenderPage = false;
 let commentBody = {
   orderId: 0,
   orderRank: 0,
   orderComment: '',
 };
+
+function renderPaganation(pageSize) {
+  let html = `<li id="page-btn" role="button" class="page-item active">
+    <a class="page-link"  data-page="1">1</a>
+  </li>`;
+
+  for (let i = 1; i < pageSize; i++) {
+    html += `<li id="page-btn" role="button" class="page-item" >
+              <a class="page-link" data-page="${i + 1}">${i + 1}</a>
+            </li>`;
+  }
+  return html;
+}
 
 function restoreComment() {
   comment.classList.remove('comment--on');
@@ -24,7 +41,7 @@ function restoreComment() {
 
 async function handleUpdateComment() {
   try {
-    const resp = await fetch(`/user/orders`, {
+    const resp = await fetch(`/rooms/orders`, {
       method: 'PUT',
       cache: 'no-cache',
       headers: { 'Content-Type': 'application/json' },
@@ -122,12 +139,37 @@ function renderList(data) {
   return html;
 }
 
-async function fetchData() {
-  const resp = await fetch('/user/orders/3');
+function handlePageBtn(e) {
+  // 按鈕代表的頁數
+  const pageNum = e.target.dataset.page;
+  // 所有按鈕集合
+  const pageItems = pageBtnWrapper.childNodes;
+  // 先刪掉所有按鈕的active class
+  pageItems.forEach((i) => {
+    console.log(i);
+    i.classList.remove('active');
+  });
+  // 選取點擊的按鈕最近的那個li標籤加上active
+  e.target.closest('li').classList.add('active');
+  console.log('當前頁數' + pageNum);
+  // 處理搜尋
+  fetchData(pageNum);
+}
+
+async function fetchData(page) {
+  const resp = await fetch(`/rooms/orders/${page}`);
   const data = await resp.json();
   console.log(data);
+  // 總頁數
+  let pageSize = Math.ceil(data.pageSize / 5);
+  console.log('頁數: ' + pageSize);
 
-  list.innerHTML = renderList(data);
+  // 渲染第一次請求結果
+  list.innerHTML = renderList(data.rows);
+  // 渲染過一次分頁器就不再渲染;
+  if (isRenderPage) return;
+  pageBtnWrapper.innerHTML = renderPaganation(pageSize);
+  isRenderPage = true;
 }
 
 list.addEventListener('click', (e) => {
@@ -209,9 +251,9 @@ searchCom.addEventListener('blur', async (e) => {
   let url;
 
   if (!name || name === '') {
-    url = '/user/orders/3';
+    url = '/rooms/orders/1';
   } else {
-    url = `/user/orders/3/name/${name}`;
+    url = `/rooms/orders/name/${name}/1`;
   }
 
   const resp = await fetch(url);
@@ -220,6 +262,14 @@ searchCom.addEventListener('blur', async (e) => {
   console.log(result);
   list.innerHTML = renderList(result);
   name = '';
+
+  // 總頁數
+  let pageSize = Math.ceil(result.pageSize / 5);
+  console.log('頁數: ' + pageSize);
+
+  // 渲染第一次請求結果
+  list.innerHTML = renderList(result.rows);
+  pageBtnWrapper.innerHTML = renderPaganation(pageSize);
 });
 
 searchNo.addEventListener('blur', async (e) => {
@@ -228,9 +278,9 @@ searchNo.addEventListener('blur', async (e) => {
   let url;
 
   if (!no || no === '') {
-    url = '/user/orders/3';
+    url = '/rooms/orders/1';
   } else {
-    url = `/user/orders/3/no/${no}`;
+    url = `/rooms/orders/no/${no}/1`;
   }
 
   const resp = await fetch(url);
@@ -239,6 +289,18 @@ searchNo.addEventListener('blur', async (e) => {
   console.log(result);
   list.innerHTML = renderList(result);
   no = '';
+
+  // 總頁數
+  let pageSize = Math.ceil(result.pageSize / 5);
+  console.log('頁數: ' + pageSize);
+
+  // 渲染第一次請求結果
+  list.innerHTML = renderList(result.rows);
+  pageBtnWrapper.innerHTML = renderPaganation(pageSize);
 });
 
-fetchData();
+// 點選分頁
+pageBtnWrapper.addEventListener('click', (e) => handlePageBtn(e));
+
+fetchData(1);
+getCurrentUserInformation();

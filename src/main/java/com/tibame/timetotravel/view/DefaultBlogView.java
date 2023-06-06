@@ -62,5 +62,11 @@ public class DefaultBlogView  {
 	
 	@Column(name = "LAST_POST_TYPE")
 	private String lastPostType;
+	
+	@Column(name= "USER_NAME")
+	private String userName;
+	
+	@Column(name = "LAST_COMMENT_USER_NAME")
+	private String lastCommentUserName;
 	 
 }

@@ -14,7 +14,7 @@
     <!-- 我們自己的 js 檔案，路徑記得改 -->
     <link rel="stylesheet" href="../css/order_list.css" />
     <!-- 我們自己的 css 檔案，路徑記得改 -->
-    <script src="../js/order_list.js" defer></script>
+    <script type="module" src="../js/order_list.js" defer></script>
     <!-- 輪播需要添加 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- title 記得改 -->
@@ -57,12 +57,12 @@
                     </div>
                   </a>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">註冊</a></li>
+                    <!-- <li><a class="dropdown-item" href="#">註冊</a></li>
                     <li><a class="dropdown-item" href="#">登入</a></li>
                     <li><a class="dropdown-item" href="#">其他</a></li>
                     <li><a class="dropdown-item" href="#">其他</a></li>
                     <li><hr class="dropdown-divider" /></li>
-                    <li><a class="dropdown-item" href="#">登出</a></li>
+                    <li><a class="dropdown-item" href="#">登出</a></li> -->
                   </ul>
                 </div>
               </li>
@@ -203,9 +203,11 @@
               <nav class="page">
                 <ul class="pagination">
                   <li class="page-item"><a class="page-link" href="#">&lt;</a></li>
-                  <li class="page-item"><a class="page-link" href="#">1</a></li>
-                  <li class="page-item"><a class="page-link" href="#">2</a></li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <div id="page-btn-wrapper" class="d-flex">
+                    <!-- <li id="page-btn" class="page-item active" data-page="1"><a class="page-link" href="#">1</a></li>
+                    <li id="page-btn" class="page-item" data-page="2"><a class="page-link" href="#">2</a></li>
+                    <li id="page-btn" class="page-item" data-page="3"><a class="page-link" href="#">3</a></li> -->
+                  </div>
                   <li class="page-item"><a class="page-link" href="#">&gt;</a></li>
                 </ul>
               </nav>

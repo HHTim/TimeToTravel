@@ -2,9 +2,6 @@ package com.tibame.timetotravel.controller;
 
 import com.tibame.timetotravel.entity.PublicScene;
 import com.tibame.timetotravel.service.PublicSceneService;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,18 +24,11 @@ public class PublicSceneController {
     }
 
 
-        @RequestMapping("/getall")
+    @RequestMapping("/search/all")
     public List<PublicScene> getAll() {
         System.out.println("找全部景點");
         return publicSceneService.getAll();
     }
-
-//    @GetMapping("/search")
-//    public List<PublicScene> findByAddress(HttpServletRequest req){
-//        HttpSession session = req.getSession();
-//        String sceneKeyword = (String) session.getAttribute("sceneKeyword");
-//        return publicSceneService.findByAddress(sceneKeyword);
-//    }
 
     @GetMapping("/sceneManageSearch/{keyword}")
     public List<PublicScene> findBySceneAddress(@PathVariable String keyword){

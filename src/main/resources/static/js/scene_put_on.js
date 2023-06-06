@@ -1,3 +1,5 @@
+import { getCurrentUserInformation } from './header.js';
+
 window.addEventListener('load', function () {
   var base64img; //宣告並把照片轉為Base64存入
   var the_file_element = document.getElementById('the_file');
@@ -70,6 +72,7 @@ window.addEventListener('load', function () {
   var urlParams = new URLSearchParams(window.location.search);
   var sceneId = urlParams.get("sceneId");
 
+  getCurrentUserInformation();
   console.log(sceneId); // 輸出獲取的 sceneId
 });
 

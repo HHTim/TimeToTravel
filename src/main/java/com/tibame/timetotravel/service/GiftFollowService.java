@@ -10,10 +10,9 @@ public interface GiftFollowService {
 
     void deleteById(Integer giftFollowId);
 
-    GiftFollow updateById(Integer giftFollowId, GiftFollow gift);
-
     GiftFollow findById(Integer giftFollowId);
 
     List <GiftFollow> findAll();
 
+    GiftFollow updateById(Integer giftFollowId, GiftFollow giftFollow);
 }

@@ -20,4 +20,10 @@ class JourneyRepositoryTest {
             System.out.println(journey);
         }
     }
+
+    @Test
+    public void findByJourneyIdTest() {
+        Journey journey = journeyRepository.findByJourneyId(null);
+        System.out.println(journey);
+    }
 }

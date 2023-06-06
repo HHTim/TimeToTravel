@@ -1,13 +1,18 @@
 package com.tibame.timetotravel.controller;
 
 import com.tibame.timetotravel.common.PageBean;
+import com.tibame.timetotravel.dto.UserSessionDto;
 import com.tibame.timetotravel.entity.A2UMessage;
 import com.tibame.timetotravel.service.A2UMessageService;
 import com.tibame.timetotravel.service.UserService;
 import com.tibame.timetotravel.view.A2UMsgView;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @RestController
@@ -52,5 +57,14 @@ public class Admin2UserController {
     public PageBean<A2UMsgView> readViewByDateRange(@PathVariable Integer currPage, @PathVariable Integer rows , @PathVariable String startDate, @PathVariable String endDate){
         System.out.println("日期分頁搜尋range: "+ startDate + " ~ " + endDate);
         return a2uMessageService.findBeanPageViewByDateRange(startDate, endDate , currPage, rows);
+    }
+
+    @GetMapping("/message/a2u/view/notify/{startIndex}/{endIndex}")
+    public ResponseEntity<List<A2UMsgView>> readViewByUserNotify(@PathVariable Integer startIndex,
+                                               @PathVariable Integer endIndex,
+                                               HttpSession session){
+        Integer userId = ((UserSessionDto) session.getAttribute("user")).getUser().getUserId();
+        System.out.println("獲得使用者ID: "+ userId);
+        return ResponseEntity.ok(a2uMessageService.getNotifyMsgById(userId, startIndex, endIndex));
     }
 }

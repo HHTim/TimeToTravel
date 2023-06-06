@@ -37,4 +37,14 @@ public class PrivateSceneController {
     public List<PrivateScene> findByKeyword(@PathVariable String keyword){
         return privateSceneService.findByKeyword(keyword);
     }
+    @GetMapping("/privateScene/findByPrivateSceneId/{privateSceneId}")
+    public PrivateScene findById(@PathVariable Integer privateSceneId){
+        return privateSceneService.findById(privateSceneId);
+    }
+    @PutMapping("/privateScene/{privateSceneId}")
+    public String updateById(@PathVariable Integer privateSceneId,
+                             @RequestBody PrivateScene privateScene){
+        privateSceneService.updateById(privateSceneId, privateScene);
+        return "修改成功!";
+    }
 }

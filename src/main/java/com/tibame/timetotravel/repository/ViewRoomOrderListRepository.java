@@ -10,6 +10,7 @@ import java.util.List;
 @Repository
 public interface ViewRoomOrderListRepository extends CrudRepository<ViewRoomOrderDetail, Integer> {
 
+    @Query(value = "SELECT * FROM VIEW_ROOM_ORDER_DETAIL WHERE USER_ID = ?1 ORDER BY ORDER_DATETIME DESC", nativeQuery = true)
     List<ViewRoomOrderDetail> findByUserId(Integer userId);
 
     List<ViewRoomOrderDetail> findByUserIdAndOrderId(Integer userId, Integer orderId);

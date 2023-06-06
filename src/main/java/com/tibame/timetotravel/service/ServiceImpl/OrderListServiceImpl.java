@@ -1,5 +1,6 @@
 package com.tibame.timetotravel.service.ServiceImpl;
 
+import com.tibame.timetotravel.common.PageBean;
 import com.tibame.timetotravel.dto.OrderListDto;
 import com.tibame.timetotravel.entity.Journey;
 import com.tibame.timetotravel.entity.OrderDetail;
@@ -18,6 +19,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Service
 public class OrderListServiceImpl implements OrderListService {
@@ -32,7 +34,7 @@ public class OrderListServiceImpl implements OrderListService {
     OrderDetailRepository orderDetailRepository;
 
     @Override
-    public List<OrderListDto> findUserOrder(Integer userId) throws InvocationTargetException, IllegalAccessException {
+    public PageBean<OrderListDto> findUserOrder(Integer userId, Integer page) throws InvocationTargetException, IllegalAccessException {
         // 建立DTO陣列
         List<OrderListDto> orderListDtos = new ArrayList<>();
 
@@ -45,20 +47,30 @@ public class OrderListServiceImpl implements OrderListService {
             // 取出entity的roomId journeyId查詢商家名稱跟形成名稱塞給DTO
             int roomId = order.getRoomId();
             int journeyId = order.getJourneyId();
+            System.out.println("Journey ID: " + journeyId);
             // 取得journeyName、journeyPrice
-            Journey journey = journeyRepository.findByJourneyId(journeyId);
-            BeanUtils.copyProperties(orderListDto, journey);
+            if (journeyId != 0) {
+                Journey journey = journeyRepository.findByJourneyId(journeyId);
+                System.out.println(journey.getJourneyId());
+                BeanUtils.copyProperties(orderListDto, journey);
+            } else {
+                orderListDto.setJourneyName("");
+                orderListDto.setJourneyPrice(0);
+            }
             // 取得comName
             String comName = roomRepository.findComNameByRoomId(roomId);
             orderListDto.setComName(comName);
             // 將完備的DTO放到List回傳
             orderListDtos.add(orderListDto);
         }
-        return orderListDtos;
+        PageBean<OrderListDto> pageBean = new PageBean<>();
+        pageBean.setPageSize(orderListDtos.size());
+        pageBean.setRows(orderListDtos.stream().skip((page - 1) * 5).limit(5).collect(Collectors.toList()));
+        return pageBean;
     }
 
     @Override
-    public List<OrderListDto> findUserOrderByName(Integer userId, String name) throws InvocationTargetException, IllegalAccessException {
+    public PageBean<OrderListDto> findUserOrderByName(Integer userId, String name, Integer page) throws InvocationTargetException, IllegalAccessException {
         // 建立DTO陣列
         List<OrderListDto> orderListDtos = new ArrayList<>();
 
@@ -80,16 +92,25 @@ public class OrderListServiceImpl implements OrderListService {
                 continue;
             }
             // 取得journeyName、journeyPrice
-            Journey journey = journeyRepository.findByJourneyId(journeyId);
-            BeanUtils.copyProperties(orderListDto, journey);
+            if (journeyId != 0) {
+                Journey journey = journeyRepository.findByJourneyId(journeyId);
+                System.out.println(journey.getJourneyId());
+                BeanUtils.copyProperties(orderListDto, journey);
+            } else {
+                orderListDto.setJourneyName("");
+                orderListDto.setJourneyPrice(0);
+            }
             // 將完備的DTO放到List回傳
             orderListDtos.add(orderListDto);
         }
-        return orderListDtos;
+        PageBean<OrderListDto> pageBean = new PageBean<>();
+        pageBean.setPageSize(orderListDtos.size());
+        pageBean.setRows(orderListDtos.stream().skip((page - 1) * 5).limit(5).collect(Collectors.toList()));
+        return pageBean;
     }
 
     @Override
-    public List<OrderListDto> findUserOrderByNo(Integer userId, Integer orderId) throws InvocationTargetException, IllegalAccessException {
+    public PageBean<OrderListDto> findUserOrderByNo(Integer userId, Integer orderId, Integer page) throws InvocationTargetException, IllegalAccessException {
         // 建立DTO陣列
         List<OrderListDto> orderListDtos = new ArrayList<>();
 
@@ -100,15 +121,24 @@ public class OrderListServiceImpl implements OrderListService {
             int roomId = order.getRoomId();
             int journeyId = order.getJourneyId();
             // 取得journeyName、journeyPrice
-            Journey journey = journeyRepository.findByJourneyId(journeyId);
-            BeanUtils.copyProperties(orderListDto, journey);
+            if (journeyId != 0) {
+                Journey journey = journeyRepository.findByJourneyId(journeyId);
+                System.out.println(journey.getJourneyId());
+                BeanUtils.copyProperties(orderListDto, journey);
+            } else {
+                orderListDto.setJourneyName("");
+                orderListDto.setJourneyPrice(0);
+            }
             // 取得comName
             String comName = roomRepository.findComNameByRoomId(roomId);
             orderListDto.setComName(comName);
 
             orderListDtos.add(orderListDto);
         }
-        return orderListDtos;
+        PageBean<OrderListDto> pageBean = new PageBean<>();
+        pageBean.setPageSize(orderListDtos.size());
+        pageBean.setRows(orderListDtos.stream().skip((page - 1) * 5).limit(5).collect(Collectors.toList()));
+        return pageBean;
     }
 
     @Override

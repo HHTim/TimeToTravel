@@ -1,3 +1,8 @@
+import { getCurrentUserInformation } from './header.js';
+
+$(function () {
+  getCurrentUserInformation();
+});
 window.addEventListener('load', function () {
   const tbody = document.querySelector('tbody');
 

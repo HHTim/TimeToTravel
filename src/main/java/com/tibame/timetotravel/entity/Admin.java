@@ -25,4 +25,9 @@ public class Admin {
     @Column(name = "ADMIN_NAME")
     private String adminName;
 
+    @Column(name = "ADMIN_AVATAR")
+    private byte[] adminAvatar;
+
+    @Column(name = "ADMIN_NEWS_STATUS")
+    private Integer adminNewsStatus;
 }

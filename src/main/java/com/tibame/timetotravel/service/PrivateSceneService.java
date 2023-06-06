@@ -13,4 +13,8 @@ public interface PrivateSceneService {
     void deleteById(Integer privateSceneId);
 
     List<PrivateScene> findByKeyword(String keyword);
+
+    PrivateScene findById(Integer privateSceneId);
+
+    void updateById(Integer privateSceneId, PrivateScene privateScene);
 }

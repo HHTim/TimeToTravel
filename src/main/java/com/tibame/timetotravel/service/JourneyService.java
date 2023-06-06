@@ -9,7 +9,7 @@ import java.util.List;
 public interface JourneyService {
     void insert(Journey journey);
 
-    void update(Integer journeyId, Journey journey);
+    void updateById(Integer journeyId, Journey journey);
     List<Journey> findAll();
 
     List<Journey> findByKeyword(String keyword);

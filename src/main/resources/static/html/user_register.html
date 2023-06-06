@@ -15,7 +15,7 @@
       integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
       crossorigin="anonymous"
     ></script>
-    <script src="../js/user_register.js" defer></script>
+    <script type="module" src="../js/user_register.js" defer></script>
 
     <!-- BS5 StyleSheet -->
     <link
@@ -41,35 +41,6 @@
                 <img src="../images/LOGO.png" alt="logo" class="logo__img" />
               </a>
             </h1>
-            <nav>
-              <ul class="nav">
-                <li class="nav__info">
-                  <div class="dropdown-center">
-                    <button class="dropdown-toggle nav__info-btn" type="button" data-bs-toggle="dropdown"></button>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">訊息一</a></li>
-                      <li><a class="dropdown-item" href="#">訊息二</a></li>
-                      <li><a class="dropdown-item" href="#">訊息三</a></li>
-                      <li><hr class="dropdown-divider" /></li>
-                      <li><a class="dropdown-item" href="#">See More</a></li>
-                    </ul>
-                  </div>
-                </li>
-                <li class="nav__avatar">
-                  <div class="dropdown-center">
-                    <a href="#" class="dropdown-toggle nav__avatar-btn" type="button" data-bs-toggle="dropdown">
-                      <div class="nav__avatar-img">
-                        <img src="../images/avatar.svg" alt="avatar" />
-                      </div>
-                    </a>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">註冊</a></li>
-                      <li><a class="dropdown-item" href="#">登入</a></li>
-                    </ul>
-                  </div>
-                </li>
-              </ul>
-            </nav>
           </div>
         </header>
       </div>
@@ -160,7 +131,7 @@
                             <input style="height: 45px; width: 190px" type="text" class="form-control" id="userName" />
                             <select style="height: 45px; width: 190px" class="form-select" id="userGender">
                               <option value="1" selected>男</option>
-                              <option value="2">女</option>
+                              <option value="0">女</option>
                             </select>
                           </div>
                         </div>

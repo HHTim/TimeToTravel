@@ -19,6 +19,8 @@
     <link rel="stylesheet" href="../../css/03_leo/edit-blog.css" />
     <!-- 我們自己的 css 檔案，路徑記得改 -->
     <script src="../../js/template.js" defer></script>
+    <script src="../../js/blog_edit.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <!-- this is for old version original <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script> -->
@@ -79,129 +81,81 @@
     </header>
     <!--  -->
     <div class="row margin-center">
-      <div class="col test2 text-align-center">留白廣告</div>
+      <div class="col border text-align-center"></div>
       <div class="col">
         <div class="post-article-out test2 row">
           <div>
             <button class="button-1"><a href="./blog_search.html">回上頁</a></button>
           </div>
           <div class="post-article-main col-12">
-            <form>
-              <label for="article-title" class="form-label">文章標題</label>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="輸入主題"
-                id="article-title"
-                name="article-title"
-                required
-              />
+            <!-- <form> -->
+            <label for="article-title" class="form-label">文章標題</label>
+            <input
+              type="text"
+              class="form-control article-title"
+              placeholder="輸入主題"
+              id="article-title"
+              name="article-title"
+              required
+            />
 
-              <label for="article-type" class="form-label">文章類型</label>
-              <select class="form-select" id="article-type" name="article-type" required>
-                <!-- <option disabled selected>請選擇文章類型</option> -->
-                <option selected value="問題">問題</option>
-                <option value="情報">情報</option>
-                <option value="心得">心得</option>
-                <option value="討論">討論</option>
-                <option value="攻略">攻略</option>
-                <option value="其他">其他</option>
-              </select>
+            <label for="article-type" class="form-label">文章類型</label>
+            <select class="form-select article-type" id="article-type" name="article-type" required>
+              <!-- <option disabled selected>請選擇文章類型</option> -->
+              <option selected value="1">問題</option>
+              <option value="2">情報</option>
+              <!--value="情報"-->
+              <option value="3">心得</option>
+              <!--value="心得"-->
+              <option value="4">討論</option>
+              <!--value="討論"-->
+              <option value="5">攻略</option>
+              <!--value="攻略"-->
+              <option value="6">其他</option>
+              <!--value="其他"-->
+            </select>
 
-              <div class="text-align-left search-tag pt-3">
-                <label for="article-tags" class="form-label">文章標籤</label>
-                <input type="text" id="article-tags-input" placeholder="輸入標籤" class="" size="10" />
-                <button id="create-tag-btn" class="create-tag-btn">+建立標籤</button>
-                <div id="tags-container" class="inline-block"></div>
-                <span class="" id="hint-msg"></span>
+            <div class="text-align-left search-tag pt-3">
+              <label for="article-tags" class="form-label">文章標籤</label>
+              <input type="text" id="article-tags-input" placeholder="輸入標籤" class="" size="10" />
+              <button id="create-tag-btn" class="create-tag-btn">+建立標籤</button>
+              <div id="tags-container" class="inline-block"></div>
+              <span class="" id="hint-msg"></span>
+            </div>
+            <!-- ================= 圖片 操作區塊 =====================-->
+
+            
+            <!-- // ----  -->
+            <div>
+              <label for="article-image" class="form-label">文章封面圖片</label>
+              <div >
+                <img class="db-article-image" width="120" height="68"   src="" alt="">
               </div>
-
               <label for="article-image" class="form-label">上傳圖片</label>
-              <input type="file" class="form-control" id="article-image" name="article-image" accept="image/*" />
+              <!-- <input type="file" class="form-control" id="article-image"  /> -->
+              <input type="file" id="p_file" class="form-control" name="article-image" accept="image/*" />
+              <div id="drop_zone" class="col-12 border"><br /><span class="text">圖片拖曳至此處</span><br /></div>
+              <div id="preview">
+                <span class="text">預覽圖</span>
+              </div>
+            </div>
 
-              <label for="article-content" class="form-label">文章內容</label>
-              <textarea class="form-control" id="article-content" name="article-content" rows="6" required></textarea>
+            <!-- ================= 圖片 操作區塊 =====================-->
+            <label for="article-content" class="form-label">文章內容</label>
+            <textarea class="form-control" id="article-content" name="article-content" rows="6" required></textarea>
 
-              <button type="submit" class="post-article btn btn-success m-3">發佈文章</button>
-            </form>
+            <button type="submit" class="post-article btn btn-success m-3">發佈文章</button>
+            <!-- </form> -->
 
             <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-            <script>
+            <!-- <script>
               $(document).ready(function () {
-                var tagsArray = [];
-                var colorClasses = ['bg-primary', 'bg-secondary', 'bg-success', 'bg-danger'];
-                var colorIndex = 0;
+                
 
-                // Function to create a new tag
-                function createTag() {
-                  var tagText = $('#article-tags-input').val().trim();
-                  if (tagText !== '') {
-                    if (tagsArray.includes(tagText)) {
-                      $('#hint-msg').text('標籤已新增');
-                      return;
-                    }
-                    //  到時進行 後端連線!!
 
-                    var tagElement = $('<span class="badge tag-badge m-1"></span>').text(tagText);
-                    var colorClass = colorClasses[colorIndex % colorClasses.length];
-                    tagElement.addClass(colorClass);
-                    colorIndex++;
-                    $('#tags-container').prepend(tagElement);
-                    tagsArray.push(tagText);
-                    $('#article-tags-input').val('');
-                    $('#hint-msg').text('');
-                  } else {
-                    $('#hint-msg').text('請輸入標籤');
-                  }
-                }
 
-                // Event handler for create tag button
-                $('#create-tag-btn').click(function () {
-                  createTag();
-                });
-
-                // Event handler for input field enter key
-                $('#article-tags-input').keypress(function (e) {
-                  if (e.which === 13) {
-                    createTag();
-                    return false;
-                  }
-                });
-
-                // Event handler for removing a tag
-                $(document).on('click', '.tag-badge', function () {
-                  var tagText = $(this).text();
-                  var tagIndex = tagsArray.indexOf(tagText);
-                  if (tagIndex > -1) {
-                    tagsArray.splice(tagIndex, 1);
-                  }
-                  $(this).remove();
-                });
-
-                // Event handler for form submission
-                $('form').submit('.post-article', function (e) {
-                  e.preventDefault();
-                  var articleTitle = $('#article-title').val();
-                  var articleType = $('#article-type').val();
-                  var articleTags = tagsArray.join(', ');
-                  var articleContent = $('#article-content').val();
-                  var articleData = {
-                    title: articleTitle,
-                    type: articleType,
-                    tags: articleTags,
-                    content: articleContent,
-                  };
-                  var confirmation = confirm('確定要發佈文章吗？');
-                  if (confirmation) {
-                    // console.log('文章標題:', articleTitle);
-                    // console.log('文章類型:', articleType);
-                    // console.log('文章標籤:', articleTags);
-                    // console.log('文章內容:', articleContent);
-                    console.log(articleData);
-                  }
-                });
               });
-            </script>
+            </script> -->
 
             <!--original code  <input type="text" name="file_name" id="file_name" placeholder="文章標題" value="file name {timestamp}" /> -->
             <!--original code <textarea id="file_content">Content</textarea> -->
@@ -216,7 +170,7 @@
           </div>
         </div>
       </div>
-      <div class="col test2 text-align-center">留白廣告</div>
+      <div class="col border text-align-center"></div>
     </div>
 
     <!--  -->
@@ -225,24 +179,20 @@
     </footer>
     <div class="this-is-test-to-add-html"></div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-   
+
     <script>
-      $("form").on("submit", function(e) {
-        e.preventDefault(); // 阻止表单默認提交行為
+      // $("form").on("submit", function(e) {
+      //   e.preventDefault(); // 阻止表单默認提交行為
 
-        var articleContent = $("#article-content").val(); // 獲取 <textarea> 中的内容
-        console.log("666666666"+articleContent);
-        // 创建新的 HTML 内容
-        var newHtml = '<div class="new-article">' + articleContent + '</div>';
-        
-        // 将新的 HTML 内容添加到指定的区块中
-        $(".this-is-test-to-add-html").append(newHtml);
-      });
+      //   var articleContent = $("#article-content").val(); // 獲取 <textarea> 中的内容
+      //   console.log("666666666"+articleContent);
+      //   // 创建新的 HTML 内容
+      //   var newHtml = '<div class="new-article">' + articleContent + '</div>';
 
-
-
+      //   // 将新的 HTML 内容添加到指定的区块中
+      //   $(".this-is-test-to-add-html").append(newHtml);
+      // });
     </script>
-
 
     <script src="./edit_blog/vender/tinymce-4/tinymce.min.js"></script>
     <script src="./edit_blog/script.js"></script>

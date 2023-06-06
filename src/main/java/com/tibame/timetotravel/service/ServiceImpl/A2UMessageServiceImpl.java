@@ -95,4 +95,9 @@ public class A2UMessageServiceImpl implements A2UMessageService {
         return pageBeanView;
     }
 
+    @Override
+    public List<A2UMsgView> getNotifyMsgById(Integer userId, Integer startIndex, Integer endIndex) {
+        return a2UMessageViewRepository.findA2UViewMsgByUserId(userId, startIndex, endIndex);
+    }
+
 }

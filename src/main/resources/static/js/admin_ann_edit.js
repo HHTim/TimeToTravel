@@ -1,3 +1,4 @@
+import { getCurrentUserInformation } from './header.js';
 $(function () {
   var title_input = $('.form-input');
   var title_content = $('.textarea');
@@ -35,15 +36,6 @@ $(function () {
     placeholderCheck($('textarea.textarea'), $('.show-placeholder-content'));
   }
 
-  function updateSelectCompoent() {
-    const url = 'http://localhost:8081/TIME_TO_TRAVEL/AnnController';
-    fetch(url)
-      .then((r) => r.json())
-      .then((d) => {
-        console.log(d);
-      });
-  }
-
   $('.back-btn').on('click', function (e) {
     history.back();
   });
@@ -53,7 +45,7 @@ $(function () {
       'Content-Type': 'application/json',
       Accept: 'application/json',
     };
-    const url = 'http://localhost:8080/AdminAnnController/anns/' + annVO.annId;
+    const url = '/AdminAnnController/anns/' + annVO.annId;
     console.log(url);
 
     const imageData = annVO.pic.replace(/^data:image\/(png|jpg|jpeg);base64,/, '');
@@ -125,6 +117,5 @@ $(function () {
   });
 
   getSessionData();
-
-  // updateSelectCompoent();
+  getCurrentUserInformation();
 });

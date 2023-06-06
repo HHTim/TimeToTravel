@@ -10,49 +10,34 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+//
+//import java.util.List;
+//
 @Service("giftFollowService")
 public class GiftFollowServiceImpl implements GiftFollowService {
 
-    @Autowired
-    @Qualifier("giftFollowRepository")
-    private GiftFollowRepository giftFollowRepository;
-
     @Override
-    @Transactional
     public void insert(GiftFollow giftFollow) {
-        giftFollowRepository.save(giftFollow);
+
     }
 
     @Override
-    @Transactional
     public void deleteById(Integer giftFollowId) {
-        giftFollowRepository.deleteById(giftFollowId);
-    }
-
-    @Override
-    @Transactional
-    public GiftFollow updateById(Integer giftFollowId, GiftFollow giftFollow) {
-
-        GiftFollow gf = giftFollowRepository.findById(giftFollowId).orElse(null);
-
-        if (gf != null) {
-            gf.setGiftId(giftFollow.getGiftId());
-            gf.setUserId(giftFollow.getUserId());
-            giftFollowRepository.save(gf);
-            return gf;
-        } else {
-            return null;
-        }
 
     }
 
     @Override
     public GiftFollow findById(Integer giftFollowId) {
-        return giftFollowRepository.findById(giftFollowId).orElse(null);
+        return null;
     }
 
     @Override
     public List<GiftFollow> findAll() {
-        return giftFollowRepository.findAll();
+        return null;
+    }
+
+    @Override
+    public GiftFollow updateById(Integer giftFollowId, GiftFollow giftFollow) {
+        return null;
     }
 }

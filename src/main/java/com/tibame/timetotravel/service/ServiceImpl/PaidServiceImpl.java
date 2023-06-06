@@ -40,6 +40,7 @@ public class PaidServiceImpl implements PaidService {
         bookingPaidDto.setCheckIn(startDate);
         bookingPaidDto.setCheckOut(endDate);
         User user = userRepository.findByUserId(userId);
+        System.out.println(user);
         BeanUtils.copyProperties(bookingPaidDto, user);
         ViewCompanyRoom companyRoom = viewCompanyRoomRepository.findByRoomId(roomId);
         BeanUtils.copyProperties(bookingPaidDto, companyRoom);
@@ -52,11 +53,11 @@ public class PaidServiceImpl implements PaidService {
 
     @Transactional
     @Override
-    public Integer insertOrder(Integer userId, Integer roomId, RoomOrderDto order) {
+    public Integer insertOrder(Integer userId, RoomOrderDto order) {
         // 建立Entity
         OrderDetail orderDetail = new OrderDetail();
         orderDetail.setUserId(userId);
-        orderDetail.setRoomId(roomId);
+        orderDetail.setRoomId(order.getRoomId());
         orderDetail.setOrderAmount(order.getOrderAmount());
 
         // 將DTO中的日期從字串轉成java.sql.Date型別

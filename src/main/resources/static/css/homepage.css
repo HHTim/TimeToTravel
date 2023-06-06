@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* theme-color */
 /* border */
 /* effect */
@@ -363,6 +364,11 @@ body {
   font-weight: bold;
 }
 
+.decorator-lightbox {
+  height: 2px;
+  background-color: #006caa;
+}
+
 /*=======================slider======================*/
 .slider,
 .slider2,
@@ -662,4 +668,73 @@ div.fa-div-2 i.fa.fa-search {
   display: inline-block;
   margin-left: 10px;
   font-weight: bolder;
+}
+
+/* Lightbox */
+.lightbox-content {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 95%;
+  max-width: 100%;
+  background-color: #fff;
+  padding: 20px;
+  z-index: 999;
+  box-shadow: 0 0 0 99999px rgba(0, 0, 0, 0.6);
+  text-align: left;
+  align-items: center;
+  border-radius: 10px;
+  flex-direction: column;
+  height: 90%;
+  overflow-y: scroll;
+}
+.lightbox-content h2 {
+  width: 100%;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  text-align: center;
+  color: #006caa;
+  font-size: 1.5rem;
+  white-space: break-spaces;
+  margin-top: 20px;
+}
+.lightbox-content div {
+  width: 95%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+.lightbox-content div p:nth-child(odd) {
+  font-weight: bold;
+}
+.lightbox-content img {
+  min-width: 90%;
+}
+
+.lightbox-content.open {
+  display: flex;
+}
+
+.close-button {
+  position: absolute;
+  display: block;
+  width: 20px;
+  height: 20px;
+  top: 10px; /* 距離燈箱內容頂部的距離 */
+  right: 10px; /* 距離燈箱內容右側的距離 */
+  border: none;
+  background-color: #be4b4b;
+  color: #fff;
+  padding: 1rem;
+  border-radius: 5px;
+  box-shadow: 0 0 3px #9b9999;
+}
+.close-button::after {
+  content: "X";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }

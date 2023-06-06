@@ -13,7 +13,7 @@
     <!-- 我們自己的 js 檔案，路徑記得改 -->
     <link rel="stylesheet" href="../css/search.css" />
     <!-- 我們自己的 css 檔案，路徑記得改 -->
-    <script src="../js/search.js" defer></script>
+    <script type="module" src="../js/search.js" defer></script>
     <!-- 輪播需要添加 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- title 記得改 -->
@@ -25,7 +25,7 @@
     <header>
       <div class="container-fluid header__container">
         <h1 class="logo">
-          <a href="#" class="logo__link">
+          <a href="http://localhost:8080" class="logo__link">
             <img src="../images/LOGO.png" alt="logo" class="logo__img" />
           </a>
         </h1>
@@ -54,12 +54,12 @@
                   </div>
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">註冊</a></li>
+                  <!-- <li><a class="dropdown-item" href="#">註冊</a></li>
                   <li><a class="dropdown-item" href="#">登入</a></li>
                   <li><a class="dropdown-item" href="#">其他</a></li>
                   <li><a class="dropdown-item" href="#">其他</a></li>
                   <li><hr class="dropdown-divider" /></li>
-                  <li><a class="dropdown-item" href="#">登出</a></li>
+                  <li><a class="dropdown-item" href="#">登出</a></li> -->
                 </ul>
               </div>
             </li>
@@ -76,11 +76,11 @@
           <!-- Main -->
           <div class="search-container">
             <div class="tabs">
-              <button class="tab" onclick="openTab('tab1')">飯店查詢</button>
-              <button class="tab active" onclick="openTab('tab2')">景點查詢</button>
+              <button class="tab tab1">飯店查詢</button>
+              <button class="tab tab2 active">景點查詢</button>
             </div>
             <div class="tab-content active" id="tab1">
-              <input type="text" placeholder="搜索..." />
+              <input id="search-input" type="text" placeholder="搜索..." />
               <button id="search-scene" type="button" class="btn btn-success btn-sm">搜尋</button>
             </div>
             <div class="tab-content" id="tab2">
@@ -111,7 +111,7 @@
           <!-- list -->
           <div class="card_all">
             <!-- 景點一 -->
-            <div class="card card1" data-toggle="lightbox">
+            <!-- <div class="card card1" data-toggle="lightbox">
               <div class="card-body">
                 <div class="left_pic">
                   <img src="../images/幾米公園.jpg" class="pic_style" />
@@ -127,24 +127,91 @@
                     位在宜蘭火車站南側的幾米公園，原本是廢棄的鐵路局舊宿舍區，後來為保留歷史建築，遂將整體區塊融入藝術色彩並規劃為全台第一座「幾米主題廣場」。
                     廣場上所有角色皆來自幾米的繪本作品，除了總是向左走、向右走的男女主角外，《星空》中小男孩與小女孩一起等待公車的場景也出現在路邊，和你一起等待那台永遠不會到來的公車。
                   </div>
-                  <!-- <a class="btn-primary toggle-text">查看更多▼</a> -->
                 </div>
               </div>
-              <div class="box">
-                <div class="close">x</div>
-                <div class="left_pic">
-                  <img src="../images/幾米公園.jpg" class="lightbox_pic_style" />
+            </div> -->
+            <!-- <div class="box">
+              <h2 class="subtitle">景點介紹</h2>
+              <div class="close"></div>
+              <div class="left_pic">
+                <img src="../images/幾米公園.jpg" class="lightbox_pic_style" />
+              </div>
+              <h5 class="title">幾米公園</h5>
+              <p class="url_style">
+                <a href="https://goo.gl/maps/B9WRVcGhnn4Q12rp6" target="_blank">地址:宜蘭縣宜蘭市宜興路一段240號🗺️</a>
+              </p>
+              <div class="card-text">
+                位在宜蘭火車站南側的幾米公園，原本是廢棄的鐵路局舊宿舍區，後來為保留歷史建築，遂將整體區塊融入藝術色彩並規劃為全台第一座「幾米主題廣場」。
+                廣場上所有角色皆來自幾米的繪本作品，除了總是向左走、向右走的男女主角外，《星空》中小男孩與小女孩一起等待公車的場景也出現在路邊，和你一起等待那台永遠不會到來的公車。
+              </div>
+              <h2 class="subtitle mt-4">附近的飯店</h2>
+              <div id="search-result">
+                <div class="hotel__card" data-comId="2" data-roomId="5">
+                  <div class="hotel__img">
+                    <img src="data:image/png;base64,${roomPhoto}" alt="pic" />
+                  </div>
+                  <div class="hotel__content">
+                    <div class="d-flex align-items-center">
+                      <h3 class="hotel__title">台北東站旅館</h3>
+                      <ul class="hotel__rank" data-rank="3">
+                        <li><i class="fa-solid fa-star fa-lg"></i></li>
+                        <li><i class="fa-solid fa-star fa-lg"></i></li>
+                        <li><i class="fa-solid fa-star fa-lg"></i></li>
+                        <li><i class="fa-solid fa-star fa-lg"></i></li>
+                        <li><i class="fa-solid fa-star fa-lg"></i></li>
+                      </ul>
+                    </div>
+                    <p class="hotel__address" target="_blank">新北花蓮 🗺️</p>
+                    <p class="hotel__desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, incidunt?</p>
+                  </div>
                 </div>
-                <h5>幾米公園</h5>
-                <p class="url_style">
-                  <a href="https://goo.gl/maps/B9WRVcGhnn4Q12rp6" target="_blank">地址:宜蘭縣宜蘭市宜興路一段240號🗺️</a>
-                </p>
-                <div class="card-text">
-                  位在宜蘭火車站南側的幾米公園，原本是廢棄的鐵路局舊宿舍區，後來為保留歷史建築，遂將整體區塊融入藝術色彩並規劃為全台第一座「幾米主題廣場」。
-                  廣場上所有角色皆來自幾米的繪本作品，除了總是向左走、向右走的男女主角外，《星空》中小男孩與小女孩一起等待公車的場景也出現在路邊，和你一起等待那台永遠不會到來的公車。
+                <div class="hotel__card" data-comId="2" data-roomId="5">
+                  <div class="hotel__img">
+                    <img src="data:image/png;base64,${roomPhoto}" alt="pic" />
+                  </div>
+                  <div class="hotel__content">
+                    <div class="d-flex align-items-center">
+                      <h3 class="hotel__title">台北東站旅館</h3>
+                      <ul class="hotel__rank" data-rank="3">
+                        <li><i class="fa-solid fa-star fa-lg"></i></li>
+                        <li><i class="fa-solid fa-star fa-lg"></i></li>
+                        <li><i class="fa-solid fa-star fa-lg"></i></li>
+                        <li><i class="fa-solid fa-star fa-lg"></i></li>
+                        <li><i class="fa-solid fa-star fa-lg"></i></li>
+                      </ul>
+                    </div>
+                    <p class="hotel__address" target="_blank">新北花蓮 🗺️</p>
+                    <p class="hotel__desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, incidunt?</p>
+                  </div>
+                </div>
+                <div class="hotel__card" data-comId="2" data-roomId="5">
+                  <div class="hotel__img">
+                    <img src="data:image/png;base64,${roomPhoto}" alt="pic" />
+                  </div>
+                  <div class="hotel__content">
+                    <div class="d-flex align-items-center">
+                      <h3 class="hotel__title">台北東站旅館</h3>
+                      <ul class="hotel__rank" data-rank="3">
+                        <li><i class="fa-solid fa-star fa-lg"></i></li>
+                        <li><i class="fa-solid fa-star fa-lg"></i></li>
+                        <li><i class="fa-solid fa-star fa-lg"></i></li>
+                        <li><i class="fa-solid fa-star fa-lg"></i></li>
+                        <li><i class="fa-solid fa-star fa-lg"></i></li>
+                      </ul>
+                    </div>
+                    <p class="hotel__address" target="_blank">新北花蓮 🗺️</p>
+                    <p class="hotel__desc">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit. In modi, quos inventore debitis a quae
+                      cum qui, numquam ducimus provident ex optio nemo. Magnam, illum quisquam? Voluptas dolore nesciunt
+                      temporibus.
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
+            </div> -->
+            <!-- <div class="not-found">
+              <img src="../images/not_found.svg" alt="Results Not Found" />
+            </div> -->
           </div>
 
           <!-- 分頁 -->

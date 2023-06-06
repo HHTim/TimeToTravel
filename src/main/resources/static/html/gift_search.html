@@ -13,10 +13,10 @@
     <!-- 我們自己的 css 檔案，路徑記得改 -->
     <link rel="stylesheet" href="../css/gift_search.css" />
     <!-- 我們自己的 js 檔案，路徑記得改 -->
-    <script src="../js/gift_search.js" defer></script>
+    <script type="module" src="../js/gift_search.js" defer></script>
     <!-- 輪播需要添加 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="jquery.flexslider.js"></script>
+    <!-- <script src="jquery.flexslider.js"></script> -->
 
     <!-- title 記得改 -->
     <title>TimeToTravel | Gift Search</title>
@@ -34,7 +34,41 @@
         <nav>
           <ul class="nav">
             <li class="nav__link"><a href="#">我的訂單</a></li>
-            <li class="nav__link"><a href="#">伴手禮商城</a></li>
+            <li class="nav__link"><a href="#">我的最愛</a></li>
+            <li class="nav__link">
+              <a href="#" class="open-cart">購物車</a
+              ><!-- 購物車小視窗 start -->
+              <div class="dropdown-cart">
+                <div class="cart-list">
+                  <div class="if-empty">
+                    <div>沒有商品</div>
+                  </div>
+                  <div class="gift-item">
+                    <div class="small-img"><img src="data:image/png;base64,${i.giftPhoto}" /></div>
+                    <div class="item-info">
+                      <p class="title">${i.giftName}</p>
+                      <p class="amount"><span>數量：</span><span class="quantity">${i.giftCount}</span></p>
+                    </div>
+                  </div>
+                  <div class="gift-item">
+                    <div class="small-img"><img src="#" alt="小圖片" /></div>
+                    <div class="item-info">
+                      <p class="title">液晶螢幕</p>
+                      <p class="amount"><span>數量：</span><span class="quantity">3</span></p>
+                    </div>
+                  </div>
+                  <div class="gift-item">
+                    <div class="small-img"><img src="#" alt="小圖片" /></div>
+                    <div class="item-info">
+                      <p class="title">路邊攤香腸路邊攤香腸路邊攤香腸路邊攤香腸路邊攤香腸路邊攤香腸</p>
+                      <p class="amount"><span>數量：</span><span class="quantity">1</span></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="cart-button"><a class="btn-checkout" href="">立即結帳</a></div>
+              </div>
+              <!-- 購物車小視窗 end -->
+            </li>
             <li class="nav__link"><a href="#">部落格</a></li>
             <li class="nav__info">
               <div class="dropdown-center">
@@ -50,19 +84,18 @@
             </li>
             <li class="nav__avatar">
               <div class="dropdown-center">
-                <!-- <button class="dropdown-toggle nav__avatar-btn" type="button" data-bs-toggle="dropdown"></button> -->
                 <a href="#" class="dropdown-toggle nav__avatar-btn" type="button" data-bs-toggle="dropdown">
                   <div class="nav__avatar-img">
                     <img src="../images/avatar.svg" alt="avatar" />
                   </div>
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">註冊</a></li>
+                  <!-- <li><a class="dropdown-item" href="#">註冊</a></li>
                   <li><a class="dropdown-item" href="#">登入</a></li>
                   <li><a class="dropdown-item" href="#">其他</a></li>
                   <li><a class="dropdown-item" href="#">其他</a></li>
                   <li><hr class="dropdown-divider" /></li>
-                  <li><a class="dropdown-item" href="#">登出</a></li>
+                  <li><a class="dropdown-item" href="#">登出</a></li> -->
                 </ul>
               </div>
             </li>
@@ -79,12 +112,11 @@
           <!-- 側邊欄開始 -->
           <div class="col-3">
             <ul class="gift_sidebar collapse_collection">
-              <li><a href="#">全部商品</a></li>
-              <li><a href="#">頂銷推薦</a></li>
-              <li><a href="#">店取限定</a></li>
-              <li><a href="#">鮮凍美食</a></li>
-              <li><a href="#">團購美食</a></li>
-              <li><a href="#">彌月美食</a></li>
+              <li><a href="#" data-gift-type="全部商品">全部商品</a></li>
+              <li><a href="#" data-gift-type="團購美食">團購美食</a></li>
+              <li><a href="#" data-gift-type="彌月食品">彌月食品</a></li>
+              <li><a href="#" data-gift-type="冷凍食品">冷凍食品</a></li>
+              <li><a href="#" data-gift-type="熱門美食">熱門美食</a></li>
             </ul>
           </div>
           <!-- 側邊攔結束 -->
@@ -99,96 +131,65 @@
               </div>
               <div class="col-3 select_item">
                 <select class="custom_select">
-                  <option value>預設排序</option>
-                  <option value="price-desc">價格由高到低</option>
-                  <option value="price-asc">價格由低到高</option>
-                  <option value="recent_days_sold-desc">本周熱賣</option>
+                  <option value="0">預設排序</option>
+                  <option value="1">價格由高到低</option>
+                  <option value="2">價格由低到高</option>
                 </select>
               </div>
               <div class="col-3 total_product">
-                <p>共102件商品</p>
+                <div>共102件商品</div>
               </div>
             </div>
             <div class="collect_list row">
+              <div class="item-mask"></div>
               <ul class="item_list">
-                <li>
-                  <a href="#" class="lightbox-link">
-                    <div class="img_block">
-                      <img src="../images/gift1.jpg" />
-                    </div>
-                    <span class="item_text">【冷凍組合】台式華宴組</span>
+                <li data-gift-id="${i.giftId}">
+                  <div class="top-down">
+                    <a href="#" class="lightbox-link">
+                      <div class="img_block">
+                        <img src="../images/gift1.jpg" class="lightbox-link" />
+                      </div>
+                    </a>
 
                     <div class="lightbox-content">
                       <button class="close-button"></button>
                       <div class="gift_cart_row">
                         <div class="col-6_custom">
                           <div class="swiper-container photos">
-                            <div class="swiper-wrapper">
-                              <div class="prev" onclick="prevSlide()">
-                                <i class="fa-solid fa-chevron-left"></i>
-                              </div>
-                              <div class="photo swiper-slide swiper-slide-active">
-                                <img src="../images/gift1.jpg" alt="Gift 1" />
-                              </div>
-                              <!-- <div class="photo swiper-slide swiper-slide-active">
-                                  <img src="../images/gift2.jpg" alt="Gift 2" />
-                                </div> -->
-                              <!-- <div class="photo swiper-slide swiper-slide-active">
-                                  <img src="../images/gift3.jpg" alt="Gift 3" />
-                                </div> -->
-                              <div class="next" onclick="nextSlide()">
-                                <i class="fa-solid fa-chevron-right"></i>
-                              </div>
+                            <div class="photo swiper-slide swiper-slide-active">
+                              <img src="../images/gift1.jpg" alt="" />
                             </div>
                           </div>
-                          <!-- <div class="flexslider swiper-wrapper">
-                              <ul class="slides">
-                                <li>
-                                  <img src="../images/gift1.jpg" />
-                                </li>
-                                <li>
-                                  <img src="../images/gift2.jpg" />
-                                </li>
-                                <li>
-                                  <img src="../images/gift3.jpg" />
-                                </li>
-                              </ul>
-                            </div> -->
                         </div>
 
                         <div class="col-6 content">
-                          <h4>[冷凍組合]台式華宴組</h4>
-                          <p class="brief">
-                            料理法寶，讓你餐餐不煩惱！ 精選七道鮮凍美食，簡單復熱後，就能快速上菜。
-                            <br />
-                            組合另附保冷禮袋乙只。
-                            <br />
-                          </p>
+                          <h4>${i.giftName}</h4>
+                          <p class="brief">${i.giftIntro}</p>
                           <div class="price_area">
                             <span class="price_title">優惠價格</span>
                             <div>
-                              <span class="variant-price">NT$ 2980</span>
-                              <del class="variant-del-price">NT$ 3388</del>
+                              <span class="variant-price">NT$ ${i.giftPrice}</span>
+                              <del class="variant-del-price">NT$ ${cheap}</del>
                             </div>
                           </div>
                           <div class="cart-controls">
                             <div class="variant-quantity">
                               <div class="product-variant-option">
                                 <div class="advance">
-                                  <div class="title">內容</div>
-                                  <div class="option_select">共七道冷凍料理包</div>
+                                  <div class="title">飯店</div>
+                                  <div class="option_select">${i.comName}</div>
                                 </div>
                                 <div class="product-variant-option">
                                   <div class="advance">
-                                    <div class="title">贈品</div>
-                                    <div class="option_select">保冷禮袋</div>
+                                    <div class="title">分類</div>
+                                    <div class="option_select">${i.giftTypeName}</div>
                                   </div>
                                 </div>
                               </div>
                               <div class="product_quantity">
                                 <div role="group" aria-label="First group" class="btn-group">
                                   <button type="button" class="btn add-down">-</button>
-                                  <input type="text" name="quantity" class="btn item-quantity" />
+                                  <input type="text" class="qty-input" maxlength="2" value="1" />
                                   <button type="button" class="btn add-up">+</button>
                                 </div>
                               </div>
@@ -203,185 +204,24 @@
                         </div>
                       </div>
                     </div>
-                  </a>
-                  <div class="product_price">
-                    <span class="price">
-                      <span class="money_tag">NT$2980</span>
-                    </span>
-                    <del class="comparable_price">
-                      <span class="money_tag">NT$3388</span>
-                    </del>
-                  </div>
-                </li>
-                <li>
-                  <a href="#" class="lightbox-link">
-                    <div class="img_block">
-                      <img src="../images/gift2.jpg" />
+
+                    <div class="product_price">
+                      <span class="item_text">${i.giftName}</span>
+                      <span class="price">
+                        <span class="money_tag">NT$ ${i.giftPrice}</span>
+                      </span>
+                      <del class="comparable_price">
+                        <span class="money_tag">NT$ ${cheap}</span>
+                      </del>
                     </div>
-                    <span class="item_text">【冷凍組合】手路菜豪華組</span>
-                  </a>
-                  <div class="product_price">
-                    <span class="price">
-                      <span class="money_tag">NT$2120</span>
-                    </span>
-                    <del class="comparable_price">
-                      <span class="money_tag">NT$2369</span>
-                    </del>
-                  </div>
-                </li>
-                <li>
-                  <a href="#" class="lightbox-link">
-                    <div class="img_block">
-                      <img src="../images/gift3.jpg" />
-                    </div>
-                    <span class="item_text">【團購組合】匈牙利牛腩 5入</span>
-                  </a>
-                  <div class="product_price">
-                    <span class="price">
-                      <span class="money_tag">NT$1615</span>
-                    </span>
-                    <del class="comparable_price">
-                      <span class="money_tag">NT$1900</span>
-                    </del>
-                  </div>
-                </li>
-                <li>
-                  <a href="#" class="lightbox-link">
-                    <div class="img_block">
-                      <img src="../images/gift4.jpg" />
-                    </div>
-                    <span class="item_text">【團購組合】港式臘味蘿蔔糕 8入</span>
-                  </a>
-                  <div class="product_price">
-                    <span class="price">
-                      <span class="money_tag">NT$1904</span>
-                    </span>
-                    <del class="comparable_price">
-                      <span class="money_tag">NT$2240</span>
-                    </del>
-                  </div>
-                </li>
-                <li>
-                  <a href="#" class="lightbox-link">
-                    <div class="img_block">
-                      <img src="../images/gift5.jpg" />
-                    </div>
-                    <span class="item_text">【進福大灣花生糖】精美大禮盒綜合口味 </span>
-                  </a>
-                  <div class="product_price">
-                    <span class="price">
-                      <span class="money_tag">NT$625</span>
-                    </span>
-                  </div>
-                </li>
-                <li>
-                  <a href="#" class="lightbox-link">
-                    <div class="img_block">
-                      <img src="../images/gift6.jpg" />
-                    </div>
-                    <span class="item_text">【團購組合】豆瓣鱸魚 5入</span>
-                  </a>
-                  <div class="product_price">
-                    <span class="price">
-                      <span class="money_tag">NT$1435</span>
-                    </span>
-                    <del class="comparable_price">
-                      <span class="money_tag">NT$1750</span>
-                    </del>
-                  </div>
-                </li>
-                <li>
-                  <a href="#" class="lightbox-link">
-                    <div class="img_block">
-                      <img src="../images/gift7.jpg" />
-                    </div>
-                    <span class="item_text">【天時福】一口吃烏魚腱</span>
-                  </a>
-                  <div class="product_price">
-                    <span class="price">
-                      <span class="money_tag">NT$680</span>
-                    </span>
-                  </div>
-                </li>
-                <li>
-                  <a href="#" class="lightbox-link">
-                    <div class="img_block">
-                      <img src="../images/gift8.jpg" />
-                    </div>
-                    <span class="item_text">【度小月】帆船牌原味肉燥罐頭 大罐</span>
-                  </a>
-                  <div class="product_price">
-                    <span class="price">
-                      <span class="money_tag">NT$205</span>
-                    </span>
-                  </div>
-                </li>
-                <li>
-                  <a href="#" class="lightbox-link">
-                    <div class="img_block">
-                      <img src="../images/gift9.jpg" />
-                    </div>
-                    <span class="item_text">【度小月】帆船牌辣味肉燥罐頭 大罐 </span>
-                  </a>
-                  <div class="product_price">
-                    <span class="price">
-                      <span class="money_tag">NT$205</span>
-                    </span>
-                  </div>
-                </li>
-                <li>
-                  <a href="#" class="lightbox-link">
-                    <div class="img_block">
-                      <img src="../images/gift1.jpg" />
-                    </div>
-                    <span class="item_text">【冷凍組合】台式華宴組</span>
-                  </a>
-                  <div class="product_price">
-                    <span class="price">
-                      <span class="money_tag">NT$2980</span>
-                    </span>
-                    <del class="comparable_price">
-                      <span class="money_tag">NT$3388</span>
-                    </del>
-                  </div>
-                </li>
-                <li>
-                  <a href="#" class="lightbox-link">
-                    <div class="img_block">
-                      <img src="../images/gift2.jpg" />
-                    </div>
-                    <span class="item_text">【冷凍組合】手路菜豪華組</span>
-                  </a>
-                  <div class="product_price">
-                    <span class="price">
-                      <span class="money_tag">NT$2120</span>
-                    </span>
-                    <del class="comparable_price">
-                      <span class="money_tag">NT$2369</span>
-                    </del>
-                  </div>
-                </li>
-                <li>
-                  <a href="#" class="lightbox-link">
-                    <div class="img_block">
-                      <img src="../images/gift3.jpg" />
-                    </div>
-                    <span class="item_text">【團購組合】匈牙利牛腩 5入</span>
-                  </a>
-                  <div class="product_price">
-                    <span class="price">
-                      <span class="money_tag">NT$1615</span>
-                    </span>
-                    <del class="comparable_price">
-                      <span class="money_tag">NT$1900</span>
-                    </del>
                   </div>
                 </li>
               </ul>
             </div>
           </div>
           <!-- 商品顯示結束 -->
-          <div class="main-bottom row">
+          <!-- 分頁功能 -->
+          <!-- <div class="main-bottom row">
             <div class="col-4">&nbsp;</div>
             <div class="col-4">
               <div class="page__area">
@@ -398,11 +238,26 @@
             </div>
 
             <div class="col-4">&nbsp;</div>
-          </div>
+          </div> -->
         </div>
       </main>
       <!-- Main End -->
     </div>
+    <!-- 成功加入購物車確認 -->
+    <div class="success-mask"></div>
+    <div class="add-success">
+      <div>
+        <div class="success-icon"><i class="fa-solid fa-circle-check fa-2xl" style="color: #0bc117"></i></div>
+        <div class="success-msg">
+          <i class="fa-regular fa-face-smile fa-xl" style="color: #ff7e05"></i>加入成功<i
+            class="fa-regular fa-face-smile fa-xl"
+            style="color: #ff7e05"
+          ></i>
+        </div>
+        <div class="success-btn"><button>確認</button></div>
+      </div>
+    </div>
+    <!-- 成功加入購物車確認 End -->
     <!-- Footer -->
     <footer>
       <div class="footer"></div>

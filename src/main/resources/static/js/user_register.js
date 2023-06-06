@@ -1,3 +1,4 @@
+import { getCurrentUserInformation } from './header.js';
 $(function () {
   const userAvatarFile = $('#userAvatarFile');
   const companyAvatarFile = $('#companyAvatarFile');
@@ -27,7 +28,7 @@ $(function () {
       .done(() => {
         $('#errorMessage').html('');
         alert('註冊成功');
-        location.href = 'user_login.html';
+        location.href = '/user_login';
       })
       .fail((response) => {
         console.log('fail', response);
@@ -98,6 +99,9 @@ $(function () {
 
     register('/CompanyController/company/register', JSON.stringify(data));
   });
+  if (data.avatar.indexOf(';base64') === -1) {
+    data.avatar = '';
+  }
 
   $('#userAvatarButton').on('click', () => {
     userAvatarFile.click();
@@ -114,4 +118,6 @@ $(function () {
   companyAvatarFile.on('change', function () {
     base64(this.files[0], 'companyAvatarImage');
   });
+
+  getCurrentUserInformation();
 });
