@@ -2,9 +2,15 @@ $(function () {
   // 拿取 上一頁資料
   var blog = JSON.parse(sessionStorage.getItem('edit-blog'));
   var blogTags = JSON.parse(sessionStorage.getItem('blog-tags'));
-  var userId = JSON.parse(sessionStorage.getItem('user-data')).userId;
+  var userId = null;
+  try {
+    userId = JSON.parse(sessionStorage.getItem('user-data')).userId;
+    console.log(userId);
+  } catch (error) {
+    console.log(error);
+    userId = 1; // 忽略错误，继续执行其他操作
+  }
   console.log(userId);
-
   // ===================================
   var articleData = {};
 
@@ -206,23 +212,23 @@ $(function () {
       alert('請先登入');
       return;
     }
-    
+
     e.preventDefault();
     var articleTitle = $('#article-title').val();
     var articleType = $('#article-type').val();
     // var articleTags = tagsArray.join(', '); // 沒使用
     var articleContent = $('#article-content').val();
-    
+
     if (articleTitle == '' || articleContent == '') {
       alert('標題或文章內容不能為空');
     } else {
       if (articleTitle.length > 50) {
-        alert('標題超過限制，請輸入少於50個字元'+articleTitle.length);
+        alert('標題超過限制，請輸入少於50個字元' + articleTitle.length);
         return;
       } else if (articleContent.length > 10000) {
-        alert('文章內容超過限制，請輸入少於10000個字元'+articleContent.length);
+        alert('文章內容超過限制，請輸入少於10000個字元' + articleContent.length);
         return;
-      } 
+      }
       articleData.postTitle = articleTitle;
       articleData.postContent = articleContent;
       articleData.postTypeId = articleType;

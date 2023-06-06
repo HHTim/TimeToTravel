@@ -1,7 +1,12 @@
 $(document).ready(function () {
-  var userId = 1; // 拿 session
-  // userId = JSON.parse(sessionStorage.getItem('user-data')).userId;
-
+  var userId = null; // 拿 session
+  try {
+    userId = JSON.parse(sessionStorage.getItem('user-data')).userId;
+    console.log(userId);
+  } catch (error) {
+    console.log(error);
+    userId = 1; // 忽略错误，继续执行其他操作
+  }
   console.log(userId);
   // ==============================================
   var tags = [];

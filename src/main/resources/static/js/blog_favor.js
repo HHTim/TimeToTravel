@@ -1,9 +1,15 @@
 $(function () {
   // 拿 收藏 userid postid
   // session 拿取固有資料 區塊
-  //
-  var userId = 1;
-  // console.log(userId);
+  var userId = null;
+  try {
+    userId = JSON.parse(sessionStorage.getItem('user-data')).userId;
+    console.log(userId);
+  } catch (error) {
+    console.log(error);
+    userId = 1; // 忽略错误，继续执行其他操作
+  }
+  console.log(userId);
   // ===================================
   var prePage; // 上一頁資訊的物件 ??
 

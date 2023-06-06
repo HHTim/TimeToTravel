@@ -4,9 +4,15 @@ $(function () {
   var postId = blog.postId;
 
   var userId = null;
-  userId = JSON.parse(sessionStorage.getItem('user-data')).userId;
+  try {
+    userId = JSON.parse(sessionStorage.getItem('user-data')).userId;
+    console.log(userId);
+  } catch (error) {
+    console.log(error);
+    userId = 1; // 忽略错误，继续执行其他操作
+  }
   console.log(userId);
-  
+
   // ===================================
   var blogTags;
   var getBlogdata2Session;
@@ -401,7 +407,7 @@ $(function () {
 
   // ======================= 頁面切換 ============
   //   編輯文章
-  $('ul.blog-setting').on('click','a.edit-article', function () {
+  $('ul.blog-setting').on('click', 'a.edit-article', function () {
     var blogId = $(this).closest('div.blog').attr('blog-id');
     sessionStorage.setItem(
       'edit-blog', // view
@@ -429,7 +435,7 @@ $(function () {
   });
 
   //   刪除文章
-  $('ul.blog-setting').on('click','a.delete-article', function (e) {
+  $('ul.blog-setting').on('click', 'a.delete-article', function (e) {
     e.preventDefault(); // 阻止默认的链接跳转行为
     var confirmation = confirm('確認刪除文章？');
     if (confirmation) {
