@@ -17,8 +17,10 @@
     <link rel="stylesheet" href="../../css/03_leo/user-favor-blog.css" />
     <!-- 我們自己的 css 檔案，路徑記得改 -->
     <script src="../../js/template_user.js" defer></script>
+    <script src="../../js/blog_favor.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- 輪播需要添加 -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
     <!-- title 記得改 -->
     <title>TimeToTravel | my favor blog</title>
   </head>
@@ -100,7 +102,8 @@
                 <h2 class="subtitle">文章收藏</h2>
               </div>
               <div class="col-md-2 text-end ">
-                <select class="form-select " aria-label="文章類型">
+                <select class="form-select "  id="article-type-select" aria-label="文章類型">
+                  <option value="all">全部</option>
                   <option value="問題">問題</option>
                   <option value="資訊">資訊</option>
                   <option value="心得">心得</option>
@@ -122,7 +125,8 @@
                 <div class="col   margin-center "></div>
               </div>
               <!-- blogs -->
-              <div class="blog row text-center col-12 margin-center p-2 mt-1 ">
+              <div class="favor-blog-list"> 
+              <!-- <div class="blog row text-center col-12 margin-center p-2 mt-1 ">
                 <div class="col-1 align-self-center margin-center blog-type article-type">心得</div>
                 <div class="col-2  margin-center imgdiv ">
                   <img class="blog-img " width="120" height="68" data-image="6" id="article-image" src="../../images/hotel.jpg" alt="test66"></img>
@@ -143,19 +147,26 @@
                     <span class="badge small-tag bg-danger ">強颱4</span>
                   </div>
                 </div>
-                <div class="col align-self-center  margin-center latest-reply content-like-border "><button class="go-favor-blog">前往</button></div>
-                <div class="col align-self-center  margin-center latest-reply "><button class="remove-favor-blog">刪除</button></div>
+                <div class="col   d-flex justify-content-end align-items-end   "><button class="go-favor-blog ">前往</button><button class="remove-favor-blog">刪除</button></div>
+              </div> -->
+                <!-- <div class="col align-self-center  margin-center latest-reply content-like-border "><button class="go-favor-blog">前往</button></div> -->
+                <!-- <div class="col align-self-center  margin-center latest-reply "><button class="remove-favor-blog">刪除</button></div> -->
+
+
+
+              </div>
+
               </div>
              
 
               
 
-            </div>
-          </main>
+            </main>
+          </div>
           <!-- Main End -->
         </div>
       </div>
-    </div>
+
     <!-- Footer -->
     <footer>
       <div class="footer"></div>

@@ -1,3 +1,5 @@
+import { getCurrentUserInformation } from './header.js';
+
 window.addEventListener('load', function () {
   // =============宣告=============
   const giftList = document.querySelector('ul.item_list');
@@ -413,7 +415,7 @@ window.addEventListener('load', function () {
 
   // =================立即結帳按鈕=================
   // ----------------有購物才會跳轉----------------
-  $('a.btn-checkout').on('click', function(e) {
+  $('a.btn-checkout').on('click', function (e) {
     e.preventDefault();
     // window.location.href = "../html/gift_cart.html";
     fetch('/giftCartController/redirect_cart/' + userId)
@@ -430,10 +432,5 @@ window.addEventListener('load', function () {
 
   });
 
-
-
-
-
-
-
+  getCurrentUserInformation();
 });

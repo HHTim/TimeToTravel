@@ -165,7 +165,7 @@ main.main {
   width: 100%;
   height: 100%;
   border: none;
-  background-image: url("../images/info.svg");
+  background-image: url("../images/notify-normal.png");
   background-color: transparent;
   background-size: contain;
   background-position: center;
@@ -412,7 +412,7 @@ body {
   box-shadow: 0 0 3px #9b9999;
 }
 .journey__img img {
-  scale: 0.35;
+  scale: 0.3;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -421,7 +421,7 @@ body {
   transition: all 0.2s ease-in-out;
 }
 a:hover .journey__img img {
-  scale: 0.38;
+  scale: 0.35;
 }
 @media screen and (max-width: 992px) {
   .journey a {
@@ -437,12 +437,15 @@ a:hover .journey__img img {
     box-shadow: 0 0 3px #9b9999;
   }
   .journey__img img {
-    scale: 0.25;
+    scale: 0.3;
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
     transform-origin: 0 0;
+  }
+  a:hover .journey__img img {
+    scale: 0.35;
   }
 }
 .journey__title {

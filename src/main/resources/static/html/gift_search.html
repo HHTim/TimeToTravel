@@ -13,7 +13,7 @@
     <!-- 我們自己的 css 檔案，路徑記得改 -->
     <link rel="stylesheet" href="../css/gift_search.css" />
     <!-- 我們自己的 js 檔案，路徑記得改 -->
-    <script src="../js/gift_search.js" defer></script>
+    <script type="module" src="../js/gift_search.js" defer></script>
     <!-- 輪播需要添加 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- <script src="jquery.flexslider.js"></script> -->
@@ -91,12 +91,12 @@
                   </div>
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">註冊</a></li>
+                  <!-- <li><a class="dropdown-item" href="#">註冊</a></li>
                   <li><a class="dropdown-item" href="#">登入</a></li>
                   <li><a class="dropdown-item" href="#">其他</a></li>
                   <li><a class="dropdown-item" href="#">其他</a></li>
                   <li><hr class="dropdown-divider" /></li>
-                  <li><a class="dropdown-item" href="#">登出</a></li>
+                  <li><a class="dropdown-item" href="#">登出</a></li> -->
                 </ul>
               </div>
             </li>
@@ -249,7 +249,12 @@
     <div class="add-success">
       <div>
         <div class="success-icon"><i class="fa-solid fa-circle-check fa-2xl" style="color: #0bc117"></i></div>
-        <div class="success-msg"><i class="fa-regular fa-face-smile fa-xl" style="color: #ff7e05;"></i>加入成功<i class="fa-regular fa-face-smile fa-xl" style="color: #ff7e05;"></i></div>
+        <div class="success-msg">
+          <i class="fa-regular fa-face-smile fa-xl" style="color: #ff7e05"></i>加入成功<i
+            class="fa-regular fa-face-smile fa-xl"
+            style="color: #ff7e05"
+          ></i>
+        </div>
         <div class="success-btn"><button>確認</button></div>
       </div>
     </div>

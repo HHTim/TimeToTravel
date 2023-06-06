@@ -1,3 +1,4 @@
+import { getCurrentUserInformation } from './header.js';
 $(function () {
   /* date */
   var start = moment().subtract(29, 'days');
@@ -26,15 +27,15 @@ $(function () {
     let url;
     const tbody = document.querySelector('tbody');
     if (tab_user.attr('data-value') == '1') {
-      url = 'http://localhost:8080/User2AdminController/message/u2a/view/page/' + currentPage.toString() + '/' + limit;
+      url = '/User2AdminController/message/u2a/view/page/' + currentPage.toString() + '/' + limit;
     } else {
-      url = 'http://localhost:8080/Com2AdminController/message/c2a/view/page/' + currentPage.toString() + '/' + limit;
+      url = '/Com2AdminController/message/c2a/view/page/' + currentPage.toString() + '/' + limit;
     }
 
     if (keywordFlag === true) {
       if (tab_user.attr('data-value') == '1') {
         url =
-          'http://localhost:8080/User2AdminController/message/u2a/view/page/' +
+          '/User2AdminController/message/u2a/view/page/' +
           currentPage.toString() +
           '/' +
           limit +
@@ -42,7 +43,7 @@ $(function () {
           $('input.form-input').val();
       } else {
         url =
-          'http://localhost:8080/Com2AdminController/message/c2a/view/page/' +
+          '/Com2AdminController/message/c2a/view/page/' +
           currentPage.toString() +
           '/' +
           limit +
@@ -52,7 +53,7 @@ $(function () {
     } else if (start_dateflag === true) {
       if (tab_user.attr('data-value') == '1') {
         url =
-          'http://localhost:8080/User2AdminController/message/u2a/view/page/dateRange/' +
+          '/User2AdminController/message/u2a/view/page/dateRange/' +
           currentPage.toString() +
           '/' +
           limit +
@@ -62,7 +63,7 @@ $(function () {
           choose_end_date;
       } else {
         url =
-          'http://localhost:8080/Com2AdminController/message/c2a/view/page/dateRange/' +
+          '/Com2AdminController/message/c2a/view/page/dateRange/' +
           currentPage.toString() +
           '/' +
           limit +
@@ -285,4 +286,5 @@ $(function () {
 
   cb(start, end);
   getData();
+  getCurrentUserInformation();
 });

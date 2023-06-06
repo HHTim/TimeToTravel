@@ -1,3 +1,5 @@
+import { getCurrentUserInformation } from './header.js';
+
 window.addEventListener('load', function () {
   let saveBtn = document.querySelector('.save__btn__commit');
 
@@ -87,6 +89,7 @@ window.addEventListener('load', function () {
    * Base64處理function
    *
    */
+
   function extractBase64String(dataURL) {
     var prefix = 'data:image/';
     var index = dataURL.indexOf(';base64,');
@@ -103,4 +106,6 @@ window.addEventListener('load', function () {
     console.log(base64String);
     return null;
   }
+
+  getCurrentUserInformation();
 });

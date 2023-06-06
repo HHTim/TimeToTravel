@@ -1,7 +1,10 @@
+import { getCurrentUserInformation } from './header.js';
+
 const hotelSection = document.querySelector('.hotel');
 const scenesSection = document.querySelector('.p-scene');
 const roomSection = document.querySelector('.room');
 const commentSection = document.querySelector('.comment');
+let searchBody = JSON.parse(sessionStorage.getItem('searchBody'));
 
 async function handleRoomClick(e) {
   const target = e.target.classList.value;
@@ -19,16 +22,19 @@ async function handleRoomClick(e) {
 
   if (target === 'room__booking') {
     console.log(roomId);
-    const resp = await fetch(`http://localhost:8080/user/redirect-order`, {
-      method: 'POST',
-      cache: 'no-cache',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ userId: 3, roomId: roomId }),
-      redirect: 'follow',
-    });
-    if (resp.redirected) {
-      location.href = resp.url;
-    }
+    searchBody.roomId = roomId;
+    sessionStorage.setItem('searchBody', JSON.stringify(searchBody));
+    window.location.href = '/rooms/paid';
+    // const resp = await fetch(`http://localhost:8080/user/redirect-order`, {
+    //   method: 'POST',
+    //   cache: 'no-cache',
+    //   headers: { 'Content-Type': 'application/json' },
+    //   body: JSON.stringify({ userId: 3, roomId: roomId }),
+    //   redirect: 'follow',
+    // });
+    // if (resp.redirected) {
+    //   location.href = resp.url;
+    // }
   }
 }
 
@@ -202,7 +208,8 @@ function renderPrivateScene(privateScenes) {
 }
 
 async function fetchData() {
-  const resp = await fetch('http://localhost:8080/user/booking');
+  const { comId, roomId } = searchBody;
+  const resp = await fetch(`/rooms/booking/${comId}/${roomId}`);
   const data = await resp.json();
   const {
     comName,
@@ -261,7 +268,6 @@ async function fetchData() {
     <small class="hotel__address">${comAddress}</small>
     <p id="hotel__desc" class="hotel__desc">${roomDesc}</p>
     <div class="hotel__price">
-      <button class="hotel__favor">加入商家收藏</button>
       <a href="#room" role="button">選擇房型</a>
     </div>
   </div>
@@ -278,5 +284,6 @@ async function fetchData() {
 }
 
 fetchData();
+getCurrentUserInformation();
 
 roomSection.addEventListener('click', handleRoomClick);

@@ -56,8 +56,7 @@ main.main {
   margin-bottom: 1rem;
   border: 3px solid #3d8ebd;
   font-size: 1.1rem;
-  box-shadow: -5px 0 5px 3px rgba(172, 164, 164, 0.5), 5px 0 5px 3px rgba(172, 164, 164, 0.5),
-    0 5px 5px 3px rgba(172, 164, 164, 0.5), 0 -5px 5px 3px rgba(172, 164, 164, 0.5);
+  box-shadow: -5px 0 5px 3px rgba(172, 164, 164, 0.5), 5px 0 5px 3px rgba(172, 164, 164, 0.5), 0 5px 5px 3px rgba(172, 164, 164, 0.5), 0 -5px 5px 3px rgba(172, 164, 164, 0.5);
 }
 
 .subtitle {
@@ -68,7 +67,7 @@ main.main {
   margin-bottom: 1.5rem;
 }
 .subtitle::after {
-  content: '';
+  content: "";
   height: 5px;
   width: 100%;
   background-color: #006caa;
@@ -108,7 +107,7 @@ main.main {
   position: relative;
 }
 .nav__link::after {
-  content: '';
+  content: "";
   width: 0;
   height: 2px;
   background-color: #006caa;
@@ -166,7 +165,7 @@ main.main {
   width: 100%;
   height: 100%;
   border: none;
-  background-image: url('../images/notify-normal.png');
+  background-image: url("../images/notify-normal.png");
   background-color: transparent;
   background-size: contain;
   background-position: center;
@@ -378,7 +377,7 @@ p {
 }
 
 .nav__link::after {
-  content: '';
+  content: "";
   width: 0;
   height: 2px;
   background-color: #006caa;
@@ -569,7 +568,7 @@ body {
 
 ul.nav {
   font-size: 20px;
-  font-family: 'Inter';
+  font-family: "Inter";
   color: black;
   font-weight: 500;
   line-height: 24px;
@@ -683,4 +682,9 @@ body {
 
 #userMenu.menu-container ul li:hover {
   color: #fff;
+}
+
+.custom-select {
+  display: inline-block;
+  width: 45%;
 }

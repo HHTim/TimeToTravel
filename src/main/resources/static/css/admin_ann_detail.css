@@ -373,6 +373,7 @@ h4 {
   font-weight: bolder;
   background-color: #dfdcdc;
   border-radius: 10px;
+  white-space: break-spaces;
 }
 
 .div-back-btn {

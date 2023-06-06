@@ -1,3 +1,5 @@
+import { getCurrentUserInformation } from './header.js';
+
 $(window).on('load', function () {
   const tab1 = $('#tab-1');
   const tab2 = $('#tab-2');
@@ -8,34 +10,62 @@ $(window).on('load', function () {
   const tab3_body = $('.tab-3.left-container');
 
   const advList = $('.slider .list');
+  var advListData;
 
   function getAnnPic() {
-    fetch('http://localhost:8080/AdminAnnController/anns/annView')
+    var i = 0;
+    fetch('/AdminAnnController/anns/annView')
       .then((r) => r.json())
       .then((d) => {
         console.log('讀取廣告資訊');
         console.log(d);
+        advListData = d;
         advList.append(
           d.map((e) => {
             return (
               `<li>
-              <a href="javascript:;"><img src="data:image/*;base64,` +
+              <a data-id=${i} href="javascript:;" class="advImg"><img src="data:image/*;base64,` +
               e.annPic +
               `" alt="..." /></a>
-              <a href="javascript:;" class="data-text underline">` +
+              <a data-id=${i++} href="javascript:;" class="data-text underline">` +
               e.annTitle +
               `</a>
-            </li>`
+              <div class="lightbox-content">
+                  <button class="close-button"></button>
+                  <h1>${e.annTitle}</h1>
+                  <div class="decorator-lightbox"></div>
+                  <img src="data:image/*;base64,` +
+              e.annPic +
+              `" alt="..." />
+              <h2>${e.annContent}</h2>
+                </div>
+            </li>
+            `
             );
           })
         );
 
         slider('slider');
+        bindEventToButtons();
+      });
+  }
 
-        // advList.append(`<li>
-        // <a href="javascript:;"><img src="images/adv-1.png" alt="" /></a>
-        // <a href="javascript:;" class="data-text underline">歡樂寶貝月◆著色比賽</a>
-        // </li>`);
+  function bindEventToButtons() {
+    $('.advImg').on('click', function () {
+      console.log('點擊了廣告圖片!');
+      $(this).parent().find('.data-text').next().toggleClass('open');
+    });
+
+    $('.data-text').on('click', function () {
+      console.log('點擊了廣告文字!');
+      $(this).next().toggleClass('open');
+    });
+
+    $('.data-text')
+      .next()
+      .find('button')
+      .on('click', function () {
+        $(this).parent().removeClass('open');
       });
   }
 
@@ -68,6 +98,7 @@ $(window).on('load', function () {
     tab2_body.css('display', 'none');
     tab_body.css('align-items', 'baseline');
   });
+  getCurrentUserInformation();
   getAnnPic();
   slider('slider2');
   slider('slider3');
@@ -225,33 +256,85 @@ function slider(slider_name) {
 //   });
 // });
 
-let searchBody = {};
 const search = document.querySelector('.btn-query');
 const keyword = document.querySelector('#keyword');
 const people = document.querySelector('#people');
 const startDate = document.querySelector('#startDate');
 const endDate = document.querySelector('#endDate');
-
-search.onclick = async () => {
-  const resp = await fetch('http://localhost:8080/user/redirect-search', {
-    method: 'POST',
-    cache: 'no-cache',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(searchBody),
-    redirect: 'follow',
-  });
-  if (resp.redirected) {
-    location.href = resp.url;
-  }
+let isSearchRoom = true;
+let searchBody = {
+  keyword: '',
+  people: 0,
+  startDate: '',
+  endDate: '',
 };
+
+// 先清空session
+sessionStorage.clear();
+
+// 後端跳頁
+// search.onclick = async () => {
+//   const resp = await fetch('/user/redirect-search', {
+//     method: 'POST',
+//     cache: 'no-cache',
+//     headers: { 'Content-Type': 'application/json' },
+//     body: JSON.stringify(searchBody),
+//     redirect: 'follow',
+//   });
+//   if (resp.redirected) {
+//     location.href = resp.url;
+//   }
+// };
 
 [keyword, people, startDate, endDate].forEach((elem) => {
   elem.addEventListener('blur', (e) => {
+    console.log(e.target.value);
     if (e.target.value === '') {
-      alert('輸入欄位請勿留空');
+      if (typeof swal === 'function') {
+        swal('輸入欄位請勿留空', '', 'warning');
+      } else {
+        alert('輸入欄位請勿留空');
+      }
     } else {
-      searchBody[elem.id] = e.target.value;
+      if (elem.id === 'people') {
+        searchBody[elem.id] = Number(e.target.value);
+      } else {
+        searchBody[elem.id] = e.target.value;
+      }
       console.log(searchBody);
+      isSearchRoom = true;
     }
   });
 });
+
+// ------------------------------------------------------------
+
+const sceneKeyword = document.querySelector('#sceneKeyword');
+sceneKeyword.addEventListener('blur', (e) => {
+  if (e.target.value === '') {
+    if (typeof swal === 'function') {
+      swal('輸入欄位請勿留空', '', 'warning');
+    } else {
+      alert('輸入欄位請勿留空');
+    }
+  } else {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = (today.getMonth() + 1).toString().padStart(2, '0');
+    const date = today.getDate().toString().padStart(2, '0');
+    const tomorrow = (today.getDate() + 1).toString().padStart(2, '0');
+
+    searchBody.keyword = e.target.value;
+    searchBody.people = 1;
+    searchBody.startDate = year + '-' + month + '-' + date;
+    searchBody.endDate = year + '-' + month + '-' + tomorrow;
+    console.log(searchBody);
+    isSearchRoom = false;
+  }
+});
+
+search.onclick = () => {
+  let url = isSearchRoom ? 'rooms/search' : 'scenes/search';
+  sessionStorage.setItem('searchBody', JSON.stringify(searchBody));
+  window.location.href = url;
+};

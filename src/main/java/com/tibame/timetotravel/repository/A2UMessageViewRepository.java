@@ -19,6 +19,7 @@ public interface A2UMessageViewRepository extends JpaRepository<A2UMsgView,Integ
     @Query(value = "SELECT * FROM VIEW_A2U_MSG where A2U_SENDING_TIME between ?1 and ?2 ORDER BY A2U_SENDING_TIME DESC LIMIT ?3,?4",nativeQuery = true)
     List<A2UMsgView> findViewByDateRangePage(String startDate, String endDate, Integer currPage, Integer rows);
 
-//    @Query(value = "SELECT * FROM VIEW_A2U_MSG where USER_ACCOUNT = ?1 ORDER BY A2U_SENDING_TIME DESC LIMIT ?2,?3",nativeQuery = true)
-//    List<A2UMsgView> findViewByUserMessageRows(String account, Integer start, Integer end);
+
+    @Query(value = "SELECT * FROM VIEW_A2U_MSG where USER_ID = ?1 ORDER BY A2U_SENDING_TIME DESC LIMIT ?2,?3",nativeQuery = true)
+    List<A2UMsgView> findA2UViewMsgByUserId(Integer userId,Integer startIndex, Integer endIndex);
 }

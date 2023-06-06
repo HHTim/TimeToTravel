@@ -1,3 +1,4 @@
+import { getCurrentUserInformation } from './header.js';
 $(function () {
   function getSessionData() {
     var msg = JSON.parse(sessionStorage.getItem('msg-detail'));
@@ -11,4 +12,5 @@ $(function () {
   });
 
   getSessionData();
+  getCurrentUserInformation();
 });

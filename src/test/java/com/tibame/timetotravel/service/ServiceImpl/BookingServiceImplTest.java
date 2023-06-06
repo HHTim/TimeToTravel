@@ -1,6 +1,6 @@
 package com.tibame.timetotravel.service.ServiceImpl;
 
-import com.tibame.timetotravel.dto.BookingRoom;
+import com.tibame.timetotravel.dto.BookingRoomDto;
 import com.tibame.timetotravel.entity.PrivateScene;
 import com.tibame.timetotravel.entity.Room;
 import com.tibame.timetotravel.service.BookingService;
@@ -18,24 +18,24 @@ class BookingServiceImplTest {
 
     @Test
     public void bookingRoomTest() throws InvocationTargetException, IllegalAccessException {
-        BookingRoom bookingRoom = bookingService.bookingRoom(2, 5);
-        System.out.println(bookingRoom.getComName());
-        System.out.println(bookingRoom.getComAddress());
-        System.out.println(bookingRoom.getRoomDesc());
+        BookingRoomDto bookingRoomDto = bookingService.bookingRoom(2, 5);
+        System.out.println(bookingRoomDto.getComName());
+        System.out.println(bookingRoomDto.getComAddress());
+        System.out.println(bookingRoomDto.getRoomDesc());
 
-        for (Room room : bookingRoom.getRooms()) {
+        for (Room room : bookingRoomDto.getRooms()) {
             System.out.println(room);
         }
 
-        for (PrivateScene privateScene : bookingRoom.getPrivateScenes()) {
+        for (PrivateScene privateScene : bookingRoomDto.getPrivateScenes()) {
             System.out.println(privateScene);
         }
 
 
-        System.out.println(bookingRoom.getOrderRanks());
-        System.out.println(bookingRoom.getAllUserNames());
-        System.out.println(bookingRoom.getAllComments());
-        System.out.println(bookingRoom.getAllOrderRanks());
-        System.out.println(bookingRoom.getAllUserAvatars());
+        System.out.println(bookingRoomDto.getOrderRanks());
+        System.out.println(bookingRoomDto.getAllUserNames());
+        System.out.println(bookingRoomDto.getAllComments());
+        System.out.println(bookingRoomDto.getAllOrderRanks());
+        System.out.println(bookingRoomDto.getAllUserAvatars());
     }
 }

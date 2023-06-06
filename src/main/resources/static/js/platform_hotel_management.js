@@ -1,3 +1,5 @@
+import { getCurrentUserInformation } from './header.js';
+
 $('.btn-test-jquery').on('click', function () {
   alert('this is a test');
 });
@@ -84,6 +86,8 @@ function createPaginationItem(label, page) {
   listItem.appendChild(link);
   return listItem;
 }
+
+getCurrentUserInformation();
 
 // 使用範例
 const totalPages = 3; // 總頁數

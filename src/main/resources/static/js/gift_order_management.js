@@ -1,114 +1,221 @@
+import { getCurrentUserInformation } from './header.js';
+
 // 綁定點擊事件
+window.addEventListener('load', function () {
+  /*宣告區域*/
+  let tbody = document.querySelector('tbody');
+  let giftOrderStatus; //土產訂單狀態
+  let confirmBtn = document.querySelector('.btn-primary');
 
-//燈箱
-document.addEventListener('DOMContentLoaded', () => {
-  const spans = document.querySelectorAll('tbody tr td span');
-  spans.forEach((span) => {
-    span.addEventListener('click', (event) => {
-      event.stopPropagation();
-      const lightbox = span.nextElementSibling;
-      lightbox.classList.toggle('open');
-    });
+  /*讀取*/
+  findall();
+  // bindEventToButtons();
+
+  /* 搜尋按Enter */
+  document.addEventListener('keydown', function (e) {
+    if (e.keyCode === 13) {
+      searchByKeyword();
+    }
   });
 
-  const lightboxes = document.querySelectorAll('.lightbox-content');
-  lightboxes.forEach((lightbox) => {
-    lightbox.addEventListener('click', (event) => {
-      event.stopPropagation();
+  /* 確定按鈕綁定 */
+  confirmBtn.addEventListener('click', function () {});
+
+  // ========================================================================================
+  /*  找全部  */
+  function findall() {
+    fetch('/giftOrderMangeController/giftOrderManage')
+      .then((resp) => resp.json())
+      .then((body) => {
+        console.log(body);
+        console.log(body.length);
+        tbody.innerHTML = body
+          .map((i) => {
+            // 更改訂單狀態  0 = false = '未完成'; 1 = true = '已完成'
+            giftOrderStatus = i.giftOrderStatus;
+
+            if (giftOrderStatus) {
+              giftOrderStatus = '已完成';
+            } else giftOrderStatus = '未完成';
+            return `
+                  <tr>
+                    <td>${i.giftOrderId}</td>
+                    <td>${i.userId}</td>
+                    <td>${i.giftOrderAmount}</td>
+                    <td>${i.giftOrderDatetime}</td>
+                    <td>${giftOrderStatus}</td>
+                    <td> 
+                      <span>
+                        <i class="fas fa-search"></i>
+                      </span> 
+                      <div class = "lightbox-content">
+                        <button class="close-button"></button>
+                        <h2> 訂單明細 </h2>
+                        <div>
+                          <p class = "col-6">訂單編號: </p> 
+                          <p class = "col-6">${i.giftOrderId}</p>
+                        </div>
+                        <div>
+                          <p class = "col-6">訂購人姓名: </p>
+                          <p class = "col-6">${i.userName}</p>
+                        </div>
+                        <div>
+                          <p class = "col-6">商品名稱</p>
+                          <p class = "col-6">${i.giftName}</p>
+                        </div>
+                        <div>
+                        <p class = "col-6">商品單價</p>
+                        <p class = "col-6">$${i.giftPrice}　元</p>
+                        </div>
+                        <div>
+                        <p class = "col-6">訂購數量</p>
+                        <p class = "col-6">${i.boughtCount}　個</p>
+                        </div>
+                        <div>
+                        <p class = "col-6">價格</p>
+                        <p class = "col-6">$${i.unitPrice}　元</p>
+                        </div>
+                        <div>
+                          <p class = "col-6">訂單日期: </p>
+                          <p class = "col-6">${i.giftOrderDatetime}</p>
+                        </div>
+                        <div>
+                          <p class = "col-6">訂單狀態: </p>
+                          <p class = "col-6">${giftOrderStatus}</p>
+                        </div>
+
+                      </div>
+                    </td>
+                  </tr>
+                  `;
+          })
+
+          .reverse()
+          .join('');
+        // console.log(tbody.innerHTML);
+        bindEventToButtons();
+      });
+  }
+  // =======================================================================
+  //燈箱
+  function bindEventToButtons() {
+    $('td span').on('click', function (e) {
+      // console.log($(this));
+      // console.log($(this).closest('td'));
+      // console.log($(this).closest('td').find('.lightbox-content'));
+      e.stopPropagation();
+      $(this).next('.lightbox-content').toggleClass('open');
+      // console.log('有觸發');
     });
 
-    const closeButton = lightbox.querySelector('.close-button');
-    closeButton.addEventListener('click', (event) => {
-      event.stopPropagation();
-      lightbox.classList.remove('open');
+    $('.close-button').on('click', function (e) {
+      e.stopPropagation(); // stopPropagation()防止事件向上冒泡到父元素
+      $(this).closest('.lightbox-content').removeClass('open');
     });
-  });
 
-  document.addEventListener('click', () => {
-    lightboxes.forEach((lightbox) => {
-      lightbox.classList.remove('open');
-    });
-  });
-});
-
-//======================= 分頁
-
-function generatePagination(totalPages, currentPage) {
-  const paginationContainer = document.createElement('nav');
-  paginationContainer.setAttribute('aria-label', 'Page navigation example');
-
-  const paginationList = document.createElement('ul');
-  paginationList.classList.add('pagination');
-
-  if (currentPage > 1) {
-    paginationList.appendChild(createPaginationItem('Previous', currentPage - 1));
-  }
-
-  for (let i = 1; i <= totalPages; i++) {
-    paginationList.appendChild(createPaginationItem(i, i === currentPage));
-  }
-
-  if (currentPage < totalPages) {
-    paginationList.appendChild(createPaginationItem('Next', currentPage + 1));
-  }
-
-  paginationContainer.appendChild(paginationList);
-  return paginationContainer;
-}
-
-function createPaginationItem(label, page) {
-  const listItem = document.createElement('li');
-  listItem.classList.add('page-item');
-
-  const link = document.createElement('a');
-  link.classList.add('page-link');
-  link.href = '#';
-  link.textContent = label;
-
-  if (label !== 'Previous' && label !== 'Next') {
-    link.addEventListener('click', () => {
-      // 點擊頁數時觸發的處理邏輯
-      // 你可以在這裡編寫跳轉到特定頁面的邏輯
-      console.log(`Go to page ${page}`);
+    $(document).on('click', function (e) {
+      if (!$(e.target).closest('.lightbox-content').length) {
+        //.length 確定是否在燈箱內部,如果長度為 0 = 找不到。
+        $('.lightbox-content').removeClass('open');
+        // console.log('我也被觸發了');
+      }
     });
   }
 
-  if (page) {
-    listItem.classList.add('active');
-  }
+  // ==========================================================================
+  /* 關鍵字搜尋 */
+  let searchByKeyword = function () {
+    let searchInput = document.querySelector('.search-input').value.trim();
+    let regex = /^[0-9]+$/; // 只能輸入數字
+    if (searchInput === '') {
+      alert('請輸入有效關鍵字');
+      window.location.reload();
+    } else if (!regex.test(searchInput)) {
+      alert('請輸入有效的數字關鍵字');
+      document.querySelector('.search-input').value = '';
+      window.location.reload();
+    } else {
+      fetch(`/giftOrderMangeController/giftOrderManage/${searchInput}/${searchInput}`)
+        .then((resp) => resp.json())
+        .then((body) => {
+          console.log(body);
+          if (body.length == 0) {
+            alert('查無此訂單');
+            document.querySelector('.search-input').value = '';
+            window.location.reload();
+          } else {
+            console.log(body);
+            tbody.innerHTML = body
+              .map((i) => {
+                // 更改訂單狀態  0 = false = '未完成'; 1 = true = '已完成'
+                giftOrderStatus = i.giftOrderStatus;
+                if (giftOrderStatus) {
+                  giftOrderStatus = '已完成';
+                } else giftOrderStatus = '未完成';
 
-  listItem.appendChild(link);
-  return listItem;
-}
+                return `
+                <tr>
+                <td>${i.giftOrderId}</td>
+                <td>${i.userId}</td>
+                <td>${i.giftOrderAmount}</td>
+                <td>${i.giftOrderDatetime}</td>
+                <td>${giftOrderStatus}</td>
+                <td> 
+                  <span>
+                    <i class="fas fa-search"></i>
+                  </span> 
+                  <div class = "lightbox-content">
+                    <button class="close-button"></button>
+                    <h2> 訂單明細 </h2>
+                    <div>
+                      <p class = "col-6">訂單編號: </p> 
+                      <p class = "col-6">${i.giftOrderId}</p>
+                    </div>
+                    <div>
+                      <p class = "col-6">訂購人姓名: </p>
+                      <p class = "col-6">${i.userName}</p>
+                    </div>
+                    <div>
+                      <p class = "col-6">商品名稱</p>
+                      <p class = "col-6">${i.giftName}</p>
+                    </div>
+                    <div>
+                    <p class = "col-6">商品單價</p>
+                    <p class = "col-6">$${i.giftPrice}　元</p>
+                    </div>
+                    <div>
+                    <p class = "col-6">訂購數量</p>
+                    <p class = "col-6">${i.boughtCount}　個</p>
+                    </div>
+                    <div>
+                    <p class = "col-6">價格</p>
+                    <p class = "col-6">$${i.unitPrice}　元</p>
+                    </div>
+                    <div>
+                      <p class = "col-6">訂單日期: </p>
+                      <p class = "col-6">${i.giftOrderDatetime}</p>
+                    </div>
+                    <div>
+                      <p class = "col-6">訂單狀態: </p>
+                      <p class = "col-6">${giftOrderStatus}</p>
+                    </div>
 
-// 使用範例
-const totalPages = 3; // 總頁數
-let currentPage = 1; // 當前頁面
+                  </div>
+                </td>
+              </tr>
+                  `;
+              })
 
-const paginationContainer = document.querySelector('.pagination-container');
+              .reverse()
+              .join('');
+            bindEventToButtons();
+          }
+        });
+    }
+  };
 
-function renderPagination() {
-  paginationContainer.innerHTML = '';
-  const pagination = generatePagination(totalPages, currentPage);
-  paginationContainer.appendChild(pagination);
-}
-
-renderPagination();
-
-// 可以透過修改 currentPage 的值重新渲染分頁
-const previousButton = document.querySelector('.pagination .page-item:first-child');
-const nextButton = document.querySelector('.pagination .page-item:last-child');
-
-previousButton.addEventListener('click', () => {
-  if (currentPage > 1) {
-    currentPage--;
-    renderPagination();
-  }
-});
-
-nextButton.addEventListener('click', () => {
-  if (currentPage < totalPages) {
-    currentPage++;
-    renderPagination();
-  }
+  //
+  //
+  //
+  //
 });

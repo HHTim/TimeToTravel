@@ -9,11 +9,12 @@
     <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js" defer></script>
     <script src="../node_modules/jquery/dist/jquery.min.js" defer></script>
     <script src="https://kit.fontawesome.com/e3af248fb2.js" crossorigin="anonymous" defer></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
     <!-- 我們自己的 js 檔案，路徑記得改 -->
     <link rel="stylesheet" href="../css/order_list.css" />
     <!-- 我們自己的 css 檔案，路徑記得改 -->
-    <script src="../js/order_list.js" defer></script>
+    <script type="module" src="../js/order_list.js" defer></script>
     <!-- 輪播需要添加 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- title 記得改 -->
@@ -26,7 +27,7 @@
       <header>
         <div class="container-fluid header__container">
           <h1 class="logo">
-            <a href="#" class="logo__link">
+            <a href="http://localhost:8080" class="logo__link">
               <img src="../images/LOGO.png" alt="logo" class="logo__img" />
             </a>
           </h1>
@@ -56,12 +57,12 @@
                     </div>
                   </a>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">註冊</a></li>
+                    <!-- <li><a class="dropdown-item" href="#">註冊</a></li>
                     <li><a class="dropdown-item" href="#">登入</a></li>
                     <li><a class="dropdown-item" href="#">其他</a></li>
                     <li><a class="dropdown-item" href="#">其他</a></li>
                     <li><hr class="dropdown-divider" /></li>
-                    <li><a class="dropdown-item" href="#">登出</a></li>
+                    <li><a class="dropdown-item" href="#">登出</a></li> -->
                   </ul>
                 </div>
               </li>
@@ -101,7 +102,7 @@
                   <p>訂單編號</p>
                   <input type="text" class="search__no" name="search__no" />
                 </div>
-                <button class="search__submit">搜尋</button>
+                <!-- <button class="search__submit">搜尋</button> -->
               </section>
               <section class="list">
                 <div class="tab">
@@ -112,18 +113,20 @@
                   <thead>
                     <tr>
                       <th scope="col">訂單編號</th>
-                      <th scope="col">預定日期</th>
+                      <th scope="col">下定日期</th>
                       <th scope="col">商家名稱</th>
-                      <th scope="col">金額</th>
+                      <th scope="col">房型名稱</th>
+                      <th scope="col">總金額</th>
                       <th scope="col">查看明細</th>
                       <th scope="col">我要評論</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr class="list__order">
+                    <!-- <tr class="list__order" data-id="1">
                       <td class="list__no">0000242</td>
                       <td class="list__date">2023-04-09</td>
                       <td class="list__com">OO青年旅館</td>
+                      <td class="list__room">單人床</td>
                       <td class="list__price">NT $18000</td>
                       <td class="list__detail">
                         <button id="detail">查看</button>
@@ -167,55 +170,7 @@
                       <td class="list__comment">
                         <button id="comment">評論</button>
                       </td>
-                    </tr>
-                    <tr class="list__order">
-                      <td class="list__no">0000242</td>
-                      <td class="list__date">2023-04-09</td>
-                      <td class="list__com">OO青年旅館</td>
-                      <td class="list__price">NT $18000</td>
-                      <td class="list__detail">
-                        <button id="detail">查看</button>
-                      </td>
-                      <td class="list__comment">
-                        <button id="detail">查看</button>
-                      </td>
-                    </tr>
-                    <tr class="list__order">
-                      <td class="list__no">0000242</td>
-                      <td class="list__date">2023-04-09</td>
-                      <td class="list__com">OO青年旅館</td>
-                      <td class="list__price">NT $18000</td>
-                      <td class="list__detail">
-                        <button id="detail">查看</button>
-                      </td>
-                      <td class="list__comment">
-                        <button id="detail">查看</button>
-                      </td>
-                    </tr>
-                    <tr class="list__order">
-                      <td class="list__no">0000242</td>
-                      <td class="list__date">2023-04-09</td>
-                      <td class="list__com">OO青年旅館</td>
-                      <td class="list__price">NT $18000</td>
-                      <td class="list__detail">
-                        <button id="detail">查看</button>
-                      </td>
-                      <td class="list__comment">
-                        <button id="detail">查看</button>
-                      </td>
-                    </tr>
-                    <tr class="list__order">
-                      <td class="list__no">0000242</td>
-                      <td class="list__date">2023-04-09</td>
-                      <td class="list__com">OO青年旅館</td>
-                      <td class="list__price">NT $18000</td>
-                      <td class="list__detail">
-                        <button id="detail">查看</button>
-                      </td>
-                      <td class="list__comment">
-                        <button id="detail">查看</button>
-                      </td>
-                    </tr>
+                    </tr> -->
                   </tbody>
                 </table>
               </section>
@@ -223,34 +178,36 @@
                 <h3 class="comment__title">留下你的評分與留言</h3>
                 <ul class="comment__rank">
                   <li>
-                    <a href=""><i class="fa-solid fa-star fa-lg"></i></a>
+                    <button data-rank="1"><i class="fa-solid fa-star fa-lg"></i></button>
                   </li>
                   <li>
-                    <a href=""><i class="fa-solid fa-star fa-lg"></i></a>
+                    <button data-rank="2"><i class="fa-solid fa-star fa-lg"></i></button>
                   </li>
                   <li>
-                    <a href=""><i class="fa-solid fa-star fa-lg"></i></a>
+                    <button data-rank="3"><i class="fa-solid fa-star fa-lg"></i></button>
                   </li>
                   <li>
-                    <a href=""><i class="fa-solid fa-star fa-lg"></i></a>
+                    <button data-rank="4"><i class="fa-solid fa-star fa-lg"></i></button>
                   </li>
                   <li>
-                    <a href=""><i class="fa-solid fa-star fa-lg"></i></a>
+                    <button data-rank="5"><i class="fa-solid fa-star fa-lg"></i></button>
                   </li>
                 </ul>
                 <!-- <input type="text" class="comment__content" placeholder="最多50字" /> -->
                 <textarea id="" class="comment__content" placeholder="最多50字"></textarea>
                 <div class="comment__btn">
                   <button class="comment__submit">送出</button>
-                  <button class="comment__cancle">取消</button>
+                  <button class="comment__cancel">取消</button>
                 </div>
               </section>
               <nav class="page">
                 <ul class="pagination">
                   <li class="page-item"><a class="page-link" href="#">&lt;</a></li>
-                  <li class="page-item"><a class="page-link" href="#">1</a></li>
-                  <li class="page-item"><a class="page-link" href="#">2</a></li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <div id="page-btn-wrapper" class="d-flex">
+                    <!-- <li id="page-btn" class="page-item active" data-page="1"><a class="page-link" href="#">1</a></li>
+                    <li id="page-btn" class="page-item" data-page="2"><a class="page-link" href="#">2</a></li>
+                    <li id="page-btn" class="page-item" data-page="3"><a class="page-link" href="#">3</a></li> -->
+                  </div>
                   <li class="page-item"><a class="page-link" href="#">&gt;</a></li>
                 </ul>
               </nav>

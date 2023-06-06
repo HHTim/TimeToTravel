@@ -1,3 +1,5 @@
+import { getCurrentUserInformation } from './header.js';
+
 $(function () {
   /* date */
   var start = moment().subtract(29, 'days');
@@ -24,9 +26,10 @@ $(function () {
   var keyword_value;
   var select_trigger_flag = false;
   var keyword_trigger_flag = false;
+  var init_flag = true;
 
   function getUserInfomationByNormalPage() {
-    let url = 'http://localhost:8080/UserController/user/page/' + currentPage.toString() + '/' + limit;
+    let url = '/UserController/user/page/' + currentPage.toString() + '/' + limit;
     const tbody = document.querySelector('tbody');
     fetch(url)
       .then((r) => r.json())
@@ -36,7 +39,7 @@ $(function () {
         tbody.innerHTML = d.rows
           .map((e) => {
             return `
-            <tr>
+            <tr data-id=${e.userId}>
             <td class="data-text">${e.userAccount}</td>
             <td class="data-text">${e.userName}</td>
             <td class="data-text">${e.userPhone}</td>
@@ -53,7 +56,14 @@ $(function () {
                   <button class="btn-warning">待審核</button>
                 </td>
                 `
-            }             
+            }
+            <td class="data-text" hidden>${e.userPassword}</td>
+            <td class="data-text" hidden>${e.userNickName}</td>
+            <td class="data-text" hidden>${e.userAvatar}</td>
+            <td class="data-text" hidden>${e.userGender}</td>
+            <td class="data-text" hidden>${e.userBirthDay}</td>
+            <td class="data-text" hidden>${e.userEmail}</td>
+            <td class="data-text" hidden>${e.userNewsStatus}</td>
             <td><button class="btn-query">查詢</button></td>
           </tr>
             `;
@@ -74,8 +84,7 @@ $(function () {
   }
 
   function getUserInfomationByStatusPage(status) {
-    let url =
-      'http://localhost:8080/UserController/user/page/status/' + status + '/' + currentPage.toString() + '/' + limit;
+    let url = '/UserController/user/page/status/' + status + '/' + currentPage.toString() + '/' + limit;
     const tbody = document.querySelector('tbody');
     fetch(url)
       .then((r) => r.json())
@@ -102,7 +111,14 @@ $(function () {
                   <button class="btn-warning">待審核</button>
                 </td>
                 `
-            }        
+            }
+            <td class="data-text" hidden>${e.userPassword}</td>
+            <td class="data-text" hidden>${e.userNickName}</td>
+            <td class="data-text" hidden>${e.userAvatar}</td>
+            <td class="data-text" hidden>${e.userGender}</td>
+            <td class="data-text" hidden>${e.userBirthDay}</td>
+            <td class="data-text" hidden>${e.userEmail}</td>
+            <td class="data-text" hidden>${e.userNewsStatus}</td>  
             <td><button class="btn-query">查詢</button></td>
           </tr>
             `;
@@ -124,8 +140,7 @@ $(function () {
 
   function getUserInfomationByKeywordPage(keyword) {
     console.log('keyword:' + keyword);
-    let url =
-      'http://localhost:8080/UserController/user/page/' + currentPage.toString() + '/' + limit + '/keyword/' + keyword;
+    let url = '/UserController/user/page/' + currentPage.toString() + '/' + limit + '/keyword/' + keyword;
     const tbody = document.querySelector('tbody');
     fetch(url)
       .then((r) => r.json())
@@ -152,7 +167,77 @@ $(function () {
                   <button class="btn-warning">待審核</button>
                 </td>
                 `
-            }            
+            }
+            <td class="data-text" hidden>${e.userPassword}</td>
+            <td class="data-text" hidden>${e.userNickName}</td>
+            <td class="data-text" hidden>${e.userAvatar}</td>
+            <td class="data-text" hidden>${e.userGender}</td>
+            <td class="data-text" hidden>${e.userBirthDay}</td>
+            <td class="data-text" hidden>${e.userEmail}</td>
+            <td class="data-text" hidden>${e.userNewsStatus}</td>      
+            <td><button class="btn-query">查詢</button></td>
+          </tr>
+            `;
+          })
+          .join(' ');
+
+        $('ul.pagination > li').each(function (index) {
+          if (index <= Pages) {
+            $(this).css('display', 'block');
+          } else {
+            $(this).css('display', 'none');
+          }
+          if (index === $('ul.pagination > li').length - 1) {
+            $(this).css('display', 'block');
+          }
+        });
+      });
+  }
+
+  function getUserInfomationByDateRangPage() {
+    let url =
+      '/UserController/user/page/dateRange/' +
+      currentPage.toString() +
+      '/' +
+      limit +
+      '/' +
+      choose_start_date +
+      '/' +
+      choose_end_date;
+    const tbody = document.querySelector('tbody');
+    fetch(url)
+      .then((r) => r.json())
+      .then((d) => {
+        console.log(d);
+        Pages = d.pageSize;
+        tbody.innerHTML = d.rows
+          .map((e) => {
+            return `
+            <tr>
+            <td class="data-text">${e.userAccount}</td>
+            <td class="data-text">${e.userName}</td>
+            <td class="data-text">${e.userPhone}</td>
+            <td class="data-text">${e.userSignDatetime}</td>
+            ${
+              e.userStatus == false
+                ? `
+                <td class="user-status" data-status=${e.userStatus}>
+                  <button class="btn-forbidden">停權</button>
+                </td>
+                `
+                : `
+                <td class="user-status" data-status=${e.userStatus}>
+                  <button class="btn-warning">待審核</button>
+                </td>
+                `
+            }
+            <td class="data-text" hidden>${e.userPassword}</td>
+            <td class="data-text" hidden>${e.userNickName}</td>
+            <td class="data-text" hidden>${e.userAvatar}</td>
+            <td class="data-text" hidden>${e.userGender}</td>
+            <td class="data-text" hidden>${e.userBirthDay}</td>
+            <td class="data-text" hidden>${e.userEmail}</td>
+            <td class="data-text" hidden>${e.userNewsStatus}</td>      
             <td><button class="btn-query">查詢</button></td>
           </tr>
             `;
@@ -182,7 +267,7 @@ $(function () {
       status = 'true';
     }
 
-    let url = 'http://localhost:8080/UserController/user/status';
+    let url = '/UserController/user/status';
     const formData = new FormData();
     formData.append('account', account);
     formData.append('status', status);
@@ -221,6 +306,8 @@ $(function () {
       } else {
         getUserInfomationByNormalPage();
       }
+    } else if (start_dateflag == true) {
+      getUserInfomationByDateRangPage();
     } else {
       getUserInfomationByNormalPage();
     }
@@ -239,6 +326,8 @@ $(function () {
         } else {
           getUserInfomationByNormalPage();
         }
+      } else if (start_dateflag == true) {
+        getUserInfomationByDateRangPage();
       } else {
         getUserInfomationByNormalPage();
       }
@@ -258,6 +347,8 @@ $(function () {
         } else {
           getUserInfomationByNormalPage();
         }
+      } else if (start_dateflag == true) {
+        getUserInfomationByDateRangPage();
       } else {
         getUserInfomationByNormalPage();
       }
@@ -265,11 +356,24 @@ $(function () {
   });
 
   function cb(start, end) {
-    start_dateflag = true;
     $('input.form-input').val('');
     $('#reportrange span').html(start.format('YYYY-MM-DD') + ' - ' + end.format('YYYY-MM-DD'));
     choose_start_date = start.format('YYYY-MM-DD');
     choose_end_date = end.startOf('days').add(1, 'days').format('YYYY-MM-DD');
+
+    if (init_flag !== true) {
+      select_trigger_flag = false;
+      keyword_trigger_flag = false;
+      start_dateflag = true;
+      $('.page-link')
+        .filter(function () {
+          currentPage = 1;
+          return $(this).text() === currentPage.toString();
+        })
+        .click();
+    } else {
+      init_flag = false;
+    }
   }
 
   $('#reportrange').daterangepicker(
@@ -290,6 +394,7 @@ $(function () {
 
   select_compoent.on('change', function () {
     keyword_trigger_flag = false;
+    start_dateflag = false;
     select_trigger_flag = true;
     selected_value = $(this).get(0).selectedIndex;
     if (selected_value > 0) selected_value -= 1;
@@ -305,6 +410,7 @@ $(function () {
   search_all.on('click', function () {
     select_trigger_flag = false;
     keyword_trigger_flag = false;
+    start_dateflag = false;
     $('.page-link')
       .filter(function () {
         currentPage = 1;
@@ -315,6 +421,7 @@ $(function () {
 
   keyword_input.on('input', function () {
     select_trigger_flag = false;
+    start_dateflag = false;
     keyword_trigger_flag = true;
     keyword_value = $(this).val().trim();
     // console.log($(this).val().trim());
@@ -342,7 +449,32 @@ $(function () {
     updateUserStatus(account, status);
   });
 
+  $('tbody').on('click', 'button.btn-query', function (e) {
+    e.stopPropagation();
+
+    sessionStorage.setItem(
+      'user-info',
+      JSON.stringify({
+        id: $(this).closest('tr').attr('data-id'),
+        account: $(this).closest('tr').find('.data-text').eq(0).text(),
+        name: $(this).closest('tr').find('.data-text').eq(1).text(),
+        phone: $(this).closest('tr').find('.data-text').eq(2).text(),
+        signdate: $(this).closest('tr').find('.data-text').eq(3).text(),
+        password: $(this).closest('tr').find('.data-text').eq(4).text(),
+        nickName: $(this).closest('tr').find('.data-text').eq(5).text(),
+        avatar: $(this).closest('tr').find('.data-text').eq(6).text(),
+        gender: $(this).closest('tr').find('.data-text').eq(7).text(),
+        birthday: $(this).closest('tr').find('.data-text').eq(8).text(),
+        email: $(this).closest('tr').find('.data-text').eq(9).text(),
+        newsStatus: $(this).closest('tr').find('.data-text').eq(10).text(),
+        status: $(this).closest('tr').find('.user-status').attr('data-status'),
+      })
+    );
+    location.href = '../admin_user_info';
+  });
+
   cb(start, end);
 
   getUserInfomationByNormalPage();
+  getCurrentUserInformation();
 });
