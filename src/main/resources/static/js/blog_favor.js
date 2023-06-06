@@ -1,11 +1,10 @@
 $(function () {
   // 拿 收藏 userid postid
-  // 用收藏 no 拿 post資料
-  // 文章分類
-  // 前往 移除(添加加入)
   // session 拿取固有資料 區塊
   //
   var userId = 1;
+  // console.log(userId);
+  // ===================================
   var prePage; // 上一頁資訊的物件 ??
 
   var blogs = [];
@@ -107,12 +106,16 @@ $(function () {
         postId: blogId,
       })
     );
+    sessionStorage.setItem(
+      'user-data',
+      JSON.stringify({
+        userId: userId,
+      })
+    );
     location.href = './blog.html';
   });
 
   getFavorArticle();
-
-  //
 
   // 文章類型篩選
   $('#article-type-select').change(function () {
@@ -146,7 +149,7 @@ $(function () {
       for (var i = 0; i < articles.length; i++) {
         var blog = articles[i];
         var tagsHtml = getTags(blog.postId);
-        
+
         var postPhotoUrl = blog.postPhoto; // 儲存文章封面圖片的 URL
         if (blog.postPhoto == null) {
           postPhotoUrl = '../../images/blog封面預設圖片下載.png';
