@@ -30,9 +30,9 @@ public class BookingController {
 //        return new RedirectView("/booking_room");
 //    }
 
-    @GetMapping("booking/{comId}/{roomId}")
-    public BookingRoomDto booking(@PathVariable Integer comId, @PathVariable Integer roomId) throws InvocationTargetException, IllegalAccessException {
+    @GetMapping("booking/{comId}/{roomId}/{start}/{end}")
+    public BookingRoomDto booking(@PathVariable Integer comId, @PathVariable Integer roomId, @PathVariable String start, @PathVariable String end) throws InvocationTargetException, IllegalAccessException {
         System.out.println("商家: " + comId + "房型: " + roomId);
-        return bookingService.bookingRoom(comId, roomId);
+        return bookingService.bookingRoom(comId, roomId, start, end);
     }
 }

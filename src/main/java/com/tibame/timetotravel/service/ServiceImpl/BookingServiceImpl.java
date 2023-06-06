@@ -3,10 +3,7 @@ package com.tibame.timetotravel.service.ServiceImpl;
 import com.tibame.timetotravel.dto.BookingRoomDto;
 import com.tibame.timetotravel.entity.PrivateScene;
 import com.tibame.timetotravel.entity.Room;
-import com.tibame.timetotravel.repository.PrivateSceneRepository;
-import com.tibame.timetotravel.repository.RoomRepository;
-import com.tibame.timetotravel.repository.ViewCompanyRoomRepository;
-import com.tibame.timetotravel.repository.ViewUserOrderDetailRepository;
+import com.tibame.timetotravel.repository.*;
 import com.tibame.timetotravel.service.BookingService;
 import com.tibame.timetotravel.view.ViewCompanyRoom;
 import com.tibame.timetotravel.view.ViewUserOrderDetail;
@@ -30,9 +27,11 @@ public class BookingServiceImpl implements BookingService {
     PrivateSceneRepository privateSceneRepository;
     @Autowired
     ViewUserOrderDetailRepository viewUserOrderDetailRepository;
+    @Autowired
+    OrderDetailRepository orderDetailRepository;
 
     @Override
-    public BookingRoomDto bookingRoom(Integer comId, Integer roomId) throws InvocationTargetException, IllegalAccessException {
+    public BookingRoomDto bookingRoom(Integer comId, Integer roomId, String start, String end) throws InvocationTargetException, IllegalAccessException {
         // 建立DTO
         BookingRoomDto bookingRoomDto = new BookingRoomDto();
 
@@ -46,7 +45,7 @@ public class BookingServiceImpl implements BookingService {
 
         // 查詢comId對應的所有房間
         List<Room> rooms = roomRepository.findAllByComId(comId);
-        bookingRoomDto.setRooms(rooms);
+
 
         // 查詢comId對應的所有私房景點
         List<PrivateScene> scenes = privateSceneRepository.findAllByComId(comId);
@@ -62,8 +61,14 @@ public class BookingServiceImpl implements BookingService {
         // 將查回來的房間迴圈取出他們的roomId，並且調查每個房間對應的使用者評價
         for (Room room : rooms) {
             Integer currRoomId = room.getRoomId();
-//            List<String> comments = viewUserOrderDetailRepository.findCommentByRoomId(currRoomId);
-//            List<Integer> ranks = viewUserOrderDetailRepository.findRankByRoomId(currRoomId);
+
+            System.out.println("期間訂單數: " + orderDetailRepository.findOrderByDate(currRoomId, start, end));
+            System.out.println("該房間的庫存數: " + room.getRoomStock());
+            System.out.println("相減過後剩餘的庫存數: " + (room.getRoomStock() - orderDetailRepository.findOrderByDate(currRoomId, start, end)));
+            room.setRoomStock(room.getRoomStock() - orderDetailRepository.findOrderByDate(currRoomId, start, end));
+            System.out.println("最後的結果: " + room.getRoomStock());
+
+
             // 每個房間查回來的評論也會是一個一維陣列，先宣告到時候要放入外面的雙重陣列
             List<String> comments = new ArrayList<>();
             List<Integer> ranks = new ArrayList<>();
@@ -90,6 +95,9 @@ public class BookingServiceImpl implements BookingService {
             allAvatars.addAll(avatars);
             allNames.addAll(names);
         }
+
+        bookingRoomDto.setRooms(rooms);
+
 
         // 將最後的二維陣列塞給DTO
         bookingRoomDto.setAllComments(allComments);

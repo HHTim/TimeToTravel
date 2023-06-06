@@ -148,7 +148,19 @@ function renderRooms(rooms) {
                     </div>
                       </td>
                       <td>
-                        <button class="room__booking" data-roomId=${roomId}>訂房去</button>
+                      ${
+                        roomStock > 0
+                          ? `
+                          <button class="room__booking" data-roomId=${roomId}>
+                            訂房去
+                          </button>
+                          `
+                          : `
+                          <button class="room__booking disabled" data-roomId=${roomId}>
+                            訂房去
+                          </button>
+                          `
+                      }
                       </td>
                     </tr>
                   </tbody>
@@ -208,8 +220,8 @@ function renderPrivateScene(privateScenes) {
 }
 
 async function fetchData() {
-  const { comId, roomId } = searchBody;
-  const resp = await fetch(`/rooms/booking/${comId}/${roomId}`);
+  const { comId, roomId, startDate, endDate } = searchBody;
+  const resp = await fetch(`/rooms/booking/${comId}/${roomId}/${startDate}/${endDate}`);
   const data = await resp.json();
   const {
     comName,

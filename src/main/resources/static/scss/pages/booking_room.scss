@@ -376,6 +376,11 @@
       background-color: $primary-blue-hover;
     }
   }
+
+  .disabled {
+    background-color: $custom-gray;
+    cursor: default;
+  }
 }
 
 .lightbox {
