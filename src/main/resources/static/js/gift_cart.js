@@ -11,7 +11,7 @@ window.addEventListener('load', function () {
   // =================列出購物車內容=================
   function showCart() {
 
-    fetch('http://localhost:8080/giftCartController/giftCart/' + userId)
+    fetch('/giftCartController/giftCart/' + userId)
       .then((resp) => {
         // console.log(resp);
         if (resp.headers.get('content-type').includes('application/json')) {
@@ -57,7 +57,7 @@ window.addEventListener('load', function () {
             totalPrice.innerHTML = totalPriceNum;
 
         } else if (typeof body === 'string') {
-          console.log(body);
+          // console.log(body);
         }
       });
   };
@@ -134,7 +134,7 @@ function checkInput(input) {
 
 // ============更新單項的方法============
   function updateItem(giftId, giftCount, dataset) {
-    fetch('http://localhost:8080/giftCartController/giftCart/' + userId, {
+    fetch('/giftCartController/giftCart/' + userId, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(dataset),
@@ -181,6 +181,32 @@ function checkInput(input) {
 
 
 
+// ===================清空彈出視窗===================
+$('button.clear-all').on('click', function(e) {
+  // console.log('aaa');
+  fetch('http://localhost:8080/giftCartController/giftCart/' + userId, {
+    method: 'DELETE'
+  })
+  .then((resp) => resp.text())
+  .then((body) => {
+    console.log(body);
+    $('div.fade').removeClass('show');
+    $('div.modal-backdrop').remove();
+    $('div.clear-check').css('display', 'none');
+
+    $('div.success-mask').addClass('show');
+    $('div.add-success').hide().addClass('show').slideDown(250);
+  });
+});
+
+// ===================返回土產專區確認===================
+  $('div.success-btn button').on('click', function (e) {
+    window.location.href = 'http://localhost:8080/gift_search';
+  });
+
+  $('div.success-mask').click((e) => {
+    e.stopPropagation();
+  });
 
 
 
