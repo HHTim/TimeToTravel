@@ -6,6 +6,10 @@ window.addEventListener('load', function () {
   let tbody = document.querySelector('tbody');
   let giftOrderStatus; //土產訂單狀態
   let confirmBtn = document.querySelector('.btn-primary');
+  var inputStartDate = $("input[name='search__date__starting']");
+  var inputEndDate = $("input[name='search__date__to']");
+  var startDate = '2023-01-01';
+  var endDate = '2023-12-31';
 
   /*讀取*/
   findall();
@@ -40,7 +44,7 @@ window.addEventListener('load', function () {
             return `
                   <tr>
                     <td>${i.giftOrderId}</td>
-                    <td>${i.userId}</td>
+                    <td>${i.userAccount}</td>
                     <td>${i.giftOrderAmount}</td>
                     <td>${i.giftOrderDatetime}</td>
                     <td>${giftOrderStatus}</td>
@@ -121,10 +125,41 @@ window.addEventListener('load', function () {
       }
     });
   }
+  //===========================================================================
+  //日期
+  inputStartDate.on('change', function () {
+    console.log('inputStartDate change');
+    startDate = $(this).val();
+    start_dateflag = true;
+    $('.page-link')
+      .filter(function () {
+        currentPage = 1;
+        return $(this).text() === currentPage.toString();
+      })
+      .click();
+    // getMessageByDate();
+  });
+
+  inputEndDate.on('change', function () {
+    console.log('inputEndDate change');
+    endDate = $(this).val();
+    start_dateflag = true;
+    let selectedDate = new Date(endDate);
+    selectedDate.setDate(selectedDate.getDate() + 1);
+
+    // 格式化日期字串為 yyyy-mm-dd 格式
+    endDate = selectedDate.toISOString().split('T')[0];
+    $('.page-link')
+      .filter(function () {
+        currentPage = 1;
+        return $(this).text() === currentPage.toString();
+      })
+      .click();
+  });
 
   // ==========================================================================
-  /* 關鍵字搜尋 */
-  let searchByKeyword = function () {
+  //關鍵字 訂單查詢
+  function searchByKeyword() {
     let searchInput = document.querySelector('.search-input').value.trim();
     let regex = /^[0-9]+$/; // 只能輸入數字
     if (searchInput === '') {
@@ -135,7 +170,7 @@ window.addEventListener('load', function () {
       document.querySelector('.search-input').value = '';
       window.location.reload();
     } else {
-      fetch(`/giftOrderMangeController/giftOrderManage/${searchInput}/${searchInput}`)
+      fetch(`/giftOrderMangeController/giftOrderManage/giftOrderId/${searchInput}`)
         .then((resp) => resp.json())
         .then((body) => {
           console.log(body);
@@ -151,12 +186,14 @@ window.addEventListener('load', function () {
                 giftOrderStatus = i.giftOrderStatus;
                 if (giftOrderStatus) {
                   giftOrderStatus = '已完成';
-                } else giftOrderStatus = '未完成';
+                } else {
+                  giftOrderStatus = '未完成';
+                }
 
                 return `
-                <tr>
+              <tr>
                 <td>${i.giftOrderId}</td>
-                <td>${i.userId}</td>
+                <td>${i.userAccount}</td>
                 <td>${i.giftOrderAmount}</td>
                 <td>${i.giftOrderDatetime}</td>
                 <td>${giftOrderStatus}</td>
@@ -164,55 +201,53 @@ window.addEventListener('load', function () {
                   <span>
                     <i class="fas fa-search"></i>
                   </span> 
-                  <div class = "lightbox-content">
+                  <div class="lightbox-content">
                     <button class="close-button"></button>
                     <h2> 訂單明細 </h2>
                     <div>
-                      <p class = "col-6">訂單編號: </p> 
-                      <p class = "col-6">${i.giftOrderId}</p>
+                      <p class="col-6">訂單編號: </p> 
+                      <p class="col-6">${i.giftOrderId}</p>
                     </div>
                     <div>
-                      <p class = "col-6">訂購人姓名: </p>
-                      <p class = "col-6">${i.userName}</p>
+                      <p class="col-6">訂購人姓名: </p>
+                      <p class="col-6">${i.userName}</p>
                     </div>
                     <div>
-                      <p class = "col-6">商品名稱</p>
-                      <p class = "col-6">${i.giftName}</p>
+                      <p class="col-6">商品名稱</p>
+                      <p class="col-6">${i.giftName}</p>
                     </div>
                     <div>
-                    <p class = "col-6">商品單價</p>
-                    <p class = "col-6">$${i.giftPrice}　元</p>
+                      <p class="col-6">商品單價</p>
+                      <p class="col-6">$${i.giftPrice} 元</p>
                     </div>
                     <div>
-                    <p class = "col-6">訂購數量</p>
-                    <p class = "col-6">${i.boughtCount}　個</p>
+                      <p class="col-6">訂購數量</p>
+                      <p class="col-6">${i.boughtCount} 個</p>
                     </div>
                     <div>
-                    <p class = "col-6">價格</p>
-                    <p class = "col-6">$${i.unitPrice}　元</p>
+                      <p class="col-6">價格</p>
+                      <p class="col-6">$${i.unitPrice} 元</p>
                     </div>
                     <div>
-                      <p class = "col-6">訂單日期: </p>
-                      <p class = "col-6">${i.giftOrderDatetime}</p>
+                      <p class="col-6">訂單日期: </p>
+                      <p class="col-6">${i.giftOrderDatetime}</p>
                     </div>
                     <div>
-                      <p class = "col-6">訂單狀態: </p>
-                      <p class = "col-6">${giftOrderStatus}</p>
+                      <p class="col-6">訂單狀態: </p>
+                      <p class="col-6">${giftOrderStatus}</p>
                     </div>
-
                   </div>
                 </td>
               </tr>
-                  `;
+              `;
               })
-
               .reverse()
               .join('');
             bindEventToButtons();
           }
         });
     }
-  };
+  }
 
   //
   //

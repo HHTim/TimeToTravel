@@ -1,8 +1,8 @@
-package com.tibame.timetotravel.Service.ServiceImpl;
+package com.tibame.timetotravel.service.ServiceImpl;
 
 import com.tibame.timetotravel.entity.Journey;
 import com.tibame.timetotravel.repository.JourneyRepository;
-import com.tibame.timetotravel.Service.JourneyService;
+import com.tibame.timetotravel.service.JourneyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;

@@ -62,7 +62,7 @@ public class SearchController {
             @PathVariable Integer people,
             @PathVariable String startDate,
             @PathVariable String endDate
-    ) {
+    ) throws InvocationTargetException, IllegalAccessException {
         return searchService.findNearSceneRooms(keyword, people, startDate, endDate);
     }
 
