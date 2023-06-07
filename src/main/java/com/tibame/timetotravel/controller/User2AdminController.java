@@ -1,9 +1,11 @@
 package com.tibame.timetotravel.controller;
 
 import com.tibame.timetotravel.common.PageBean;
+import com.tibame.timetotravel.dto.UserSessionDto;
 import com.tibame.timetotravel.entity.U2AMessage;
 import com.tibame.timetotravel.service.U2AMessageService;
 import com.tibame.timetotravel.view.U2AMsgView;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +19,9 @@ public class User2AdminController {
     U2AMessageService u2AMessageService;
 
     @PostMapping("/message")
-    public String insert(@RequestBody U2AMessage u2AMessage){
+    public String insert(@RequestBody U2AMessage u2AMessage, HttpSession session){
+        UserSessionDto user = (UserSessionDto) session.getAttribute("user");
+        u2AMessage.setU2aSenderId(user.getUser().getUserId());
         u2AMessageService.insert(u2AMessage);
         return "執行資料庫的 Insert 操作";
     }

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.tibame.timetotravel.entity.Blog;
 import com.tibame.timetotravel.entity.FavoriteArticle;
@@ -42,6 +43,7 @@ public class BlogFavorServiceImpl {
 		return blogs;
 	}
 
+	@Transactional
 	public String addRemoveFavorArticle(FavoriteArticle favor) {
 		System.out.println(favor);
 		FavoriteArticle bool = favoriteArticleRepository.checkFavorArticle(favor.getPostId(), favor.getUserId());

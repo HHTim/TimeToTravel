@@ -18,7 +18,7 @@ $(window).on('load', function () {
       .then((r) => r.json())
       .then((d) => {
         console.log('讀取廣告資訊');
-        console.log(d);
+        // console.log(d);
         advListData = d;
         advList.append(
           d.map((e) => {

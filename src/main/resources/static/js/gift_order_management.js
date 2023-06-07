@@ -12,6 +12,12 @@ window.addEventListener('load', function () {
   var endDate = '2023-12-31';
   var start_dateflag = false;
 
+  onShelveBtn.addEventListener('click', () => {
+    localStorage.removeItem('selectedRoom');
+    localStorage.removeItem('selectedPrivateScene');
+    localStorage.removeItem('selectedGift');
+    localStorage.removeItem('selectedJourney');
+  });
   /*讀取*/
   findall();
   // bindEventToButtons();
@@ -298,7 +304,7 @@ window.addEventListener('load', function () {
         });
     }
   }
-
+  getCurrentUserInformation();
   //
   //
   //

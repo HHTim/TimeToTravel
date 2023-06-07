@@ -11,6 +11,14 @@ window.addEventListener('load', function () {
 	let roomsOnShelve = this.document.querySelector('.all__rooms__on-shelve');
 	let roomsOffShelve = this.document.querySelector('.all__rooms__off-shelve');
 	let pagination = this.document.querySelector('#pagination');
+	let onShelveBtn = document.querySelector('.nav_list_on_shelve');
+
+	onShelveBtn.addEventListener('click', () => {
+		localStorage.removeItem('selectedRoom');
+		localStorage.removeItem('selectedPrivateScene');
+		localStorage.removeItem('selectedGift');
+		localStorage.removeItem('selectedJourney');
+	});
 
 	pagination.addEventListener('click', function (e) {
 		e.preventDefault(); // 預防a標籤的跳頁
@@ -85,7 +93,7 @@ window.addEventListener('load', function () {
 			// console.log(roomId); // 每個選到的房型id
 			let requestData = { roomStatus: roomStatus }; // 這裡的欄位要對應Entity屬性
 
-			fetch('/roomController/room/' + roomId, {
+			fetch('/roomController/room/updateRoomStatus/' + roomId, {
 				method: 'PUT',
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify(requestData),
@@ -462,4 +470,5 @@ window.addEventListener('load', function () {
 			});
 	}
 	findByPage(1);
+	getCurrentUserInformation();
 });

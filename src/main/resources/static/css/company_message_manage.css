@@ -433,7 +433,8 @@ section:not(:first-child) {
   background-color: #dfdcdc;
 }
 
-.button-search {
+.button-search,
+.button-publish {
   background-color: rgb(56, 56, 56);
   color: white;
   border-radius: 10px;
@@ -441,7 +442,8 @@ section:not(:first-child) {
   white-space: nowrap;
   border-style: none;
 }
-.button-search:hover {
+.button-search:hover,
+.button-publish:hover {
   background-color: rgb(91, 91, 91);
 }
 

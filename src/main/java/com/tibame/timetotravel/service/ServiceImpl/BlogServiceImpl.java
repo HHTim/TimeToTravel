@@ -5,6 +5,7 @@ import com.tibame.timetotravel.entity.Blog;
 import com.tibame.timetotravel.entity.FavoriteArticle;
 import com.tibame.timetotravel.entity.PressLike;
 import com.tibame.timetotravel.repository.*;
+import com.tibame.timetotravel.view.ArticleCommentView;
 import com.tibame.timetotravel.view.DefaultBlogView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -27,6 +28,9 @@ public class BlogServiceImpl {
 	@Qualifier("articleCommentRepository")
 	private ArticleCommentRepository articleCommentRepository;
 	@Autowired
+	@Qualifier("articleCommentViewRepository")
+	private ArticleCommentViewRepository articleCommentViewRepository;
+	@Autowired
 	@Qualifier("pressLikeRepository")
 	private PressLikeRepository pressLikeRepository;
 	@Autowired
@@ -37,6 +41,7 @@ public class BlogServiceImpl {
 	private ArticleTagsRepository articleTagsRepository;
 
 	// 新增 或 更新文章
+	@Transactional
 	public Blog saveBlog(Blog blog) {
 		if (blog.getPostDate() == null) {
 			blog.setPostDate(new Timestamp(System.currentTimeMillis()));
@@ -55,10 +60,11 @@ public class BlogServiceImpl {
 	}
 
 	// 取得 單一BLOG 所有留言
-	public List<ArticleComment> findArticleComments(Integer postId) {
-		return articleCommentRepository.findByPostId(postId);
+	public List<ArticleCommentView> findArticleComments(Integer postId) {
+//		return articleCommentRepository.findByPostId(postId);
+		return articleCommentViewRepository.findByPostId(postId);
 	}
-
+	@Transactional
 	public int likeBlog(PressLike pressLike) {
 		// 查 存在
 		PressLike bool = pressLikeRepository.checkLike(pressLike.getPostId(), pressLike.getUserId());
@@ -78,7 +84,7 @@ public class BlogServiceImpl {
 			return -1;
 		}
 	}
-
+	@Transactional
 	public String addFavorArticle(FavoriteArticle favor) {
 		System.out.println(favor);
 		FavoriteArticle bool = favoriteArticleRepository.checkFavorArticle(favor.getPostId(), favor.getUserId());

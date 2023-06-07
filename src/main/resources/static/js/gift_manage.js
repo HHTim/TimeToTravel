@@ -10,15 +10,16 @@ window.addEventListener('load', function () {
   let allGifts = this.document.querySelector('.all__gifts');
   let giftsOnShelve = this.document.querySelector('.all__gifts__on-shelve');
   let giftsOffShelve = this.document.querySelector('.all__gifts__off-shelve');
+  let onShelveBtn = document.querySelector('.nav_list_on_shelve');
 
-  // pagination.addEventListener('click', function (e) {
-  //   e.preventDefault(); // 預防a標籤的跳頁
-  //   if (e.target.classList.contains('page-link')) {
-  //     const currentPage = e.target.dataset.currentPage;
-  //     console.log(currentPage); // 1, 2, 3
-  //     findByPage(currentPage);
-  //   }
-  // });
+  pagination.addEventListener('click', function (e) {
+    e.preventDefault(); // 預防a標籤的跳頁
+    if (e.target.classList.contains('page-link')) {
+      const currentPage = e.target.dataset.currentPage;
+      console.log(currentPage); // 1, 2, 3
+      findByPage(currentPage);
+    }
+  });
 
   allGifts.addEventListener('click', function () {
     console.log(allGifts);
@@ -279,6 +280,6 @@ window.addEventListener('load', function () {
           .join('');
       });
   }
-
+  getCurrentUserInformation();
   findAll();
 });

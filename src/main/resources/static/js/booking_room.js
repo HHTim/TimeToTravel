@@ -25,16 +25,6 @@ async function handleRoomClick(e) {
     searchBody.roomId = roomId;
     sessionStorage.setItem('searchBody', JSON.stringify(searchBody));
     window.location.href = '/rooms/paid';
-    // const resp = await fetch(`http://localhost:8080/user/redirect-order`, {
-    //   method: 'POST',
-    //   cache: 'no-cache',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify({ userId: 3, roomId: roomId }),
-    //   redirect: 'follow',
-    // });
-    // if (resp.redirected) {
-    //   location.href = resp.url;
-    // }
   }
 }
 
@@ -47,20 +37,20 @@ function renderRank(rank) {
   return html;
 }
 
-function renderComments(allComments, allOrderRanks, allUserAvatars, allUserNames) {
+function renderComments(orderWithUsers) {
   let html = '';
-  for (let i in allUserNames) {
+  for (let i in orderWithUsers) {
     html += `<div class="comment__card">
               <div class="comment__content">
                 <div class="comment__avatar">
-                  <img src="data:image/png;base64,${allUserAvatars[i]}" alt="comment-avatar" />
+                  <img src="data:image/png;base64,${orderWithUsers[i].userAvatar}" alt="comment-avatar" />
                 </div>
-                <p class="comment__user">${allUserNames[i]}</p>
+                <p class="comment__user">${orderWithUsers[i].userName}</p>
                 <ul class="comment__rank">
-                  ${renderRank(allOrderRanks[i])}
+                  ${renderRank(orderWithUsers[i].orderRank)}
                 </ul>
               </div>
-              <p class="comment__desc">${allComments[i]}</p>
+              <p class="comment__desc">${orderWithUsers[i].orderComment}</p>
             </div> 
     `;
   }
@@ -148,7 +138,19 @@ function renderRooms(rooms) {
                     </div>
                       </td>
                       <td>
-                        <button class="room__booking" data-roomId=${roomId}>訂房去</button>
+                      ${
+                        roomStock > 0
+                          ? `
+                          <button class="room__booking" data-roomId=${roomId}>
+                            訂房去
+                          </button>
+                          `
+                          : `
+                          <button class="room__booking disabled" data-roomId=${roomId}>
+                            訂房去
+                          </button>
+                          `
+                      }
                       </td>
                     </tr>
                   </tbody>
@@ -208,22 +210,10 @@ function renderPrivateScene(privateScenes) {
 }
 
 async function fetchData() {
-  const { comId, roomId } = searchBody;
-  const resp = await fetch(`/rooms/booking/${comId}/${roomId}`);
+  const { comId, roomId, startDate, endDate } = searchBody;
+  const resp = await fetch(`/rooms/booking/${comId}/${roomId}/${startDate}/${endDate}`);
   const data = await resp.json();
-  const {
-    comName,
-    comAddress,
-    roomName,
-    roomDesc,
-    allComments,
-    orderRanks,
-    allOrderRanks,
-    privateScenes,
-    allUserNames,
-    allUserAvatars,
-    rooms,
-  } = data;
+  const { comName, comAddress, orderRanks, roomName, roomDesc, privateScenes, orderWithUsers, rooms } = data;
   console.log(data);
   const sum = orderRanks.reduce((curr, acc) => curr + acc, 0);
   // 沒有訂單沒有評價分數，最低就是1
@@ -280,7 +270,7 @@ async function fetchData() {
   roomSection.innerHTML = renderRooms(rooms);
 
   /* Comments */
-  commentSection.innerHTML = renderComments(allComments, allOrderRanks, allUserAvatars, allUserNames);
+  commentSection.innerHTML = renderComments(orderWithUsers);
 }
 
 fetchData();

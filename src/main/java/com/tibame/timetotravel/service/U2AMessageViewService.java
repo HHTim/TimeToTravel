@@ -16,4 +16,7 @@ public interface U2AMessageViewService{
     Integer findViewByDateRange(String startDate, String endDate);
     List<U2AMsgView>findViewByDateRangePage(String startDate, String endDate, Integer currPage, Integer rows);
     PageBean<U2AMsgView> findBeanPageViewByDateRange(String startDate, String endDate, Integer currPage, Integer rows);
+
+    List<U2AMsgView> getNotifyMsgByUsers(Integer startIndex, Integer endIndex);
+
 }

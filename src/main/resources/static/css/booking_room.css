@@ -623,6 +623,10 @@ body {
   color: #fff;
   background-color: #004c77;
 }
+.room .disabled {
+  background-color: #bbb8b8;
+  cursor: default;
+}
 
 .lightbox {
   display: none;

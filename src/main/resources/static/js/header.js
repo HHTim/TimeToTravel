@@ -79,12 +79,12 @@ function updateUserNewsStatus(role, account) {
     });
 }
 
-function getUserNewsMessage(role) {
+function getUserNewsMessage(role, msgRow) {
   let url;
+  role === '會員'
+    ? (url = '/Admin2UserController/message/a2u/view/notify/0/' + msgRow)
+    : (url = '/Admin2ComController/message/a2c/view/notify/0/' + msgRow);
 
-  if (role === '會員') url = '/Admin2UserController/message/a2u/view/notify/0/' + msgRow;
-  else if (role === '商家') url = '/Admin2ComController/message/a2c/view/notify/0/' + msgRow;
-  else url = '/AdminController/admin/newsStatus';
   fetch(url)
     .then((r) => r.json())
     .then((d) => {
@@ -108,6 +108,75 @@ function getUserNewsMessage(role) {
         `
       );
       bindEventToNews();
+    })
+    .catch((e) => {
+      console.error(e);
+    });
+}
+
+function getAdminFromCompNewsMessage(msgRow) {
+  let url = '/AdminController/message/c2a/view/notify/0/' + msgRow;
+  fetch(url)
+    .then((r) => r.json())
+    .then((d) => {
+      // console.log(d);
+      notify_menu.append(
+        `
+        <li><a class="dropdown-item" href="#" style="color:#4d4f52; font-weight: bolder">商家最新消息</a></li>
+        <li><hr class="dropdown-divider" /></li>
+        ` +
+          d
+            .map((e) => {
+              return `
+            <li>
+            <a class="dropdown-item" style="color: #006caa; font-size: 1rem;" href="#">
+            <img src="https://i2.bahamut.com.tw/icon_notice-mail.png" style="border-radius: 50%; width: 10%">&nbsp
+            ${e.c2aMsgTitle}
+            &nbsp-<span class="time-text" style="color:#9b9999; font-size: 0.6rem;">&nbsp
+            ${getRelativeTime(e.c2aSendingTime)}&nbsp&nbsp&nbsp&nbsp&nbsp${e.comAccount}</span></a></li>
+            
+          `;
+            })
+            .join(' ') +
+          `
+        <li><hr class="dropdown-divider" /></li>
+        <li><a class="dropdown-item more-msg" href="#" style="color:#4d4f52; font-weight: bolder">顯示更多訊息</a></li>
+        `
+      );
+      bindEventToNews();
+    })
+    .catch((e) => {
+      console.error(e);
+    });
+}
+
+function getAdminFromUserNewsMessage(msgRow) {
+  let url = '/AdminController/message/u2a/view/notify/0/' + msgRow;
+  fetch(url)
+    .then((r) => r.json())
+    .then((d) => {
+      // console.log(d);
+      notify_menu.append(
+        `
+        <li><a class="dropdown-item" href="#" style="color:#4d4f52; font-weight: bolder">會員最新消息</a></li>
+        <li><hr class="dropdown-divider" /></li>
+        ` +
+          d
+            .map((e) => {
+              return `
+            <li>
+            <a class="dropdown-item" style="color: #006caa; font-size: 1rem;" href="#">
+            <img src="https://i2.bahamut.com.tw/icon_notice-mail.png" style="border-radius: 50%; width: 10%">&nbsp
+            ${e.u2aMsgTitle}
+            &nbsp-<span class="time-text" style="color:#9b9999; font-size: 0.6rem;">&nbsp
+            ${getRelativeTime(e.u2aSendingTime)}&nbsp&nbsp&nbsp&nbsp&nbsp${e.userAccount}</span></a></li>
+            
+          `;
+            })
+            .join(' ')
+      );
+      bindEventToNews();
+      getAdminFromCompNewsMessage(msgRow);
     })
     .catch((e) => {
       console.error(e);
@@ -146,16 +215,15 @@ async function getCurrentUserData() {
       // console.log('wefwi' + JSON.stringify(currentUserData));
       if (role === '會員') {
         updateNotifyIcon(currentUserData.userNewsStatus);
-        updateAvatar(currentUserData.userAvatar);
         getUserNewsMessage(role, msgRow);
       } else if (role === '商家') {
         updateNotifyIcon(currentUserData.comNewsStatus);
-        updateAvatar(currentUserData.comAvatar);
         getUserNewsMessage(role, msgRow);
       } else if (role === '平台') {
-        console.log('待加入');
-        updateAvatar('data:image/jpeg;base64,' + currentUserData.adminAvatar);
+        updateNotifyIcon(currentUserData.adminNewsStatus);
+        getAdminFromUserNewsMessage(msgRow);
       }
+      updateAvatar(identifyRoleData.avatar);
 
       //comNewsStatus
       avator_menu_ul.append(
@@ -245,12 +313,13 @@ btn_avatar.on('click', function () {
 });
 
 btn_notify.on('click', function () {
-  console.log(currentUserData);
+  // console.log(currentUserData);
   if (role === '會員') {
     updateUserNewsStatus(role, currentUserData.userAccount);
   } else if (role === '商家') {
     updateUserNewsStatus(role, currentUserData.comAccount);
   } else if (role === '平台') {
+    updateUserNewsStatus(role, currentUserData.adminAccount);
   }
 });
 
