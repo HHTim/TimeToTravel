@@ -52,10 +52,29 @@ window.addEventListener('load', function () {
   saveBtn.addEventListener('click', function () {
     let giftName = document.querySelector('.gift__name > input').value;
     let giftStock = document.querySelector('.gift__stock > input').value;
-    let giftTypeId = document.querySelector('.gift__type__option > optgroup > option').value;
+    let giftTypeId = document.querySelector('.gift__type__option').selectedIndex;
     let giftPrice = document.querySelector('.gift__price > input').value;
     let giftIntro = document.querySelector('.gift__description > textarea').value;
     console.log(giftTypeId);
+    console.log(giftName);
+    console.log(giftStock);
+    console.log(giftPrice);
+    console.log(giftIntro);
+
+    switch (giftTypeId) {
+      case 1:
+        giftTypeId = '冷凍食品';
+        break;
+      case 2:
+        giftTypeId = '彌月食品';
+        break;
+      case 3:
+        giftTypeId = '店取限定';
+        break;
+      case 4:
+        giftTypeId = '團購美食';
+        break;
+    }
 
     // 要按下儲存後才能取到imgUrl
     let imgUrl = picturePreview.querySelector('img').getAttribute('src');
@@ -98,11 +117,11 @@ window.addEventListener('load', function () {
           .then((body) => {
             console.log(body);
             alert('新增成功!!');
-            window.location.href = '../html/gift_manage.html';
+            // window.location.href = '../html/gift_manage.html';
           });
         //如果是變更房型內容，就會有localStorage拿出來的giftId
       } else {
-        fetch('/giftController/gift' + giftId, {
+        fetch('/giftController/gift/' + giftId, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(requestData),
@@ -117,7 +136,7 @@ window.addEventListener('load', function () {
           })
           .then((body) => {
             alert('修改成功!!');
-            window.location.href = '../html/gift_manage.html';
+            // window.location.href = '../html/gift_manage.html';
           })
           .catch(console.error);
       }
