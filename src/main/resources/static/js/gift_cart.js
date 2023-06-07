@@ -195,4 +195,5 @@ window.addEventListener('load', function () {
 	$('div.success-mask').click((e) => {
 		e.stopPropagation();
 	});
+	getCurrentUserInformation();
 });
