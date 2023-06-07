@@ -54,9 +54,9 @@ public class Company {
     @Column(name = "COM_LATITUDE", nullable = false)
     private String comLatitude;
 
-    @Column(name = "COM_AVATAR", columnDefinition = "LONGTEXT")
+    @Column(name = "COM_AVATAR", columnDefinition = "LONGBLOB")
     @Lob
-    private String comAvatar;
+    private byte[] comAvatar;
 
     @Column(name = "COM_NEWS_STATUS", nullable = false)
     private Boolean comNewsStatus;
