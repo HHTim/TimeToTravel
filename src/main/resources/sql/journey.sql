@@ -1,56 +1,31 @@
-CREATE TABLE JOURNEY
+DROP TABLE journey;
+
+CREATE TABLE journey
 (
     JOURNEY_ID     INT         NOT NULL COMMENT '私房行程編號' AUTO_INCREMENT,
     COM_ID         INT         NOT NULL COMMENT '商家編號',
     JOURNEY_NAME   VARCHAR(30) NOT NULL COMMENT '私房行程名稱',
     JOURNEY_PRICE  INT         NOT NULL COMMENT '私房行程價格',
-    JOURNEY_DESC   VARCHAR(50) NOT NULL COMMENT '私房行程描述',
+    JOURNEY_DESC   VARCHAR(1000) NOT NULL COMMENT '私房行程描述',
     JOURNEY_PIC    LONGBLOB 			COMMENT '私房行程照片',
     JOURNEY_STATUS TINYINT(1)  NOT NULL COMMENT '私房行程狀態',
     PRIMARY KEY (JOURNEY_ID)
 #     CONSTRAINT FK_JOURNEY_COM_ID FOREIGN KEY (COM_ID) REFERENCES COMPANY (COM_ID)
 ) COMMENT '私房行程資料表';
 
-INSERT INTO JOURNEY(COM_ID, JOURNEY_NAME, JOURNEY_PRICE, JOURNEY_DESC, JOURNEY_PIC, JOURNEY_STATUS)
-VALUES (1, '好棒棒行程', 9500, '這是好棒棒行程喔這是好棒棒行程喔這是好棒棒行程喔這是好棒棒行程喔', NULL, 1),
-       (1, '好普通行程', 10500, '這是好普通行程喔這是好普通行程喔好普通行程喔好普通行程喔好普通行程喔', NULL, 1),
-       (1, '好盤行程', 12500, '這是好盤行程這是好盤行程這是好盤行程這是好盤行程這是好盤行程這是好盤行程', NULL, 1),
-       (1, '好土豪行程', 15500, '這是好土豪行程這是好土豪行程這是好土豪行程這是好土豪行程這是好土豪行程', NULL, 1)
-;
-
-INSERT INTO JOURNEY(COM_ID, JOURNEY_NAME, JOURNEY_PRICE, JOURNEY_DESC, JOURNEY_PIC, JOURNEY_STATUS)
-VALUES (2, '好棒棒行程', 8000, '這是好棒棒行程喔這是好棒棒行程喔這是好棒棒行程喔這是好棒棒行程喔', NULL, 1),
-       (2, '好普通行程', 12500, '這是好普通行程喔這是好普通行程喔好普通行程喔好普通行程喔好普通行程喔', NULL, 1),
-       (2, '好盤行程', 15500, '這是好盤行程這是好盤行程這是好盤行程這是好盤行程這是好盤行程這是好盤行程', NULL, 1),
-       (2, '好土豪行程', 20500, '這是好土豪行程這是好土豪行程這是好土豪行程這是好土豪行程這是好土豪行程', NULL, 1)
-;
-
-INSERT INTO JOURNEY(COM_ID, JOURNEY_NAME, JOURNEY_PRICE, JOURNEY_DESC, JOURNEY_PIC, JOURNEY_STATUS)
-VALUES (3, '好棒棒行程', 8030, '這是好棒棒行程喔這是好棒棒行程喔這是好棒棒行程喔這是好棒棒行程喔', NULL, 1),
-       (3, '好普通行程', 12550, '這是好普通行程喔這是好普通行程喔好普通行程喔好普通行程喔好普通行程喔', NULL, 1),
-       (3, '好盤行程', 15510, '這是好盤行程這是好盤行程這是好盤行程這是好盤行程這是好盤行程這是好盤行程', NULL, 1),
-       (3, '好土豪行程', 25500, '這是好土豪行程這是好土豪行程這是好土豪行程這是好土豪行程這是好土豪行程', NULL, 1)
-;
-
-INSERT INTO JOURNEY(COM_ID, JOURNEY_NAME, JOURNEY_PRICE, JOURNEY_DESC, JOURNEY_PIC, JOURNEY_STATUS)
-VALUES (4, '好棒棒行程', 9030, '這是好棒棒行程喔這是好棒棒行程喔這是好棒棒行程喔這是好棒棒行程喔', NULL, 1),
-       (4, '好普通行程', 15550, '這是好普通行程喔這是好普通行程喔好普通行程喔好普通行程喔好普通行程喔', NULL, 1),
-       (4, '好盤行程', 20510, '這是好盤行程這是好盤行程這是好盤行程這是好盤行程這是好盤行程這是好盤行程', NULL, 1),
-       (4, '好土豪行程', 25050, '這是好土豪行程這是好土豪行程這是好土豪行程這是好土豪行程這是好土豪行程', NULL, 1)
-;
-
-INSERT INTO JOURNEY(COM_ID, JOURNEY_NAME, JOURNEY_PRICE, JOURNEY_DESC, JOURNEY_PIC, JOURNEY_STATUS)
-VALUES (5, '好棒棒行程', 10000, '這是好棒棒行程喔這是好棒棒行程喔這是好棒棒行程喔這是好棒棒行程喔', NULL, 1),
-       (5, '好普通行程', 10050, '這是好普通行程喔這是好普通行程喔好普通行程喔好普通行程喔好普通行程喔', NULL, 1),
-       (5, '好盤行程', 20000, '這是好盤行程這是好盤行程這是好盤行程這是好盤行程這是好盤行程這是好盤行程', NULL, 1),
-       (5, '好土豪行程', 55555, '這是好土豪行程這是好土豪行程這是好土豪行程這是好土豪行程這是好土豪行程', NULL, 1)
-;
-
-
-SELECT *
-FROM COMPANY;
-
-
-
-SELECT *
-FROM JOURNEY;
+INSERT INTO `` (`JOURNEY_ID`,`COM_ID`,`JOURNEY_NAME`,`JOURNEY_PRICE`,`JOURNEY_DESC`,`JOURNEY_PIC`,`JOURNEY_STATUS`) VALUES (1,1,'台北市立動物園',900,'位於捷運文湖線終點的臺北市立動物園',null,1);
+INSERT INTO `` (`JOURNEY_ID`,`COM_ID`,`JOURNEY_NAME`,`JOURNEY_PRICE`,`JOURNEY_DESC`,`JOURNEY_PIC`,`JOURNEY_STATUS`) VALUES (2,1,'羊稠坑遠眺高鐵',2500,'羊稠坑森林步道總長約3.3公里，大致上屬平緩好走。',null,1);
+INSERT INTO `` (`JOURNEY_ID`,`COM_ID`,`JOURNEY_NAME`,`JOURNEY_PRICE`,`JOURNEY_DESC`,`JOURNEY_PIC`,`JOURNEY_STATUS`) VALUES (3,1,'白楊步道',1000,'行在白楊步道除了能盡賞溪谷風光外，更可觀察鳥類、昆蟲等生態。',null,1);
+INSERT INTO `` (`JOURNEY_ID`,`COM_ID`,`JOURNEY_NAME`,`JOURNEY_PRICE`,`JOURNEY_DESC`,`JOURNEY_PIC`,`JOURNEY_STATUS`) VALUES (4,1,'坪林茶業博物館',1200,'坪林茶業博物館 ，一座閩南安溪風格的四合院建築。',null,1);
+INSERT INTO `` (`JOURNEY_ID`,`COM_ID`,`JOURNEY_NAME`,`JOURNEY_PRICE`,`JOURNEY_DESC`,`JOURNEY_PIC`,`JOURNEY_STATUS`) VALUES (5,2,'石碇老街',600,'以石砌橋墩搭成的萬壽橋劃分東西。',null,1);
+INSERT INTO `` (`JOURNEY_ID`,`COM_ID`,`JOURNEY_NAME`,`JOURNEY_PRICE`,`JOURNEY_DESC`,`JOURNEY_PIC`,`JOURNEY_STATUS`) VALUES (6,2,'淡蘭古道南線',1800,'淡蘭古道是指清朝末期到日治時代初期。',null,1);
+INSERT INTO `` (`JOURNEY_ID`,`COM_ID`,`JOURNEY_NAME`,`JOURNEY_PRICE`,`JOURNEY_DESC`,`JOURNEY_PIC`,`JOURNEY_STATUS`) VALUES (7,2,'新元昌紅茶產業文化館',2500,'帶您了解古早味紅茶的由來。',null,1);
+INSERT INTO `` (`JOURNEY_ID`,`COM_ID`,`JOURNEY_NAME`,`JOURNEY_PRICE`,`JOURNEY_DESC`,`JOURNEY_PIC`,`JOURNEY_STATUS`) VALUES (8,2,'圓山西密道',1350,'超凡出奇的圓山飯店，此次造訪西側出口通往劍潭公園全長85公尺。',null,1);
+INSERT INTO `` (`JOURNEY_ID`,`COM_ID`,`JOURNEY_NAME`,`JOURNEY_PRICE`,`JOURNEY_DESC`,`JOURNEY_PIC`,`JOURNEY_STATUS`) VALUES (9,3,'烏來台車體驗',1550,'早期的烏來台車是山林中砍伐木材的運送車，台車拿來作為運輸遊客的工具。',null,1);
+INSERT INTO `` (`JOURNEY_ID`,`COM_ID`,`JOURNEY_NAME`,`JOURNEY_PRICE`,`JOURNEY_DESC`,`JOURNEY_PIC`,`JOURNEY_STATUS`) VALUES (10,3,'中華民國總統府',2000,'現在的總統府在西元1919年為日本人所建，在當時是當做總督府的廳舍。',null,1);
+INSERT INTO `` (`JOURNEY_ID`,`COM_ID`,`JOURNEY_NAME`,`JOURNEY_PRICE`,`JOURNEY_DESC`,`JOURNEY_PIC`,`JOURNEY_STATUS`) VALUES (11,3,'士林官邸花園',2000,'曾陪伴先總統蔣中正渡過20多個年頭的士林官邸，不僅是台北市著名的國定古蹟。',null,1);
+INSERT INTO `` (`JOURNEY_ID`,`COM_ID`,`JOURNEY_NAME`,`JOURNEY_PRICE`,`JOURNEY_DESC`,`JOURNEY_PIC`,`JOURNEY_STATUS`) VALUES (12,3,'三峽老街',1000,'歷經時代變遷的三峽老街，留有許多各具風格的房屋。',null,1);
+INSERT INTO `` (`JOURNEY_ID`,`COM_ID`,`JOURNEY_NAME`,`JOURNEY_PRICE`,`JOURNEY_DESC`,`JOURNEY_PIC`,`JOURNEY_STATUS`) VALUES (13,4,'陽明山藍寶石泉',3050,'台北自來水處首度開放陽明山一處秘境草山水道「藍寶石泉」。',null,1);
+INSERT INTO `` (`JOURNEY_ID`,`COM_ID`,`JOURNEY_NAME`,`JOURNEY_PRICE`,`JOURNEY_DESC`,`JOURNEY_PIC`,`JOURNEY_STATUS`) VALUES (14,4,'象山親山步道',800,'屬於台北盆地東南丘陵的一部分，因山形似象山而得名。',null,1);
+INSERT INTO `` (`JOURNEY_ID`,`COM_ID`,`JOURNEY_NAME`,`JOURNEY_PRICE`,`JOURNEY_DESC`,`JOURNEY_PIC`,`JOURNEY_STATUS`) VALUES (15,4,'百年閩式四合院',600,'林安泰古厝民俗文物館的原名為安泰厝，現位於台北市濱江公園旁。',null,1);
+INSERT INTO `` (`JOURNEY_ID`,`COM_ID`,`JOURNEY_NAME`,`JOURNEY_PRICE`,`JOURNEY_DESC`,`JOURNEY_PIC`,`JOURNEY_STATUS`) VALUES (16,4,'寶藏巖國際藝術村',1350,'「寶藏巖國際藝術村」規劃了15間藝術家工作室。',null,1);
