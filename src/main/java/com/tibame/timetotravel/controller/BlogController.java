@@ -18,9 +18,11 @@ import com.tibame.timetotravel.entity.Blog;
 import com.tibame.timetotravel.entity.FavoriteArticle;
 import com.tibame.timetotravel.entity.PressLike;
 import com.tibame.timetotravel.entity.Tags;
+import com.tibame.timetotravel.entity.User;
 import com.tibame.timetotravel.service.ServiceImpl.ArticleCommentServiceImpl;
 import com.tibame.timetotravel.service.ServiceImpl.BlogServiceImpl;
 import com.tibame.timetotravel.service.ServiceImpl.TagServiceImpl;
+import com.tibame.timetotravel.service.ServiceImpl.UserServiceImpl;
 import com.tibame.timetotravel.view.ArticleCommentView;
 import com.tibame.timetotravel.view.DefaultBlogView;
 
@@ -38,7 +40,14 @@ public class BlogController {
 	@Autowired
 	@Qualifier("articleCommentServiceImpl")
 	private ArticleCommentServiceImpl articleCommentServiceImpl;
+	@Autowired
+	@Qualifier("UserService")
+	private UserServiceImpl userServiceImpl;
 
+	@GetMapping("/blog/getUser/{userId}")
+	public User getBlogUser(@PathVariable Integer userId) {
+		return userServiceImpl.findByUserId(userId);
+	}
 	// 拿BLOG 資料
 	@GetMapping("/blog/{postId}")
 	public DefaultBlogView defaultGetBlogs(@PathVariable Integer postId) {

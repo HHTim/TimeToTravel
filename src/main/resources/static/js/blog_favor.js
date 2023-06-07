@@ -1,15 +1,27 @@
 $(function () {
-  // 拿 收藏 userid postid
-  // session 拿取固有資料 區塊
-  var userId = null;
+  var user = null;
+  var userId = null; // 拿 session
   try {
     userId = JSON.parse(sessionStorage.getItem('user-data')).userId;
     console.log(userId);
   } catch (error) {
-    console.log(error);
-    userId = 1; // 忽略错误，继续执行其他操作
+    $.ajax({
+      url: 'http://localhost:8080/getCurrentUserController/current-user', // 資料請求的網址
+      type: 'GET', // GET | POST | PUT | DELETE | PATCH
+      dataType: 'json', // 預期會接收到回傳資料的格式： json | xml | html
+      success: function (data) {
+        if (data.role == '會員') {
+          user = data.user;
+          userId = user.userId;
+        }
+      },
+      error: function (xhr) {
+        console.log(xhr);
+      },
+    });
   }
-  console.log(userId);
+  console.log('userId : ' + userId);
+  // console.log(user);
   // ===================================
   var prePage; // 上一頁資訊的物件 ??
 

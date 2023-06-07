@@ -19,9 +19,9 @@ public class getCurrentUserController {
 
         if (user != null) {
             // 根據使用者角色進行不同的處理
-            if ("平台".equals(user.getRole())) {
-                // 平台使用者
-                System.out.println("當前登入者為平台");
+            if ("會員".equals(user.getRole())) {
+                // 會員使用者
+                System.out.println("當前登入者為77777777777777777777");
             } else if ("商家".equals(user.getRole())) {
                 // 商家使用者
                 System.out.println("當前登入者為商家");

@@ -39,8 +39,8 @@ public class ArticleCommentView {
 	@Column(name = "USER_NAME", nullable = false)
 	private String userName;
 
-	@Column(name = "USER_AVATAR", columnDefinition = "LONGTEXT")
-	@Lob
-	private String userAvatar;
+	@Column(name = "USER_AVATAR", columnDefinition = "LONGBLOB")
+    @Lob
+    private byte[] userAvatar;
 
 }
