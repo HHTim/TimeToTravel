@@ -13,7 +13,7 @@ window.addEventListener('load', function () {
 
   // =================查詢全部=================
   function findAll() {
-    fetch('http://localhost:8080/giftSearchController/giftSearch')
+    fetch('/giftSearchController/giftSearch')
       .then((resp) => resp.json())
       .then((body) => {
         // Title 回到 "全部商品"
@@ -122,6 +122,9 @@ window.addEventListener('load', function () {
       `;
       })
       .join('');
+
+      // 綁定動態生成的物件，用來關閉小購物車
+      bindPicEvent();
   }
 
   // ================燈箱效果================
@@ -158,13 +161,21 @@ window.addEventListener('load', function () {
   let dropdown_cart = document.querySelector('.dropdown-cart');
   let dropdown_cart_btn = document.querySelector('.open-cart');
 
+  // 綁定動態生成的物件，用來關閉小購物車
+  function bindPicEvent(){
+    $('.lightbox-link').on('click',function(){
+      dropdown_cart.classList.remove('show');
+    })
+  }
+
   $(document).on('click', function (e) {
     // console.log(e);
     let target = e.target;
-
+    // 點到小購物車外面會關閉小購物車
     if (!dropdown_cart.contains(target) && target != dropdown_cart_btn) {
       dropdown_cart.classList.remove('show');
     }
+
   });
 
   $('.open-cart').on('click', function (e) {
@@ -208,7 +219,7 @@ window.addEventListener('load', function () {
 
   // ============搜尋商品名稱============
   function searchByName(giftName) {
-    fetch('http://localhost:8080/giftSearchController/giftSearch/giftName/' + giftName)
+    fetch('/giftSearchController/giftSearch/giftName/' + giftName)
       .then((resp) => resp.json())
       .then((body) => {
         // select變回預設排序
@@ -231,7 +242,7 @@ window.addEventListener('load', function () {
 
   // =============排序商品=============
   function sortGift(giftSort) {
-    fetch('http://localhost:8080/giftSearchController/giftSearch/giftSort/' + giftSort)
+    fetch('/giftSearchController/giftSearch/giftSort/' + giftSort)
       .then((resp) => resp.json())
       .then((body) => {
         // Title 回到 "全部商品"
@@ -253,7 +264,7 @@ window.addEventListener('load', function () {
 
   // ==============分類商品類別==============
   function getByType(giftTypeId) {
-    fetch('http://localhost:8080/giftSearchController/giftSearch/giftType/' + giftTypeId)
+    fetch('/giftSearchController/giftSearch/giftType/' + giftTypeId)
       .then((resp) => resp.json())
       .then((body) => {
         // 清空搜尋框
@@ -326,7 +337,7 @@ window.addEventListener('load', function () {
     let giftCount = parseInt($(this).closest('li').find('input.qty-input').val());
     let dataset = { giftId: giftId, giftCount: giftCount };
 
-    fetch('http://localhost:8080/giftCartController/giftCart/' + userId, {
+    fetch('/giftCartController/giftCart/' + userId, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(dataset),
@@ -337,8 +348,14 @@ window.addEventListener('load', function () {
         $('div.lightbox-content').removeClass('open');
         $('div.item-mask').removeClass('open');
         $('input.qty-input').val('1');
-        $('div.success-mask').addClass('show');
-        $('div.add-success').addClass('show');
+        
+        if (typeof swal === 'function') {
+          swal('加入成功', '', 'success');
+        } else {
+          $('div.success-mask').addClass('show');
+          $('div.add-success').addClass('show');
+        }
+
       });
   });
 
@@ -358,7 +375,7 @@ window.addEventListener('load', function () {
   // =================點擊查看小購物車=================
   $('a.open-cart').on('click', function (e) {
     e.preventDefault();
-    fetch('http://localhost:8080/giftCartController/giftCart/' + userId)
+    fetch('/giftCartController/giftCart/' + userId)
       .then((resp) => {
         if (resp.headers.get('content-type').includes('application/json')) {
           return resp.json();
@@ -401,17 +418,18 @@ window.addEventListener('load', function () {
   $('a.btn-checkout').on('click', function (e) {
     e.preventDefault();
     // window.location.href = "../html/gift_cart.html";
-    fetch('http://localhost:8080/giftCartController/redirect_cart/' + userId)
-      .then((resp) => {
-        if (resp.redirected) {
-          const redirectUrl = resp.url;
-          // console.log(redirectUrl);
-          window.location.href = redirectUrl;
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    fetch('/giftCartController/redirect_cart/' + userId)
+    .then((resp) => {
+      if (resp.redirected) {
+        const redirectUrl = resp.url;
+        // console.log(redirectUrl);
+        window.location.href = redirectUrl;
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+
   });
 
   getCurrentUserInformation();
