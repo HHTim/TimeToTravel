@@ -127,6 +127,10 @@ section:not(:first-child) {
 
   #link {
     cursor: pointer;
+
+    &:hover {
+      color: $primary-blue;
+    }
   }
 
   &__order:nth-child(odd) {
