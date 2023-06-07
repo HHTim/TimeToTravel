@@ -1,121 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<!-- import -->
-		<script src="../node_modules/@popperjs/core/dist/umd/popper.min.js" defer></script>
-		<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js" defer></script>
-		<script src="../node_modules/jquery/dist/jquery.min.js" defer></script>
-		<script src="https://kit.fontawesome.com/e3af248fb2.js" crossorigin="anonymous" defer></script>
-		<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
-		<!-- 我們自己的 js 檔案，路徑記得改 -->
-		<link rel="stylesheet" href="../css/company_message_manage.css" />
-		<!-- 我們自己的 css 檔案，路徑記得改 -->
-		<script type="module" src="../js/company_message_manage.js" defer></script>
-		<!-- 輪播需要添加 -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-		<!-- title 記得改 -->
-		<title>Company Msg Manage</title>
-	</head>
-	<body>
-		<div class="bg">
-			<!-- Header -->
-			<div class="decorator"></div>
-			<header>
-				<div class="container-fluid header__container">
-					<h1 class="logo">
-						<a href="/" class="logo__link">
-							<img src="../images/LOGO.png" alt="logo" class="logo__img" />
-						</a>
-					</h1>
-					<nav>
-						<ul class="nav">
-							<li class="nav__link"><a href="#">我的訂單</a></li>
-							<li class="nav__link"><a href="#">伴手禮商城</a></li>
-							<li class="nav__link"><a href="#">部落格</a></li>
-							<li class="nav__info">
-								<div class="dropdown-center">
-									<button class="dropdown-toggle nav__info-btn" type="button" data-bs-toggle="dropdown"></button>
-									<ul class="dropdown-menu">
-										<li><a class="dropdown-item" href="#">訊息一</a></li>
-										<li><a class="dropdown-item" href="#">訊息二</a></li>
-										<li><a class="dropdown-item" href="#">訊息三</a></li>
-										<li><hr class="dropdown-divider" /></li>
-										<li><a class="dropdown-item" href="#">See More</a></li>
-									</ul>
-								</div>
-							</li>
-							<li class="nav__avatar">
-								<div class="dropdown-center">
-									<!-- <button class="dropdown-toggle nav__avatar-btn" type="button" data-bs-toggle="dropdown"></button> -->
-									<a href="#" class="dropdown-toggle nav__avatar-btn" type="button" data-bs-toggle="dropdown">
-										<div class="nav__avatar-img">
-											<img src="../images/avatar.svg" alt="avatar" />
-										</div>
-									</a>
-									<ul class="dropdown-menu">
-										<!-- <li><a class="dropdown-item" href="#">註冊</a></li>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- import -->
+    <script src="../node_modules/@popperjs/core/dist/umd/popper.min.js" defer></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js" defer></script>
+    <script src="../node_modules/jquery/dist/jquery.min.js" defer></script>
+    <script src="https://kit.fontawesome.com/e3af248fb2.js" crossorigin="anonymous" defer></script>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <!-- 我們自己的 js 檔案，路徑記得改 -->
+    <link rel="stylesheet" href="../css/company_message_manage.css" />
+    <!-- 我們自己的 css 檔案，路徑記得改 -->
+    <script type="module" src="../js/company_message_manage.js" defer></script>
+    <!-- 輪播需要添加 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- title 記得改 -->
+    <title>Company Msg Manage</title>
+  </head>
+  <body>
+    <div class="bg">
+      <!-- Header -->
+      <div class="decorator"></div>
+      <header>
+        <div class="container-fluid header__container">
+          <h1 class="logo">
+            <a href="/" class="logo__link">
+              <img src="../images/LOGO.png" alt="logo" class="logo__img" />
+            </a>
+          </h1>
+          <nav>
+            <ul class="nav">
+              <li class="nav__link"><a href="#">我的訂單</a></li>
+              <li class="nav__link"><a href="#">伴手禮商城</a></li>
+              <li class="nav__link"><a href="#">部落格</a></li>
+              <li class="nav__info">
+                <div class="dropdown-center">
+                  <button class="dropdown-toggle nav__info-btn" type="button" data-bs-toggle="dropdown"></button>
+                  <ul class="dropdown-menu">
+                    <!-- <li><a class="dropdown-item" href="#">訊息一</a></li>
+                    <li><a class="dropdown-item" href="#">訊息二</a></li>
+                    <li><a class="dropdown-item" href="#">訊息三</a></li>
+                    <li><hr class="dropdown-divider" /></li>
+                    <li><a class="dropdown-item" href="#">See More</a></li> -->
+                  </ul>
+                </div>
+              </li>
+              <li class="nav__avatar">
+                <div class="dropdown-center">
+                  <!-- <button class="dropdown-toggle nav__avatar-btn" type="button" data-bs-toggle="dropdown"></button> -->
+                  <a href="#" class="dropdown-toggle nav__avatar-btn" type="button" data-bs-toggle="dropdown">
+                    <div class="nav__avatar-img">
+                      <img src="../images/avatar.svg" alt="avatar" />
+                    </div>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <!-- <li><a class="dropdown-item" href="#">註冊</a></li>
                     <li><a class="dropdown-item" href="#">登入</a></li>
                     <li><a class="dropdown-item" href="#">其他</a></li>
                     <li><a class="dropdown-item" href="#">其他</a></li>
                     <li><hr class="dropdown-divider" /></li>
                     <li><a class="dropdown-item" href="#">登出</a></li> -->
-									</ul>
-								</div>
-							</li>
-						</ul>
-					</nav>
-				</div>
-			</header>
-			<!-- Header End -->
-			<div class="container-fluid custom-container">
-				<div class="row">
-					<div class="col-2 company-aside">
-						<!--Company Aside -->
-						<aside>
-							<nav class="nav-custom">
-								<ul class="nav_list">
-									<li><a href="./company_info.html">基本資料</a></li>
-									<li><a href="./gift_order_management.html">訂單管理</a></li>
-									<li><a href="./room_manage.html">商品管理</a></li>
-									<li><a href="./room_on_shelve.html" class="nav_list_on_shelve">上架頁面</a></li>
-									<li><a href="./company_message_manage.html">訊息管理</a></li>
-								</ul>
-							</nav>
-						</aside>
-						<!--Company Aside End -->
-					</div>
-					<div class="col-10">
-						<!-- Main -->
-						<main class="main">
-							<h2 class="subtitle">訊息管理</h2>
-							<section class="search">
-								<div class="search__item">
-									<p>起日</p>
-									<input type="date" class="search__date" name="search__date__starting" />
-								</div>
-								<div class="search__item">
-									<p>迄日</p>
-									<input type="date" class="search__date" name="search__date__to" />
-								</div>
-								<div>
-									<button class="button-search">全部搜尋</button>
-									<button class="button-publish">發布新訊息</button>
-								</div>
-							</section>
-							<section class="list">
-								<table class="table list__table">
-									<thead>
-										<tr>
-											<th scope="col" id="col__1">發信時間</th>
-											<th scope="col" id="col__3">信息標題</th>
-											<th scope="col" id="col__4">查看內文</th>
-										</tr>
-									</thead>
-									<tbody>
-										<!-- <tr class="list__message">
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+      <!-- Header End -->
+      <div class="container-fluid custom-container">
+        <div class="row">
+          <div class="col-2 company-aside">
+            <!--Company Aside -->
+            <aside>
+              <nav class="nav-custom">
+                <ul class="nav_list">
+                  <li><a href="./company_info.html">基本資料</a></li>
+                  <li><a href="./gift_order_management.html">訂單管理</a></li>
+                  <li><a href="./room_manage.html">商品管理</a></li>
+                  <li><a href="./room_on_shelve.html" class="nav_list_on_shelve">上架頁面</a></li>
+                  <li><a href="./company_message_manage.html">訊息管理</a></li>
+                </ul>
+              </nav>
+            </aside>
+            <!--Company Aside End -->
+          </div>
+          <div class="col-10">
+            <!-- Main -->
+            <main class="main">
+              <h2 class="subtitle">訊息管理</h2>
+              <section class="search">
+                <div class="search__item">
+                  <p>起日</p>
+                  <input type="date" class="search__date" name="search__date__starting" />
+                </div>
+                <div class="search__item">
+                  <p>迄日</p>
+                  <input type="date" class="search__date" name="search__date__to" />
+                </div>
+                <div>
+                  <button class="button-search">全部搜尋</button>
+                  <button class="button-publish">發布新訊息</button>
+                </div>
+              </section>
+              <section class="list">
+                <table class="table list__table">
+                  <thead>
+                    <tr>
+                      <th scope="col" id="col__1">發信時間</th>
+                      <th scope="col" id="col__3">信息標題</th>
+                      <th scope="col" id="col__4">查看內文</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- <tr class="list__message">
                       <td class="list__date">2023-04-09</td>
                       <td class="list__title">A使用者帳號註冊審核通過</td>
                       <td class="list__detail">
@@ -192,11 +192,11 @@
                         </div>
                       </td>
                     </tr> -->
-									</tbody>
-								</table>
-							</section>
+                  </tbody>
+                </table>
+              </section>
 
-							<!-- <div class="mt-40 main-bottom row">
+              <!-- <div class="mt-40 main-bottom row">
                 <div class="col-4">&nbsp;</div>
                 <div class="col-4">
                   <div class="page__area">
@@ -213,78 +213,78 @@
                 </div>
               </div> -->
 
-							<div class="row">
-								<ul class="pagination pt-5 justify-content-center">
-									<li class="prev page-item">
-										<a class="page-link" href="javascript:;" aria-label="Previous">
-											<span aria-hidden="true">&laquo;</span>
-										</a>
-									</li>
-									<li class="page-item active">
-										<a class="page-link" href="javascript:;">1</a>
-									</li>
-									<li class="page-item" style="display: none">
-										<a class="page-link" href="javascript:;">2</a>
-									</li>
-									<li class="page-item" style="display: none">
-										<a class="page-link" href="javascript:;">3</a>
-									</li>
-									<li class="page-item" style="display: none">
-										<a class="page-link" href="javascript:;">4</a>
-									</li>
-									<li class="page-item" style="display: none">
-										<a class="page-link" href="javascript:;">5</a>
-									</li>
-									<li class="page-item" style="display: none">
-										<a class="page-link" href="javascript:;">6</a>
-									</li>
-									<li class="page-item" style="display: none">
-										<a class="page-link" href="javascript:;">7</a>
-									</li>
-									<li class="page-item" style="display: none">
-										<a class="page-link" href="javascript:;">8</a>
-									</li>
-									<li class="page-item" style="display: none">
-										<a class="page-link" href="javascript:;">9</a>
-									</li>
-									<li class="page-item" style="display: none">
-										<a class="page-link" href="javascript:;">10</a>
-									</li>
-									<li class="page-item" style="display: none">
-										<a class="page-link" href="javascript:;">11</a>
-									</li>
-									<li class="page-item" style="display: none">
-										<a class="page-link" href="javascript:;">12</a>
-									</li>
-									<li class="page-item" style="display: none">
-										<a class="page-link" href="javascript:;">13</a>
-									</li>
-									<li class="page-item" style="display: none">
-										<a class="page-link" href="javascript:;">14</a>
-									</li>
-									<li class="page-item" style="display: none">
-										<a class="page-link" href="javascript:;">15</a>
-									</li>
-									<li class="page-item" style="display: none">
-										<a class="page-link" href="javascript:;">16</a>
-									</li>
-									<li class="next page-item">
-										<a class="page-link" href="javascript:;" aria-label="Next">
-											<span aria-hidden="true">&raquo;</span>
-										</a>
-									</li>
-								</ul>
-							</div>
-						</main>
-						<!-- Main End -->
-					</div>
-				</div>
-			</div>
-			<!-- Footer -->
-			<footer>
-				<div class="footer"></div>
-			</footer>
-			<!-- Footer End -->
-		</div>
-	</body>
+              <div class="row">
+                <ul class="pagination pt-5 justify-content-center">
+                  <li class="prev page-item">
+                    <a class="page-link" href="javascript:;" aria-label="Previous">
+                      <span aria-hidden="true">&laquo;</span>
+                    </a>
+                  </li>
+                  <li class="page-item active">
+                    <a class="page-link" href="javascript:;">1</a>
+                  </li>
+                  <li class="page-item" style="display: none">
+                    <a class="page-link" href="javascript:;">2</a>
+                  </li>
+                  <li class="page-item" style="display: none">
+                    <a class="page-link" href="javascript:;">3</a>
+                  </li>
+                  <li class="page-item" style="display: none">
+                    <a class="page-link" href="javascript:;">4</a>
+                  </li>
+                  <li class="page-item" style="display: none">
+                    <a class="page-link" href="javascript:;">5</a>
+                  </li>
+                  <li class="page-item" style="display: none">
+                    <a class="page-link" href="javascript:;">6</a>
+                  </li>
+                  <li class="page-item" style="display: none">
+                    <a class="page-link" href="javascript:;">7</a>
+                  </li>
+                  <li class="page-item" style="display: none">
+                    <a class="page-link" href="javascript:;">8</a>
+                  </li>
+                  <li class="page-item" style="display: none">
+                    <a class="page-link" href="javascript:;">9</a>
+                  </li>
+                  <li class="page-item" style="display: none">
+                    <a class="page-link" href="javascript:;">10</a>
+                  </li>
+                  <li class="page-item" style="display: none">
+                    <a class="page-link" href="javascript:;">11</a>
+                  </li>
+                  <li class="page-item" style="display: none">
+                    <a class="page-link" href="javascript:;">12</a>
+                  </li>
+                  <li class="page-item" style="display: none">
+                    <a class="page-link" href="javascript:;">13</a>
+                  </li>
+                  <li class="page-item" style="display: none">
+                    <a class="page-link" href="javascript:;">14</a>
+                  </li>
+                  <li class="page-item" style="display: none">
+                    <a class="page-link" href="javascript:;">15</a>
+                  </li>
+                  <li class="page-item" style="display: none">
+                    <a class="page-link" href="javascript:;">16</a>
+                  </li>
+                  <li class="next page-item">
+                    <a class="page-link" href="javascript:;" aria-label="Next">
+                      <span aria-hidden="true">&raquo;</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </main>
+            <!-- Main End -->
+          </div>
+        </div>
+      </div>
+      <!-- Footer -->
+      <footer>
+        <div class="footer"></div>
+      </footer>
+      <!-- Footer End -->
+    </div>
+  </body>
 </html>

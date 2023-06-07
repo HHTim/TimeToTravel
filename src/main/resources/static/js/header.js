@@ -328,5 +328,4 @@ btn_notify.on('click', function () {
 /* export function define below Here!*/
 export function getCurrentUserInformation() {
   getCurrentUserData();
-  return currentUserData;
 }

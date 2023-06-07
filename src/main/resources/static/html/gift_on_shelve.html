@@ -1,184 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<!-- import -->
-		<script src="../node_modules/@popperjs/core/dist/umd/popper.min.js" defer></script>
-		<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js" defer></script>
-		<script src="../node_modules/jquery/dist/jquery.min.js" defer></script>
-		<script src="https://kit.fontawesome.com/e3af248fb2.js" crossorigin="anonymous" defer></script>
-		<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
-		<!-- 我們自己的 css 檔案，路徑記得改 -->
-		<link rel="stylesheet" href="..//css/gift_on_shelve.css" />
-		<!-- 我們自己的 js 檔案，路徑記得改 -->
-		<<<<<<< HEAD
-		<script type="module" src="../js/gift_on_shelve.js" defer></script>
-		=======
-		<script src="../js/gift_on_shelve.js" defer></script>
-		>>>>>>> origin/Lyon
-		<!-- 輪播需要添加 -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-		<!-- title 記得改 -->
-		<title>TimeToTravel | Gift on Shelve</title>
-	</head>
-	<body>
-		<!-- Header -->
-		<div class="decorator"></div>
-		<header>
-			<div class="container-fluid header__container">
-				<h1 class="logo">
-					<a href="#" class="logo__link">
-						<img src="../images/LOGO.png" alt="logo" class="logo__img" />
-					</a>
-				</h1>
-				<nav>
-					<ul class="nav">
-						<li class="nav__link"><a href="#">我的訂單</a></li>
-						<li class="nav__link"><a href="#">伴手禮商城</a></li>
-						<li class="nav__link"><a href="#">部落格</a></li>
-						<li class="nav__info">
-							<div class="dropdown-center">
-								<button class="dropdown-toggle nav__info-btn" type="button" data-bs-toggle="dropdown"></button>
-								<ul class="dropdown-menu">
-									<li><a class="dropdown-item" href="#">訊息一</a></li>
-									<li><a class="dropdown-item" href="#">訊息二</a></li>
-									<li><a class="dropdown-item" href="#">訊息三</a></li>
-									<li><hr class="dropdown-divider" /></li>
-									<li><a class="dropdown-item" href="#">See More</a></li>
-								</ul>
-							</div>
-						</li>
-						<li class="nav__avatar">
-							<div class="dropdown-center">
-								<!-- <button class="dropdown-toggle nav__avatar-btn" type="button" data-bs-toggle="dropdown"></button> -->
-								<a href="#" class="dropdown-toggle nav__avatar-btn" type="button" data-bs-toggle="dropdown">
-									<div class="nav__avatar-img">
-										<img src="../images/avatar.svg" alt="avatar" />
-									</div>
-								</a>
-								<ul class="dropdown-menu">
-									<li><a class="dropdown-item" href="#">註冊</a></li>
-									<li><a class="dropdown-item" href="#">登入</a></li>
-									<li><a class="dropdown-item" href="#">其他</a></li>
-									<li><a class="dropdown-item" href="#">其他</a></li>
-									<li><hr class="dropdown-divider" /></li>
-									<li><a class="dropdown-item" href="#">登出</a></li>
-								</ul>
-							</div>
-						</li>
-					</ul>
-				</nav>
-			</div>
-		</header>
-		<!-- Header End -->
-		<div class="container-fluid custom-container">
-			<div class="row">
-				<div class="col-2 company-aside">
-					<!--Company Aside -->
-					<aside>
-						<nav class="nav-custom">
-							<ul class="nav_list">
-								<li><a href="./company_info.html">基本資料</a></li>
-								<li><a href="./gift_order_management.html">訂單管理</a></li>
-								<li><a href="./room_manage.html">商品管理</a></li>
-								<li><a href="./room_on_shelve.html" class="nav_list_on_shelve">上架頁面</a></li>
-								<li><a href="./company_message_manage.html">訊息管理</a></li>
-							</ul>
-						</nav>
-					</aside>
-					<!--Company Aside End -->
-				</div>
-				<div class="col-10">
-					<!-- Main -->
-					<!-- Main區塊以下為測試用，可刪 -->
-					<main class="main">
-						<div class="container-fulid">
-							<div class="row r1">
-								<div class="col-2">
-									<a href="#"><h3>全部商品</h3></a>
-								</div>
-								<div class="col-2"></div>
-								<div class="col-2"></div>
-								<div class="col-4"></div>
-								<div class="col-2 reset__area">
-									<button class="reset__area__btn">重設</button>
-								</div>
-							</div>
-							<div class="decorator"></div>
-							<div class="update__btn__area">
-								<!-- test bootstrap style -->
-								<a href="./room_on_shelve.html"><button class="btn btn-primary btn__update__room">新增房型+</button></a>
-								<a href="./gift_on_shelve.html"><button class="btn btn-primary btn__update__gift">新增土產+</button></a>
-								<a href="./private_scene_on_shelve.html"
-									><button class="btn btn-primary btn__update__private__scene">新增景點+</button></a
-								>
-								<a href="./journey_on_shelve.html"
-									><button class="btn btn-primary btn__update__journey">新增行程+</button></a
-								>
-							</div>
-							<div class="gift">
-								<span class="gift__name">
-									<h4 class="gift__name__title">土產名稱</h4>
-									<input type="text" placeholder="請輸入名稱..." />
-								</span>
-								<div>
-									<span class="gift__stock">
-										<h4 class="gift__stock__title">土產庫存</h4>
-										<input
-											type="text"
-											placeholder="請輸入數量..."
-											oninput="this.value = this.value.replace(/[^0-9]/g, '')" />
-									</span>
-									<span class="gift__type">
-										<h4 class="gift__type__title">土產類別</h4>
-										<select name="gift__type__option" class="gift__type__option">
-											<option disabled selected hidden>請選擇</option>
-											<optgroup label="土產類別">
-												<option value="冷凍食品">冷凍食品</option>
-												<option value="彌月食品">彌月食品</option>
-												<option value="店取限定">店取限定</option>
-												<option value="團購美食">團購美食</option>
-											</optgroup>
-										</select>
-									</span>
-									<span class="gift__price">
-										<h4 class="gift__price__title">土產價格</h4>
-										<input
-											type="text"
-											placeholder="請輸入價格..."
-											oninput="this.value = this.value.replace(/[^0-9]/g, '')" />
-									</span>
-									<span class="gift__photo">
-										<h4 class="gift__photo__title">土產照片</h4>
-										<input type="file" style="display: none" class="gift__photo__update" />
-										<div class="gift__photo__preview" placeholder="請點擊上傳圖片..."></div>
-									</span>
-									<span class="gift__description">
-										<h4 class="gift__description__title">土產介紹</h4>
-										<textarea
-											id="gift__description__content"
-											name="gift__description__content"
-											rows="4"
-											cols="10"
-											maxlength="100"></textarea>
-									</span>
-									<span class="save__btn">
-										<button class="btn btn-primary save__btn__commit">儲存</button>
-									</span>
-								</div>
-							</div>
-						</div>
-					</main>
-					<!-- Main End -->
-				</div>
-			</div>
-		</div>
-		<!-- Footer -->
-		<footer>
-			<div class="footer"></div>
-		</footer>
-		<!-- Footer End -->
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- import -->
+    <script src="../node_modules/@popperjs/core/dist/umd/popper.min.js" defer></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js" defer></script>
+    <script src="../node_modules/jquery/dist/jquery.min.js" defer></script>
+    <script src="https://kit.fontawesome.com/e3af248fb2.js" crossorigin="anonymous" defer></script>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <!-- 我們自己的 css 檔案，路徑記得改 -->
+    <link rel="stylesheet" href="..//css/gift_on_shelve.css" />
+    <!-- 我們自己的 js 檔案，路徑記得改 -->
+    <<<<<<< HEAD
+    <script type="module" src="../js/gift_on_shelve.js" defer></script>
+    =======
+    <script src="../js/gift_on_shelve.js" defer></script>
+    >>>>>>> origin/Lyon
+    <!-- 輪播需要添加 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- title 記得改 -->
+    <title>TimeToTravel | Gift on Shelve</title>
+  </head>
+  <body>
+    <!-- Header -->
+    <div class="decorator"></div>
+    <header>
+      <div class="container-fluid header__container">
+        <h1 class="logo">
+          <a href="#" class="logo__link">
+            <img src="../images/LOGO.png" alt="logo" class="logo__img" />
+          </a>
+        </h1>
+        <nav>
+          <ul class="nav">
+            <li class="nav__link"><a href="#">我的訂單</a></li>
+            <li class="nav__link"><a href="#">伴手禮商城</a></li>
+            <li class="nav__link"><a href="#">部落格</a></li>
+            <li class="nav__info">
+              <div class="dropdown-center">
+                <button class="dropdown-toggle nav__info-btn" type="button" data-bs-toggle="dropdown"></button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">訊息一</a></li>
+                  <li><a class="dropdown-item" href="#">訊息二</a></li>
+                  <li><a class="dropdown-item" href="#">訊息三</a></li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li><a class="dropdown-item" href="#">See More</a></li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav__avatar">
+              <div class="dropdown-center">
+                <!-- <button class="dropdown-toggle nav__avatar-btn" type="button" data-bs-toggle="dropdown"></button> -->
+                <a href="#" class="dropdown-toggle nav__avatar-btn" type="button" data-bs-toggle="dropdown">
+                  <div class="nav__avatar-img">
+                    <img src="../images/avatar.svg" alt="avatar" />
+                  </div>
+                </a>
+                <ul class="dropdown-menu">
+                  <!-- <li><a class="dropdown-item" href="#">註冊</a></li>
+                  <li><a class="dropdown-item" href="#">登入</a></li>
+                  <li><a class="dropdown-item" href="#">其他</a></li>
+                  <li><a class="dropdown-item" href="#">其他</a></li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li><a class="dropdown-item" href="#">登出</a></li> -->
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <!-- Header End -->
+    <div class="container-fluid custom-container">
+      <div class="row">
+        <div class="col-2 company-aside">
+          <!--Company Aside -->
+          <aside>
+            <nav class="nav-custom">
+              <ul class="nav_list">
+                <li><a href="#">基本資料</a></li>
+                <li><a href="./gift_order_management.html">訂單管理</a></li>
+                <li><a href="./room_manage.html">商品管理</a></li>
+                <li><a href="./room_on_shelve.html">上架頁面</a></li>
+                <li><a href="#">訊息管理</a></li>
+              </ul>
+            </nav>
+          </aside>
+          <!--Company Aside End -->
+        </div>
+        <div class="col-10">
+          <!-- Main -->
+          <!-- Main區塊以下為測試用，可刪 -->
+          <main class="main">
+            <div class="container-fulid">
+              <div class="row r1">
+                <div class="col-2">
+                  <a href="#"><h3>全部商品</h3></a>
+                </div>
+                <div class="col-2"></div>
+                <div class="col-2"></div>
+                <div class="col-4"></div>
+                <div class="col-2 reset__area">
+                  <button class="reset__area__btn">重設</button>
+                </div>
+              </div>
+              <div class="decorator"></div>
+              <div class="update__btn__area">
+                <!-- test bootstrap style -->
+                <a href="./room_on_shelve.html"><button class="btn btn-primary btn__update__room">新增房型+</button></a>
+                <a href="./gift_on_shelve.html"><button class="btn btn-primary btn__update__gift">新增土產+</button></a>
+                <a href="./private_scene_on_shelve.html"
+                  ><button class="btn btn-primary btn__update__private__scene">新增景點+</button></a
+                >
+                <a href="./journey_on_shelve.html"
+                  ><button class="btn btn-primary btn__update__journey">新增行程+</button></a
+                >
+              </div>
+              <div class="gift">
+                <span class="gift__name">
+                  <h4 class="gift__name__title">土產名稱</h4>
+                  <input type="text" placeholder="請輸入名稱..." />
+                </span>
+                <div>
+                  <span class="gift__stock">
+                    <h4 class="gift__stock__title">土產庫存</h4>
+                    <input
+                      type="text"
+                      placeholder="請輸入數量..."
+                      oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                    />
+                  </span>
+                  <span class="gift__type">
+                    <h4 class="gift__type__title">土產類別</h4>
+                    <select name="gift__type__option" class="gift__type__option">
+                      <option disabled selected hidden>請選擇</option>
+                      <optgroup label="土產類別">
+                        <option value="冷凍食品">冷凍食品</option>
+                        <option value="彌月食品">彌月食品</option>
+                        <option value="店取限定">店取限定</option>
+                        <option value="團購美食">團購美食</option>
+                      </optgroup>
+                    </select>
+                  </span>
+                  <span class="gift__price">
+                    <h4 class="gift__price__title">土產價格</h4>
+                    <input
+                      type="text"
+                      placeholder="請輸入價格..."
+                      oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                    />
+                  </span>
+                  <span class="gift__photo">
+                    <h4 class="gift__photo__title">土產照片</h4>
+                    <input type="file" style="display: none" class="gift__photo__update" />
+                    <div class="gift__photo__preview" placeholder="請點擊上傳圖片..."></div>
+                  </span>
+                  <span class="gift__description">
+                    <h4 class="gift__description__title">土產介紹</h4>
+                    <textarea
+                      id="gift__description__content"
+                      name="gift__description__content"
+                      rows="4"
+                      cols="10"
+                      maxlength="100"
+                    ></textarea>
+                  </span>
+                  <span class="save__btn">
+                    <button class="btn btn-primary save__btn__commit">儲存</button>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </main>
+          <!-- Main End -->
+        </div>
+      </div>
+    </div>
+    <!-- Footer -->
+    <footer>
+      <div class="footer"></div>
+    </footer>
+    <!-- Footer End -->
+  </body>
 </html>
