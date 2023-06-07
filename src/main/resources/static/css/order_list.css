@@ -408,6 +408,9 @@ section:not(:first-child) {
 .list #link {
   cursor: pointer;
 }
+.list #link:hover {
+  color: #006caa;
+}
 .list__order:nth-child(odd) {
   background-color: #dfdcdc;
 }
