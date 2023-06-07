@@ -216,14 +216,16 @@ async function getCurrentUserData() {
       if (role === '會員') {
         updateNotifyIcon(currentUserData.userNewsStatus);
         getUserNewsMessage(role, msgRow);
+        updateAvatar(identifyRoleData.avatar);
       } else if (role === '商家') {
         updateNotifyIcon(currentUserData.comNewsStatus);
         getUserNewsMessage(role, msgRow);
+        updateAvatar(identifyRoleData.avatar);
       } else if (role === '平台') {
         updateNotifyIcon(currentUserData.adminNewsStatus);
         getAdminFromUserNewsMessage(msgRow);
+        updateAvatar('data:image/jpeg;base64,' + currentUserData.adminAvatar);
       }
-      updateAvatar(identifyRoleData.avatar);
 
       //comNewsStatus
       avator_menu_ul.append(
