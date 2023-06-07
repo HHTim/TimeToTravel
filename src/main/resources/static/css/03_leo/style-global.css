@@ -138,6 +138,10 @@ a:hover {
 a:active {
   /* margin-left: 2.5px; */
 }
+
+.page-item:hover{
+  cursor: pointer;
+}
 /* ------------ */
 
 /* <!-- https://css-tricks.com/examples/ButtonMaker/# --> */

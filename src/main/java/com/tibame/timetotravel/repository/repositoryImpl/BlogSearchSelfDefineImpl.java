@@ -71,10 +71,10 @@ public class BlogSearchSelfDefineImpl implements BlogSearchSelfDefine {
 			orderSql = " order by b.post_update_time desc,b.likes desc,b.comments desc ";
 			break;
 		case 2:
-			orderSql = " order by b.likes desc,b.comments desc ";
+			orderSql = " order by b.likes desc,b.comments desc,b.post_update_time desc ";
 			break;
 		case 3:
-			orderSql = " order by b.comments desc,b.likes desc ";
+			orderSql = " order by b.comments desc,b.likes desc,b.post_update_time desc ";
 			break;
 		}
 		String sql = "SELECT B.* FROM DEFAULT_BLOG B " + dynamicTags + " where B.POST_TITLE like ? " + typeSql

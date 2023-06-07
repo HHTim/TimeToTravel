@@ -112,49 +112,7 @@
           </div>
         </div>
 
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script>
-          $(document).ready(function () {
-            // var tags = [];
-            // var colorClasses = ["bg-primary", "bg-secondary", "bg-success", "bg-danger"];
-            // var colorIndex = 0;
-            // function addTag() {
-            //   var tagInput = $("#tag-input").val();
-            //   if (tagInput !== "") {
-            //     if (tags.includes(tagInput)) {
-            //       $("#hint-msg").text("標籤已存在");
-            //       // console.log("標籤已存在：" + tagInput);
-            //       return;
-            //     }
-            //     var tagButton = $("<span>").addClass("badge mr-3 tag-btn").text(tagInput);
-            //     var colorClass = colorClasses[colorIndex % colorClasses.length];
-            //     tagButton.addClass(colorClass);
-            //     colorIndex++;
-            //     tagButton.click(function () {
-            //       $(this).remove();
-            //       tags = tags.filter(function (tag) {
-            //         return tag !== tagInput;
-            //       });
-            //     });
-            //     $("#tags-container").append(tagButton);
-            //     tags.push(tagInput);
-            //     $("#tag-input").val("");
-            //     $("#hint-msg").text("");
-            //   }
-            // }
-            // $("#add-tag-btn").click(addTag);
-            // $("#tag-input").keydown(function (event) {
-            //   if (event.keyCode === 13) {
-            //     addTag();
-            //   }
-            // });
-            // $("#search-btn").click(function () {
-            //   var topic = $("#topic").val();
-            //   console.log("搜尋主題：" + topic);
-            //   console.log("搜尋標籤：" + tags);
-            // });
-          });
-        </script>
+  
 
         <!-- 文章串 = blog欄位名稱 + blogs -->
         <div class="blog-list row col-12 margin-center">
@@ -162,31 +120,31 @@
             <div class="col-8 margin-center article-type-padding">
               <span class=""> 文章類型 </span>
               <label class="radio-option">
-                <input type="radio" name="article-type" value="1" id="question-option" />
+                <input type="radio" class="cursor-pointer" name="article-type" value="1" id="question-option" />
                 問題
               </label>
               <label class="radio-option">
-                <input type="radio" name="article-type" value="2" id="information-option" />
+                <input type="radio" class="cursor-pointer" name="article-type" value="2" id="information-option" />
                 情報
               </label>
               <label class="radio-option">
-                <input type="radio" name="article-type" value="3" id="experience-option" />
+                <input type="radio" class="cursor-pointer" name="article-type" value="3" id="experience-option" />
                 心得
               </label>
               <label class="radio-option">
-                <input type="radio" name="article-type" value="4" id="discussion-option" />
+                <input type="radio" class="cursor-pointer" name="article-type" value="4" id="discussion-option" />
                 討論
               </label>
               <label class="radio-option">
-                <input type="radio" name="article-type" value="5" id="strategy-option" />
+                <input type="radio" class="cursor-pointer" name="article-type" value="5" id="strategy-option" />
                 攻略
               </label>
               <label class="radio-option">
-                <input type="radio" name="article-type" value="6" id="other-option" />
+                <input type="radio" class="cursor-pointer" name="article-type" value="6" id="other-option" />
                 其他
               </label>
               <label class="radio-option">
-                <input checked type="radio" name="article-type" value="7" id="all-option" />
+                <input checked type="radio" class="cursor-pointer" name="article-type" value="7" id="all-option" />
                 全部
               </label>
             </div>
@@ -197,15 +155,15 @@
             >
               <span class="" style="padding-right: 15px"> 排序 </span>
               <label class="radio-option">
-                <input type="radio" name="sort-option" value="2" id="likes-option" />
+                <input type="radio" class="cursor-pointer"  name="sort-option" value="2" id="likes-option" />
                 讚數
               </label>
               <label class="radio-option">
-                <input type="radio" name="sort-option" value="3" id="comments-option" />
+                <input type="radio" class="cursor-pointer" name="sort-option" value="3" id="comments-option" />
                 討論度
               </label>
               <label class="radio-option">
-                <input checked type="radio" name="sort-option" value="1" id="publish-time-option" />
+                <input checked type="radio" class="cursor-pointer" name="sort-option" value="1" id="publish-time-option" />
                 發布時間
               </label>
             </div>
@@ -265,7 +223,7 @@
             <span aria-hidden="true">&laquo;</span>
           </a>
         </li> -->
-         <!-- <li class="page-item" aria-current="page">
+          <!-- <li class="page-item" aria-current="page">
             <a class="page-link active" href="#">1</a>
           </li>-->
           <!-- <li class="page-item">
@@ -277,112 +235,7 @@
       </nav>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-      $(document).ready(function () {
-        // var itemsPerPage = 5;
-        // var totalPages = Math.ceil($('.blog').length / itemsPerPage);
-        // 動態生成頁數按鈕
-        // for (var i = 2; i <= totalPages; i++) {
-        //   $('.page-item:last').after('<li class="page-item"><a class="page-link" href="#">' + i + '</a></li>');
-        // }
-        // // 初始化顯示第一頁
-        // showPage(1);
-        // // 點擊分頁連結
-        // $('.page-link').click(function(e) {
-        //   e.preventDefault();
-        //   var page = parseInt($(this).text()); // 取得點擊的頁數 到時候這邊動態拿取
-        //   showPage(page);
-        // });
 
-
-        // // 點擊前一頁按鈕
-        // $('.previous-page').click(function(e) {
-        //   e.preventDefault();
-        //   var currentPage = parseInt($('.page-item.active .page-link').text());
-        //   console.log("dddddddddd"+ currentPage);
-        //   if (currentPage > 1) {
-        //     showPage(currentPage - 1);
-        //   }
-        // });
-        // // 點擊後一頁按鈕
-        // $('.next-page').click(function(e) {
-        //   e.preventDefault();
-        //   // console.log("dddddddddd");
-        //   var currentPage = parseInt($('.page-item.active .page-link').text());
-        //   console.log("dddddddddd"+ currentPage);
-        //   if (currentPage < totalPages) {
-        //     showPage(currentPage + 1);
-        //   }
-        // });
-
-
-        // // 顯示指定頁數的內容
-        // function showPage(page) {
-        //   $('.blog').hide(); // 隱藏所有內容
-        //   var startIndex = (page - 1) * itemsPerPage; // 計算起始索引
-        //   var endIndex = startIndex + itemsPerPage; // 計算結束索引
-        //   $('.blog').slice(startIndex, endIndex).show(); // 顯示指定範圍內的內容
-        //   //  分頁 與 文章類型 並未合併 完成功能
-        //   // 設定分頁連結的狀態
-        //   $('.page-item').removeClass('active'); // 移除所有分頁連結的 active class
-        //   $('.page-link').removeClass('active'); // 移除所有分頁連結的 active class
-        //   $('.page-item').eq(page-1).addClass('active'); // 添加指定頁數的分頁連結的 active class
-        //   $('.page-item').eq(page-1).find('.page-link').addClass('active'); // 添加指定頁數的分頁連結的 active class
-        //   // 調整分頁連結的樣式
-        //   $('.page-item').removeClass('first last');
-        //   $('.page-item').first().addClass('first');
-        //   $('.page-item').last().addClass('last');
-        // }
-        // // ----------------
-        // function changeTotalPages(){
-        //   totalPages = Math.ceil($('.blog:visible').length / itemsPerPage);
-        //   console.log("變更分頁 當前有這麼多頁"+ totalPages);
-        // }
-        // ----------------
-        //   // 當文章類型選項被勾選時
-        //   $('input[name="article-type"]').change(function() {
-        //     var selectedType = $(this).val();
-        //     console.log("ddd"+selectedType);
-        //   $('.blog').hide(); // 隱藏所有文章
-        //   if (selectedType === '全部') {
-        //     // $('.blog').show(); // 顯示所有文章
-        //     changeTotalPages();
-        //     showPage(1);
-        //   } else {
-        //     $('.article-type:contains("'+selectedType+'")').parent().show();// 只顯示符合該類型的文章
-        //     changeTotalPages();
-        //     showPage(1);
-        //   }
-        //   // 移除分頁按紐
-        //   $('.page-item:not(:first)').remove();
-        //   // 動態生成頁數按鈕
-        //   for (var i = 2; i <= totalPages; i++) {
-        //     $('.page-item:last').after('<li class="page-item"><a class="page-link" href="#">' + i + '</a></li>');
-        //   }
-        // });
-        // // 當排序選項被勾選時
-        // $('input[name="sort-option"]').change(function() {
-        //   var selectedOption = $(this).val();
-        //   if (selectedOption === 'likes') {
-        //     // 根據讚數排序文章
-        //     var sortedBlogs = $('.blog').sort(function(a, b) {
-        //       var likeA = parseInt($(a).find('.article-like').text());
-        //       var likeB = parseInt($(b).find('.article-like').text());
-        //       return likeB - likeA;
-        //     });
-        //     $('.blog').remove(); // 移除原有的文章
-        //     $('.margin-center').append(sortedBlogs); // 重新插入排序後的文章
-        //   } else {
-        //     // 根據發布時間排序文章（預設情況）
-        //     // 可以根據具體的需求自行添加相應的排序邏輯
-        //   }
-        // });
-        // 初始化預設選項
-    /*   $('input[name="sort-option"][value="publish-time"]').prop('checked', true);
-        $('input[name="article-type"][value="all"]').prop('checked', true); */
-      });
-    </script>
     <!-- Footer -->
     <footer>
       <div class="footer"></div>
