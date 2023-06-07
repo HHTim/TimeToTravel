@@ -39,17 +39,18 @@ window.addEventListener('load', function () {
 		let roomStockInput = document.querySelector('.room__stock > input');
 		let roomDescInput = document.querySelector('.room__description > textarea');
 
+		// 把從localStorage取出來的屬性值填到input欄位
 		roomNameInput.value = selectedRoom.roomName;
 		roomPriceInput.value = selectedRoom.roomPrice;
 		roomStockInput.value = selectedRoom.roomStock;
 		roomDescInput.value = selectedRoom.roomDesc;
-		// console.log("wwww:"+selectedRoom.roomBed);
 		roomBedInput.value = selectedRoom.roomBed;
 
 		mimeType = 'image/jpeg';
 		let roomPhoto = convertBase64ToImage(selectedRoom.roomPhoto, mimeType);
 		picturePreview.appendChild(roomPhoto);
 
+		// 抓出來的是true/false，轉成1/0
 		if (selectedRoom.room24Hours) {
 			room24HoursInput.value = '1';
 		} else room24HoursInput.value = '0';
@@ -69,18 +70,19 @@ window.addEventListener('load', function () {
 			roomParkingInput.value = '1';
 		} else roomParkingInput.value = '0';
 
+		// 給id，才能在saveBtn事件走PUT方法
 		roomId = selectedRoom.roomId;
 	}
 
 	saveBtn.addEventListener('click', function () {
 		let roomName = document.querySelector('.room__name > input').value;
 		let roomBed = document.querySelector('.room__equip__options__bed').selectedIndex;
-		let room24Hours = Boolean(document.querySelector('.room__equip__options__service24hr > optgroup > option').value);
-		let roomSmoking = Boolean(document.querySelector('.room__equip__options__smoking > optgroup > option').value);
-		let roomPet = Boolean(document.querySelector('.room__equip__options__pets > optgroup > option').value);
-		let roomWifi = Boolean(document.querySelector('.room__equip__options__wifi > optgroup > option').value);
-		let roomBreakfast = Boolean(document.querySelector('.room__equip__options__breakfast > optgroup > option').value);
-		let roomParking = Boolean(document.querySelector('.room__equip__options__parking > optgroup > option').value);
+		let room24Hours = document.querySelector('.room__equip__options__service24hr').selectedIndex;
+		let roomSmoking = document.querySelector('.room__equip__options__smoking').selectedIndex;
+		let roomPet = document.querySelector('.room__equip__options__pets').selectedIndex;
+		let roomWifi = document.querySelector('.room__equip__options__wifi').selectedIndex;
+		let roomBreakfast = document.querySelector('.room__equip__options__breakfast').selectedIndex;
+		let roomParking = document.querySelector('.room__equip__options__parking').selectedIndex;
 		let roomPrice = document.querySelector('.room__price > input').value;
 		let roomStock = document.querySelector('.room__stock > input').value;
 		let roomDesc = document.querySelector('.room__description > textarea').value;
@@ -105,31 +107,82 @@ window.addEventListener('load', function () {
 				roomBed = '四人房';
 				break;
 		}
+
+		switch (room24Hours) {
+			case 1:
+				room24Hours = false;
+				break;
+			case 2:
+				room24Hours = true;
+				break;
+		}
+
+		switch (roomSmoking) {
+			case 1:
+				roomSmoking = false;
+				break;
+			case 2:
+				roomSmoking = true;
+				break;
+		}
+
+		switch (roomPet) {
+			case 1:
+				roomPet = false;
+				break;
+			case 2:
+				roomPet = true;
+				break;
+		}
+		switch (roomWifi) {
+			case 1:
+				roomWifi = false;
+				break;
+			case 2:
+				roomWifi = true;
+				break;
+		}
+		switch (roomBreakfast) {
+			case 1:
+				roomBreakfast = false;
+				break;
+			case 2:
+				roomBreakfast = true;
+				break;
+		}
+		switch (roomParking) {
+			case 1:
+				roomParking = false;
+				break;
+			case 2:
+				roomParking = true;
+				break;
+		}
+
+		console.log(room24Hours);
+
 		// 要按下儲存後才能取到imgUrl
 		let imgUrl = picturePreview.querySelector('img').getAttribute('src');
 		let roomPhoto = extractBase64String(imgUrl).base64String;
 
-    let requestData = {
-      comId: 123, // 假的comId
-      roomName: roomName,
-      roomBed: roomBed,
-      roomPeople: roomPeople,
-      room24Hours: room24Hours,
-      roomSmoking: roomSmoking,
-      roomPet: roomPet,
-      roomWifi: roomWifi,
-      roomBreakfast: roomBreakfast,
-      roomParking: roomParking,
-      roomPrice: roomPrice,
-      roomStock: roomStock,
-      roomPhoto: roomPhoto,
-      roomDesc: roomDesc,
-      roomStatus: false, // 預設為未上架
-    };
+		let requestData = {
+			comId: 123, // 假的comId
+			roomName: roomName,
+			roomBed: roomBed,
+			roomPeople: roomPeople,
+			room24Hours: room24Hours,
+			roomSmoking: roomSmoking,
+			roomPet: roomPet,
+			roomWifi: roomWifi,
+			roomBreakfast: roomBreakfast,
+			roomParking: roomParking,
+			roomPrice: roomPrice,
+			roomStock: roomStock,
+			roomPhoto: roomPhoto,
+			roomDesc: roomDesc,
+			roomStatus: false, // 預設為未上架
+		};
 
-		// console.log('aaaa:' + requestData.roomBed);
-		// console.log('ssss:' + roomPeople);
-		// console.log(roomId);
 		if (
 			roomName !== null &&
 			roomPrice !== null &&
@@ -169,7 +222,7 @@ window.addEventListener('load', function () {
 			// 如果是變更房型內容，就會有localStorage拿出來的roomId
 			else {
 				fetch('/roomController/room/' + roomId, {
-					method: 'POST',
+					method: 'PUT',
 					headers: { 'Content-Type': 'application/json' },
 					body: JSON.stringify(requestData),
 				})
@@ -182,7 +235,7 @@ window.addEventListener('load', function () {
 						}
 					})
 					.then((body) => {
-						alert('新增成功!!');
+						alert('修改成功!!');
 						window.location.href = '../html/room_manage.html';
 					})
 					.catch(console.error);
@@ -193,27 +246,27 @@ window.addEventListener('load', function () {
 		}
 	});
 
-  // 隱藏input=file的預設按鈕，並設立預覽區
-  let pictureUpdateBtn = document.querySelector('.room__photo__update');
-  let picturePreview = document.querySelector('.room__photo__preview');
-  picturePreview.addEventListener('click', function () {
-    pictureUpdateBtn.click();
-  });
+	// 隱藏input=file的預設按鈕，並設立預覽區
+	let pictureUpdateBtn = document.querySelector('.room__photo__update');
+	let picturePreview = document.querySelector('.room__photo__preview');
+	picturePreview.addEventListener('click', function () {
+		pictureUpdateBtn.click();
+	});
 
-  // click()後，發生change()
-  pictureUpdateBtn.addEventListener('change', function (e) {
-    const file = e.target.files[0]; // 第0個檔案
-    const reader = new FileReader(); // 用來讀取檔案
-    reader.onload = function (e) {
-      const img = document.createElement('img');
-      img.setAttribute('src', e.target.result);
-      img.addEventListener('load', function () {
-        // 圖片加載完後設立寬高
-        const width = img.width;
-        const height = img.height;
-        const maxWidth = picturePreview.offsetWidth;
-        const maxHeight = picturePreview.offsetHeight;
-        // const aspectRatio = width / height;
+	// click()後，發生change()
+	pictureUpdateBtn.addEventListener('change', function (e) {
+		const file = e.target.files[0]; // 第0個檔案
+		const reader = new FileReader(); // 用來讀取檔案
+		reader.onload = function (e) {
+			const img = document.createElement('img');
+			img.setAttribute('src', e.target.result);
+			img.addEventListener('load', function () {
+				// 圖片加載完後設立寬高
+				const width = img.width;
+				const height = img.height;
+				const maxWidth = picturePreview.offsetWidth;
+				const maxHeight = picturePreview.offsetHeight;
+				// const aspectRatio = width / height;
 
 				if (width > maxWidth || height > maxHeight) {
 					if (width / height > maxWidth / maxHeight) {

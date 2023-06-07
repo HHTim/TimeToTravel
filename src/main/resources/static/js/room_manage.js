@@ -85,7 +85,7 @@ window.addEventListener('load', function () {
 			// console.log(roomId); // 每個選到的房型id
 			let requestData = { roomStatus: roomStatus }; // 這裡的欄位要對應Entity屬性
 
-			fetch('/roomController/room/' + roomId, {
+			fetch('/roomController/room/updateRoomStatus/' + roomId, {
 				method: 'PUT',
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify(requestData),
