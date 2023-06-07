@@ -34,7 +34,7 @@ public class C2AMessageServiceImpl implements C2AMessageService {
     @Override
     @Transactional
     public void insert(C2AMessage c2AMessage) {
-        c2AMessage.setC2ASendingTime(new Timestamp(System.currentTimeMillis()));
+        c2AMessage.setC2aSendingTime(new Timestamp(System.currentTimeMillis()));
         c2AMessageRepository.save(c2AMessage);
     }
 
@@ -111,5 +111,10 @@ public class C2AMessageServiceImpl implements C2AMessageService {
         pageBeanView.setRows(findViewByDateRangePage(startDate, endDate, start, rows));
         pageBeanView.setPageSize(Math.max(pageSize,1));
         return pageBeanView;
+    }
+
+    @Override
+    public List<C2AMsgView> getNotifyMsgByComps(Integer startIndex, Integer endIndex) {
+        return c2AMessageViewRepository.findC2AViewMsgByComps(startIndex, endIndex);
     }
 }

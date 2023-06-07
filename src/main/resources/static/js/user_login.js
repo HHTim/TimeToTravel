@@ -61,7 +61,7 @@ $(function () {
   $('#adminLoginForm').on('submit', (e) => {
     e.preventDefault();
     e.stopPropagation();
-    login('/AdminController/admin/login', '/html/admin.html');
+    login('/AdminController/admin/login', '/admin');
   });
 
   $('#userLogin .captcha').click();

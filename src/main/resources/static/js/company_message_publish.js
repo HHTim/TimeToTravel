@@ -25,7 +25,7 @@ $(function () {
       .then((r) => r.text())
       .then((d) => {
         console.log(d);
-        location.href = '/user_message_manage';
+        // location.href = '/company_message_manage';
       });
   }
 
@@ -35,15 +35,15 @@ $(function () {
       'Content-Type': 'application/json',
       Accept: 'application/json',
     };
-
+    console.log('igiw:' + content);
     let body = {
-      u2aMsgId: null,
-      u2aSenderId: 1,
-      u2aReceiverId: 1,
-      u2aMsgTitle: title,
-      u2aMsgContent: content,
+      c2aMsgId: null,
+      c2aSenderId: 1,
+      c2aReceiverId: 1,
+      c2aMsgTitle: title,
+      c2aMsgContent: content,
     };
-    const url = '/User2AdminController/message';
+    const url = '/Com2AdminController/message';
     fetch(url, {
       method: 'POST',
       headers: headers,

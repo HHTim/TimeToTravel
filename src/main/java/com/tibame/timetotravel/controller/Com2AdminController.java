@@ -1,9 +1,11 @@
 package com.tibame.timetotravel.controller;
 
 import com.tibame.timetotravel.common.PageBean;
+import com.tibame.timetotravel.dto.UserSessionDto;
 import com.tibame.timetotravel.entity.C2AMessage;
 import com.tibame.timetotravel.service.C2AMessageService;
 import com.tibame.timetotravel.view.C2AMsgView;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +19,9 @@ public class Com2AdminController {
     C2AMessageService c2AMessageService;
 
     @PostMapping("/message")
-    public String insert(@RequestBody C2AMessage c2AMessage){
+    public String insert(@RequestBody C2AMessage c2AMessage, HttpSession session){
+        UserSessionDto company = (UserSessionDto) session.getAttribute("user");
+        c2AMessage.setC2aSenderId(company.getCompany().getComId());
         c2AMessageService.insert(c2AMessage);
         return "執行資料庫的 Insert 操作";
     }

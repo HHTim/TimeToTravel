@@ -64,7 +64,7 @@ public class CompanyController extends BaseController {
             Company company = companyService.findById(id);
             request.getSession().setAttribute("company_id", id);
             request.getSession().setAttribute("user", new UserSessionDto(null, company, null, "商家"));
-            System.out.println("CompanySession: " + request.getSession().getAttribute("user"));
+//            System.out.println("CompanySession: " + request.getSession().getAttribute("user"));
         } catch (Exception e) {
             return badRequest(e.getMessage());
         }

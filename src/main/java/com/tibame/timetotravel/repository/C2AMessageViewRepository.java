@@ -24,4 +24,7 @@ public interface C2AMessageViewRepository extends JpaRepository<C2AMsgView,Integ
 
     @Query(value = "SELECT * FROM VIEW_C2A_MSG where C2A_SENDING_TIME between ?1 and ?2 ORDER BY C2A_SENDING_TIME DESC LIMIT ?3,?4",nativeQuery = true)
     List<C2AMsgView> findViewByDateRangePage(String startDate, String endDate,Integer currPage, Integer rows);
+
+    @Query(value = "SELECT * FROM VIEW_C2A_MSG ORDER BY C2A_SENDING_TIME DESC LIMIT ?1,?2",nativeQuery = true)
+    List<C2AMsgView> findC2AViewMsgByComps(Integer startIndex, Integer endIndex);
 }

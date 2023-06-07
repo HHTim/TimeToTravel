@@ -35,9 +35,9 @@ public class Admin2ComController {
     }
 
     @PatchMapping(value = "/comName", consumes = "multipart/form-data")
-    public String update(@RequestParam("comName") String comName){
+    public String updateNewsStatus(@RequestParam("comName") String comName){
         System.out.println("接收到的廠商名為:"+comName);
-        String act = companyService.updateByComName(comName);
+        String act = companyService.updateNewsByComName(comName);
         return "更新廠商: " + act + "的消息狀態";
     }
     @GetMapping("/message/page/{currPage}/{rows}")
