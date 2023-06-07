@@ -19,9 +19,10 @@ public class BookingRoomDto {
     private List<Integer> orderRanks;
     private List<Room> rooms;
     private List<PrivateScene> privateScenes;
-    private List<String> allComments;
-    private List<Integer> allOrderRanks;
-    private List<byte[]> allUserAvatars;
-    private List<String> allUserNames;
+    //    private List<String> allComments;
+//    private List<Integer> allOrderRanks;
+//    private List<byte[]> allUserAvatars;
+//    private List<String> allUserNames;
+    private List<OrderWithUser> orderWithUsers;
 //    private List<ViewUserOrderDetail> viewUserOrderDetails;
 }

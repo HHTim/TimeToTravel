@@ -249,7 +249,7 @@ list.addEventListener('click', (e) => {
     }
   }
 
-  if ((e.target.id = 'link')) {
+  if (e.target.id === 'link') {
     console.log(e.target.dataset);
     searchBody.comId = e.target.dataset.comid;
     searchBody.roomId = e.target.dataset.roomid;
