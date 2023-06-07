@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service("journeyService")
 public class JourneyServiceImpl implements JourneyService {
     @Autowired
@@ -20,14 +21,10 @@ public class JourneyServiceImpl implements JourneyService {
     }
 
     @Override
-    public void updateById(Integer journeyId, Journey journey) {
-            Journey newJourney = journeyRepository.findById(journeyId).orElse(null);
-            newJourney.setJourneyStatus(journey.getJourneyStatus());
-            newJourney.setJourneyName(journey.getJourneyName());
-            newJourney.setJourneyPic(journey.getJourneyPic());
-            newJourney.setJourneyPrice(journey.getJourneyPrice());
-            newJourney.setJourneyDesc(journey.getJourneyDesc());
-            journeyRepository.save(newJourney);
+    public void updateStatusById(Integer journeyId, Journey journey) {
+        Journey newJourney = journeyRepository.findById(journeyId).orElse(null);
+        newJourney.setJourneyStatus(journey.getJourneyStatus());
+        journeyRepository.save(newJourney);
     }
 
     @Override
@@ -37,10 +34,25 @@ public class JourneyServiceImpl implements JourneyService {
 
     @Override
     public List<Journey> findByKeyword(String keyword) {
-        if((keyword != null) && !("".equals(keyword))){
+        if ((keyword != null) && !("".equals(keyword))) {
             return journeyRepository.findByKeyword(keyword);
-        }else {
+        } else {
             return null;
         }
+    }
+
+    @Override
+    public Journey findById(Integer journeyId) {
+        return journeyRepository.findById(journeyId).orElse(null);
+    }
+
+    @Override
+    public void updateJourneyById(Integer journeyId, Journey journey) {
+        Journey newJourney = journeyRepository.findById(journeyId).orElse(null);
+        newJourney.setJourneyName(journey.getJourneyName());
+        newJourney.setJourneyPrice(journey.getJourneyPrice());
+        newJourney.setJourneyDesc(journey.getJourneyDesc());
+        newJourney.setJourneyPic(journey.getJourneyPic());
+        journeyRepository.save(newJourney);
     }
 }

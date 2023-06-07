@@ -21,15 +21,25 @@ public class JourneyController {
         return "新增成功!";
     }
     @PutMapping("/journey/{journeyId}")
-    public String updateById(@PathVariable Integer journeyId,
+    public String updateStatusById(@PathVariable Integer journeyId,
                              @RequestBody Journey journey){
-        journeyService.updateById(journeyId, journey);
+        journeyService.updateStatusById(journeyId, journey);
         return "修改成功";
+    }
+    @PutMapping("/journey/updateJourney/{journeyId}")
+    public String updateJourneyById(@PathVariable Integer journeyId,
+                                @RequestBody Journey journey){
+        journeyService.updateJourneyById(journeyId, journey);
+        return "修改成功!";
     }
 
     @GetMapping("/journey")
     public List<Journey> findAll(){
         return journeyService.findAll();
+    }
+    @GetMapping("/journey/findByJourneyId/{journeyId}")
+    public Journey findById(@PathVariable Integer journeyId){
+        return journeyService.findById(journeyId);
     }
 
     @GetMapping("/journey/{keyword}")
