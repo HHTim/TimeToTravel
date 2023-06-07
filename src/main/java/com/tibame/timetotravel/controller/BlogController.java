@@ -21,6 +21,7 @@ import com.tibame.timetotravel.entity.Tags;
 import com.tibame.timetotravel.service.ServiceImpl.ArticleCommentServiceImpl;
 import com.tibame.timetotravel.service.ServiceImpl.BlogServiceImpl;
 import com.tibame.timetotravel.service.ServiceImpl.TagServiceImpl;
+import com.tibame.timetotravel.view.ArticleCommentView;
 import com.tibame.timetotravel.view.DefaultBlogView;
 
 @RestController
@@ -54,13 +55,13 @@ public class BlogController {
 	// 部落格所有留言
 	// http://localhost:8080/BlogController/blog-comments/1
 	@GetMapping("/blog-comments/{postId}")
-	public List<ArticleComment> getComments(@PathVariable Integer postId) {
+	public List<ArticleCommentView> getComments(@PathVariable Integer postId) {
 		return blogService.findArticleComments(postId);
 	}
 
 	// 新增留言
 	@PostMapping("/comment/insert")
-	public ArticleComment insert(@RequestBody ArticleComment comment) {
+	public ArticleCommentView insert(@RequestBody ArticleComment comment) {
 		// 增加 該文章 留言數 屬性 "insert 留言 "
 		return articleCommentServiceImpl.insertComment(comment); // 要取得 他的id 到時候才能直接作修改
 	}

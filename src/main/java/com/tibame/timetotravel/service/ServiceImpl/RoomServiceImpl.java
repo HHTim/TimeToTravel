@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.Optional;
 
 @Service("roomService")
 public class RoomServiceImpl implements RoomService {
@@ -96,6 +97,13 @@ public class RoomServiceImpl implements RoomService {
         double total = roomRepository.totalPageByStatus(roomStatus);
         double totalPage = Math.ceil(total / 10);
         return new RoomPaginationByStatus(roomListByStatus, (int) totalPage);
+    }
+
+    @Override
+    public void updateRoomStatus(Integer roomId, Room room) {
+        Room newRoom = roomRepository.findById(roomId).orElse(null);
+        newRoom.setRoomStatus(room.getRoomStatus());
+        roomRepository.save(newRoom);
     }
 
 

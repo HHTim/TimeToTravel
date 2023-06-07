@@ -683,3 +683,10 @@ body {
 .wrapper #footerContainer {
   flex-basis: 20px;
 }
+
+.nav-link.active {
+  color: #0d6efd !important;
+}
+.nav-link {
+  color: #495057 !important;
+}

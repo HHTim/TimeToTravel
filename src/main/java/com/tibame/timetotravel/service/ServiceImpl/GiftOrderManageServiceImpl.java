@@ -22,29 +22,25 @@ public class GiftOrderManageServiceImpl implements GiftOrderManageService {
     private EntityManager entityManager;
 
 
-    @Override
-    public  ViewGiftOrderManage findById(Integer giftOrderId) {
-        return null;
-    }
+//    @Override
+//    public  ViewGiftOrderManage findById(Integer giftOrderId) {
+//        return null;
+//    }
 
     @Override
     public List<ViewGiftOrderManage> findAll() {
         return viewGiftOrderManageRepository.findAll();
     }
 
-    @Override
-    public List<ViewGiftOrderManage> findByGiftOrder(Integer giftOrderId, Integer userId) {
-        return null;
-    }
 
     @Override
     public List<ViewGiftOrderManage> findByGiftOrderId(Integer giftOrderId) {
-        return null;
+        return viewGiftOrderManageRepository.findByGiftOrder(giftOrderId);
     }
 
     @Override
-    public List<ViewGiftOrderManage> findByUserId(Integer userId) {
-        return null;
+    public List<ViewGiftOrderManage> findByUserAccount(Integer userAccount) {
+        return viewGiftOrderManageRepository.findByUserAccount(userAccount);
     }
 
 

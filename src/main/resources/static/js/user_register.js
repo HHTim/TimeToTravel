@@ -99,9 +99,6 @@ $(function () {
 
     register('/CompanyController/company/register', JSON.stringify(data));
   });
-  // if (data.avatar.indexOf(';base64') === -1) {
-  //   data.avatar = '';
-  // }
 
   $('#userAvatarButton').on('click', () => {
     userAvatarFile.click();

@@ -16,6 +16,8 @@
     <script type="module" src="../js/gift_cart.js" defer></script>
     <!-- 輪播需要添加 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
     <!-- title 記得改 -->
     <title>TimeToTravel | Gift Cart</title>
   </head>
@@ -132,7 +134,7 @@
             </div>
             <div class="row gotocheck">
               <div class="col-3">
-                <button class="btn btn-danger clear-all">
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                   清空
                 </button>
               </div>
@@ -148,6 +150,41 @@
         </div>
       </div>
     </div>
+    <!-- 清空彈出視窗 -->
+    <div
+      class="modal fade clear-check"
+      id="staticBackdrop"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">提醒！</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">確定要清空嗎？<div>將返回土產專區</div></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+            <button type="button" class="btn btn-primary clear-all">我確定</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 清空彈出視窗 End -->
+    <!-- 返回土產專區確認 -->
+    <div class="success-mask"></div>
+    <div class="add-success">
+      <div>
+        <div class="success-icon"><i class="fa-solid fa-arrow-right-from-bracket fa-2xl" style="color: #ff674f;"></i></div>
+        <div class="success-msg">返回土產專區</div>
+        <div class="success-btn"><button>好的</button></div>
+      </div>
+    </div>
+    <!-- 返回土產專區確認確認 End -->
     <!-- Footer -->
     <footer>
       <div class="footer"></div>

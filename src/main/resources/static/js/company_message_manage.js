@@ -16,6 +16,7 @@ var detail_btn = $('.button__detl');
 var startDate = '2023-01-01';
 var endDate = '2023-12-31';
 var start_dateflag = false;
+var publish = $('.button-publish');
 
 function openLightbox(e) {
   console.log(e);
@@ -229,6 +230,10 @@ $(document).ready(function () {
         return $(this).text() === currentPage.toString();
       })
       .click();
+  });
+
+  publish.on('click', function () {
+    location.href = '../html/company_message_publish.html';
   });
 
   getMessageAll();

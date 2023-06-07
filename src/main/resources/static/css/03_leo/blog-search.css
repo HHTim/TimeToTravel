@@ -65,21 +65,26 @@
   border-radius: 3px;
   box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.2);
 }
-.article-type-padding{
-    
+.article-type-padding {
 }
-.article-type-padding label{
-    margin-right: 5px;
-    border: 1px solid #FFF;
-    padding-left: 5px;
-    padding-right: 5px;
+.article-type-padding label {
+  margin-right: 5px;
+  border: 1px solid #fff;
+  padding-left: 5px;
+  padding-right: 5px;
 }
-.sort-option-padding{
-    
+.sort-option-padding {
 }
-.sort-option-padding label{
-    margin-right: 5px;
-    border: 1px solid #FFF;
-    padding-left: 5px;
-    padding-right: 5px;
+.sort-option-padding label {
+  margin-right: 5px;
+  border: 1px solid #fff;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+label.radio-option:hover {
+  cursor: pointer;
+}
+input.cursor-pointer {
+  cursor: pointer;
 }

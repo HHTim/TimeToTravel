@@ -236,7 +236,7 @@ $(function () {
 
   publish_btn.on('click', function () {
     sessionStorage.setItem('radioData', $("input[type='radio']:checked").val());
-    location.href = '../admin_message_publish';
+    location.href = '/admin_message_publish';
   });
 
   $('tbody').on('click', 'button.btn-query', function (e) {
@@ -251,7 +251,7 @@ $(function () {
         message_time: $(this).closest('tr').find('.tb-time').text(),
       })
     );
-    location.href = '../admin_message_detail';
+    location.href = '/admin_message_detail';
   });
 
   search_btn.on('click', function (e) {
