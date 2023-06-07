@@ -405,6 +405,9 @@ section:not(:first-child) {
 .list #comment:hover {
   background-color: #004c77;
 }
+.list #link {
+  cursor: pointer;
+}
 .list__order:nth-child(odd) {
   background-color: #dfdcdc;
 }

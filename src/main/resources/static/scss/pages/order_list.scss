@@ -125,6 +125,10 @@ section:not(:first-child) {
     }
   }
 
+  #link {
+    cursor: pointer;
+  }
+
   &__order:nth-child(odd) {
     background-color: $secondary-gray;
   }

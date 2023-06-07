@@ -72,10 +72,10 @@ public class UserServiceImpl implements UserService {
     @Transactional
     @Override
     public String updateByAccount(String account) {
-            User user = userRepository.findByUserAccount(account);
-            user.setUserNewsStatus(1);
-            userRepository.save(user);
-            return account;
+        User user = userRepository.findByUserAccount(account);
+        user.setUserNewsStatus(1);
+        userRepository.save(user);
+        return account;
     }
 
     @Transactional
@@ -159,15 +159,15 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> findByPage(Integer currPage, Integer rows) {
-        return userRepository.findByPage(currPage,rows);
+        return userRepository.findByPage(currPage, rows);
     }
 
     @Override
     public PageBean<User> findByPageRowData(Integer currPage, Integer rows) {
         int start = (currPage - 1) * rows;
-        int pageSize = (int)(Math.ceil(userRepository.findAll().size()/(double)rows));
-        pageBean.setRows(findByPage(start,rows));
-        pageBean.setPageSize(Math.max(pageSize,1));
+        int pageSize = (int) (Math.ceil(userRepository.findAll().size() / (double) rows));
+        pageBean.setRows(findByPage(start, rows));
+        pageBean.setPageSize(Math.max(pageSize, 1));
         return pageBean;
     }
 
@@ -179,9 +179,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public PageBean<User> findStatusByPageRowData(Integer status, Integer currPage, Integer rows) {
         int start = (currPage - 1) * rows;
-        int pageSize = (int)(Math.ceil(userRepository.findAllStatus(status)/(double)rows));
+        int pageSize = (int) (Math.ceil(userRepository.findAllStatus(status) / (double) rows));
         pageBean.setRows(findStatusByPage(status, start, rows));
-        pageBean.setPageSize(Math.max(pageSize,1));
+        pageBean.setPageSize(Math.max(pageSize, 1));
         return pageBean;
     }
 
@@ -193,9 +193,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public PageBean<User> findKeywordByPageRowData(String keyword, Integer currPage, Integer rows) {
         int start = (currPage - 1) * rows;
-        int pageSize = (int)(Math.ceil(userRepository.findAllByKeword(keyword)/(double)rows));
+        int pageSize = (int) (Math.ceil(userRepository.findAllByKeword(keyword) / (double) rows));
         pageBean.setRows(findKeywordByPage(keyword, start, rows));
-        pageBean.setPageSize(Math.max(pageSize,1));
+        pageBean.setPageSize(Math.max(pageSize, 1));
         return pageBean;
     }
 
@@ -207,9 +207,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public PageBean<User> findBeanPageByDateRange(String startDate, String endDate, Integer currPage, Integer rows) {
         int start = (currPage - 1) * rows;
-        int pageSize = (int)(Math.ceil(userRepository.findAllByDateRange(startDate, endDate)/(double)rows));
+        int pageSize = (int) (Math.ceil(userRepository.findAllByDateRange(startDate, endDate) / (double) rows));
         pageBean.setRows(findDateRangeByPage(startDate, endDate, start, rows));
-        pageBean.setPageSize(Math.max(pageSize,1));
+        pageBean.setPageSize(Math.max(pageSize, 1));
         return pageBean;
     }
 

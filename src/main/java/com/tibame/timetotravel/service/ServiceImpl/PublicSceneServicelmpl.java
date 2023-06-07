@@ -1,6 +1,7 @@
 package com.tibame.timetotravel.service.ServiceImpl;
 
 
+import com.tibame.timetotravel.common.PageBean;
 import com.tibame.timetotravel.entity.PublicScene;
 import com.tibame.timetotravel.repository.PublicSceneRepository;
 import com.tibame.timetotravel.service.PublicSceneService;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service("PublicSceneService")
 public class PublicSceneServicelmpl implements PublicSceneService {
@@ -39,18 +41,23 @@ public class PublicSceneServicelmpl implements PublicSceneService {
 
     @Override
     public List<PublicScene> findByAddress(String sceneKeyword) {
+
         return publicSceneRepository.findBySceneAddress(sceneKeyword);
     }
 
     @Override
     public void update(Integer sceneId, PublicScene publicScene) {
-        PublicScene newPublicScene = entityManager.find(PublicScene.class,sceneId);
+        PublicScene newPublicScene = entityManager.find(PublicScene.class, sceneId);
     }
 
     @Override
-    public List<PublicScene> findBySceneAddress(String keyword) {
+    public PageBean<PublicScene> findBySceneAddress(String keyword, Integer page) {
         if (keyword != null && !("".equals(keyword))) {
-            return publicSceneRepository.findBySceneAddress(keyword);
+            PageBean<PublicScene> pageBeen = new PageBean<>();
+            List<PublicScene> scenes = publicSceneRepository.findBySceneAddress(keyword);
+            pageBeen.setPageSize(scenes.size());
+            pageBeen.setRows(scenes.stream().skip((page - 1) * 6).limit(6).collect(Collectors.toList()));
+            return pageBeen;
         } else {
             return null;
         }
