@@ -5,6 +5,14 @@ window.addEventListener('load', function () {
 	let mimeType = 'image/jpeg'; // 要將base64轉回img
 	let base64String;
 	let roomId;
+	let onShelveBtn = document.querySelector('.nav_list_on_shelve');
+
+	onShelveBtn.addEventListener('click', () => {
+		localStorage.removeItem('selectedRoom');
+		localStorage.removeItem('selectedPrivateScene');
+		localStorage.removeItem('selectedGift');
+		localStorage.removeItem('selectedJourney');
+	});
 	/**
 	 * 所有新增按鈕的事件綁定，清除localStorage內的'selectedRoom'
 	 */
@@ -340,5 +348,6 @@ window.addEventListener('load', function () {
 		return img;
 	}
 
+	getCurrentUserInformation();
 	handleSelectedRoom();
 });

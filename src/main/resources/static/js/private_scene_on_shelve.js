@@ -4,6 +4,14 @@ window.addEventListener('load', function () {
 	let privateSceneId;
 	let base64String;
 	let mimeType = 'image/jpeg';
+	let onShelveBtn = document.querySelector('.nav_list_on_shelve');
+
+	onShelveBtn.addEventListener('click', () => {
+		localStorage.removeItem('selectedRoom');
+		localStorage.removeItem('selectedPrivateScene');
+		localStorage.removeItem('selectedGift');
+		localStorage.removeItem('selectedJourney');
+	});
 	/**
 	 * 所有新增按鈕的事件綁定，清除localStorage內的'selectedRoom'
 	 */
@@ -33,20 +41,20 @@ window.addEventListener('load', function () {
 		privateSceneId = selectedPrivateScene.privateSceneId;
 	}
 
-  saveBtn.addEventListener('click', function () {
-    let privateSceneName = document.querySelector('.private__scene__name > input').value;
-    let privateSceneDesc = document.querySelector('#private__scene__description__content').value;
+	saveBtn.addEventListener('click', function () {
+		let privateSceneName = document.querySelector('.private__scene__name > input').value;
+		let privateSceneDesc = document.querySelector('#private__scene__description__content').value;
 
-    // 要按下儲存後才能取到imgUrl
-    let imgUrl = picturePreview.querySelector('img').getAttribute('src');
-    let privateScenePic = extractBase64String(imgUrl).base64String;
+		// 要按下儲存後才能取到imgUrl
+		let imgUrl = picturePreview.querySelector('img').getAttribute('src');
+		let privateScenePic = extractBase64String(imgUrl).base64String;
 
-    let requestData = {
-      comId: 123, // 假的comId
-      privateSceneName: privateSceneName,
-      privateSceneDesc: privateSceneDesc,
-      privateScenePic: privateScenePic,
-    };
+		let requestData = {
+			comId: 123, // 假的comId
+			privateSceneName: privateSceneName,
+			privateSceneDesc: privateSceneDesc,
+			privateScenePic: privateScenePic,
+		};
 
 		if (privateSceneName !== null && privateSceneDesc !== null && privateScenePic !== null) {
 			// 新增景點
@@ -118,33 +126,33 @@ window.addEventListener('load', function () {
 				const maxHeight = picturePreview.offsetHeight;
 				// const aspectRatio = width / height;
 
-        if (width > maxWidth || height > maxHeight) {
-          if (width / height > maxWidth / maxHeight) {
-            img.style.width = maxWidth + 'px';
-            img.style.height = 'auto';
-          } else {
-            img.style.width = 'auto';
-            img.style.height = maxHeight + 'px';
-          }
-        } else {
-          img.style.width = width + 'px';
-          img.style.height = height + 'px';
-        }
-      });
-      picturePreview.innerHTML = '';
-      picturePreview.appendChild(img);
-      picturePreview.style.border = 'none'; // 上傳圖片後把框線隱藏
-    };
-    reader.readAsDataURL(file);
-  });
+				if (width > maxWidth || height > maxHeight) {
+					if (width / height > maxWidth / maxHeight) {
+						img.style.width = maxWidth + 'px';
+						img.style.height = 'auto';
+					} else {
+						img.style.width = 'auto';
+						img.style.height = maxHeight + 'px';
+					}
+				} else {
+					img.style.width = width + 'px';
+					img.style.height = height + 'px';
+				}
+			});
+			picturePreview.innerHTML = '';
+			picturePreview.appendChild(img);
+			picturePreview.style.border = 'none'; // 上傳圖片後把框線隱藏
+		};
+		reader.readAsDataURL(file);
+	});
 
-  /**
-   * Base64處理function
-   *
-   */
-  function extractBase64String(dataURL) {
-    var prefix = 'data:image/';
-    var index = dataURL.indexOf(';base64,');
+	/**
+	 * Base64處理function
+	 *
+	 */
+	function extractBase64String(dataURL) {
+		var prefix = 'data:image/';
+		var index = dataURL.indexOf(';base64,');
 
 		if (index !== -1) {
 			mimeType = dataURL.substring(prefix.length, index);
@@ -192,4 +200,5 @@ window.addEventListener('load', function () {
 	}
 
 	handleSelectedPrivateScene();
+	getCurrentUserInformation();
 });
