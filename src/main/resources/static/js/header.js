@@ -215,17 +215,15 @@ async function getCurrentUserData() {
       // console.log('wefwi' + JSON.stringify(currentUserData));
       if (role === '會員') {
         updateNotifyIcon(currentUserData.userNewsStatus);
-        updateAvatar(currentUserData.userAvatar);
         getUserNewsMessage(role, msgRow);
       } else if (role === '商家') {
         updateNotifyIcon(currentUserData.comNewsStatus);
-        updateAvatar(currentUserData.comAvatar);
         getUserNewsMessage(role, msgRow);
       } else if (role === '平台') {
-        updateAvatar('data:image/jpeg;base64,' + currentUserData.adminAvatar);
         updateNotifyIcon(currentUserData.adminNewsStatus);
         getAdminFromUserNewsMessage(msgRow);
       }
+      updateAvatar(identifyRoleData.avatar);
 
       //comNewsStatus
       avator_menu_ul.append(
