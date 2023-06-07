@@ -1,6 +1,7 @@
 package com.tibame.timetotravel.controller;
 
 import com.tibame.timetotravel.entity.Gift;
+import com.tibame.timetotravel.entity.Room;
 import com.tibame.timetotravel.service.GiftService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -29,12 +30,25 @@ public class GiftController {
     }
 
     @PutMapping("/gift/{giftId}")
-    public String updateById(@PathVariable Integer giftId,
+    public String updateStatusById(@PathVariable Integer giftId,
                              @RequestBody Gift gift){
-        giftService.update(giftId, gift);
-
+        giftService.updateStatusById(giftId, gift);
         return "修改成功";
     }
+    @PutMapping("/gift/updateGift/{giftId}")
+    public String updateById(@PathVariable Integer giftId,
+                                @RequestBody Gift gift){
+        giftService.updateById(giftId, gift);
+        return "修改成功!";
+    }
+
+
+    @GetMapping("/gift/findByGiftId/{giftId}")
+    public Gift findById(@PathVariable Integer giftId) {
+        return giftService.findById(giftId);
+    }
+
+
     @GetMapping("/gift")
     public List<Gift> findAll(){
         System.out.println("找全部土產");
@@ -52,6 +66,8 @@ public class GiftController {
         System.out.println("分類查詢");
         return giftService.findByGiftType(giftTypeValue);
     }
+
+
 
 
 

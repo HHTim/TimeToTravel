@@ -9,10 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+
 import java.util.List;
 
+
 @Service("giftOrderManageService")
-public class GiftOrderManageServiceImpl implements GiftOrderManageService {
+    public class GiftOrderManageServiceImpl implements GiftOrderManageService {
 
     @Autowired
     @Qualifier("viewGiftOrderManageRepository")
@@ -41,6 +43,11 @@ public class GiftOrderManageServiceImpl implements GiftOrderManageService {
     @Override
     public List<ViewGiftOrderManage> findByUserAccount(Integer userAccount) {
         return viewGiftOrderManageRepository.findByUserAccount(userAccount);
+    }
+
+    @Override
+    public List<ViewGiftOrderManage> findByDateRange(String startDate, String endDate) {
+        return viewGiftOrderManageRepository.findByDateRange(startDate, endDate);
     }
 
 
