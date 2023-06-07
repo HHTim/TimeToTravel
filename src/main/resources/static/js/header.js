@@ -15,6 +15,7 @@ var btn_avatar = $('.nav__avatar');
 var btn_notify = $('.nav__info');
 var notify_menu = $('.nav__info .dropdown-center .dropdown-menu');
 var nav_avatar = $('.nav__avatar-img img');
+var nav_avatar_outline = $('.nav__avatar-img');
 
 var role;
 var currentUserData;
@@ -31,6 +32,7 @@ function updateNotifyIcon(userNewsStatus) {
 }
 
 function updateAvatar(avatar) {
+  nav_avatar_outline.css('background-color', 'lightblue');
   nav_avatar.attr('src', avatar);
 }
 
