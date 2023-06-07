@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service("giftService")
 public class  GiftServiceImpl implements GiftService {
@@ -37,14 +38,14 @@ public class  GiftServiceImpl implements GiftService {
 
     @Override
     @Transactional
-    public void update(Integer giftId, Gift gift) {
+    public void updateStatusById(Integer giftId, Gift gift) {
 //        // 把舊的giftId拖出來
-        Gift newGift = entityManager.find(Gift.class, giftId);
-        newGift.setGiftStatus(gift.getGiftStatus());
-        entityManager.merge(newGift);
+         Gift newGift = giftRepository.findById(giftId).orElse(null);
+         newGift.setGiftStatus(gift.getGiftStatus());
+         giftRepository.save(newGift);
     }
 
-    @Override
+
     public Gift findById(Integer giftId) {
         return giftRepository.findById(giftId).orElse(null);
     }
@@ -67,5 +68,17 @@ public class  GiftServiceImpl implements GiftService {
     @Override
     public List<Gift> findByGiftType(String giftTypeValue) {
         return giftRepository.findByGiftType(giftTypeValue);
+    }
+
+    @Override
+    public void updateById(Integer giftId, Gift gift) {
+        Gift newGift = giftRepository.findById(giftId).orElse(null);
+        newGift.setGiftIntro(gift.getGiftIntro());
+        newGift.setGiftName(gift.getGiftName());
+        newGift.setGiftPhoto(gift.getGiftPhoto());
+        newGift.setGiftPrice(gift.getGiftPrice());
+        newGift.setGiftStock(gift.getGiftStock());
+        newGift.setGiftTypeId(gift.getGiftTypeId());
+        giftRepository.save(newGift);
     }
 }

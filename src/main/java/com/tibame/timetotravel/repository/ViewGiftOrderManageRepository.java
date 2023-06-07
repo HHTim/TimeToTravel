@@ -22,4 +22,10 @@ public interface ViewGiftOrderManageRepository extends JpaRepository<ViewGiftOrd
 
 
 
+//    List<ViewGiftOrderManage> findByGiftOrderDatetimeBetween(Date startDate, Date endDate);
+//}
+    @Query(value = "SELECT * FROM view_gift_order_manage WHERE GIFT_ORDER_DATETIME BETWEEN ?1 AND ?2 ORDER BY GIFT_ORDER_DATETIME DESC ", nativeQuery = true)
+    List<ViewGiftOrderManage> findByDateRange(String startDate, String endDate);
+
+
 }
