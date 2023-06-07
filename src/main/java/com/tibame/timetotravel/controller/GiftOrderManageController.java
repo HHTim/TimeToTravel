@@ -6,12 +6,11 @@ import com.tibame.timetotravel.service.GiftOrderManageService;
 import com.tibame.timetotravel.view.ViewGiftOrderManage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+//import java.util.Date;
 import java.util.List;
+import java.sql.Date;
 
 @RestController
 @RequestMapping("/giftOrderMangeController")
@@ -43,6 +42,11 @@ public class GiftOrderManageController {
         return giftOrderManageService.findByGiftOrderId(giftOrderId);
     };
 
+    @GetMapping("/giftOrderManage/{startDate}/{endDate}")
+    public List<ViewGiftOrderManage> findByDateRange(@PathVariable String startDate, @PathVariable String endDate){
+        System.out.println("日期搜尋");
+        return giftOrderManageService.findByDateRange(startDate, endDate);
+    }
 
 //    @GetMapping("/giftOrderManage/{giftOrderId}/{userId}")
 //    public List<ViewGiftOrderManage> findByGiftOrder(@PathVariable Integer giftOrderId, @PathVariable Integer userId) {

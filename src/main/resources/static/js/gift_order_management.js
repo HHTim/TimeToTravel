@@ -10,6 +10,7 @@ window.addEventListener('load', function () {
   var inputEndDate = $("input[name='search__date__to']");
   var startDate = '2023-01-01';
   var endDate = '2023-12-31';
+  var start_dateflag = false;
 
   /*讀取*/
   findall();
@@ -23,7 +24,69 @@ window.addEventListener('load', function () {
   });
 
   /* 確定按鈕綁定 */
-  confirmBtn.addEventListener('click', function () {});
+  confirmBtn.addEventListener('click', function () {
+    fetch('/giftOrderMangeController/giftOrderManage/' + startDate + '/' + endDate)
+      .then((resp) => resp.json())
+      .then((body) => {
+        console.log(body);
+        tbody.innerHTML = body
+          .map((i) => {
+            return `
+                  <tr>
+          <td>${i.giftOrderId}</td>
+          <td>${i.userAccount}</td>
+          <td>${i.giftOrderAmount}</td>
+          <td>${i.giftOrderDatetime}</td>
+          <td>${giftOrderStatus}</td>
+          <td> 
+            <span>
+              <i class="fas fa-search"></i>
+            </span> 
+            <div class = "lightbox-content">
+              <button class="close-button"></button>
+              <h2> 訂單明細 </h2>
+              <div>
+                <p class = "col-6">訂單編號: </p> 
+                <p class = "col-6">${i.giftOrderId}</p>
+              </div>
+              <div>
+                <p class = "col-6">訂購人姓名: </p>
+                <p class = "col-6">${i.userName}</p>
+              </div>
+              <div>
+                <p class = "col-6">商品名稱</p>
+                <p class = "col-6">${i.giftName}</p>
+              </div>
+              <div>
+              <p class = "col-6">商品單價</p>
+              <p class = "col-6">$${i.giftPrice}　元</p>
+              </div>
+              <div>
+              <p class = "col-6">訂購數量</p>
+              <p class = "col-6">${i.boughtCount}　個</p>
+              </div>
+              <div>
+              <p class = "col-6">價格</p>
+              <p class = "col-6">$${i.unitPrice}　元</p>
+              </div>
+              <div>
+                <p class = "col-6">訂單日期: </p>
+                <p class = "col-6">${i.giftOrderDatetime}</p>
+              </div>
+              <div>
+                <p class = "col-6">訂單狀態: </p>
+                <p class = "col-6">${giftOrderStatus}</p>
+              </div>
+
+            </div>
+          </td>
+        </tr>
+          `;
+          })
+          .join(' ');
+        bindEventToButtons();
+      });
+  });
 
   // ========================================================================================
   /*  找全部  */
@@ -131,13 +194,6 @@ window.addEventListener('load', function () {
     console.log('inputStartDate change');
     startDate = $(this).val();
     start_dateflag = true;
-    $('.page-link')
-      .filter(function () {
-        currentPage = 1;
-        return $(this).text() === currentPage.toString();
-      })
-      .click();
-    // getMessageByDate();
   });
 
   inputEndDate.on('change', function () {
@@ -149,12 +205,6 @@ window.addEventListener('load', function () {
 
     // 格式化日期字串為 yyyy-mm-dd 格式
     endDate = selectedDate.toISOString().split('T')[0];
-    $('.page-link')
-      .filter(function () {
-        currentPage = 1;
-        return $(this).text() === currentPage.toString();
-      })
-      .click();
   });
 
   // ==========================================================================

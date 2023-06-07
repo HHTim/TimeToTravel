@@ -2,8 +2,8 @@ package com.tibame.timetotravel.service;
 
 import com.tibame.timetotravel.entity.Gift;
 import com.tibame.timetotravel.view.ViewGiftOrderManage;
-
 import java.util.List;
+
 
 public interface GiftOrderManageService {
 
@@ -16,4 +16,10 @@ public interface GiftOrderManageService {
 //    List<ViewGiftOrderManage> findByGiftOrder(Integer giftOrderId, Integer userId);
     List<ViewGiftOrderManage> findByGiftOrderId(Integer giftOrderId);
     List<ViewGiftOrderManage> findByUserAccount(Integer userAccount);
+
+    List<ViewGiftOrderManage> findByDateRange(String startDate, String endDate);
+
+
+
+
 }
