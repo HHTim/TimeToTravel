@@ -53,7 +53,7 @@ public class UserServiceImpl implements UserService {
         user.setUserBirthDay(dto.getBirthday());
         user.setUserPhone(dto.getPhone());
         user.setUserName(dto.getName());
-        user.setUserAvatar(dto.getAvatar());
+        user.setUserAvatar(dto.getAvatar().getBytes());
 
         // 預設值
         user.setUserNickName("");
@@ -124,7 +124,7 @@ public class UserServiceImpl implements UserService {
         dto.setNickName(user.getUserNickName());
         dto.setPhone(user.getUserPhone());
         dto.setEmail(user.getUserEmail());
-        dto.setAvatar(user.getUserAvatar());
+        dto.setAvatar(new String(user.getUserAvatar()));
         dto.setGender(user.getUserGender());
         dto.setBirthday(user.getUserBirthDay());
 
@@ -140,7 +140,7 @@ public class UserServiceImpl implements UserService {
         user.setUserPhone(dto.getPhone());
         user.setUserName(dto.getName());
         user.setUserNickName(dto.getNickName());
-        user.setUserAvatar(dto.getAvatar());
+        user.setUserAvatar(dto.getAvatar().getBytes());
 
         userRepository.save(user);
     }
