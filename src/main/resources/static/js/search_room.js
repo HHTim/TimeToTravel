@@ -31,6 +31,7 @@ async function fetchData(url, method = 'GET', requestBody = null) {
   }
 }
 
+// 渲染星星
 function renderRank(rank) {
   let html = '';
   for (let i = 0; i < rank; i++) {
@@ -39,6 +40,7 @@ function renderRank(rank) {
   return html;
 }
 
+// 處理分頁器按鈕的點擊事件，將頁數丟回handleSearch重新搜尋渲染房間
 function handlePageBtn(e) {
   // 按鈕代表的頁數
   const pageNum = e.target.dataset.page;
@@ -56,7 +58,9 @@ function handlePageBtn(e) {
   handleSearch(pageNum);
 }
 
+// 渲染分頁器
 function renderPaganation(pageSize) {
+  // 第一頁預設active
   let html = `<li id="page-btn" role="button" class="page-item active">
     <a class="page-link"  data-page="1">1</a>
   </li>`;
@@ -69,9 +73,9 @@ function renderPaganation(pageSize) {
   return html;
 }
 
+// 渲染房間的搜尋結果
 function renderSearchResult(result) {
   let html = '';
-
   for (let i in result) {
     const { comId, comName, comAddress, roomName, roomDesc, roomPhoto, orderRanks, roomId } = result[i];
     const sum = orderRanks.reduce((curr, acc) => curr + acc, 0);
@@ -99,17 +103,26 @@ function renderSearchResult(result) {
   return html;
 }
 
+// 處理房間的搜尋結果
 async function handleSearch(page) {
   const { keyword, people, startDate, endDate } = searchBody;
   const result = await fetchData(`/rooms/search/${keyword}/${people}/${startDate}/${endDate}/${page}`);
-  searchResultsCountElement.innerText = '搜尋結果共 ' + result.rows.length + ' 筆';
   console.log(result);
   // 總頁數
   let pageSize = Math.ceil(result.pageSize / 5);
   console.log('頁數: ' + pageSize);
+  searchResultsCountElement.innerText = '搜尋結果共 ' + result.pageSize + ' 筆';
 
   /* Search Result */
-  searchResult.innerHTML = renderSearchResult(result.rows);
+  if (result.rows.length === 0) {
+    searchResult.innerHTML = `
+    <div class="not-found">
+      <img src="../images/not_found.svg" alt="Results Not Found" />
+    </div>
+    `;
+  } else {
+    searchResult.innerHTML = renderSearchResult(result.rows);
+  }
   /* Paganation */
   // 渲染過一次分頁器就不再渲染;
   if (isRenderPage) return;
@@ -117,10 +130,12 @@ async function handleSearch(page) {
   isRenderPage = true;
 }
 
+// 點選房間事件，將點擊的房間的comid、roomid存到session storage中，跳下一頁搜尋
 async function handleSelectRoom(e) {
   const dataset = e.target.closest('div.hotel__card').dataset;
-  searchBody.comId = dataset.comid;
-  searchBody.roomId = dataset.roomid;
+  const { comid, roomid } = dataset;
+  searchBody.comId = comid;
+  searchBody.roomId = roomid;
   sessionStorage.setItem('searchBody', JSON.stringify(searchBody));
   window.location.href = '/rooms/booking';
   // console.log(comid + ' ' + roomid);
@@ -144,11 +159,13 @@ async function handleSelectRoom(e) {
 //   endDate: '2023-05-02',
 // };
 
+// 將前一頁存到session storage的資料放到搜尋input中
 searchLocation.value = searchBody.keyword;
 searchPeople.value = searchBody.people;
 searchStart.value = searchBody.startDate;
 searchEnd.value = searchBody.endDate;
 
+// 搜尋input輸入的值放到session storage中
 [searchLocation, searchPeople, searchStart, searchEnd].forEach((elem) => {
   elem.addEventListener('blur', (e) => {
     console.log(e.target.value);

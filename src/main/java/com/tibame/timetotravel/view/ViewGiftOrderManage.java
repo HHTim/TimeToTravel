@@ -25,6 +25,7 @@ public class ViewGiftOrderManage {
 //COLUMN 資料:
     //    GIFT_ORDER_ID             訂單編號
     //    USER ID                   會員
+    //    USER_ACCOUNT              會員帳號
     //    GIFT_ORDER_AMOUNT         訂單總金額
     //    GIFT_ORDER_DATETIME       成立時間
     //    GIFT_ORDER_STATUS         訂單狀態 (0 已完成 / 1 未完成)
@@ -76,6 +77,9 @@ public class ViewGiftOrderManage {
 
     @Column(name = "UNIT_PRICE", nullable = false, columnDefinition = "int unsigned")
     private Integer unitPrice;
+
+    @Column(name = "USER_ACCOUNT", nullable = false)
+    private String userAccount;
 
 
 
