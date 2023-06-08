@@ -136,6 +136,7 @@ public class UserController extends BaseController {
 
         try {
             int id = (int) request.getSession().getAttribute("user_id");
+            ((UserSessionDto) request.getSession().getAttribute("user")).setAvatar(dto.getAvatar());
             userService.modify(id, dto);
         } catch (Exception e) {
             return badRequest(e.getMessage());
