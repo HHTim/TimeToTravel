@@ -1,31 +1,39 @@
-DROP TABLE journey;
+DROP TABLE IF EXISTS JOURNEY;
 
-CREATE TABLE journey
+CREATE TABLE JOURNEY
 (
-    JOURNEY_ID     INT         NOT NULL COMMENT '私房行程編號' AUTO_INCREMENT,
-    COM_ID         INT         NOT NULL COMMENT '商家編號',
-    JOURNEY_NAME   VARCHAR(30) NOT NULL COMMENT '私房行程名稱',
-    JOURNEY_PRICE  INT         NOT NULL COMMENT '私房行程價格',
+    JOURNEY_ID     INT           NOT NULL COMMENT '私房行程編號' AUTO_INCREMENT,
+    COM_ID         INT           NOT NULL COMMENT '商家編號',
+    JOURNEY_NAME   VARCHAR(100)  NOT NULL COMMENT '私房行程名稱',
+    JOURNEY_PRICE  INT         	 NOT NULL COMMENT '私房行程價格',
     JOURNEY_DESC   VARCHAR(1000) NOT NULL COMMENT '私房行程描述',
-    JOURNEY_PIC    LONGBLOB 			COMMENT '私房行程照片',
-    JOURNEY_STATUS TINYINT(1)  NOT NULL COMMENT '私房行程狀態',
+    JOURNEY_PIC    LONGBLOB 			  COMMENT '私房行程照片',
+    JOURNEY_STATUS TINYINT(1)    NOT NULL COMMENT '私房行程狀態',
     PRIMARY KEY (JOURNEY_ID)
 #     CONSTRAINT FK_JOURNEY_COM_ID FOREIGN KEY (COM_ID) REFERENCES COMPANY (COM_ID)
 ) COMMENT '私房行程資料表';
 
-INSERT INTO `` (`JOURNEY_ID`,`COM_ID`,`JOURNEY_NAME`,`JOURNEY_PRICE`,`JOURNEY_DESC`,`JOURNEY_PIC`,`JOURNEY_STATUS`) VALUES (1,1,'台北市立動物園',900,'位於捷運文湖線終點的臺北市立動物園',null,1);
-INSERT INTO `` (`JOURNEY_ID`,`COM_ID`,`JOURNEY_NAME`,`JOURNEY_PRICE`,`JOURNEY_DESC`,`JOURNEY_PIC`,`JOURNEY_STATUS`) VALUES (2,1,'羊稠坑遠眺高鐵',2500,'羊稠坑森林步道總長約3.3公里，大致上屬平緩好走。',null,1);
-INSERT INTO `` (`JOURNEY_ID`,`COM_ID`,`JOURNEY_NAME`,`JOURNEY_PRICE`,`JOURNEY_DESC`,`JOURNEY_PIC`,`JOURNEY_STATUS`) VALUES (3,1,'白楊步道',1000,'行在白楊步道除了能盡賞溪谷風光外，更可觀察鳥類、昆蟲等生態。',null,1);
-INSERT INTO `` (`JOURNEY_ID`,`COM_ID`,`JOURNEY_NAME`,`JOURNEY_PRICE`,`JOURNEY_DESC`,`JOURNEY_PIC`,`JOURNEY_STATUS`) VALUES (4,1,'坪林茶業博物館',1200,'坪林茶業博物館 ，一座閩南安溪風格的四合院建築。',null,1);
-INSERT INTO `` (`JOURNEY_ID`,`COM_ID`,`JOURNEY_NAME`,`JOURNEY_PRICE`,`JOURNEY_DESC`,`JOURNEY_PIC`,`JOURNEY_STATUS`) VALUES (5,2,'石碇老街',600,'以石砌橋墩搭成的萬壽橋劃分東西。',null,1);
-INSERT INTO `` (`JOURNEY_ID`,`COM_ID`,`JOURNEY_NAME`,`JOURNEY_PRICE`,`JOURNEY_DESC`,`JOURNEY_PIC`,`JOURNEY_STATUS`) VALUES (6,2,'淡蘭古道南線',1800,'淡蘭古道是指清朝末期到日治時代初期。',null,1);
-INSERT INTO `` (`JOURNEY_ID`,`COM_ID`,`JOURNEY_NAME`,`JOURNEY_PRICE`,`JOURNEY_DESC`,`JOURNEY_PIC`,`JOURNEY_STATUS`) VALUES (7,2,'新元昌紅茶產業文化館',2500,'帶您了解古早味紅茶的由來。',null,1);
-INSERT INTO `` (`JOURNEY_ID`,`COM_ID`,`JOURNEY_NAME`,`JOURNEY_PRICE`,`JOURNEY_DESC`,`JOURNEY_PIC`,`JOURNEY_STATUS`) VALUES (8,2,'圓山西密道',1350,'超凡出奇的圓山飯店，此次造訪西側出口通往劍潭公園全長85公尺。',null,1);
-INSERT INTO `` (`JOURNEY_ID`,`COM_ID`,`JOURNEY_NAME`,`JOURNEY_PRICE`,`JOURNEY_DESC`,`JOURNEY_PIC`,`JOURNEY_STATUS`) VALUES (9,3,'烏來台車體驗',1550,'早期的烏來台車是山林中砍伐木材的運送車，台車拿來作為運輸遊客的工具。',null,1);
-INSERT INTO `` (`JOURNEY_ID`,`COM_ID`,`JOURNEY_NAME`,`JOURNEY_PRICE`,`JOURNEY_DESC`,`JOURNEY_PIC`,`JOURNEY_STATUS`) VALUES (10,3,'中華民國總統府',2000,'現在的總統府在西元1919年為日本人所建，在當時是當做總督府的廳舍。',null,1);
-INSERT INTO `` (`JOURNEY_ID`,`COM_ID`,`JOURNEY_NAME`,`JOURNEY_PRICE`,`JOURNEY_DESC`,`JOURNEY_PIC`,`JOURNEY_STATUS`) VALUES (11,3,'士林官邸花園',2000,'曾陪伴先總統蔣中正渡過20多個年頭的士林官邸，不僅是台北市著名的國定古蹟。',null,1);
-INSERT INTO `` (`JOURNEY_ID`,`COM_ID`,`JOURNEY_NAME`,`JOURNEY_PRICE`,`JOURNEY_DESC`,`JOURNEY_PIC`,`JOURNEY_STATUS`) VALUES (12,3,'三峽老街',1000,'歷經時代變遷的三峽老街，留有許多各具風格的房屋。',null,1);
-INSERT INTO `` (`JOURNEY_ID`,`COM_ID`,`JOURNEY_NAME`,`JOURNEY_PRICE`,`JOURNEY_DESC`,`JOURNEY_PIC`,`JOURNEY_STATUS`) VALUES (13,4,'陽明山藍寶石泉',3050,'台北自來水處首度開放陽明山一處秘境草山水道「藍寶石泉」。',null,1);
-INSERT INTO `` (`JOURNEY_ID`,`COM_ID`,`JOURNEY_NAME`,`JOURNEY_PRICE`,`JOURNEY_DESC`,`JOURNEY_PIC`,`JOURNEY_STATUS`) VALUES (14,4,'象山親山步道',800,'屬於台北盆地東南丘陵的一部分，因山形似象山而得名。',null,1);
-INSERT INTO `` (`JOURNEY_ID`,`COM_ID`,`JOURNEY_NAME`,`JOURNEY_PRICE`,`JOURNEY_DESC`,`JOURNEY_PIC`,`JOURNEY_STATUS`) VALUES (15,4,'百年閩式四合院',600,'林安泰古厝民俗文物館的原名為安泰厝，現位於台北市濱江公園旁。',null,1);
-INSERT INTO `` (`JOURNEY_ID`,`COM_ID`,`JOURNEY_NAME`,`JOURNEY_PRICE`,`JOURNEY_DESC`,`JOURNEY_PIC`,`JOURNEY_STATUS`) VALUES (16,4,'寶藏巖國際藝術村',1350,'「寶藏巖國際藝術村」規劃了15間藝術家工作室。',null,1);
+INSERT INTO JOURNEY(COM_ID, JOURNEY_NAME, JOURNEY_PRICE, JOURNEY_DESC, JOURNEY_PIC, JOURNEY_STATUS)
+VALUES (1, '2024日月潭跨年晚會', 9500, '2023年的最後一天，讓我們齊聚日月潭一同迎接2024年', NULL, 1),
+       (1, '樂旅日月潭一泊二食專案', 10500, '傾聽著蟲鳴鳥叫聲，漫遊日月湖畔，與我們來場輕旅行的約會吧^^', NULL, 1),
+       (1, '蘭陽人文半日遊', 2500, '羅東林場文化園區(參觀森林火車老火車頭、林場日式老街、儲木池、舊鐵軌..) ', NULL, 1),
+       (1, '梅花湖樂活之旅', 500, '梅花湖環湖步道漫步(環湖步道漫步或自費租單車環湖)', NULL, 1)
+;
+
+INSERT INTO JOURNEY(COM_ID, JOURNEY_NAME, JOURNEY_PRICE, JOURNEY_DESC, JOURNEY_PIC, JOURNEY_STATUS)
+VALUES (2, '幾米城市小旅行', 800, '幾米廣場（記憶旅人的片刻風景）', NULL, 1),
+       (2, '台南南風俱樂部-旗袍租借體驗', 1500, '感受全台古蹟密度最高的古城魅力來旅行吧！台南可以這樣體驗～', NULL, 1),
+       (2, '台南安平-帆船遊艇體驗', 5000, '來到這麼美的遊艇碼頭，怎麼能不找個機會到海上搭搭遊艇、拍拍照呢', NULL, 1),
+       (2, '台南四大月老廟參拜半日遊', 500, '月老拜好拜滿求得好姻緣！台南4大月老廟，參拜用途大不同，想要擺脫單身狗來這裡！', NULL, 1)
+;
+
+INSERT INTO JOURNEY(COM_ID, JOURNEY_NAME, JOURNEY_PRICE, JOURNEY_DESC, JOURNEY_PIC, JOURNEY_STATUS)
+VALUES (3, '(新竹這樣玩)內灣線一日遊', 3000, '搭上內灣線火車來趟內灣線一日遊，在內灣線各站尋找線索解謎', NULL, 1),
+       (3, '苗栗雲水度假森林．四十二份湧泉生態步道', 1550, '帶你到猶如置身童話世界般的「蘇維拉莊園」、電影《賽德克巴萊》主要拍攝場景之一「神仙谷瀑布」', NULL, 1),
+       (3, '南投麝香木新祕境，紫色風暴開滿山坡', 2050, '在南投、雲林都不少麝香木秘境，開花時呈現一片粉紫色，隨風搖曳', NULL, 1),
+       (3, '10條經典馬祖步道，走在山海之間的山脊步道', 2550, '有世界級的「螺山自然步道」、360度觀景台的「 東洋山步道」', NULL, 1)
+;
+
+
+SELECT *
+FROM JOURNEY;

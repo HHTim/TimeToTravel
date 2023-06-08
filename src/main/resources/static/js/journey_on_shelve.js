@@ -4,7 +4,18 @@ window.addEventListener('load', function () {
 	let saveBtn = document.querySelector('.save__btn__commit');
 	let journeyId;
 	let mimeType = 'img/jpeg';
+	let onShelveBtn = document.querySelector('.nav_list_on_shelve');
+	let resetBtn = this.document.querySelector('.reset__area__btn');
+	resetBtn.addEventListener('click', function () {
+		window.location.reload();
+	});
 
+	onShelveBtn.addEventListener('click', () => {
+		localStorage.removeItem('selectedRoom');
+		localStorage.removeItem('selectedPrivateScene');
+		localStorage.removeItem('selectedGift');
+		localStorage.removeItem('selectedJourney');
+	});
 	// 處理從journey_manage.html來的journey
 	function handleSelectedJourney() {
 		const selectedJourney = JSON.parse(localStorage.getItem('selectedJourney'));

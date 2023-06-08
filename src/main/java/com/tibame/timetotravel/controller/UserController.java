@@ -59,7 +59,8 @@ public class UserController extends BaseController {
             int id = userService.login(dto);
             User user = userService.findByUserId(id);
             request.getSession().setAttribute("user_id", id);
-            request.getSession().setAttribute("user", new UserSessionDto(user, null, null, "會員"));
+//            System.out.println("ssss:"+new String(user.getUserAvatar()));
+            request.getSession().setAttribute("user", new UserSessionDto(user, null, null, "會員",new String(user.getUserAvatar())));
 //            System.out.println("UserSession: " + request.getSession().getAttribute("user"));
         } catch (Exception e) {
             return badRequest(e.getMessage());

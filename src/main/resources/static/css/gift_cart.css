@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* theme-color */
 /* border */
 /* effect */
@@ -437,3 +438,76 @@ input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
+/* 清空彈出視窗 */
+div.modal-body {
+  text-align: center;
+  font-size: 2rem;
+  color: red;
+}
+
+div.modal-body div {
+  font-size: 1.3rem;
+  color: #333;
+  padding-top: 10px;
+}
+
+/* 返回土產專區確認 */
+div.success-mask {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 888;
+}
+
+div.add-success.show, div.success-mask.show {
+  display: block;
+}
+
+div.add-success {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 500px;
+  background-color: #fff;
+  padding: 20px;
+  z-index: 999;
+  text-align: center;
+  border-radius: 10px;
+}
+
+div.success-icon {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.7rem;
+}
+
+div.success-msg {
+  margin: 25px 0;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+div.success-msg i {
+  margin: 0 30px;
+}
+
+div.success-btn button {
+  background-color: #3d8ebd;
+  border-color: #3d8ebd;
+  border-radius: 10px;
+  color: #fff;
+  padding: 6px 60px;
+  text-align: center;
+}
+
+/* 返回土產專區確認 End */

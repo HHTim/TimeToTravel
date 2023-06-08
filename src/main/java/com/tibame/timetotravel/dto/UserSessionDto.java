@@ -15,4 +15,5 @@ public class UserSessionDto {
     private Company company;
     private Admin admin;
     private String role;
+    private String avatar;
 }

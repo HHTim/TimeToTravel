@@ -1,3 +1,5 @@
+DROP TABLE ADMIN_TO_COM;
+
 CREATE TABLE ADMIN_TO_COM (
 	A2C_MSG_ID INT AUTO_INCREMENT COMMENT 'A2C 訊息編號',
 	A2C_SENDER_ID INT COMMENT '發信管理者編號',
@@ -13,23 +15,38 @@ CREATE TABLE ADMIN_TO_COM (
 
 SELECT * FROM ADMIN_TO_COM;
 
-INSERT INTO ADMIN_TO_COM(A2C_MSG_ID,A2C_SENDER_ID,A2C_RECEIVER_ID,A2C_SENDING_TIME,A2C_MSG_TITLE,A2C_MSG_CONTENT)
-VALUES(1,1,1,(NOW()),"A商家名稱上架訊息回覆","關於貴公司的上架審核的部分已經通過，感謝使用本平台，如有疑問請再發送相關訊息通知，謝謝");
+INSERT INTO ADMIN_TO_COM(A2C_MSG_ID, A2C_SENDER_ID, A2C_RECEIVER_ID, A2C_SENDING_TIME, A2C_MSG_TITLE, A2C_MSG_CONTENT)
+VALUES(1, 1, 1, (NOW()), "加入平台合作夥伴", "如果您有與我們合作的興趣，請填寫合作夥伴申請表格，我們的業務團隊將與您聯繫以進一步討論合作機會。");
+
+INSERT INTO ADMIN_TO_COM(A2C_MSG_ID, A2C_SENDER_ID, A2C_RECEIVER_ID, A2C_SENDING_TIME, A2C_MSG_TITLE, A2C_MSG_CONTENT)
+VALUES(2, 1, 3, (NOW()), "設定房源資訊", "登入您的商家帳戶，您可以在房型管理頁面設定您的房源資訊，包括房型、價格、設施和照片等。");
+
+INSERT INTO ADMIN_TO_COM(A2C_MSG_ID, A2C_SENDER_ID, A2C_RECEIVER_ID, A2C_SENDING_TIME, A2C_MSG_TITLE, A2C_MSG_CONTENT)
+VALUES(3, 1, 2, (NOW()), "取消政策和費用", "請查看您在平台上設定的取消政策和相關費用。在預訂時，這些條款將與客戶進行確認。");
+
+INSERT INTO ADMIN_TO_COM(A2C_MSG_ID, A2C_SENDER_ID, A2C_RECEIVER_ID, A2C_SENDING_TIME, A2C_MSG_TITLE, A2C_MSG_CONTENT)
+VALUES(4, 1, 4, (NOW()), "支付和結算", "收到客戶的付款後，根據平台的結算條件，我們會定期將款項匯入您指定的帳戶。您可以在商家帳戶中查看支付和結算相關資訊。");
+
+INSERT INTO ADMIN_TO_COM(A2C_MSG_ID, A2C_SENDER_ID, A2C_RECEIVER_ID, A2C_SENDING_TIME, A2C_MSG_TITLE, A2C_MSG_CONTENT)
+VALUES(5, 1, 2, (NOW()), "評價和回饋", "客戶可能會對您的房源和服務進行評價和回饋。您可以在商家帳戶中查看評價和回饋，並根據需要回覆或採取相應的行動。");
 
 INSERT INTO ADMIN_TO_COM(A2C_MSG_ID,A2C_SENDER_ID,A2C_RECEIVER_ID,A2C_SENDING_TIME,A2C_MSG_TITLE,A2C_MSG_CONTENT)
-VALUES(2,1,3,(NOW()),"B商家帳號註冊審核通過","關於貴公司的帳號審核已通過，感謝使用本平台，如有疑問請再發送相關訊息通知，謝謝");
+VALUES(6, 1, 1, (NOW()), "促銷和優惠活動", "我們可能會舉辦促銷和優惠活動，您可以聯繫我們的業務團隊了解如何參與這些活動，以提高曝光和吸引更多客戶。");
 
 INSERT INTO ADMIN_TO_COM(A2C_MSG_ID,A2C_SENDER_ID,A2C_RECEIVER_ID,A2C_SENDING_TIME,A2C_MSG_TITLE,A2C_MSG_CONTENT)
-VALUES(3,1,2,(NOW()),"C商家帳號註冊審核通過","關於貴公司的帳號審核已通過，感謝使用本平台，如有疑問請再發送相關訊息通知，謝謝");
+VALUES(7, 1, 3, (NOW()), "房源可見性和排名", "房源可見性和排名是基於一系列因素而定的，包括房源資訊的完整性、評價和客戶回饋等。您可以優化房源資訊以提高可見性和排名。");
 
 INSERT INTO ADMIN_TO_COM(A2C_MSG_ID,A2C_SENDER_ID,A2C_RECEIVER_ID,A2C_SENDING_TIME,A2C_MSG_TITLE,A2C_MSG_CONTENT)
-VALUES(4,1,4,(NOW()),"D商家帳號註冊審核通過","關於貴公司的帳號審核已通過，感謝使用本平台，如有疑問請再發送相關訊息通知，謝謝");
+VALUES(8, 1, 4, (NOW()), "證照和法律要求", "確保您的房源符合當地的證照和法律要求。請在平台上提供必要的證照和文件，以確保合法運營。");
 
 INSERT INTO ADMIN_TO_COM(A2C_MSG_ID,A2C_SENDER_ID,A2C_RECEIVER_ID,A2C_SENDING_TIME,A2C_MSG_TITLE,A2C_MSG_CONTENT)
-VALUES(5,1,6,(NOW()),"E商家帳號註冊審核通過","關於貴公司的帳號審核已通過，感謝使用本平台，如有疑問請再發送相關訊息通知，謝謝");
+VALUES(9, 1, 4, (NOW()), "銀行資訊和付款問題", "請確保您提供正確的銀行資訊，以便我們能夠準確和及時地進行支付。如果您有付款問題，請聯繫我們的支持團隊。");
 
 INSERT INTO ADMIN_TO_COM(A2C_MSG_ID,A2C_SENDER_ID,A2C_RECEIVER_ID,A2C_SENDING_TIME,A2C_MSG_TITLE,A2C_MSG_CONTENT)
-VALUES(6,1,5,(NOW()),"F商家帳號註冊審核通過","關於貴公司的帳號審核已通過，感謝使用本平台，如有疑問請再發送相關訊息通知，謝謝");
+VALUES(10, 1, 2, (NOW()), "促銷照片和內容", "提供有吸引力的照片和描述可以幫助您的房源吸引更多客戶。請確保照片高質量、清晰可見，並使用引人注目的促銷內容。");
+
+INSERT INTO ADMIN_TO_COM(A2C_MSG_ID,A2C_SENDER_ID,A2C_RECEIVER_ID,A2C_SENDING_TIME,A2C_MSG_TITLE,A2C_MSG_CONTENT)
+VALUES(11, 1, 3, (NOW()), "關於預訂的問題", "如果您收到關於預訂的問題，例如房間配置、退房時間等，請盡量提供準確和詳細的回答，以幫助客戶做出明智的選擇。");
 
 SELECT * FROM ADMIN_TO_COM;
 #SELECT COUNT(*) FROM ADMIN_TO_COM;
@@ -38,4 +55,4 @@ SELECT * FROM ADMIN_TO_COM;
 #SELECT * FROM ADMIN_TO_COM ORDER BY A2C_SENDING_TIME DESC LIMIT 0,5;
 #DELETE FROM ADMIN_TO_COM;
 
-#DROP TABLE ADMIN_TO_COM;
+

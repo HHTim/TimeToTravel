@@ -8,7 +8,14 @@ window.addEventListener('load', function () {
 	let allJourney = document.querySelector('.all__journey');
 	let journeyOnShelve = document.querySelector('.all__journey_on-shelve');
 	let journeyOffShelve = document.querySelector('.all__journey__off-shelve');
+	let onShelveBtn = document.querySelector('.nav_list_on_shelve');
 
+	onShelveBtn.addEventListener('click', () => {
+		localStorage.removeItem('selectedRoom');
+		localStorage.removeItem('selectedPrivateScene');
+		localStorage.removeItem('selectedGift');
+		localStorage.removeItem('selectedJourney');
+	});
 	/* 重設按鈕 */
 	resetBtn.addEventListener('click', function () {
 		window.location.reload();

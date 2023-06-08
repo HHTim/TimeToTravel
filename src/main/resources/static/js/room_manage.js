@@ -11,6 +11,14 @@ window.addEventListener('load', function () {
 	let roomsOnShelve = this.document.querySelector('.all__rooms__on-shelve');
 	let roomsOffShelve = this.document.querySelector('.all__rooms__off-shelve');
 	let pagination = this.document.querySelector('#pagination');
+	let onShelveBtn = document.querySelector('.nav_list_on_shelve');
+
+	onShelveBtn.addEventListener('click', () => {
+		localStorage.removeItem('selectedRoom');
+		localStorage.removeItem('selectedPrivateScene');
+		localStorage.removeItem('selectedGift');
+		localStorage.removeItem('selectedJourney');
+	});
 
 	pagination.addEventListener('click', function (e) {
 		e.preventDefault(); // 預防a標籤的跳頁
@@ -462,4 +470,5 @@ window.addEventListener('load', function () {
 			});
 	}
 	findByPage(1);
+	getCurrentUserInformation();
 });

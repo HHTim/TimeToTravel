@@ -55,7 +55,7 @@ public class AdminController extends BaseController{
             int id = adminService.login(dto);
             Admin admin = adminService.findByAdminId(id);
 //            request.getSession().setAttribute("user_id", id);
-            request.getSession().setAttribute("user", new UserSessionDto(null, null, admin, "平台"));
+            request.getSession().setAttribute("user", new UserSessionDto(null, null, admin, "平台", new String(admin.getAdminAvatar())));
             System.out.println("UserSession: " + request.getSession().getAttribute("user"));
         } catch (Exception e) {
             return badRequest(e.getMessage());
