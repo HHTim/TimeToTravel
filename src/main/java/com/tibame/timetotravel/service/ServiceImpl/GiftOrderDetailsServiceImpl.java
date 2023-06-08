@@ -1,6 +1,6 @@
 package com.tibame.timetotravel.service.ServiceImpl;
 
-import com.tibame.timetotravel.dto.GiftOrderList;
+import com.tibame.timetotravel.dto.GiftOrderListDto;
 import com.tibame.timetotravel.entity.Company;
 import com.tibame.timetotravel.entity.Gift;
 import com.tibame.timetotravel.entity.GiftOrderDetails;
@@ -12,7 +12,6 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,12 +31,12 @@ public class GiftOrderDetailsServiceImpl implements GiftOrderDetailsService {
     private CompanyRepository companyRepository;
 
     @Override
-    public List<GiftOrderList> findById(Integer giftOrderId) {
-        List<GiftOrderList> giftOrderLists = new ArrayList<>();
+    public List<GiftOrderListDto> findById(Integer giftOrderId) {
+        List<GiftOrderListDto> giftOrderLists = new ArrayList<>();
         List<GiftOrderDetails> giftOrderDetailsList = giftOrderDetailsRepository.findByGiftOrderId(giftOrderId);
 
         for (GiftOrderDetails oldItem : giftOrderDetailsList) {
-            GiftOrderList newItem = new GiftOrderList();
+            GiftOrderListDto newItem = new GiftOrderListDto();
             BeanUtils.copyProperties(oldItem, newItem);
             Integer giftId = newItem.getGiftId();
             Gift gift = giftRepository.findById(giftId).orElse(null);

@@ -1,8 +1,6 @@
 package com.tibame.timetotravel.controller;
 
-import com.tibame.timetotravel.dto.GiftOrderList;
-import com.tibame.timetotravel.entity.GiftOrder;
-import com.tibame.timetotravel.entity.GiftOrderDetails;
+import com.tibame.timetotravel.dto.GiftOrderListDto;
 import com.tibame.timetotravel.service.GiftOrderDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -19,8 +17,8 @@ public class GiftOrderDetailsController {
     private GiftOrderDetailsService giftOrderDetailsService;
 
     @GetMapping("/giftOrderDetails/{giftOrderId}")
-    public List<GiftOrderList> findById(@PathVariable Integer giftOrderId) {
-        List<GiftOrderList> giftOrderLists = giftOrderDetailsService.findById(giftOrderId);
+    public List<GiftOrderListDto> findById(@PathVariable Integer giftOrderId) {
+        List<GiftOrderListDto> giftOrderLists = giftOrderDetailsService.findById(giftOrderId);
 
         return giftOrderLists;
     }

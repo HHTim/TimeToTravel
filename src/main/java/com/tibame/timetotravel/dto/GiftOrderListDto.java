@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class GiftOrderList {
+public class GiftOrderListDto {
     private Integer giftOrderId;
     private Integer giftId;
     private String giftName;
