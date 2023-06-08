@@ -3,6 +3,10 @@ import { getCurrentUserInformation } from './header.js';
 window.addEventListener('load', function () {
 	let saveBtn = document.querySelector('.save__btn__commit');
 	let onShelveBtn = document.querySelector('.nav_list_on_shelve');
+	let resetBtn = this.document.querySelector('.reset__area__btn');
+	resetBtn.addEventListener('click', function () {
+		window.location.reload();
+	});
 
 	onShelveBtn.addEventListener('click', () => {
 		localStorage.removeItem('selectedRoom');
