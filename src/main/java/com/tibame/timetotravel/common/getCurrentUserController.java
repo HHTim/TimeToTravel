@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Base64;
+
 @RestController
 @RequestMapping("/getCurrentUserController")
 public class getCurrentUserController {
@@ -19,13 +21,13 @@ public class getCurrentUserController {
 
         if (user != null) {
             // 根據使用者角色進行不同的處理
-            if ("平台".equals(user.getRole())) {
+            if ("會員".equals(user.getRole())) {
                 // 平台使用者
-                System.out.println("當前登入者為平台");
+                System.out.println("當前登入者為會員");
             } else if ("商家".equals(user.getRole())) {
                 // 商家使用者
                 System.out.println("當前登入者為商家");
-            } else if ("管理者".equals(user.getRole())) {
+            } else if ("平台".equals(user.getRole())) {
                 // 管理者使用者
                 System.out.println("當前登入者為平台");
             }
