@@ -2,6 +2,7 @@ package com.tibame.timetotravel.controller;
 
 import com.tibame.timetotravel.entity.GiftOrder;
 import com.tibame.timetotravel.service.GiftOrderService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
@@ -35,17 +36,27 @@ public class GiftOrderController {
         return ResponseEntity.ok(giftOrderList);
     }
 
-    @GetMapping("/giftOrder/{userId}/{giftOrderId}")
-    public ResponseEntity<?> getByOrderId(@PathVariable Integer userId,
-                                  @PathVariable Integer giftOrderId) {
-        GiftOrder giftOrder = giftOrderService.getByOrderId(userId, giftOrderId);
+    @GetMapping("/giftOrderId/{giftOrderId}")
+    public ResponseEntity<?> getByOrderId(HttpSession session,
+                                          @PathVariable Integer giftOrderId) {
+        Integer userId = (Integer) session.getAttribute("user_id");
 
-        if (giftOrder == null) {
-            String none = "查無資料";
-            return ResponseEntity.ok(none);
+        System.out.println(userId);
+
+        if (userId != null) {
+
+            GiftOrder giftOrder = giftOrderService.getByOrderId(userId, giftOrderId);
+
+            if (giftOrder == null) {
+                return null;
+            }
+
+            return ResponseEntity.ok(giftOrder);
+
         }
 
-        return ResponseEntity.ok(giftOrder);
+        return null;
+
     }
 
 }

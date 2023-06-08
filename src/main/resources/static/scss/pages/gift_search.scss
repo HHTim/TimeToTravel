@@ -393,10 +393,10 @@ div.remind {
 
 .add-button-wrapper .btn {
   display: block;
-  background-color: #fff;
+  background-color: #ff674f;
   border: solid 1px #ff674f;
   border-radius: 5px;
-  color: #ff674f;
+  color: #fff;
   height: 35px;
   cursor: pointer;
   width: 100%;
@@ -612,3 +612,10 @@ input[type=number]::-webkit-outer-spin-button {
 div.swal-footer {
   text-align: center;
 }
+
+/* 外掛CDN的視窗 */
+div.swal-button-container {
+  margin: 0 25px;
+}
+
+

@@ -25,6 +25,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
         }
 
         // 登入驗證通過，繼續執行後續處理
+        response.sendRedirect("/html/user_login.html");
         return true;
     }
 }
