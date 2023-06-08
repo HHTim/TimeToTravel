@@ -6,7 +6,7 @@ $(function () {
 window.addEventListener('load', function () {
   const tbody = document.querySelector('tbody');
 
-  fetch('http://localhost:8080/scenes/getall')
+  fetch('http://localhost:8080/scenes/search/all')
     .then((resp) => resp.json())
     .then((data) => {
       console.log(data);
@@ -22,7 +22,7 @@ window.addEventListener('load', function () {
                   <td>${e.sceneDesc}</td>
                   <td>
                     <div>
-                      <button type="button" class="btn btn-primary delete__btn" >刪除</button>
+                      <button type="button" class="btn btn-danger delete__btn" >刪除</button>
                     </div>
                   </td>
                   <td>
@@ -111,7 +111,7 @@ window.addEventListener('load', function () {
                                           <td>${e.sceneDesc}</td>
                                           <td>
                                             <div>
-                                              <button type="button" class="btn btn-primary delete__btn"  >刪除</button>
+                                              <button type="button" class="btn btn-danger delete__btn"  >刪除</button>
                                             </div>
                                           </td>
                                           <td>
@@ -140,8 +140,34 @@ window.addEventListener('load', function () {
             var firstSibling = parent.parentNode.firstElementChild;
             var td_sceneId=firstSibling.textContent;
             console.log(td_sceneId);
-            window.location.href="/html/scene_put_on.html?sceneId=" + td_sceneId;
+            sessionStorage.setItem("ssSceneId",td_sceneId);
+            window.location.href="/html/scene_put_on.html";
         }
+    });
+
+
+    window.addEventListener('scroll', function() {
+      var topButton = document.getElementById('topButton');
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    
+      // 滾動到一定高度時顯示按鈕
+      if (scrollTop > 300) {
+        topButton.classList.add('show');
+      } else {
+        topButton.classList.remove('show');
+      }
+    });
+
+
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+
+    topButton.addEventListener('click', function() {
+        scrollToTop();
     });
 
 });

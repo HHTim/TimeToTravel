@@ -1,5 +1,5 @@
 // // 記得引入基本設定
-@import '../base/base';
+@import "../base/base";
 
 .decorator2 {
   // border-style: solid;
@@ -87,4 +87,26 @@ img {
     background-color: rgb(171, 171, 171);
   }
   border: none;
+}
+
+.top-button {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 50px;
+  height: 50px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.top-button i {
+  margin-top: 3px;
+}
+
+.top-button.show {
+  display: block; /* 滾動到一定高度時顯示按鈕 */
 }

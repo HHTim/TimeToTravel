@@ -5,11 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- import -->
-    <script src="../node_modules/@popperjs/core/dist/umd/popper.min.js" defer></script>
-    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js" defer></script>
+    <script
+      src="../node_modules/@popperjs/core/dist/umd/popper.min.js"
+      defer
+    ></script>
+    <script
+      src="../node_modules/bootstrap/dist/js/bootstrap.min.js"
+      defer
+    ></script>
     <script src="../node_modules/jquery/dist/jquery.min.js" defer></script>
-    <script src="https://kit.fontawesome.com/e3af248fb2.js" crossorigin="anonymous" defer></script>
-    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <script
+      src="https://kit.fontawesome.com/e3af248fb2.js"
+      crossorigin="anonymous"
+      defer
+    ></script>
+    <link
+      rel="stylesheet"
+      href="../node_modules/bootstrap/dist/css/bootstrap.min.css"
+    />
     <!-- 我們自己的 css 檔案，路徑記得改 -->
     <link rel="stylesheet" href="../css/scene_manage.css" />
     <!-- 我們自己的 js 檔案，路徑記得改 -->
@@ -36,7 +49,11 @@
             <li class="nav__link"><a href="#">部落格</a></li>
             <li class="nav__info">
               <div class="dropdown-center">
-                <button class="dropdown-toggle nav__info-btn" type="button" data-bs-toggle="dropdown"></button>
+                <button
+                  class="dropdown-toggle nav__info-btn"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                ></button>
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="#">訊息一</a></li>
                   <li><a class="dropdown-item" href="#">訊息二</a></li>
@@ -49,7 +66,12 @@
             <li class="nav__avatar">
               <div class="dropdown-center">
                 <!-- <button class="dropdown-toggle nav__avatar-btn" type="button" data-bs-toggle="dropdown"></button> -->
-                <a href="#" class="dropdown-toggle nav__avatar-btn" type="button" data-bs-toggle="dropdown">
+                <a
+                  href="#"
+                  class="dropdown-toggle nav__avatar-btn"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                >
                   <div class="nav__avatar-img">
                     <img src="../images/avatar.svg" alt="avatar" />
                   </div>
@@ -108,8 +130,8 @@
                   <label for="check_all" style="font-size: 14px">全部</label>
                 </div> -->
                 <div class="col-2">
-<!--                  <input type="checkbox" id="check_noab" />-->
-<!--                  <label for="check_noab" style="font-size: 14px">未上架</label>-->
+                  <!--                  <input type="checkbox" id="check_noab" />-->
+                  <!--                  <label for="check_noab" style="font-size: 14px">未上架</label>-->
                 </div>
               </div>
               <div class="decorator1"></div>
@@ -120,8 +142,14 @@
               <div class="row">
                 <div>
                   <p>
-                    <input id="search" type="text" placeholder="景點名稱、景點地址" />
-                    <button class="btn btn-primary" id="search-btn">查詢</button>
+                    <input
+                      id="search"
+                      type="text"
+                      placeholder="景點名稱、景點地址"
+                    />
+                    <button class="btn btn-primary" id="search-btn">
+                      查詢
+                    </button>
                   </p>
                 </div>
                 <br />
@@ -137,6 +165,10 @@
                       <th>狀態</th>
                     </tr>
                   </thead>
+                  <button id="topButton" class="top-button">
+                    <i class="fas fa-arrow-up"></i>
+                  </button>
+
                   <tbody>
                     <tr style="font-size: 15px">
                       <td>P00001</td>
@@ -148,12 +180,22 @@
                       </td>
                       <td>
                         <div>
-                          <button type="button" class="btn btn-primary delete__btn" >刪除</button>
+                          <button
+                            type="button"
+                            class="btn btn-danger delete__btn"
+                          >
+                            刪除
+                          </button>
                         </div>
                       </td>
                       <td>
                         <div>
-                          <button type="button" class="btn btn-primary update__btn" >編輯</button>
+                          <button
+                            type="button"
+                            class="btn btn-primary update__btn"
+                          >
+                            編輯
+                          </button>
                         </div>
                       </td>
                     </tr>
