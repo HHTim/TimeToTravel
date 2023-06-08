@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class OrderListDto {
+    private Integer comId;
+    private Integer roomId;
     private Integer orderId;
     private String comName;
     private String roomName;

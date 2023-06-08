@@ -1,10 +1,12 @@
+DROP TABLE IF EXISTS ROOM;
+
 CREATE TABLE `ROOM`
 (
     `ROOM_ID`        INT          NOT NULL AUTO_INCREMENT COMMENT '房型編號',
     `COM_ID`         INT          NOT NULL COMMENT '商家編號',
-    `ROOM_NAME`      VARCHAR(50)  NOT NULL COMMENT '房型名稱',
+    `ROOM_NAME`      VARCHAR(100)  NOT NULL COMMENT '房型名稱',
     `ROOM_PRICE`     INT          NOT NULL COMMENT '房型價格',
-    `ROOM_DESC`      VARCHAR(500) NOT NULL COMMENT '房型描述',
+    `ROOM_DESC`      VARCHAR(1000) NOT NULL COMMENT '房型描述',
     `ROOM_RELEASE`   DATE         NOT NULL DEFAULT (NOW()) COMMENT '房型上架日期',
     `ROOM_WIFI`      TINYINT(1)   NOT NULL COMMENT '是否有WIFI',
     `ROOM_PET`       TINYINT(1)   NOT NULL COMMENT '是否有寵物',
@@ -22,23 +24,23 @@ CREATE TABLE `ROOM`
 
 INSERT INTO ROOM(COM_ID, ROOM_NAME, ROOM_PRICE, ROOM_DESC, ROOM_WIFI, ROOM_PET, ROOM_BREAKFAST,
                  ROOM_PARKING, ROOM_SMOKING, ROOM_24HOURS, ROOM_STOCK, ROOM_BED, ROOM_PEOPLE, ROOM_STATUS, ROOM_PHOTO)
-VALUES (1, '邊緣單人房', 9000, '專為單身邊緣的你所設立', 0, 0, 1, 0, 1, 0, 2, '單人房', 1, 1 ,NULL),
-       (1, '情侶雙人房', 10000, '鏡子絕對沒有鏡頭，預設絕對沒有攝影', 1, 0, 1, 1, 1, 1, 2, '雙人房', 2, 1, NULL),
-       (1, '男男雙人房', 12000, '浴室提供滑滑的東西', 0, 1, 1, 0, 1, 0, 1, '雙人房', 2, 1, NULL),
-       (1, '家庭四人房', 15000, '牆壁很薄請勿發出噪音', 0, 0, 0, 1, 1, 1, 1, '四人房', 4, 1, NULL);
+VALUES (1, '日月潭日暮山景雙床房', 9000, '細膩規劃出9坪的簡約空間，讓山林富含的芬多精，隨意飄散在輕鬆假期。', 0, 0, 1, 0, 1, 0, 5, '雙人房', 2, 1 ,NULL),
+       (1, '日月潭映月經典和洋房', 10000, '寧靜且富饒的漁村景致，讓您滿足且貪戀眼前所得到的感動雲影與湖光的交錯', 1, 0, 1, 1, 1, 1, 5, '雙人房', 2, 1, NULL),
+       (1, '日月潭雅緻湖景套房', 12000, '房內以木質地板延伸至戶外的湖景嚮往，給您水天一色的釋然空間。', 0, 1, 1, 0, 1, 0, 10, '單人房', 1, 1, NULL),
+       (1, '日月潭雅緻湖景四人房', 15000, '輕觸在悠然自得的湖光水色，一彈一指間的沈迷放肆與您眼前那一片垂手可得', 0, 0, 0, 1, 1, 1, 10, '四人房', 4, 1, NULL);
 
 INSERT INTO ROOM(COM_ID, ROOM_NAME, ROOM_PRICE, ROOM_DESC, ROOM_WIFI, ROOM_PET, ROOM_BREAKFAST,
                  ROOM_PARKING, ROOM_SMOKING, ROOM_24HOURS, ROOM_STOCK, ROOM_BED, ROOM_PEOPLE, ROOM_STATUS, ROOM_PHOTO)
-VALUES (2, '總統單人房', 10000, '就是鳥籠啦', 0, 0, 1, 0, 1, 0, 2, '單人房', 1, 1, NULL),
-       (2, '土城單人房', 15000, '扁水哥御用', 1, 0, 1, 1, 1, 1, 2, '單人房', 1, 1, NULL),
-       (2, '婆媽四人房', 15000, '專為大聲婆的你們所設計，牆壁很厚!', 0, 1, 1, 0, 1, 0, 1, '四人房', 4, 1, NULL),
-       (2, '寵物雙人房', 20000, '可以帶上你男友(狗)', 0, 0, 0, 1, 1, 1, 1, '雙人房', 2, 1, NULL);
+VALUES (2, '台中麗寶閃亮星空', 30000, '夢幻的星空裡有著無數顆星星，只要對著房間壁貼上最大顆的星星許願，今晚就會甜甜進入夢鄉', 0, 0, 1, 0, 1, 0, 5, '四人房', 4, 1, NULL),
+       (2, '台中麗寶美味魔法師', 25000, '咻~熊大的魔法棒一揮，變出了許多美味可口的甜點讓你一進房就會不自覺想流口水', 1, 0, 1, 1, 1, 1, 10, '雙人房', 2, 1, NULL),
+       (2, '台中麗寶航海冒險', 15000, '以藍白色調為基底的海洋風，象徵每次出發都會有個最棒的開始，給你無限的勇氣和力量。', 0, 1, 1, 0, 1, 0, 3, '四人房', 4, 1, NULL),
+       (2, '台中麗寶浪漫滿屋', 20000, '為她/他製造一點點浪漫及驚喜，是生活中必備的儀式感，把日子詮釋成自己喜歡的樣子', 0, 0, 0, 1, 1, 1, 4, '雙人房', 2, 1, NULL);
 
 INSERT INTO ROOM(COM_ID, ROOM_NAME, ROOM_PRICE, ROOM_DESC, ROOM_WIFI, ROOM_PET, ROOM_BREAKFAST,
                  ROOM_PARKING, ROOM_SMOKING, ROOM_24HOURS, ROOM_STOCK, ROOM_BED, ROOM_PEOPLE, ROOM_STATUS, ROOM_PHOTO)
-VALUES (3, '樂團四人房', 10000, '熱音社請洽談', 0, 0, 1, 0, 1, 0, 2, '四人房', 4, 1, NULL),
-       (3, '乞丐單人房', 15000, '洪七公已簽約，放心休息吧', 0, 1, 1, 0, 1, 0, 1, '單人房', 1, 1, NULL),
-       (3, '彼得單人房', 20000, '配有喉糖，安心服用', 0, 0, 0, 1, 1, 1, 1, '單人房', 1, 1, NULL);
+VALUES (3, '墾丁一樓標準海景房', 10000, '陽光灑落、鳥鳴歡笑與您迎接美好早晨，通過綠草廊道直達泳池，享受旅人悠閒自在。', 0, 0, 1, 0, 1, 0, 3, '單人房', 1, 1, NULL),
+       (3, '墾丁二樓家庭海景房', 20000, '簡單無華的純淨空間，有著木質溫潤感受，讓您一掃煩雜瑣事，輕鬆自在的寫下幸福篇章。', 0, 1, 1, 0, 1, 0, 5, '四人房', 4, 1, NULL),
+       (3, '墾丁一樓雙人山景房', 15000, '時尚恬靜的舒適客房，軟綿的床鋪猶如飄逸藍天中的雲朵，匯集成墾丁美好時光', 0, 0, 0, 1, 1, 1, 10, '雙人房', 2, 1, NULL);
 
 SELECT *
 FROM TIMETOTRAVEL.ROOM;

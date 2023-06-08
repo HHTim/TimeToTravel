@@ -2,7 +2,63 @@ import { getCurrentUserInformation } from './header.js';
 
 window.addEventListener('load', function () {
   let saveBtn = document.querySelector('.save__btn__commit');
+  let giftId;
+  let mimeType = 'image/jpeg'; // 要將base64轉回img
+  let base64String;
 
+  /**
+   * 所有新增按鈕的事件綁定，清除localStorage內的 '資料'
+   */
+
+  const btns = document.querySelectorAll(
+    '.btn__update__room, .btn__update__gift, .btn__update__private__scene, .btn__update__journey'
+  );
+  const clearLocalStorage = () => {
+    localStorage.removeItem('selectedRoom');
+    localStorage.removeItem('selectedPrivateScene');
+    localStorage.removeItem('selectedGift');
+    localStorage.removeItem('selectedJourney');
+  };
+  btns.forEach((btn) => {
+    btn.addEventListener('click', clearLocalStorage);
+  });
+
+  // 處理從 gift_manage.html 來的編輯房型
+  function handleSelectedGift() {
+    const selectedGift = JSON.parse(localStorage.getItem('selectedGift'));
+    console.log(selectedGift);
+
+    // 要抓value，就要抓select選項
+    let giftNameInput = document.querySelector('.gift__name > input');
+    let giftStockInput = document.querySelector('.gift__stock > input');
+    let giftTypeIdInput = document.querySelector('.gift__type__option > optgroup > option');
+    let giftPriceInput = document.querySelector('.gift__price > input');
+    let giftIntroInput = document.querySelector('.gift__description > textarea');
+
+    giftNameInput.value = selectedGift.giftName;
+    giftStockInput.value = selectedGift.giftStock;
+    giftTypeIdInput.value = selectedGift.giftTypeId;
+    giftPriceInput.value = selectedGift.giftPrice;
+    giftIntroInput.value = selectedGift.giftIntro;
+
+    mimeType = 'image/jpeg';
+    let giftPhoto = convertBase64ToImage(selectedGift.giftPhoto, mimeType);
+	let resetBtn = this.document.querySelector('.reset__area__btn');
+	resetBtn.addEventListener('click', function () {
+		window.location.reload();
+	});
+    picturePreview.appendChild(giftPhoto);
+
+    giftId = selectedGift.giftId;
+  }
+  //====================================================
+
+  onShelveBtn.addEventListener('click', () => {
+    localStorage.removeItem('selectedRoom');
+    localStorage.removeItem('selectedPrivateScene');
+    localStorage.removeItem('selectedGift');
+    localStorage.removeItem('selectedJourney');
+  });
   saveBtn.addEventListener('click', function () {
     let giftName = document.querySelector('.gift__name > input').value;
     let giftStock = document.querySelector('.gift__stock > input').value;
@@ -26,18 +82,55 @@ window.addEventListener('load', function () {
       giftStatus: false, // 預設為未上架
     };
 
-    if (giftName !== null && giftPrice !== null && giftStock !== null) {
-      fetch('http://localhost:8080/giftController/gift', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(requestData),
-      })
-        .then((resp) => resp)
-        .then((body) => {
-          console.log(body);
-          alert('新增成功!!');
-          window.location.href = '../html/gift_manage.html';
-        });
+    // 新增土產內容，不會有giftId, fetch到insert 的controller
+    if (
+      giftName !== null &&
+      giftPrice !== null &&
+      giftStock !== null &&
+      giftTypeId !== null &&
+      giftIntro !== null &&
+      giftPhoto !== null
+    ) {
+      if (giftId == undefined) {
+        fetch('/giftController/gift', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(requestData),
+        })
+          .then((resp) => {
+            if (resp.ok) {
+              return resp;
+            } else {
+              alert('發生錯誤! 請確認所有欄位皆已填寫!');
+              throw Error(`Request rejected with status ${resp.status}`);
+            }
+          })
+          .then((body) => {
+            console.log(body);
+            alert('新增成功!!');
+            window.location.href = '../html/gift_manage.html';
+          });
+        //如果是變更房型內容，就會有localStorage拿出來的giftId
+      } else {
+        fetch('/giftController/gift' + giftId, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(requestData),
+        })
+          .then((resp) => {
+            if (resp.ok) {
+              return resp;
+            } else {
+              alert('發生錯誤! 請確認所有欄位皆已填寫!');
+              throw Error(`Request rejected with status ${resp.status}`);
+            }
+          })
+          .then((body) => {
+            alert('修改成功!!');
+            window.location.href = '../html/gift_manage.html';
+          })
+          .catch(console.error);
+      }
     } else {
       alert('請確認所有欄位皆不能為空');
     }
@@ -86,7 +179,7 @@ window.addEventListener('load', function () {
   });
 
   /**
-   * Base64處理function
+   * 圖片轉 Base64
    *
    */
 
@@ -106,6 +199,36 @@ window.addEventListener('load', function () {
     console.log(base64String);
     return null;
   }
+  /**
+   * Base64 轉圖片
+   */
+  function convertBase64ToImage(base64String, mimeType) {
+    let img = new Image();
+    img.src = `data:${mimeType};base64,${base64String}`;
+    img.addEventListener('load', function () {
+      // 圖片加載完後設立寬高
+      const width = img.width;
+      const height = img.height;
+      const maxWidth = picturePreview.offsetWidth;
+      const maxHeight = picturePreview.offsetHeight;
+      // const aspectRatio = width / height;
 
+      if (width > maxWidth || height > maxHeight) {
+        if (width / height > maxWidth / maxHeight) {
+          img.style.width = maxWidth + 'px';
+          img.style.height = 'auto';
+        } else {
+          img.style.width = 'auto';
+          img.style.height = maxHeight + 'px';
+        }
+      } else {
+        img.style.width = width + 'px';
+        img.style.height = height + 'px';
+      }
+    });
+    picturePreview.style.border = 'none'; // 上傳圖片後把框線隱藏
+    return img;
+  }
+  handleSelectedGift();
   getCurrentUserInformation();
 });

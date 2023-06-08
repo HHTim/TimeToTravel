@@ -7,4 +7,8 @@ public interface AdminService {
     int login(LoginUserDto dto) throws Exception;
 
     Admin findByAdminId(Integer adminId);
+
+    String updateNewsByAdminName(String adminName);
+
+    String updateAdminNewsStatusByAccount(String account, Integer newsStatus);
 }

@@ -6,8 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
 import java.sql.Timestamp;
+import java.util.Date;
 
 @Entity
 @Table(name = "user")
@@ -35,9 +35,9 @@ public class User {
     @Column(name = "USER_NICKNAME", nullable = false)
     private String userNickName;
 
-    @Column(name = "USER_AVATAR", columnDefinition = "LONGTEXT")
+    @Column(name = "USER_AVATAR", columnDefinition = "LONGBLOB")
     @Lob
-    private String userAvatar;
+    private byte[] userAvatar;
 
     @Column(name = "USER_GENDER", nullable = false)
     private Boolean userGender;

@@ -24,7 +24,7 @@ public interface CompanyService {
 
     void insert(Company company);
 
-    String updateByComName(String comName);
+    String updateNewsByComName(String comName);
 
     String updateByPassword(String password, Integer id);
 

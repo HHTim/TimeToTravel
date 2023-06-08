@@ -16,20 +16,20 @@ public class C2AMessage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "C2A_MSG_ID")
-    private Integer C2AMsgId;
+    private Integer c2aMsgId;
 
     @Column(name = "C2A_SENDER_ID")
-    private Integer C2ASenderId;
+    private Integer c2aSenderId;
 
     @Column(name = "C2A_RECEIVER_ID")
-    private Integer C2AReceiverId;
+    private Integer c2aReceiverId;
 
     @Column(name = "C2A_SENDING_TIME")
-    private Timestamp C2ASendingTime;
+    private Timestamp c2aSendingTime;
 
     @Column(name = "C2A_MSG_TITLE")
-    private String C2AMsgTitle;
+    private String c2aMsgTitle;
 
     @Column(name = "C2A_MSG_CONTENT")
-    private String C2AMsgContent;
+    private String c2aMsgContent;
 }

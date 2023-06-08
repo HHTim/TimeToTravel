@@ -113,7 +113,8 @@ public class U2AMessageServiceImpl implements U2AMessageService {
         return pageBeanView;
     }
 
-
-
-
+    @Override
+    public List<U2AMsgView> getNotifyMsgByUsers(Integer startIndex, Integer endIndex) {
+        return u2AMessageViewRepository.findU2AViewMsgByUsers(startIndex, endIndex);
+    }
 }

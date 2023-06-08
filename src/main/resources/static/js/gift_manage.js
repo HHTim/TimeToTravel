@@ -10,6 +10,7 @@ window.addEventListener('load', function () {
   let allGifts = this.document.querySelector('.all__gifts');
   let giftsOnShelve = this.document.querySelector('.all__gifts__on-shelve');
   let giftsOffShelve = this.document.querySelector('.all__gifts__off-shelve');
+  let onShelveBtn = document.querySelector('.nav_list_on_shelve');
 
   pagination.addEventListener('click', function (e) {
     e.preventDefault(); // 預防a標籤的跳頁
@@ -27,6 +28,7 @@ window.addEventListener('load', function () {
   });
 
   getCurrentUserInformation();
+
   /* 架上商品 */
   giftsOnShelve.addEventListener('click', function () {
     fetch('/giftController/gift')
@@ -39,7 +41,7 @@ window.addEventListener('load', function () {
               giftStatus = '上架中';
               return `
 								<tr>
-								  <td>${i.giftName}</td>
+                <td data-gift-name=${i.giftName} data-gift-id=${i.giftId} style="cursor:pointer;" onmouseover="this.style.color='#006caa';" onmouseout="this.style.color='black';">${i.giftName}</td>
 								  <td>${i.giftId}</td>
 								  <td>${i.giftTypeId}</td>
 								  <td>$${i.giftPrice}</td>
@@ -71,7 +73,7 @@ window.addEventListener('load', function () {
               giftStatus = '未上架';
               return `
               <tr>
-                <td>${i.giftName}</td>
+                <td data-gift-name=${i.giftName} data-gift-id=${i.giftId} style="cursor:pointer;" onmouseover="this.style.color='#006caa';" onmouseout="this.style.color='black';">${i.giftName}</td>
                 <td>${i.giftId}</td>
                 <td>${i.giftTypeId}</td>
                 <td>$${i.giftPrice}</td>
@@ -142,6 +144,25 @@ window.addEventListener('load', function () {
     }
   });
 
+  // 選取到的土產,跳轉到上架頁面去做修改
+  tbody.addEventListener('click', (e) => {
+    const target = e.target;
+    console.log(target);
+    if (target.dataset.giftName) {
+      const giftName = e.target.dataset.giftName;
+      const giftId = e.target.dataset.giftId;
+      console.log(giftName);
+      console.log(giftId);
+      fetch('/giftController/gift/findByGiftId/' + giftId)
+        .then((resp) => resp.json())
+        .then((body) => {
+          console.log(body); // 點到的土產資料
+          localStorage.setItem('selectedGift', JSON.stringify(body));
+          window.location.href = '../html/gift_on_shelve.html';
+        });
+    }
+  });
+
   //===================================================================
   /* 關鍵字搜尋 */
   let searchByKeyword = function () {
@@ -167,7 +188,7 @@ window.addEventListener('load', function () {
 
                 return `
                         <tr>
-                            <td>${i.giftName}</td>
+                            <td data-gift-name=${i.giftName} data-gift-id=${i.giftId} style="cursor:pointer;" onmouseover="this.style.color='#006caa';" onmouseout="this.style.color='black';">${i.giftName}</td>
                             <td>${i.giftId}</td>
                             <td>${i.giftTypeId}</td>
                             <td>$${i.giftPrice}</td>
@@ -206,7 +227,7 @@ window.addEventListener('load', function () {
 
             return `
 					          <tr>
-                      <td>${i.giftName}</td>
+                      <td data-gift-name=${i.giftName} data-gift-id=${i.giftId} style="cursor:pointer;" onmouseover="this.style.color='#006caa';" onmouseout="this.style.color='black';">${i.giftName}</td>
                       <td>${i.giftId}</td>
                       <td>${i.giftTypeId}</td>
                       <td>$${i.giftPrice}</td>
@@ -240,7 +261,7 @@ window.addEventListener('load', function () {
 
             return `
                   <tr>
-                     <td>${i.giftName}</td>
+                     <td data-gift-name=${i.giftName} data-gift-id=${i.giftId} style="cursor:pointer;" onmouseover="this.style.color='#006caa';" onmouseout="this.style.color='black';">${i.giftName}</td>
                      <td>${i.giftId}</td>
                      <td>${i.giftTypeId}</td>
                      <td>$${i.giftPrice}</td>
@@ -259,6 +280,6 @@ window.addEventListener('load', function () {
           .join('');
       });
   }
-
+  getCurrentUserInformation();
   findAll();
 });

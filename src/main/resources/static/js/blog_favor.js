@@ -1,11 +1,28 @@
 $(function () {
-  // 拿 收藏 userid postid
-  // 用收藏 no 拿 post資料
-  // 文章分類
-  // 前往 移除(添加加入)
-  // session 拿取固有資料 區塊
-  //
-  var userId = 1;
+  var user = null;
+  var userId = null; // 拿 session
+  try {
+    userId = JSON.parse(sessionStorage.getItem('user-data')).userId;
+    console.log(userId);
+  } catch (error) {
+    $.ajax({
+      url: 'http://localhost:8080/getCurrentUserController/current-user', // 資料請求的網址
+      type: 'GET', // GET | POST | PUT | DELETE | PATCH
+      dataType: 'json', // 預期會接收到回傳資料的格式： json | xml | html
+      success: function (data) {
+        if (data.role == '會員') {
+          user = data.user;
+          userId = user.userId;
+        }
+      },
+      error: function (xhr) {
+        console.log(xhr);
+      },
+    });
+  }
+  console.log('userId : ' + userId);
+  // console.log(user);
+  // ===================================
   var prePage; // 上一頁資訊的物件 ??
 
   var blogs = [];
@@ -107,12 +124,16 @@ $(function () {
         postId: blogId,
       })
     );
+    sessionStorage.setItem(
+      'user-data',
+      JSON.stringify({
+        userId: userId,
+      })
+    );
     location.href = './blog.html';
   });
 
   getFavorArticle();
-
-  //
 
   // 文章類型篩選
   $('#article-type-select').change(function () {
@@ -146,7 +167,7 @@ $(function () {
       for (var i = 0; i < articles.length; i++) {
         var blog = articles[i];
         var tagsHtml = getTags(blog.postId);
-        
+
         var postPhotoUrl = blog.postPhoto; // 儲存文章封面圖片的 URL
         if (blog.postPhoto == null) {
           postPhotoUrl = '../../images/blog封面預設圖片下載.png';

@@ -24,4 +24,7 @@ public interface U2AMessageViewRepository extends JpaRepository<U2AMsgView,Integ
 
     @Query(value = "SELECT * FROM VIEW_U2A_MSG where U2A_SENDING_TIME between ?1 and ?2 ORDER BY U2A_SENDING_TIME DESC LIMIT ?3,?4",nativeQuery = true)
     List<U2AMsgView> findViewByDateRangePage(String startDate, String endDate, Integer currPage, Integer rows);
+
+    @Query(value = "SELECT * FROM VIEW_U2A_MSG ORDER BY U2A_SENDING_TIME DESC LIMIT ?1,?2",nativeQuery = true)
+    List<U2AMsgView> findU2AViewMsgByUsers(Integer startIndex, Integer endIndex);
 }

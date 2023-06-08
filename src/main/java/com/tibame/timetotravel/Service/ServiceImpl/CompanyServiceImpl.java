@@ -62,7 +62,7 @@ public class CompanyServiceImpl implements CompanyService {
         company.setComAddress(dto.getAddress());
         company.setComPhone(dto.getPhone());
         company.setComEmail(dto.getEmail());
-        company.setComAvatar(dto.getAvatar());
+        company.setComAvatar(dto.getAvatar().getBytes());
         company.setComTaxId(dto.getTax());
 
         company.setComSignDate(new Timestamp(System.currentTimeMillis()));
@@ -95,7 +95,7 @@ public class CompanyServiceImpl implements CompanyService {
         dto.setAddress(company.getComAddress());
         dto.setPhone(company.getComPhone());
         dto.setEmail(company.getComEmail());
-        dto.setAvatar(company.getComAvatar());
+        dto.setAvatar(new String(company.getComAvatar()));
         dto.setTax(company.getComTaxId());
         dto.setSignDate(company.getComSignDate());
 
@@ -110,7 +110,7 @@ public class CompanyServiceImpl implements CompanyService {
         company.setComAddress(dto.getAddress());
         company.setComPhone(dto.getPhone());
         company.setComEmail(dto.getEmail());
-        company.setComAvatar(dto.getAvatar());
+        company.setComAvatar(dto.getAvatar().getBytes());
         company.setComTaxId(dto.getTax());
 
         companyRepository.save(company);
@@ -152,7 +152,7 @@ public class CompanyServiceImpl implements CompanyService {
 
     @Transactional
     @Override
-    public String updateByComName(String companyName) {
+    public String updateNewsByComName(String companyName) {
         System.out.println(companyName);
         Company company = companyRepository.findByComName(companyName);
         company.setComNewsStatus(1);

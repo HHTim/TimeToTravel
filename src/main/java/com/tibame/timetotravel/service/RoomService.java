@@ -18,4 +18,6 @@ public interface RoomService {
     RoomPagination findByPage(Integer pageNumber);
 
     RoomPaginationByStatus findByPageByStatus(Integer roomStatus, Integer pageNumber);
+
+    void updateRoomStatus(Integer roomId, Room room);
 }

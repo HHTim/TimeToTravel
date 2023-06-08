@@ -1,5 +1,6 @@
 package com.tibame.timetotravel.service;
 
+import com.tibame.timetotravel.common.PageBean;
 import com.tibame.timetotravel.entity.PublicScene;
 
 import java.util.List;
@@ -15,5 +16,5 @@ public interface PublicSceneService {
 
     void update(Integer sceneId, PublicScene publicScene);
 
-    List<PublicScene> findBySceneAddress(String keyword);
+    PageBean<PublicScene> findBySceneAddress(String keyword, Integer page);
 }

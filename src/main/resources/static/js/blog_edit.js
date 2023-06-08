@@ -2,8 +2,30 @@ $(function () {
   // 拿取 上一頁資料
   var blog = JSON.parse(sessionStorage.getItem('edit-blog'));
   var blogTags = JSON.parse(sessionStorage.getItem('blog-tags'));
-  var userId = JSON.parse(sessionStorage.getItem('user-data')).userId;
-  console.log(userId);
+  var user = null;
+  var userId = null; // 拿 session
+  try {
+    userId = JSON.parse(sessionStorage.getItem('user-data')).userId;
+    console.log(userId);
+  } catch (error) {
+    $.ajax({
+      url: 'http://localhost:8080/getCurrentUserController/current-user', // 資料請求的網址
+      type: 'GET', // GET | POST | PUT | DELETE | PATCH
+      dataType: 'json', // 預期會接收到回傳資料的格式： json | xml | html
+      success: function (data) {
+        if (data.role == '會員') {
+          user = data.user;
+          userId = user.userId;
+        }
+      },
+      error: function (xhr) {
+        console.log(xhr);
+      },
+    });
+  }
+  console.log('userId : ' + userId);
+  // console.log(user);
+  // ===================================
   var articleData = {};
 
   var tagsArray = [];
@@ -60,7 +82,6 @@ $(function () {
     articleData.postDate = null;
     articleData.postContent = null;
     articleData.postTypeId = null;
-    
     articleData.likes = 0;
     articleData.postUpdateTime = null;
     articleData.comments = 0;
@@ -148,75 +169,6 @@ $(function () {
     }
   });
 
-  $('.post-article').on('click', function (e) {
-    console.log("tttttttttttt");
-    e.preventDefault();
-    var articleTitle = $('#article-title').val();
-    var articleType = $('#article-type').val();
-    // var articleTags = tagsArray.join(', '); // 沒使用
-    var articleContent = $('#article-content').val();
-    // check title content 不能空 之後 確認發表
-    if (articleTitle == "" || articleContent == "") {
-      alert('標題或文章內容不能為空');
-    } else {
-      articleData.postTitle = articleTitle;
-      articleData.postContent = articleContent;
-      articleData.postTypeId = articleType;
-      // 圖片 先略過
-      imageData = img_base64.replace(/^data:image\/(png|jpg|jpeg);base64,/, ''); // 要傳進後端的值 reader.result
-      if (imageData != '') {
-        articleData.postPhoto = imageData;
-        console.log(articleData.postPhoto);
-      }
-      console.log(JSON.stringify(articleData));
-      var confirmation = confirm('確定要發佈文章吗？');
-      if (confirmation) {
-        // BLOG 的 圖片更新操作 ， 文章更新 與更新日更新 ?
-        // Body 放兩個物件 使用 Map 操作未使用
-        
-        $.ajax({
-          url: 'http://localhost:8080/BlogEditController/blog-edit/update', // 資料請求的網址
-          type: 'POST', // GET | POST | PUT | DELETE | PATCH
-          data: JSON.stringify(articleData), // 將物件資料(不用雙引號) 傳送到指定的 url
-          dataType: 'text', // 預期會接收到回傳資料的格式： json | xml | html
-          contentType: 'application/json',
-
-          success: function (data) {
-            // console.log(parseInt(data) + '222111222'); // request 成功取得回應後執行
-
-            $.ajax({
-              url: 'http://localhost:8080/BlogEditController/blog-edit/addTags/' + data, // 資料請求的網址
-              type: 'PATCH', // GET | POST | PUT | DELETE | PATCH
-              data: JSON.stringify(tagsArray), // 將物件資料(不用雙引號) 傳送到指定的 url
-              dataType: 'json', // 預期會接收到回傳資料的格式： json | xml | html
-              contentType: 'application/json',
-              success: function (data) {
-                console.log(data); // request 成功取得回應後執行
-              },
-              error: function (xhr) {
-                console.log(xhr); // request 發生錯誤的話執行
-              },
-            });
-            // --------
-            sessionStorage.setItem(
-              'default-blog-view',
-              JSON.stringify({
-                postId: data,
-              })
-            );
-            location.href = './blog.html';
-          },
-          error: function (xhr) {
-            console.log(xhr); // request 發生錯誤的話執行
-          },
-        });
-        // 新增好之後 再 切換頁面
-      }
-    }
-  });
-
-  // -----------------
-
   // =========================== 元素 (HTML5 ex copy to use) ========================= //
   var drop_zone_el = document.getElementById('drop_zone');
   var preview_el = document.getElementById('preview');
@@ -265,6 +217,92 @@ $(function () {
       preview_img(this.files[0]);
     } else {
       preview_el.innerHTML = '<span class="text">預覽圖</span>';
+    }
+  });
+
+  // ======================= 頁面切換 ============
+  $('.post-article').on('click', function (e) {
+    if (userId == null) {
+      alert('請先登入');
+      return;
+    }
+
+    e.preventDefault();
+    var articleTitle = $('#article-title').val();
+    var articleType = $('#article-type').val();
+    // var articleTags = tagsArray.join(', '); // 沒使用
+    var articleContent = $('#article-content').val();
+
+    if (articleTitle == '' || articleContent == '') {
+      alert('標題或文章內容不能為空');
+    } else {
+      if (articleTitle.length > 50) {
+        alert('標題超過限制，請輸入少於50個字元' + articleTitle.length);
+        return;
+      } else if (articleContent.length > 10000) {
+        alert('文章內容超過限制，請輸入少於10000個字元' + articleContent.length);
+        return;
+      }
+      articleData.postTitle = articleTitle;
+      articleData.postContent = articleContent;
+      articleData.postTypeId = articleType;
+      // 圖片 先略過
+      imageData = img_base64.replace(/^data:image\/(png|jpg|jpeg);base64,/, ''); // 要傳進後端的值 reader.result
+      if (imageData != '') {
+        articleData.postPhoto = imageData;
+        console.log(articleData.postPhoto);
+      }
+      console.log(JSON.stringify(articleData));
+      var confirmation = confirm('確定要發佈文章吗？');
+      if (confirmation) {
+        // BLOG 的 圖片更新操作 ， 文章更新 與更新日更新 ?
+        // Body 放兩個物件 使用 Map 操作未使用
+
+        $.ajax({
+          url: 'http://localhost:8080/BlogEditController/blog-edit/update', // 資料請求的網址
+          type: 'POST', // GET | POST | PUT | DELETE | PATCH
+          data: JSON.stringify(articleData), // 將物件資料(不用雙引號) 傳送到指定的 url
+          dataType: 'text', // 預期會接收到回傳資料的格式： json | xml | html
+          contentType: 'application/json',
+
+          success: function (data) {
+            // console.log(parseInt(data) + '222111222'); // request 成功取得回應後執行
+
+            $.ajax({
+              url: 'http://localhost:8080/BlogEditController/blog-edit/addTags/' + data, // 資料請求的網址
+              type: 'PATCH', // GET | POST | PUT | DELETE | PATCH
+              data: JSON.stringify(tagsArray), // 將物件資料(不用雙引號) 傳送到指定的 url
+              dataType: 'json', // 預期會接收到回傳資料的格式： json | xml | html
+              contentType: 'application/json',
+              success: function (data) {
+                console.log(data); // request 成功取得回應後執行
+              },
+              error: function (xhr) {
+                console.log(xhr); // request 發生錯誤的話執行
+              },
+            });
+            // --------
+            sessionStorage.setItem(
+              'default-blog-view',
+              JSON.stringify({
+                postId: data,
+              })
+            );
+            sessionStorage.setItem(
+              'user-data',
+              JSON.stringify({
+                userId: userId,
+              })
+            );
+
+            location.href = './blog.html';
+          },
+          error: function (xhr) {
+            console.log(xhr); // request 發生錯誤的話執行
+          },
+        });
+        // 新增好之後 再 切換頁面
+      }
     }
   });
 });

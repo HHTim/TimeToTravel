@@ -30,14 +30,19 @@ public class RoomController {
         roomService.deleteById(roomId);
         return "刪除成功";
     }
+    @PutMapping("/room/updateRoomStatus/{roomId}")
+    public String updateRoomStatus(@PathVariable Integer roomId,
+                                    @RequestBody Room room){
+        roomService.updateRoomStatus(roomId, room);
+        return ("修改成功!");
+    }
 
-    @PostMapping("/room/{roomId}")
+    @PutMapping("/room/{roomId}")
     public String updateById(@PathVariable Integer roomId,
                              @RequestBody Room room) throws InvocationTargetException, IllegalAccessException {
 
         System.out.println(roomId);
         System.out.println(room);
-
         roomService.update(roomId, room);
 
         return "修改成功";

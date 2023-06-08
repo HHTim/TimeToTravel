@@ -16,6 +16,7 @@ public interface RoomRepository extends JpaRepository<Room, Integer> {
     List<Room> findByRoomType(String roomTypeValue);
 
     List<Room> findAllByComId(Integer comId);
+
     @Query(value = "SELECT * FROM ROOM ORDER BY ROOM_ID DESC LIMIT ?1, 10", nativeQuery = true)
     List<Room> findByPage(Integer pageNumber);
 
@@ -24,7 +25,10 @@ public interface RoomRepository extends JpaRepository<Room, Integer> {
 
     @Query(value = "SELECT COUNT(*) FROM ROOM WHERE ROOM_STATUS = ?1 ORDER BY ROOM_ID DESC ", nativeQuery = true)
     Integer totalPageByStatus(Integer roomStatus);
+
     @Query(value = "SELECT COM_NAME FROM COMPANY WHERE COM_ID = (SELECT COM_ID FROM ROOM WHERE ROOM.ROOM_ID = ?1)", nativeQuery = true)
     String findComNameByRoomId(Integer roomId);
 
+    @Query(value = "SELECT COM_ID FROM ROOM WHERE ROOM_ID = ?1", nativeQuery = true)
+    Integer findComIdByRoomId(Integer roomId);
 }

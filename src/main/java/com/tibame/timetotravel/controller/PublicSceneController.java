@@ -1,5 +1,6 @@
 package com.tibame.timetotravel.controller;
 
+import com.tibame.timetotravel.common.PageBean;
 import com.tibame.timetotravel.entity.PublicScene;
 import com.tibame.timetotravel.service.PublicSceneService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,22 +31,22 @@ public class PublicSceneController {
         return publicSceneService.getAll();
     }
 
-    @GetMapping("/sceneManageSearch/{keyword}")
-    public List<PublicScene> findBySceneAddress(@PathVariable String keyword){
+    @GetMapping("/sceneManageSearch/{keyword}/{page}")
+    public PageBean<PublicScene> findBySceneAddress(@PathVariable String keyword, @PathVariable Integer page) {
         System.out.println("關鍵字查詢");
-        return publicSceneService.findBySceneAddress(keyword);
+        return publicSceneService.findBySceneAddress(keyword, page);
     }
 
     @DeleteMapping("/deletePublicScene/{sceneId}")
-    public String deleteById(@PathVariable Integer sceneId){
+    public String deleteById(@PathVariable Integer sceneId) {
         publicSceneService.deleteById(sceneId);
         return "刪除成功";
     }
 
-    @PutMapping ("/updatePublicScene/{sceneId}")
+    @PutMapping("/updatePublicScene/{sceneId}")
     public String update(@PathVariable Integer sceneId,
-                             @RequestBody PublicScene publicScene){
-        publicSceneService.update(sceneId,publicScene);
+                         @RequestBody PublicScene publicScene) {
+        publicSceneService.update(sceneId, publicScene);
         return "修改成功";
     }
 
