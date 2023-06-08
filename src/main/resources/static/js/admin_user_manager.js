@@ -45,7 +45,7 @@ $(function () {
             <td class="data-text">${e.userPhone}</td>
             <td class="data-text">${e.userSignDatetime}</td>
             ${
-              e.userStatus == false
+              e.userStatus == 0
                 ? `
                 <td class="user-status" data-status=${e.userStatus}>
                   <button class="btn-forbidden">停權</button>

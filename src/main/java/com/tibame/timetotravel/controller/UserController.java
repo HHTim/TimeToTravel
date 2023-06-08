@@ -107,6 +107,19 @@ public class UserController extends BaseController {
         System.out.println("分頁搜尋");
         return userService.findByPageRowData(currPage, rows);
     }
+
+    @GetMapping("/user/page/status/{status}/{currPage}/{rows}")
+    public PageBean<User> readStatusByPage(@PathVariable Integer status, @PathVariable Integer currPage, @PathVariable Integer rows){
+        System.out.println("狀態搜尋");
+        return userService.findStatusByPageRowData(status, currPage, rows);
+    }
+
+    @GetMapping("/user/page/{currPage}/{rows}/keyword/{keyword}")
+    public PageBean<User> readByKeyWords(@PathVariable Integer currPage, @PathVariable Integer rows, @PathVariable String keyword){
+        System.out.println("關鍵字搜尋");
+        return userService.findKeywordByPageRowData(keyword, currPage, rows);
+    }
+
     @GetMapping("/user")
     public ResponseEntity detail(HttpServletRequest request){
         if (request.getSession().getAttribute("user_id") == null) {
