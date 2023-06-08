@@ -1,4 +1,6 @@
+import { getCurrentUserInformation } from './header.js';
 $(document).ready(function () {
+  getCurrentUserInformation();
   var user = null;
   var userId = null; // 拿 session
   $.ajax({
@@ -32,7 +34,7 @@ $(document).ready(function () {
   getInitBlogs();
 
   function getInitBlogs() {
-    urlSql =
+    let urlSql =
       'http://localhost:8080/BlogSearchController/searchSQL?title=' +
       encodeURIComponent(topic) +
       '&tags=' +
@@ -257,7 +259,7 @@ $(document).ready(function () {
   });
   // 動態生成 分頁的總頁數
   function setPage(pageSize) {
-    totalPages = pageSize;
+    let totalPages = pageSize;
     // 動態生成頁數按鈕
     var paginationElement = document.getElementById('pagination');
     paginationElement.innerHTML = '';

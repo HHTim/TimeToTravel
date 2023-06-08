@@ -17,8 +17,10 @@
     <link rel="stylesheet" href="../../css/03_leo/user-favor-blog.css" />
     <!-- 我們自己的 css 檔案，路徑記得改 -->
     <script src="../../js/template_user.js" defer></script>
-    <script src="../../js/blog_favor.js" defer></script>
+    <script type="module" src="../../js/blog_favor.js" defer></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../../js/user-aside_logout.js" defer></script>
+    
     <!-- 輪播需要添加 -->
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
     <!-- title 記得改 -->
@@ -28,26 +30,27 @@
     <!-- Header -->
     <div class="decorator"></div>
     <header>
-      <div class="container-fluid header__container">
+      <!-- container 是 bootstrap 定義屬性，最好不要改他 -->
+      <div class="container-fulid header__container">
         <h1 class="logo">
-          <a href="#" class="logo__link">
-            <img src="../../images/LOGO.png" alt="logo" class="logo__img" />
+          <a href="http://localhost:8080" class="logo__link">
+            <img src="images/LOGO.png" alt="logo" class="logo__img" />
           </a>
         </h1>
         <nav>
           <ul class="nav">
             <li class="nav__link"><a href="#">我的訂單</a></li>
             <li class="nav__link"><a href="#">伴手禮商城</a></li>
-            <li class="nav__link"><a href="#">部落格</a></li>
+            <li class="nav__link"><a href="./html/03_leo/blog_search.html">部落格</a></li>
             <li class="nav__info">
               <div class="dropdown-center">
                 <button class="dropdown-toggle nav__info-btn" type="button" data-bs-toggle="dropdown"></button>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">訊息一</a></li>
+                <ul class="dropdown-menu" style="width: max-content">
+                  <!-- <li><a class="dropdown-item" href="#">訊息一</a></li>
                   <li><a class="dropdown-item" href="#">訊息二</a></li>
                   <li><a class="dropdown-item" href="#">訊息三</a></li>
                   <li><hr class="dropdown-divider" /></li>
-                  <li><a class="dropdown-item" href="#">See More</a></li>
+                  <li><a class="dropdown-item" href="#">See More</a></li> -->
                 </ul>
               </div>
             </li>
@@ -56,16 +59,16 @@
                 <!-- <button class="dropdown-toggle nav__avatar-btn" type="button" data-bs-toggle="dropdown"></button> -->
                 <a href="#" class="dropdown-toggle nav__avatar-btn" type="button" data-bs-toggle="dropdown">
                   <div class="nav__avatar-img">
-                    <img src="../../images/avatar.svg" alt="avatar" />
+                    <img src="images/avatar.svg" alt="avatar" />
                   </div>
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">註冊</a></li>
+                  <!-- <li><a class="dropdown-item" href="#">註冊</a></li>
                   <li><a class="dropdown-item" href="#">登入</a></li>
                   <li><a class="dropdown-item" href="#">其他</a></li>
                   <li><a class="dropdown-item" href="#">其他</a></li>
                   <li><hr class="dropdown-divider" /></li>
-                  <li><a class="dropdown-item" href="#">登出</a></li>
+                  <li><a class="dropdown-item" href="#">登出</a></li> -->
                 </ul>
               </div>
             </li>
@@ -80,15 +83,14 @@
           <!--Company Aside -->
           <aside class="user-aside">
             <ul class="user-aside__list">
-              <li class="user-aside__item--small"><a href="#">&lt; 返回</a></li>
-              <li class="user-aside__item"><a href="#">帳戶設定</a></li>
-              <li class="user-aside__item"><a href="#">商家收藏</a></li>
-              <li class="user-aside__item"><a href="#">關注土產</a></li>
-              <li class="user-aside__item"><a href="#">消費紀錄</a></li>
-              <li class="user-aside__item"><a href="#">訊息管理</a></li>
-              <li class="user-aside__item"><a href="#">文章收藏</a></li>
+              <li class="user-aside__item--small"><a href="../../index.html">&lt; 返回</a></li>
+              <li class="user-aside__item"><a href="../member_info.html">帳戶設定</a></li>
+              <li class="user-aside__item"><a href="./user_favor_blog.html">文章收藏</a></li>
+              <li class="user-aside__item"><a href="../gift_follow.html">關注土產</a></li>
+              <li class="user-aside__item"><a href="../order_list.html">消費紀錄</a></li>
+              <li class="user-aside__item"><a href="../user_message_manage.html">訊息管理</a></li>
               <li><hr style="width: 80%; margin: auto" /></li>
-              <li class="user-aside__item"><a href="#">登出</a></li>
+              <li class="user-aside__item logout-side"><a href="../../index.html">登出</a></li>
             </ul>
           </aside>
           <!--Company Aside End -->
@@ -96,13 +98,13 @@
         <div class="col-10">
           <!-- Main -->
           <!-- Main區塊以下為測試用，可刪 -->
-          <main class="main ">
+          <main class="main">
             <div class="row">
               <div class="col-md-10">
                 <h2 class="subtitle">文章收藏</h2>
               </div>
-              <div class="col-md-2 text-end ">
-                <select class="form-select "  id="article-type-select" aria-label="文章類型">
+              <div class="col-md-2 text-end">
+                <select class="form-select" id="article-type-select" aria-label="文章類型">
                   <option value="all">全部</option>
                   <option value="問題">問題</option>
                   <option value="資訊">資訊</option>
@@ -113,20 +115,20 @@
                 </select>
               </div>
             </div>
-            
+
             <!-- 文章串 = blog欄位名稱 + blogs -->
-            <div class="blog-list row col-12 margin-center ">
+            <div class="blog-list row col-12 margin-center">
               <!--  blog欄位名稱 -->
-              <div class="blog-topbar row text-center col-12 margin-center blog-name p-2 mt-3 ">
-                <div class="col-1  margin-center col-name-border ">類型</div>
-                <div class="col-2  margin-center ">圖片</div>
-                <div class="col-6  margin-center ">主體</div>
-                <div class="col    margin-center "></div>
-                <div class="col   margin-center "></div>
+              <div class="blog-topbar row text-center col-12 margin-center blog-name p-2 mt-3">
+                <div class="col-1 margin-center col-name-border">類型</div>
+                <div class="col-2 margin-center">圖片</div>
+                <div class="col-6 margin-center">主體</div>
+                <div class="col margin-center"></div>
+                <div class="col margin-center"></div>
               </div>
               <!-- blogs -->
-              <div class="favor-blog-list"> 
-              <!-- <div class="blog row text-center col-12 margin-center p-2 mt-1 ">
+              <div class="favor-blog-list">
+                <!-- <div class="blog row text-center col-12 margin-center p-2 mt-1 ">
                 <div class="col-1 align-self-center margin-center blog-type article-type">心得</div>
                 <div class="col-2  margin-center imgdiv ">
                   <img class="blog-img " width="120" height="68" data-image="6" id="article-image" src="../../images/hotel.jpg" alt="test66"></img>
@@ -151,21 +153,13 @@
               </div> -->
                 <!-- <div class="col align-self-center  margin-center latest-reply content-like-border "><button class="go-favor-blog">前往</button></div> -->
                 <!-- <div class="col align-self-center  margin-center latest-reply "><button class="remove-favor-blog">刪除</button></div> -->
-
-
-
               </div>
-
-              </div>
-             
-
-              
-
-            </main>
-          </div>
-          <!-- Main End -->
+            </div>
+          </main>
         </div>
+        <!-- Main End -->
       </div>
+    </div>
 
     <!-- Footer -->
     <footer>

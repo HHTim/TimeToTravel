@@ -1,4 +1,6 @@
+import { getCurrentUserInformation } from './header.js';
 $(function () {
+  getCurrentUserInformation();
   var user = null;
   var userId = null; // 拿 session
   var blog = JSON.parse(sessionStorage.getItem('default-blog-view'));
