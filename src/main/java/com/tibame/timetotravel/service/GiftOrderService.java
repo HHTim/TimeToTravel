@@ -6,14 +6,10 @@ import java.util.List;
 
 public interface GiftOrderService {
 
-    void insert(GiftOrder giftOrder);
+    void insert(Integer userId);
 
-    void deleteById(Integer giftOrderId);
+    List<GiftOrder> findByUserId(Integer userId);
 
-    GiftOrder updateById(Integer giftOrderId, GiftOrder giftOrder);
-
-    GiftOrder findById(Integer giftOrderId);
-
-    List<GiftOrder> findAll();
+    GiftOrder getByOrderId(Integer userId, Integer giftOrderId);
 
 }

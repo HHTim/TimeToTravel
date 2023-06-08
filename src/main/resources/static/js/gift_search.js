@@ -6,7 +6,7 @@ window.addEventListener('load', function () {
   const totalProduct = document.querySelector('div.total_product div');
   const collectionTitle = document.querySelector('div.collection_title h1');
   const smallCart = document.querySelector('div.cart-list');
-  const userId = 12;
+  const userId = 1;
 
   // ========一載入便查詢出所有商品========
   findAll();
@@ -350,7 +350,7 @@ window.addEventListener('load', function () {
         $('input.qty-input').val('1');
         
         if (typeof swal === 'function') {
-          swal('加入成功', '', 'success');
+          swal('加入成功！', '', 'success', {button: '好的！'});
         } else {
           $('div.success-mask').addClass('show');
           $('div.add-success').addClass('show');
@@ -388,11 +388,11 @@ window.addEventListener('load', function () {
         if (typeof body === 'object') {
           // console.log(body);
           // console.log(body[0]);
-          // 小購物車最多顯示 3 筆
-          const maxlength = Math.min(body.length, 3);
+          // 小購物車最多顯示 3 筆 (改成全部顯示)
+          // const maxlength = Math.min(body.length, 3);
           // slice(a, b) index a 切到 b (不包含 b)
+
           smallCart.innerHTML = body
-            .slice(0, maxlength)
             .map((i) => {
               return `<div class="gift-item">
           <div class="small-img"><img src="data:image/png;base64,${i.giftPhoto}" /></div>
@@ -406,7 +406,7 @@ window.addEventListener('load', function () {
         } else if (typeof body === 'string') {
           smallCart.innerHTML = `
           <div class="if-empty">
-            <div>${body}</div>
+            <div>沒有商品 :)</div>
           </div>
         `;
         }

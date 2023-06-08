@@ -241,11 +241,11 @@ section:not(:first-child) {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 80%;
-  max-width: 500px;
+  max-width: 800px;
   background-color: #fff;
   padding: 20px;
   z-index: 999;
-  box-shadow: 0 0 0 99999px rgba($color: #000000, $alpha: 0.6);
+  // box-shadow: 0 0 0 99999px rgba($color: #000000, $alpha: 0.6);
   text-align: left;
   align-items: center;
   border-radius: $border-radius;
@@ -283,15 +283,44 @@ section:not(:first-child) {
     }
   }
 
-  div {
-    width: 65%;
+  div.order-details {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-height: 330px;
+    overflow-y: auto;
+  }
+
+  div.order-details div {
+    width: 95%;
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid #ccc;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
   }
 
-  p:nth-child(odd) {
+  p {
+    width: 140px;
+    height: 40px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    text-align: center;
+  }
+  
+  p:nth-child(1) {
+    // font-weight: bold;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  p:nth-child(2) {
+    font-weight: bold;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  p:nth-child(4) {
     font-weight: bold;
   }
 }
@@ -299,3 +328,27 @@ section:not(:first-child) {
 .active {
   display: flex;
 }
+
+tr.if-empty td {
+  background-color: $secondary-gray;
+  font-weight: bold;
+}
+
+/* 燈箱周圍的遮罩 */
+div.lightbox-mask {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); // 半透明黑色背景
+  z-index: 888;
+  cursor: pointer;
+}
+
+div.lightbox-mask.active {
+  display: block;
+}
+/* 燈箱周圍的遮罩 End */
+

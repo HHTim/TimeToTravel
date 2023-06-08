@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-@Service
+@Service("giftCartService")
 public class GiftCartServiceImpl implements GiftCartService {
 
     // 購物車存活時間(天)
@@ -32,6 +32,7 @@ public class GiftCartServiceImpl implements GiftCartService {
     @Transactional
     public List<UserGiftCart> addToCart(Integer userId, Integer giftId, Integer giftCount) {
         String key = getCartKey(userId);
+        System.out.println(key);
         GiftCart giftCart = (GiftCart) redisTemplate.opsForValue().get(key);
         // 如果沒有購物車紀錄，new一個新的
         if (giftCart == null) {
@@ -64,6 +65,7 @@ public class GiftCartServiceImpl implements GiftCartService {
     @Transactional
     public void removeFromCart(Integer userId, Integer giftId) {
         String key = getCartKey(userId);
+        System.out.println(key);
         GiftCart giftCart = (GiftCart) redisTemplate.opsForValue().get(key);
         if (giftCart != null) {
             List<GiftCartItem> itemList = giftCart.getItemList();
@@ -77,19 +79,23 @@ public class GiftCartServiceImpl implements GiftCartService {
     @Transactional
     public void clearCart(Integer userId) {
         String key = getCartKey(userId);
-        GiftCart giftCart = (GiftCart) redisTemplate.opsForValue().get(key);
-        if (giftCart != null) {
-            List<GiftCartItem> itemList = giftCart.getItemList();
-            // 購物車列表清空
-            itemList.clear();
-            save(userId, key, giftCart);
-        }
+        System.out.println(key);
+        redisTemplate.delete(key);
+
+//        GiftCart giftCart = (GiftCart) redisTemplate.opsForValue().get(key);
+//        if (giftCart != null) {
+//            List<GiftCartItem> itemList = giftCart.getItemList();
+//            // 購物車列表清空
+//            itemList.clear();
+//            save(userId, key, giftCart);
+//        }
     }
 
     @Override
     @Transactional
     public UserGiftCart updateCart(Integer userId, Integer giftId, Integer giftCount) {
         String key = getCartKey(userId);
+        System.out.println(key);
         GiftCart giftCart = (GiftCart) redisTemplate.opsForValue().get(key);
         if (giftCart != null) {
             List<GiftCartItem> itemList = giftCart.getItemList();
@@ -120,6 +126,7 @@ public class GiftCartServiceImpl implements GiftCartService {
         // 要回傳使用者的專屬購物車列表
         List<UserGiftCart> resultList = new ArrayList<>();
         String key = getCartKey(userId);
+        System.out.println(key);
         // 先從Redis確認有無加入購物車的紀錄
         GiftCart giftCart = (GiftCart) redisTemplate.opsForValue().get(key);
 

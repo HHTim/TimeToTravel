@@ -1,13 +1,20 @@
 package com.tibame.timetotravel.service.ServiceImpl;
 
+import com.tibame.timetotravel.dto.GiftOrderList;
+import com.tibame.timetotravel.entity.Company;
+import com.tibame.timetotravel.entity.Gift;
 import com.tibame.timetotravel.entity.GiftOrderDetails;
+import com.tibame.timetotravel.repository.CompanyRepository;
 import com.tibame.timetotravel.repository.GiftOrderDetailsRepository;
+import com.tibame.timetotravel.repository.GiftRepository;
 import com.tibame.timetotravel.service.GiftOrderDetailsService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service("giftOrderDetailsService")
@@ -17,44 +24,32 @@ public class GiftOrderDetailsServiceImpl implements GiftOrderDetailsService {
     @Qualifier("giftOrderDetailsRepository")
     private GiftOrderDetailsRepository giftOrderDetailsRepository;
 
-    @Override
-    @Transactional
-    public void insert(GiftOrderDetails giftOrderDetails) {
-        giftOrderDetailsRepository.save(giftOrderDetails);
-    }
+    @Autowired
+    @Qualifier("giftRepository")
+    private GiftRepository giftRepository;
+
+    @Autowired
+    private CompanyRepository companyRepository;
 
     @Override
-    @Transactional
-    public void deleteById(Integer giftOrderDetailsId) {
-        giftOrderDetailsRepository.deleteById(giftOrderDetailsId);
-    }
+    public List<GiftOrderList> findById(Integer giftOrderId) {
+        List<GiftOrderList> giftOrderLists = new ArrayList<>();
+        List<GiftOrderDetails> giftOrderDetailsList = giftOrderDetailsRepository.findByGiftOrderId(giftOrderId);
 
-    @Override
-    @Transactional
-    public GiftOrderDetails updateById(Integer giftOrderDetailsId, GiftOrderDetails giftOrderDetails) {
+        for (GiftOrderDetails oldItem : giftOrderDetailsList) {
+            GiftOrderList newItem = new GiftOrderList();
+            BeanUtils.copyProperties(oldItem, newItem);
+            Integer giftId = newItem.getGiftId();
+            Gift gift = giftRepository.findById(giftId).orElse(null);
+            BeanUtils.copyProperties(gift, newItem);
+            Integer comId = newItem.getComId();
+            Company company = companyRepository.findById(comId).orElse(null);
+            newItem.setComName(company.getComName());
 
-        GiftOrderDetails god = giftOrderDetailsRepository.findById(giftOrderDetailsId).orElse(null);
-
-        if (god != null) {
-            god.setGiftOrderId(giftOrderDetails.getGiftOrderId());
-            god.setGiftId(giftOrderDetails.getGiftId());
-            god.setBoughtCount(giftOrderDetails.getBoughtCount());
-            god.setUnitPrice(giftOrderDetails.getUnitPrice());
-            giftOrderDetailsRepository.save(god);
-            return god;
-        } else {
-            return null;
+            giftOrderLists.add(newItem);
         }
 
+        return giftOrderLists;
     }
 
-    @Override
-    public GiftOrderDetails findById(Integer giftOrderDetailsId) {
-        return giftOrderDetailsRepository.findById(giftOrderDetailsId).orElse(null);
-    }
-
-    @Override
-    public List<GiftOrderDetails> findAll() {
-        return giftOrderDetailsRepository.findAll();
-    }
 }

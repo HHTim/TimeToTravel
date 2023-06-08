@@ -65,9 +65,9 @@ main {
   width: 30% !important;
 }
 
-.col-3.select_item select {
+// .col-3.select_item select {
   // margin-left: auto;
-}
+// }
 
 .custom_select {
   height: 80%; /* 調整為所需的高度 */
@@ -120,13 +120,13 @@ div.top-down {
   font-size: 1.2rem;
 }
 
-.collect_list .item_list li a .item_text {
+// .collect_list .item_list li a .item_text {
   // display: block;
   // border: 1px solid green;
   // white-space: nowrap;
   // overflow: hidden;
   // text-overflow: ellipsis;
-}
+// }
 
 //product price
 .product_price {
@@ -197,7 +197,7 @@ div.item-mask {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); // 半透明黑色背景
+  background-color: rgba(0, 0, 0, 0.6); // 半透明黑色背景
   z-index: 888;
   cursor: pointer;
 }
@@ -444,12 +444,14 @@ div.dropdown-cart {
 div.cart-list {
   overflow-x: hidden;
   overflow-y: auto;
+  max-height: 210px;
 }
 
 div.gift-item {
   display: flex;
   margin: 0 15px;
   padding: 10px 0;
+  height: 70px;
 }
 
 div.gift-item:not(:first-child) {
@@ -475,7 +477,9 @@ div.small-img img {
 }
 
 div.item-info {
-  max-width: calc(100% - 60px);
+  width: 200px;
+  display: flex;
+  flex-direction: column;
 }
 
 div.item-info p {
@@ -484,6 +488,10 @@ div.item-info p {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+p.amount {
+  align-self: flex-end;
 }
 
 div.cart-button {
@@ -533,7 +541,7 @@ div.success-mask {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); // 半透明黑色背景
+  background-color: rgba(0, 0, 0, 0.6); // 半透明黑色背景
   z-index: 888;
 }
 
@@ -594,4 +602,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 
-
+/* 外掛CDN的刪除單項視窗 */
+div.swal-footer {
+  text-align: center;
+}
