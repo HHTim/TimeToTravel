@@ -49,7 +49,7 @@ $(function () {
           dataType: 'json', // 預期會接收到回傳資料的格式： json | xml | html
           success: function (data) {
             blogUser = data;
-            if (blogUser.userAvatar == null) {
+            if (blogUser.userAvatar == null || blogUser.userAvatar == "" ) {
               userPhotoUrl = '../../images/avatar.svg';
             } else {
               userPhotoUrl = 'data:image/*;base64,' + blogUser.userAvatar;
@@ -91,7 +91,7 @@ $(function () {
       success: function (tags) {
         blogTags = tags;
         for (let i = 0; i < tags.length; i++) {
-          tag = tags[i];
+          let tag = tags[i];
           let badgeClass = ['bg-primary', 'bg-secondary', 'bg-success', 'bg-danger'][i % 4]; // 循环使用样式类
           tagsHtml += '<span class="badge small-tag ' + badgeClass + '">' + tag.tag + '</span>';
           //   console.log(tag.tag);
@@ -123,7 +123,7 @@ $(function () {
               </div>`;
             }
             let commentPhotoUrl;
-            if (comment.userAvatar == null) {
+            if (comment.userAvatar == null || comment.userAvatar == '') {
               commentPhotoUrl = '../../images/avatar.svg';
             } else {
               commentPhotoUrl = 'data:image/*;base64,' + comment.userAvatar;
@@ -187,7 +187,7 @@ $(function () {
         statusCode: {},
         success: function (data) {
           let replyPhotoUrl;
-          if (data.userAvatar == null) {
+          if (data.userAvatar == null || data.userAvatar == '') {
             replyPhotoUrl = '../../images/avatar.svg';
           } else {
             replyPhotoUrl = 'data:image/*;base64,' + data.userAvatar;
