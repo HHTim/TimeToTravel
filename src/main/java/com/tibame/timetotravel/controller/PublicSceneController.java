@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @RestController
@@ -30,6 +31,12 @@ public class PublicSceneController {
         return publicSceneService.getAll();
     }
 
+    @GetMapping("/getBySceneId/{sceneId}")
+    public PublicScene getById(@PathVariable Integer sceneId) {
+        System.out.println("查詢成功");
+        return publicSceneService.getById(sceneId);
+    }
+
     @GetMapping("/sceneManageSearch/{keyword}")
     public List<PublicScene> findBySceneAddress(@PathVariable String keyword){
         System.out.println("關鍵字查詢");
@@ -45,8 +52,7 @@ public class PublicSceneController {
     @PutMapping ("/updatePublicScene/{sceneId}")
     public String update(@PathVariable Integer sceneId,
                          @RequestBody PublicScene publicScene){
-        publicSceneService.update(sceneId,publicScene);
+//        publicSceneService.update(sceneId,publicScene);
         return "修改成功";
     }
-
 }
