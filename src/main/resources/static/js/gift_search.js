@@ -355,7 +355,7 @@ window.addEventListener('load', function () {
         let userId = body.user.userId;
 
         
-        let giftId = $(this).closest('li').data('giftId');
+        let giftId = $(this).closest('li').data('gift-id');
         // 由於input為text，所以記得要把字串轉為數字
         let giftCount = parseInt($(this).closest('li').find('input.qty-input').val());
         let dataset = { giftId: giftId, giftCount: giftCount };
@@ -622,8 +622,23 @@ window.addEventListener('load', function () {
 
     })
 
-
   });
+
+// ====================To Top 按鈕====================
+  $(window).scroll(function() {
+    if ($(this).scrollTop() > 100) {
+      $('button.to-top').fadeIn(300);
+    } else {
+      $('button.to-top').fadeOut(300);
+    }
+  });
+
+  $('button.to-top').click(function() {
+    $('html, body').animate({scrollTop: 0}, 25);
+  });
+
+
+
 
   getCurrentUserInformation();
 });

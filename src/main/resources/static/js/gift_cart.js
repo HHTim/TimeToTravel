@@ -812,6 +812,18 @@ $('div.order-mask').click((e) => {
   e.stopPropagation();
 });
 
+// ====================To Top 按鈕====================
+$(window).scroll(function() {
+  if ($(this).scrollTop() > 100) {
+    $('button.to-top').fadeIn(300);
+  } else {
+    $('button.to-top').fadeOut(300);
+  }
+});
+
+$('button.to-top').click(function() {
+  $('html, body').animate({scrollTop: 0}, 25);
+});
 
 
 

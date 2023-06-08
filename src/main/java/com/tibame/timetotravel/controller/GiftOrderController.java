@@ -1,5 +1,6 @@
 package com.tibame.timetotravel.controller;
 
+import com.tibame.timetotravel.common.PageBean;
 import com.tibame.timetotravel.entity.GiftOrder;
 import com.tibame.timetotravel.service.GiftOrderService;
 import jakarta.servlet.http.HttpSession;
@@ -60,3 +61,17 @@ public class GiftOrderController {
     }
 
 }
+
+
+//    @GetMapping("/giftOrder/{userId}")
+//    public ResponseEntity<?> findByUserId(@PathVariable Integer userId,
+//                                          @PathVariable Integer page) {
+//        PageBean<GiftOrder> giftOrderList = giftOrderService.findByUserId(userId, page);
+//
+//        if (giftOrderList == null) {
+//            PageBean<GiftOrder> objectPageBean = new PageBean<>();
+//            return ResponseEntity.ok(objectPageBean);
+//        }
+//
+//        return ResponseEntity.ok(giftOrderList);
+//    }

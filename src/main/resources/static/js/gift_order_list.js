@@ -40,7 +40,7 @@ window.addEventListener('load', function () {
       }
     })
     .then((body) => {
-      console.log(body);
+      // console.log(body);
       
       if (typeof body === 'object') {
         
@@ -245,6 +245,12 @@ $('input.search__no').on('input', function(e) {
 
 $('button.search__submit').click(function(e) {
   let orderId = parseInt($('input.search__no').val().trim());
+  // console.log(orderId);
+
+  if (isNaN(orderId)) {
+    getAll();
+    return;
+  }
 
   fetch('/giftOrderController/giftOrderId/' + orderId)
   .then((resp) => {
@@ -375,7 +381,18 @@ $('input.search__no').on('keyup', function(e) {
   }
 })
 
+// ====================To Top 按鈕====================
+$(window).scroll(function() {
+  if ($(this).scrollTop() > 100) {
+    $('button.to-top').fadeIn(300);
+  } else {
+    $('button.to-top').fadeOut(300);
+  }
+});
 
+$('button.to-top').click(function() {
+  $('html, body').animate({scrollTop: 0}, 25);
+});
 
 
 

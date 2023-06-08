@@ -1,5 +1,6 @@
 package com.tibame.timetotravel.service.ServiceImpl;
 
+import com.tibame.timetotravel.common.PageBean;
 import com.tibame.timetotravel.dto.UserGiftCart;
 import com.tibame.timetotravel.entity.GiftOrder;
 import com.tibame.timetotravel.entity.GiftOrderDetails;
@@ -15,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service("giftOrderService")
 public class GiftOrderServiceImpl implements GiftOrderService {
@@ -81,3 +83,14 @@ public class GiftOrderServiceImpl implements GiftOrderService {
     }
 
 }
+
+
+//    @Override
+//    public PageBean<GiftOrder> findByUserId(Integer userId, Integer page) {
+//        PageBean<GiftOrder> objectPageBean = new PageBean<>();
+//
+//        List<GiftOrder> giftOrderList = giftOrderRepository.findByUserId(userId).stream().skip((page - 1) * 5).collect(Collectors.toList());
+//        objectPageBean.setPageSize(giftOrderList.size());
+//        objectPageBean.setRows(giftOrderList);
+//        return objectPageBean;
+//    }
