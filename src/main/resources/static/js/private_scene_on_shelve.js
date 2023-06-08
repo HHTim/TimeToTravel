@@ -6,6 +6,46 @@ window.addEventListener('load', function () {
 	let mimeType = 'image/jpeg';
 	let onShelveBtn = document.querySelector('.nav_list_on_shelve');
 	let resetBtn = this.document.querySelector('.reset__area__btn');
+	let currentUserData;
+	let role;
+
+	async function getCurrentUserData() {
+		try {
+			let identifyRoleUrl = '/getCurrentUserController/current-user';
+			let getCurrentUserDataUrl;
+			// 執行第一個 Fetch 請求
+			const identifyRoleResponse = await fetch(identifyRoleUrl);
+			if (identifyRoleResponse.status === 401) {
+				role = '無法辨別使用者';
+				throw new Error('未授權，該訪客未登入');
+			} else if (identifyRoleResponse.ok) {
+				const identifyRoleData = await identifyRoleResponse.json();
+				if (identifyRoleData.role === '會員') {
+					console.log('會員');
+					role = '會員';
+					getCurrentUserDataUrl = '/UserController/user/' + identifyRoleData.user.userId;
+				} else if (identifyRoleData.role === '商家') {
+					console.log('商家');
+					role = '商家';
+					getCurrentUserDataUrl = '/CompanyController/company/' + identifyRoleData.company.comId;
+				} else {
+					console.log('平台');
+					role = '平台';
+					getCurrentUserDataUrl = '/AdminController/admin/' + identifyRoleData.admin.adminId;
+				}
+				// 執行第二個 Fetch 請求
+				const getCurrentUserDataResponse = await fetch(getCurrentUserDataUrl);
+				currentUserData = await getCurrentUserDataResponse.json();
+			} else {
+				role = '無法辨別使用者';
+				throw new Error('請求失敗');
+			}
+		} catch (error) {
+			// 錯誤處理
+			console.error(error);
+		}
+	}
+
 	resetBtn.addEventListener('click', function () {
 		window.location.reload();
 	});
@@ -54,7 +94,7 @@ window.addEventListener('load', function () {
 		let privateScenePic = extractBase64String(imgUrl).base64String;
 
 		let requestData = {
-			comId: 123, // 假的comId
+			comId: currentUserData.comId != null ? currentUserData.comId : 1, // 真的comId
 			privateSceneName: privateSceneName,
 			privateSceneDesc: privateSceneDesc,
 			privateScenePic: privateScenePic,
@@ -205,4 +245,5 @@ window.addEventListener('load', function () {
 
 	handleSelectedPrivateScene();
 	getCurrentUserInformation();
+	getCurrentUserData();
 });
