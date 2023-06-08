@@ -353,7 +353,7 @@ div.item-mask.open {
   display: inline-block;
   min-width: 50px;
   margin-right: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   padding: 5px 24px;
   // color: #ff674f;
   border: 1px solid #ff674f;
@@ -363,6 +363,12 @@ div.item-mask.open {
 .product-variant-option .advance .title {
   color: #495057;
   font-weight: bold;
+}
+
+div.remind {
+  font-size: 0.8rem;
+  text-align: end;
+  color: $custom-gray-2;
 }
 
 .btn-group {
@@ -376,7 +382,7 @@ div.item-mask.open {
 
 .product_quantity .btn {
   border: 1px solid #e2e2e2;
-  height: 40px;
+  height: 35px;
 
   // border-top-right-radius: 0;
   // border-bottom-right-radius: 0;
@@ -391,7 +397,7 @@ div.item-mask.open {
   border: solid 1px #ff674f;
   border-radius: 5px;
   color: #ff674f;
-  height: 40px;
+  height: 35px;
   cursor: pointer;
   width: 100%;
   margin-top: 10px;
@@ -402,7 +408,7 @@ div.item-mask.open {
   background-color: #ff674f;
   color: #ffffff;
   border: none;
-  padding: 10px 20px;
+  padding: 6px 20px;
   cursor: pointer;
   border-radius: 5px;
   display: inline-block;

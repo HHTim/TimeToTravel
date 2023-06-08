@@ -82,6 +82,7 @@ window.addEventListener('load', function () {
                         <div class="advance">
                           <div class="title">分類</div>
                           <div class="option_select">${i.giftTypeId}</div>
+                          <div class="remind">*購買數量:1~99</div>
                         </div>
                       </div>
                     </div>
