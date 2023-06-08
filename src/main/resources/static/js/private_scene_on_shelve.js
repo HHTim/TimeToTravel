@@ -5,6 +5,10 @@ window.addEventListener('load', function () {
 	let base64String;
 	let mimeType = 'image/jpeg';
 	let onShelveBtn = document.querySelector('.nav_list_on_shelve');
+	let resetBtn = this.document.querySelector('.reset__area__btn');
+	resetBtn.addEventListener('click', function () {
+		window.location.reload();
+	});
 
 	onShelveBtn.addEventListener('click', () => {
 		localStorage.removeItem('selectedRoom');

@@ -45,6 +45,10 @@ window.addEventListener('load', function () {
       console.error(error);
     }
   }
+	let resetBtn = this.document.querySelector('.reset__area__btn');
+	resetBtn.addEventListener('click', function () {
+		window.location.reload();
+	});
 
   onShelveBtn.addEventListener('click', () => {
     localStorage.removeItem('selectedRoom');
