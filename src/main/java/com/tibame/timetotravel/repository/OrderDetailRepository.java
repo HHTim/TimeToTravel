@@ -23,7 +23,7 @@ public interface OrderDetailRepository extends CrudRepository<OrderDetail, Integ
     @Query(value = findOrderByDate, nativeQuery = true)
     Integer findOrderByDate(Integer roomId, String start, String end);
 
-    @Query(value = "SELECT new com.tibame.timetotravel.dto.OrderWithUser(u.userName, u.userAvatar, o.orderRank, o.orderComment) FROM User u JOIN OrderDetail o ON u.userId = o.userId JOIN Room r ON o.roomId = r.roomId JOIN Company c ON r.comId = c.comId WHERE c.comId = :comId ORDER BY o.orderDateTime")
+    @Query(value = "SELECT new com.tibame.timetotravel.dto.OrderWithUser(u.userName, u.userAvatar, o.orderRank, o.orderComment, o.orderDateTime, r.roomName) FROM User u JOIN OrderDetail o ON u.userId = o.userId JOIN Room r ON o.roomId = r.roomId JOIN Company c ON r.comId = c.comId WHERE c.comId = :comId ORDER BY o.orderDateTime")
     List<OrderWithUser> findOrderWithUserByComId(Integer comId);
 
 }

@@ -86,6 +86,7 @@ function renderList(data) {
       journeyPrice,
     } = data[i];
 
+    console.log(orderDatetime);
     orderDatetime = orderDatetime.slice(0, 16);
 
     html += `
@@ -273,7 +274,7 @@ searchCom.addEventListener('blur', async (e) => {
   result = await resp.json();
   console.log('Name: ');
   console.log(result);
-  list.innerHTML = renderList(result);
+  list.innerHTML = renderList(result.rows);
   name = '';
 
   // 總頁數
@@ -300,7 +301,7 @@ searchNo.addEventListener('blur', async (e) => {
   result = await resp.json();
   console.log('NO: ');
   console.log(result);
-  list.innerHTML = renderList(result);
+  list.innerHTML = renderList(result.rows);
   no = '';
 
   // 總頁數
