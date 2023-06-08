@@ -68,6 +68,7 @@ $(document).ready(function () {
   function getData2Page(response) {
     if (response && response.length > 0) {
       let blogsContainer = $('.getblogs'); // 取得存放博客的容器元素
+      blogsContainer.innerHTML= "";
       for (let i = 0; i < response.length; i++) {
         let blog = response[i];
         let tagsHtml = getTags(blog.postId);
@@ -200,7 +201,7 @@ $(document).ready(function () {
     // $('input[name="article-type"], input[name="sort-option"]').change(function () { // 兩種其中一種觸發事件就執行
     $('#search-btn').click();
   });
-  $('input[name="sort-option"]').change(function () {
+  $('input[name="article-type"]').change(function () {
     currentPage = 1;
     $('#search-btn').click();
   });
