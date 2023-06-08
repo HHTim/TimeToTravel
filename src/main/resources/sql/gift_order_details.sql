@@ -1,4 +1,7 @@
 # 土產訂單明細 table
+
+-- DROP TABLE `gift_order_details`;
+
 CREATE TABLE `gift_order_details` (
   `GIFT_ORDER_DETAILS_ID` int NOT NULL AUTO_INCREMENT COMMENT '土產訂單明細編號',
   `GIFT_ORDER_ID` int NOT NULL COMMENT '土產訂單編號',
@@ -11,12 +14,19 @@ CREATE TABLE `gift_order_details` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='土產訂單明細';
 
 
-
-
-
-INSERT INTO `gift_order_details` (`GIFT_ORDER_ID`, `GIFT_ID`, `BOUGHT_COUNT`, `UNIT_PRICE`)
-VALUES (1001, 2, 10, 10),
-       (1002, 1, 20, 20),
-       (1003, 3, 15, 15),
-       (1004, 2, 12, 12),
-       (1002, 4, 20, 20);
+INSERT INTO gift_order_details (GIFT_ORDER_ID, GIFT_ID, BOUGHT_COUNT, UNIT_PRICE)
+VALUES (1, 5, 2, 60),
+       (2, 3, 1, 60),
+       (3, 9, 3, 195),
+       (4, 6, 2, 100),
+       (5, 1, 1, 150),
+       (6, 10, 4, 160),
+       (7, 8, 2, 90),
+       (8, 12, 1, 90),
+       (9, 2, 3, 240),
+       (10, 15, 2, 40),
+       (11, 4, 1, 200),
+       (12, 11, 3, 105),
+       (13, 13, 2, 240),
+       (14, 7, 1, 70),
+       (15, 14, 4, 100);

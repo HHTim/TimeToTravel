@@ -23,7 +23,7 @@ window.addEventListener('load', function () {
     btn.addEventListener('click', clearLocalStorage);
   });
 
-  // 處理從 gift_manage.html 來的編輯房型
+  // 處理從 gift_manage.html 來的編輯土產
   function handleSelectedGift() {
     const selectedGift = JSON.parse(localStorage.getItem('selectedGift'));
     console.log(selectedGift);
