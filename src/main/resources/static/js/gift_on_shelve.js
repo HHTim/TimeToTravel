@@ -43,6 +43,10 @@ window.addEventListener('load', function () {
 
     mimeType = 'image/jpeg';
     let giftPhoto = convertBase64ToImage(selectedGift.giftPhoto, mimeType);
+	let resetBtn = this.document.querySelector('.reset__area__btn');
+	resetBtn.addEventListener('click', function () {
+		window.location.reload();
+	});
     picturePreview.appendChild(giftPhoto);
 
     giftId = selectedGift.giftId;

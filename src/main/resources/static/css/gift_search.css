@@ -460,7 +460,7 @@ div.item-mask {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.6);
   z-index: 888;
   cursor: pointer;
 }
@@ -596,7 +596,7 @@ div.item-mask.open {
   display: inline-block;
   min-width: 50px;
   margin-right: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   padding: 5px 24px;
   border: 1px solid #ff674f;
   border-radius: 5px;
@@ -606,6 +606,12 @@ div.item-mask.open {
 .product-variant-option .advance .title {
   color: #495057;
   font-weight: bold;
+}
+
+div.remind {
+  font-size: 0.8rem;
+  text-align: end;
+  color: #4d4f52;
 }
 
 .btn-group {
@@ -618,7 +624,7 @@ div.item-mask.open {
 
 .product_quantity .btn {
   border: 1px solid #e2e2e2;
-  height: 40px;
+  height: 35px;
   position: relative;
   flex: 1 1 auto;
 }
@@ -629,7 +635,7 @@ div.item-mask.open {
   border: solid 1px #ff674f;
   border-radius: 5px;
   color: #ff674f;
-  height: 40px;
+  height: 35px;
   cursor: pointer;
   width: 100%;
   margin-top: 10px;
@@ -640,7 +646,7 @@ div.item-mask.open {
   background-color: #ff674f;
   color: #ffffff;
   border: none;
-  padding: 10px 20px;
+  padding: 6px 20px;
   cursor: pointer;
   border-radius: 5px;
   display: inline-block;
@@ -682,12 +688,14 @@ div.dropdown-cart {
 div.cart-list {
   overflow-x: hidden;
   overflow-y: auto;
+  max-height: 210px;
 }
 
 div.gift-item {
   display: flex;
   margin: 0 15px;
   padding: 10px 0;
+  height: 70px;
 }
 
 div.gift-item:not(:first-child) {
@@ -713,7 +721,9 @@ div.small-img img {
 }
 
 div.item-info {
-  max-width: calc(100% - 60px);
+  width: 200px;
+  display: flex;
+  flex-direction: column;
 }
 
 div.item-info p {
@@ -722,6 +732,10 @@ div.item-info p {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+p.amount {
+  align-self: flex-end;
 }
 
 div.cart-button {
@@ -769,7 +783,7 @@ div.success-mask {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.6);
   z-index: 888;
 }
 
@@ -825,4 +839,9 @@ input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+/* 外掛CDN的刪除單項視窗 */
+div.swal-footer {
+  text-align: center;
 }

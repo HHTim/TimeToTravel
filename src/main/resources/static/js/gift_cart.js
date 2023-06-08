@@ -1,44 +1,45 @@
 import { getCurrentUserInformation } from './header.js';
 
 window.addEventListener('load', function () {
-	// =============宣告=============
-	const cartList = document.querySelector('tbody.cart-list');
-	const totalPrice = document.querySelector('div.total-price');
-	const userId = 12;
+  // =============宣告=============
+  const cartList = document.querySelector('tbody.cart-list');
+  const totalPrice = document.querySelector('div.total-price');
+  const userId = 1;
 
 	// ==================一進入頁面的載入==================
 	showCart();
 
-	// =================列出購物車內容=================
-	function showCart() {
-		fetch('/giftCartController/giftCart/' + userId)
-			.then((resp) => {
-				// console.log(resp);
-				if (resp.headers.get('content-type').includes('application/json')) {
-					return resp.json();
-				} else {
-					return resp.text();
-				}
-			})
-			.then((body) => {
-				// console.log(body);
-				if (typeof body === 'object') {
-					// console.log(body);
-					// 宣告總金額
-					let totalPriceNum = 0;
-					// 商品塞入列表
-					cartList.innerHTML = body
-						.map((i) => {
-							let unitPrice = 0;
-							// 小計 = 單價 * 數量
-							unitPrice = i.giftPrice * i.giftCount;
-							// 總金額 = 小計加總
-							totalPriceNum += unitPrice;
+  // =================列出購物車內容=================
+  function showCart() {
 
-							return `
+    fetch('http://localhost:8080/giftCartController/giftCart/' + userId)
+      .then((resp) => {
+        // console.log(resp);
+        if (resp.headers.get('content-type').includes('application/json')) {
+          return resp.json();
+        } else {
+          return resp.text();
+        }
+      })
+      .then((body) => {
+        // console.log(body);
+        if (typeof body === 'object') {
+          // console.log(body);
+          // 宣告總金額
+          let totalPriceNum = 0;
+          // 商品塞入列表
+          cartList.innerHTML = body
+            .map((i) => {
+              let unitPrice = 0;
+              // 小計 = 單價 * 數量
+              unitPrice = i.giftPrice * i.giftCount;
+              // 總金額 = 小計加總
+              totalPriceNum += unitPrice;
+
+              return `
         <tr data-gift-id="${i.giftId}">
           <td><div class="gift-img"><img src="data:image/png;base64,${i.giftPhoto}" alt="" /></div><div class="gift-name"><div>${i.giftName}</div></div></td>
-          <td>${i.giftPrice}</td>
+          <td>$<span>${i.giftPrice}</span></td>
           <td>
             <div class="quantity">
               <button class="minus-btn">-</button>
@@ -53,13 +54,24 @@ window.addEventListener('load', function () {
 						})
 						.join('');
 
-					// 總金額塞入
-					totalPrice.innerHTML = totalPriceNum;
-				} else if (typeof body === 'string') {
-					// console.log(body);
-				}
-			});
-	}
+          // 總金額塞入
+          totalPrice.innerHTML = totalPriceNum;
+
+        } else if (typeof body === 'string') {
+// ***************如果購物車沒東西的防範***************
+          // console.log(body);
+
+          // 清空DOM元素
+          $('tbody').empty();
+          $('div.total').empty();
+          $('div.gotocheck').empty();
+
+          // 呈現返回土產專區視窗
+          $('div.success-mask').addClass('show');
+          $('div.add-success').hide().addClass('show').fadeIn(500);
+        }
+      });
+  }
 
 	// *********************重要*********************
 	// ===============更新商品數量操作===============
@@ -126,16 +138,16 @@ window.addEventListener('load', function () {
 		updateItem(giftId, giftCount, dataset);
 	});
 
-	// ============更新單項的方法============
-	function updateItem(giftId, giftCount, dataset) {
-		fetch('/giftCartController/giftCart/' + userId, {
-			method: 'PUT',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify(dataset),
-		})
-			.then((resp) => resp.json())
-			.then((body) => {
-				console.log(body);
+  // ============更新單項的方法============
+  function updateItem(giftId, giftCount, dataset) {
+    fetch('http://localhost:8080/giftCartController/giftCart/' + userId, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(dataset),
+    })
+      .then((resp) => resp.json())
+      .then((body) => {
+        // console.log(body);
 
 				const updateTr = document.querySelector(`tr[data-gift-id="${giftId}"]`);
 
@@ -143,8 +155,8 @@ window.addEventListener('load', function () {
 				// 小計 = 單價 * 數量
 				unitPrice = body.giftPrice * body.giftCount;
 
-				updateTr.innerHTML = `<td><div class="gift-img"><img src="data:image/png;base64,${body.giftPhoto}" alt="" /></div><div class="gift-name"><div>${body.giftName}</div></div></td>
-      <td>${body.giftPrice}</td>
+        updateTr.innerHTML = `<td><div class="gift-img"><img src="data:image/png;base64,${body.giftPhoto}" alt="" /></div><div class="gift-name"><div>${body.giftName}</div></div></td>
+      <td>$<span>${body.giftPrice}</span></td>
       <td>
         <div class="quantity">
           <button class="minus-btn">-</button>
@@ -163,37 +175,223 @@ window.addEventListener('load', function () {
 					totalPriceNum += price;
 				});
 
-				totalPrice.innerHTML = totalPriceNum;
-			});
-	}
+        totalPrice.innerHTML = totalPriceNum;
+      });
+  }
+  
+// ===================刪除單項的方法===================
+$(document).on('click', 'button.delete-one', function(e) {
+  // console.log('delete-one');
 
-	// ===================刪除單項的方法===================
+  if (typeof swal === 'function') {
+    swal({
+      title: '確定要刪除嗎？',
+      icon: 'error',
+      buttons: {
+        cancel: {
+          text: '取消',
+          visible: true
+        },
+        danger: {
+          text: '刪除',
+          visible: true
+        }
+      }})
+    .then((result) => {
+      // console.log(result);
+      // console.log(typeof result);
+      if (result === 'danger') {
 
-	// ===================清空彈出視窗===================
-	$('button.clear-all').on('click', function (e) {
-		// console.log('aaa');
-		fetch('http://localhost:8080/giftCartController/giftCart/' + userId, {
-			method: 'DELETE',
-		})
-			.then((resp) => resp.text())
-			.then((body) => {
-				console.log(body);
-				$('div.fade').removeClass('show');
-				$('div.modal-backdrop').remove();
-				$('div.clear-check').css('display', 'none');
+        let giftId = parseInt($(this).closest('tr').data('gift-id'));
+        // console.log(typeof giftId);
+        fetch('http://localhost:8080/giftCartController/giftCart/' + userId + '/' + giftId, {
+          method: 'DELETE'
+        })
+        .then((resp) => resp.text())
+        .then((body) => {
+          $(this).closest('tr').fadeOut(300, function() {
+            $(this).remove();
 
-				$('div.success-mask').addClass('show');
-				$('div.add-success').hide().addClass('show').slideDown(250);
-			});
-	});
+            // 更新總金額
+            let totalPriceNum = 0;
+            const unitPriceElements = document.querySelectorAll('td.unit-price span');
+            unitPriceElements.forEach((span) => {
+              const price = parseInt(span.textContent);
+              totalPriceNum += price;
+            });
+            totalPrice.innerHTML = totalPriceNum;
+
+            // 刪掉最後一個等於清空
+            if ($('tbody.cart-list').find('tr').length === 0) {
+              // console.log('empty');
+              // 清空DOM元素
+              $('tbody').empty();
+              $('div.total').empty();
+              $('div.gotocheck').empty();
+          
+              // 呈現返回土產專區視窗
+              $('div.success-mask').addClass('show');
+              $('div.add-success').hide().addClass('show').fadeIn(500);
+            }
+          })
+        });
+      }
+    });
+  } else {
+    let result = confirm('確定要刪除嗎？');
+    if (result === true) {
+
+      let giftId = parseInt($(this).closest('tr').data('gift-id'));
+      // console.log(typeof giftId);
+      fetch('http://localhost:8080/giftCartController/giftCart/' + userId + '/' + giftId, {
+        method: 'DELETE'
+      })
+      .then((resp) => resp.text())
+      .then((body) => {
+        $(this).closest('tr').fadeOut(300, function() {
+          $(this).remove();
+
+          if ($('tbody.cart-list').find('tr').length === 0) {
+            // console.log('empty');
+            // 清空DOM元素
+            $('tbody').empty();
+            $('div.total').empty();
+            $('div.gotocheck').empty();
+        
+            // 呈現返回土產專區視窗
+            $('div.success-mask').addClass('show');
+            $('div.add-success').hide().addClass('show').fadeIn(500);
+          }
+
+        })
+        
+      });
+
+    }
+  }
+
+});
 
 	// ===================返回土產專區確認===================
 	$('div.success-btn button').on('click', function (e) {
 		window.location.href = 'http://localhost:8080/gift_search';
 	});
 
-	$('div.success-mask').click((e) => {
-		e.stopPropagation();
-	});
-	getCurrentUserInformation();
+// ===================清空彈出視窗===================
+$('button.clear-all').on('click', function(e) {
+  // console.log('aaa');
+  fetch('http://localhost:8080/giftCartController/giftCart/' + userId, {
+    method: 'DELETE'
+  })
+  .then((resp) => resp.text())
+  .then((body) => {
+    // console.log(body);
+    $('div.fade').removeClass('show');
+    $('div.modal-backdrop').remove();
+    $('div.clear-check').css('display', 'none');
+
+    // 清空DOM元素
+    $('tbody').empty();
+    $('div.total').empty();
+    $('div.gotocheck').empty();
+
+    // 呈現返回土產專區視窗
+    $('div.success-mask').addClass('show');
+    $('div.add-success').hide().addClass('show').fadeIn(500);
+  });
+});
+
+// ===================返回土產專區確認===================
+  $('div.success-btn button').on('click', function (e) {
+    window.location.href = 'http://localhost:8080/gift_search';
+  });
+
+  $('div.success-mask').click((e) => {
+    e.stopPropagation();
+  });
+
+// =================確定購買建立訂單=================
+$('button.go-to-pay').on('click', function(e) {
+
+  if (typeof swal === 'function') {
+    swal({
+      title: '即將下訂',
+      icon: 'info',
+      buttons: {
+        cancel: {
+          text: '再想想',
+          visible: true
+        },
+        confirm: {
+          text: '決定了！',
+          visible: true
+        }
+      }})
+      .then((result) => {
+        if (result === true) {
+
+          fetch('http://localhost:8080/giftOrderController/giftOrder/' + userId, {
+            method: 'POST'
+          })
+          .then((resp) => resp.text())
+          .then((body) => {
+            // 清空DOM元素
+            $('tbody').empty();
+            $('div.total').empty();
+            $('div.gotocheck').empty();
+        
+            // 呈現成功購買商品視窗
+            $('div.order-mask').addClass('show');
+            $('div.order-success').hide().addClass('show').fadeIn(500);
+
+          })
+
+        }
+      })
+
+  } else {
+    let result = confirm('確定要刪除嗎？');
+    if (result === true) {
+
+      fetch('http://localhost:8080/giftOrderController/giftOrder/' + userId, {
+        method: 'POST'
+      })
+          .then((resp) => resp.text())
+          .then((body) => {
+            // 清空DOM元素
+            $('tbody').empty();
+            $('div.total').empty();
+            $('div.gotocheck').empty();
+        
+            // 呈現成功購買商品視窗
+            $('div.order-mask').addClass('show');
+            $('div.order-success').hide().addClass('show').fadeIn(500);
+          })
+    }
+  }
+})
+
+// ===================前往訂單紀錄確認===================
+$('div.order-btn button').on('click', function (e) {
+  window.location.href = 'http://localhost:8080/html/gift_order_list.html';
+});
+
+$('div.order-mask').click((e) => {
+  e.stopPropagation();
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+  getCurrentUserInformation();
+  
 });

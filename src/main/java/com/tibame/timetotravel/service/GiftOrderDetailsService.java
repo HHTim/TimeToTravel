@@ -1,18 +1,11 @@
 package com.tibame.timetotravel.service;
 
-import com.tibame.timetotravel.entity.GiftOrderDetails;
+import com.tibame.timetotravel.dto.GiftOrderListDto;
 
 import java.util.List;
 
 public interface GiftOrderDetailsService {
 
-    void insert(GiftOrderDetails giftOrderDetails);
+    List<GiftOrderListDto> findById(Integer giftOrderId);
 
-    void deleteById(Integer giftOrderDetailsId);
-
-    GiftOrderDetails updateById(Integer giftOrderDetailsId, GiftOrderDetails giftOrderDetails);
-
-    GiftOrderDetails findById(Integer giftOrderDetailsId);
-
-    List<GiftOrderDetails> findAll();
 }

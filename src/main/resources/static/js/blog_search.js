@@ -1,13 +1,23 @@
 $(document).ready(function () {
+  var user = null;
   var userId = null; // 拿 session
-  try {
-    userId = JSON.parse(sessionStorage.getItem('user-data')).userId;
-    console.log(userId);
-  } catch (error) {
-    console.log(error);
-    userId = 1; // 忽略错误，继续执行其他操作
-  }
-  console.log(userId);
+  $.ajax({
+    url: 'http://localhost:8080/getCurrentUserController/current-user', // 資料請求的網址
+    type: 'GET', // GET | POST | PUT | DELETE | PATCH
+    dataType: 'json', // 預期會接收到回傳資料的格式： json | xml | html
+    success: function (data) {
+      if (data.role == '會員') {
+        user = data.user;
+        userId = user.userId;
+      }
+    },
+    error: function (xhr) {
+      // request 發生錯誤的話執行
+      console.log(xhr);
+    },
+  });
+  console.log('userId : ' + userId);
+  // console.log(user);
   // ==============================================
   var tags = [];
   var tagsId = [];
@@ -184,7 +194,12 @@ $(document).ready(function () {
   });
 
   // 搜尋
-  $('input[name="article-type"], input[name="sort-option"]').change(function () {
+  $('input[name="sort-option"]').change(function () {
+    // $('input[name="article-type"], input[name="sort-option"]').change(function () { // 兩種其中一種觸發事件就執行
+    $('#search-btn').click();
+  });
+  $('input[name="sort-option"]').change(function () {
+    currentPage = 1;
     $('#search-btn').click();
   });
   $('#search-btn').click(function () {

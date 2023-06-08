@@ -3,6 +3,7 @@ package com.tibame.timetotravel.controller;
 import com.tibame.timetotravel.dto.UserGiftCart;
 import com.tibame.timetotravel.service.GiftCartService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
@@ -15,6 +16,7 @@ import java.util.Map;
 public class GiftCartController {
 
     @Autowired
+    @Qualifier("giftCartService")
     GiftCartService giftCartService;
 
     @PostMapping("/giftCart/{userId}")

@@ -91,12 +91,12 @@
           <div class="col-10">
             <!-- Main -->
             <main class="main">
-              <h2 class="subtitle">訂房紀錄</h2>
+              <h2 class="subtitle">土產紀錄</h2>
               <section class="search">
-                <div class="search__item">
+                <!-- <div class="search__item">
                   <p>商家名稱</p>
                   <input type="text" class="search__com" name="search__com" />
-                </div>
+                </div> -->
                 <div class="search__item">
                   <p>訂單編號</p>
                   <input type="text" class="search__no" name="search__no" />
@@ -112,93 +112,94 @@
                   <thead>
                     <tr>
                       <th scope="col">訂單編號</th>
-                      <th scope="col">下定日期</th>
-                      <th scope="col">商家名稱</th>
-                      <th scope="col">房型名稱</th>
+                      <th scope="col"></th>
+                      <th scope="col">下訂日期</th>
+                      <th scope="col"></th>
                       <th scope="col">總金額</th>
+                      <th scope="col"></th>
+                      <th scope="col">訂單狀態</th>
+                      <th scope="col"></th>
                       <th scope="col">查看明細</th>
-                      <th scope="col">我要評論</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr class="list__order" data-id="1">
+
+                    <tr class="if-empty">
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td>沒有土產消費紀錄</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+
+                    <tr class="list__order" data-order-id="1">
                       <td class="list__no">0000242</td>
+                      <td></td>
                       <td class="list__date">2023-04-09</td>
-                      <td class="list__com">OO青年旅館</td>
-                      <td class="list__room">單人床</td>
-                      <td class="list__price">NT $18000</td>
+                      <td></td>
+                      <td class="list__price">NT $<span>18000</span></td>
+                      <td></td>
+                      <td class="list__status">已完成</td>
+                      <td></td>
                       <td class="list__detail">
                         <button id="detail">查看</button>
-                        <div class="lightbox">
-                          <button class="lightbox__close"></button>
-                          <h2 class="lightbox__title">OO青年旅館</h2>
-                          <div>
-                            <p>房型：</p>
-                            <p>精緻套房</p>
-                          </div>
-                          <div>
-                            <p>床型：</p>
-                            <p>雙人床</p>
-                          </div>
-                          <div>
-                            <p>入住時間：</p>
-                            <p>2023-05-01</p>
-                          </div>
-                          <div>
-                            <p>退房時間:</p>
-                            <p>2023-05-03</p>
-                          </div>
-                          <div>
-                            <p>一間房一晚價格:</p>
-                            <p>NT $ 9000</p>
-                          </div>
-                          <div>
-                            <p>行程名稱:</p>
-                            <p>好棒棒行程</p>
-                          </div>
-                          <div>
-                            <p>行程價格:</p>
-                            <p>NT $ 9000</p>
-                          </div>
-                          <div>
-                            <p>總金額:</p>
-                            <p>NT $ 25500</p>
-                          </div>
-                        </div>
-                      </td>
-                      <td class="list__comment">
-                        <button id="comment">評論</button>
                       </td>
                     </tr>
+
+                    <tr class="list__order" data-order-id="1">
+                      <td class="list__no">0000242</td>
+                      <td></td>
+                      <td class="list__date">2023-04-09</td>
+                      <td></td>
+                      <td class="list__price">NT $18000</td>
+                      <td></td>
+                      <td class="list__status">已完成</td>
+                      <td></td>
+                      <td class="list__detail">
+                        <button id="detail">查看</button>
+                      </td>
+                    </tr>
+
                   </tbody>
                 </table>
               </section>
-              <section class="comment">
-                <h3 class="comment__title">留下你的評分與留言</h3>
-                <ul class="comment__rank">
-                  <li>
-                    <a href=""><i class="fa-solid fa-star fa-lg"></i></a>
-                  </li>
-                  <li>
-                    <a href=""><i class="fa-solid fa-star fa-lg"></i></a>
-                  </li>
-                  <li>
-                    <a href=""><i class="fa-solid fa-star fa-lg"></i></a>
-                  </li>
-                  <li>
-                    <a href=""><i class="fa-solid fa-star fa-lg"></i></a>
-                  </li>
-                  <li>
-                    <a href=""><i class="fa-solid fa-star fa-lg"></i></a>
-                  </li>
-                </ul>
-                <!-- <input type="text" class="comment__content" placeholder="最多50字" /> -->
-                <textarea id="" class="comment__content" placeholder="最多50字"></textarea>
-                <div class="comment__btn">
-                  <button class="comment__submit">送出</button>
-                  <button class="comment__cancle">取消</button>
+
+              <div class="lightbox-mask "></div>
+              <div class="lightbox ">
+                <button class="lightbox__close"></button>
+                <h2 class="lightbox__title">訂單明細</h2>
+                <div class="order-details">
+
+                  <div>
+                    <p>喜來登民宿</p>
+                    <p>土產A</p>
+                    <p>單價 $<span>20</span></p>
+                    <p><span>13</span>個</p>
+                    <p>小計 $<span>240</span></p>
+                  </div>
+
+                  <div>
+                    <p>福隆便當飯店</p>
+                    <p>土產B</p>
+                    <p>單價 $<span>20</span></p>
+                    <p><span>34</span>個</p>
+                    <p>小計 $<span>620</span></p>
+                  </div>
+                  <div>
+                    <p>溫暖小屋</p>
+                    <p>土產C</p>
+                    <p>單價 $<span>20</span></p>
+                    <p><span>5</span>個</p>
+                    <p>小計 $<span>134</span></p>
+                  </div>
+                  
                 </div>
-              </section>
+              </div>
+
               <nav class="page">
                 <ul class="pagination">
                   <li class="page-item"><a class="page-link" href="#">&lt;</a></li>

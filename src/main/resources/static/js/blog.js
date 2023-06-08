@@ -1,22 +1,35 @@
 $(function () {
-  // session 取得 基本資料區塊
+  var user = null;
+  var userId = null; // 拿 session
   var blog = JSON.parse(sessionStorage.getItem('default-blog-view'));
   var postId = blog.postId;
-
-  var userId = null;
   try {
     userId = JSON.parse(sessionStorage.getItem('user-data')).userId;
     console.log(userId);
   } catch (error) {
-    console.log(error);
-    userId = 1; // 忽略错误，继续执行其他操作
+    $.ajax({
+      url: 'http://localhost:8080/getCurrentUserController/current-user', // 資料請求的網址
+      type: 'GET', // GET | POST | PUT | DELETE | PATCH
+      dataType: 'json', // 預期會接收到回傳資料的格式： json | xml | html
+      success: function (data) {
+        if (data.role == '會員') {
+          user = data.user;
+          userId = user.userId;
+        }
+      },
+      error: function (xhr) {
+        console.log(xhr);
+      },
+    });
   }
-  console.log(userId);
+  console.log('userId : ' + userId);
+
+  // console.log(user);
 
   // ===================================
   var blogTags;
   var getBlogdata2Session;
-
+  var blogUser = null;
   function getBLogData() {
     let tagsHtml = getTags(postId);
     $.ajax({
@@ -26,7 +39,25 @@ $(function () {
         getBlogdata2Session = data;
         $('#article-topic').text(data.postTitle);
         $('#article-type').text(data.lastPostType);
-        $('#article-author-img').attr('src', data.userId); // 圖片尚未完成
+        let userPhotoUrl;
+        // data.userId
+        $.ajax({
+          url: 'http://localhost:8080/BlogController/blog/getUser/' + data.userId, // 資料請求的網址
+          type: 'GET', // GET | POST | PUT | DELETE | PATCH
+          dataType: 'json', // 預期會接收到回傳資料的格式： json | xml | html
+          success: function (data) {
+            blogUser = data;
+            if (blogUser.userAvatar == null) {
+              userPhotoUrl = '../../images/avatar.svg';
+            } else {
+              userPhotoUrl = 'data:image/*;base64,' + blogUser.userAvatar;
+            }
+            $('#article-author-img').attr('src', userPhotoUrl); // 圖片尚未完成
+          },
+          error: function (xhr) {
+            console.log(xhr);
+          },
+        });
         $('#article-author').text(data.userName);
         $('#article-content').append(data.postContent);
         $('#article-tags').append(tagsHtml);
@@ -78,7 +109,7 @@ $(function () {
       success: function (response) {
         if (Array.isArray(response)) {
           response.forEach(function (comment) {
-            console.log('userAvatar: ' + comment.userAvatar); // 圖片尚未測試好
+            // console.log('userAvatar: ' + comment.userAvatar); // 圖片尚未測試好
             let checkSameUser = '';
             if (comment.userId == userId) {
               checkSameUser = `<div class="ms-auto align-self-center dropdown">
@@ -89,12 +120,18 @@ $(function () {
               </ul>
               </div>`;
             }
+            let commentPhotoUrl;
+            if (comment.userAvatar == null) {
+              commentPhotoUrl = '../../images/avatar.svg';
+            } else {
+              commentPhotoUrl = 'data:image/*;base64,' + comment.userAvatar;
+            }
             let commentsContainer =
               `
             <div class="add-comment">
               <div comment-no="${comment.commentNo}" post-id="${comment.postId}"  class="d-flex comment">
                 <div class="align-self-center me-2">
-                <img src="../../images/avatar.svg" width="30px" height="30px" alt="avatar" />
+                <img src="${commentPhotoUrl}" width="30px" height="30px" alt="avatar" />
                 </div>
               <div class="me-2">
                 <p id="article-comment-name">${comment.userName}</p>` +
@@ -147,12 +184,18 @@ $(function () {
         headers: {},
         statusCode: {},
         success: function (data) {
+          let replyPhotoUrl;
+          if (data.userAvatar == null) {
+            replyPhotoUrl = '../../images/avatar.svg';
+          } else {
+            replyPhotoUrl = 'data:image/*;base64,' + data.userAvatar;
+          }
           let comment_html =
             `
           <div class="add-comment">
                 <div comment-no="${data.commentNo}" post-id="${data.postId}" class="d-flex comment">
                         <div class=" align-self-center me-2">
-                          <img src="../../images/avatar.svg" width="30px" height="30px" alt="avatar" />
+                          <img src="${replyPhotoUrl}" width="30px" height="30px" alt="avatar" />
                         </div>
                         <div class="me-2">
                           <p id="article-comment-name">${data.userName}</p>` +

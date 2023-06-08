@@ -1,10 +1,13 @@
-CREATE TABLE `ARTICLE_TYPE` (
+DROP TABLE IF EXISTS  `article_type`;
+CREATE TABLE `article_type` (
   `POST_TYPE_ID` tinyint NOT NULL AUTO_INCREMENT COMMENT '文章類型編號',
-  `POST_TYPE` varchar(30) NOT NULL COMMENT '文章類型',
+  `POST_TYPE` varchar(50) NOT NULL COMMENT '文章類型',
   PRIMARY KEY (`POST_TYPE_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='文章類型';
+)  COMMENT='文章類型';
 
-INSERT INTO `ARTICLE_TYPE`
-(`POST_TYPE`)
-VALUES
-('問題'),('情報'),('心得'),('討論'),('攻略'),('其他');
+INSERT INTO `article_type` (`POST_TYPE_ID`,`POST_TYPE`) VALUES (1,'問題');
+INSERT INTO `article_type` (`POST_TYPE_ID`,`POST_TYPE`) VALUES (2,'情報');
+INSERT INTO `article_type` (`POST_TYPE_ID`,`POST_TYPE`) VALUES (3,'心得');
+INSERT INTO `article_type` (`POST_TYPE_ID`,`POST_TYPE`) VALUES (4,'討論');
+INSERT INTO `article_type` (`POST_TYPE_ID`,`POST_TYPE`) VALUES (5,'攻略');
+INSERT INTO `article_type` (`POST_TYPE_ID`,`POST_TYPE`) VALUES (6,'其他');

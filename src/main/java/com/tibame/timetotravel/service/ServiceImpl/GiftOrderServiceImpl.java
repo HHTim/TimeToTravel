@@ -1,10 +1,15 @@
 package com.tibame.timetotravel.service.ServiceImpl;
 
+import com.tibame.timetotravel.dto.UserGiftCart;
 import com.tibame.timetotravel.entity.GiftOrder;
+import com.tibame.timetotravel.entity.GiftOrderDetails;
+import com.tibame.timetotravel.repository.GiftOrderDetailsRepository;
 import com.tibame.timetotravel.repository.GiftOrderRepository;
+import com.tibame.timetotravel.service.GiftCartService;
 import com.tibame.timetotravel.service.GiftOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,42 +23,61 @@ public class GiftOrderServiceImpl implements GiftOrderService {
     @Qualifier("giftOrderRepository")
     private GiftOrderRepository giftOrderRepository;
 
-    @Override
-    @Transactional
-    public void insert(GiftOrder giftOrder) {
-        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        giftOrder.setGiftOrderDatetime(timestamp);
-        giftOrderRepository.save(giftOrder);
-    }
+    @Autowired
+    @Qualifier("giftOrderDetailsRepository")
+    private GiftOrderDetailsRepository giftOrderDetailsRepository;
+
+    @Autowired
+    @Qualifier("giftCartService")
+    private GiftCartService giftCartService;
 
     @Override
     @Transactional
-    public void deleteById(Integer giftOrderId) {
-        giftOrderRepository.deleteById(giftOrderId);
-    }
+    public void insert(Integer userId) {
 
-    @Override
-    @Transactional
-    public GiftOrder updateById(Integer giftOrderId, GiftOrder giftOrder) {
+        // 建立一筆訂單的許多訂單明細
+        // 先依照userId取得購物車內容列表
+        List<UserGiftCart> userGiftCartList = giftCartService.getCart(userId);
+        if (userGiftCartList != null) {
 
-        GiftOrder go = giftOrderRepository.findById(giftOrderId).orElse(null);
-
-        if (go != null) {
-            go.setGiftOrderStatus(giftOrder.getGiftOrderStatus());
-            giftOrderRepository.save(go);
-            return go;
-        } else {
-            return null;
+            // 下訂時間
+            Timestamp currentTime = new Timestamp(System.currentTimeMillis());
+            // 先創建一筆土產訂單
+            GiftOrder giftOrder = new GiftOrder();
+            giftOrder.setUserId(userId);
+            giftOrder.setGiftOrderDatetime(currentTime);
+            giftOrder.setGiftOrderStatus(false);
+            giftOrderRepository.save(giftOrder);
+            // 取得這筆訂單的編號
+            Integer giftOrderId = giftOrder.getGiftOrderId();
+            // 宣告總金額
+            Integer amount = 0;
+            // 取出每項購物車內容記錄到訂單明細
+            for (UserGiftCart item : userGiftCartList) {
+                GiftOrderDetails giftOrderDetails = new GiftOrderDetails();
+                giftOrderDetails.setGiftOrderId(giftOrderId);
+                giftOrderDetails.setGiftId(item.getGiftId());
+                giftOrderDetails.setBoughtCount(item.getGiftCount());
+                giftOrderDetails.setUnitPrice(item.getUnitPrice());
+                giftOrderDetailsRepository.save(giftOrderDetails);
+                amount += item.getUnitPrice();
+            }
+            // 總金額儲存回去這筆土產訂單
+            giftOrder.setGiftOrderAmount(amount);
+            giftOrderRepository.save(giftOrder);
+            // 最後清空購物車
+            giftCartService.clearCart(userId);
         }
     }
 
     @Override
-    public GiftOrder findById(Integer giftOrderId) {
-        return giftOrderRepository.findById(giftOrderId).orElse(null);
+    public List<GiftOrder> findByUserId(Integer userId) {
+        return giftOrderRepository.findByUserId(userId);
     }
 
     @Override
-    public List<GiftOrder> findAll() {
-        return giftOrderRepository.findAll();
+    public GiftOrder getByOrderId(Integer userId, Integer giftOrderId) {
+        return giftOrderRepository.getByOrderId(userId, giftOrderId);
     }
+
 }

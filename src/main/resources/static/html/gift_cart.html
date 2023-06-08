@@ -94,13 +94,8 @@
               </thead>
               <tbody class="cart-list">
                 <tr data-gift-id="${i.giftId}">
-                  <td>
-                    <div class="gift-img"><img src="../images/gift1.jpg" alt="" /></div>
-                    <div class="gift-name">
-                      <div>蛇肉串燒蛇肉串燒蛇肉串燒蛇肉串燒蛇肉串燒蛇肉串燒蛇肉串燒蛇肉串燒</div>
-                    </div>
-                  </td>
-                  <td>$3800</td>
+                  <td><div class="gift-img"><img src="../images/gift1.jpg" alt="" /></div><div class="gift-name"><div>蛇肉串燒蛇肉串燒蛇肉串燒蛇肉串燒蛇肉串燒蛇肉串燒蛇肉串燒蛇肉串燒</div></div></td>
+                  <td>$<span>3800</span></td>
                   <td>
                     <div class="quantity">
                       <button class="minus-btn">-</button>
@@ -112,27 +107,20 @@
                   <td><button class="btn btn-danger delete-one">刪除</button></td>
                 </tr>
 
-                <tr>
-                  <td><img src="#" alt="這是圖片" />蛇肉串燒</td>
-                  <td>$3800</td>
+                <tr data-gift-id="${i.giftId}">
+                  <td><div class="gift-img"><img src="../images/gift1.jpg" alt="" /></div><div class="gift-name"><div>蛇肉串燒蛇肉串燒蛇肉串燒蛇肉串燒蛇肉串燒蛇肉串燒蛇肉串燒蛇肉串燒</div></div></td>
+                  <td>$<span>3800</span></td>
                   <td>
                     <div class="quantity">
                       <button class="minus-btn">-</button>
-                      <div class="qty">
-                        <input
-                          type="text"
-                          oninput="this.value = this.value.replace(/[^0-9]/g, '')"
-                          class="qty-input"
-                          maxlength="2"
-                          value="1"
-                        />
-                      </div>
+                      <div class="qty"><input type="text" class="qty-input" maxlength="2" value="1" /></div>
                       <button class="plus-btn">+</button>
                     </div>
                   </td>
-                  <td>$11400</td>
-                  <td><button type="button" class="btn btn-danger">刪除</button></td>
+                  <td class="unit-price">$<span>11400</span></td>
+                  <td><button class="btn btn-danger delete-one">刪除</button></td>
                 </tr>
+                
               </tbody>
             </table>
             <div class="row total">
@@ -150,7 +138,9 @@
               </div>
               <div class="col-6"></div>
               <div class="col-3">
-                <button class="btn btn-success go-to-pay">前往結帳</button>
+                <button class="btn btn-success go-to-pay">
+                  確定購買
+                </button>
               </div>
             </div>
           </main>
@@ -171,7 +161,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel">提醒！</h5>
+            <h5 class="modal-title" id="staticBackdropLabel">提醒您！</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
@@ -180,7 +170,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
-            <button type="button" class="btn btn-primary clear-all">我確定</button>
+            <button type="button" class="btn btn-danger clear-all">我確定</button>
           </div>
         </div>
       </div>
@@ -198,6 +188,21 @@
       </div>
     </div>
     <!-- 返回土產專區確認確認 End -->
+    <!-- 成功購買商品確認 -->
+    <div class="order-mask"></div>
+    <div class="order-success">
+      <div>
+        <div class="order-icon"><i class="fa-solid fa-circle-check fa-2xl" style="color: #0bc117"></i></div>
+        <div class="order-msg">
+          <i class="fa-regular fa-face-smile fa-xl" style="color: #ff7e05"></i>感謝您的支持<i
+            class="fa-regular fa-face-smile fa-xl"
+            style="color: #ff7e05"
+          ></i>
+        </div>
+        <div class="order-btn"><button>完成</button></div>
+      </div>
+    </div>
+    <!-- 成功購買商品確認 End -->
     <!-- Footer -->
     <footer>
       <div class="footer"></div>
