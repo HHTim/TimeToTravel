@@ -4,7 +4,7 @@ window.addEventListener('load', function () {
   // =============宣告=============
   const cartList = document.querySelector('tbody.cart-list');
   const totalPrice = document.querySelector('div.total-price');
-  const userId = 1;
+  // const userId = null;
 
 	// ==================一進入頁面的載入==================
 	showCart();
@@ -12,7 +12,22 @@ window.addEventListener('load', function () {
   // =================列出購物車內容=================
   function showCart() {
 
-    fetch('http://localhost:8080/giftCartController/giftCart/' + userId)
+    fetch('/getCurrentUserController/current-user')
+    .then((resp) => {
+      if (resp.ok) {
+        return resp.json();
+      } else {
+        throw new Error('未登入會員');
+      }
+    })
+    .then((body) => {
+      // console.log(body.user.userId);
+      if (body.role === '會員') {
+        let userId = body.user.userId;
+        
+        
+        
+        fetch('http://localhost:8080/giftCartController/giftCart/' + userId)
       .then((resp) => {
         // console.log(resp);
         if (resp.headers.get('content-type').includes('application/json')) {
@@ -71,6 +86,51 @@ window.addEventListener('load', function () {
           $('div.add-success').hide().addClass('show').fadeIn(500);
         }
       });
+        
+
+
+      } else if (body.role === '商家') {
+        if (typeof swal === 'function') {
+          swal('您是商家！', '', 'info', {button: '好吧'})
+        } else {
+          alert('您是商家！');
+        }
+      } else if (body.role === '平台') {
+        if (typeof swal === 'function') {
+          swal('您是無敵大平台！', '', 'info', {button: '好啦 :('})
+        } else {
+          alert('您是無敵大平台！');
+        }
+      }
+      
+    })
+    .catch((error) => {
+      
+      if (typeof swal === 'function') {
+        swal({
+          title: '請登入會員唷 :)',
+          icon: 'warning',
+          buttons: {
+            danger: {
+              text: '去登入',
+              visible: true
+            },
+            confirm: {
+              text: '先逛逛',
+              visible: true
+            }
+          }
+        })
+        .then((result) => {
+          if (result === 'danger') {
+            window.location.href = '/user_login';
+          }
+        })
+      } else {
+        alert('請登入會員唷 :)');
+      }
+
+    })
   }
 
 	// *********************重要*********************
@@ -140,7 +200,24 @@ window.addEventListener('load', function () {
 
   // ============更新單項的方法============
   function updateItem(giftId, giftCount, dataset) {
-    fetch('http://localhost:8080/giftCartController/giftCart/' + userId, {
+
+
+    fetch('/getCurrentUserController/current-user')
+    .then((resp) => {
+      if (resp.ok) {
+        return resp.json();
+      } else {
+        throw new Error('未登入會員');
+      }
+    })
+    .then((body) => {
+      // console.log(body.user.userId);
+      if (body.role === '會員') {
+        let userId = body.user.userId;
+        
+        
+        
+        fetch('http://localhost:8080/giftCartController/giftCart/' + userId, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(dataset),
@@ -177,6 +254,53 @@ window.addEventListener('load', function () {
 
         totalPrice.innerHTML = totalPriceNum;
       });
+        
+
+
+      } else if (body.role === '商家') {
+        if (typeof swal === 'function') {
+          swal('您是商家！', '', 'info', {button: '好吧'})
+        } else {
+          alert('您是商家！');
+        }
+      } else if (body.role === '平台') {
+        if (typeof swal === 'function') {
+          swal('您是無敵大平台！', '', 'info', {button: '好啦 :('})
+        } else {
+          alert('您是無敵大平台！');
+        }
+      }
+      
+    })
+    .catch((error) => {
+      
+      if (typeof swal === 'function') {
+        swal({
+          title: '請登入會員唷 :)',
+          icon: 'warning',
+          buttons: {
+            danger: {
+              text: '去登入',
+              visible: true
+            },
+            confirm: {
+              text: '先逛逛',
+              visible: true
+            }
+          }
+        })
+        .then((result) => {
+          if (result === 'danger') {
+            window.location.href = '/user_login';
+          }
+        })
+      } else {
+        alert('請登入會員唷 :)');
+      }
+
+    })
+
+
   }
   
 // ===================刪除單項的方法===================
@@ -204,6 +328,23 @@ $(document).on('click', 'button.delete-one', function(e) {
 
         let giftId = parseInt($(this).closest('tr').data('gift-id'));
         // console.log(typeof giftId);
+
+
+        fetch('/getCurrentUserController/current-user')
+    .then((resp) => {
+      if (resp.ok) {
+        return resp.json();
+      } else {
+        throw new Error('未登入會員');
+      }
+    })
+    .then((body) => {
+      // console.log(body.user.userId);
+      if (body.role === '會員') {
+        let userId = body.user.userId;
+        
+        
+        
         fetch('http://localhost:8080/giftCartController/giftCart/' + userId + '/' + giftId, {
           method: 'DELETE'
         })
@@ -235,6 +376,53 @@ $(document).on('click', 'button.delete-one', function(e) {
             }
           })
         });
+        
+
+
+      } else if (body.role === '商家') {
+        if (typeof swal === 'function') {
+          swal('您是商家！', '', 'info', {button: '好吧'})
+        } else {
+          alert('您是商家！');
+        }
+      } else if (body.role === '平台') {
+        if (typeof swal === 'function') {
+          swal('您是無敵大平台！', '', 'info', {button: '好啦 :('})
+        } else {
+          alert('您是無敵大平台！');
+        }
+      }
+      
+    })
+    .catch((error) => {
+      
+      if (typeof swal === 'function') {
+        swal({
+          title: '請登入會員唷 :)',
+          icon: 'warning',
+          buttons: {
+            danger: {
+              text: '去登入',
+              visible: true
+            },
+            confirm: {
+              text: '先逛逛',
+              visible: true
+            }
+          }
+        })
+        .then((result) => {
+          if (result === 'danger') {
+            window.location.href = '/user_login';
+          }
+        })
+      } else {
+        alert('請登入會員唷 :)');
+      }
+
+    })
+
+
       }
     });
   } else {
@@ -243,7 +431,24 @@ $(document).on('click', 'button.delete-one', function(e) {
 
       let giftId = parseInt($(this).closest('tr').data('gift-id'));
       // console.log(typeof giftId);
-      fetch('http://localhost:8080/giftCartController/giftCart/' + userId + '/' + giftId, {
+
+
+      fetch('/getCurrentUserController/current-user')
+    .then((resp) => {
+      if (resp.ok) {
+        return resp.json();
+      } else {
+        throw new Error('未登入會員');
+      }
+    })
+    .then((body) => {
+      // console.log(body.user.userId);
+      if (body.role === '會員') {
+        let userId = body.user.userId;
+        
+        
+        
+        fetch('http://localhost:8080/giftCartController/giftCart/' + userId + '/' + giftId, {
         method: 'DELETE'
       })
       .then((resp) => resp.text())
@@ -266,6 +471,52 @@ $(document).on('click', 'button.delete-one', function(e) {
         })
         
       });
+        
+
+
+      } else if (body.role === '商家') {
+        if (typeof swal === 'function') {
+          swal('您是商家！', '', 'info', {button: '好吧'})
+        } else {
+          alert('您是商家！');
+        }
+      } else if (body.role === '平台') {
+        if (typeof swal === 'function') {
+          swal('您是無敵大平台！', '', 'info', {button: '好啦 :('})
+        } else {
+          alert('您是無敵大平台！');
+        }
+      }
+      
+    })
+    .catch((error) => {
+      
+      if (typeof swal === 'function') {
+        swal({
+          title: '請登入會員唷 :)',
+          icon: 'warning',
+          buttons: {
+            danger: {
+              text: '去登入',
+              visible: true
+            },
+            confirm: {
+              text: '先逛逛',
+              visible: true
+            }
+          }
+        })
+        .then((result) => {
+          if (result === 'danger') {
+            window.location.href = '/user_login';
+          }
+        })
+      } else {
+        alert('請登入會員唷 :)');
+      }
+
+    })
+
 
     }
   }
@@ -280,7 +531,24 @@ $(document).on('click', 'button.delete-one', function(e) {
 // ===================清空彈出視窗===================
 $('button.clear-all').on('click', function(e) {
   // console.log('aaa');
-  fetch('http://localhost:8080/giftCartController/giftCart/' + userId, {
+
+
+  fetch('/getCurrentUserController/current-user')
+    .then((resp) => {
+      if (resp.ok) {
+        return resp.json();
+      } else {
+        throw new Error('未登入會員');
+      }
+    })
+    .then((body) => {
+      // console.log(body.user.userId);
+      if (body.role === '會員') {
+        let userId = body.user.userId;
+        
+        
+        
+        fetch('http://localhost:8080/giftCartController/giftCart/' + userId, {
     method: 'DELETE'
   })
   .then((resp) => resp.text())
@@ -299,6 +567,53 @@ $('button.clear-all').on('click', function(e) {
     $('div.success-mask').addClass('show');
     $('div.add-success').hide().addClass('show').fadeIn(500);
   });
+        
+
+
+      } else if (body.role === '商家') {
+        if (typeof swal === 'function') {
+          swal('您是商家！', '', 'info', {button: '好吧'})
+        } else {
+          alert('您是商家！');
+        }
+      } else if (body.role === '平台') {
+        if (typeof swal === 'function') {
+          swal('您是無敵大平台！', '', 'info', {button: '好啦 :('})
+        } else {
+          alert('您是無敵大平台！');
+        }
+      }
+      
+    })
+    .catch((error) => {
+      
+      if (typeof swal === 'function') {
+        swal({
+          title: '請登入會員唷 :)',
+          icon: 'warning',
+          buttons: {
+            danger: {
+              text: '去登入',
+              visible: true
+            },
+            confirm: {
+              text: '先逛逛',
+              visible: true
+            }
+          }
+        })
+        .then((result) => {
+          if (result === 'danger') {
+            window.location.href = '/user_login';
+          }
+        })
+      } else {
+        alert('請登入會員唷 :)');
+      }
+
+    })
+
+
 });
 
 // ===================返回土產專區確認===================
@@ -330,7 +645,22 @@ $('button.go-to-pay').on('click', function(e) {
       .then((result) => {
         if (result === true) {
 
-          fetch('http://localhost:8080/giftOrderController/giftOrder/' + userId, {
+          fetch('/getCurrentUserController/current-user')
+    .then((resp) => {
+      if (resp.ok) {
+        return resp.json();
+      } else {
+        throw new Error('未登入會員');
+      }
+    })
+    .then((body) => {
+      // console.log(body.user.userId);
+      if (body.role === '會員') {
+        let userId = body.user.userId;
+        
+        
+        
+        fetch('http://localhost:8080/giftOrderController/giftOrder/' + userId, {
             method: 'POST'
           })
           .then((resp) => resp.text())
@@ -345,6 +675,51 @@ $('button.go-to-pay').on('click', function(e) {
             $('div.order-success').hide().addClass('show').fadeIn(500);
 
           })
+        
+
+
+      } else if (body.role === '商家') {
+        if (typeof swal === 'function') {
+          swal('您是商家！', '', 'info', {button: '好吧'})
+        } else {
+          alert('您是商家！');
+        }
+      } else if (body.role === '平台') {
+        if (typeof swal === 'function') {
+          swal('您是無敵大平台！', '', 'info', {button: '好啦 :('})
+        } else {
+          alert('您是無敵大平台！');
+        }
+      }
+      
+    })
+    .catch((error) => {
+      
+      if (typeof swal === 'function') {
+        swal({
+          title: '請登入會員唷 :)',
+          icon: 'warning',
+          buttons: {
+            danger: {
+              text: '去登入',
+              visible: true
+            },
+            confirm: {
+              text: '先逛逛',
+              visible: true
+            }
+          }
+        })
+        .then((result) => {
+          if (result === 'danger') {
+            window.location.href = '/user_login';
+          }
+        })
+      } else {
+        alert('請登入會員唷 :)');
+      }
+
+    })
 
         }
       })
@@ -353,7 +728,22 @@ $('button.go-to-pay').on('click', function(e) {
     let result = confirm('確定要刪除嗎？');
     if (result === true) {
 
-      fetch('http://localhost:8080/giftOrderController/giftOrder/' + userId, {
+      fetch('/getCurrentUserController/current-user')
+    .then((resp) => {
+      if (resp.ok) {
+        return resp.json();
+      } else {
+        throw new Error('未登入會員');
+      }
+    })
+    .then((body) => {
+      // console.log(body.user.userId);
+      if (body.role === '會員') {
+        let userId = body.user.userId;
+        
+        
+        
+        fetch('http://localhost:8080/giftOrderController/giftOrder/' + userId, {
         method: 'POST'
       })
           .then((resp) => resp.text())
@@ -367,6 +757,52 @@ $('button.go-to-pay').on('click', function(e) {
             $('div.order-mask').addClass('show');
             $('div.order-success').hide().addClass('show').fadeIn(500);
           })
+        
+
+
+      } else if (body.role === '商家') {
+        if (typeof swal === 'function') {
+          swal('您是商家！', '', 'info', {button: '好吧'})
+        } else {
+          alert('您是商家！');
+        }
+      } else if (body.role === '平台') {
+        if (typeof swal === 'function') {
+          swal('您是無敵大平台！', '', 'info', {button: '好啦 :('})
+        } else {
+          alert('您是無敵大平台！');
+        }
+      }
+      
+    })
+    .catch((error) => {
+      
+      if (typeof swal === 'function') {
+        swal({
+          title: '請登入會員唷 :)',
+          icon: 'warning',
+          buttons: {
+            danger: {
+              text: '去登入',
+              visible: true
+            },
+            confirm: {
+              text: '先逛逛',
+              visible: true
+            }
+          }
+        })
+        .then((result) => {
+          if (result === 'danger') {
+            window.location.href = '/user_login';
+          }
+        })
+      } else {
+        alert('請登入會員唷 :)');
+      }
+
+    })
+
     }
   }
 })
@@ -380,14 +816,18 @@ $('div.order-mask').click((e) => {
   e.stopPropagation();
 });
 
+// ====================To Top 按鈕====================
+$(window).scroll(function() {
+  if ($(this).scrollTop() > 100) {
+    $('button.to-top').fadeIn(300);
+  } else {
+    $('button.to-top').fadeOut(300);
+  }
+});
 
-
-
-
-
-
-
-
+$('button.to-top').click(function() {
+  $('html, body').animate({scrollTop: 0}, 25);
+});
 
 
 
