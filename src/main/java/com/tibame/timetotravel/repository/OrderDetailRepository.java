@@ -1,5 +1,6 @@
 package com.tibame.timetotravel.repository;
 
+import com.tibame.timetotravel.dto.OrderListDto;
 import com.tibame.timetotravel.dto.OrderWithUser;
 import com.tibame.timetotravel.entity.OrderDetail;
 import org.springframework.data.jpa.repository.Query;
@@ -26,4 +27,6 @@ public interface OrderDetailRepository extends CrudRepository<OrderDetail, Integ
     @Query(value = "SELECT new com.tibame.timetotravel.dto.OrderWithUser(u.userName, u.userAvatar, o.orderRank, o.orderComment, o.orderDateTime, r.roomName) FROM User u JOIN OrderDetail o ON u.userId = o.userId JOIN Room r ON o.roomId = r.roomId JOIN Company c ON r.comId = c.comId WHERE c.comId = :comId ORDER BY o.orderDateTime")
     List<OrderWithUser> findOrderWithUserByComId(Integer comId);
 
+    @Query(value = "SELECT new com.tibame.timetotravel.dto.OrderListDto(c.comId, r.roomId, o.orderId, c.comName, r.roomName, r.roomBed, o.orderCheckIn, o.orderCheckOut, r.roomPrice, j.journeyName, j.journeyPrice, o.orderDateTime, o.orderAmount) FROM OrderDetail o JOIN Room r ON o.roomId = r.roomId JOIN Company c ON c.comId = r.comId JOIN User u ON o.userId = u.userId LEFT JOIN Journey j ON o.journeyId = j.journeyId")
+    List<OrderListDto> findUserOrder();
 }
