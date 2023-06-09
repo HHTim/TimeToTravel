@@ -10,6 +10,7 @@ $(window).on('load', function () {
   const tab3_body = $('.tab-3.left-container');
 
   const advList = $('.slider .list');
+  let chat_btn = $('img.chat');
   var advListData;
 
   function getAnnPic() {
@@ -98,6 +99,11 @@ $(window).on('load', function () {
     tab2_body.css('display', 'none');
     tab_body.css('align-items', 'baseline');
   });
+
+  chat_btn.on('click', function () {
+    location.href = '/chat';
+  });
+
   getCurrentUserInformation();
   getAnnPic();
   slider('slider2');
