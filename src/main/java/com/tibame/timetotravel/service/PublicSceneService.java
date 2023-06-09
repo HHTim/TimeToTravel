@@ -15,8 +15,6 @@ public interface PublicSceneService {
 
     List<PublicScene> getAll();
 
-//    List<PublicScene> findByAddress(String sceneKeyword);
-
     void update(Integer sceneId, PublicScene publicScene);
 
     PageBean<PublicScene> findBySceneAddress(String keyword, Integer page);
