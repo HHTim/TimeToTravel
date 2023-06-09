@@ -112,18 +112,16 @@
               <div class="row">
                 <div class="col-1"></div>
                 <div class="col-1"></div>
-                <form class="col-8 col9" action="">
+                <form class="col-8 col9" id="sceneForm" action="">
                   <br class="br1" />
-                  <!-- <button>選擇照片<input type="file" /></button> -->
-                  <!-- <div><button class="custom-button">選擇照片<input type="file" /></button> -->
                   <div class="row">
-                    <p class="scene__phtot">
-                      景點照片
-                      <label class="picture_list" for="the_file">圖片預覽</label>
-                      <input type="file" id="the_file" accept="image/*" class="the_file" style="display: none" />
-                    </p>
+                    <div class="scene__phtot">
+                      <p>景點照片</p>
+                      <input type="file" id="the_file" style="display: none" />
+                      <label class="picture_list">圖片預覽</label>
+                      <!-- <input type="file" id="the_file selectButton" accept="image/*" style="display: none" /> -->
+                    </div>
                     <br />
-
                     <div class="col-7">
                       <p class="scene__name">
                         <label for="scene_name">景點名稱</label>
@@ -135,7 +133,6 @@
                         <input id="scene_addr" type="text" placeholder="" style="width: 100%" />
                       </p>
                       <br />
-
                       <p class="scene__lat">
                         <label for="scene_lat">景點緯度</label>
                         <input id="scene_lat" type="text" placeholder="" style="width: 100%" />
@@ -161,7 +158,7 @@
                     <textarea id="scene_illustrate" type="text" style="width: 100%; height: 200px"> </textarea>
                   </p>
                   <p class="container2">
-                    <button type="submit" class="btn btn-primary button__save">儲存</button>
+                    <button type="submit" id="saveButton" class="btn btn-primary button__save">儲存</button>
                   </p>
                 </form>
                 <div class="col-1"></div>
