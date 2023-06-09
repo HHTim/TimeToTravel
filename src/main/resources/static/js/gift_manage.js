@@ -34,8 +34,6 @@ window.addEventListener('load', function () {
 		findAll();
 	});
 
-	getCurrentUserInformation();
-
 	/* 架上商品 */
 	giftsOnShelve.addEventListener('click', function () {
 		fetch('/giftController/gift')
