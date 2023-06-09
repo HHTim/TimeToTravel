@@ -52,7 +52,7 @@ public class PublicSceneController {
     @PutMapping ("/updatePublicScene/{sceneId}")
     public String update(@PathVariable Integer sceneId,
                          @RequestBody PublicScene publicScene){
-//        publicSceneService.update(sceneId,publicScene);
+        publicSceneService.update(sceneId,publicScene);
         return "修改成功";
     }
 }
