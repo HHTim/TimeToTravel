@@ -1,231 +1,225 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- import -->
-    <script src="https://kit.fontawesome.com/e3af248fb2.js" crossorigin="anonymous" defer></script>
-    <!-- 輪播需要添加 -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <!-- BS5 js lib -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
-      crossorigin="anonymous"
-    ></script>
-    <script type="module" src="../js/member_info.js" defer></script>
+		<!-- import -->
+		<script src="https://kit.fontawesome.com/e3af248fb2.js" crossorigin="anonymous" defer></script>
+		<!-- 輪播需要添加 -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<!-- BS5 js lib -->
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+			crossorigin="anonymous"></script>
+		<script type="module" src="../js/member_info.js" defer></script>
 
-    <!-- BS5 StyleSheet -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
-      crossorigin="anonymous"
-    />
-    <!-- 我們自己的 css 檔案，路徑記得改 -->
-    <link rel="stylesheet" href="../css/member_info.css" />
-    <!-- title 記得改 -->
-    <title>member_info</title>
-  </head>
-  <body>
-    <div class="wrapper">
-      <!-- Header -->
-      <div id="headerContainer">
-        <div class="decorator"></div>
-        <header class="d-flex flex-wrap justify-content-center border-bottom">
-          <div class="container-fluid header__container">
-            <h1 class="logo">
-              <a href="#" class="logo__link">
-                <img src="../images/LOGO.png" alt="logo" class="logo__img" />
-              </a>
-            </h1>
-            <nav>
-              <ul class="nav">
-                <li class="nav__link"><a href="#">我的訂單</a></li>
-                <li class="nav__link"><a href="#">伴手禮商城</a></li>
-                <li class="nav__link"><a href="#">部落格</a></li>
-                <li class="nav__info">
-                  <div class="dropdown-center">
-                    <button class="dropdown-toggle nav__info-btn" type="button" data-bs-toggle="dropdown"></button>
-                    <ul class="dropdown-menu">
-                      <!-- <li><a class="dropdown-item" href="#">訊息一</a></li>
+		<!-- BS5 StyleSheet -->
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+			crossorigin="anonymous" />
+		<!-- 我們自己的 css 檔案，路徑記得改 -->
+		<link rel="stylesheet" href="../css/member_info.css" />
+		<!-- title 記得改 -->
+		<title>member_info</title>
+	</head>
+	<body>
+		<div class="wrapper">
+			<!-- Header -->
+			<div id="headerContainer">
+				<div class="decorator"></div>
+				<header class="d-flex flex-wrap justify-content-center border-bottom">
+					<div class="container-fluid header__container">
+						<h1 class="logo">
+							<a href="../index.html" class="logo__link">
+								<img src="../images/LOGO.png" alt="logo" class="logo__img" />
+							</a>
+						</h1>
+						<nav>
+							<ul class="nav">
+								<li class="nav__link"><a href="#">我的訂單</a></li>
+								<li class="nav__link"><a href="#">伴手禮商城</a></li>
+								<li class="nav__link"><a href="#">部落格</a></li>
+								<li class="nav__info">
+									<div class="dropdown-center">
+										<button class="dropdown-toggle nav__info-btn" type="button" data-bs-toggle="dropdown"></button>
+										<ul class="dropdown-menu">
+											<!-- <li><a class="dropdown-item" href="#">訊息一</a></li>
                       <li><a class="dropdown-item" href="#">訊息二</a></li>
                       <li><a class="dropdown-item" href="#">訊息三</a></li>
                       <li><hr class="dropdown-divider" /></li>
                       <li><a class="dropdown-item" href="#">See More</a></li> -->
-                    </ul>
-                  </div>
-                </li>
-                <li class="nav__avatar">
-                  <div class="dropdown-center">
-                    <a href="#" class="dropdown-toggle nav__avatar-btn" type="button" data-bs-toggle="dropdown">
-                      <div class="nav__avatar-img">
-                        <img src="../images/avatar.svg" alt="avatar" />
-                      </div>
-                    </a>
-                    <ul class="dropdown-menu">
-                      <!-- <li><a class="dropdown-item" href="#">註冊</a></li>
+										</ul>
+									</div>
+								</li>
+								<li class="nav__avatar">
+									<div class="dropdown-center">
+										<a href="#" class="dropdown-toggle nav__avatar-btn" type="button" data-bs-toggle="dropdown">
+											<div class="nav__avatar-img">
+												<img src="../images/avatar.svg" alt="avatar" />
+											</div>
+										</a>
+										<ul class="dropdown-menu">
+											<!-- <li><a class="dropdown-item" href="#">註冊</a></li>
                       <li><a class="dropdown-item" href="#">登入</a></li>
                       <li><a class="dropdown-item" href="#">其他</a></li>
                       <li><a class="dropdown-item" href="#">其他</a></li>
                       <li><hr class="dropdown-divider" /></li>
                       <li><a class="dropdown-item" href="#">登出</a></li> -->
-                    </ul>
-                  </div>
-                </li>
-              </ul>
-            </nav>
-          </div>
-        </header>
-      </div>
+										</ul>
+									</div>
+								</li>
+							</ul>
+						</nav>
+					</div>
+				</header>
+			</div>
 
-      <div class="container-fluid custom-container">
-        <div class="row">
-          <div class="col-2">
-            <!--Company Aside -->
-            <aside class="user-aside">
-              <ul class="user-aside__list">
-                <li class="user-aside__item--small">
-                  <a href="../index.html">&lt; 返回</a>
-                </li>
-                <li class="user-aside__item"><a href="./member_info.html">帳戶設定</a></li>
-                <li class="user-aside__item"><a href="./user_favor_blog.html">文章收藏</a></li>
-                <li class="user-aside__item"><a href="./gift_follow.html">關注土產</a></li>
-                <li class="user-aside__item"><a href="./order_list.html">消費紀錄</a></li>
-                <li class="user-aside__item"><a href="./user_message_manage.html">訊息管理</a></li>
-                <li><hr style="width: 80%; margin: auto" /></li>
-                <li class="user-aside__item logout-side"><a href="../index.html">登出</a></li>
-              </ul>
-            </aside>
-            <!--Company Aside End -->
-          </div>
-          <div class="col-10">
-            <!-- Main -->
-            <main>
-              <div class="w-100">
-                <div class="mgmtInner py-5 pe-5">
-                  <p style="padding-bottom: 5px; border-bottom: 4px solid #0078bb" class="fs-4 fw-bold">會員基本資料</p>
-                  <p class="fw-bold mt-1"></p>
-                  <div>
-                    <form class="mgmt-form" id="modifyForm">
-                      <div id="errorMessage" style="color: red; font-weight: bold"></div>
-                      <div style="display: flex" class="mgmtheader w-100">
-                        <div class="" style="display: flex; align-items: center; flex-direction: column">
-                          <img style="height: 150px" class="p-2" src="../images/avatar.svg" alt="" id="avatarImage" />
-                          <input id="avatarFile" type="file" style="display: none" accept="image/*" />
-                          <button
-                            style="
-                              color: white;
-                              background-color: #006caa;
-                              border-radius: 10px;
-                              font-size: 16px;
-                              white-space: nowrap;
-                              padding: 6px;
-                            "
-                            class="mb-3 btn btn-outline-secondary"
-                            type="button"
-                            id="avatarButton"
-                          >
-                            選擇大頭貼
-                          </button>
-                        </div>
-                        <div class="mt-2 mgmtheaderInner w-100">
-                          <div>
-                            <p>帳號</p>
-                            <input
-                              style="width: 200px; border-radius: 10px"
-                              type="text"
-                              class="mb-3 form-control"
-                              id="account"
-                              disabled
-                            />
-                          </div>
-                        </div>
-                      </div>
-                      <div class="mb-3">
-                        <div style="display: flex">
-                          <div style="flex-grow: 1">
-                            <label class="form-label">姓名</label>
-                            <input type="text" class="form-control" id="name" />
-                          </div>
-                          <div style="flex-grow: 1; margin-left: 10px">
-                            <label class="form-label">性別</label>
-                            <select class="form-select" id="gender">
-                              <option value="1" selected>男</option>
-                              <option value="0">女</option>
-                            </select>
-                          </div>
-                          <div style="flex-grow: 1; margin-left: 10px">
-                            <label class="form-label">電話號碼</label>
-                            <input type="text" class="form-control" id="phone" />
-                          </div>
-                        </div>
-                      </div>
-                      <div class="mb-3">
-                        <div style="display: flex">
-                          <div style="flex-grow: 1">
-                            <label class="form-label">出生日期</label>
-                            <input type="date" class="form-control" id="birthday" />
-                          </div>
-                          <div style="flex-grow: 1; margin-left: 10px">
-                            <label class="form-label">暱稱</label>
-                            <input type="text" class="form-control" id="nickName" />
-                          </div>
-                          <div style="flex-grow: 1; margin-left: 10px">
-                            <label class="form-label">電子信箱</label>
-                            <input type="email" class="form-control" id="email" />
-                          </div>
-                        </div>
-                      </div>
-                      <div style="display: flex; justify-content: end">
-                        <input
-                          style="color: white; background-color: #006caa; width: 150px"
-                          type="submit"
-                          class="form-control"
-                          value="更新個人資料"
-                        />
-                      </div>
-                    </form>
-                  </div>
-                  <hr class="mt-5 mb-5" />
-                  <p style="padding-bottom: 5px; border-bottom: 4px solid #0078bb" class="fs-4 fw-bold mb-3">
-                    變更密碼
-                  </p>
-                  <form action="" id="modifyPasswordForm">
-                    <div id="passwordErrorMessage" style="color: red; font-weight: bold"></div>
-                    <div class="mb-1">
-                      <label style="font-size: 20px" class="form-label mb-0">請輸入舊密碼</label>
-                      <input type="password" style="height: 45px" class="form-control mb-2" id="originalPassword" />
-                    </div>
-                    <div class="mb-1">
-                      <label style="font-size: 20px" class="form-label mb-0">設定新密碼</label>
-                      <input type="password" style="height: 45px" class="form-control mb-2" id="newPassword" />
-                    </div>
-                    <div class="mb-1">
-                      <label style="font-size: 20px" class="form-label mb-0">再次輸入新密碼</label>
-                      <input type="password" style="height: 45px" class="form-control mb-3" id="newPasswordConfirm" />
-                    </div>
-                    <div style="display: flex; justify-content: end">
-                      <input
-                        style="color: white; background-color: #006caa; width: 150px"
-                        type="submit"
-                        class="form-control"
-                        value="變更密碼"
-                      />
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </main>
-          </div>
-        </div>
-      </div>
-      <!-- Footer -->
-      <div id="footerContainer">
-        <footer></footer>
-      </div>
-    </div>
-  </body>
+			<div class="container-fluid custom-container">
+				<div class="row">
+					<div class="col-2">
+						<!--Company Aside -->
+						<aside class="user-aside">
+							<ul class="user-aside__list">
+								<li class="user-aside__item--small">
+									<a href="../index.html">&lt; 返回</a>
+								</li>
+								<li class="user-aside__item"><a href="./member_info.html">帳戶設定</a></li>
+								<li class="user-aside__item"><a href="./user_favor_blog.html">文章收藏</a></li>
+								<li class="user-aside__item"><a href="./gift_follow.html">關注土產</a></li>
+								<li class="user-aside__item"><a href="./order_list.html">消費紀錄</a></li>
+								<li class="user-aside__item"><a href="./user_message_manage.html">訊息管理</a></li>
+								<li><hr style="width: 80%; margin: auto" /></li>
+								<li class="user-aside__item logout-side"><a href="../index.html">登出</a></li>
+							</ul>
+						</aside>
+						<!--Company Aside End -->
+					</div>
+					<div class="col-10">
+						<!-- Main -->
+						<main>
+							<div class="w-100">
+								<div class="mgmtInner py-5 pe-5">
+									<p style="padding-bottom: 5px; border-bottom: 4px solid #0078bb" class="fs-4 fw-bold">會員基本資料</p>
+									<p class="fw-bold mt-1"></p>
+									<div>
+										<form class="mgmt-form" id="modifyForm">
+											<div id="errorMessage" style="color: red; font-weight: bold"></div>
+											<div style="display: flex" class="mgmtheader w-100">
+												<div class="" style="display: flex; align-items: center; flex-direction: column">
+													<img style="height: 150px" class="p-2" src="../images/avatar.svg" alt="" id="avatarImage" />
+													<input id="avatarFile" type="file" style="display: none" accept="image/*" />
+													<button
+														style="
+															color: white;
+															background-color: #006caa;
+															border-radius: 10px;
+															font-size: 16px;
+															white-space: nowrap;
+															padding: 6px;
+														"
+														class="mb-3 btn btn-outline-secondary"
+														type="button"
+														id="avatarButton">
+														選擇大頭貼
+													</button>
+												</div>
+												<div class="mt-2 mgmtheaderInner w-100">
+													<div>
+														<p>帳號</p>
+														<input
+															style="width: 200px; border-radius: 10px"
+															type="text"
+															class="mb-3 form-control"
+															id="account"
+															disabled />
+													</div>
+												</div>
+											</div>
+											<div class="mb-3">
+												<div style="display: flex">
+													<div style="flex-grow: 1">
+														<label class="form-label">姓名</label>
+														<input type="text" class="form-control" id="name" />
+													</div>
+													<div style="flex-grow: 1; margin-left: 10px">
+														<label class="form-label">性別</label>
+														<select class="form-select" id="gender">
+															<option value="1" selected>男</option>
+															<option value="0">女</option>
+														</select>
+													</div>
+													<div style="flex-grow: 1; margin-left: 10px">
+														<label class="form-label">電話號碼</label>
+														<input type="text" class="form-control" id="phone" />
+													</div>
+												</div>
+											</div>
+											<div class="mb-3">
+												<div style="display: flex">
+													<div style="flex-grow: 1">
+														<label class="form-label">出生日期</label>
+														<input type="date" class="form-control" id="birthday" />
+													</div>
+													<div style="flex-grow: 1; margin-left: 10px">
+														<label class="form-label">暱稱</label>
+														<input type="text" class="form-control" id="nickName" />
+													</div>
+													<div style="flex-grow: 1; margin-left: 10px">
+														<label class="form-label">電子信箱</label>
+														<input type="email" class="form-control" id="email" />
+													</div>
+												</div>
+											</div>
+											<div style="display: flex; justify-content: end">
+												<input
+													style="color: white; background-color: #006caa; width: 150px"
+													type="submit"
+													class="form-control"
+													value="更新個人資料" />
+											</div>
+										</form>
+									</div>
+									<hr class="mt-5 mb-5" />
+									<p style="padding-bottom: 5px; border-bottom: 4px solid #0078bb" class="fs-4 fw-bold mb-3">
+										變更密碼
+									</p>
+									<form action="" id="modifyPasswordForm">
+										<div id="passwordErrorMessage" style="color: red; font-weight: bold"></div>
+										<div class="mb-1">
+											<label style="font-size: 20px" class="form-label mb-0">請輸入舊密碼</label>
+											<input type="password" style="height: 45px" class="form-control mb-2" id="originalPassword" />
+										</div>
+										<div class="mb-1">
+											<label style="font-size: 20px" class="form-label mb-0">設定新密碼</label>
+											<input type="password" style="height: 45px" class="form-control mb-2" id="newPassword" />
+										</div>
+										<div class="mb-1">
+											<label style="font-size: 20px" class="form-label mb-0">再次輸入新密碼</label>
+											<input type="password" style="height: 45px" class="form-control mb-3" id="newPasswordConfirm" />
+										</div>
+										<div style="display: flex; justify-content: end">
+											<input
+												style="color: white; background-color: #006caa; width: 150px"
+												type="submit"
+												class="form-control"
+												value="變更密碼" />
+										</div>
+									</form>
+								</div>
+							</div>
+						</main>
+					</div>
+				</div>
+			</div>
+			<!-- Footer -->
+			<div id="footerContainer">
+				<footer></footer>
+			</div>
+		</div>
+	</body>
 </html>

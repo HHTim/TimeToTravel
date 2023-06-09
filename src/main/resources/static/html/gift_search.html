@@ -1,47 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- import -->
-    <script src="../node_modules/@popperjs/core/dist/umd/popper.min.js" defer></script>
-    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js" defer></script>
-    <script src="../node_modules/jquery/dist/jquery.min.js" defer></script>
-    <script src="https://kit.fontawesome.com/e3af248fb2.js" crossorigin="anonymous" defer></script>
-    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
-    <!-- 我們自己的 css 檔案，路徑記得改 -->
-    <link rel="stylesheet" href="../css/gift_search.css" />
-    <!-- 我們自己的 js 檔案，路徑記得改 -->
-    <script type="module" src="../js/gift_search.js" defer></script>
-    <!-- 輪播需要添加 -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <!-- <script src="jquery.flexslider.js"></script> -->
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- import -->
+		<script src="../node_modules/@popperjs/core/dist/umd/popper.min.js" defer></script>
+		<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js" defer></script>
+		<script src="../node_modules/jquery/dist/jquery.min.js" defer></script>
+		<script src="https://kit.fontawesome.com/e3af248fb2.js" crossorigin="anonymous" defer></script>
+		<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+		<!-- 我們自己的 css 檔案，路徑記得改 -->
+		<link rel="stylesheet" href="../css/gift_search.css" />
+		<!-- 我們自己的 js 檔案，路徑記得改 -->
+		<script type="module" src="../js/gift_search.js" defer></script>
+		<!-- 輪播需要添加 -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<!-- <script src="jquery.flexslider.js"></script> -->
+		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-    <!-- title 記得改 -->
-    <title>TimeToTravel | Gift Search</title>
-  </head>
-  <body>
-    <!-- Header -->
-    <div class="decorator"></div>
-    <header>
-      <div class="container-fluid header__container">
-        <h1 class="logo">
-          <a href="#" class="logo__link">
-            <img src="../images/LOGO.png" alt="logo" class="logo__img" />
-          </a>
-        </h1>
-        <nav>
-          <ul class="nav">
-            <li class="nav__link"><a href="/gift_order">我的訂單</a></li>
-            <!-- <li class="nav__link"><a href="#">我的最愛</a></li> -->
-            <li class="nav__link">
-              <a href="#" class="open-cart">購物車</a
-              ><!-- 購物車小視窗 start -->
-              <div class="dropdown-cart">
-                <div class="cart-list">
-                  <!-- <div class="if-empty">
+		<!-- title 記得改 -->
+		<title>TimeToTravel | Gift Search</title>
+	</head>
+	<body>
+		<!-- Header -->
+		<div class="decorator"></div>
+		<header>
+			<div class="container-fluid header__container">
+				<h1 class="logo">
+					<a href="../index.html" class="logo__link">
+						<img src="../images/LOGO.png" alt="logo" class="logo__img" />
+					</a>
+				</h1>
+				<nav>
+					<ul class="nav">
+						<li class="nav__link"><a href="/gift_order">我的訂單</a></li>
+						<!-- <li class="nav__link"><a href="#">我的最愛</a></li> -->
+						<li class="nav__link">
+							<a href="#" class="open-cart">購物車</a
+							><!-- 購物車小視窗 start -->
+							<div class="dropdown-cart">
+								<div class="cart-list">
+									<!-- <div class="if-empty">
                     <div>沒有商品</div>
                   </div>
                   <div class="gift-item">
@@ -65,86 +65,86 @@
                       <p class="amount"><span>數量：</span><span class="quantity">1</span></p>
                     </div>
                   </div> -->
-                </div>
-                <div class="cart-button"><a class="btn-checkout" href="">立即結帳</a></div>
-              </div>
-              <!-- 購物車小視窗 end -->
-            </li>
-            <li class="nav__link"><a href="#">部落格</a></li>
-            <li class="nav__info">
-              <div class="dropdown-center">
-                <button class="dropdown-toggle nav__info-btn" type="button" data-bs-toggle="dropdown"></button>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">訊息一</a></li>
-                  <li><a class="dropdown-item" href="#">訊息二</a></li>
-                  <li><a class="dropdown-item" href="#">訊息三</a></li>
-                  <li><hr class="dropdown-divider" /></li>
-                  <li><a class="dropdown-item" href="#">See More</a></li>
-                </ul>
-              </div>
-            </li>
-            <li class="nav__avatar">
-              <div class="dropdown-center">
-                <a href="#" class="dropdown-toggle nav__avatar-btn" type="button" data-bs-toggle="dropdown">
-                  <div class="nav__avatar-img">
-                    <img src="../images/avatar.svg" alt="avatar" />
-                  </div>
-                </a>
-                <ul class="dropdown-menu">
-                  <!-- <li><a class="dropdown-item" href="#">註冊</a></li>
+								</div>
+								<div class="cart-button"><a class="btn-checkout" href="">立即結帳</a></div>
+							</div>
+							<!-- 購物車小視窗 end -->
+						</li>
+						<li class="nav__link"><a href="#">部落格</a></li>
+						<li class="nav__info">
+							<div class="dropdown-center">
+								<button class="dropdown-toggle nav__info-btn" type="button" data-bs-toggle="dropdown"></button>
+								<ul class="dropdown-menu">
+									<li><a class="dropdown-item" href="#">訊息一</a></li>
+									<li><a class="dropdown-item" href="#">訊息二</a></li>
+									<li><a class="dropdown-item" href="#">訊息三</a></li>
+									<li><hr class="dropdown-divider" /></li>
+									<li><a class="dropdown-item" href="#">See More</a></li>
+								</ul>
+							</div>
+						</li>
+						<li class="nav__avatar">
+							<div class="dropdown-center">
+								<a href="#" class="dropdown-toggle nav__avatar-btn" type="button" data-bs-toggle="dropdown">
+									<div class="nav__avatar-img">
+										<img src="../images/avatar.svg" alt="avatar" />
+									</div>
+								</a>
+								<ul class="dropdown-menu">
+									<!-- <li><a class="dropdown-item" href="#">註冊</a></li>
                   <li><a class="dropdown-item" href="#">登入</a></li>
                   <li><a class="dropdown-item" href="#">其他</a></li>
                   <li><a class="dropdown-item" href="#">其他</a></li>
                   <li><hr class="dropdown-divider" /></li>
                   <li><a class="dropdown-item" href="#">登出</a></li> -->
-                </ul>
-              </div>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </header>
-    <!-- Header End -->
-    <div class="container-fluid custom-container">
-      <!-- Main -->
-      <main>
-        <!-- 群組整體 -->
-        <div class="row gift_searchresult">
-          <!-- 側邊欄開始 -->
-          <div class="col-3">
-            <ul class="gift_sidebar collapse_collection">
-              <li><a href="#" data-gift-type="全部商品">全部商品</a></li>
-              <li><a href="#" data-gift-type="團購美食">團購美食</a></li>
-              <li><a href="#" data-gift-type="彌月食品">彌月食品</a></li>
-              <li><a href="#" data-gift-type="冷凍食品">冷凍食品</a></li>
-              <li><a href="#" data-gift-type="熱門美食">熱門美食</a></li>
-            </ul>
-          </div>
-          <!-- 側邊攔結束 -->
-          <!-- 商品顯示開始 -->
-          <div class="col-9 all_product">
-            <div class="collection_title row">
-              <div class="col-3 collection_title">
-                <h1>全部商品</h1>
-              </div>
-              <div class="col-3 input-container">
-                <input type="text" placeholder="搜尋商品" class="form-control" />
-              </div>
-              <div class="col-3 select_item">
-                <select class="custom_select">
-                  <option value="0">預設排序</option>
-                  <option value="1">價格由高到低</option>
-                  <option value="2">價格由低到高</option>
-                </select>
-              </div>
-              <div class="col-3 total_product">
-                <div>共0件商品</div>
-              </div>
-            </div>
-            <div class="collect_list row">
-              <div class="item-mask"></div>
-              <ul class="item_list">
-                <!-- <li data-gift-id="${i.giftId}">
+								</ul>
+							</div>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+		<!-- Header End -->
+		<div class="container-fluid custom-container">
+			<!-- Main -->
+			<main>
+				<!-- 群組整體 -->
+				<div class="row gift_searchresult">
+					<!-- 側邊欄開始 -->
+					<div class="col-3">
+						<ul class="gift_sidebar collapse_collection">
+							<li><a href="#" data-gift-type="全部商品">全部商品</a></li>
+							<li><a href="#" data-gift-type="團購美食">團購美食</a></li>
+							<li><a href="#" data-gift-type="彌月食品">彌月食品</a></li>
+							<li><a href="#" data-gift-type="冷凍食品">冷凍食品</a></li>
+							<li><a href="#" data-gift-type="熱門美食">熱門美食</a></li>
+						</ul>
+					</div>
+					<!-- 側邊攔結束 -->
+					<!-- 商品顯示開始 -->
+					<div class="col-9 all_product">
+						<div class="collection_title row">
+							<div class="col-3 collection_title">
+								<h1>全部商品</h1>
+							</div>
+							<div class="col-3 input-container">
+								<input type="text" placeholder="搜尋商品" class="form-control" />
+							</div>
+							<div class="col-3 select_item">
+								<select class="custom_select">
+									<option value="0">預設排序</option>
+									<option value="1">價格由高到低</option>
+									<option value="2">價格由低到高</option>
+								</select>
+							</div>
+							<div class="col-3 total_product">
+								<div>共0件商品</div>
+							</div>
+						</div>
+						<div class="collect_list row">
+							<div class="item-mask"></div>
+							<ul class="item_list">
+								<!-- <li data-gift-id="${i.giftId}">
                   <div class="top-down">
                     <a href="#" class="lightbox-link">
                       <div class="img_block">
@@ -216,12 +216,12 @@
                     </div>
                   </div>
                 </li> -->
-              </ul>
-            </div>
-          </div>
-          <!-- 商品顯示結束 -->
-          <!-- 分頁功能 -->
-          <!-- <div class="main-bottom row">
+							</ul>
+						</div>
+					</div>
+					<!-- 商品顯示結束 -->
+					<!-- 分頁功能 -->
+					<!-- <div class="main-bottom row">
             <div class="col-4">&nbsp;</div>
             <div class="col-4">
               <div class="page__area">
@@ -239,32 +239,31 @@
 
             <div class="col-4">&nbsp;</div>
           </div> -->
-        </div>
-      </main>
-      <!-- Main End -->
-    </div>
-    <!-- 成功加入購物車確認 -->
-    <div class="success-mask"></div>
-    <div class="add-success">
-      <div>
-        <div class="success-icon"><i class="fa-solid fa-circle-check fa-2xl" style="color: #0bc117"></i></div>
-        <div class="success-msg">
-          <i class="fa-regular fa-face-smile fa-xl" style="color: #ff7e05"></i>加入成功<i
-            class="fa-regular fa-face-smile fa-xl"
-            style="color: #ff7e05"
-          ></i>
-        </div>
-        <div class="success-btn"><button>確認</button></div>
-      </div>
-    </div>
-    <!-- 成功加入購物車確認 End -->
-    <!-- To Top 按鈕 -->
-    <button class="to-top">Top</button>
-    <!-- To Top 按鈕 End -->
-    <!-- Footer -->
-    <footer>
-      <div class="footer"></div>
-    </footer>
-    <!-- Footer End -->
-  </body>
+				</div>
+			</main>
+			<!-- Main End -->
+		</div>
+		<!-- 成功加入購物車確認 -->
+		<div class="success-mask"></div>
+		<div class="add-success">
+			<div>
+				<div class="success-icon"><i class="fa-solid fa-circle-check fa-2xl" style="color: #0bc117"></i></div>
+				<div class="success-msg">
+					<i class="fa-regular fa-face-smile fa-xl" style="color: #ff7e05"></i>加入成功<i
+						class="fa-regular fa-face-smile fa-xl"
+						style="color: #ff7e05"></i>
+				</div>
+				<div class="success-btn"><button>確認</button></div>
+			</div>
+		</div>
+		<!-- 成功加入購物車確認 End -->
+		<!-- To Top 按鈕 -->
+		<button class="to-top">Top</button>
+		<!-- To Top 按鈕 End -->
+		<!-- Footer -->
+		<footer>
+			<div class="footer"></div>
+		</footer>
+		<!-- Footer End -->
+	</body>
 </html>

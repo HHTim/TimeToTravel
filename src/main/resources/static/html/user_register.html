@@ -1,298 +1,281 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- import -->
-    <script src="https://kit.fontawesome.com/e3af248fb2.js" crossorigin="anonymous" defer></script>
-    <!-- 輪播需要添加 -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <!-- BS5 js lib -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
-      crossorigin="anonymous"
-    ></script>
-    <script type="module" src="../js/user_register.js" defer></script>
+		<!-- import -->
+		<script src="https://kit.fontawesome.com/e3af248fb2.js" crossorigin="anonymous" defer></script>
+		<!-- 輪播需要添加 -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<!-- BS5 js lib -->
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+			crossorigin="anonymous"></script>
+		<script type="module" src="../js/user_register.js" defer></script>
 
-    <!-- BS5 StyleSheet -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
-      crossorigin="anonymous"
-    />
-    <!-- 我們自己的 css 檔案，路徑記得改 -->
-    <link rel="stylesheet" href="../css/user_register.css" />
-    <!-- title 記得改 -->
-    <title>user_register</title>
-  </head>
-  <body>
-    <div class="wrapper">
-      <!-- Header -->
-      <div id="headerContainer">
-        <div class="decorator"></div>
-        <header class="d-flex flex-wrap justify-content-center border-bottom">
-          <div class="container-fluid header__container">
-            <h1 class="logo">
-              <a href="#" class="logo__link">
-                <img src="../images/LOGO.png" alt="logo" class="logo__img" />
-              </a>
-            </h1>
-          </div>
-        </header>
-      </div>
-      <!-- Main -->
-      <main>
-        <div class="container-fulid">
-          <div class="row bu-gutter-x">
-            <div class="col-md-auto">
-              <div class="theme">
-                <div class="img-theme-div">
-                  <img class="img-theme invisible" src="../images/theme.png" alt="theme" />
-                </div>
-                <div class="theme-login-column" style="padding-bottom: 40px">
-                  <ul
-                    style="display: flex; justify-content: space-evenly"
-                    class="nav nav-tabs"
-                    id="myTab"
-                    role="tablist"
-                  >
-                    <li class="nav-item" role="presentation">
-                      <button
-                        class="nav-link active"
-                        data-bs-toggle="tab"
-                        data-bs-target="#userRegister"
-                        type="button"
-                        role="tab"
-                      >
-                        使用者註冊
-                      </button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                      <button
-                        class="nav-link"
-                        data-bs-toggle="tab"
-                        data-bs-target="#companyRegister"
-                        type="button"
-                        role="tab"
-                      >
-                        商家註冊
-                      </button>
-                    </li>
-                  </ul>
-                  <hr style="width: 100%; margin: 0 auto; border: 5px blue solid" />
-                  <div class="tab-content" id="login-member">
-                    <div id="errorMessage" style="color: red; font-weight: bold"></div>
-                    <div class="tab-pane fade show active" id="userRegister" role="tabpanel">
-                      <form class="login-form" id="userRegisterForm">
-                        <div class="mb-2" style="display: flex; justify-content: center">
-                          <img
-                            style="width: 110px; height: 110px; border-radius: 55px"
-                            class="p-2"
-                            src="../images/avatar.svg"
-                            alt=""
-                            id="userAvatarImage"
-                          />
-                        </div>
-                        <div class="mb-2" style="display: flex; justify-content: center">
-                          <input
-                            id="userAvatarFile"
-                            name="avatarFile"
-                            type="file"
-                            style="display: none"
-                            accept="image/*"
-                          />
-                          <button
-                            style="
-                              color: white;
-                              background-color: #006caa;
-                              border-radius: 10px;
-                              font-size: 16px;
-                              white-space: nowrap;
-                              width: 30%;
-                              padding: 6px;
-                            "
-                            class="mb-3 btn btn-outline-secondary"
-                            type="button"
-                            id="userAvatarButton"
-                          >
-                            選擇大頭貼
-                          </button>
-                        </div>
-                        <div class="mb-1">
-                          <div style="display: flex">
-                            <label style="font-size: 20px" class="form-label mb-0"> 姓名 </label>
-                            <label style="font-size: 20px; padding-left: 43%" class="form-label mb-0"> 性別 </label>
-                          </div>
-                          <div style="display: flex; justify-content: space-between">
-                            <input style="height: 45px; width: 190px" type="text" class="form-control" id="userName" />
-                            <select style="height: 45px; width: 190px" class="form-select" id="userGender">
-                              <option value="1" selected>男</option>
-                              <option value="0">女</option>
-                            </select>
-                          </div>
-                        </div>
-                        <div class="mb-1">
-                          <label style="font-size: 20px" class="form-label mb-0">出生日期</label>
-                          <input type="date" style="height: 45px" class="form-control mb-2" id="userBirthday" />
-                        </div>
-                        <div class="mb-1">
-                          <label style="font-size: 20px" class="form-label mb-0">電話號碼</label>
-                          <input type="text" style="height: 45px" class="form-control mb-2" id="userPhone" />
-                        </div>
-                        <div class="mb-1">
-                          <label style="font-size: 20px" class="form-label mb-0">電子信箱</label>
-                          <input type="email" style="height: 45px" class="form-control mb-2" id="userEmail" />
-                        </div>
-                        <div class="mb-1">
-                          <label style="font-size: 20px" class="form-label mb-0">帳號</label>
-                          <input type="text" style="height: 45px" class="form-control mb-2" id="userAccount" />
-                        </div>
-                        <div class="mb-1">
-                          <label style="font-size: 20px" class="form-label mb-0">密碼</label>
-                          <input type="password" style="height: 45px" class="form-control mb-2" id="userPassword" />
-                        </div>
-                        <div class="mb-1">
-                          <label style="font-size: 20px" class="form-label mb-0">再次輸入密碼</label>
-                          <input
-                            type="password"
-                            style="height: 45px"
-                            class="form-control mb-4"
-                            id="userPasswordConfirm"
-                          />
-                        </div>
-                        <div class="mb-2">
-                          <div style="display: flex; justify-content: center; align-items: center">
-                            <input
-                              id="verity_user_register"
-                              style="height: 45px; width: 100px"
-                              type="submit"
-                              class="form-control button"
-                              value="確認註冊"
-                            />
-                            <a href="/html/user_login.html" class="ms-3" style="color: blue">已有帳號?</a>
-                          </div>
-                        </div>
-                      </form>
-                    </div>
-                    <div class="tab-pane fade" id="companyRegister" role="tabpanel">
-                      <form class="login-form" id="companyRegisterForm">
-                        <div class="mb-2" style="display: flex; justify-content: center">
-                          <img
-                            style="width: 110px; height: 110px; border-radius: 55px"
-                            class="p-2"
-                            src="../images/avatar.svg"
-                            alt=""
-                            id="companyAvatarImage"
-                          />
-                        </div>
-                        <div class="mb-2" style="display: flex; justify-content: center">
-                          <input
-                            id="companyAvatarFile"
-                            name="avatarFile"
-                            type="file"
-                            style="display: none"
-                            accept="image/*"
-                          />
-                          <button
-                            style="
-                              color: white;
-                              background-color: #006caa;
-                              border-radius: 10px;
-                              font-size: 16px;
-                              white-space: nowrap;
-                              width: 30%;
-                              padding: 6px;
-                            "
-                            class="mb-3 btn btn-outline-secondary"
-                            type="button"
-                            id="companyAvatarButton"
-                          >
-                            選擇大頭貼
-                          </button>
-                        </div>
-                        <div class="mb-1">
-                          <div style="display: flex">
-                            <label style="font-size: 20px" class="form-label mb-0"> 負責人姓名 </label>
-                            <label style="font-size: 20px; padding-left: 28%" class="form-label mb-0"> 統一編號 </label>
-                          </div>
-                          <div style="display: flex; justify-content: space-between">
-                            <input
-                              style="height: 45px; width: 190px"
-                              type="text"
-                              class="form-control"
-                              id="companyManage"
-                            />
-                            <input
-                              style="height: 45px; width: 190px; font-weight: bold"
-                              type="text"
-                              class="form-control"
-                              id="companyTax"
-                            />
-                          </div>
-                        </div>
-                        <div class="mb-1">
-                          <label style="font-size: 20px" class="form-label mb-0">公司行號</label>
-                          <input type="text" style="height: 45px" class="form-control mb-2" id="companyName" />
-                        </div>
-                        <div class="mb-1">
-                          <label style="font-size: 20px" class="form-label mb-0">公司地址</label>
-                          <input type="text" style="height: 45px" class="form-control mb-2" id="companyAddress" />
-                        </div>
-                        <div class="mb-1">
-                          <label style="font-size: 20px" class="form-label mb-0">電話號碼</label>
-                          <input type="text" style="height: 45px" class="form-control mb-2" id="companyPhone" />
-                        </div>
-                        <div class="mb-1">
-                          <label style="font-size: 20px" class="form-label mb-0">電子信箱</label>
-                          <input type="email" style="height: 45px" class="form-control mb-2" id="companyEmail" />
-                        </div>
-                        <div class="mb-1">
-                          <label style="font-size: 20px" class="form-label mb-0">帳號</label>
-                          <input type="text" style="height: 45px" class="form-control mb-2" id="companyAccount" />
-                        </div>
-                        <div class="mb-1">
-                          <label style="font-size: 20px" class="form-label mb-0">密碼</label>
-                          <input type="password" style="height: 45px" class="form-control mb-2" id="companyPassword" />
-                        </div>
-                        <div class="mb-1">
-                          <label style="font-size: 20px" class="form-label mb-0">再次輸入密碼</label>
-                          <input
-                            type="password"
-                            style="height: 45px"
-                            class="form-control mb-4"
-                            id="companyPasswordConfirm"
-                          />
-                        </div>
-                        <div class="mb-2">
-                          <div style="display: flex; justify-content: center; align-items: center">
-                            <input
-                              style="height: 45px; width: 100px"
-                              type="submit"
-                              class="form-control button"
-                              value="確認註冊"
-                            />
-                            <a href="/html/user_login.html" class="ms-3" style="color: blue">已有帳號?</a>
-                          </div>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </main>
-      <!-- Footer -->
-      <div id="footerContainer">
-        <footer>
-          <div id="manageFooter" class="footer"></div>
-        </footer>
-      </div>
-    </div>
-  </body>
+		<!-- BS5 StyleSheet -->
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+			crossorigin="anonymous" />
+		<!-- 我們自己的 css 檔案，路徑記得改 -->
+		<link rel="stylesheet" href="../css/user_register.css" />
+		<!-- title 記得改 -->
+		<title>user_register</title>
+	</head>
+	<body>
+		<div class="wrapper">
+			<!-- Header -->
+			<div id="headerContainer">
+				<div class="decorator"></div>
+				<header class="d-flex flex-wrap justify-content-center border-bottom">
+					<div class="container-fluid header__container">
+						<h1 class="logo">
+							<a href="../index.html" class="logo__link">
+								<img src="../images/LOGO.png" alt="logo" class="logo__img" />
+							</a>
+						</h1>
+					</div>
+				</header>
+			</div>
+			<!-- Main -->
+			<main>
+				<div class="container-fulid">
+					<div class="row bu-gutter-x">
+						<div class="col-md-auto">
+							<div class="theme">
+								<div class="img-theme-div">
+									<img class="img-theme invisible" src="../images/theme.png" alt="theme" />
+								</div>
+								<div class="theme-login-column" style="padding-bottom: 40px">
+									<ul
+										style="display: flex; justify-content: space-evenly"
+										class="nav nav-tabs"
+										id="myTab"
+										role="tablist">
+										<li class="nav-item" role="presentation">
+											<button
+												class="nav-link active"
+												data-bs-toggle="tab"
+												data-bs-target="#userRegister"
+												type="button"
+												role="tab">
+												使用者註冊
+											</button>
+										</li>
+										<li class="nav-item" role="presentation">
+											<button
+												class="nav-link"
+												data-bs-toggle="tab"
+												data-bs-target="#companyRegister"
+												type="button"
+												role="tab">
+												商家註冊
+											</button>
+										</li>
+									</ul>
+									<hr style="width: 100%; margin: 0 auto; border: 5px blue solid" />
+									<div class="tab-content" id="login-member">
+										<div id="errorMessage" style="color: red; font-weight: bold"></div>
+										<div class="tab-pane fade show active" id="userRegister" role="tabpanel">
+											<form class="login-form" id="userRegisterForm">
+												<div class="mb-2" style="display: flex; justify-content: center">
+													<img
+														style="width: 110px; height: 110px; border-radius: 55px"
+														class="p-2"
+														src="../images/avatar.svg"
+														alt=""
+														id="userAvatarImage" />
+												</div>
+												<div class="mb-2" style="display: flex; justify-content: center">
+													<input
+														id="userAvatarFile"
+														name="avatarFile"
+														type="file"
+														style="display: none"
+														accept="image/*" />
+													<button
+														style="
+															color: white;
+															background-color: #006caa;
+															border-radius: 10px;
+															font-size: 16px;
+															white-space: nowrap;
+															width: 30%;
+															padding: 6px;
+														"
+														class="mb-3 btn btn-outline-secondary"
+														type="button"
+														id="userAvatarButton">
+														選擇大頭貼
+													</button>
+												</div>
+												<div class="mb-1">
+													<div style="display: flex">
+														<label style="font-size: 20px" class="form-label mb-0"> 姓名 </label>
+														<label style="font-size: 20px; padding-left: 43%" class="form-label mb-0"> 性別 </label>
+													</div>
+													<div style="display: flex; justify-content: space-between">
+														<input style="height: 45px; width: 190px" type="text" class="form-control" id="userName" />
+														<select style="height: 45px; width: 190px" class="form-select" id="userGender">
+															<option value="1" selected>男</option>
+															<option value="0">女</option>
+														</select>
+													</div>
+												</div>
+												<div class="mb-1">
+													<label style="font-size: 20px" class="form-label mb-0">出生日期</label>
+													<input type="date" style="height: 45px" class="form-control mb-2" id="userBirthday" />
+												</div>
+												<div class="mb-1">
+													<label style="font-size: 20px" class="form-label mb-0">電話號碼</label>
+													<input type="text" style="height: 45px" class="form-control mb-2" id="userPhone" />
+												</div>
+												<div class="mb-1">
+													<label style="font-size: 20px" class="form-label mb-0">電子信箱</label>
+													<input type="email" style="height: 45px" class="form-control mb-2" id="userEmail" />
+												</div>
+												<div class="mb-1">
+													<label style="font-size: 20px" class="form-label mb-0">帳號</label>
+													<input type="text" style="height: 45px" class="form-control mb-2" id="userAccount" />
+												</div>
+												<div class="mb-1">
+													<label style="font-size: 20px" class="form-label mb-0">密碼</label>
+													<input type="password" style="height: 45px" class="form-control mb-2" id="userPassword" />
+												</div>
+												<div class="mb-1">
+													<label style="font-size: 20px" class="form-label mb-0">再次輸入密碼</label>
+													<input
+														type="password"
+														style="height: 45px"
+														class="form-control mb-4"
+														id="userPasswordConfirm" />
+												</div>
+												<div class="mb-2">
+													<div style="display: flex; justify-content: center; align-items: center">
+														<input
+															id="verity_user_register"
+															style="height: 45px; width: 100px"
+															type="submit"
+															class="form-control button"
+															value="確認註冊" />
+														<a href="/html/user_login.html" class="ms-3" style="color: blue">已有帳號?</a>
+													</div>
+												</div>
+											</form>
+										</div>
+										<div class="tab-pane fade" id="companyRegister" role="tabpanel">
+											<form class="login-form" id="companyRegisterForm">
+												<div class="mb-2" style="display: flex; justify-content: center">
+													<img
+														style="width: 110px; height: 110px; border-radius: 55px"
+														class="p-2"
+														src="../images/avatar.svg"
+														alt=""
+														id="companyAvatarImage" />
+												</div>
+												<div class="mb-2" style="display: flex; justify-content: center">
+													<input
+														id="companyAvatarFile"
+														name="avatarFile"
+														type="file"
+														style="display: none"
+														accept="image/*" />
+													<button
+														style="
+															color: white;
+															background-color: #006caa;
+															border-radius: 10px;
+															font-size: 16px;
+															white-space: nowrap;
+															width: 30%;
+															padding: 6px;
+														"
+														class="mb-3 btn btn-outline-secondary"
+														type="button"
+														id="companyAvatarButton">
+														選擇大頭貼
+													</button>
+												</div>
+												<div class="mb-1">
+													<div style="display: flex">
+														<label style="font-size: 20px" class="form-label mb-0"> 負責人姓名 </label>
+														<label style="font-size: 20px; padding-left: 28%" class="form-label mb-0"> 統一編號 </label>
+													</div>
+													<div style="display: flex; justify-content: space-between">
+														<input
+															style="height: 45px; width: 190px"
+															type="text"
+															class="form-control"
+															id="companyManage" />
+														<input
+															style="height: 45px; width: 190px; font-weight: bold"
+															type="text"
+															class="form-control"
+															id="companyTax" />
+													</div>
+												</div>
+												<div class="mb-1">
+													<label style="font-size: 20px" class="form-label mb-0">公司行號</label>
+													<input type="text" style="height: 45px" class="form-control mb-2" id="companyName" />
+												</div>
+												<div class="mb-1">
+													<label style="font-size: 20px" class="form-label mb-0">公司地址</label>
+													<input type="text" style="height: 45px" class="form-control mb-2" id="companyAddress" />
+												</div>
+												<div class="mb-1">
+													<label style="font-size: 20px" class="form-label mb-0">電話號碼</label>
+													<input type="text" style="height: 45px" class="form-control mb-2" id="companyPhone" />
+												</div>
+												<div class="mb-1">
+													<label style="font-size: 20px" class="form-label mb-0">電子信箱</label>
+													<input type="email" style="height: 45px" class="form-control mb-2" id="companyEmail" />
+												</div>
+												<div class="mb-1">
+													<label style="font-size: 20px" class="form-label mb-0">帳號</label>
+													<input type="text" style="height: 45px" class="form-control mb-2" id="companyAccount" />
+												</div>
+												<div class="mb-1">
+													<label style="font-size: 20px" class="form-label mb-0">密碼</label>
+													<input type="password" style="height: 45px" class="form-control mb-2" id="companyPassword" />
+												</div>
+												<div class="mb-1">
+													<label style="font-size: 20px" class="form-label mb-0">再次輸入密碼</label>
+													<input
+														type="password"
+														style="height: 45px"
+														class="form-control mb-4"
+														id="companyPasswordConfirm" />
+												</div>
+												<div class="mb-2">
+													<div style="display: flex; justify-content: center; align-items: center">
+														<input
+															style="height: 45px; width: 100px"
+															type="submit"
+															class="form-control button"
+															value="確認註冊" />
+														<a href="/html/user_login.html" class="ms-3" style="color: blue">已有帳號?</a>
+													</div>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+			<!-- Footer -->
+			<div id="footerContainer">
+				<footer>
+					<div id="manageFooter" class="footer"></div>
+				</footer>
+			</div>
+		</div>
+	</body>
 </html>

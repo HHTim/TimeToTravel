@@ -1,303 +1,303 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- import -->
-    <script src="../node_modules/@popperjs/core/dist/umd/popper.min.js" defer></script>
-    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js" defer></script>
-    <script src="../node_modules/jquery/dist/jquery.min.js" defer></script>
-    <script src="https://kit.fontawesome.com/e3af248fb2.js" crossorigin="anonymous" defer></script>
-    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
-    <!-- 我們自己的 css 檔案，路徑記得改 -->
-    <link rel="stylesheet" href="../css/gift_follow.css" />
-    <!-- 我們自己的 js 檔案，路徑記得改 -->
-    <script type="module" src="../js/gift_follow.js" defer></script>
-    <!-- 輪播需要添加 -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <!-- title 記得改 -->
-    <title>TimeToTravel | Gift Follow</title>
-  </head>
-  <body>
-    <!-- Header -->
-    <div class="decorator"></div>
-    <header>
-      <div class="container-fluid header__container">
-        <h1 class="logo">
-          <a href="#" class="logo__link">
-            <img src="../images/LOGO.png" alt="logo" class="logo__img" />
-          </a>
-        </h1>
-        <nav>
-          <ul class="nav">
-            <li class="nav__link"><a href="#">我的訂單</a></li>
-            <li class="nav__link"><a href="#">我的最愛</a></li>
-            <li class="nav__link cart">
-              <a href="#" class="open-cart">購物車</a>
-              <!-- 購物車小視窗 start -->
-              <div class="dropdown-cart">
-                <div class="cart-list">
-                  <div class="gift-item">
-                    <div class="small-img"><img src="#" alt="小圖片" /></div>
-                    <div class="item-info">
-                      <p class="title">歹丸茶</p>
-                      <p class="amount"><span>數量：</span><span class="quantity">5</span></p>
-                    </div>
-                  </div>
-                  <div class="gift-item">
-                    <div class="small-img"><img src="#" alt="小圖片" /></div>
-                    <div class="item-info">
-                      <p class="title">液晶螢幕</p>
-                      <p class="amount"><span>數量：</span><span class="quantity">3</span></p>
-                    </div>
-                  </div>
-                  <div class="gift-item">
-                    <div class="small-img"><img src="#" alt="小圖片" /></div>
-                    <div class="item-info">
-                      <p class="title">路邊攤香腸路邊攤香腸路邊攤香腸路邊攤香腸路邊攤香腸路邊攤香腸</p>
-                      <p class="amount"><span>數量：</span><span class="quantity">1</span></p>
-                    </div>
-                  </div>
-                </div>
-                <div class="cart-button"><a class="btn-checkout" href="gift_cart.html">立即結帳</a></div>
-              </div>
-              <!-- 購物車小視窗 end -->
-            </li>
-            <li class="nav__link"><a href="#">部落格</a></li>
-            <li class="nav__info">
-              <div class="dropdown-center">
-                <button class="dropdown-toggle nav__info-btn" type="button" data-bs-toggle="dropdown"></button>
-                <ul class="dropdown-menu">
-                  <!-- <li><a class="dropdown-item" href="#">訊息一</a></li>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- import -->
+		<script src="../node_modules/@popperjs/core/dist/umd/popper.min.js" defer></script>
+		<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js" defer></script>
+		<script src="../node_modules/jquery/dist/jquery.min.js" defer></script>
+		<script src="https://kit.fontawesome.com/e3af248fb2.js" crossorigin="anonymous" defer></script>
+		<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+		<!-- 我們自己的 css 檔案，路徑記得改 -->
+		<link rel="stylesheet" href="../css/gift_follow.css" />
+		<!-- 我們自己的 js 檔案，路徑記得改 -->
+		<script type="module" src="../js/gift_follow.js" defer></script>
+		<!-- 輪播需要添加 -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<!-- title 記得改 -->
+		<title>TimeToTravel | Gift Follow</title>
+	</head>
+	<body>
+		<!-- Header -->
+		<div class="decorator"></div>
+		<header>
+			<div class="container-fluid header__container">
+				<h1 class="logo">
+					<a href="../index.html" class="logo__link">
+						<img src="../images/LOGO.png" alt="logo" class="logo__img" />
+					</a>
+				</h1>
+				<nav>
+					<ul class="nav">
+						<li class="nav__link"><a href="#">我的訂單</a></li>
+						<li class="nav__link"><a href="#">我的最愛</a></li>
+						<li class="nav__link cart">
+							<a href="#" class="open-cart">購物車</a>
+							<!-- 購物車小視窗 start -->
+							<div class="dropdown-cart">
+								<div class="cart-list">
+									<div class="gift-item">
+										<div class="small-img"><img src="#" alt="小圖片" /></div>
+										<div class="item-info">
+											<p class="title">歹丸茶</p>
+											<p class="amount"><span>數量：</span><span class="quantity">5</span></p>
+										</div>
+									</div>
+									<div class="gift-item">
+										<div class="small-img"><img src="#" alt="小圖片" /></div>
+										<div class="item-info">
+											<p class="title">液晶螢幕</p>
+											<p class="amount"><span>數量：</span><span class="quantity">3</span></p>
+										</div>
+									</div>
+									<div class="gift-item">
+										<div class="small-img"><img src="#" alt="小圖片" /></div>
+										<div class="item-info">
+											<p class="title">路邊攤香腸路邊攤香腸路邊攤香腸路邊攤香腸路邊攤香腸路邊攤香腸</p>
+											<p class="amount"><span>數量：</span><span class="quantity">1</span></p>
+										</div>
+									</div>
+								</div>
+								<div class="cart-button"><a class="btn-checkout" href="gift_cart.html">立即結帳</a></div>
+							</div>
+							<!-- 購物車小視窗 end -->
+						</li>
+						<li class="nav__link"><a href="#">部落格</a></li>
+						<li class="nav__info">
+							<div class="dropdown-center">
+								<button class="dropdown-toggle nav__info-btn" type="button" data-bs-toggle="dropdown"></button>
+								<ul class="dropdown-menu">
+									<!-- <li><a class="dropdown-item" href="#">訊息一</a></li>
                   <li><a class="dropdown-item" href="#">訊息二</a></li>
                   <li><a class="dropdown-item" href="#">訊息三</a></li>
                   <li><hr class="dropdown-divider" /></li>
                   <li><a class="dropdown-item" href="#">See More</a></li> -->
-                </ul>
-              </div>
-            </li>
-            <li class="nav__avatar">
-              <div class="dropdown-center">
-                <!-- <button class="dropdown-toggle nav__avatar-btn" type="button" data-bs-toggle="dropdown"></button> -->
-                <a href="#" class="dropdown-toggle nav__avatar-btn" type="button" data-bs-toggle="dropdown">
-                  <div class="nav__avatar-img">
-                    <img src="../images/avatar.svg" alt="avatar" />
-                  </div>
-                </a>
-                <ul class="dropdown-menu">
-                  <!-- <li><a class="dropdown-item" href="#">註冊</a></li>
+								</ul>
+							</div>
+						</li>
+						<li class="nav__avatar">
+							<div class="dropdown-center">
+								<!-- <button class="dropdown-toggle nav__avatar-btn" type="button" data-bs-toggle="dropdown"></button> -->
+								<a href="#" class="dropdown-toggle nav__avatar-btn" type="button" data-bs-toggle="dropdown">
+									<div class="nav__avatar-img">
+										<img src="../images/avatar.svg" alt="avatar" />
+									</div>
+								</a>
+								<ul class="dropdown-menu">
+									<!-- <li><a class="dropdown-item" href="#">註冊</a></li>
                   <li><a class="dropdown-item" href="#">登入</a></li>
                   <li><a class="dropdown-item" href="#">其他</a></li>
                   <li><a class="dropdown-item" href="#">其他</a></li>
                   <li><hr class="dropdown-divider" /></li>
                   <li><a class="dropdown-item" href="#">登出</a></li> -->
-                </ul>
-              </div>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </header>
-    <!-- Header End -->
-    <div class="container-fluid custom-container">
-      <div class="row">
-        <div class="col-12">
-          <!-- Main -->
-          <main class="main">
-            <nav style="--bs-breadcrumb-divider: '>'" aria-label="breadcrumb">
-              <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">土產專區</a></li>
-                <li class="breadcrumb-item active" aria-current="page">我的最愛</li>
-              </ol>
-            </nav>
-            <section class="gift-follow">
-              <div class="gift-follow-card">
-                <div class="gift-follow-img">
-                  <a href="#"><img src="#" alt="這是圖片" /></a>
-                </div>
-                <div class="gift-follow-content">
-                  <div class="gift-follow-title"><a href="#">歹丸茶</a></div>
-                  <div class="gift-follow-intro">
-                    <a href="#">
-                      Lorem
-                      ipsum，簡稱為Lipsum，是指一篇常用於排版設計領域的拉丁文文章，主要的目的為測試文章或文字在不同字型、版型下看起來的效果。
-                      中文的類似用法則稱為亂數假文、隨機假文。Lorem
-                      ipsum，簡稱為Lipsum，是指一篇常用於排版設計領域的拉丁文文章，主要的目的為測試文章或文字在不同字型、版型下看起來的效果。
-                      中文的類似用法則稱為亂數假文、隨機假文。</a
-                    >
-                  </div>
-                  <div class="gift-follow-price">
-                    <span class="price">
-                      <span class="money-tag">NT$2980</span>
-                    </span>
-                    <del class="compare-price">
-                      <span class="money-tag">NT$3388</span>
-                    </del>
-                  </div>
-                </div>
-                <div class="gift-follow-option">
-                  <div class="gift-follow-love">
-                    <i class="fa-solid fa-heart" style="color: #ff4747"><span>我的最愛</span></i>
-                  </div>
-                  <div class="gift-follow-cart">
-                    <button type="button" class="btn-cart">
-                      <i class="fa-solid fa-cart-shopping" style="color: #ffc800"></i><span>加入購物車</span>
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div class="gift-follow-card">
-                <div class="gift-follow-img">
-                  <a href="#"><img src="#" alt="這是圖片" /></a>
-                </div>
-                <div class="gift-follow-content">
-                  <div class="gift-follow-title"><a href="#">歹丸茶</a></div>
-                  <div class="gift-follow-intro">
-                    <a href="#">
-                      Lorem
-                      ipsum，簡稱為Lipsum，是指一篇常用於排版設計領域的拉丁文文章，主要的目的為測試文章或文字在不同字型、版型下看起來的效果。
-                      中文的類似用法則稱為亂數假文、隨機假文。</a
-                    >
-                  </div>
-                  <div class="gift-follow-price">
-                    <span class="price">
-                      <span class="money-tag">NT$2980</span>
-                    </span>
-                    <del class="compare-price">
-                      <span class="money-tag">NT$3388</span>
-                    </del>
-                  </div>
-                </div>
-                <div class="gift-follow-option">
-                  <div class="gift-follow-love">
-                    <i class="fa-solid fa-heart" style="color: #ff4747"><span>我的最愛</span></i>
-                  </div>
-                  <div class="gift-follow-cart">
-                    <button type="button" class="btn-cart">
-                      <i class="fa-solid fa-cart-shopping" style="color: #ffc800"></i><span>加入購物車</span>
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div class="gift-follow-card">
-                <div class="gift-follow-img">
-                  <a href="#"><img src="#" alt="這是圖片" /></a>
-                </div>
-                <div class="gift-follow-content">
-                  <div class="gift-follow-title"><a href="#">歹丸茶</a></div>
-                  <div class="gift-follow-intro">
-                    <a href="#">
-                      Lorem
-                      ipsum，簡稱為Lipsum，是指一篇常用於排版設計領域的拉丁文文章，主要的目的為測試文章或文字在不同字型、版型下看起來的效果。
-                      中文的類似用法則稱為亂數假文、隨機假文。</a
-                    >
-                  </div>
-                  <div class="gift-follow-price">
-                    <span class="price">
-                      <span class="money-tag">NT$2980</span>
-                    </span>
-                    <del class="compare-price">
-                      <span class="money-tag">NT$3388</span>
-                    </del>
-                  </div>
-                </div>
-                <div class="gift-follow-option">
-                  <div class="gift-follow-love">
-                    <i class="fa-solid fa-heart" style="color: #ff4747"><span>我的最愛</span></i>
-                  </div>
-                  <div class="gift-follow-cart">
-                    <button type="button" class="btn-cart">
-                      <i class="fa-solid fa-cart-shopping" style="color: #ffc800"></i><span>加入購物車</span>
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div class="gift-follow-card">
-                <div class="gift-follow-img">
-                  <a href="#"><img src="#" alt="這是圖片" /></a>
-                </div>
-                <div class="gift-follow-content">
-                  <div class="gift-follow-title"><a href="#">歹丸茶</a></div>
-                  <div class="gift-follow-intro">
-                    <a href="#">
-                      Lorem
-                      ipsum，簡稱為Lipsum，是指一篇常用於排版設計領域的拉丁文文章，主要的目的為測試文章或文字在不同字型、版型下看起來的效果。
-                      中文的類似用法則稱為亂數假文、隨機假文。</a
-                    >
-                  </div>
-                  <div class="gift-follow-price">
-                    <span class="price">
-                      <span class="money-tag">NT$2980</span>
-                    </span>
-                    <del class="compare-price">
-                      <span class="money-tag">NT$3388</span>
-                    </del>
-                  </div>
-                </div>
-                <div class="gift-follow-option">
-                  <div class="gift-follow-love">
-                    <i class="fa-solid fa-heart" style="color: #ff4747"><span>我的最愛</span></i>
-                  </div>
-                  <div class="gift-follow-cart">
-                    <button type="button" class="btn-cart">
-                      <i class="fa-solid fa-cart-shopping" style="color: #ffc800"></i><span>加入購物車</span>
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div class="gift-follow-card">
-                <div class="gift-follow-img">
-                  <a href="#"><img src="#" alt="這是圖片" /></a>
-                </div>
-                <div class="gift-follow-content">
-                  <div class="gift-follow-title"><a href="#">歹丸茶</a></div>
-                  <div class="gift-follow-intro">
-                    <a href="#">
-                      Lorem
-                      ipsum，簡稱為Lipsum，是指一篇常用於排版設計領域的拉丁文文章，主要的目的為測試文章或文字在不同字型、版型下看起來的效果。
-                      中文的類似用法則稱為亂數假文、隨機假文。</a
-                    >
-                  </div>
-                  <div class="gift-follow-price">
-                    <span class="price">
-                      <span class="money-tag">NT$2980</span>
-                    </span>
-                    <del class="compare-price">
-                      <span class="money-tag">NT$3388</span>
-                    </del>
-                  </div>
-                </div>
-                <div class="gift-follow-option">
-                  <div class="gift-follow-love">
-                    <i class="fa-solid fa-heart" style="color: #ff4747"><span>我的最愛</span></i>
-                  </div>
-                  <div class="gift-follow-cart">
-                    <button type="button" class="btn-cart">
-                      <i class="fa-solid fa-cart-shopping" style="color: #ffc800"></i><span>加入購物車</span>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </section>
-            <nav class="page">
-              <ul class="pagination">
-                <li class="page-item"><a class="page-link" href="#">&lt;</a></li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">&gt;</a></li>
-              </ul>
-            </nav>
-          </main>
-          <!-- Main End -->
-        </div>
-      </div>
-    </div>
-    <!-- Footer -->
-    <footer>
-      <div class="footer"></div>
-    </footer>
-    <!-- Footer End -->
-  </body>
+								</ul>
+							</div>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+		<!-- Header End -->
+		<div class="container-fluid custom-container">
+			<div class="row">
+				<div class="col-12">
+					<!-- Main -->
+					<main class="main">
+						<nav style="--bs-breadcrumb-divider: '>'" aria-label="breadcrumb">
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item"><a href="#">土產專區</a></li>
+								<li class="breadcrumb-item active" aria-current="page">我的最愛</li>
+							</ol>
+						</nav>
+						<section class="gift-follow">
+							<div class="gift-follow-card">
+								<div class="gift-follow-img">
+									<a href="#"><img src="#" alt="這是圖片" /></a>
+								</div>
+								<div class="gift-follow-content">
+									<div class="gift-follow-title"><a href="#">歹丸茶</a></div>
+									<div class="gift-follow-intro">
+										<a href="#">
+											Lorem
+											ipsum，簡稱為Lipsum，是指一篇常用於排版設計領域的拉丁文文章，主要的目的為測試文章或文字在不同字型、版型下看起來的效果。
+											中文的類似用法則稱為亂數假文、隨機假文。Lorem
+											ipsum，簡稱為Lipsum，是指一篇常用於排版設計領域的拉丁文文章，主要的目的為測試文章或文字在不同字型、版型下看起來的效果。
+											中文的類似用法則稱為亂數假文、隨機假文。</a
+										>
+									</div>
+									<div class="gift-follow-price">
+										<span class="price">
+											<span class="money-tag">NT$2980</span>
+										</span>
+										<del class="compare-price">
+											<span class="money-tag">NT$3388</span>
+										</del>
+									</div>
+								</div>
+								<div class="gift-follow-option">
+									<div class="gift-follow-love">
+										<i class="fa-solid fa-heart" style="color: #ff4747"><span>我的最愛</span></i>
+									</div>
+									<div class="gift-follow-cart">
+										<button type="button" class="btn-cart">
+											<i class="fa-solid fa-cart-shopping" style="color: #ffc800"></i><span>加入購物車</span>
+										</button>
+									</div>
+								</div>
+							</div>
+							<div class="gift-follow-card">
+								<div class="gift-follow-img">
+									<a href="#"><img src="#" alt="這是圖片" /></a>
+								</div>
+								<div class="gift-follow-content">
+									<div class="gift-follow-title"><a href="#">歹丸茶</a></div>
+									<div class="gift-follow-intro">
+										<a href="#">
+											Lorem
+											ipsum，簡稱為Lipsum，是指一篇常用於排版設計領域的拉丁文文章，主要的目的為測試文章或文字在不同字型、版型下看起來的效果。
+											中文的類似用法則稱為亂數假文、隨機假文。</a
+										>
+									</div>
+									<div class="gift-follow-price">
+										<span class="price">
+											<span class="money-tag">NT$2980</span>
+										</span>
+										<del class="compare-price">
+											<span class="money-tag">NT$3388</span>
+										</del>
+									</div>
+								</div>
+								<div class="gift-follow-option">
+									<div class="gift-follow-love">
+										<i class="fa-solid fa-heart" style="color: #ff4747"><span>我的最愛</span></i>
+									</div>
+									<div class="gift-follow-cart">
+										<button type="button" class="btn-cart">
+											<i class="fa-solid fa-cart-shopping" style="color: #ffc800"></i><span>加入購物車</span>
+										</button>
+									</div>
+								</div>
+							</div>
+							<div class="gift-follow-card">
+								<div class="gift-follow-img">
+									<a href="#"><img src="#" alt="這是圖片" /></a>
+								</div>
+								<div class="gift-follow-content">
+									<div class="gift-follow-title"><a href="#">歹丸茶</a></div>
+									<div class="gift-follow-intro">
+										<a href="#">
+											Lorem
+											ipsum，簡稱為Lipsum，是指一篇常用於排版設計領域的拉丁文文章，主要的目的為測試文章或文字在不同字型、版型下看起來的效果。
+											中文的類似用法則稱為亂數假文、隨機假文。</a
+										>
+									</div>
+									<div class="gift-follow-price">
+										<span class="price">
+											<span class="money-tag">NT$2980</span>
+										</span>
+										<del class="compare-price">
+											<span class="money-tag">NT$3388</span>
+										</del>
+									</div>
+								</div>
+								<div class="gift-follow-option">
+									<div class="gift-follow-love">
+										<i class="fa-solid fa-heart" style="color: #ff4747"><span>我的最愛</span></i>
+									</div>
+									<div class="gift-follow-cart">
+										<button type="button" class="btn-cart">
+											<i class="fa-solid fa-cart-shopping" style="color: #ffc800"></i><span>加入購物車</span>
+										</button>
+									</div>
+								</div>
+							</div>
+							<div class="gift-follow-card">
+								<div class="gift-follow-img">
+									<a href="#"><img src="#" alt="這是圖片" /></a>
+								</div>
+								<div class="gift-follow-content">
+									<div class="gift-follow-title"><a href="#">歹丸茶</a></div>
+									<div class="gift-follow-intro">
+										<a href="#">
+											Lorem
+											ipsum，簡稱為Lipsum，是指一篇常用於排版設計領域的拉丁文文章，主要的目的為測試文章或文字在不同字型、版型下看起來的效果。
+											中文的類似用法則稱為亂數假文、隨機假文。</a
+										>
+									</div>
+									<div class="gift-follow-price">
+										<span class="price">
+											<span class="money-tag">NT$2980</span>
+										</span>
+										<del class="compare-price">
+											<span class="money-tag">NT$3388</span>
+										</del>
+									</div>
+								</div>
+								<div class="gift-follow-option">
+									<div class="gift-follow-love">
+										<i class="fa-solid fa-heart" style="color: #ff4747"><span>我的最愛</span></i>
+									</div>
+									<div class="gift-follow-cart">
+										<button type="button" class="btn-cart">
+											<i class="fa-solid fa-cart-shopping" style="color: #ffc800"></i><span>加入購物車</span>
+										</button>
+									</div>
+								</div>
+							</div>
+							<div class="gift-follow-card">
+								<div class="gift-follow-img">
+									<a href="#"><img src="#" alt="這是圖片" /></a>
+								</div>
+								<div class="gift-follow-content">
+									<div class="gift-follow-title"><a href="#">歹丸茶</a></div>
+									<div class="gift-follow-intro">
+										<a href="#">
+											Lorem
+											ipsum，簡稱為Lipsum，是指一篇常用於排版設計領域的拉丁文文章，主要的目的為測試文章或文字在不同字型、版型下看起來的效果。
+											中文的類似用法則稱為亂數假文、隨機假文。</a
+										>
+									</div>
+									<div class="gift-follow-price">
+										<span class="price">
+											<span class="money-tag">NT$2980</span>
+										</span>
+										<del class="compare-price">
+											<span class="money-tag">NT$3388</span>
+										</del>
+									</div>
+								</div>
+								<div class="gift-follow-option">
+									<div class="gift-follow-love">
+										<i class="fa-solid fa-heart" style="color: #ff4747"><span>我的最愛</span></i>
+									</div>
+									<div class="gift-follow-cart">
+										<button type="button" class="btn-cart">
+											<i class="fa-solid fa-cart-shopping" style="color: #ffc800"></i><span>加入購物車</span>
+										</button>
+									</div>
+								</div>
+							</div>
+						</section>
+						<nav class="page">
+							<ul class="pagination">
+								<li class="page-item"><a class="page-link" href="#">&lt;</a></li>
+								<li class="page-item"><a class="page-link" href="#">1</a></li>
+								<li class="page-item"><a class="page-link" href="#">2</a></li>
+								<li class="page-item"><a class="page-link" href="#">3</a></li>
+								<li class="page-item"><a class="page-link" href="#">&gt;</a></li>
+							</ul>
+						</nav>
+					</main>
+					<!-- Main End -->
+				</div>
+			</div>
+		</div>
+		<!-- Footer -->
+		<footer>
+			<div class="footer"></div>
+		</footer>
+		<!-- Footer End -->
+	</body>
 </html>
