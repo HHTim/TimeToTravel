@@ -14,18 +14,20 @@ public interface ViewGiftOrderManageRepository extends JpaRepository<ViewGiftOrd
 //    @Query(value = "SELECT * FROM View_Gift_Order_Manage WHERE GIFT_ORDER_ID LIKE ?1 OR USER_ID LIKE ?2" , nativeQuery = true)
 //    List<ViewGiftOrderManage> findByGiftOrder(Integer giftOrderId, Integer userId);
 
-    @Query(value = "SELECT * FROM View_Gift_Order_Manage WHERE GIFT_ORDER_ID = ?1 ", nativeQuery = true)
-    List<ViewGiftOrderManage> findByGiftOrder(Integer giftOrderId);
+//    @Query(value = "SELECT * FROM View_Gift_Order_Manage WHERE GIFT_ORDER_ID = ?1 || USER_ACCOUNT LIKE ?2", nativeQuery = true)
+//    List<ViewGiftOrderManage> findByGiftOrderId(Integer giftOrderId, String userAccount);
 
-    @Query(value = "SELECT * FROM View_Gift_Order_Manage WHERE USER_ACCOUNT LIKE ?1 ", nativeQuery = true)
-    List<ViewGiftOrderManage> findByUserAccount(Integer userAccount);
+//    @Query(value = "SELECT * FROM View_Gift_Order_Manage WHERE GIFT_ORDER_ID = ?1 ", nativeQuery = true)
+//    List<ViewGiftOrderManage> findByGiftOrderId(Integer giftOrderId);
+//
+//    @Query(value = "SELECT * FROM View_Gift_Order_Manage WHERE USER_ACCOUNT LIKE %?1% ", nativeQuery = true)
+//    List<ViewGiftOrderManage> findByUserAccount(String userAccount);
+    @Query(value = "SELECT * FROM View_Gift_Order_Manage WHERE GIFT_ORDER_ID = ?1 || USER_ACCOUNT LIKE %?2%", nativeQuery = true)
+    List<ViewGiftOrderManage> findByKeyword(String keywordId, String keywordAccount);
 
-
-
-//    List<ViewGiftOrderManage> findByGiftOrderDatetimeBetween(Date startDate, Date endDate);
-//}
     @Query(value = "SELECT * FROM view_gift_order_manage WHERE GIFT_ORDER_DATETIME BETWEEN ?1 AND ?2 ORDER BY GIFT_ORDER_DATETIME DESC ", nativeQuery = true)
     List<ViewGiftOrderManage> findByDateRange(String startDate, String endDate);
+
 
 
 }
