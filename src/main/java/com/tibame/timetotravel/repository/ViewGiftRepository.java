@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface ViewGiftRepository extends JpaRepository<ViewGift, Integer> {
 
-    @Query(value = "SELECT * FROM view_gift WHERE GIFT_STATUS = 1", nativeQuery = true)
+    @Query(value = "SELECT * FROM view_gift WHERE GIFT_STATUS = 1 ORDER BY GIFT_ID DESC", nativeQuery = true)
     List<ViewGift> findAll();
 
     @Query(value = "SELECT * FROM view_gift WHERE GIFT_STATUS = 1 AND GIFT_NAME LIKE %?1%", nativeQuery = true)
