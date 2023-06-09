@@ -4,12 +4,13 @@ import jakarta.websocket.OnClose;
 import jakarta.websocket.OnMessage;
 import jakarta.websocket.OnOpen;
 import jakarta.websocket.Session;
+import jakarta.websocket.server.PathParam;
 import jakarta.websocket.server.ServerEndpoint;
 import org.springframework.stereotype.Component;
 import java.util.concurrent.CopyOnWriteArraySet;
 import java.io.IOException;
 
-@ServerEndpoint(value = "/websocket")
+@ServerEndpoint(value = "/websocket/{userName}")
 @Component
 
 public class WebSocketNotification {
@@ -22,20 +23,28 @@ public class WebSocketNotification {
     //與某個客戶端的連接會話，需要通過它來給客戶端發送數據
     private Session session;
 
+    private String userName; // 用户身份信息
+
     /**
      * 連接建立成功呼叫的方法*/
     @OnOpen
-    public void onOpen(Session session) {
+    public void onOpen(Session session,@PathParam("userName") String userName) {
         this.session = session;
+        this.userName = userName;
         webSocketSet.add(this);     //加入set中
         addOnlineCount();           //在線人數加1
         System.out.println("有新連接加入！當前在線人數為" + getOnlineCount());
-//        try {
+        try {
+            System.out.println(userName);
+            if(!("Admin").equals(userName)) {
+                sendMessage("服務人員: 你好! 我有什麼可以為您服務的");
+            }
+
 //            sendMessage(String.valueOf(this.session.getQueryString()));
 //            sendInfo(String.valueOf(this.session.getQueryString()));
-//        } catch (IOException e) {
-//            System.out.println("IO異常");
-//        }
+        } catch (IOException e) {
+            System.out.println("IO異常");
+        }
     }
 
     /**
