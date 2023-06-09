@@ -12,14 +12,12 @@ public interface GiftOrderManageService {
 
     List<ViewGiftOrderManage> findAll();
 
-    //搜尋
-//    List<ViewGiftOrderManage> findByGiftOrder(Integer giftOrderId, Integer userId);
-    List<ViewGiftOrderManage> findByGiftOrderId(Integer giftOrderId);
-    List<ViewGiftOrderManage> findByUserAccount(Integer userAccount);
-
+    //關鍵字搜尋
+    List<ViewGiftOrderManage> findByKeyword(String keywordId, String keywordAccount);
+//    List<ViewGiftOrderManage> findByGiftOrderId(Integer giftOrderId);
+//    List<ViewGiftOrderManage> findByUserAccount(String userAccount);
+    //日期搜尋
     List<ViewGiftOrderManage> findByDateRange(String startDate, String endDate);
-
-
 
 
 }

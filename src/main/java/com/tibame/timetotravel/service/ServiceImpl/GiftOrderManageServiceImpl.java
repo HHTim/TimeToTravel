@@ -34,16 +34,33 @@ import java.util.List;
         return viewGiftOrderManageRepository.findAll();
     }
 
-
     @Override
-    public List<ViewGiftOrderManage> findByGiftOrderId(Integer giftOrderId) {
-        return viewGiftOrderManageRepository.findByGiftOrder(giftOrderId);
+    public List<ViewGiftOrderManage> findByKeyword(String keywordId, String keywordAccount) {
+        return viewGiftOrderManageRepository.findByKeyword(keywordId, keywordAccount);
     }
 
-    @Override
-    public List<ViewGiftOrderManage> findByUserAccount(Integer userAccount) {
-        return viewGiftOrderManageRepository.findByUserAccount(userAccount);
-    }
+//    @Override
+//    public List<ViewGiftOrderManage> findByGiftOrderId(Integer giftOrderId) {
+//        return viewGiftOrderManageRepository.findByGiftOrderId(giftOrderId);
+//    }
+//
+//    @Override
+//    public List<ViewGiftOrderManage> findByUserAccount(String userAccount) {
+//        return viewGiftOrderManageRepository.findByUserAccount(userAccount);
+//    }
+
+//    @Override
+//    public List<ViewGiftOrderManage> findByGiftOrderIdOrUserAccount(Integer giftOrderId, String userAccount) {
+////        return viewGiftOrderManageRepository.findByGiftOrder(giftOrderId, userId);
+//        if (giftOrderId != null) {  // 只根据 giftOrderId 查询
+//            return viewGiftOrderManageRepository.findByGiftOrderId(giftOrderId);
+//        } else if (userAccount != null) { // 只根据 userId 查询
+//            return viewGiftOrderManageRepository.findByUserAccount(userAccount);
+//        } else {
+//            // 如果没有提供任何参数，你可以返回所有订单或者做其他处理
+//            return viewGiftOrderManageRepository.findAll();
+//        }
+//    }
 
     @Override
     public List<ViewGiftOrderManage> findByDateRange(String startDate, String endDate) {
@@ -51,16 +68,4 @@ import java.util.List;
     }
 
 
-//    @Override
-//    public List<ViewGiftOrderManage> findByGiftOrder(Integer giftOrderId, Integer userId) {
-////        return viewGiftOrderManageRepository.findByGiftOrder(giftOrderId, userId);
-//        if (giftOrderId != null) {  // 只根据 giftOrderId 查询
-//            return viewGiftOrderManageRepository.findByGiftOrderId(giftOrderId);
-//        } else if (userId != null) { // 只根据 userId 查询
-//            return viewGiftOrderManageRepository.findByUserId(userId);
-//        } else {
-//            // 如果没有提供任何参数，你可以返回所有订单或者做其他处理
-//            return viewGiftOrderManageRepository.findAll();
-//        }
-//    }
 }

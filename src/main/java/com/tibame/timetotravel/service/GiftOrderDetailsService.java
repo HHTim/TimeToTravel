@@ -15,4 +15,6 @@ public interface GiftOrderDetailsService {
     GiftOrderDetails findById(Integer giftOrderDetailsId);
 
     List<GiftOrderDetails> findAll();
+
+
 }

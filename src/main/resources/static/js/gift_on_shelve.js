@@ -75,7 +75,7 @@ window.addEventListener('load', function () {
         giftTypeId = '彌月食品';
         break;
       case 3:
-        giftTypeId = '店取限定';
+        giftTypeId = '熱門美食';
         break;
       case 4:
         giftTypeId = '團購美食';

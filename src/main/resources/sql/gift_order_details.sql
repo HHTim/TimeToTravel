@@ -2,6 +2,7 @@
 
 -- DROP TABLE `gift_order_details`;
 
+
 CREATE TABLE `gift_order_details` (
   `GIFT_ORDER_DETAILS_ID` int NOT NULL AUTO_INCREMENT COMMENT '土產訂單明細編號',
   `GIFT_ORDER_ID` int NOT NULL COMMENT '土產訂單編號',
