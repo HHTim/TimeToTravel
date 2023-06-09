@@ -724,7 +724,8 @@ body {
   margin: 0;
 }
 .comment__avatar img {
-  width: 150%;
+  width: 100%;
+  transform-origin: 0 0;
   position: absolute;
   left: 50%;
   top: 50%;

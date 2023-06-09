@@ -62,7 +62,13 @@ public class BookingServiceImpl implements BookingService {
         }
         bookingRoomDto.setRooms(rooms);
         // 將所有評論過濾沒有內容的放到DTO中
-        List<OrderWithUser> orderWithUserByComId = orderDetailRepository.findOrderWithUserByComId(comId).stream().filter(e -> !Objects.isNull(e.getOrderComment())).collect(Collectors.toList());
+        List<OrderWithUser> orderWithUserByComId = orderDetailRepository.findOrderWithUserByComId(comId).stream()
+                .filter(e -> !Objects.isNull(e.getOrderComment()))
+                .map(e -> {
+                    e.setConvertAvatar(new String(e.getUserAvatar()));
+                    return e;
+                })
+                .collect(Collectors.toList());
         bookingRoomDto.setOrderWithUsers(orderWithUserByComId);
         return bookingRoomDto;
     }

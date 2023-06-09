@@ -317,9 +317,7 @@
 
   &__img {
     height: 150px;
-    // max-width: 245px;
     width: 20%;
-    // margin-right: 0.5rem;
     position: relative;
     overflow: hidden;
     box-shadow: $shadow;
@@ -486,7 +484,8 @@
     margin: 0;
 
     img {
-      width: 150%;
+      width: 100%;
+      transform-origin: 0 0;
       position: absolute;
       left: 50%;
       top: 50%;

@@ -40,11 +40,11 @@ function renderRank(rank) {
 function renderComments(orderWithUsers) {
   let html = '';
   for (let i in orderWithUsers) {
-    const { userAvatar, userName, roomName, orderDateTime, orderRank, orderComment } = orderWithUsers[i];
+    const { convertAvatar, userName, roomName, orderDateTime, orderRank, orderComment } = orderWithUsers[i];
     html += `<div class="comment__card">
               <div class="comment__content">
                 <div class="comment__avatar">
-                  <img src="data:image/png;base64,${userAvatar}" alt="comment-avatar" />
+                  <img src="${convertAvatar}" alt="comment-avatar" />
                 </div>
                 <p class="comment__user">${userName}</p>
                 <ul class="comment__rank">

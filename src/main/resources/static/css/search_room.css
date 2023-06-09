@@ -523,6 +523,7 @@ body {
   position: relative;
   overflow: hidden;
   margin-right: 1rem;
+  box-shadow: 0 0 3px #9b9999;
   border-radius: 10px;
 }
 .hotel__img img {
