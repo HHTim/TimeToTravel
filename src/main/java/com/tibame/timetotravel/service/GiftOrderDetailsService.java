@@ -8,7 +8,7 @@ public interface GiftOrderDetailsService {
 
     List<GiftOrderListDto> findById(Integer giftOrderId);
 
-    List<GiftOrderDetails> findAll();
+//    List<GiftOrderDetails> findAll();
 
 
 }

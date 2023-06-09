@@ -44,11 +44,10 @@ public class PublicSceneServicelmpl implements PublicSceneService {
         return publicSceneRepository.findAll();
     }
 
-    @Override
-    public List<PublicScene> findByAddress(String sceneKeyword) {
-
-        return publicSceneRepository.findBySceneAddress(sceneKeyword);
-    }
+    // @Override
+    // public List<PublicScene> findByAddress(String sceneKeyword) {
+    //     return publicSceneRepository.findBySceneAddress(sceneKeyword);
+    // }
 
 
     @Override
