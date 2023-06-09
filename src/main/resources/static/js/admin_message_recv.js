@@ -89,14 +89,8 @@ $(function () {
                 <td class="tb-sender">${e.userName}</td>
                 <td class="tb-title">${e.u2aMsgTitle}</td>
                 <td class="tb-content" hidden>${e.u2aMsgContent}</td>
-                <button class="btn-query">
-                    <span>
-                      <i class="fas fa-search"></i>
-                      </span>
-                    <div class="lightbox-content">
-                  <button class="close-button"></button>
-                  </div>
-                </button>
+                <td class="tb-query">
+                <button class="btn-query">查看</button>
                 </td>
                 </tr>
                 `
