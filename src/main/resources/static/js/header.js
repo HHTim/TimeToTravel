@@ -20,6 +20,23 @@ var role;
 var currentUserData;
 const msgRow = 3;
 
+
+$("li.nav__link a").on("click", function() {
+  var linkText = $(this).text();
+  
+  if (linkText === "我的訂單") {
+    console.log("我的訂單");
+    location.href = '../html/gift_order_list.html';
+  } else if (linkText === "伴手禮商城") {
+    console.log("伴手禮商城");
+    location.href = '../html/gift_search.html';
+
+  } else if (linkText === "部落格") {
+    console.log("部落格");
+    location.href = '../html/blog_search.html';
+  }
+});
+
 function updateNotifyIcon(userNewsStatus) {
   if (userNewsStatus == 1) {
     console.log('new-notify');

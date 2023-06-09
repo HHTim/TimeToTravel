@@ -1,4 +1,6 @@
+import { getCurrentUserInformation } from './header.js';
 $(function () {
+  getCurrentUserInformation();
   // 拿取 上一頁資料
   var blog = JSON.parse(sessionStorage.getItem('edit-blog'));
   var blogTags = JSON.parse(sessionStorage.getItem('blog-tags'));
@@ -60,7 +62,7 @@ $(function () {
     // console.log(tags);
     blogTags = tags;
     for (let i = 0; i < tags.length; i++) {
-      tag = tags[i];
+      let tag = tags[i];
       let badgeClass = ['bg-primary', 'bg-secondary', 'bg-success', 'bg-danger'][i % 4]; // 循环使用样式类
       colorIndex = i + 1;
       // i  的使用使顏色不同
@@ -221,6 +223,17 @@ $(function () {
   });
 
   // ======================= 頁面切換 ============
+  $('.goto-blog').on('click',function(){
+    console.log("ddddddddddd");
+    sessionStorage.setItem(
+      'default-blog-view',
+      JSON.stringify({
+        postId: blog.postId,
+      })
+    );
+    location.href = './blog.html';
+  });
+
   $('.post-article').on('click', function (e) {
     if (userId == null) {
       alert('請先登入');
