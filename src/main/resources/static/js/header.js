@@ -231,13 +231,7 @@ async function getCurrentUserData() {
       if (role === '會員') {
         updateNotifyIcon(currentUserData.userNewsStatus);
         getUserNewsMessage(role, msgRow);
-        barUser = currentUserData.userAvatar;
-        if (barUser.userAvatar == null || barUser.userAvatar == '') {
-          userPhotoUrl = '../../images/avatar.svg';
-        } else {
-          userPhotoUrl = 'data:image/*;base64,' + barUser.userAvatar;
-        }
-        updateAvatar('data:image/jpeg;base64,' + userPhotoUrl);
+        updateAvatar( identifyRoleData.avatar);
       } else if (role === '商家') {
         updateNotifyIcon(currentUserData.comNewsStatus);
         getUserNewsMessage(role, msgRow);
