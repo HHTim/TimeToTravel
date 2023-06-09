@@ -258,69 +258,6 @@ tbody {
   cursor: pointer;
 }
 
-/* Lightbox */
-
-.lightbox-content {
-  display: none;
-  position: fixed;
-  flex-wrap: wrap;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80%;
-  max-width: 500px;
-  background-color: #fff;
-  padding: 20px;
-  z-index: 999;
-  box-shadow: 0 0 0 99999px rgba($color: #000000, $alpha: 0.6);
-  text-align: left;
-  align-items: center;
-  border-radius: $border-radius;
-  flex-direction: column;
-
-  h2 {
-    width: 100%;
-    margin-bottom: 1rem;
-    font-weight: bold;
-    text-align: center;
-    color: $primary-blue;
-    font-size: 2rem;
-  }
-
-  div {
-    width: 65%;
-    display: flex;
-    justify-content: space-between;
-  }
-}
-
-.lightbox-content.open {
-  display: flex;
-}
-
-.close-button {
-  position: absolute;
-  display: block;
-  width: 20px;
-  height: 20px;
-  top: 10px; /* 距離燈箱內容頂部的距離 */
-  right: 10px; /* 距離燈箱內容右側的距離 */
-  border: none;
-  background-color: $danger-red;
-  color: $white;
-  padding: 1rem;
-  border-radius: $input-radius;
-  box-shadow: $shadow;
-
-  &::after {
-    content: 'X';
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-  }
-}
-
 //========================== main-bottom
 .mt-40 {
   margin-top: 40px;
@@ -387,4 +324,84 @@ ul {
   display: inline-block;
   text-align: center;
   margin-right: 10px;
+}
+
+.lightbox {
+  display: none;
+  position: fixed;
+  flex-wrap: wrap;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 500px;
+  background-color: #fff;
+  padding: 20px;
+  z-index: 999;
+  box-shadow: 0 0 0 99999px rgba($color: #000000, $alpha: 0.6);
+  text-align: left;
+  align-items: center;
+  border-radius: $border-radius;
+  flex-direction: column;
+
+  &__title {
+    width: 100%;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    text-align: center;
+    color: $primary-blue;
+    font-size: 2rem;
+  }
+
+  &__close {
+    position: absolute;
+    display: block;
+    width: 20px;
+    height: 20px;
+    top: 10px; /* 距離燈箱內容頂部的距離 */
+    right: 10px; /* 距離燈箱內容右側的距離 */
+    border: none;
+    background-color: $danger-red;
+    color: $white;
+    padding: 1rem;
+    border-radius: $input-radius;
+    box-shadow: $shadow;
+
+    &::after {
+      content: 'X';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  div {
+    width: 65%;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 0.5rem;
+  }
+
+  p:nth-child(odd) {
+    font-weight: bold;
+  }
+}
+
+.active {
+  display: flex;
+}
+
+#detail {
+  background-color: $primary-blue;
+  color: $white;
+  border: none;
+  border-radius: $input-radius;
+  padding: 0.25rem 1rem;
+  white-space: nowrap;
+
+  &:hover {
+    background-color: $primary-blue-hover;
+  }
 }

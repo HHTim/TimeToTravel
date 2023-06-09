@@ -130,17 +130,15 @@
                 <thead class="thead-dark">
                   <tr class="th">
                     <th scope="col" class="text-center first border-top-0 border-bottom-0 border-left-0">訂單編號</th>
-                    <th scope="col" class="text-center border-top-0 border-bottom-0">會員</th>
-                    <th scope="col" class="text-center">(商品編號)商品名稱</th>
-                    <th scope="col" class="text-center">訂單金額</th>
-                    <th scope="col" class="text-center">成立時間</th>
-                    <th scope="col" class="text-center">出貨日期</th>
-                    <th scope="col" class="text-center">狀態</th>
-                    <th scope="col" class="text-center border-top-0 border-bottom-0 last">查看詳情</th>
+                    <th scope="col" class="text-center border-top-0 border-bottom-0">下定日期</th>
+                    <th scope="col" class="text-center">商家名稱</th>
+                    <th scope="col" class="text-center">房型名稱</th>
+                    <th scope="col" class="text-center">總金額</th>
+                    <th scope="col" class="text-center border-top-0 border-bottom-0 last">查看明細</th>
                   </tr>
                 </thead>
                 <tbody class="tbody">
-                  <tr class="border-left border-right">
+                  <!-- <tr class="border-left border-right">
                     <td class="text-center"><p>001</p></td>
                     <td class="text-center">Amy</td>
                     <td class="text-left">001(Apple iPhone 12)</td>
@@ -185,563 +183,72 @@
                         </div>
                       </div>
                     </td>
-                  </tr>
-
-                  <tr class="border-left border-right">
-                    <td class="text-center"><p>002</p></td>
-                    <td class="text-center">Bob</td>
-                    <td class="text-left">002(Samsung Galaxy S21)</td>
-                    <td class="text-center">$20,000</td>
-                    <td class="text-center">2022/01/02 11:00:00</td>
-                    <td class="text-center">2022/01/03</td>
-                    <td class="text-center">已出貨</td>
-                    <td class="text-center">
-                      <span>
-                        <i class="fas fa-search"></i>
-                      </span>
-                      <div class="lightbox-content">
-                        <button class="close-button"></button>
-                        <h2>訂單詳情</h2>
-                        <div>
-                          <p>訂單編號：</p>
-                          <p id="no">002</p>
-                        </div>
-                        <div>
-                          <p>訂購人姓名：</p>
-                          <p id="user">Amy</p>
-                        </div>
-                        <div>
-                          <p>商品名稱：</p>
-                          <p id="name">Apple iPhone 12</p>
-                        </div>
-                        <div>
-                          <p>商品價格：</p>
-                          <p id="price">NT $25000</p>
-                        </div>
-                        <div>
-                          <p>訂單日期：</p>
-                          <p id="order_date">2022-01-01 10:00:00</p>
-                        </div>
-                        <div>
-                          <p>出貨日期：</p>
-                          <p id="out_date">2022-01-02</p>
-                        </div>
-                        <div>
-                          <p>訂單狀態：</p>
-                          <p id="status">已出貨</p>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-
-                  <tr class="border-left border-right">
-                    <td class="text-center"><p>003</p></td>
-                    <td class="text-center">Charlie</td>
-                    <td class="text-left">003(Sony WH-1000XM4)</td>
-                    <td class="text-center">$8,000</td>
-                    <td class="text-center">2022/01/03 12:00:00</td>
-                    <td class="text-center">2022/01/04</td>
-                    <td class="text-center">已出貨</td>
-                    <td class="text-center">
-                      <span>
-                        <i class="fas fa-search"></i>
-                      </span>
-                      <div class="lightbox-content">
-                        <button class="close-button"></button>
-                        <h2>訂單詳情</h2>
-                        <div>
-                          <p>訂單編號：</p>
-                          <p id="no">002</p>
-                        </div>
-                        <div>
-                          <p>訂購人姓名：</p>
-                          <p id="user">Amy</p>
-                        </div>
-                        <div>
-                          <p>商品名稱：</p>
-                          <p id="name">Apple iPhone 12</p>
-                        </div>
-                        <div>
-                          <p>商品價格：</p>
-                          <p id="price">NT $25000</p>
-                        </div>
-                        <div>
-                          <p>訂單日期：</p>
-                          <p id="order_date">2022-01-01 10:00:00</p>
-                        </div>
-                        <div>
-                          <p>出貨日期：</p>
-                          <p id="out_date">2022-01-02</p>
-                        </div>
-                        <div>
-                          <p>訂單狀態：</p>
-                          <p id="status">已出貨</p>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr class="border-left border-right">
-                    <td class="text-center"><p>003</p></td>
-                    <td class="text-center">Charlie</td>
-                    <td class="text-left">003(Sony WH-1000XM4)</td>
-                    <td class="text-center">$8,000</td>
-                    <td class="text-center">2022/01/03 12:00:00</td>
-                    <td class="text-center">2022/01/04</td>
-                    <td class="text-center">已出貨</td>
-                    <td class="text-center">
-                      <span>
-                        <i class="fas fa-search"></i>
-                      </span>
-                      <div class="lightbox-content">
-                        <button class="close-button"></button>
-                        <h2>訂單詳情</h2>
-                        <div>
-                          <p>訂單編號：</p>
-                          <p id="no">003</p>
-                        </div>
-                        <div>
-                          <p>訂購人姓名：</p>
-                          <p id="user">Amy</p>
-                        </div>
-                        <div>
-                          <p>商品名稱：</p>
-                          <p id="name">Apple iPhone 12</p>
-                        </div>
-                        <div>
-                          <p>商品價格：</p>
-                          <p id="price">NT $25000</p>
-                        </div>
-                        <div>
-                          <p>訂單日期：</p>
-                          <p id="order_date">2022-01-01 10:00:00</p>
-                        </div>
-                        <div>
-                          <p>出貨日期：</p>
-                          <p id="out_date">2022-01-02</p>
-                        </div>
-                        <div>
-                          <p>訂單狀態：</p>
-                          <p id="status">已出貨</p>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr class="border-left border-right">
-                    <td class="text-center"><p>003</p></td>
-                    <td class="text-center">Charlie</td>
-                    <td class="text-left">003(Sony WH-1000XM4)</td>
-                    <td class="text-center">$8,000</td>
-                    <td class="text-center">2022/01/03 12:00:00</td>
-                    <td class="text-center">2022/01/04</td>
-                    <td class="text-center">已出貨</td>
-                    <td class="text-center">
-                      <span>
-                        <i class="fas fa-search"></i>
-                      </span>
-                      <div class="lightbox-content">
-                        <button class="close-button"></button>
-                        <h2>訂單詳情</h2>
-                        <div>
-                          <p>訂單編號：</p>
-                          <p id="no">004</p>
-                        </div>
-                        <div>
-                          <p>訂購人姓名：</p>
-                          <p id="user">Amy</p>
-                        </div>
-                        <div>
-                          <p>商品名稱：</p>
-                          <p id="name">Apple iPhone 12</p>
-                        </div>
-                        <div>
-                          <p>商品價格：</p>
-                          <p id="price">NT $25000</p>
-                        </div>
-                        <div>
-                          <p>訂單日期：</p>
-                          <p id="order_date">2022-01-01 10:00:00</p>
-                        </div>
-                        <div>
-                          <p>出貨日期：</p>
-                          <p id="out_date">2022-01-02</p>
-                        </div>
-                        <div>
-                          <p>訂單狀態：</p>
-                          <p id="status">已出貨</p>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr class="border-left border-right">
-                    <td class="text-center"><p>003</p></td>
-                    <td class="text-center">Charlie</td>
-                    <td class="text-left">003(Sony WH-1000XM4)</td>
-                    <td class="text-center">$8,000</td>
-                    <td class="text-center">2022/01/03 12:00:00</td>
-                    <td class="text-center">2022/01/04</td>
-                    <td class="text-center">已出貨</td>
-                    <td class="text-center">
-                      <span>
-                        <i class="fas fa-search"></i>
-                      </span>
-                      <div class="lightbox-content">
-                        <button class="close-button"></button>
-                        <h2>訂單詳情</h2>
-                        <div>
-                          <p>訂單編號：</p>
-                          <p id="no">005</p>
-                        </div>
-                        <div>
-                          <p>訂購人姓名：</p>
-                          <p id="user">Amy</p>
-                        </div>
-                        <div>
-                          <p>商品名稱：</p>
-                          <p id="name">Apple iPhone 12</p>
-                        </div>
-                        <div>
-                          <p>商品價格：</p>
-                          <p id="price">NT $25000</p>
-                        </div>
-                        <div>
-                          <p>訂單日期：</p>
-                          <p id="order_date">2022-01-01 10:00:00</p>
-                        </div>
-                        <div>
-                          <p>出貨日期：</p>
-                          <p id="out_date">2022-01-02</p>
-                        </div>
-                        <div>
-                          <p>訂單狀態：</p>
-                          <p id="status">已出貨</p>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr class="border-left border-right">
-                    <td class="text-center"><p>003</p></td>
-                    <td class="text-center">Charlie</td>
-                    <td class="text-left">003(Sony WH-1000XM4)</td>
-                    <td class="text-center">$8,000</td>
-                    <td class="text-center">2022/01/03 12:00:00</td>
-                    <td class="text-center">2022/01/04</td>
-                    <td class="text-center">已出貨</td>
-                    <td class="text-center">
-                      <span>
-                        <i class="fas fa-search"></i>
-                      </span>
-                      <div class="lightbox-content">
-                        <button class="close-button"></button>
-                        <h2>訂單詳情</h2>
-                        <div>
-                          <p>訂單編號：</p>
-                          <p id="no">006</p>
-                        </div>
-                        <div>
-                          <p>訂購人姓名：</p>
-                          <p id="user">Amy</p>
-                        </div>
-                        <div>
-                          <p>商品名稱：</p>
-                          <p id="name">Apple iPhone 12</p>
-                        </div>
-                        <div>
-                          <p>商品價格：</p>
-                          <p id="price">NT $25000</p>
-                        </div>
-                        <div>
-                          <p>訂單日期：</p>
-                          <p id="order_date">2022-01-01 10:00:00</p>
-                        </div>
-                        <div>
-                          <p>出貨日期：</p>
-                          <p id="out_date">2022-01-02</p>
-                        </div>
-                        <div>
-                          <p>訂單狀態：</p>
-                          <p id="status">已出貨</p>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr class="border-left border-right">
-                    <td class="text-center"><p>003</p></td>
-                    <td class="text-center">Charlie</td>
-                    <td class="text-left">003(Sony WH-1000XM4)</td>
-                    <td class="text-center">$8,000</td>
-                    <td class="text-center">2022/01/03 12:00:00</td>
-                    <td class="text-center">2022/01/04</td>
-                    <td class="text-center">已出貨</td>
-                    <td class="text-center">
-                      <span>
-                        <i class="fas fa-search"></i>
-                      </span>
-                      <div class="lightbox-content">
-                        <button class="close-button"></button>
-                        <h2>訂單詳情</h2>
-                        <div>
-                          <p>訂單編號：</p>
-                          <p id="no">007</p>
-                        </div>
-                        <div>
-                          <p>訂購人姓名：</p>
-                          <p id="user">Amy</p>
-                        </div>
-                        <div>
-                          <p>商品名稱：</p>
-                          <p id="name">Apple iPhone 12</p>
-                        </div>
-                        <div>
-                          <p>商品價格：</p>
-                          <p id="price">NT $25000</p>
-                        </div>
-                        <div>
-                          <p>訂單日期：</p>
-                          <p id="order_date">2022-01-01 10:00:00</p>
-                        </div>
-                        <div>
-                          <p>出貨日期：</p>
-                          <p id="out_date">2022-01-02</p>
-                        </div>
-                        <div>
-                          <p>訂單狀態：</p>
-                          <p id="status">已出貨</p>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr class="border-left border-right">
-                    <td class="text-center"><p>003</p></td>
-                    <td class="text-center">Charlie</td>
-                    <td class="text-left">003(Sony WH-1000XM4)</td>
-                    <td class="text-center">$8,000</td>
-                    <td class="text-center">2022/01/03 12:00:00</td>
-                    <td class="text-center">2022/01/04</td>
-                    <td class="text-center">已出貨</td>
-                    <td class="text-center">
-                      <span>
-                        <i class="fas fa-search"></i>
-                      </span>
-                      <div class="lightbox-content">
-                        <button class="close-button"></button>
-                        <h2>訂單詳情</h2>
-                        <div>
-                          <p>訂單編號：</p>
-                          <p id="no">008</p>
-                        </div>
-                        <div>
-                          <p>訂購人姓名：</p>
-                          <p id="user">Amy</p>
-                        </div>
-                        <div>
-                          <p>商品名稱：</p>
-                          <p id="name">Apple iPhone 12</p>
-                        </div>
-                        <div>
-                          <p>商品價格：</p>
-                          <p id="price">NT $25000</p>
-                        </div>
-                        <div>
-                          <p>訂單日期：</p>
-                          <p id="order_date">2022-01-01 10:00:00</p>
-                        </div>
-                        <div>
-                          <p>出貨日期：</p>
-                          <p id="out_date">2022-01-02</p>
-                        </div>
-                        <div>
-                          <p>訂單狀態：</p>
-                          <p id="status">已出貨</p>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr class="border-left border-right">
-                    <td class="text-center"><p>003</p></td>
-                    <td class="text-center">Charlie</td>
-                    <td class="text-left">003(Sony WH-1000XM4)</td>
-                    <td class="text-center">$8,000</td>
-                    <td class="text-center">2022/01/03 12:00:00</td>
-                    <td class="text-center">2022/01/04</td>
-                    <td class="text-center">已出貨</td>
-                    <td class="text-center">
-                      <span>
-                        <i class="fas fa-search"></i>
-                      </span>
-                      <div class="lightbox-content">
-                        <button class="close-button"></button>
-                        <h2>訂單詳情</h2>
-                        <div>
-                          <p>訂單編號：</p>
-                          <p id="no">009</p>
-                        </div>
-                        <div>
-                          <p>訂購人姓名：</p>
-                          <p id="user">Amy</p>
-                        </div>
-                        <div>
-                          <p>商品名稱：</p>
-                          <p id="name">Apple iPhone 12</p>
-                        </div>
-                        <div>
-                          <p>商品價格：</p>
-                          <p id="price">NT $25000</p>
-                        </div>
-                        <div>
-                          <p>訂單日期：</p>
-                          <p id="order_date">2022-01-01 10:00:00</p>
-                        </div>
-                        <div>
-                          <p>出貨日期：</p>
-                          <p id="out_date">2022-01-02</p>
-                        </div>
-                        <div>
-                          <p>訂單狀態：</p>
-                          <p id="status">已出貨</p>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr class="border-left border-right">
-                    <td class="text-center"><p>003</p></td>
-                    <td class="text-center">Charlie</td>
-                    <td class="text-left">003(Sony WH-1000XM4)</td>
-                    <td class="text-center">$8,000</td>
-                    <td class="text-center">2022/01/03 12:00:00</td>
-                    <td class="text-center">2022/01/04</td>
-                    <td class="text-center">已出貨</td>
-                    <td class="text-center">
-                      <span>
-                        <i class="fas fa-search"></i>
-                      </span>
-                      <div class="lightbox-content">
-                        <button class="close-button"></button>
-                        <h2>訂單詳情</h2>
-                        <div>
-                          <p>訂單編號：</p>
-                          <p id="no">010</p>
-                        </div>
-                        <div>
-                          <p>訂購人姓名：</p>
-                          <p id="user">Amy</p>
-                        </div>
-                        <div>
-                          <p>商品名稱：</p>
-                          <p id="name">Apple iPhone 12</p>
-                        </div>
-                        <div>
-                          <p>商品價格：</p>
-                          <p id="price">NT $25000</p>
-                        </div>
-                        <div>
-                          <p>訂單日期：</p>
-                          <p id="order_date">2022-01-01 10:00:00</p>
-                        </div>
-                        <div>
-                          <p>出貨日期：</p>
-                          <p id="out_date">2022-01-02</p>
-                        </div>
-                        <div>
-                          <p>訂單狀態：</p>
-                          <p id="status">已出貨</p>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr class="border-left border-right">
-                    <td class="text-center"><p>003</p></td>
-                    <td class="text-center">Charlie</td>
-                    <td class="text-left">003(Sony WH-1000XM4)</td>
-                    <td class="text-center">$8,000</td>
-                    <td class="text-center">2022/01/03 12:00:00</td>
-                    <td class="text-center">2022/01/04</td>
-                    <td class="text-center">已出貨</td>
-                    <td class="text-center">
-                      <span>
-                        <i class="fas fa-search"></i>
-                      </span>
-                      <div class="lightbox-content">
-                        <button class="close-button"></button>
-                        <h2>訂單詳情</h2>
-                        <div>
-                          <p>訂單編號：</p>
-                          <p id="no">011</p>
-                        </div>
-                        <div>
-                          <p>訂購人姓名：</p>
-                          <p id="user">Amy</p>
-                        </div>
-                        <div>
-                          <p>商品名稱：</p>
-                          <p id="name">Apple iPhone 12</p>
-                        </div>
-                        <div>
-                          <p>商品價格：</p>
-                          <p id="price">NT $25000</p>
-                        </div>
-                        <div>
-                          <p>訂單日期：</p>
-                          <p id="order_date">2022-01-01 10:00:00</p>
-                        </div>
-                        <div>
-                          <p>出貨日期：</p>
-                          <p id="out_date">2022-01-02</p>
-                        </div>
-                        <div>
-                          <p>訂單狀態：</p>
-                          <p id="status">已出貨</p>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr class="border-left border-right">
-                    <td class="text-center"><p>003</p></td>
-                    <td class="text-center">Charlie</td>
-                    <td class="text-left">003(Sony WH-1000XM4)</td>
-                    <td class="text-center">$8,000</td>
-                    <td class="text-center">2022/01/03 12:00:00</td>
-                    <td class="text-center">2022/01/04</td>
-                    <td class="text-center">已出貨</td>
-                    <td class="text-center">
-                      <span>
-                        <i class="fas fa-search"></i>
-                      </span>
-                      <div class="lightbox-content">
-                        <button class="close-button"></button>
-                        <h2>訂單詳情</h2>
-                        <div>
-                          <p>訂單編號：</p>
-                          <p id="no">012</p>
-                        </div>
-                        <div>
-                          <p>訂購人姓名：</p>
-                          <p id="user">Amy</p>
-                        </div>
-                        <div>
-                          <p>商品名稱：</p>
-                          <p id="name">Apple iPhone 12</p>
-                        </div>
-                        <div>
-                          <p>商品價格：</p>
-                          <p id="price">NT $25000</p>
-                        </div>
-                        <div>
-                          <p>訂單日期：</p>
-                          <p id="order_date">2022-01-01 10:00:00</p>
-                        </div>
-                        <div>
-                          <p>出貨日期：</p>
-                          <p id="out_date">2022-01-02</p>
-                        </div>
-                        <div>
-                          <p>訂單狀態：</p>
-                          <p id="status">已出貨</p>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
+                  </tr> -->
                 </tbody>
               </table>
+            </div>
+
+            <div class="row">
+              <ul class="pagination pt-5 justify-content-center">
+                <li class="prev page-item">
+                  <a class="page-link" href="javascript:;" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                  </a>
+                </li>
+                <li class="page-item active">
+                  <a class="page-link" href="javascript:;">1</a>
+                </li>
+                <li class="page-item" style="display: none">
+                  <a class="page-link" href="javascript:;">2</a>
+                </li>
+                <li class="page-item" style="display: none">
+                  <a class="page-link" href="javascript:;">3</a>
+                </li>
+                <li class="page-item" style="display: none">
+                  <a class="page-link" href="javascript:;">4</a>
+                </li>
+                <li class="page-item" style="display: none">
+                  <a class="page-link" href="javascript:;">5</a>
+                </li>
+                <li class="page-item" style="display: none">
+                  <a class="page-link" href="javascript:;">6</a>
+                </li>
+                <li class="page-item" style="display: none">
+                  <a class="page-link" href="javascript:;">7</a>
+                </li>
+                <li class="page-item" style="display: none">
+                  <a class="page-link" href="javascript:;">8</a>
+                </li>
+                <li class="page-item" style="display: none">
+                  <a class="page-link" href="javascript:;">9</a>
+                </li>
+                <li class="page-item" style="display: none">
+                  <a class="page-link" href="javascript:;">10</a>
+                </li>
+                <li class="page-item" style="display: none">
+                  <a class="page-link" href="javascript:;">11</a>
+                </li>
+                <li class="page-item" style="display: none">
+                  <a class="page-link" href="javascript:;">12</a>
+                </li>
+                <li class="page-item" style="display: none">
+                  <a class="page-link" href="javascript:;">13</a>
+                </li>
+                <li class="page-item" style="display: none">
+                  <a class="page-link" href="javascript:;">14</a>
+                </li>
+                <li class="page-item" style="display: none">
+                  <a class="page-link" href="javascript:;">15</a>
+                </li>
+                <li class="page-item" style="display: none">
+                  <a class="page-link" href="javascript:;">16</a>
+                </li>
+                <li class="next page-item">
+                  <a class="page-link" href="javascript:;" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                  </a>
+                </li>
+              </ul>
             </div>
           </main>
           <!-- Main End -->

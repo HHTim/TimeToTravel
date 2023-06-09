@@ -19,6 +19,8 @@ var nav_avatar = $('.nav__avatar-img img');
 var role;
 var currentUserData;
 const msgRow = 3;
+let barUser;
+let userPhotoUrl;
 
 $('li.nav__link a').on('click', function () {
   var linkText = $(this).text();
