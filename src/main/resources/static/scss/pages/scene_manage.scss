@@ -1,5 +1,5 @@
 // // 記得引入基本設定
-@import "../base/base";
+@import '../base/base';
 
 .decorator2 {
   // border-style: solid;
@@ -109,4 +109,8 @@ img {
 
 .top-button.show {
   display: block; /* 滾動到一定高度時顯示按鈕 */
+}
+
+.btn {
+  --bs-btn-padding-y: 0.18rem;
 }

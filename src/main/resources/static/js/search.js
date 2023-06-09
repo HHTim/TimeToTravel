@@ -111,7 +111,7 @@ function renderCards(data) {
                 <div class="card_word">
                   <h5 class="card-title">${sceneName}</h5>
                   <p class="url_style">
-                    <a href="https://goo.gl/maps/${scenePlaceId}" target="_blank">${sceneAddr}🗺️</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=${sceneLat},${sceneLng}&query_place_id=${scenePlaceId}" target="_blank">${sceneAddr}🗺️</a>
                   </p>
                   <div class="card-text multiline-ellipsis">${sceneDesc}</div>
                   <!-- <a class="btn-primary toggle-text">查看更多▼</a> -->
@@ -126,7 +126,7 @@ function renderCards(data) {
               </div>
               <h5 class="title">${sceneName}</h5>
               <p class="url_style">
-                <a href="https://goo.gl/maps/${scenePlaceId}" target="_blank">${sceneAddr}🗺️</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=${sceneLat},${sceneLng}&query_place_id=${scenePlaceId}" target="_blank">${sceneAddr}🗺️</a>
               </p>
               <div class="card-text">${sceneDesc}</div>
               <h2 class="subtitle mt-4">附近的飯店</h2>

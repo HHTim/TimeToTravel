@@ -387,8 +387,10 @@ img {
   margin-top: 3px;
 }
 
-
-
 .top-button.show {
   display: block; /* 滾動到一定高度時顯示按鈕 */
+}
+
+.btn {
+  --bs-btn-padding-y: 0.18rem;
 }

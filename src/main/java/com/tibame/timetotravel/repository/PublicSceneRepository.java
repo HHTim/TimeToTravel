@@ -13,3 +13,4 @@ public interface PublicSceneRepository extends JpaRepository<PublicScene, Intege
     List<PublicScene> findBySceneAddress(String sceneKeyword);
 
 }
+
