@@ -1,129 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<!-- import -->
-		<script src="../node_modules/@popperjs/core/dist/umd/popper.min.js" defer></script>
-		<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js" defer></script>
-		<script src="../node_modules/jquery/dist/jquery.min.js" defer></script>
-		<script src="https://kit.fontawesome.com/e3af248fb2.js" crossorigin="anonymous" defer></script>
-		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-		<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
-		<!-- 我們自己的 js 檔案，路徑記得改 -->
-		<link rel="stylesheet" href="../css/order_list.css" />
-		<!-- 我們自己的 css 檔案，路徑記得改 -->
-		<script type="module" src="../js/order_list.js" defer></script>
-		<script src="../js/user-aside_logout.js" defer></script>
-		<!-- 輪播需要添加 -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-		<!-- title 記得改 -->
-		<title>TimeToTravel | Order List</title>
-	</head>
-	<body>
-		<div class="bg">
-			<!-- Header -->
-			<div class="decorator"></div>
-			<header>
-				<div class="container-fluid header__container">
-					<h1 class="logo">
-						<a href="../index.html" class="logo__link">
-							<img src="../images/LOGO.png" alt="logo" class="logo__img" />
-						</a>
-					</h1>
-					<nav>
-						<ul class="nav">
-							<li class="nav__link"><a href="#">我的訂單</a></li>
-							<li class="nav__link"><a href="#">伴手禮商城</a></li>
-							<li class="nav__link"><a href="#">部落格</a></li>
-							<li class="nav__info">
-								<div class="dropdown-center">
-									<button class="dropdown-toggle nav__info-btn" type="button" data-bs-toggle="dropdown"></button>
-									<ul class="dropdown-menu">
-										<!-- <li><a class="dropdown-item" href="#">訊息一</a></li>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- import -->
+    <script src="../node_modules/@popperjs/core/dist/umd/popper.min.js" defer></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js" defer></script>
+    <script src="../node_modules/jquery/dist/jquery.min.js" defer></script>
+    <script src="https://kit.fontawesome.com/e3af248fb2.js" crossorigin="anonymous" defer></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <!-- 我們自己的 js 檔案，路徑記得改 -->
+    <link rel="stylesheet" href="../css/order_list.css" />
+    <!-- 我們自己的 css 檔案，路徑記得改 -->
+    <script type="module" src="../js/order_list.js" defer></script>
+    <script src="../js/user-aside_logout.js" defer></script>
+    <!-- 輪播需要添加 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- title 記得改 -->
+    <title>TimeToTravel | Order List</title>
+  </head>
+  <body>
+    <div class="bg">
+      <!-- Header -->
+      <div class="decorator"></div>
+      <header>
+        <div class="container-fluid header__container">
+          <h1 class="logo">
+            <a href="/" class="logo__link">
+              <img src="../images/LOGO.png" alt="logo" class="logo__img" />
+            </a>
+          </h1>
+          <nav>
+            <ul class="nav">
+              <li class="nav__link"><a href="#">我的訂單</a></li>
+              <li class="nav__link"><a href="#">伴手禮商城</a></li>
+              <li class="nav__link"><a href="#">部落格</a></li>
+              <li class="nav__info">
+                <div class="dropdown-center">
+                  <button class="dropdown-toggle nav__info-btn" type="button" data-bs-toggle="dropdown"></button>
+                  <ul class="dropdown-menu">
+                    <!-- <li><a class="dropdown-item" href="#">訊息一</a></li>
                     <li><a class="dropdown-item" href="#">訊息二</a></li>
                     <li><a class="dropdown-item" href="#">訊息三</a></li>
                     <li><hr class="dropdown-divider" /></li>
                     <li><a class="dropdown-item" href="#">See More</a></li> -->
-									</ul>
-								</div>
-							</li>
-							<li class="nav__avatar">
-								<div class="dropdown-center">
-									<!-- <button class="dropdown-toggle nav__avatar-btn" type="button" data-bs-toggle="dropdown"></button> -->
-									<a href="#" class="dropdown-toggle nav__avatar-btn" type="button" data-bs-toggle="dropdown">
-										<div class="nav__avatar-img">
-											<img src="../images/avatar.svg" alt="avatar" />
-										</div>
-									</a>
-									<ul class="dropdown-menu">
-										<!-- <li><a class="dropdown-item" href="#">註冊</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="nav__avatar">
+                <div class="dropdown-center">
+                  <!-- <button class="dropdown-toggle nav__avatar-btn" type="button" data-bs-toggle="dropdown"></button> -->
+                  <a href="#" class="dropdown-toggle nav__avatar-btn" type="button" data-bs-toggle="dropdown">
+                    <div class="nav__avatar-img">
+                      <img src="../images/avatar.svg" alt="avatar" />
+                    </div>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <!-- <li><a class="dropdown-item" href="#">註冊</a></li>
                     <li><a class="dropdown-item" href="#">登入</a></li>
                     <li><a class="dropdown-item" href="#">其他</a></li>
                     <li><a class="dropdown-item" href="#">其他</a></li>
                     <li><hr class="dropdown-divider" /></li>
                     <li><a class="dropdown-item" href="#">登出</a></li> -->
-									</ul>
-								</div>
-							</li>
-						</ul>
-					</nav>
-				</div>
-			</header>
-			<!-- Header End -->
-			<div class="container-fluid custom-container">
-				<div class="row">
-					<div class="col-2">
-						<!--Company Aside -->
-						<aside class="user-aside">
-							<ul class="user-aside__list">
-								<li class="user-aside__item--small"><a href="../index.html">&lt; 返回</a></li>
-								<li class="user-aside__item"><a href="./member_info.html">帳戶設定</a></li>
-								<li class="user-aside__item"><a href="./user_favor_blog.html">文章收藏</a></li>
-								<li class="user-aside__item"><a href="./gift_follow.html">關注土產</a></li>
-								<li class="user-aside__item"><a href="./order_list.html">消費紀錄</a></li>
-								<li class="user-aside__item"><a href="./user_message_manage.html">訊息管理</a></li>
-								<li><hr style="width: 80%; margin: auto" /></li>
-								<li class="user-aside__item logout-side"><a href="../index.html">登出</a></li>
-							</ul>
-						</aside>
-						<!--Company Aside End -->
-					</div>
-					<div class="col-10">
-						<!-- Main -->
-						<main class="main">
-							<h2 class="subtitle">訂房紀錄</h2>
-							<section class="search">
-								<div class="search__item">
-									<p>商家名稱</p>
-									<input type="text" class="search__com" name="search__com" />
-								</div>
-								<div class="search__item">
-									<p>訂單編號</p>
-									<input type="text" class="search__no" name="search__no" />
-								</div>
-								<!-- <button class="search__submit">搜尋</button> -->
-							</section>
-							<section class="list">
-								<div class="tab">
-									<button id="tab-1" class="tab-1" type="button">訂房消費紀錄</button>
-									<button id="tab-2" class="tab-2" type="button">土產消費紀錄</button>
-								</div>
-								<table class="table list__table">
-									<thead>
-										<tr>
-											<th scope="col">訂單編號</th>
-											<th scope="col">下定日期</th>
-											<th scope="col">商家名稱</th>
-											<th scope="col">房型名稱</th>
-											<th scope="col">總金額</th>
-											<th scope="col">查看明細</th>
-											<th scope="col">我要評論</th>
-										</tr>
-									</thead>
-									<tbody>
-										<!-- <tr class="list__order" data-id="1">
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+      <!-- Header End -->
+      <div class="container-fluid custom-container">
+        <div class="row">
+          <div class="col-2">
+            <!--Company Aside -->
+            <aside class="user-aside">
+              <ul class="user-aside__list">
+                <li class="user-aside__item--small"><a href="/">&lt; 返回</a></li>
+                <li class="user-aside__item"><a href="/html/member_info.html">帳戶設定</a></li>
+                <li class="user-aside__item"><a href="/html/user_favor_blog.html">文章收藏</a></li>
+                <li class="user-aside__item"><a href="/order_list">消費紀錄</a></li>
+                <li class="user-aside__item"><a href="/user_message_manage">訊息管理</a></li>
+                <li><hr style="width: 80%; margin: auto" /></li>
+                <li class="user-aside__item logout-side"><a href="/">登出</a></li>
+              </ul>
+            </aside>
+            <!--Company Aside End -->
+          </div>
+          <div class="col-10">
+            <!-- Main -->
+            <main class="main">
+              <h2 class="subtitle">訂房紀錄</h2>
+              <section class="search">
+                <div class="search__item">
+                  <p>商家名稱</p>
+                  <input type="text" class="search__com" name="search__com" />
+                </div>
+                <div class="search__item">
+                  <p>訂單編號</p>
+                  <input type="text" class="search__no" name="search__no" />
+                </div>
+                <!-- <button class="search__submit">搜尋</button> -->
+              </section>
+              <section class="list">
+                <div class="tab">
+                  <button id="tab-1" class="tab-1" type="button">訂房消費紀錄</button>
+                  <button id="tab-2" class="tab-2" type="button">土產消費紀錄</button>
+                </div>
+                <table class="table list__table">
+                  <thead>
+                    <tr>
+                      <th scope="col">訂單編號</th>
+                      <th scope="col">下定日期</th>
+                      <th scope="col">商家名稱</th>
+                      <th scope="col">房型名稱</th>
+                      <th scope="col">總金額</th>
+                      <th scope="col">查看明細</th>
+                      <th scope="col">我要評論</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- <tr class="list__order" data-id="1">
                       <td class="list__no">0000242</td>
                       <td class="list__date">2023-04-09</td>
                       <td class="list__com">OO青年旅館</td>
@@ -172,56 +171,56 @@
                         <button id="comment">評論</button>
                       </td>
                     </tr> -->
-									</tbody>
-								</table>
-							</section>
-							<section class="comment">
-								<h3 class="comment__title">留下你的評分與留言</h3>
-								<ul class="comment__rank">
-									<li>
-										<button data-rank="1"><i class="fa-solid fa-star fa-lg"></i></button>
-									</li>
-									<li>
-										<button data-rank="2"><i class="fa-solid fa-star fa-lg"></i></button>
-									</li>
-									<li>
-										<button data-rank="3"><i class="fa-solid fa-star fa-lg"></i></button>
-									</li>
-									<li>
-										<button data-rank="4"><i class="fa-solid fa-star fa-lg"></i></button>
-									</li>
-									<li>
-										<button data-rank="5"><i class="fa-solid fa-star fa-lg"></i></button>
-									</li>
-								</ul>
-								<!-- <input type="text" class="comment__content" placeholder="最多50字" /> -->
-								<textarea id="" class="comment__content" placeholder="最多50字"></textarea>
-								<div class="comment__btn">
-									<button class="comment__submit">送出</button>
-									<button class="comment__cancel">取消</button>
-								</div>
-							</section>
-							<nav class="page">
-								<ul class="pagination">
-									<li class="page-item"><a class="page-link" href="#">&lt;</a></li>
-									<div id="page-btn-wrapper" class="d-flex">
-										<!-- <li id="page-btn" class="page-item active" data-page="1"><a class="page-link" href="#">1</a></li>
+                  </tbody>
+                </table>
+              </section>
+              <section class="comment">
+                <h3 class="comment__title">留下你的評分與留言</h3>
+                <ul class="comment__rank">
+                  <li>
+                    <button data-rank="1"><i class="fa-solid fa-star fa-lg"></i></button>
+                  </li>
+                  <li>
+                    <button data-rank="2"><i class="fa-solid fa-star fa-lg"></i></button>
+                  </li>
+                  <li>
+                    <button data-rank="3"><i class="fa-solid fa-star fa-lg"></i></button>
+                  </li>
+                  <li>
+                    <button data-rank="4"><i class="fa-solid fa-star fa-lg"></i></button>
+                  </li>
+                  <li>
+                    <button data-rank="5"><i class="fa-solid fa-star fa-lg"></i></button>
+                  </li>
+                </ul>
+                <!-- <input type="text" class="comment__content" placeholder="最多50字" /> -->
+                <textarea id="" class="comment__content" placeholder="最多50字"></textarea>
+                <div class="comment__btn">
+                  <button class="comment__submit">送出</button>
+                  <button class="comment__cancel">取消</button>
+                </div>
+              </section>
+              <nav class="page">
+                <ul class="pagination">
+                  <li class="page-item"><a class="page-link" href="#">&lt;</a></li>
+                  <div id="page-btn-wrapper" class="d-flex">
+                    <!-- <li id="page-btn" class="page-item active" data-page="1"><a class="page-link" href="#">1</a></li>
                     <li id="page-btn" class="page-item" data-page="2"><a class="page-link" href="#">2</a></li>
                     <li id="page-btn" class="page-item" data-page="3"><a class="page-link" href="#">3</a></li> -->
-									</div>
-									<li class="page-item"><a class="page-link" href="#">&gt;</a></li>
-								</ul>
-							</nav>
-						</main>
-						<!-- Main End -->
-					</div>
-				</div>
-			</div>
-			<!-- Footer -->
-			<footer>
-				<div class="footer"></div>
-			</footer>
-			<!-- Footer End -->
-		</div>
-	</body>
+                  </div>
+                  <li class="page-item"><a class="page-link" href="#">&gt;</a></li>
+                </ul>
+              </nav>
+            </main>
+            <!-- Main End -->
+          </div>
+        </div>
+      </div>
+      <!-- Footer -->
+      <footer>
+        <div class="footer"></div>
+      </footer>
+      <!-- Footer End -->
+    </div>
+  </body>
 </html>

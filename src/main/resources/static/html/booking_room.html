@@ -1,82 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<!-- import -->
-		<script src="../node_modules/@popperjs/core/dist/umd/popper.min.js" defer></script>
-		<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js" defer></script>
-		<script src="../node_modules/jquery/dist/jquery.min.js" defer></script>
-		<script src="https://kit.fontawesome.com/e3af248fb2.js" crossorigin="anonymous" defer></script>
-		<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
-		<!-- 我們自己的 js 檔案，路徑記得改 -->
-		<link rel="stylesheet" href="../css/booking_room.css" />
-		<!-- 我們自己的 css 檔案，路徑記得改 -->
-		<script type="module" src="../js/booking_room.js" defer></script>
-		<!-- 輪播需要添加 -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-		<!-- title 記得改 -->
-		<title>TimeToTravel | Booking Room</title>
-	</head>
-	<body>
-		<!-- Header -->
-		<div class="decorator"></div>
-		<header>
-			<div class="container-fluid header__container">
-				<h1 class="logo">
-					<a href="../index.html" class="logo__link">
-						<img src="../images/LOGO.png" alt="logo" class="logo__img" />
-					</a>
-				</h1>
-				<nav>
-					<ul class="nav">
-						<li class="nav__link"><a href="#">我的訂單</a></li>
-						<li class="nav__link"><a href="">伴手禮商城</a></li>
-						<li class="nav__link"><a href="#">部落格</a></li>
-						<li class="nav__info">
-							<div class="dropdown-center">
-								<button class="dropdown-toggle nav__info-btn" type="button" data-bs-toggle="dropdown"></button>
-								<ul class="dropdown-menu">
-									<!-- <li><a class="dropdown-item" href="#">訊息一</a></li>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- import -->
+    <script src="../node_modules/@popperjs/core/dist/umd/popper.min.js" defer></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js" defer></script>
+    <script src="../node_modules/jquery/dist/jquery.min.js" defer></script>
+    <script src="https://kit.fontawesome.com/e3af248fb2.js" crossorigin="anonymous" defer></script>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <!-- 我們自己的 js 檔案，路徑記得改 -->
+    <link rel="stylesheet" href="../css/booking_room.css" />
+    <!-- 我們自己的 css 檔案，路徑記得改 -->
+    <script type="module" src="../js/booking_room.js" defer></script>
+    <!-- 輪播需要添加 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- title 記得改 -->
+    <title>TimeToTravel | Booking Room</title>
+  </head>
+  <body>
+    <!-- Header -->
+    <div class="decorator"></div>
+    <header>
+      <div class="container-fluid header__container">
+        <h1 class="logo">
+          <a href="/" class="logo__link">
+            <img src="../images/LOGO.png" alt="logo" class="logo__img" />
+          </a>
+        </h1>
+        <nav>
+          <ul class="nav">
+            <li class="nav__link"><a href="#">我的訂單</a></li>
+            <li class="nav__link"><a href="">伴手禮商城</a></li>
+            <li class="nav__link"><a href="#">部落格</a></li>
+            <li class="nav__info">
+              <div class="dropdown-center">
+                <button class="dropdown-toggle nav__info-btn" type="button" data-bs-toggle="dropdown"></button>
+                <ul class="dropdown-menu">
+                  <!-- <li><a class="dropdown-item" href="#">訊息一</a></li>
                   <li><a class="dropdown-item" href="#">訊息二</a></li>
                   <li><a class="dropdown-item" href="#">訊息三</a></li>
                   <li><hr class="dropdown-divider" /></li>
                   <li><a class="dropdown-item" href="#">See More</a></li> -->
-								</ul>
-							</div>
-						</li>
-						<li class="nav__avatar">
-							<div class="dropdown-center">
-								<a href="#" class="dropdown-toggle nav__avatar-btn" type="button" data-bs-toggle="dropdown">
-									<div class="nav__avatar-img">
-										<img src="../images/avatar.svg" alt="avatar" />
-									</div>
-								</a>
-								<ul class="dropdown-menu">
-									<!-- <li><a class="dropdown-item" href="#">註冊</a></li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav__avatar">
+              <div class="dropdown-center">
+                <a href="#" class="dropdown-toggle nav__avatar-btn" type="button" data-bs-toggle="dropdown">
+                  <div class="nav__avatar-img">
+                    <img src="../images/avatar.svg" alt="avatar" />
+                  </div>
+                </a>
+                <ul class="dropdown-menu">
+                  <!-- <li><a class="dropdown-item" href="#">註冊</a></li>
                   <li><a class="dropdown-item" href="#">登入</a></li>
                   <li><a class="dropdown-item" href="#">其他</a></li>
                   <li><a class="dropdown-item" href="#">其他</a></li>
                   <li><hr class="dropdown-divider" /></li>
                   <li><a class="dropdown-item" href="#">登出</a></li> -->
-								</ul>
-							</div>
-						</li>
-					</ul>
-				</nav>
-			</div>
-		</header>
-		<!-- Header End -->
-		<div class="container custom-container">
-			<div class="row">
-				<main id="main" class="col-12">
-					<!-- Hotel -->
-					<h2 class="subtitle">商家資訊</h2>
-					<section class="hotel">
-						<div id="room-carousel" class="carousel slide">
-							<div class="carousel-inner">
-								<!-- <div class="carousel-item active">
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <!-- Header End -->
+    <div class="container custom-container">
+      <div class="row">
+        <main id="main" class="col-12">
+          <!-- Hotel -->
+          <h2 class="subtitle">商家資訊</h2>
+          <section class="hotel">
+            <div id="room-carousel" class="carousel slide">
+              <div class="carousel-inner">
+                <!-- <div class="carousel-item active">
                   <img src="../images/hotel.jpg" class="d-block slide-img" />
                 </div>
                 <div class="carousel-item">
@@ -85,55 +85,57 @@
                 <div class="carousel-item">
                   <img src="../images/hotel.jpg" class="d-block slide-img" />
                 </div> -->
-							</div>
-							<button
-								class="carousel-control-prev"
-								type="button"
-								data-bs-target="#carouselExample"
-								data-bs-slide="prev">
-								<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-								<span class="visually-hidden">Previous</span>
-							</button>
-							<button
-								class="carousel-control-next"
-								type="button"
-								data-bs-target="#carouselExample"
-								data-bs-slide="next">
-								<span class="carousel-control-next-icon" aria-hidden="true"></span>
-								<span class="visually-hidden">Next</span>
-							</button>
-						</div>
+              </div>
+              <button
+                class="carousel-control-prev"
+                type="button"
+                data-bs-target="#carouselExample"
+                data-bs-slide="prev"
+              >
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button
+                class="carousel-control-next"
+                type="button"
+                data-bs-target="#carouselExample"
+                data-bs-slide="next"
+              >
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
 
-						<div class="hotel__content">
-							<div class="hotel__header">
-								<!-- <h3 class="hotel__title">台北凡登‧東棧商務旅店</h3> -->
-								<ul class="hotel__rank">
-									<!-- <li><i class="fa-solid fa-star fa-lg"></i></li>
+            <div class="hotel__content">
+              <div class="hotel__header">
+                <!-- <h3 class="hotel__title">台北凡登‧東棧商務旅店</h3> -->
+                <ul class="hotel__rank">
+                  <!-- <li><i class="fa-solid fa-star fa-lg"></i></li>
                   <li><i class="fa-solid fa-star fa-lg"></i></li>
                   <li><i class="fa-solid fa-star fa-lg"></i></li>
                   <li><i class="fa-solid fa-star fa-lg"></i></li>
                   <li><i class="fa-solid fa-star fa-lg"></i></li> -->
-								</ul>
-							</div>
+                </ul>
+              </div>
 
-							<!-- <small class="hotel__address">台北市大安區忠孝東路四段209號</small> -->
-							<!-- <p id="hotel__desc" class="hotel__desc">
+              <!-- <small class="hotel__address">台北市大安區忠孝東路四段209號</small> -->
+              <!-- <p id="hotel__desc" class="hotel__desc">
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam autem vel animi recusandae sit! At,
                 dolor aspernatur odit quasi facilis totam odio reiciendis quo saepe, alias, sit tempora in tempore.
               </p> -->
-							<div class="hotel__price">
-								<!-- <button class="hotel__favor">加入商家收藏</button>
+              <div class="hotel__price">
+                <!-- <button class="hotel__favor">加入商家收藏</button>
                 <a href="#room" role="button">選擇房型</a> -->
-							</div>
-						</div>
-					</section>
-					<!-- Hotel End -->
+              </div>
+            </div>
+          </section>
+          <!-- Hotel End -->
 
-					<!-- Private Scene -->
+          <!-- Private Scene -->
 
-					<h2 class="subtitle">附近熱門景點</h2>
-					<section class="p-scene">
-						<!-- <a src="#" class="p-scene__card">
+          <h2 class="subtitle">附近熱門景點</h2>
+          <section class="p-scene">
+            <!-- <a src="#" class="p-scene__card">
               <div class="p-scene__img">
                 <img src="../images/1.png" alt="scene__img" />
               </div>
@@ -175,13 +177,13 @@
                 </p>
               </div>
             </a> -->
-					</section>
-					<!-- Private Scene End -->
+          </section>
+          <!-- Private Scene End -->
 
-					<!-- Room -->
-					<h2 id="room" class="subtitle">選擇房型</h2>
-					<section class="room">
-						<!-- <div class="room__card">
+          <!-- Room -->
+          <h2 id="room" class="subtitle">選擇房型</h2>
+          <section class="room">
+            <!-- <div class="room__card">
               <h3 class="room__title">精緻客房</h3>
               <div class="room__img">
                 <img src="../images/room1.jpg" alt="room1" />
@@ -367,13 +369,13 @@
                 </div>
               </div>
             </div> -->
-					</section>
-					<!-- Room End -->
+          </section>
+          <!-- Room End -->
 
-					<!-- Comment -->
-					<h2 class="subtitle">消費者評論</h2>
-					<section class="comment">
-						<!-- <div class="comment__card">
+          <!-- Comment -->
+          <h2 class="subtitle">消費者評論</h2>
+          <section class="comment">
+            <!-- <div class="comment__card">
               <div class="comment__content">
                 <div class="comment__avatar">
                   <img src="../images/avatar2.jpg" alt="comment-avatar" />
@@ -439,15 +441,15 @@
                 illum doloribus debitis eum!
               </p>
             </div> -->
-					</section>
-					<!-- Comment end -->
-				</main>
-			</div>
-		</div>
-		<!-- Footer -->
-		<footer>
-			<div class="footer"></div>
-		</footer>
-		<!-- Footer End -->
-	</body>
+          </section>
+          <!-- Comment end -->
+        </main>
+      </div>
+    </div>
+    <!-- Footer -->
+    <footer>
+      <div class="footer"></div>
+    </footer>
+    <!-- Footer End -->
+  </body>
 </html>
