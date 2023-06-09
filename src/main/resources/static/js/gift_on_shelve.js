@@ -40,6 +40,7 @@ window.addEventListener('load', function () {
 				// 執行第二個 Fetch 請求
 				const getCurrentUserDataResponse = await fetch(getCurrentUserDataUrl);
 				currentUserData = await getCurrentUserDataResponse.json();
+				console.log(JSON.stringify(currentUserData));
 			} else {
 				role = '無法辨別使用者';
 				throw new Error('請求失敗');
@@ -308,6 +309,7 @@ window.addEventListener('load', function () {
 		picturePreview.style.border = 'none'; // 上傳圖片後把框線隱藏
 		return img;
 	}
-	handleSelectedGift();
 	getCurrentUserInformation();
+	getCurrentUserData();
+	handleSelectedGift();
 });
