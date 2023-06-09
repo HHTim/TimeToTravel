@@ -206,8 +206,9 @@ $(function () {
           if (data.userAvatar == null || data.userAvatar == '') {
             replyPhotoUrl = '../../images/avatar.svg';
           } else {
-            replyPhotoUrl = 'data:image/*;base64,' + data.userAvatar;
+            replyPhotoUrl =  data.userAvatar;
           }
+          
           let comment_html =
             `
           <div class="add-comment">

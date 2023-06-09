@@ -48,6 +48,7 @@ public class ArticleCommentServiceImpl {
 		Blog blog = blogRepository.findByPostId(comment.getPostId());
 		blog.setComments(blog.getComments() + 1);
 		blogRepository.save(blog);
+		System.err.println(articleCommentViewRepository.findById(articleComment.getCommentNo()).orElse(null).getUserAvatar());
 		return articleCommentViewRepository.findById(articleComment.getCommentNo()).orElse(null);
 //		return articleComment;
 	}
