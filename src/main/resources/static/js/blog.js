@@ -46,14 +46,15 @@ $(function () {
         $.ajax({
           url: 'http://localhost:8080/BlogController/blog/getUser/' + data.userId, // 資料請求的網址
           type: 'GET', // GET | POST | PUT | DELETE | PATCH
-          dataType: 'json', // 預期會接收到回傳資料的格式： json | xml | html
+          dataType: 'text', // 預期會接收到回傳資料的格式： json | xml | html
           success: function (data) {
             blogUser = data;
-            if (blogUser.userAvatar == null || blogUser.userAvatar == "" ) {
+            if (blogUser == null || blogUser == "" ) {
               userPhotoUrl = '../../images/avatar.svg';
             } else {
-              userPhotoUrl = 'data:image/*;base64,' + blogUser.userAvatar;
+              userPhotoUrl =  blogUser; //'data:image/*;base64,' +
             }
+            console.log(data);
             $('#article-author-img').attr('src', userPhotoUrl); // 圖片尚未完成
           },
           error: function (xhr) {
@@ -122,32 +123,47 @@ $(function () {
               </ul>
               </div>`;
             }
-            let commentPhotoUrl;
-            if (comment.userAvatar == null || comment.userAvatar == '') {
-              commentPhotoUrl = '../../images/avatar.svg';
-            } else {
-              commentPhotoUrl = 'data:image/*;base64,' + comment.userAvatar;
-            }
-            let commentsContainer =
-              `
-            <div class="add-comment">
-              <div comment-no="${comment.commentNo}" post-id="${comment.postId}"  class="d-flex comment">
-                <div class="align-self-center me-2">
-                <img src="${commentPhotoUrl}" width="30px" height="30px" alt="avatar" />
-                </div>
-              <div class="me-2">
-                <p id="article-comment-name">${comment.userName}</p>` +
-              // <span id="article-comment-date-time">${comment.commentDatetime}</span>
-              `</div>
-              <div class="align-self-center text-break align-self-center flex-grow-1">
-                <p id="article-comment">${comment.commentContent}</p>
-                <input type="text" class="article-comment-update -none w-100" placeholder="修改留言…" value="${comment.commentContent}">
-              </div>` +
-              checkSameUser +
-              `</div>
-            </div>
-            `;
-            $('.msg-part').append(commentsContainer); // 將新的 comment div 加入到 msg-part 中
+            let gg= comment.userId;
+            // var commentPhotoUrl;
+            $.ajax({
+              url: 'http://localhost:8080/BlogController/blog/getUser/' + gg, // 資料請求的網址
+              type: 'GET', // GET | POST | PUT | DELETE | PATCH
+              dataType: 'text', // 預期會接收到回傳資料的格式： json | xml | html
+              success: function (data) {
+              console.log (gg);
+              var commentPhotoUrl;
+                if (data == null || data == "" ) {
+                  commentPhotoUrl = '../../images/avatar.svg';
+                } else {
+                  commentPhotoUrl =  data; //'data:image/*;base64,' +
+                }
+
+                let commentsContainer =
+                `
+              <div class="add-comment">
+                <div comment-no="${comment.commentNo}" post-id="${comment.postId}"  class="d-flex comment">
+                  <div class="align-self-center me-2">
+                  <img src="${commentPhotoUrl}" width="30px" height="30px" alt="avatar" />
+                  </div>
+                <div class="me-2">
+                  <p id="article-comment-name">${comment.userName}</p>` +
+                // <span id="article-comment-date-time">${comment.commentDatetime}</span>
+                `</div>
+                <div class="align-self-center text-break align-self-center flex-grow-1">
+                  <p id="article-comment">${comment.commentContent}</p>
+                  <input type="text" class="article-comment-update -none w-100" placeholder="修改留言…" value="${comment.commentContent}">
+                </div>` +
+                checkSameUser +
+                `</div>
+              </div>
+              `;
+              $('.msg-part').append(commentsContainer); // 將新的 comment div 加入到 msg-part 中
+              },
+              error: function (xhr) {
+                console.log(xhr);
+              },
+            });
+
           });
         }
       },

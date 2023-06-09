@@ -45,8 +45,11 @@ public class BlogController {
 	private UserServiceImpl userServiceImpl;
 
 	@GetMapping("/blog/getUser/{userId}")
-	public User getBlogUser(@PathVariable Integer userId) {
-		return userServiceImpl.findByUserId(userId);
+	public String getBlogUser(@PathVariable Integer userId) {
+		String gg= new String( userServiceImpl.findByUserId(userId).getUserAvatar() );
+		System.out.println(gg);
+		System.out.println("ddddddddddddddddddddd");
+		return gg;
 	}
 	// 拿BLOG 資料
 	@GetMapping("/blog/{postId}")
