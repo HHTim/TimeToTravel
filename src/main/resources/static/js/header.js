@@ -246,7 +246,7 @@ async function getCurrentUserData() {
       if (role == '商家') {
         centerHtml = `<li><a class="dropdown-item" href="../html/company_info.html">會員中心</a></li>`;
       } else if (role == '會員') {
-        centerHtml = `<li><a class="dropdown-item" href="../html/user_info.html">會員中心</a></li>`;
+        centerHtml = `<li><a class="dropdown-item" href="../html/member_info.html">會員中心</a></li>`;
       } else if (role == '平台') {
         centerHtml = `<li><a class="dropdown-item" href="../html/admin.html">管理中心</a></li>`;
       }
