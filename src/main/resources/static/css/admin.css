@@ -531,65 +531,6 @@ tbody {
   cursor: pointer;
 }
 
-/* Lightbox */
-.lightbox-content {
-  display: none;
-  position: fixed;
-  flex-wrap: wrap;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80%;
-  max-width: 500px;
-  background-color: #fff;
-  padding: 20px;
-  z-index: 999;
-  box-shadow: 0 0 0 99999px rgba(0, 0, 0, 0.6);
-  text-align: left;
-  align-items: center;
-  border-radius: 10px;
-  flex-direction: column;
-}
-.lightbox-content h2 {
-  width: 100%;
-  margin-bottom: 1rem;
-  font-weight: bold;
-  text-align: center;
-  color: #006caa;
-  font-size: 2rem;
-}
-.lightbox-content div {
-  width: 65%;
-  display: flex;
-  justify-content: space-between;
-}
-
-.lightbox-content.open {
-  display: flex;
-}
-
-.close-button {
-  position: absolute;
-  display: block;
-  width: 20px;
-  height: 20px;
-  top: 10px; /* 距離燈箱內容頂部的距離 */
-  right: 10px; /* 距離燈箱內容右側的距離 */
-  border: none;
-  background-color: #be4b4b;
-  color: #fff;
-  padding: 1rem;
-  border-radius: 5px;
-  box-shadow: 0 0 3px #9b9999;
-}
-.close-button::after {
-  content: "X";
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
-
 .mt-40 {
   margin-top: 40px;
 }
@@ -660,4 +601,78 @@ ul {
   display: inline-block;
   text-align: center;
   margin-right: 10px;
+}
+
+.lightbox {
+  display: none;
+  position: fixed;
+  flex-wrap: wrap;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 500px;
+  background-color: #fff;
+  padding: 20px;
+  z-index: 999;
+  box-shadow: 0 0 0 99999px rgba(0, 0, 0, 0.6);
+  text-align: left;
+  align-items: center;
+  border-radius: 10px;
+  flex-direction: column;
+}
+.lightbox__title {
+  width: 100%;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  text-align: center;
+  color: #006caa;
+  font-size: 2rem;
+}
+.lightbox__close {
+  position: absolute;
+  display: block;
+  width: 20px;
+  height: 20px;
+  top: 10px; /* 距離燈箱內容頂部的距離 */
+  right: 10px; /* 距離燈箱內容右側的距離 */
+  border: none;
+  background-color: #be4b4b;
+  color: #fff;
+  padding: 1rem;
+  border-radius: 5px;
+  box-shadow: 0 0 3px #9b9999;
+}
+.lightbox__close::after {
+  content: "X";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.lightbox div {
+  width: 65%;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 0.5rem;
+}
+.lightbox p:nth-child(odd) {
+  font-weight: bold;
+}
+
+.active {
+  display: flex;
+}
+
+#detail {
+  background-color: #006caa;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 0.25rem 1rem;
+  white-space: nowrap;
+}
+#detail:hover {
+  background-color: #004c77;
 }

@@ -161,7 +161,7 @@ public class OrderListServiceImpl implements OrderListService {
         PageBean<OrderListDto> pageBean = new PageBean<>();
         List<OrderListDto> dtos = orderDetailRepository.findUserOrder();
         List<OrderListDto> result = dtos.stream().skip((page - 1) * 5).limit(5).collect(Collectors.toList());
-        pageBean.setPageSize(dtos.size());
+        pageBean.setPageSize(Math.max(dtos.size()/5,1));
         pageBean.setRows(result);
         return pageBean;
     }
