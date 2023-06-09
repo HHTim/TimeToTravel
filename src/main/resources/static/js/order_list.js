@@ -8,6 +8,7 @@ const pageBtnWrapper = document.querySelector('#page-btn-wrapper');
 const commentCancel = document.querySelector('.comment__cancel');
 const commentSubmit = document.querySelector('.comment__submit');
 const commentContent = document.querySelector('.comment__content');
+const tab2 = document.querySelector('.tab-2');
 const stars = document.querySelectorAll('.comment__rank i');
 let searchBody = JSON.parse(sessionStorage.getItem('searchBody'));
 let isRenderPage = false;
@@ -315,6 +316,8 @@ searchNo.addEventListener('blur', async (e) => {
 
 // 點選分頁
 pageBtnWrapper.addEventListener('click', (e) => handlePageBtn(e));
+
+tab2.addEventListener('click', () => (window.location.href = '/gift_order'));
 
 fetchData(1);
 getCurrentUserInformation();
