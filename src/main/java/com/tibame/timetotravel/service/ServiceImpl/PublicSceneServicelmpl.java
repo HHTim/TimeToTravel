@@ -25,6 +25,11 @@ public class PublicSceneServicelmpl implements PublicSceneService {
     private EntityManager entityManager;
 
     @Override
+    public PublicScene getById(Integer sceneId) {
+        return entityManager.find(PublicScene.class,sceneId);
+    }
+
+    @Override
     public void insert(PublicScene publicScene) {
         publicSceneRepository.save(publicScene);
     }
@@ -39,15 +44,25 @@ public class PublicSceneServicelmpl implements PublicSceneService {
         return publicSceneRepository.findAll();
     }
 
-    @Override
-    public List<PublicScene> findByAddress(String sceneKeyword) {
+    // @Override
+    // public List<PublicScene> findByAddress(String sceneKeyword) {
+    //     return publicSceneRepository.findBySceneAddress(sceneKeyword);
+    // }
 
-        return publicSceneRepository.findBySceneAddress(sceneKeyword);
-    }
 
     @Override
     public void update(Integer sceneId, PublicScene publicScene) {
-        PublicScene newPublicScene = entityManager.find(PublicScene.class, sceneId);
+        PublicScene newPublicScene = entityManager.find(PublicScene.class,sceneId);
+            if(newPublicScene != null){
+//                newPublicScene.setScenePhoto(publicScene.getScenePhoto());
+                newPublicScene.setSceneName(publicScene.getSceneName());
+//                newPublicScene.setSceneAddr(publicScene.getSceneAddr());
+//                newPublicScene.setSceneLat(publicScene.getSceneLat());
+//                newPublicScene.setSceneLng(publicScene.getSceneLng());
+//                newPublicScene.setScenePlaceId(publicScene.getScenePlaceId());
+//                newPublicScene.setSceneDesc(publicScene.getSceneDesc());
+                entityManager.merge(newPublicScene);
+            }
     }
 
     @Override
@@ -63,6 +78,7 @@ public class PublicSceneServicelmpl implements PublicSceneService {
         }
 
     }
+
 
 
 }
