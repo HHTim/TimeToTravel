@@ -10,7 +10,7 @@ $(window).on('load', function () {
   const tab3_body = $('.tab-3.left-container');
 
   const advList = $('.slider .list');
-  let chat_btn = $('img.chat');
+  let chat_btn = $('.chat');
   var advListData;
 
   function getAnnPic() {
