@@ -45,6 +45,8 @@ window.addEventListener('load', function () {
       console.error(error);
     }
   }
+
+  // 重設按鈕
 	let resetBtn = this.document.querySelector('.reset__area__btn');
 	resetBtn.addEventListener('click', function () {
 		window.location.reload();

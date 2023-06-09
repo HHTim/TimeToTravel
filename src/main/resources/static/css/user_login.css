@@ -87,7 +87,7 @@ p {
 }
 
 .nav__link::after {
-  content: '';
+  content: "";
   width: 0;
   height: 2px;
   background-color: #006caa;
@@ -156,7 +156,7 @@ p {
   width: 100%;
   height: 100%;
   border: none;
-  background-image: url('../images/notify-normal.png');
+  background-image: url("../images/notify-normal.png");
   background-color: transparent;
   background-size: contain;
   background-position: center;
@@ -347,7 +347,7 @@ body {
   width: 100%;
   font-size: 2dvw;
   color: #fff;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
 .theme .union-tab2-div {
@@ -363,7 +363,7 @@ body {
   width: 100%;
   font-size: 2dvw;
   color: #7e7e7e;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
 .theme .union-tab3-div {
@@ -379,7 +379,7 @@ body {
   width: 100%;
   font-size: 2dvw;
   color: #7e7e7e;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
 .theme .search-city-div {
@@ -478,7 +478,7 @@ body {
 .theme .search-button .search-img-btn {
   width: 100%;
   aspect-ratio: 206/182;
-  background-image: url('../images/search_button.png');
+  background-image: url("../images/search_button.png");
   border: none;
 }
 
@@ -601,13 +601,13 @@ body {
 
 .next {
   right: 0;
-  background: url('../images/slider_right.png') no-repeat;
+  background: url("../images/slider_right.png") no-repeat;
   background-size: cover;
 }
 
 .prev {
   left: 0;
-  background: url('../images/slider_left.png') no-repeat;
+  background: url("../images/slider_left.png") no-repeat;
   background-size: cover;
 }
 
@@ -641,7 +641,7 @@ body {
 
 ul.nav {
   font-size: 20px;
-  font-family: 'Inter';
+  font-family: "Inter";
   color: black;
   font-weight: 500;
   line-height: 24px;
