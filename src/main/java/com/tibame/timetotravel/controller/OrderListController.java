@@ -50,4 +50,9 @@ public class OrderListController {
         System.out.println("修改評論與分數成功");
     }
 
+    @GetMapping("/orders/all/{page}")
+    public PageBean<OrderListDto> findAllUserOrder(@PathVariable Integer page) {
+        return orderListService.findAllUserOrder(page);
+    }
+
 }

@@ -155,4 +155,14 @@ public class OrderListServiceImpl implements OrderListService {
         orderDetail.setOrderComment(orderComment);
         orderDetailRepository.save(orderDetail);
     }
+
+    @Override
+    public PageBean<OrderListDto> findAllUserOrder(Integer page) {
+        PageBean<OrderListDto> pageBean = new PageBean<>();
+        List<OrderListDto> dtos = orderDetailRepository.findUserOrder();
+        List<OrderListDto> result = dtos.stream().skip((page - 1) * 5).limit(5).collect(Collectors.toList());
+        pageBean.setPageSize(dtos.size());
+        pageBean.setRows(result);
+        return pageBean;
+    }
 }

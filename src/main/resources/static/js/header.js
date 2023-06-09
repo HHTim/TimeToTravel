@@ -217,6 +217,7 @@ async function getCurrentUserData() {
         updateNotifyIcon(currentUserData.userNewsStatus);
         getUserNewsMessage(role, msgRow);
         updateAvatar(identifyRoleData.avatar);
+        console.log(identifyRoleData.avatar);
       } else if (role === '商家') {
         updateNotifyIcon(currentUserData.comNewsStatus);
         getUserNewsMessage(role, msgRow);
