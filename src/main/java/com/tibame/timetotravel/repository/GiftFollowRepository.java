@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository("giftFollowRepository")
 public interface GiftFollowRepository extends JpaRepository<GiftFollow, Integer> {
 
+    GiftFollow findByUserIdAndGiftId(Integer userId, Integer giftId);
 }

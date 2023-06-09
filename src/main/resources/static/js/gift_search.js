@@ -6,7 +6,7 @@ window.addEventListener('load', function () {
   const totalProduct = document.querySelector('div.total_product div');
   const collectionTitle = document.querySelector('div.collection_title h1');
   const smallCart = document.querySelector('div.cart-list');
-  const userId = 1;
+  // const userId = null;
 
   // ========一載入便查詢出所有商品========
   findAll();
@@ -102,9 +102,7 @@ window.addEventListener('load', function () {
                   <div class="add-button-wrapper">
                     <button type="button" class="btn btn-default add-button">加入購物車</button>
                   </div>
-                  <div class="product-others">
-                    <button id="fav-btn" class="fav-btn">加入最愛</button>
-                  </div>
+                  
                 </div>
               </div>
             </div>
@@ -136,7 +134,7 @@ window.addEventListener('load', function () {
     e.stopPropagation();
     if (!$(document).find('*').hasClass('open')) {
       $('div.item-mask').addClass('open');
-      $(e.target).closest('li').find('div.lightbox-content').addClass('open');
+      $(e.target).closest('li').find('div.lightbox-content').addClass('open').fadeIn(2000);
     }
   });
 
@@ -226,6 +224,15 @@ window.addEventListener('load', function () {
         // select變回預設排序
         $('select.custom_select').val('0');
         // console.log(body);
+        // 如果關鍵字搜尋沒有結果
+        if (body.length === 0) {
+          if (typeof swal === 'function') {
+            swal('查無資料！', '', 'info', {button: '嗚嗚嗚'})
+          } else {
+            alert('查無資料！');
+          }
+          findAll();
+        }
         // 如果輸入框沒有值，搜尋全部
         if (giftName === '') {
           findAll();
@@ -249,7 +256,7 @@ window.addEventListener('load', function () {
         // Title 回到 "全部商品"
         collectionTitle.innerHTML = '全部商品';
         // 清空搜尋框
-        $('input.form-control').val('');
+        // $('input.form-control').val('');
 
         updatePage(body);
       });
@@ -269,7 +276,7 @@ window.addEventListener('load', function () {
       .then((resp) => resp.json())
       .then((body) => {
         // 清空搜尋框
-        $('input.form-control').val('');
+        // $('input.form-control').val('');
         // select變回預設排序
         $('select.custom_select').val('0');
         // 如果是選全部商品，執行 findAll()
@@ -330,34 +337,94 @@ window.addEventListener('load', function () {
     }
   });
 
-  // ***********************重要***********************
+  // **************************重要**************************
   // =================真實加入購物車操作=================
   $('ul').on('click', 'button.add-button', function (e) {
-    let giftId = $(this).closest('li').data('giftId');
-    // 由於input為text，所以記得要把字串轉為數字
-    let giftCount = parseInt($(this).closest('li').find('input.qty-input').val());
-    let dataset = { giftId: giftId, giftCount: giftCount };
-
-    fetch('/giftCartController/giftCart/' + userId, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(dataset),
+    
+    fetch('/getCurrentUserController/current-user')
+    .then((resp) => {
+      if (resp.ok) {
+        return resp.json();
+      } else {
+        throw new Error('未登入會員');
+      }
     })
-      .then((resp) => resp.json())
-      .then((body) => {
-        // console.log(body);
-        $('div.lightbox-content').removeClass('open');
-        $('div.item-mask').removeClass('open');
-        $('input.qty-input').val('1');
-        
-        if (typeof swal === 'function') {
-          swal('加入成功！', '', 'success', {button: '好的！'});
-        } else {
-          $('div.success-mask').addClass('show');
-          $('div.add-success').addClass('show');
-        }
+    .then((body) => {
+      // console.log(body.user.userId);
+      if (body.role === '會員') {
+        let userId = body.user.userId;
 
-      });
+        
+        let giftId = $(this).closest('li').data('gift-id');
+        // 由於input為text，所以記得要把字串轉為數字
+        let giftCount = parseInt($(this).closest('li').find('input.qty-input').val());
+        let dataset = { giftId: giftId, giftCount: giftCount };
+    
+        fetch('/giftCartController/giftCart/' + userId, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(dataset),
+        })
+          .then((resp) => resp.json())
+          .then((body) => {
+            // console.log(body);
+            $('div.lightbox-content').removeClass('open');
+            $('div.item-mask').removeClass('open');
+            $('input.qty-input').val('1');
+            
+            if (typeof swal === 'function') {
+              swal('加入成功！', '', 'success', {button: '好的！'});
+            } else {
+              $('div.success-mask').addClass('show');
+              $('div.add-success').addClass('show');
+            }
+    
+          });
+
+
+      } else if (body.role === '商家') {
+        if (typeof swal === 'function') {
+          swal('您是商家！', '', 'info', {button: '好吧'})
+        } else {
+          alert('您是商家！');
+        }
+      } else if (body.role === '平台') {
+        if (typeof swal === 'function') {
+          swal('您是無敵大平台！', '', 'info', {button: '好啦 :('})
+        } else {
+          alert('您是無敵大平台！');
+        }
+      }
+      
+    })
+    .catch((error) => {
+      
+      if (typeof swal === 'function') {
+        swal({
+          title: '請登入會員唷 :)',
+          icon: 'warning',
+          buttons: {
+            danger: {
+              text: '去登入',
+              visible: true
+            },
+            confirm: {
+              text: '先逛逛',
+              visible: true
+            }
+          }
+        })
+        .then((result) => {
+          if (result === 'danger') {
+            window.location.href = '/user_login';
+          }
+        })
+      } else {
+        alert('請登入會員唷 :)');
+      }
+
+    })
+
   });
 
   // ================關閉加入成功的燈箱================
@@ -376,7 +443,24 @@ window.addEventListener('load', function () {
   // =================點擊查看小購物車=================
   $('a.open-cart').on('click', function (e) {
     e.preventDefault();
-    fetch('/giftCartController/giftCart/' + userId)
+
+
+    fetch('/getCurrentUserController/current-user')
+    .then((resp) => {
+      if (resp.ok) {
+        return resp.json();
+      } else {
+        throw new Error('未登入會員');
+      }
+    })
+    .then((body) => {
+      // console.log(body.user.userId);
+      if (body.role === '會員') {
+        let userId = body.user.userId;
+        
+        
+        
+        fetch('/giftCartController/giftCart/' + userId)
       .then((resp) => {
         if (resp.headers.get('content-type').includes('application/json')) {
           return resp.json();
@@ -412,13 +496,76 @@ window.addEventListener('load', function () {
         `;
         }
       });
+
+
+
+      } else if (body.role === '商家') {
+        if (typeof swal === 'function') {
+          swal('您是商家！', '', 'info', {button: '好吧'})
+        } else {
+          alert('您是商家！');
+        }
+      } else if (body.role === '平台') {
+        if (typeof swal === 'function') {
+          swal('您是無敵大平台！', '', 'info', {button: '好啦 :('})
+        } else {
+          alert('您是無敵大平台！');
+        }
+      }
+      
+    })
+    .catch((error) => {
+      
+      if (typeof swal === 'function') {
+        swal({
+          title: '請登入會員唷 :)',
+          icon: 'warning',
+          buttons: {
+            danger: {
+              text: '去登入',
+              visible: true
+            },
+            confirm: {
+              text: '先逛逛',
+              visible: true
+            }
+          }
+        })
+        .then((result) => {
+          if (result === 'danger') {
+            window.location.href = '/user_login';
+          }
+        })
+      } else {
+        alert('請登入會員唷 :)');
+      }
+
+    })
+
+
   });
 
   // =================立即結帳按鈕=================
   // ----------------有購物才會跳轉----------------
   $('a.btn-checkout').on('click', function (e) {
     e.preventDefault();
-    // window.location.href = "../html/gift_cart.html";
+
+
+    fetch('/getCurrentUserController/current-user')
+    .then((resp) => {
+      if (resp.ok) {
+        return resp.json();
+      } else {
+        throw new Error('未登入會員');
+      }
+    })
+    .then((body) => {
+      // console.log(body.user.userId);
+      if (body.role === '會員') {
+        let userId = body.user.userId;
+        
+        
+        // window.location.href = "../html/gift_cart.html";
     fetch('/giftCartController/redirect_cart/' + userId)
     .then((resp) => {
       if (resp.redirected) {
@@ -431,7 +578,132 @@ window.addEventListener('load', function () {
       console.error(error);
     });
 
+
+      } else if (body.role === '商家') {
+        if (typeof swal === 'function') {
+          swal('您是商家！', '', 'info', {button: '好吧'})
+        } else {
+          alert('您是商家！');
+        }
+      } else if (body.role === '平台') {
+        if (typeof swal === 'function') {
+          swal('您是無敵大平台！', '', 'info', {button: '好啦 :('})
+        } else {
+          alert('您是無敵大平台！');
+        }
+      }
+      
+    })
+    .catch((error) => {
+      
+      if (typeof swal === 'function') {
+        swal({
+          title: '請登入會員唷 :)',
+          icon: 'warning',
+          buttons: {
+            danger: {
+              text: '去登入',
+              visible: true
+            },
+            confirm: {
+              text: '先逛逛',
+              visible: true
+            }
+          }
+        })
+        .then((result) => {
+          if (result === 'danger') {
+            window.location.href = '/user_login';
+          }
+        })
+      } else {
+        alert('請登入會員唷 :)');
+      }
+
+    })
+
   });
+
+// ====================To Top 按鈕====================
+  $(window).scroll(function() {
+    if ($(this).scrollTop() > 100) {
+      $('button.to-top').fadeIn(300);
+    } else {
+      $('button.to-top').fadeOut(300);
+    }
+  });
+
+  $('button.to-top').click(function() {
+    $('html, body').animate({scrollTop: 0}, 25);
+  });
+
+
+
 
   getCurrentUserInformation();
 });
+
+
+
+// *********************是否登入會員判斷*********************
+// fetch('/getCurrentUserController/current-user')
+//     .then((resp) => {
+//       if (resp.ok) {
+//         return resp.json();
+//       } else {
+//         throw new Error('未登入會員');
+//       }
+//     })
+//     .then((body) => {
+//       // console.log(body.user.userId);
+//       if (body.role === '會員') {
+//         let userId = body.user.userId;
+        
+        
+        
+//         /* 要執行的程式碼放這裡 */
+        
+
+
+//       } else if (body.role === '商家') {
+//         if (typeof swal === 'function') {
+//           swal('您是商家！', '', 'info', {button: '好吧'})
+//         } else {
+//           alert('您是商家！');
+//         }
+//       } else if (body.role === '平台') {
+//         if (typeof swal === 'function') {
+//           swal('您是無敵大平台！', '', 'info', {button: '好啦 :('})
+//         } else {
+//           alert('您是無敵大平台！');
+//         }
+//       }
+      
+//     })
+//     .catch((error) => {
+      
+//       if (typeof swal === 'function') {
+//         swal({
+//           title: '請登入會員唷 :)',
+//           icon: 'warning',
+//           buttons: {
+//             danger: {
+//               text: '去登入',
+//               visible: true
+//             },
+//             confirm: {
+//               text: '先逛逛',
+//               visible: true
+//             }
+//           }
+//         })
+//         .then((result) => {
+//           if (result === 'danger') {
+//             window.location.href = '/user_login';
+//           }
+//         })
+//       } else {
+//         alert('請登入會員唷 :)');
+//       }
+
+//     })

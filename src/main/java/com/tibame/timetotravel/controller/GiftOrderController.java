@@ -1,7 +1,10 @@
 package com.tibame.timetotravel.controller;
 
+import com.tibame.timetotravel.common.PageBean;
+import com.tibame.timetotravel.dto.UserSessionDto;
 import com.tibame.timetotravel.entity.GiftOrder;
 import com.tibame.timetotravel.service.GiftOrderService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
@@ -35,17 +38,43 @@ public class GiftOrderController {
         return ResponseEntity.ok(giftOrderList);
     }
 
-    @GetMapping("/giftOrder/{userId}/{giftOrderId}")
-    public ResponseEntity<?> getByOrderId(@PathVariable Integer userId,
-                                  @PathVariable Integer giftOrderId) {
-        GiftOrder giftOrder = giftOrderService.getByOrderId(userId, giftOrderId);
+    @GetMapping("/giftOrderId/{giftOrderId}")
+    public ResponseEntity<?> getByOrderId(HttpSession session,
+                                          @PathVariable Integer giftOrderId) {
+//        Integer userId = (Integer) session.getAttribute("user_id"); // 此行無法確定登入者的身分
+        UserSessionDto user = (UserSessionDto) session.getAttribute("user");
 
-        if (giftOrder == null) {
-            String none = "查無資料";
-            return ResponseEntity.ok(none);
+        if (user != null) {
+            if (user.getRole() == "會員") {
+                Integer userId = user.getUser().getUserId();
+                System.out.println(user.getRole() + "：" + userId);
+
+                GiftOrder giftOrder = giftOrderService.getByOrderId(userId, giftOrderId);
+
+                if (giftOrder == null) {
+                    return null;
+                }
+
+                return ResponseEntity.ok(giftOrder);
+            }
+            return null;
         }
+        return null;
 
-        return ResponseEntity.ok(giftOrder);
     }
 
 }
+
+
+//    @GetMapping("/giftOrder/{userId}")
+//    public ResponseEntity<?> findByUserId(@PathVariable Integer userId,
+//                                          @PathVariable Integer page) {
+//        PageBean<GiftOrder> giftOrderList = giftOrderService.findByUserId(userId, page);
+//
+//        if (giftOrderList == null) {
+//            PageBean<GiftOrder> objectPageBean = new PageBean<>();
+//            return ResponseEntity.ok(objectPageBean);
+//        }
+//
+//        return ResponseEntity.ok(giftOrderList);
+//    }

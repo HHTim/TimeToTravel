@@ -587,27 +587,3 @@ section:not(:first-child) {
 .active {
   display: flex;
 }
-
-tr.if-empty td {
-  background-color: #dfdcdc;
-  font-weight: bold;
-}
-
-/* 燈箱周圍的遮罩 */
-div.lightbox-mask {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
-  z-index: 888;
-  cursor: pointer;
-}
-
-div.lightbox-mask.active {
-  display: block;
-}
-
-/* 燈箱周圍的遮罩 End */
