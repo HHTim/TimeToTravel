@@ -199,54 +199,48 @@ function getAdminFromUserNewsMessage(msgRow) {
 }
 
 async function getCurrentUserData() {
-	const avator_menu_ul = $('.nav__avatar .dropdown-center ul');
-	try {
-		let identifyRoleUrl = '/getCurrentUserController/current-user';
-		let getCurrentUserDataUrl;
-		// 執行第一個 Fetch 請求
-		const identifyRoleResponse = await fetch(identifyRoleUrl);
-		if (identifyRoleResponse.status === 401) {
-			role = '無法辨別使用者';
-			throw new Error('未授權，該訪客未登入');
-		} else if (identifyRoleResponse.ok) {
-			const identifyRoleData = await identifyRoleResponse.json();
-			if (identifyRoleData.role === '會員') {
-				console.log('會員');
-				role = '會員';
-				getCurrentUserDataUrl = '/UserController/user/' + identifyRoleData.user.userId;
-			} else if (identifyRoleData.role === '商家') {
-				console.log('商家');
-				role = '商家';
-				getCurrentUserDataUrl = '/CompanyController/company/' + identifyRoleData.company.comId;
-			} else {
-				console.log('平台');
-				role = '平台';
-				getCurrentUserDataUrl = '/AdminController/admin/' + identifyRoleData.admin.adminId;
-			}
-			// 執行第二個 Fetch 請求
-			const getCurrentUserDataResponse = await fetch(getCurrentUserDataUrl);
-			currentUserData = await getCurrentUserDataResponse.json();
-			// 第二個 Fetch 請求完成後的處理邏輯
-			// console.log('wefwi' + JSON.stringify(currentUserData));
-			if (role === '會員') {
-				updateNotifyIcon(currentUserData.userNewsStatus);
-				getUserNewsMessage(role, msgRow);
-				barUser = currentUserData.userAvatar;
-				if (barUser.userAvatar == null || barUser.userAvatar == '') {
-					userPhotoUrl = '../../images/avatar.svg';
-				} else {
-					userPhotoUrl = 'data:image/*;base64,' + barUser.userAvatar;
-				}
-				updateAvatar('data:image/jpeg;base64,' + userPhotoUrl);
-			} else if (role === '商家') {
-				updateNotifyIcon(currentUserData.comNewsStatus);
-				getUserNewsMessage(role, msgRow);
-				updateAvatar(identifyRoleData.avatar);
-			} else if (role === '平台') {
-				updateNotifyIcon(currentUserData.adminNewsStatus);
-				getAdminFromUserNewsMessage(msgRow);
-				updateAvatar('data:image/jpeg;base64,' + currentUserData.adminAvatar);
-			}
+  const avator_menu_ul = $('.nav__avatar .dropdown-center ul');
+  try {
+    let identifyRoleUrl = '/getCurrentUserController/current-user';
+    let getCurrentUserDataUrl;
+    // 執行第一個 Fetch 請求
+    const identifyRoleResponse = await fetch(identifyRoleUrl);
+    if (identifyRoleResponse.status === 401) {
+      role = '無法辨別使用者';
+      throw new Error('未授權，該訪客未登入');
+    } else if (identifyRoleResponse.ok) {
+      const identifyRoleData = await identifyRoleResponse.json();
+      if (identifyRoleData.role === '會員') {
+        console.log('會員');
+        role = '會員';
+        getCurrentUserDataUrl = '/UserController/user/' + identifyRoleData.user.userId;
+      } else if (identifyRoleData.role === '商家') {
+        console.log('商家');
+        role = '商家';
+        getCurrentUserDataUrl = '/CompanyController/company/' + identifyRoleData.company.comId;
+      } else {
+        console.log('平台');
+        role = '平台';
+        getCurrentUserDataUrl = '/AdminController/admin/' + identifyRoleData.admin.adminId;
+      }
+      // 執行第二個 Fetch 請求
+      const getCurrentUserDataResponse = await fetch(getCurrentUserDataUrl);
+      currentUserData = await getCurrentUserDataResponse.json();
+      // 第二個 Fetch 請求完成後的處理邏輯
+      // console.log('wefwi' + JSON.stringify(currentUserData));
+      if (role === '會員') {
+        updateNotifyIcon(currentUserData.userNewsStatus);
+        getUserNewsMessage(role, msgRow);
+        updateAvatar( identifyRoleData.avatar);
+      } else if (role === '商家') {
+        updateNotifyIcon(currentUserData.comNewsStatus);
+        getUserNewsMessage(role, msgRow);
+        updateAvatar(identifyRoleData.avatar);
+      } else if (role === '平台') {
+        updateNotifyIcon(currentUserData.adminNewsStatus);
+        getAdminFromUserNewsMessage(msgRow);
+        updateAvatar('data:image/jpeg;base64,' + currentUserData.adminAvatar);
+      }
 
 			//comNewsStatus
 			avator_menu_ul.append(
