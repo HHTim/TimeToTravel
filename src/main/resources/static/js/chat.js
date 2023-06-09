@@ -3,7 +3,7 @@ $(function () {
   var socket;
   var role;
   var currentUserData;
-  $('.input-box input[type="submit"]').on('keyup', function (e) {
+  $('#message-input').on('keyup', function (e) {
     if (e.keyCode === 13) {
       sendMessage();
     }

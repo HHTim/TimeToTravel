@@ -312,7 +312,7 @@ function bindEventToNews() {
         break;
 
       case '平台':
-        location.href = '../html/admin.html';
+        location.href = '../html/admin_message_recv.html';
     }
   });
 }
@@ -352,5 +352,6 @@ btn_notify.on('click', function () {
 
 /* export function define below Here!*/
 export function getCurrentUserInformation() {
+  notify_menu.css('width', 'max-content');
   getCurrentUserData();
 }
