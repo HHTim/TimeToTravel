@@ -165,6 +165,7 @@ public class CompanyController extends BaseController {
 
         try {
             int id = (int) request.getSession().getAttribute("company_id");
+            ((UserSessionDto) request.getSession().getAttribute("user")).setAvatar(dto.getAvatar());
             companyService.modify(id, dto);
         } catch (Exception e) {
             return badRequest(e.getMessage());

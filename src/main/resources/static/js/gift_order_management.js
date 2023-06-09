@@ -12,12 +12,6 @@ window.addEventListener('load', function () {
   var endDate = '2023-12-31';
   var start_dateflag = false;
 
-  onShelveBtn.addEventListener('click', () => {
-    localStorage.removeItem('selectedRoom');
-    localStorage.removeItem('selectedPrivateScene');
-    localStorage.removeItem('selectedGift');
-    localStorage.removeItem('selectedJourney');
-  });
   /*讀取*/
   findall();
   // bindEventToButtons();
@@ -29,9 +23,9 @@ window.addEventListener('load', function () {
     }
   });
 
-  /* 確定按鈕綁定 */
+  /* 確定按鈕綁定&日期查詢 */
   confirmBtn.addEventListener('click', function () {
-    fetch('/giftOrderMangeController/giftOrderManage/' + startDate + '/' + endDate)
+    fetch('/giftOrderManageController/giftOrderManage/' + startDate + '/' + endDate)
       .then((resp) => resp.json())
       .then((body) => {
         console.log(body);
@@ -97,7 +91,7 @@ window.addEventListener('load', function () {
   // ========================================================================================
   /*  找全部  */
   function findall() {
-    fetch('/giftOrderMangeController/giftOrderManage')
+    fetch('/giftOrderManageController/giftOrderManage')
       .then((resp) => resp.json())
       .then((body) => {
         console.log(body);
@@ -165,7 +159,7 @@ window.addEventListener('load', function () {
 
           .reverse()
           .join('');
-        // console.log(tbody.innerHTML);
+        console.log(tbody.innerHTML);
         bindEventToButtons();
       });
   }
@@ -217,16 +211,15 @@ window.addEventListener('load', function () {
   //關鍵字 訂單查詢
   function searchByKeyword() {
     let searchInput = document.querySelector('.search-input').value.trim();
-    let regex = /^[0-9]+$/; // 只能輸入數字
-    if (searchInput === '') {
+    console.log(searchInput);
+    console.log(typeof searchInput);
+    // let regex = /^[0-9]+$/; // 只能輸入數字
+    if (searchInput == '') {
       alert('請輸入有效關鍵字');
       window.location.reload();
-    } else if (!regex.test(searchInput)) {
-      alert('請輸入有效的數字關鍵字');
       document.querySelector('.search-input').value = '';
-      window.location.reload();
     } else {
-      fetch(`/giftOrderMangeController/giftOrderManage/giftOrderId/${searchInput}`)
+      fetch(`/giftOrderManageController/giftOrderManage/searchByKeyword/${searchInput}/${searchInput}`)
         .then((resp) => resp.json())
         .then((body) => {
           console.log(body);

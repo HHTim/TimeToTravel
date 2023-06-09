@@ -379,3 +379,11 @@ div.fa-div-2 i.fa.fa-search {
     transform: translate(-50%, -50%);
   }
 }
+
+.chat {
+  position: fixed;
+  right: 5%;
+  bottom: 5%;
+  z-index: 500;
+  cursor: pointer;
+}

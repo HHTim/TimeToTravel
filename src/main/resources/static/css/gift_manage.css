@@ -466,4 +466,9 @@ tbody tr {
 h3 {
   display: flex;
   justify-content: space-around;
+  cursor: pointer;
+}
+h3:hover {
+  background-color: #004c77;
+  color: #fff;
 }

@@ -13,4 +13,6 @@ public interface OrderListService {
     PageBean<OrderListDto> findUserOrderByNo(Integer userId, Integer orderId, Integer page) throws InvocationTargetException, IllegalAccessException;
 
     void updateCommentByOrderId(Integer orderId, Integer orderRank, String orderComment);
+
+    PageBean<OrderListDto> findAllUserOrder(Integer page);
 }

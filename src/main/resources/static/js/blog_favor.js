@@ -1,32 +1,38 @@
+import { getCurrentUserInformation } from './header.js';
 $(function () {
-  var user = null;
-  var userId = null; // 拿 session
-  try {
-    userId = JSON.parse(sessionStorage.getItem('user-data')).userId;
-    console.log(userId);
-  } catch (error) {
-    $.ajax({
-      url: 'http://localhost:8080/getCurrentUserController/current-user', // 資料請求的網址
-      type: 'GET', // GET | POST | PUT | DELETE | PATCH
-      dataType: 'json', // 預期會接收到回傳資料的格式： json | xml | html
-      success: function (data) {
-        if (data.role == '會員') {
-          user = data.user;
-          userId = user.userId;
-        }
-      },
-      error: function (xhr) {
-        console.log(xhr);
-      },
-    });
-  }
+  getCurrentUserInformation();
+  var user = {};
+  var userId = {}; // 拿 session
+  // try {
+  //   userId = JSON.parse(sessionStorage.getItem('user-data')).userId;
+  //   console.log(userId);
+  // } catch (error) {
+  // }
+  $.ajax({
+    url: 'http://localhost:8080/getCurrentUserController/current-user', // 資料請求的網址
+    type: 'GET', // GET | POST | PUT | DELETE | PATCH
+    dataType: 'json', // 預期會接收到回傳資料的格式： json | xml | html
+    success: function (data) {
+      if (data.role == '會員') {
+        let user = data.user;
+        let userId = user.userId;
+        console.log(user);
+        console.log(user.userId);
+        console.log(data);
+        getFavorArticle(userId);
+      }
+    },
+    error: function (xhr) {
+      console.log(xhr);
+    },
+  });
   console.log('userId : ' + userId);
   // console.log(user);
   // ===================================
   var prePage; // 上一頁資訊的物件 ??
 
   var blogs = [];
-  function getFavorArticle() {
+  function getFavorArticle(userId) {
     $.ajax({
       url: 'http://localhost:8080/BlogFavorController/blog/favor/' + userId, // 先拿 view 好了 後端 先拿 符合者， 再拿 對應的view
       type: 'GET',
@@ -132,8 +138,6 @@ $(function () {
     );
     location.href = './blog.html';
   });
-
-  getFavorArticle();
 
   // 文章類型篩選
   $('#article-type-select').change(function () {

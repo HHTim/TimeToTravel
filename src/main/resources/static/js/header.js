@@ -20,6 +20,21 @@ var role;
 var currentUserData;
 const msgRow = 3;
 
+$('li.nav__link a').on('click', function () {
+  var linkText = $(this).text();
+
+  if (linkText === '我的訂單') {
+    console.log('我的訂單');
+    location.href = '../html/gift_order_list.html';
+  } else if (linkText === '伴手禮商城') {
+    console.log('伴手禮商城');
+    location.href = '../html/gift_search.html';
+  } else if (linkText === '部落格') {
+    console.log('部落格');
+    location.href = '../html/blog_search.html';
+  }
+});
+
 function updateNotifyIcon(userNewsStatus) {
   if (userNewsStatus == 1) {
     console.log('new-notify');
@@ -216,7 +231,13 @@ async function getCurrentUserData() {
       if (role === '會員') {
         updateNotifyIcon(currentUserData.userNewsStatus);
         getUserNewsMessage(role, msgRow);
-        updateAvatar(identifyRoleData.avatar);
+        barUser = currentUserData.userAvatar;
+        if (barUser.userAvatar == null || barUser.userAvatar == '') {
+          userPhotoUrl = '../../images/avatar.svg';
+        } else {
+          userPhotoUrl = 'data:image/*;base64,' + barUser.userAvatar;
+        }
+        updateAvatar('data:image/jpeg;base64,' + userPhotoUrl);
       } else if (role === '商家') {
         updateNotifyIcon(currentUserData.comNewsStatus);
         getUserNewsMessage(role, msgRow);

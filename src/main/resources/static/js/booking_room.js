@@ -40,17 +40,19 @@ function renderRank(rank) {
 function renderComments(orderWithUsers) {
   let html = '';
   for (let i in orderWithUsers) {
+    const { userAvatar, userName, roomName, orderDateTime, orderRank, orderComment } = orderWithUsers[i];
     html += `<div class="comment__card">
               <div class="comment__content">
                 <div class="comment__avatar">
-                  <img src="data:image/png;base64,${orderWithUsers[i].userAvatar}" alt="comment-avatar" />
+                  <img src="data:image/png;base64,${userAvatar}" alt="comment-avatar" />
                 </div>
-                <p class="comment__user">${orderWithUsers[i].userName}</p>
+                <p class="comment__user">${userName}</p>
                 <ul class="comment__rank">
-                  ${renderRank(orderWithUsers[i].orderRank)}
+                  ${renderRank(orderRank)}
                 </ul>
+                <p class="comment__time">${roomName} - 發布於 ${orderDateTime}</p>
               </div>
-              <p class="comment__desc">${orderWithUsers[i].orderComment}</p>
+              <p class="comment__desc">${orderComment}</p>
             </div> 
     `;
   }

@@ -52,7 +52,7 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addViewController("/gift_search").setViewName("forward:/html/gift_search.html");
         registry.addViewController("/gift_cart").setViewName("forward:/html/gift_cart.html");
         registry.addViewController("/gift_order").setViewName("forward:/html/gift_order_list.html");
-
+        registry.addViewController("/chat").setViewName("forward:/html/chat.html");
 
     }
 
