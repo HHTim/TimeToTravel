@@ -27,15 +27,18 @@ public class OrderListController {
 
     @GetMapping("/orders/name/{name}/{page}")
     public PageBean<OrderListDto> findUserOrderByName(@PathVariable String name, @PathVariable Integer page, HttpServletRequest req) throws InvocationTargetException, IllegalAccessException {
-        Integer userId = (Integer) req.getSession().getAttribute("userId");
-        return orderListService.findUserOrderByName(3, name, page);
+        UserSessionDto user = (UserSessionDto) req.getSession().getAttribute("user");
+        System.out.println("接受到的sessionID " + user.getUser().getUserId());
+        Integer userId = user.getUser().getUserId();
+        return orderListService.findUserOrderByName(userId, name, page);
     }
 
     @GetMapping("/orders/no/{no}/{page}")
     public PageBean<OrderListDto> findUserOrderByNo(@PathVariable String no, @PathVariable Integer page, HttpServletRequest req) throws InvocationTargetException, IllegalAccessException {
-        Integer userId = (Integer) req.getSession().getAttribute("userId");
-        System.out.println("test " + userId + " " + no);
-        return orderListService.findUserOrderByNo(3, Integer.parseInt(no), page);
+        UserSessionDto user = (UserSessionDto) req.getSession().getAttribute("user");
+        System.out.println("接受到的sessionID " + user.getUser().getUserId());
+        Integer userId = user.getUser().getUserId();
+        return orderListService.findUserOrderByNo(userId, Integer.parseInt(no), page);
     }
 
     @PutMapping("orders")
@@ -45,6 +48,11 @@ public class OrderListController {
         String orderComment = (String) commentBody.get("orderComment");
         orderListService.updateCommentByOrderId(orderId, orderRank, orderComment);
         System.out.println("修改評論與分數成功");
+    }
+
+    @GetMapping("/orders/all/{page}")
+    public PageBean<OrderListDto> findAllUserOrder(@PathVariable Integer page) {
+        return orderListService.findAllUserOrder(page);
     }
 
 }

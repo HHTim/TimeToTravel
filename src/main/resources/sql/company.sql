@@ -49,6 +49,5 @@ VALUES ('Chiou123', 'password', 'THA101', '宏春大樓', 'Tibame_manager', 1234
 SELECT *
 FROM COMPANY;
 
-#DROP TABLE COMPANY;
 
 

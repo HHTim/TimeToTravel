@@ -12,6 +12,7 @@ window.addEventListener('load', function () {
 		localStorage.removeItem('selectedGift');
 		localStorage.removeItem('selectedJourney');
 	});
+	
 	/* 重設按鈕 */
 	resetBtn.addEventListener('click', function () {
 		window.location.reload();
