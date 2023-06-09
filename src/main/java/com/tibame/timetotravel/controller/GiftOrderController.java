@@ -1,6 +1,7 @@
 package com.tibame.timetotravel.controller;
 
 import com.tibame.timetotravel.common.PageBean;
+import com.tibame.timetotravel.dto.UserSessionDto;
 import com.tibame.timetotravel.entity.GiftOrder;
 import com.tibame.timetotravel.service.GiftOrderService;
 import jakarta.servlet.http.HttpSession;
@@ -40,22 +41,24 @@ public class GiftOrderController {
     @GetMapping("/giftOrderId/{giftOrderId}")
     public ResponseEntity<?> getByOrderId(HttpSession session,
                                           @PathVariable Integer giftOrderId) {
-        Integer userId = (Integer) session.getAttribute("user_id");
+//        Integer userId = (Integer) session.getAttribute("user_id"); // 此行無法確定登入者的身分
+        UserSessionDto user = (UserSessionDto) session.getAttribute("user");
 
-        System.out.println(userId);
+        if (user != null) {
+            if (user.getRole() == "會員") {
+                Integer userId = user.getUser().getUserId();
+                System.out.println(user.getRole() + "：" + userId);
 
-        if (userId != null) {
+                GiftOrder giftOrder = giftOrderService.getByOrderId(userId, giftOrderId);
 
-            GiftOrder giftOrder = giftOrderService.getByOrderId(userId, giftOrderId);
+                if (giftOrder == null) {
+                    return null;
+                }
 
-            if (giftOrder == null) {
-                return null;
+                return ResponseEntity.ok(giftOrder);
             }
-
-            return ResponseEntity.ok(giftOrder);
-
+            return null;
         }
-
         return null;
 
     }
