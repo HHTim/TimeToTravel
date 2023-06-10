@@ -243,7 +243,7 @@ window.addEventListener('load', function () {
 		return img;
 	}
 
-	handleSelectedPrivateScene();
 	getCurrentUserInformation();
 	getCurrentUserData();
+	handleSelectedPrivateScene();
 });
