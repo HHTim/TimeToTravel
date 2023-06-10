@@ -16,6 +16,7 @@ public class BookingRoomDto {
     private String comAddress;
     private String roomName;
     private String roomDesc;
+    private Integer roomPrice;
     private List<Integer> orderRanks;
     private List<Room> rooms;
     private List<PrivateScene> privateScenes;
