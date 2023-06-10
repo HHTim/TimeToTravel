@@ -5,25 +5,7 @@ $(function () {
   var userId = null; // 拿 session
   var blog = JSON.parse(sessionStorage.getItem('default-blog-view'));
   var postId = blog.postId;
-  try {
-    userId = JSON.parse(sessionStorage.getItem('user-data')).userId;
-    console.log(userId);
-  } catch (error) {
-    $.ajax({
-      url: 'http://localhost:8080/getCurrentUserController/current-user', // 資料請求的網址
-      type: 'GET', // GET | POST | PUT | DELETE | PATCH
-      dataType: 'json', // 預期會接收到回傳資料的格式： json | xml | html
-      success: function (data) {
-        if (data.role == '會員') {
-          user = data.user;
-          userId = user.userId;
-        }
-      },
-      error: function (xhr) {
-        console.log(xhr);
-      },
-    });
-  }
+  userId = JSON.parse(sessionStorage.getItem('user-data')).userId;
   console.log('userId : ' + userId);
 
   // console.log(user);
