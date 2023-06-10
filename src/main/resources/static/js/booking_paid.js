@@ -226,7 +226,7 @@ journeySection.addEventListener('click', (e) => {
 
 // 確認付款
 forward.addEventListener('click', () => {
-  fetch('/rooms/insert/3', {
+  fetch('/rooms/insert', {
     method: 'POST',
     cache: 'no-cache',
     headers: { 'Content-Type': 'application/json' },
