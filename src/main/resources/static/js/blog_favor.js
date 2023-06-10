@@ -26,7 +26,7 @@ $(function () {
       console.log(xhr);
     },
   });
-  console.log('userId : ' + userId);
+  console.log('userId : ' + userId.userId);
   // console.log(user);
   // ===================================
   var prePage; // 上一頁資訊的物件 ??
@@ -80,43 +80,62 @@ $(function () {
   }
 
   $(document).on('click', '.remove-favor-blog', function (e) {
-    e.preventDefault();
+    // var that=this;
     var blogId = $(this).closest('div.blog').attr('blog-id');
-    console.log(blogId + '測試到有OK');
-
-    let favorArticle = {
-      favoriteArticle: null,
-      postId: blogId,
-      userId: userId,
-    };
-    let that = this;
-    // console.log(that);
     $.ajax({
-      url: 'http://localhost:8080/BlogController/blog/favor', // 資料請求的網址
-      type: 'POST', // GET | POST | PUT | DELETE | PATCH
-      data: JSON.stringify(favorArticle), // 將物件資料(不用雙引號) 傳送到指定的 url
-      dataType: 'text', // 預期會接收到回傳資料的格式： json | xml | html | text
-      contentType: 'application/json',
-      beforeSend: function () {
-        // 在 request 發送之前執行
-      },
-      headers: {},
-      statusCode: {},
+      url: 'http://localhost:8080/getCurrentUserController/current-user', // 資料請求的網址
+      type: 'GET', // GET | POST | PUT | DELETE | PATCH
+      dataType: 'json', // 預期會接收到回傳資料的格式： json | xml | html
       success: function (data) {
-        if (data === '已加入 文章收藏') {
+        if (data.role == '會員') {
+          let user = data.user;
+          let userId = user.userId;
+          console.log(user);
+          console.log(user.userId);
           console.log(data);
-          alert('已加入 文章收藏');
-        } else {
-          console.log(data);
-          // 显示错误提示框
-          alert('已移除 文章收藏');
+
+          e.preventDefault();
+          console.log(blogId + '測試到有OK');
+
+          let favorArticle = {
+            favoriteArticle: null,
+            postId: blogId,
+            userId: user.userId,
+          };
+          // let that = this;
+          // console.log(that);
+          $.ajax({
+            url: 'http://localhost:8080/BlogController/blog/favor', // 資料請求的網址
+            type: 'POST', // GET | POST | PUT | DELETE | PATCH
+            data: JSON.stringify(favorArticle), // 將物件資料(不用雙引號) 傳送到指定的 url
+            dataType: 'text', // 預期會接收到回傳資料的格式： json | xml | html | text
+            contentType: 'application/json',
+            beforeSend: function () {
+              // 在 request 發送之前執行
+            },
+            headers: {},
+            statusCode: {},
+            success: function (data) {
+              if (data === '已加入 文章收藏') {
+                console.log(data);
+                alert('已加入 文章收藏');
+              } else {
+                console.log(data);
+                // 显示错误提示框
+                alert('已移除 文章收藏');
+              }
+            },
+            error: function (xhr) {
+              console.log(xhr);
+            },
+            complete: function (xhr) {
+              // /* request 完成之後執行(在 success / error 事件之後執行) */
+            },
+          });
         }
       },
       error: function (xhr) {
         console.log(xhr);
-      },
-      complete: function (xhr) {
-        // /* request 完成之後執行(在 success / error 事件之後執行) */
       },
     });
   });
