@@ -16,7 +16,7 @@ public interface ViewCompanyRoomRepository extends CrudRepository<ViewCompanyRoo
     /**
      * 根據輸入的關鍵字查符合的商家回傳結果集合
      */
-    @Query(value = "SELECT * FROM VIEW_COMPANY_ROOM WHERE (COM_ADDRESS LIKE ?1%) AND (ROOM_PEOPLE = ?2) AND (ROOM_STATUS = 1)", nativeQuery = true)
+    @Query(value = "SELECT * FROM VIEW_COMPANY_ROOM WHERE (COM_ADDRESS LIKE %?1% OR COM_NAME LIKE %?1%) AND (ROOM_PEOPLE = ?2) AND (ROOM_STATUS = 1) ORDER BY ROOM_ID DESC", nativeQuery = true)
     List<ViewCompanyRoom> findCompany(String keyWord, Integer people);
 
     ViewCompanyRoom findByComIdAndRoomId(Integer comId, Integer roomId);

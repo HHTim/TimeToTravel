@@ -116,7 +116,7 @@ cardAll.addEventListener('click', (e) => {
     // console.log(lightbox);
     // console.log(close);
     lightbox.classList.add('open');
-    handleSearch(lightbox);
+    handleSearch();
     close.onclick = () => lightbox.classList.remove('open');
   }
 });
@@ -189,7 +189,6 @@ async function fetchData(page) {
   } else {
     cardAll.innerHTML = renderCards(data.rows);
   }
-  searchInput.value = keyword;
 
   const searchResultsCountElement = document.getElementById('search-results-count');
   // 總頁數
@@ -203,19 +202,42 @@ async function fetchData(page) {
   isRenderPage = true;
 }
 
-tab1.addEventListener('click', () => (window.location.href = '/rooms/search'));
-search.addEventListener('click', () => {
+function reSearch() {
   isRenderPage = false;
+  sessionStorage.setItem('searchBody', JSON.stringify(searchBody));
+  console.log(searchBody);
   fetchData(1);
+}
+
+tab1.addEventListener('click', () => (window.location.href = '/rooms/search'));
+
+document.addEventListener('keydown', (e) => {
+  if (e.code !== 'Enter') return;
+  if (searchBody.keyword == '' || searchBody.people == 0 || searchBody.startDate == '' || searchBody.endDate == '') {
+    return;
+  }
+  reSearch();
+});
+
+search.addEventListener('click', () => {
+  if (searchBody.keyword == '' || searchBody.people == 0 || searchBody.startDate == '' || searchBody.endDate == '') {
+    return;
+  }
+  reSearch();
 });
 
 searchInput.addEventListener('blur', (e) => {
+  if (e.target.value === '') {
+    swal('輸入欄請勿為空', '', 'warning');
+  }
   searchBody.keyword = e.target.value;
   console.log(searchBody);
 });
 
 // 點選分頁
 pageBtnWrapper.addEventListener('click', (e) => handlePageBtn(e));
+
+searchInput.value = searchBody.keyword;
 
 fetchData(1);
 getCurrentUserInformation();
