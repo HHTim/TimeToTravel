@@ -204,7 +204,10 @@ async function fetchData(page) {
 }
 
 tab1.addEventListener('click', () => (window.location.href = '/rooms/search'));
-search.addEventListener('click', () => fetchData());
+search.addEventListener('click', () => {
+  isRenderPage = false;
+  fetchData(1);
+});
 
 searchInput.addEventListener('blur', (e) => {
   searchBody.keyword = e.target.value;
