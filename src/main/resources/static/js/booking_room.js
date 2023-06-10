@@ -215,7 +215,7 @@ async function fetchData() {
   const { comId, roomId, startDate, endDate } = searchBody;
   const resp = await fetch(`/rooms/booking/${comId}/${roomId}/${startDate}/${endDate}`);
   const data = await resp.json();
-  const { comName, comAddress, orderRanks, roomName, roomDesc, privateScenes, orderWithUsers, rooms } = data;
+  const { comName, comAddress, orderRanks, roomName, roomPrice, roomDesc, privateScenes, orderWithUsers, rooms } = data;
   console.log(data);
   const sum = orderRanks.reduce((curr, acc) => curr + acc, 0);
   // 沒有訂單沒有評價分數，最低就是1
@@ -260,6 +260,7 @@ async function fetchData() {
     <small class="hotel__address">${comAddress}</small>
     <p id="hotel__desc" class="hotel__desc">${roomDesc}</p>
     <div class="hotel__price">
+      <p>今日價格 NT $${roomPrice}</p>
       <a href="#room" role="button">選擇房型</a>
     </div>
   </div>
