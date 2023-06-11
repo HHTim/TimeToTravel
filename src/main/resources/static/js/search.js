@@ -87,6 +87,7 @@ function handleSearch(lightbox) {
   fetch(`/rooms/search/${keyword}/${people}/${startDate}/${endDate}`)
     .then((resp) => resp.json())
     .then((result) => {
+      console.log(lightbox);
       // console.log(lightbox.lastElementChild);
       const searchResult = lightbox.lastElementChild;
       searchResult.innerHTML = renderSearchResult(result);
@@ -116,7 +117,7 @@ cardAll.addEventListener('click', (e) => {
     // console.log(lightbox);
     // console.log(close);
     lightbox.classList.add('open');
-    handleSearch();
+    handleSearch(lightbox);
     close.onclick = () => lightbox.classList.remove('open');
   }
 });
