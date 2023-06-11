@@ -149,12 +149,26 @@ $(function () {
         postId: blogId,
       })
     );
-    sessionStorage.setItem(
-      'user-data',
-      JSON.stringify({
-        userId: userId,
-      })
-    );
+    $.ajax({
+      url: 'http://localhost:8080/getCurrentUserController/current-user', // 資料請求的網址
+      type: 'GET', // GET | POST | PUT | DELETE | PATCH
+      dataType: 'json', // 預期會接收到回傳資料的格式： json | xml | html
+      success: function (data) {
+        if (data.role == '會員') {
+          let user = data.user;
+          let userId = user.userId;
+          sessionStorage.setItem(
+            'user-data',
+            JSON.stringify({
+              userId: userId,
+            })
+          );
+        }
+      },
+      error: function (xhr) {
+        console.log(xhr);
+      },
+    });
     location.href = './blog.html';
   });
 
