@@ -89,7 +89,8 @@ public class SearchServiceImpl implements SearchService {
             }
         }
         return resultList.stream()
-                .filter(e -> Math.random() < 0.5)
+//                .filter(e -> Math.random() < 0.5)
+                .skip((int) (Math.random() * (resultList.size() - 3)))
                 .limit(3)
                 .collect(Collectors.toList());
     }

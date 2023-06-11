@@ -2,6 +2,7 @@ package com.tibame.timetotravel.controller;
 
 import com.tibame.timetotravel.dto.BookingPaidDto;
 import com.tibame.timetotravel.dto.RoomOrderDto;
+import com.tibame.timetotravel.dto.UserSessionDto;
 import com.tibame.timetotravel.service.PaidService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,12 +43,14 @@ public class PaidController {
         return paidService.bookingPaid(3, roomId, startDate, endDate);
     }
 
-    @PostMapping("/insert/{userId}")
+    @PostMapping("/insert")
     public void insertOrder(HttpServletRequest req, @RequestBody RoomOrderDto order) {
-        Integer userId = (Integer) req.getSession().getAttribute("userId");
+        UserSessionDto user = (UserSessionDto) req.getSession().getAttribute("user");
+        System.out.println("接受到的sessionID " + user.getUser().getUserId());
+        Integer userId = user.getUser().getUserId();
         System.out.println(order);
         System.out.println("Insert order: " + userId + " " + order.getRoomId());
-        System.out.println(paidService.insertOrder(3, order));
+        System.out.println(paidService.insertOrder(userId, order));
     }
 
 }
