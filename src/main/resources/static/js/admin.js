@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function getAllUserOrderList() {
     const tbody = document.querySelector('tbody');
-    fetch('http://localhost:8080/rooms/orders/all/' + currentPage)
+    fetch('/rooms/orders/all/' + currentPage)
       .then((r) => r.json())
       .then((d) => {
         console.log(d);
