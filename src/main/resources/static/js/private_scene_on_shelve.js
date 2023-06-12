@@ -103,7 +103,7 @@ window.addEventListener('load', function () {
 		if (privateSceneName !== null && privateSceneDesc !== null && privateScenePic !== null) {
 			// 新增景點
 			if (privateSceneId == undefined) {
-				fetch('http://localhost:8080/privateSceneController/privateScene', {
+				fetch('/privateSceneController/privateScene', {
 					method: 'POST',
 					headers: { 'Content-Type': 'application/json' },
 					body: JSON.stringify(requestData),
@@ -124,7 +124,7 @@ window.addEventListener('load', function () {
 			}
 			// 修改景點
 			else {
-				fetch('http://localhost:8080/privateSceneController/privateScene/' + privateSceneId, {
+				fetch('/privateSceneController/privateScene/' + privateSceneId, {
 					method: 'PUT', // 方法為PUT
 					headers: { 'Content-Type': 'application/json' },
 					body: JSON.stringify(requestData),

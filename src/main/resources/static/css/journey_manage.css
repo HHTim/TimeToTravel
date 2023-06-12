@@ -307,6 +307,10 @@ main.main {
 h3 {
   cursor: pointer;
 }
+h3:hover {
+  background-color: #004c77;
+  color: #fff;
+}
 
 .reset__area {
   display: flex;
