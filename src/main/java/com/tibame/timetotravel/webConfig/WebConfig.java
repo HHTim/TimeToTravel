@@ -40,8 +40,8 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addViewController("/scenes/search").setViewName("forward:/html/search.html");
         registry.addViewController("/rooms/search").setViewName("forward:/html/search_room.html");
         registry.addViewController("/rooms/booking").setViewName("forward:/html/booking_room.html");
-        registry.addViewController("/rooms/paid").setViewName("forward:/html/booking_paid.html");
-        registry.addViewController("/order_list").setViewName("forward:/html/order_list.html");
+//        registry.addViewController("/rooms/paid").setViewName("forward:/html/booking_paid.html");
+//        registry.addViewController("/rooms/orders").setViewName("forward:/html/order_list.html");
 
         registry.addViewController("/company_message_manage").setViewName("forward:/html/company_message_manage.html");
         registry.addViewController("/admin_company_info").setViewName("forward:/html/admin_company_info.html");

@@ -32,18 +32,18 @@ public class PaidController {
 
     @GetMapping("/paid/{roomId}/{startDate}/{endDate}")
     public BookingPaidDto paid(
-//            @PathVariable Integer userId,
             @PathVariable Integer roomId,
             @PathVariable String startDate,
             @PathVariable String endDate,
             HttpServletRequest req
     ) throws InvocationTargetException, IllegalAccessException {
-
-        Integer userId = (Integer) req.getSession().getAttribute("userId");
-        return paidService.bookingPaid(3, roomId, startDate, endDate);
+        UserSessionDto user = (UserSessionDto) req.getSession().getAttribute("user");
+        System.out.println("接受到的sessionID " + user.getUser().getUserId());
+        Integer userId = user.getUser().getUserId();
+        return paidService.bookingPaid(userId, roomId, startDate, endDate);
     }
 
-    @PostMapping("/insert")
+    @PostMapping("/paid")
     public void insertOrder(HttpServletRequest req, @RequestBody RoomOrderDto order) {
         UserSessionDto user = (UserSessionDto) req.getSession().getAttribute("user");
         System.out.println("接受到的sessionID " + user.getUser().getUserId());
