@@ -15,7 +15,7 @@ let requestBody = {
   journeyPrice: 0,
   orderAmount: 0,
   orderCheckIn: '',
-  orderCheckOut: '',
+  orderCheckOut: ''
 };
 
 function calculateDay(day1, day2) {
@@ -40,7 +40,7 @@ function renderBill() {
     userPhone,
     checkIn,
     checkOut,
-    roomPrice,
+    roomPrice
   } = data;
 
   let html = `
@@ -226,11 +226,11 @@ journeySection.addEventListener('click', (e) => {
 
 // 確認付款
 forward.addEventListener('click', () => {
-  fetch('/rooms/insert', {
+  fetch('/rooms/paid', {
     method: 'POST',
     cache: 'no-cache',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(requestBody),
+    body: JSON.stringify(requestBody)
   })
     .then((resp) => {
       if (resp.ok) {
@@ -241,12 +241,13 @@ forward.addEventListener('click', () => {
     })
     .catch((e) => {
       swal('訂房發生錯誤', '我們會盡快檢查是否有不足的地方', 'error');
+      return;
     });
 
   setTimeout(() => {
     const success = document.querySelector('.swal-button');
     console.log(success);
-    success.onclick = () => (location.href = '/order_list');
+    success.onclick = () => (location.href = '/html/order_list.html');
   }, 500);
 });
 

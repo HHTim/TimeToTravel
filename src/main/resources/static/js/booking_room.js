@@ -24,7 +24,7 @@ async function handleRoomClick(e) {
     console.log(roomId);
     searchBody.roomId = roomId;
     sessionStorage.setItem('searchBody', JSON.stringify(searchBody));
-    window.location.href = '/rooms/paid';
+    window.location.href = '/html/booking_paid.html';
   }
 }
 
@@ -77,7 +77,7 @@ function renderRooms(rooms) {
       roomPet,
       roomParking,
       room24Hours,
-      roomBreakfast,
+      roomBreakfast
     } = rooms[i];
 
     html += `<div class="room__card">
