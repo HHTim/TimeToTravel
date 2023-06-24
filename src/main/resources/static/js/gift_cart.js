@@ -27,7 +27,7 @@ window.addEventListener('load', function () {
         
         
         
-        fetch('http://localhost:8080/giftCartController/giftCart/' + userId)
+        fetch('/giftCartController/giftCart/' + userId)
       .then((resp) => {
         // console.log(resp);
         if (resp.headers.get('content-type').includes('application/json')) {
@@ -217,7 +217,7 @@ window.addEventListener('load', function () {
         
         
         
-        fetch('http://localhost:8080/giftCartController/giftCart/' + userId, {
+        fetch('/giftCartController/giftCart/' + userId, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(dataset),
@@ -345,7 +345,7 @@ $(document).on('click', 'button.delete-one', function(e) {
         
         
         
-        fetch('http://localhost:8080/giftCartController/giftCart/' + userId + '/' + giftId, {
+        fetch('/giftCartController/giftCart/' + userId + '/' + giftId, {
           method: 'DELETE'
         })
         .then((resp) => resp.text())
@@ -448,7 +448,7 @@ $(document).on('click', 'button.delete-one', function(e) {
         
         
         
-        fetch('http://localhost:8080/giftCartController/giftCart/' + userId + '/' + giftId, {
+        fetch('/giftCartController/giftCart/' + userId + '/' + giftId, {
         method: 'DELETE'
       })
       .then((resp) => resp.text())
@@ -525,7 +525,7 @@ $(document).on('click', 'button.delete-one', function(e) {
 
 	// ===================返回土產專區確認===================
 	$('div.success-btn button').on('click', function (e) {
-		window.location.href = 'http://localhost:8080/gift_search';
+		window.location.href = '/gift_search';
 	});
 
 // ===================清空彈出視窗===================
@@ -548,7 +548,7 @@ $('button.clear-all').on('click', function(e) {
         
         
         
-        fetch('http://localhost:8080/giftCartController/giftCart/' + userId, {
+        fetch('/giftCartController/giftCart/' + userId, {
     method: 'DELETE'
   })
   .then((resp) => resp.text())
@@ -618,7 +618,7 @@ $('button.clear-all').on('click', function(e) {
 
 // ===================返回土產專區確認===================
   $('div.success-btn button').on('click', function (e) {
-    window.location.href = 'http://localhost:8080/gift_search';
+    window.location.href = '/gift_search';
   });
 
   $('div.success-mask').click((e) => {
@@ -660,7 +660,7 @@ $('button.go-to-pay').on('click', function(e) {
         
         
         
-        fetch('http://localhost:8080/giftOrderController/giftOrder/' + userId, {
+        fetch('/giftOrderController/giftOrder/' + userId, {
             method: 'POST'
           })
           .then((resp) => resp.text())
@@ -743,7 +743,7 @@ $('button.go-to-pay').on('click', function(e) {
         
         
         
-        fetch('http://localhost:8080/giftOrderController/giftOrder/' + userId, {
+        fetch('/giftOrderController/giftOrder/' + userId, {
         method: 'POST'
       })
           .then((resp) => resp.text())
@@ -809,7 +809,7 @@ $('button.go-to-pay').on('click', function(e) {
 
 // ===================前往訂單紀錄確認===================
 $('div.order-btn button').on('click', function (e) {
-  window.location.href = 'http://localhost:8080/html/gift_order_list.html';
+  window.location.href = '/gift_order';
 });
 
 $('div.order-mask').click((e) => {

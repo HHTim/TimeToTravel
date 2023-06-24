@@ -3,7 +3,7 @@ $(function () {
   var socket;
   var role;
   var currentUserData;
-  $('.input-box input[type="submit"]').on('keyup', function (e) {
+  $('#message-input').on('keyup', function (e) {
     if (e.keyCode === 13) {
       sendMessage();
     }
@@ -70,9 +70,11 @@ $(function () {
         // 執行第二個 Fetch 請求
         const getCurrentUserDataResponse = await fetch(getCurrentUserDataUrl);
         currentUserData = await getCurrentUserDataResponse.json();
-        if (role === '會員') socket = new WebSocket('ws://localhost:8080/websocket/' + currentUserData.userName);
-        else if (role === '商家') socket = new WebSocket('ws://localhost:8080/websocket/' + currentUserData.comName);
-        else socket = new WebSocket('ws://localhost:8080/websocket/' + currentUserData.adminName);
+        if (role === '會員')
+          socket = new WebSocket('ws://35.229.175.158:8080/websocket/' + currentUserData.userName);
+        else if (role === '商家')
+          socket = new WebSocket('ws://35.229.175.158:8080/websocket/' + currentUserData.comName);
+        else socket = new WebSocket('ws://35.229.175.158:8080/websocket/' + currentUserData.adminName);
 
         socket.onopen = function (event) {
           // 连接建立后执行的操作

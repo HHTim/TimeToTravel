@@ -56,6 +56,22 @@ window.addEventListener('load', function () {
 		localStorage.removeItem('selectedGift');
 		localStorage.removeItem('selectedJourney');
 	});
+
+	/**
+	 * 所有新增按鈕的事件綁定，清除localStorage內的'selectedRoom'
+	 */
+	const btns = document.querySelectorAll(
+		'.btn__update__room, .btn__update__gift, .btn__update__private__scene, .btn__update__journey'
+	);
+	const clearLocalStorage = () => {
+		localStorage.removeItem('selectedRoom');
+		localStorage.removeItem('selectedPrivateScene');
+		localStorage.removeItem('selectedGift');
+		localStorage.removeItem('selectedJourney');
+	};
+	btns.forEach((btn) => {
+		btn.addEventListener('click', clearLocalStorage);
+	});
 	// 處理從journey_manage.html來的journey
 	function handleSelectedJourney() {
 		const selectedJourney = JSON.parse(localStorage.getItem('selectedJourney'));
@@ -224,6 +240,7 @@ window.addEventListener('load', function () {
 		return img; // 傳整個<img>標籤
 	}
 
-	handleSelectedJourney();
 	getCurrentUserInformation();
+	getCurrentUserData();
+	handleSelectedJourney();
 });

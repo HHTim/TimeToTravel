@@ -298,8 +298,10 @@ sessionStorage.clear();
     if (e.target.value === '') {
       if (typeof swal === 'function') {
         swal('輸入欄位請勿留空', '', 'warning');
+        return;
       } else {
         alert('輸入欄位請勿留空');
+        return;
       }
     } else {
       if (elem.id === 'people') {
@@ -339,8 +341,23 @@ sceneKeyword.addEventListener('blur', (e) => {
   }
 });
 
-search.onclick = () => {
+function redirect() {
   let url = isSearchRoom ? 'rooms/search' : 'scenes/search';
   sessionStorage.setItem('searchBody', JSON.stringify(searchBody));
   window.location.href = url;
+}
+
+search.onclick = () => {
+  if (searchBody.keyword == '' || searchBody.people == 0 || searchBody.startDate == '' || searchBody.endDate == '') {
+    return;
+  }
+  redirect();
 };
+
+document.addEventListener('keydown', (e) => {
+  if (e.code !== 'Enter') return;
+  if (searchBody.keyword == '' || searchBody.people == 0 || searchBody.startDate == '' || searchBody.endDate == '') {
+    return;
+  }
+  redirect();
+});
