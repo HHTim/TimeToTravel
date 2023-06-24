@@ -17,7 +17,7 @@ $(function () {
   function getBLogData() {
     let tagsHtml = getTags(postId);
     $.ajax({
-      url: 'http://localhost:8080/BlogController/blog/' + postId,
+      url: '/BlogController/blog/' + postId,
       method: 'GET',
       success: function (data) {
         getBlogdata2Session = data;
@@ -26,7 +26,7 @@ $(function () {
         let userPhotoUrl;
         // data.userId
         $.ajax({
-          url: 'http://localhost:8080/BlogController/blog/getUser/' + data.userId, // 資料請求的網址
+          url: '/BlogController/blog/getUser/' + data.userId, // 資料請求的網址
           type: 'GET', // GET | POST | PUT | DELETE | PATCH
           dataType: 'text', // 預期會接收到回傳資料的格式： json | xml | html
           success: function (data) {
@@ -68,7 +68,7 @@ $(function () {
   function getTags(postId) {
     let tagsHtml = '';
     $.ajax({
-      url: 'http://localhost:8080/BlogSearchController/blog/tag/' + postId,
+      url: '/BlogSearchController/blog/tag/' + postId,
       type: 'GET',
       async: false, // 设置为同步请求以确保获取到标签数据后再继续执行 ???
       success: function (tags) {
@@ -89,7 +89,7 @@ $(function () {
 
   function getCommentsData(postId) {
     $.ajax({
-      url: 'http://localhost:8080/BlogController/blog-comments/' + postId,
+      url: '/BlogController/blog-comments/' + postId,
       type: 'GET',
       success: function (response) {
         if (Array.isArray(response)) {
@@ -108,7 +108,7 @@ $(function () {
             let gg= comment.userId;
             // var commentPhotoUrl;
             $.ajax({
-              url: 'http://localhost:8080/BlogController/blog/getUser/' + gg, // 資料請求的網址
+              url: '/BlogController/blog/getUser/' + gg, // 資料請求的網址
               type: 'GET', // GET | POST | PUT | DELETE | PATCH
               dataType: 'text', // 預期會接收到回傳資料的格式： json | xml | html
               success: function (data) {
@@ -175,7 +175,7 @@ $(function () {
     };
     if (comment != '') {
       $.ajax({
-        url: 'http://localhost:8080/BlogController/comment/insert', // 資料請求的網址
+        url: '/BlogController/comment/insert', // 資料請求的網址
         type: 'POST', // GET | POST | PUT | DELETE | PATCH
         data: JSON.stringify(articleComment), // 預期會接收到回傳資料的格式： json | xml | html
         datatype: 'json', // 將物件資料(不用雙引號) 傳送到指定的 url
@@ -259,7 +259,7 @@ $(function () {
     let that = this;
     if (r) {
       $.ajax({
-        url: 'http://localhost:8080/BlogController/comment/delete/' + postId, // 資料請求的網址
+        url: '/BlogController/comment/delete/' + postId, // 資料請求的網址
         type: 'DELETE', // GET | POST | PUT | DELETE | PATCH
         data: JSON.stringify(articleComment), // 將物件資料(不用雙引號) 傳送到指定的 url
         dataType: 'text', // 預期會接收到回傳資料的格式： json | xml | html
@@ -322,7 +322,7 @@ $(function () {
         console.log(comment.commentDatetime);
         let that = this; //
         $.ajax({
-          url: 'http://localhost:8080/BlogController/comment/update', // 資料請求的網址
+          url: '/BlogController/comment/update', // 資料請求的網址
           type: 'PUT', // GET | POST | PUT | DELETE | PATCH
           data: JSON.stringify(comment), // 將物件資料(不用雙引號) 傳送到指定的 url
           dataType: 'text', // 預期會接收到回傳資料的格式： json | xml | html
@@ -360,7 +360,7 @@ $(function () {
     let like = { postId: postId, userId: userId };
 
     $.ajax({
-      url: 'http://localhost:8080/BlogController/blog/like', // 資料請求的網址
+      url: '/BlogController/blog/like', // 資料請求的網址
       type: 'POST', // GET | POST | PUT | DELETE | PATCH
       data: JSON.stringify(like), // 將物件資料(不用雙引號) 傳送到指定的 url
       dataType: 'text', // 預期會接收到回傳資料的格式： json | xml | html
@@ -393,7 +393,7 @@ $(function () {
       userId: userId,
     };
     $.ajax({
-      url: 'http://localhost:8080/BlogController/blog/favor', // 資料請求的網址
+      url: '/BlogController/blog/favor', // 資料請求的網址
       type: 'POST', // GET | POST | PUT | DELETE | PATCH
       data: JSON.stringify(favorArticle), // 將物件資料(不用雙引號) 傳送到指定的 url
       dataType: 'text', // 預期會接收到回傳資料的格式： json | xml | html | text
@@ -484,7 +484,7 @@ $(function () {
     var confirmation = confirm('確認刪除文章？');
     if (confirmation) {
       $.ajax({
-        url: 'http://localhost:8080/BlogController/blog/deleteBlog/' + postId, // 資料請求的網址
+        url: '/BlogController/blog/deleteBlog/' + postId, // 資料請求的網址
         type: 'DELETE', // GET | POST | PUT | DELETE | PATCH
         dataType: 'json', // 預期會接收到回傳資料的格式： json | xml | html
         success: function (data) {

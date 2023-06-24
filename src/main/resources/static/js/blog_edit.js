@@ -11,7 +11,7 @@ $(function () {
     console.log(userId);
   } catch (error) {
     $.ajax({
-      url: 'http://localhost:8080/getCurrentUserController/current-user', // 資料請求的網址
+      url: '/getCurrentUserController/current-user', // 資料請求的網址
       type: 'GET', // GET | POST | PUT | DELETE | PATCH
       dataType: 'json', // 預期會接收到回傳資料的格式： json | xml | html
       success: function (data) {
@@ -45,7 +45,7 @@ $(function () {
     $('#tags-container').append(tagsHtml);
     // if (blog.postId != null) {
     $.ajax({
-      url: 'http://localhost:8080/BlogEditController/blog-edit/' + blog.postId,
+      url: '/BlogEditController/blog-edit/' + blog.postId,
       type: 'GET',
       dataType: 'json',
       contentType: 'application/json',
@@ -110,7 +110,7 @@ $(function () {
       $('#hint-msg').text('');
       // 搞錯商業邏輯
       // $.ajax({
-      //   url: 'http://localhost:8080/BlogEditController/blog-edit/addTag/' + postId, // 資料請求的網址
+      //   url: '/BlogEditController/blog-edit/addTag/' + postId, // 資料請求的網址
       //   type: 'POST', // GET | POST | PUT | DELETE | PATCH
       //   data: JSON.stringify(tag), // 將物件資料(不用雙引號) 傳送到指定的 url
       //   dataType: 'json', // 預期會接收到回傳資料的格式： json | xml | html
@@ -154,7 +154,7 @@ $(function () {
       //   userId: userId,
       // };
       // $.ajax({
-      //   url: 'http://localhost:8080/BlogEditController/blog-edit/addTag', // 資料請求的網址
+      //   url: '/BlogEditController/blog-edit/addTag', // 資料請求的網址
       //   type: 'DELETE', // GET | POST | PUT | DELETE | PATCH
       //   data: JSON.stringify(blogTag), // 將物件資料(不用雙引號) 傳送到指定的 url
       //   dataType: 'json', // 預期會接收到回傳資料的格式： json | xml | html
@@ -272,7 +272,7 @@ $(function () {
         // Body 放兩個物件 使用 Map 操作未使用
 
         $.ajax({
-          url: 'http://localhost:8080/BlogEditController/blog-edit/update', // 資料請求的網址
+          url: '/BlogEditController/blog-edit/update', // 資料請求的網址
           type: 'POST', // GET | POST | PUT | DELETE | PATCH
           data: JSON.stringify(articleData), // 將物件資料(不用雙引號) 傳送到指定的 url
           dataType: 'text', // 預期會接收到回傳資料的格式： json | xml | html
@@ -282,7 +282,7 @@ $(function () {
             // console.log(parseInt(data) + '222111222'); // request 成功取得回應後執行
 
             $.ajax({
-              url: 'http://localhost:8080/BlogEditController/blog-edit/addTags/' + data, // 資料請求的網址
+              url: '/BlogEditController/blog-edit/addTags/' + data, // 資料請求的網址
               type: 'PATCH', // GET | POST | PUT | DELETE | PATCH
               data: JSON.stringify(tagsArray), // 將物件資料(不用雙引號) 傳送到指定的 url
               dataType: 'json', // 預期會接收到回傳資料的格式： json | xml | html

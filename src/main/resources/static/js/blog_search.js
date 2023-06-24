@@ -4,7 +4,7 @@ $(document).ready(function () {
   var user = null;
   var userId = null; // 拿 session
   $.ajax({
-    url: 'http://localhost:8080/getCurrentUserController/current-user', // 資料請求的網址
+    url: '/getCurrentUserController/current-user', // 資料請求的網址
     type: 'GET', // GET | POST | PUT | DELETE | PATCH
     dataType: 'json', // 預期會接收到回傳資料的格式： json | xml | html
     success: function (data) {
@@ -35,7 +35,7 @@ $(document).ready(function () {
 
   function getInitBlogs() {
     let urlSql =
-      'http://localhost:8080/BlogSearchController/searchSQL?title=' +
+      '/BlogSearchController/searchSQL?title=' +
       encodeURIComponent(topic) +
       '&tags=' +
       encodeURIComponent(tagsId.join(',')) +
@@ -117,7 +117,7 @@ $(document).ready(function () {
   function getTags(postId) {
     let tagsHtml = '';
     $.ajax({
-      url: 'http://localhost:8080/BlogSearchController/blog/tag/' + postId,
+      url: '/BlogSearchController/blog/tag/' + postId,
       type: 'GET',
       async: false, // 设置为同步请求以确保获取到标签数据后再继续执行
       success: function (response) {
@@ -143,7 +143,7 @@ $(document).ready(function () {
       }
 
       $.ajax({
-        url: 'http://localhost:8080/BlogSearchController/checkTag/' + tagInput, // 資料請求的網址
+        url: '/BlogSearchController/checkTag/' + tagInput, // 資料請求的網址
         type: 'GET', // GET | POST | PUT | DELETE | PATCH
         dataType: 'text', // 預期會接收到回傳資料的格式： json | xml | html
 
@@ -225,7 +225,7 @@ $(document).ready(function () {
     );
 
     var urlSql =
-      'http://localhost:8080/BlogSearchController/searchSQL?title=' +
+      '/BlogSearchController/searchSQL?title=' +
       encodeURIComponent(topic) +
       '&tags=' +
       encodeURIComponent(tagsId.join(',')) +

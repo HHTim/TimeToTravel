@@ -9,7 +9,7 @@ $(function () {
   // } catch (error) {
   // }
   $.ajax({
-    url: 'http://localhost:8080/getCurrentUserController/current-user', // 資料請求的網址
+    url: '/getCurrentUserController/current-user', // 資料請求的網址
     type: 'GET', // GET | POST | PUT | DELETE | PATCH
     dataType: 'json', // 預期會接收到回傳資料的格式： json | xml | html
     success: function (data) {
@@ -34,7 +34,7 @@ $(function () {
   var blogs = [];
   function getFavorArticle(userId) {
     $.ajax({
-      url: 'http://localhost:8080/BlogFavorController/blog/favor/' + userId, // 先拿 view 好了 後端 先拿 符合者， 再拿 對應的view
+      url: '/BlogFavorController/blog/favor/' + userId, // 先拿 view 好了 後端 先拿 符合者， 再拿 對應的view
       type: 'GET',
       // data: 'json', // 傳送給url 的格式
       datatype: 'json', // 預計回傳格式
@@ -56,7 +56,7 @@ $(function () {
   function getTags(postId) {
     var tagsHtml = '';
     $.ajax({
-      url: 'http://localhost:8080/BlogSearchController/blog/tag/' + postId,
+      url: '/BlogSearchController/blog/tag/' + postId,
       type: 'GET',
       async: false, // 设置为同步请求以确保获取到标签数据后再继续执行
       success: function (response) {
@@ -83,7 +83,7 @@ $(function () {
     // var that=this;
     var blogId = $(this).closest('div.blog').attr('blog-id');
     $.ajax({
-      url: 'http://localhost:8080/getCurrentUserController/current-user', // 資料請求的網址
+      url: '/getCurrentUserController/current-user', // 資料請求的網址
       type: 'GET', // GET | POST | PUT | DELETE | PATCH
       dataType: 'json', // 預期會接收到回傳資料的格式： json | xml | html
       success: function (data) {
@@ -105,7 +105,7 @@ $(function () {
           // let that = this;
           // console.log(that);
           $.ajax({
-            url: 'http://localhost:8080/BlogController/blog/favor', // 資料請求的網址
+            url: '/BlogController/blog/favor', // 資料請求的網址
             type: 'POST', // GET | POST | PUT | DELETE | PATCH
             data: JSON.stringify(favorArticle), // 將物件資料(不用雙引號) 傳送到指定的 url
             dataType: 'text', // 預期會接收到回傳資料的格式： json | xml | html | text
@@ -150,7 +150,7 @@ $(function () {
       })
     );
     $.ajax({
-      url: 'http://localhost:8080/getCurrentUserController/current-user', // 資料請求的網址
+      url: '/getCurrentUserController/current-user', // 資料請求的網址
       type: 'GET', // GET | POST | PUT | DELETE | PATCH
       dataType: 'json', // 預期會接收到回傳資料的格式： json | xml | html
       success: function (data) {
