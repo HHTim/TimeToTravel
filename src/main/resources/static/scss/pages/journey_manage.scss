@@ -19,6 +19,10 @@ main.main {
 
 h3 {
 	cursor: pointer;
+	&:hover {
+		background-color: $primary-blue-hover;
+		color: $font-normal-white;
+	}
 }
 .reset__area {
 	display: flex;
